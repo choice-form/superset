@@ -308,7 +308,7 @@ LANGUAGES = {
     # "es": {"flag": "es", "name": "Spanish"},
     # "it": {"flag": "it", "name": "Italian"},
     # "fr": {"flag": "fr", "name": "French"},
-    "zh": {"flag": "cn", "name": "Chinese"},
+    "zh": {"flag": "cn", "name": "中文"},
     # "ja": {"flag": "jp", "name": "Japanese"},
     # "de": {"flag": "de", "name": "German"},
     # "pt": {"flag": "pt", "name": "Portuguese"},
