@@ -49,6 +49,13 @@ const bootstrap = JSON.parse(container?.getAttribute('data-bootstrap') ?? '{}');
 const user = { ...bootstrap.user };
 const menu = { ...bootstrap.common.menu_data };
 const common = { ...bootstrap.common };
+
+/**
+ * 替换为巧思 Logo
+ * @choiceform
+ */
+menu.brand.icon = '/static/assets/images/choiceform-logo-horiz.png';
+
 let lastLocationPathname: string;
 initFeatureFlags(bootstrap.common.feature_flags);
 
