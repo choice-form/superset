@@ -4,17 +4,44 @@
     "superset": {
       "": {
         "domain": "superset",
-        "plural_forms": "nplurals=1; plural=0;",
+        "plural_forms": "nplurals=1; plural=0",
         "lang": "zh"
       },
+      "The datasource is too large to query.": ["数据源太大，无法查询。"],
+      "The database is under an unusual load.": ["数据库负载异常。"],
+      "The database returned an unexpected error.": ["数据库返回意外错误。"],
+      "There is a syntax error in the SQL query. Perhaps there was a misspelling or a typo.": [
+        "SQL查询中存在语法错误。可能是拼写错误或是打错关键字。"
+      ],
+      "The column was deleted or renamed in the database.": [
+        "该列已在数据库中删除或重命名。"
+      ],
+      "The table was deleted or renamed in the database.": [
+        "该表已在数据库中删除或重命名。"
+      ],
+      "One or more parameters specified in the query are missing.": [
+        "查询中指定的一个或多个参数丢失。"
+      ],
       "The hostname provided can't be resolved.": [""],
+      "The port is closed.": ["端口已被关闭"],
       "The host might be down, and can't be reached on the provided port.": [
         ""
       ],
+      "Superset encountered an error while running a command.": [
+        "执行命令时发现错误。"
+      ],
+      "Superset encountered an unexpected error.": ["出现意外错误。"],
       "The username provided when connecting to a database is not valid.": [""],
       "The password provided when connecting to a database is not valid.": [""],
       "Either the username or the password is wrong.": [""],
       "Either the database is spelled incorrectly or does not exist.": [""],
+      "The schema was deleted or renamed in the database.": [
+        "该模式已在数据库中删除或重命名。"
+      ],
+      "User doesn't have the proper permissions.": ["您没有授权"],
+      "One or more parameters needed to configure a database are missing.": [
+        "配置数据库时指定的一个或多个参数丢失。"
+      ],
       "The submitted payload has the incorrect format.": [""],
       "The submitted payload has the incorrect schema.": [""],
       "Results backend needed for asynchronous queries is not configured.": [
@@ -25,13 +52,21 @@
       "CVAS (create view as select) query is not a SELECT statement.": [""],
       "Query is too complex and takes too long to run.": [""],
       "The database is currently running too many queries.": [""],
+      "One or more parameters specified in the query are malformatted.": [
+        "查询中指定的一个或多个参数丢失。"
+      ],
+      "The object does not exist in the given database.": [
+        "源数据库中存在的表的名称"
+      ],
       "The query has a syntax error.": [""],
       "The results backend no longer has the data from the query.": [""],
       "The query associated with the results was deleted.": [""],
       "The results stored in the backend were stored in a different format, and no longer can be deserialized.": [
         ""
       ],
+      "The port number is invalid.": ["端口号无效。"],
       "Failed to start remote query on a worker.": [""],
+      "The database was deleted.": ["数据集已删除。"],
       "Invalid certificate": ["无效认证"],
       "Unsafe return type for function %(func)s: %(value_type)s": [
         "函数返回不安全的类型 %(func)s: %(value_type)s"
@@ -44,6 +79,9 @@
       ],
       "Unsupported template value for key %(key)s": [
         "键的模板值不受支持 %(key)s"
+      ],
+      "Only SELECT statements are allowed against this database.": [
+        "此数据库只允许使用 `SELECT` 语句。"
       ],
       "The query was killed after %(sqllab_timeout)s seconds. It might be too complex, or the database might be under heavy load.": [
         ""
@@ -207,6 +245,9 @@
         "上百分位数必须大于0且小于100。而且必须高于下百分位。"
       ],
       "`width` must be greater or equal to 0": ["`宽度` 必须大于或等于0"],
+      "`row_limit` must be greater than or equal to 0": [
+        "`行限制` 必须大于或等于0"
+      ],
       "`row_offset` must be greater than or equal to 0": [
         "`行偏移量` 必须大于或等于0"
       ],
@@ -234,7 +275,12 @@
       "Charts could not be deleted.": ["这个查询无法被加载"],
       "Import chart failed for an unknown reason": ["导入图表失败，原因未知"],
       "Owners are invalid": ["所有者无效"],
+      "Some roles do not exist": ["角色不存在"],
       "Dataset does not exist": ["数据集不存在"],
+      "Invalid result type: %(result_type)s": [
+        "无效的结果类型：%(result_type)s"
+      ],
+      "The chart does not exist": ["图表没有找到"],
       "Duplicate column/metric labels: %(labels)s. Please make sure all columns and metrics have a unique label.": [
         ""
       ],
@@ -247,6 +293,7 @@
       "Unsupported post processing operation: %(operation)s": [
         "不支持的处理操作：%(operation)s"
       ],
+      "Datasource id not found: %(id)s": ["数据源 ID 没有找到：%(id)s"],
       "Adding new datasource [{}]": ["添加 Druid 数据源 [{}]"],
       "Refreshing datasource [{}]": ["刷新数据源 [{}]"],
       "Metric(s) {} must be aggregations.": ["度量(s) {} 必须是聚合。"],
@@ -330,6 +377,9 @@
         "获取jinja表达式中的谓词的值出错：%(msg)s"
       ],
       "Virtual dataset query must be read-only": ["虚拟数据集查询必须是只读的"],
+      "Error while rendering virtual dataset query: %(msg)s": [
+        "渲染虚拟数据集时出错：%(msg)s"
+      ],
       "Virtual dataset query cannot consist of multiple statements": [
         "虚拟数据集查询不能由多个语句组成"
       ],
@@ -543,6 +593,15 @@
       "Use an encrypted connection to the database": [""],
       "We were unable to connect to your database. Please confirm that your service account has the Viewer and Job User roles on the project.": [
         ""
+      ],
+      "The table \"%(table)s\" does not exist. A valid table must be used to run this query.": [
+        "表 \"%(table)s\" 不存在。必须使用有效的表来运行此查询。"
+      ],
+      "We can't seem to resolve column \"%(column)s\" at line %(location)s.": [
+        "我们似乎无法解析行 %(location)s 所处的列 \"%(column)s\" 。"
+      ],
+      "The schema \"%(schema)s\" does not exist. A valid schema must be used to run this query.": [
+        "表 \"%(schema)s\" 不存在。必须使用有效的表来运行此查询。"
       ],
       "Please check your query for syntax errors near \"%(server_error)s\". Then, try running your query again.": [
         ""
@@ -1453,7 +1512,9 @@
       "OCT": ["十月"],
       "NOV": ["十一月"],
       "DEC": ["十二月"],
+      "Select database or type database name": ["选择数据库或输入数据库名"],
       "Force refresh schema list": ["强制刷新数据"],
+      "Select schema or type schema name": ["选择模式或输入模式名称"],
       "DELETE": ["删除"],
       "delete": ["删除"],
       "Type \"%s\" to confirm": ["键入 \"%s\" 来确认"],
@@ -1496,6 +1557,8 @@
       "%s Selected": ["%s 已选定"],
       "Deselect all": ["反选所有"],
       "%s-%s of %s": ["%s-%s 总计 %s"],
+      "Type a value": ["输入值"],
+      "Select or type a value": ["选择或输入值"],
       "SQL query": ["SQL查询"],
       "Settings": ["设置"],
       "About": ["关于"],
@@ -2058,7 +2121,7 @@
       "To filter on a metric, use Custom SQL tab.": [
         "若要在计量值上筛选，请使用自定义SQL选项卡。"
       ],
-      "Type a value here": ["在这里键入一个值"],
+      "Type a value here": ["在这里输入值"],
       "Filter value (case sensitive)": ["过滤值（区分大小写）"],
       "choose WHERE or HAVING...": ["选择WHERE或HAVING子句..."],
       "Filters by columns": ["按列过滤"],
@@ -2153,6 +2216,7 @@
       "joined": ["已加入"],
       "id:": ["id:"],
       "We were unable to active or deactivate this report.": [""],
+      "Your report could not be deleted": ["报告无法删除。"],
       "Deleted: %s": ["已删除：%s"],
       "There was an error fetching your recent activity:": [
         "获取您最近的活动时出错："
@@ -2211,6 +2275,7 @@
       "Alert name": ["警报名称"],
       "Alert condition": ["警报状态"],
       "Trigger Alert If...": ["如果 ... 则触发警报"],
+      "Condition": ["条件"],
       "Report schedule": ["报告时间表"],
       "Alert condition schedule": ["警报条件计划"],
       "Schedule settings": ["计划设置"],
@@ -2316,6 +2381,7 @@
       "Alphabetical": ["按字母顺序排列"],
       "Recently modified": ["最近修改"],
       "Least recently modified": ["最远修改"],
+      "Import charts": ["导入图表"],
       "Are you sure you want to delete the selected charts?": [
         "确实要删除所选图表吗？"
       ],
@@ -2394,11 +2460,14 @@
       ],
       "Connect Google Sheets as tables to this database": [""],
       "Google Sheet Name and URL": [""],
+      "Enter a name for this sheet": ["为表输入名称"],
       "Paste the shareable Google Sheet URL here": [""],
+      "Add sheet": ["添加表"],
       "This can be either an IP address (e.g. 127.0.0.1) or a domain name (e.g. mydatabase.com).": [
         ""
       ],
       "Copy the name of the  database you are trying to connect to.": [""],
+      "Display Name": ["显示名称"],
       "Pick a nickname for this database to display as in Superset.": [""],
       "SSL Mode \"require\" will be used.": [""],
       "Expose database in SQL Lab": [""],
@@ -2419,6 +2488,7 @@
         ""
       ],
       "Chart cache timeout": ["图表缓存超时"],
+      "Table cache timeout": ["表缓存超时"],
       "Operate the database in asynchronous mode, meaning that the queries are executed on remote workers as opposed to on the web server itself. This assumes that you have a Celery worker setup as well as a results backend. Refer to the installation docs for more information.": [
         "以异步模式操作数据库，这意味着查询是在远程worker上执行的，而不是在web服务器本身上执行的, 这假设您有一个Celery worker setup以及一个执行后端。有关更多信息，请参考安装文档。"
       ],
@@ -2435,22 +2505,28 @@
       "If selected, please set the schemas allowed for data upload in Extra.": [
         "如果选中，请额外设置允许数据上传的schema。"
       ],
+      "Metadata Parameters": ["元数据参数"],
       "The metadata_params object gets unpacked into the sqlalchemy.MetaData call.": [
         ""
       ],
+      "Engine Parameters": ["引擎参数"],
+      "Version": ["版本"],
       "Version number": [""],
       "Specify the database version. This should be used with Presto in order to enable query cost estimation.": [
         ""
       ],
       "Pick a name to help you identify this database.": [""],
       "dialect+driver://username:password@host:port/database": [""],
+      "Refer to the": ["参考"],
       "Test connection": ["测试连接"],
       "Please enter a SQLAlchemy URI to test": ["请输入要测试的SQLAlchemy URI"],
       "Sorry there was an error fetching database information: %s": [
         "抱歉，获取数据库信息时出错：%s"
       ],
       "Want to add a new database?": [""],
+      "Connect": ["连接"],
       "Edit database": ["编辑数据库"],
+      "Connect a database": ["连接数据库"],
       "Click this link to switch to an alternate form that exposes only the required fields needed to connect this database.": [
         ""
       ],
@@ -2474,6 +2550,7 @@
       "An error occurred while fetching schema values: %s": [
         "获取结构信息时出错：%s"
       ],
+      "Import datasets": ["导入数据集"],
       "There was an issue deleting the selected datasets: %s": [
         "删除选定的数据集时出现问题：%s"
       ],
@@ -2512,12 +2589,14 @@
       "There was an issue previewing the selected query %s": [
         "预览所选查询时出现问题 %s"
       ],
+      "Import queries": ["导入查询"],
       "Link Copied!": ["链接成功！"],
       "There was an issue deleting the selected queries: %s": [
         "删除所选查询时出现问题：%s"
       ],
       "Edit query": ["编辑查询"],
       "Copy query URL": ["复制查询URL"],
+      "Export query": ["导出查询"],
       "Delete query": ["删除查询"],
       "This action will permanently delete the saved query.": [
         "此操作将永久删除保存的查询。"
@@ -2526,7 +2605,10 @@
       "Are you sure you want to delete the selected queries?": [
         "您确实要删除选定的查询吗？"
       ],
+      "queries": ["查询"],
       "Query name": ["查询名称"],
+      "[Untitled]": ["[未命名]"],
+      "Unknown": ["未知"],
       "Edited": ["已编辑"],
       "Created": ["已创建"],
       "Viewed": ["已查看"],
@@ -2547,12 +2629,15 @@
       ],
       "You don't have any favorites yet!": ["您还没有任何的收藏！"],
       "SQL Lab queries": ["SQL工具箱查询"],
+      "${tableName}": ["${表名称}"],
       "query": ["查询"],
       "Share": ["分享"],
+      "Ran %s": ["运行时间：%s"],
       "Recents": ["最近"],
       "Select start and end date": ["选择开始和结束时间"],
       "Type or Select [%s]": ["键入或选择 [%s]"],
       "No results found": ["未找到结果"],
+      "Tools": ["工具"],
       "Filter box": ["过滤器"],
       "Chart component that lets you add a custom filter UI in your dashboard. When added to dashboard, a filter box lets users specify specific values or ranges to filter charts by. The charts that each filter box is applied to can be fine tuned as well in the dashboard view.\n\n    Note that this plugin is being replaced with the new Filters feature that lives in the dashboard view itself. It's easier to use and has more capabilities!": [
         ""
@@ -2572,6 +2657,7 @@
         "选中可在过滤条件更改时立即应用过滤，而不是使用 [应用] 按钮"
       ],
       "Show SQL time column": ["显示SQL时间列"],
+      "Show time column": ["显示时间列"],
       "Check to include time column dropdown": ["检查包含时间列下拉列表"],
       "Limit selector values": ["限制选择器值"],
       "These filters apply to the values available in the dropdowns": [
@@ -2582,8 +2668,12 @@
         ""
       ],
       "Multi-Variables": [""],
+      "Comparison": ["比较"],
       "Legacy": [""],
-      "Tabular": [""]
+      "Percentages": ["百分比"],
+      "Tabular": [""],
+      "Text": ["文本"],
+      "Trend": ["趋势"]
     }
   }
 }
