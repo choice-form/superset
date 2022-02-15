@@ -38,9 +38,7 @@ afterAll(() => {
 
 test('get correct annotation when isNative:true', () => {
   const response = getAnnotationJsonUrl('slice_id', 'form_data', true);
-  expect(response).toBe(
-    '/annotation_json/slice_id?form_data=%22form_data%22',
-  );
+  expect(response).toBe('/annotation_json/slice_id?form_data=%22form_data%22');
 });
 
 test('get correct annotation when isNative:false', () => {

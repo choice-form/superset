@@ -70,9 +70,7 @@ describe('logger middleware', () => {
 
     clock.tick(2000);
     expect(SupersetClient.post.callCount).toBe(1);
-    expect(SupersetClient.post.getCall(0).args[0].endpoint).toMatch(
-      '/log/',
-    );
+    expect(SupersetClient.post.getCall(0).args[0].endpoint).toMatch('/log/');
   });
 
   it('should include ts, start_offset, event_name, impression_id, source, and source_id in every event', () => {

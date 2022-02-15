@@ -213,9 +213,7 @@ function SavedQueryList({
 
   const copyQueryLink = useCallback(
     (id: number) => {
-      copyTextToClipboard(
-        `${window.location.origin}/sqllab?savedQueryId=${id}`,
-      )
+      copyTextToClipboard(`${window.location.origin}/sqllab?savedQueryId=${id}`)
         .then(() => {
           addSuccessToast(t('Link Copied!'));
         })

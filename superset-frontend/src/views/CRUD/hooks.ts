@@ -596,9 +596,7 @@ export const copyQueryLink = (
   addDangerToast: (arg0: string) => void,
   addSuccessToast: (arg0: string) => void,
 ) => {
-  copyTextToClipboard(
-    `${window.location.origin}/sqllab?savedQueryId=${id}`,
-  )
+  copyTextToClipboard(`${window.location.origin}/sqllab?savedQueryId=${id}`)
     .then(() => {
       addSuccessToast(t('Link Copied!'));
     })

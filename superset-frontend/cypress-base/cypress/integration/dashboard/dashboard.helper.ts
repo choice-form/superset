@@ -21,8 +21,7 @@ import { getChartAlias, Slice } from 'cypress/utils/vizPlugins';
 export const WORLD_HEALTH_DASHBOARD = '/dashboard/world_health/';
 export const TABBED_DASHBOARD = '/dashboard/tabbed_dash/';
 
-export const CHECK_DASHBOARD_FAVORITE_ENDPOINT =
-  '/favstar/Dashboard/*/count';
+export const CHECK_DASHBOARD_FAVORITE_ENDPOINT = '/favstar/Dashboard/*/count';
 
 export const WORLD_HEALTH_CHARTS = [
   { name: '% Rural', viz: 'world_map' },

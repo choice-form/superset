@@ -38,9 +38,7 @@ describe('Dashboard save action', () => {
       cy.get('[data-test="dashboard-header"]').then(headerElement => {
         const dashboardId = headerElement.attr('data-test-id');
 
-        cy.intercept('POST', `/copy_dash/${dashboardId}/`).as(
-          'copyRequest',
-        );
+        cy.intercept('POST', `/copy_dash/${dashboardId}/`).as('copyRequest');
 
         cy.get('[aria-label="more-horiz"]').trigger('click', { force: true });
         cy.get('[data-test="save-as-menu-item"]').trigger('click', {
