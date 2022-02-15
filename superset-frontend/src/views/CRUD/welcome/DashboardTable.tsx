@@ -206,7 +206,7 @@ function DashboardTable({
             name: (
               <>
                 <i className="fa fa-plus" />
-                Dashboard
+                {t('Dashboard')}
               </>
             ),
             buttonStyle: 'tertiary',
@@ -215,7 +215,7 @@ function DashboardTable({
             },
           },
           {
-            name: 'View All »',
+            name: t('View ALL »'),
             buttonStyle: 'link',
             onClick: () => {
               const target =

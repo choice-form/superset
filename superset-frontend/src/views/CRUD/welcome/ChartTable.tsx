@@ -213,7 +213,7 @@ function ChartTable({
             },
           },
           {
-            name: 'View All »',
+            name: t('View ALL »'),
             buttonStyle: 'link',
             onClick: () => {
               const target =

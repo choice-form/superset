@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: zhouyao94@qq.com\n"
-"POT-Creation-Date: 2022-02-15 15:59+0800\n"
+"POT-Creation-Date: 2022-02-15 16:52+0800\n"
 "PO-Revision-Date: 2019-01-04 22:19+0800\n"
 "Last-Translator: cdmikechen \n"
 "Language: zh\n"
@@ -2051,19 +2051,19 @@ msgstr ""
 msgid ""
 "The table \"%(table)s\" does not exist. A valid table must be used to run"
 " this query."
-msgstr "表 \"%(table)s\" 不存在。必须使用有效的表来运行此查询。"
+msgstr "表 \"%(table_name)s\" 不存在。必须使用有效的表来运行此查询。"
 
 #: superset/db_engine_specs/bigquery.py:164
 #, fuzzy, python-format
 msgid "We can't seem to resolve column \"%(column)s\" at line %(location)s."
-msgstr "我们似乎无法解析行 %(location)s 所处的列 \"%(column)s\" 。"
+msgstr "我们似乎无法解析行 %(location)s 所处的列 \"%(column_name)s\" 。"
 
 #: superset/db_engine_specs/bigquery.py:169
 #, fuzzy, python-format
 msgid ""
 "The schema \"%(schema)s\" does not exist. A valid schema must be used to "
 "run this query."
-msgstr "表 \"%(schema)s\" 不存在。必须使用有效的表来运行此查询。"
+msgstr "表 \"%(schema_name)s\" 不存在。必须使用有效的表来运行此查询。"
 
 #: superset/db_engine_specs/gsheets.py:74 superset/db_engine_specs/mysql.py:144
 #, python-format
@@ -2672,6 +2672,7 @@ msgid "New"
 msgstr "新增"
 
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1121
+#: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:286
 #: superset/templates/appbuilder/navbar_right.html:38
 msgid "SQL Query"
 msgstr "SQL查询"
@@ -2693,6 +2694,7 @@ msgstr "图表"
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1261
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1282
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:582
+#: superset-frontend/src/views/CRUD/welcome/DashboardTable.tsx:209
 #: superset/templates/appbuilder/navbar_right.html:40
 #: superset/views/dashboard/mixin.py:78 superset/views/dashboard/views.py:145
 #: superset/views/schedules.py:236
@@ -9926,6 +9928,12 @@ msgstr "已查看"
 #: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:277
 msgid "Mine"
 msgstr "我的编辑"
+
+#: superset-frontend/src/views/CRUD/welcome/ChartTable.tsx:216
+#: superset-frontend/src/views/CRUD/welcome/DashboardTable.tsx:218
+#: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:295
+msgid "View ALL »"
+msgstr "查看全部 »"
 
 #: superset-frontend/src/views/CRUD/welcome/EmptyState.tsx:70
 msgid "Recently viewed charts, dashboards, and saved queries will appear here"

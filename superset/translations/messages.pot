@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-15 15:59+0800\n"
+"POT-Creation-Date: 2022-02-15 16:52+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2573,6 +2573,7 @@ msgid "New"
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1121
+#: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:286
 #: superset/templates/appbuilder/navbar_right.html:38
 msgid "SQL Query"
 msgstr ""
@@ -2594,6 +2595,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1261
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1282
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:582
+#: superset-frontend/src/views/CRUD/welcome/DashboardTable.tsx:209
 #: superset/templates/appbuilder/navbar_right.html:40
 #: superset/views/dashboard/mixin.py:78 superset/views/dashboard/views.py:145
 #: superset/views/schedules.py:236
@@ -9553,6 +9555,12 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/welcome/DashboardTable.tsx:166
 #: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:277
 msgid "Mine"
+msgstr ""
+
+#: superset-frontend/src/views/CRUD/welcome/ChartTable.tsx:216
+#: superset-frontend/src/views/CRUD/welcome/DashboardTable.tsx:218
+#: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:295
+msgid "View ALL »"
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/welcome/EmptyState.tsx:70
