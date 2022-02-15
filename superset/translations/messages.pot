@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-15 16:52+0800\n"
+"POT-Creation-Date: 2022-02-15 16:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2110,6 +2110,7 @@ msgstr ""
 msgid "We can't seem to resolve the column \"%(column_name)s\""
 msgstr ""
 
+#: superset-frontend/src/views/CRUD/welcome/Welcome.tsx:268
 #: superset/initialization/__init__.py:219
 msgid "Home"
 msgstr ""
