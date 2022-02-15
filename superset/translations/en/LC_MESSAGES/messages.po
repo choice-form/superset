@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-15 10:19+0800\n"
+"POT-Creation-Date: 2022-02-15 12:16+0800\n"
 "PO-Revision-Date: 2016-05-02 08:49-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -2611,22 +2611,22 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:136
+#: superset-frontend/src/components/Menu/MenuRight.tsx:139
 #: superset/templates/appbuilder/navbar_right.html:109
 msgid "Profile"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:141
+#: superset-frontend/src/components/Menu/MenuRight.tsx:144
 #: superset/templates/appbuilder/navbar_right.html:110
 msgid "Info"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:145
+#: superset-frontend/src/components/Menu/MenuRight.tsx:148
 #: superset/templates/appbuilder/navbar_right.html:111
 msgid "Logout"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:210
+#: superset-frontend/src/components/Menu/MenuRight.tsx:213
 #: superset/templates/appbuilder/navbar_right.html:126
 msgid "Login"
 msgstr ""
@@ -2856,7 +2856,7 @@ msgid ""
 " first is lower than the second value"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:133
+#: superset-frontend/src/components/Menu/MenuRight.tsx:136
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:277
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:367
 #: superset/views/access_requests.py:41 superset/views/log/__init__.py:30
@@ -3005,21 +3005,21 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: superset/views/base.py:250
+#: superset/views/base.py:249
 msgid ""
 "Table [%{table}s] could not be found, please double check your database "
 "connection, schema, and table name, error: {}"
 msgstr ""
 
-#: superset/views/base.py:526
+#: superset/views/base.py:525
 msgid "json isn't valid"
 msgstr ""
 
-#: superset/views/base.py:537
+#: superset/views/base.py:536
 msgid "Export to YAML"
 msgstr ""
 
-#: superset/views/base.py:537
+#: superset/views/base.py:536
 msgid "Export to YAML?"
 msgstr ""
 
@@ -3039,11 +3039,11 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:631
 #: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:512
 #: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:237
-#: superset/views/base.py:594
+#: superset/views/base.py:593
 msgid "Delete"
 msgstr ""
 
-#: superset/views/base.py:594
+#: superset/views/base.py:593
 msgid "Delete all Really?"
 msgstr ""
 
@@ -5375,19 +5375,24 @@ msgstr ""
 msgid "SQL query"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:153
+#: superset-frontend/src/components/Menu/MenuRight.tsx:111
+#: superset-frontend/src/datasource/DatasourceEditor.jsx:1267
+msgid "Settings"
+msgstr ""
+
+#: superset-frontend/src/components/Menu/MenuRight.tsx:156
 msgid "About"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:157
+#: superset-frontend/src/components/Menu/MenuRight.tsx:160
 msgid "Powered by Apache Superset"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:191
+#: superset-frontend/src/components/Menu/MenuRight.tsx:194
 msgid "Documentation"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:202
+#: superset-frontend/src/components/Menu/MenuRight.tsx:205
 msgid "Report a bug"
 msgstr ""
 
@@ -6761,10 +6766,6 @@ msgstr ""
 
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:1244
 msgid "Calculated columns"
-msgstr ""
-
-#: superset-frontend/src/datasource/DatasourceEditor.jsx:1267
-msgid "Settings"
 msgstr ""
 
 #: superset-frontend/src/datasource/DatasourceModal.tsx:128

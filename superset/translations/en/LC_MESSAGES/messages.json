@@ -1438,6 +1438,7 @@
       "Filter": [""],
       "Select or type a value": [""],
       "SQL query": [""],
+      "Settings": [""],
       "About": [""],
       "Powered by Apache Superset": [""],
       "Documentation": [""],
@@ -1784,7 +1785,6 @@
       "Source": [""],
       "Sync columns from source": [""],
       "Calculated columns": [""],
-      "Settings": [""],
       "The dataset has been saved": [""],
       "The dataset configuration exposed here\n                affects all the charts using this dataset.\n                Be mindful that changing settings\n                here may affect other charts\n                in undesirable ways.": [
         ""

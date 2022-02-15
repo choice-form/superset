@@ -1496,6 +1496,7 @@
       "Deselect all": ["反选所有"],
       "%s-%s of %s": ["%s-%s 总计 %s"],
       "SQL query": ["SQL查询"],
+      "Settings": ["设置"],
       "About": ["关于"],
       "Powered by Apache Superset": [""],
       "OK": ["确认"],
@@ -1810,7 +1811,6 @@
       "Source": ["来源"],
       "Sync columns from source": ["从源同步列"],
       "Calculated columns": ["计算列"],
-      "Settings": ["设置"],
       "The dataset has been saved": ["数据集已保存"],
       "The dataset configuration exposed here\n                affects all the charts using this dataset.\n                Be mindful that changing settings\n                here may affect other charts\n                in undesirable ways.": [
         "这里公开的数据集配置会影响使用此数据集的所有图表。请注意，更改此处的设置可能会以未预想的方式影响其他图表。"

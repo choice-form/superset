@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: zhouyao94@qq.com\n"
-"POT-Creation-Date: 2022-02-15 10:19+0800\n"
+"POT-Creation-Date: 2022-02-15 12:16+0800\n"
 "PO-Revision-Date: 2019-01-04 22:19+0800\n"
 "Last-Translator: cdmikechen \n"
 "Language: zh\n"
@@ -2049,19 +2049,19 @@ msgstr ""
 #: superset/db_engine_specs/bigquery.py:156
 #, fuzzy, python-format
 msgid ""
-"The table \"%(table)s\" does not exist. A valid table must be used to run"
+"The table \"%(table_name)s\" does not exist. A valid table must be used to run"
 " this query."
 msgstr "表 \"%(table_name)s\" 不存在。必须使用有效的表来运行此查询。"
 
 #: superset/db_engine_specs/bigquery.py:164
 #, fuzzy, python-format
-msgid "We can't seem to resolve column \"%(column)s\" at line %(location)s."
+msgid "We can't seem to resolve column \"%(column_name)s\" at line %(location)s."
 msgstr "我们似乎无法解析行 %(location)s 所处的列 \"%(column_name)s\" 。"
 
 #: superset/db_engine_specs/bigquery.py:169
 #, fuzzy, python-format
 msgid ""
-"The schema \"%(schema)s\" does not exist. A valid schema must be used to "
+"The schema \"%(schema_name)s\" does not exist. A valid schema must be used to "
 "run this query."
 msgstr "表 \"%(schema_name)s\" 不存在。必须使用有效的表来运行此查询。"
 
@@ -2699,22 +2699,22 @@ msgstr "图表"
 msgid "Dashboard"
 msgstr "看板"
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:136
+#: superset-frontend/src/components/Menu/MenuRight.tsx:139
 #: superset/templates/appbuilder/navbar_right.html:109
 msgid "Profile"
 msgstr "用户信息"
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:141
+#: superset-frontend/src/components/Menu/MenuRight.tsx:144
 #: superset/templates/appbuilder/navbar_right.html:110
 msgid "Info"
 msgstr "信息"
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:145
+#: superset-frontend/src/components/Menu/MenuRight.tsx:148
 #: superset/templates/appbuilder/navbar_right.html:111
 msgid "Logout"
 msgstr "退出"
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:210
+#: superset-frontend/src/components/Menu/MenuRight.tsx:213
 #: superset/templates/appbuilder/navbar_right.html:126
 msgid "Login"
 msgstr "登录"
@@ -2946,7 +2946,7 @@ msgid ""
 " first is lower than the second value"
 msgstr "百分位数必须是具有两个数值的列表或元组，其中第一个数值要小于第二个数值"
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:133
+#: superset-frontend/src/components/Menu/MenuRight.tsx:136
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:277
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:367
 #: superset/views/access_requests.py:41 superset/views/log/__init__.py:30
@@ -3095,21 +3095,21 @@ msgstr "编辑注释层"
 msgid "Name"
 msgstr "名称"
 
-#: superset/views/base.py:250
+#: superset/views/base.py:249
 msgid ""
 "Table [%{table}s] could not be found, please double check your database "
 "connection, schema, and table name, error: {}"
 msgstr "找不到 [%{table}s] 表，请仔细检查您的数据库连接、Schema 和 表名"
 
-#: superset/views/base.py:526
+#: superset/views/base.py:525
 msgid "json isn't valid"
 msgstr "无效 JSON"
 
-#: superset/views/base.py:537
+#: superset/views/base.py:536
 msgid "Export to YAML"
 msgstr "导出到YAML"
 
-#: superset/views/base.py:537
+#: superset/views/base.py:536
 msgid "Export to YAML?"
 msgstr "导出到YAML？"
 
@@ -3129,11 +3129,11 @@ msgstr "导出到YAML？"
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:631
 #: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:512
 #: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:237
-#: superset/views/base.py:594
+#: superset/views/base.py:593
 msgid "Delete"
 msgstr "删除"
 
-#: superset/views/base.py:594
+#: superset/views/base.py:593
 msgid "Delete all Really?"
 msgstr "确定删除全部？"
 
@@ -5540,20 +5540,25 @@ msgstr "选择或者键入数据集名称"
 msgid "SQL query"
 msgstr "SQL查询"
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:153
+#: superset-frontend/src/components/Menu/MenuRight.tsx:111
+#: superset-frontend/src/datasource/DatasourceEditor.jsx:1267
+msgid "Settings"
+msgstr "设置"
+
+#: superset-frontend/src/components/Menu/MenuRight.tsx:156
 msgid "About"
 msgstr "关于"
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:157
+#: superset-frontend/src/components/Menu/MenuRight.tsx:160
 msgid "Powered by Apache Superset"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:191
+#: superset-frontend/src/components/Menu/MenuRight.tsx:194
 #, fuzzy
 msgid "Documentation"
 msgstr "执行时间"
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:202
+#: superset-frontend/src/components/Menu/MenuRight.tsx:205
 #, fuzzy
 msgid "Report a bug"
 msgstr "报告"
@@ -7002,10 +7007,6 @@ msgstr "从源同步列"
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:1244
 msgid "Calculated columns"
 msgstr "计算列"
-
-#: superset-frontend/src/datasource/DatasourceEditor.jsx:1267
-msgid "Settings"
-msgstr "设置"
 
 #: superset-frontend/src/datasource/DatasourceModal.tsx:128
 #: superset-frontend/src/views/CRUD/data/dataset/AddDatasetModal.tsx:109
