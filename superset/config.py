@@ -83,7 +83,13 @@ PACKAGE_JSON_FILE = os.path.join(BASE_DIR, "static", "assets", "package.json")
 #     "type": "image/png"
 #     "rel": "icon"
 # },
-FAVICONS = [{"href": "/static/assets/images/favicon.png"}]
+FAVICONS = [
+    {"href": "https://media.choiceform.com/favicon-package/safari-pinned-tab.svg", "color":"#FFF", "rel":"mask-icon"},
+    {"href": "https://media.choiceform.com/favicon-package/favicon.svg", "type": "image/svg+xml", "rel":"icon"},
+    {"href": "https://media.choiceform.com/favicon-package/apple-touch-icon.png", "type": "image/png", "sizes":"180x180", "rel":"apple-touch-icon"},
+    {"href": "https://media.choiceform.com/favicon-package/favicon-32x32.png", "type": "image/png", "sizes":"32x32", "rel":"icon"},
+    {"href": "https://media.choiceform.com/favicon-package/favicon-16x16.png", "type": "image/png", "sizes":"16x16", "rel":"icon"},
+]
 
 
 def _try_json_readversion(filepath: str) -> Optional[str]:
@@ -216,7 +222,7 @@ PROXY_FIX_CONFIG = {"x_for": 1, "x_proto": 1, "x_host": 1, "x_port": 1, "x_prefi
 # GLOBALS FOR APP Builder
 # ------------------------------
 # Uncomment to setup Your App name
-APP_NAME = "Superset"
+APP_NAME = "Choiceform DI"
 
 # Specify the App icon
 APP_ICON = "/static/assets/images/choiceform-logo-horiz.png"
