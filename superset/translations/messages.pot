@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-15 15:30+0800\n"
+"POT-Creation-Date: 2022-02-15 15:59+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1142,7 +1142,7 @@ msgstr ""
 #: superset-frontend/src/dashboard/components/AddSliceCard.jsx:128
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:312
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:312
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:363
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:361
 #: superset/connectors/druid/views.py:355 superset/connectors/sqla/views.py:371
 #: superset/connectors/sqla/views.py:506 superset/views/dashboard/mixin.py:86
 #: superset/views/dashboard/views.py:148 superset/views/database/mixins.py:202
@@ -1378,7 +1378,7 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:271
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:328
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:326
 #: superset/connectors/sqla/views.py:367 superset/connectors/sqla/views.py:395
 msgid "Tables"
 msgstr ""
@@ -1464,8 +1464,8 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:439
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:225
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:333
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:281
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:428
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:279
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:426
 #: superset/connectors/sqla/views.py:490 superset/connectors/sqla/views.py:491
 #: superset/templates/superset/import_dashboards.html:53
 #: superset/views/database/forms.py:118 superset/views/database/forms.py:324
@@ -1483,8 +1483,8 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:302
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:454
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:234
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:291
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:448
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:289
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:446
 #: superset/connectors/sqla/views.py:494 superset/views/database/forms.py:124
 #: superset/views/database/forms.py:330 superset/views/database/forms.py:507
 msgid "Schema"
@@ -2578,7 +2578,7 @@ msgid "SQL Query"
 msgstr ""
 
 #: superset-frontend/src/components/Menu/MenuRight.tsx:34
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:383
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:379
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1262
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1265
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:261
@@ -2615,7 +2615,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:213
+#: superset-frontend/src/components/Menu/MenuRight.tsx:211
 #: superset/templates/appbuilder/navbar_right.html:126
 msgid "Login"
 msgstr ""
@@ -2641,7 +2641,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:516
 #: superset-frontend/src/views/CRUD/data/database/DatabaseList.tsx:417
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:480
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:465
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:463
 #: superset/templates/appbuilder/general/widgets/search.html:40
 msgid "Search"
 msgstr ""
@@ -2697,7 +2697,7 @@ msgstr ""
 #: superset-frontend/src/datasource/DatasourceModal.tsx:218
 #: superset-frontend/src/explore/components/PropertiesModal/index.tsx:191
 #: superset-frontend/src/explore/components/SaveModal.tsx:179
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:762
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:758
 #: superset/templates/superset/request_access.html:34
 msgid "Cancel"
 msgstr ""
@@ -2984,12 +2984,12 @@ msgstr ""
 #: superset-frontend/src/SqlLab/components/SaveQuery/index.tsx:123
 #: superset-frontend/src/datasource/ChangeDatasourceModal.tsx:211
 #: superset-frontend/src/explore/components/PropertiesModal/index.tsx:227
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:717
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:713
 #: superset-frontend/src/views/CRUD/alert/AlertList.tsx:227
 #: superset-frontend/src/views/CRUD/annotationlayers/AnnotationLayersList.tsx:137
 #: superset-frontend/src/views/CRUD/csstemplates/CssTemplatesList.tsx:136
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:282
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:277
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:275
 #: superset/views/annotations.py:126 superset/views/chart/mixin.py:86
 msgid "Name"
 msgstr ""
@@ -3026,7 +3026,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:622
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:360
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:631
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:512
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:510
 #: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:237
 #: superset/views/base.py:593
 msgid "Delete"
@@ -3509,7 +3509,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/data/database/DatabaseList.tsx:342
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:376
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:639
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:520
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:518
 #: superset/views/dashboard/views.py:66
 msgid "Export"
 msgstr ""
@@ -4420,110 +4420,110 @@ msgstr ""
 msgid "An error occurred saving dataset"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:545
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:542
 msgid "Download to CSV"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:554
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:551
 msgid "Copy to Clipboard"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:565
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:562
 msgid "Filter results"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:585
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:582
 #, python-format
 msgid ""
 "The number of results displayed is limited to %(rows)d by the "
 "configuration DISPLAY_MAX_ROWS. "
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:589
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:586
 msgid ""
 "Please add additional limits/filters or download to csv to see more rows "
 "up to "
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:592
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:589
 #, python-format
 msgid "the %(limit)d limit."
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:594
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:591
 #, python-format
 msgid "The number of results displayed is limited to %(rows)d. "
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:598
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:595
 msgid ""
 "Please add additional limits/filters, download to csv, or contact an "
 "admin "
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:601
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:598
 #, python-format
 msgid "to see more rows up to the %(limit)d limit."
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:613
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:610
 #, python-format
 msgid "The number of rows displayed is limited to %(rows)d by the query"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:625
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:622
 #, python-format
 msgid "The number of rows displayed is limited to %(rows)d by the limit dropdown."
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:634
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:631
 #, python-format
 msgid ""
 "The number of rows displayed is limited to %(rows)d by the query and "
 "limit dropdown."
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:645
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:652
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:666
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:642
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:649
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:663
 #, python-format
 msgid "%(rows)d rows returned"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:654
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:651
 #, python-format
 msgid "The number of rows displayed is limited to %s by the dropdown."
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:692
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:689
 msgid "Query was stopped"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:698
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:695
 msgid "Database error"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:725
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:722
 msgid "was created"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:732
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:729
 msgid "Query in a new tab"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:781
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:778
 msgid "The query returned no data"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:798
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:795
 msgid "Fetch data preview"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:809
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:806
 msgid "Refetch results"
 msgstr ""
 
-#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:830
+#: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:827
 msgid "Track job"
 msgstr ""
 
@@ -5373,20 +5373,20 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:160
-msgid "Powered by Apache Superset"
+#: superset-frontend/src/components/Menu/MenuRight.tsx:159
+msgid "Powered by Choiceform"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:194
+#: superset-frontend/src/components/Menu/MenuRight.tsx:192
 msgid "Documentation"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:205
+#: superset-frontend/src/components/Menu/MenuRight.tsx:203
 msgid "Report a bug"
 msgstr ""
 
 #: superset-frontend/src/components/Modal/Modal.tsx:198
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:784
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:780
 msgid "OK"
 msgstr ""
 
@@ -5810,7 +5810,7 @@ msgstr ""
 
 #: superset-frontend/src/dashboard/components/PropertiesModal/index.tsx:98
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Header/index.tsx:136
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:775
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:771
 #: superset-frontend/src/explore/components/controls/ConditionalFormattingControl/FormattingPopoverContent.tsx:224
 #: superset-frontend/src/visualizations/FilterBox/FilterBox.jsx:433
 msgid "Apply"
@@ -6090,7 +6090,7 @@ msgstr ""
 #: superset-frontend/src/dashboard/components/menu/ShareMenuItems/index.tsx:55
 #: superset-frontend/src/explore/components/ExploreActionButtons.tsx:109
 #: superset-frontend/src/views/CRUD/data/components/SyntaxHighlighterCopy/index.tsx:76
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:223
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:221
 msgid "Sorry, your browser does not support copying."
 msgstr ""
 
@@ -7193,142 +7193,142 @@ msgstr ""
 msgid "Failed to verify select options: %s"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:399
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:395
 msgid "Annotation layer value"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:461
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:457
 msgid "Annotation Slice Configuration"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:462
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:458
 msgid ""
 "This section allows you to configure how to use the slice\n"
 "               to generate annotations."
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:468
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:464
 msgid "Annotation layer time column"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:473
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:469
 msgid "Interval start column"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:474
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:470
 msgid "Event time column"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:476
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:492
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:472
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:488
 msgid "This column must contain date/time information."
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:488
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:484
 msgid "Annotation layer interval end"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:491
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:487
 msgid "Interval End column"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:502
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:498
 msgid "Annotation layer title column"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:505
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:501
 msgid "Title Column"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:506
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:502
 msgid "Pick a title for you annotation."
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:513
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:509
 msgid "Annotation layer description columns"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:516
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:512
 msgid "Description Columns"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:517
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:513
 msgid ""
 "Pick one or more columns that should be shown in the annotation. If you "
 "don't select a column all of them will be shown."
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:611
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:607
 msgid "Display configuration"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:612
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:608
 msgid "Configure your how you overlay is displayed here."
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:615
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:611
 msgid "Annotation layer stroke"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:617
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:613
 msgid "Style"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:630
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:626
 msgid "Annotation layer opacity"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:632
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:628
 msgid "Opacity"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:644
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:640
 msgid "Color"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:663
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:659
 msgid "Line width"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:712
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:708
 msgid "Layer configuration"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:713
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:709
 msgid "Configure the basics of your Annotation Layer."
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:721
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:750
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:717
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:746
 msgid "Mandatory"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:725
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:721
 msgid "Hide layer"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:730
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:733
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:726
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:729
 msgid "Annotation layer type"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:732
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:728
 msgid "Choose the annotation layer type"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:742
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:738
 msgid "Annotation source type"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:744
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:740
 msgid "Choose the source of your annotations"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:745
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:741
 msgid "Annotation Source"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:766
+#: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:762
 msgid "Remove"
 msgstr ""
 
@@ -8117,7 +8117,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/csstemplates/CssTemplatesList.tsx:98
 #: superset-frontend/src/views/CRUD/data/database/DatabaseList.tsx:142
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:549
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:236
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:234
 #: superset-frontend/src/views/CRUD/utils.tsx:243
 #: superset-frontend/src/views/CRUD/utils.tsx:282
 #: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:171
@@ -8140,7 +8140,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/csstemplates/CssTemplatesList.tsx:102
 #: superset-frontend/src/views/CRUD/data/database/DatabaseList.tsx:148
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:553
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:239
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:237
 #: superset-frontend/src/views/CRUD/utils.tsx:286
 #: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:174
 #, python-format
@@ -8194,7 +8194,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/data/database/DatabaseList.tsx:375
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:408
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:311
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:417
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:415
 msgid "Actions"
 msgstr ""
 
@@ -8282,7 +8282,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:355
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:611
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:620
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:503
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:501
 msgid "Please confirm"
 msgstr ""
 
@@ -8612,7 +8612,7 @@ msgstr ""
 
 #: superset-frontend/src/views/CRUD/annotationlayers/AnnotationLayersList.tsx:211
 #: superset-frontend/src/views/CRUD/csstemplates/CssTemplatesList.tsx:189
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:353
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:351
 msgid "Created on"
 msgstr ""
 
@@ -8633,7 +8633,7 @@ msgstr ""
 
 #: superset-frontend/src/views/CRUD/annotationlayers/AnnotationLayersList.tsx:301
 #: superset-frontend/src/views/CRUD/csstemplates/CssTemplatesList.tsx:287
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:438
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:436
 #, python-format
 msgid "An error occurred while fetching dataset datasource values: %s"
 msgstr ""
@@ -9332,7 +9332,7 @@ msgstr ""
 
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:463
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:360
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:458
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:456
 #, python-format
 msgid "An error occurred while fetching schema values: %s"
 msgstr ""
@@ -9397,7 +9397,7 @@ msgid "Tab name"
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:252
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:309
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:307
 msgid "TABLES"
 msgstr ""
 
@@ -9424,7 +9424,7 @@ msgid "Search by query text"
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/data/query/QueryPreviewModal.tsx:121
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:380
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:378
 #: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryPreviewModal.tsx:100
 msgid "Query preview"
 msgstr ""
@@ -9482,46 +9482,46 @@ msgstr ""
 msgid "Import queries"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:220
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:218
 msgid "Link Copied!"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:266
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:264
 #, python-format
 msgid "There was an issue deleting the selected queries: %s"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:387
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:385
 msgid "Edit query"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:394
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:392
 msgid "Copy query URL"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:401
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:399
 msgid "Export query"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:408
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:406
 msgid "Delete query"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:479
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:477
 #: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:248
 msgid "This action will permanently delete the saved query."
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:489
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:487
 #: superset-frontend/src/views/CRUD/welcome/SavedQueries.tsx:260
 msgid "Delete Query?"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:504
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:502
 msgid "Are you sure you want to delete the selected queries?"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:547
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:545
 msgid "queries"
 msgstr ""
 
