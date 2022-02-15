@@ -30,7 +30,7 @@ const spy = jest.spyOn(copyTextToClipboard, 'default');
 const createProps = () => ({
   addDangerToast: jest.fn(),
   addSuccessToast: jest.fn(),
-  url: '/superset/dashboard/26/?preselect_filters=%7B%7D',
+  url: '/dashboard/26/?preselect_filters=%7B%7D',
   copyMenuItemTitle: 'Copy dashboard URL',
   emailMenuItemTitle: 'Share dashboard by email',
   emailSubject: 'Superset dashboard COVID Vaccine Dashboard',

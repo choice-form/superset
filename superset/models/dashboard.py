@@ -167,7 +167,7 @@ class Dashboard(Model, AuditMixinNullable, ImportExportMixin):
 
     @property
     def url(self) -> str:
-        return f"/superset/dashboard/{self.slug or self.id}/"
+        return f"/dashboard/{self.slug or self.id}/"
 
     @property
     def datasources(self) -> Set[BaseDatasource]:
@@ -257,7 +257,7 @@ class Dashboard(Model, AuditMixinNullable, ImportExportMixin):
     def changed_by_url(self) -> str:
         if not self.changed_by:
             return ""
-        return f"/superset/profile/{self.changed_by.username}"
+        return f"/profile/{self.changed_by.username}"
 
     @property
     def data(self) -> Dict[str, Any]:

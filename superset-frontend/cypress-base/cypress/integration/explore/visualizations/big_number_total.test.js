@@ -26,7 +26,7 @@ describe('Visualization > Big Number Total', () => {
 
   beforeEach(() => {
     cy.login();
-    cy.intercept('POST', '/superset/explore_json/**').as('getJson');
+    cy.intercept('POST', '/explore_json/**').as('getJson');
   });
 
   it('Test big number chart with adhoc metric', () => {

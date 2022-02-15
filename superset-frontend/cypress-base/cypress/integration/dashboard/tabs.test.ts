@@ -127,7 +127,7 @@ describe('Dashboard tabs', () => {
       });
     });
 
-    cy.intercept('/superset/explore_json/?*').as('legacyChartData');
+    cy.intercept('/explore_json/?*').as('legacyChartData');
     // click row level tab, send 1 more query
     cy.get('.ant-tabs-tab').contains('row tab 2').click();
 

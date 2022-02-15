@@ -95,7 +95,7 @@ def run_sql(
     login(test_client, username="admin")
     db_id = get_example_database().id
     resp = test_client.post(
-        "/superset/sql_json/",
+        "/sql_json/",
         json=dict(
             database_id=db_id,
             sql=sql,

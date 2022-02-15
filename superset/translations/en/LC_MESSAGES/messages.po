@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-15 12:16+0800\n"
+"POT-Creation-Date: 2022-02-15 15:30+0800\n"
 "PO-Revision-Date: 2016-05-02 08:49-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -218,7 +218,7 @@ msgid ""
 "complex, or the database might be under heavy load."
 msgstr ""
 
-#: superset/sql_lab.py:367 superset/views/core.py:2243
+#: superset/sql_lab.py:367 superset/views/core.py:2245
 msgid "Results backend is not configured."
 msgstr ""
 
@@ -1712,7 +1712,7 @@ msgid "Database could not be updated."
 msgstr ""
 
 #: superset/databases/commands/exceptions.py:105
-#: superset/databases/commands/exceptions.py:122 superset/views/core.py:1381
+#: superset/databases/commands/exceptions.py:122 superset/views/core.py:1383
 msgid "Connection failed, please check your connection settings"
 msgstr ""
 
@@ -1732,7 +1732,7 @@ msgstr ""
 msgid "Could not load database driver"
 msgstr ""
 
-#: superset/databases/commands/exceptions.py:135 superset/views/core.py:1389
+#: superset/databases/commands/exceptions.py:135 superset/views/core.py:1391
 msgid "Unexpected error occurred, please check your logs for details"
 msgstr ""
 
@@ -3059,191 +3059,191 @@ msgstr ""
 msgid "The user seems to have been deleted"
 msgstr ""
 
-#: superset/views/core.py:300
+#: superset/views/core.py:302
 msgid "Access was requested"
 msgstr ""
 
-#: superset/views/core.py:354
+#: superset/views/core.py:356
 msgid "The access requests seem to have been deleted"
 msgstr ""
 
-#: superset/views/core.py:366
+#: superset/views/core.py:368
 #, python-format
 msgid ""
 "%(user)s was granted the role %(role)s that gives access to the "
 "%(datasource)s"
 msgstr ""
 
-#: superset/views/core.py:389
+#: superset/views/core.py:391
 #, python-format
 msgid "Role %(r)s was extended to provide the access to the datasource %(ds)s"
 msgstr ""
 
-#: superset/views/core.py:406
+#: superset/views/core.py:408
 msgid "You have no permission to approve this request"
 msgstr ""
 
-#: superset/views/core.py:618 superset/views/core.py:823
-#: superset/views/core.py:829 superset/views/core.py:997
-#: superset/views/core.py:1015
+#: superset/views/core.py:620 superset/views/core.py:825
+#: superset/views/core.py:831 superset/views/core.py:999
+#: superset/views/core.py:1017
 msgid "You don't have the rights to "
 msgstr ""
 
-#: superset/views/core.py:618
+#: superset/views/core.py:620
 msgid "download as csv"
 msgstr ""
 
-#: superset/views/core.py:700
+#: superset/views/core.py:702
 #, python-format
 msgid ""
 "Cannot import dashboard: %(db_error)s.\n"
 "Make sure to create the database before importing the dashboard."
 msgstr ""
 
-#: superset/views/core.py:711
+#: superset/views/core.py:713
 msgid "An unknown error occurred. Please contact your Superset administrator"
 msgstr ""
 
-#: superset/views/core.py:783
+#: superset/views/core.py:785
 msgid "[Missing Dataset]"
 msgstr ""
 
-#: superset/views/core.py:823 superset/views/core.py:998
+#: superset/views/core.py:825 superset/views/core.py:1000
 msgid "alter this "
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:146
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:699
 #: superset-frontend/src/views/CRUD/welcome/ChartTable.tsx:80
-#: superset/views/core.py:823 superset/views/core.py:829
+#: superset/views/core.py:825 superset/views/core.py:831
 msgid "chart"
 msgstr ""
 
-#: superset/views/core.py:829 superset/views/core.py:1016
+#: superset/views/core.py:831 superset/views/core.py:1018
 msgid "create a "
 msgstr ""
 
-#: superset/views/core.py:881
+#: superset/views/core.py:883
 #, python-format
 msgid "Explore - %(table)s"
 msgstr ""
 
 #: superset-frontend/src/SqlLab/components/ExploreCtasResultsButton/index.jsx:98
 #: superset-frontend/src/SqlLab/components/ExploreResultsButton/index.jsx:169
-#: superset/views/core.py:883
+#: superset/views/core.py:885
 msgid "Explore"
 msgstr ""
 
-#: superset/views/core.py:973
+#: superset/views/core.py:975
 msgid "Chart [{}] has been saved"
 msgstr ""
 
-#: superset/views/core.py:977
+#: superset/views/core.py:979
 msgid "Chart [{}] has been overwritten"
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:115
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:678
 #: superset-frontend/src/views/CRUD/welcome/DashboardTable.tsx:76
-#: superset/views/core.py:999 superset/views/core.py:1017
+#: superset/views/core.py:1001 superset/views/core.py:1019
 msgid "dashboard"
 msgstr ""
 
-#: superset/views/core.py:1004
+#: superset/views/core.py:1006
 msgid "Chart [{}] was added to dashboard [{}]"
 msgstr ""
 
-#: superset/views/core.py:1026
+#: superset/views/core.py:1028
 msgid "Dashboard [{}] just got created and chart [{}] was added to it"
 msgstr ""
 
-#: superset/views/core.py:1271
+#: superset/views/core.py:1273
 msgid ""
 "This dashboard was changed recently. Please reload dashboard to get "
 "latest version."
 msgstr ""
 
-#: superset/views/core.py:1364
+#: superset/views/core.py:1366
 #, python-format
 msgid "Could not load database driver: %(driver_name)s"
 msgstr ""
 
-#: superset/views/core.py:1373
+#: superset/views/core.py:1375
 msgid ""
 "Invalid connection string, a valid string usually follows:\n"
 "'DRIVER://USER:PASSWORD@DB-HOST/DATABASE-NAME'"
 msgstr ""
 
-#: superset/views/core.py:1736
+#: superset/views/core.py:1738
 msgid ""
 "Malformed request. slice_id or table_name and db_name arguments are "
 "expected"
 msgstr ""
 
-#: superset/views/core.py:1746
+#: superset/views/core.py:1748
 #, python-format
 msgid "Chart %(id)s not found"
 msgstr ""
 
-#: superset/views/core.py:1759
+#: superset/views/core.py:1761
 #, python-format
 msgid "Table %(table)s wasn't found in the database %(db)s"
 msgstr ""
 
-#: superset/views/core.py:1996
+#: superset/views/core.py:1998
 msgid "Can't find user, please ask your admin to create one."
 msgstr ""
 
-#: superset/views/core.py:2005
+#: superset/views/core.py:2007
 msgid "Can't find DruidCluster"
 msgstr ""
 
-#: superset/views/core.py:2067
+#: superset/views/core.py:2069
 msgid ""
 "One or more required fields are missing in the request. Please try again,"
 " and if the problem persists conctact your administrator."
 msgstr ""
 
-#: superset/views/core.py:2077 superset/views/core.py:2147
+#: superset/views/core.py:2079 superset/views/core.py:2149
 msgid "The database was not found."
 msgstr ""
 
-#: superset/views/core.py:2167
+#: superset/views/core.py:2169
 msgid ""
 "You are not authorized to fetch samples from this table. If you think "
 "this is an error, please reach out to your administrator."
 msgstr ""
 
-#: superset/views/core.py:2258
+#: superset/views/core.py:2260
 msgid ""
 "Data could not be retrieved from the results backend. You need to re-run "
 "the original query."
 msgstr ""
 
-#: superset/views/core.py:2272
+#: superset/views/core.py:2274
 msgid ""
 "The query associated with these results could not be find. You need to "
 "re-run the original query."
 msgstr ""
 
-#: superset/views/core.py:2287
+#: superset/views/core.py:2289
 msgid ""
 "You are not authorized to see this query. If you think this is an error, "
 "please reach out to your administrator."
 msgstr ""
 
-#: superset/views/core.py:2305
+#: superset/views/core.py:2307
 msgid ""
 "Data could not be deserialized from the results backend. The storage "
 "format might have changed, rendering the old data stake. You need to re-"
 "run the original query."
 msgstr ""
 
-#: superset/views/core.py:2322
+#: superset/views/core.py:2324
 msgid "The provided `rows` argument is not a valid integer."
 msgstr ""
 
-#: superset/views/core.py:2430
+#: superset/views/core.py:2432
 #, python-format
 msgid ""
 "%(validator)s was unable to check your query.\n"
@@ -3251,7 +3251,7 @@ msgid ""
 "Exception: %(ex)s"
 msgstr ""
 
-#: superset/views/core.py:2761
+#: superset/views/core.py:2763
 #, python-format
 msgid "%(user)s's profile"
 msgstr ""

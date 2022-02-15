@@ -177,7 +177,7 @@ class TestDruid(SupersetTestCase):
         instance.query_dict = {}
         instance.query_builder.last_query.query_dict = {}
 
-        resp = self.get_resp("/superset/explore/druid/{}/".format(datasource_id))
+        resp = self.get_resp("/explore/druid/{}/".format(datasource_id))
         self.assertIn("test_datasource", resp)
         form_data = {
             "viz_type": "table",
@@ -192,7 +192,7 @@ class TestDruid(SupersetTestCase):
             "force": "true",
         }
         # One groupby
-        url = "/superset/explore_json/druid/{}/".format(datasource_id)
+        url = "/explore_json/druid/{}/".format(datasource_id)
         resp = self.get_json_resp(url, {"form_data": json.dumps(form_data)})
         self.assertEqual("Canada", resp["data"]["records"][0]["dim1"])
 
@@ -209,7 +209,7 @@ class TestDruid(SupersetTestCase):
             "force": "true",
         }
         # two groupby
-        url = "/superset/explore_json/druid/{}/".format(datasource_id)
+        url = "/explore_json/druid/{}/".format(datasource_id)
         resp = self.get_json_resp(url, {"form_data": json.dumps(form_data)})
         self.assertEqual("Canada", resp["data"]["records"][0]["dim1"])
 
@@ -254,7 +254,7 @@ class TestDruid(SupersetTestCase):
         }
 
         def check():
-            resp = self.client.post("/superset/sync_druid/", data=json.dumps(cfg))
+            resp = self.client.post("/sync_druid/", data=json.dumps(cfg))
             druid_ds = (
                 db.session.query(DruidDatasource)
                 .filter_by(datasource_name="test_click")
@@ -283,7 +283,7 @@ class TestDruid(SupersetTestCase):
                 ],
             },
         }
-        resp = self.client.post("/superset/sync_druid/", data=json.dumps(cfg))
+        resp = self.client.post("/sync_druid/", data=json.dumps(cfg))
         druid_ds = (
             db.session.query(DruidDatasource)
             .filter_by(datasource_name="test_click")
@@ -566,7 +566,7 @@ class TestDruid(SupersetTestCase):
             "quarter": "P3M",
             "year": "P1Y",
         }
-        url = "/superset/explore_json/druid/{}/".format(datasource_id)
+        url = "/explore_json/druid/{}/".format(datasource_id)
 
         for granularity_mapping in granularity_map:
             form_data["granularity"] = granularity_mapping

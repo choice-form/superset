@@ -317,7 +317,7 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
           },
         }: any) => (
           <Tooltip title={t('Open query in SQL Lab')} placement="bottom">
-            <a href={`/superset/sqllab?queryId=${id}`}>
+            <a href={`/sqllab?queryId=${id}`}>
               <Icons.Full iconColor={theme.colors.grayscale.base} />
             </a>
           </Tooltip>
@@ -406,7 +406,7 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
           queries={queries}
           fetchData={handleQueryPreview}
           openInSqlLab={(id: number) =>
-            window.location.assign(`/superset/sqllab?queryId=${id}`)
+            window.location.assign(`/sqllab?queryId=${id}`)
           }
           show
         />

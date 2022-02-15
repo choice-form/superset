@@ -71,7 +71,7 @@ def upgrade():
             "?form_data" not in url.url
             and "?" in url.url
             and "dbid" not in url.url
-            and url.url.startswith("//superset/explore")
+            and url.url.startswith("//explore")
         ):
             d = parse_querystring(url.url.split("?")[1])
             split = url.url.split("/")

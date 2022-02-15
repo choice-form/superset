@@ -63,7 +63,7 @@ export function removeSlice(sliceId) {
   return { type: REMOVE_SLICE, sliceId };
 }
 
-const FAVESTAR_BASE_URL = '/superset/favstar/Dashboard';
+const FAVESTAR_BASE_URL = '/favstar/Dashboard';
 export const TOGGLE_FAVE_STAR = 'TOGGLE_FAVE_STAR';
 export function toggleFaveStar(isStarred) {
   return { type: TOGGLE_FAVE_STAR, isStarred };
@@ -296,7 +296,7 @@ export function saveDashboardRequest(data, id, saveType) {
       window.history.pushState(
         { event: 'dashboard_properties_changed' },
         '',
-        `/superset/dashboard/${slug || id}/`,
+        `/dashboard/${slug || id}/`,
       );
 
       dispatch(addSuccessToast(t('This dashboard was saved successfully.')));
@@ -359,7 +359,7 @@ export function saveDashboardRequest(data, id, saveType) {
       ...(cleanedData?.metadata || {}),
     };
     return SupersetClient.post({
-      endpoint: `/superset/copy_dash/${id}/`,
+      endpoint: `/copy_dash/${id}/`,
       postPayload: {
         data: {
           ...finalCopyData,

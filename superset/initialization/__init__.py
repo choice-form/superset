@@ -217,7 +217,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_link(
             "Home",
             label=__("Home"),
-            href="/superset/welcome/",
+            href="/welcome/",
             cond=lambda: bool(appbuilder.app.config["LOGO_TARGET_PATH"]),
         )
         appbuilder.add_view(
@@ -309,7 +309,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_link(
             "Import Dashboards",
             label=__("Import Dashboards"),
-            href="/superset/import_dashboards/",
+            href="/import_dashboards/",
             icon="fa-cloud-upload",
             category="Manage",
             category_label=__("Manage"),
@@ -321,7 +321,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_link(
             "SQL Editor",
             label=_("SQL Editor"),
-            href="/superset/sqllab/",
+            href="/sqllab/",
             category_icon="fa-flask",
             icon="fa-flask",
             category="SQL Lab",
@@ -336,7 +336,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_link(
             "Query Search",
             label=_("Query History"),
-            href="/superset/sqllab/history/",
+            href="/sqllab/history/",
             icon="fa-search",
             category_icon="fa-flask",
             category="SQL Lab",
@@ -757,4 +757,4 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 class SupersetIndexView(IndexView):
     @expose("/")
     def index(self) -> FlaskResponse:
-        return redirect("/superset/welcome/")
+        return redirect("/welcome/")

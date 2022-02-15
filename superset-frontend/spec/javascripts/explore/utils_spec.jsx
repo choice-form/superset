@@ -52,7 +52,7 @@ describe('exploreUtils', () => {
         force: false,
         curUrl: 'http://superset.com',
       });
-      compareURI(URI(url), URI('/superset/explore/'));
+      compareURI(URI(url), URI('/explore/'));
     });
     it('generates proper json url', () => {
       const url = getExploreUrl({
@@ -61,7 +61,7 @@ describe('exploreUtils', () => {
         force: false,
         curUrl: 'http://superset.com',
       });
-      compareURI(URI(url), URI('/superset/explore_json/'));
+      compareURI(URI(url), URI('/explore_json/'));
     });
     it('generates proper json forced url', () => {
       const url = getExploreUrl({
@@ -72,7 +72,7 @@ describe('exploreUtils', () => {
       });
       compareURI(
         URI(url),
-        URI('/superset/explore_json/').search({ force: 'true' }),
+        URI('/explore_json/').search({ force: 'true' }),
       );
     });
     it('generates proper csv URL', () => {
@@ -84,7 +84,7 @@ describe('exploreUtils', () => {
       });
       compareURI(
         URI(url),
-        URI('/superset/explore_json/').search({ csv: 'true' }),
+        URI('/explore_json/').search({ csv: 'true' }),
       );
     });
     it('generates proper standalone URL', () => {
@@ -96,7 +96,7 @@ describe('exploreUtils', () => {
       });
       compareURI(
         URI(url),
-        URI('/superset/explore/').search({
+        URI('/explore/').search({
           standalone: DashboardStandaloneMode.HIDE_NAV,
         }),
       );
@@ -110,7 +110,7 @@ describe('exploreUtils', () => {
       });
       compareURI(
         URI(url),
-        URI('/superset/explore_json/').search({ foo: 'bar' }),
+        URI('/explore_json/').search({ foo: 'bar' }),
       );
     });
     it('generate proper save slice url', () => {
@@ -122,7 +122,7 @@ describe('exploreUtils', () => {
       });
       compareURI(
         URI(url),
-        URI('/superset/explore_json/').search({ foo: 'bar' }),
+        URI('/explore_json/').search({ foo: 'bar' }),
       );
     });
   });
@@ -195,14 +195,14 @@ describe('exploreUtils', () => {
     it('generates proper base url with form_data', () => {
       compareURI(
         URI(getExploreLongUrl(formData, 'base')),
-        URI('/superset/explore/').search({ form_data: sFormData }),
+        URI('/explore/').search({ form_data: sFormData }),
       );
     });
 
     it('generates url with standalone', () => {
       compareURI(
         URI(getExploreLongUrl(formData, 'standalone')),
-        URI('/superset/explore/').search({
+        URI('/explore/').search({
           form_data: sFormData,
           standalone: DashboardStandaloneMode.HIDE_NAV,
         }),

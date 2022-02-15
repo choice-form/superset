@@ -21,7 +21,7 @@ import { selectResultsTab } from './sqllab.helper';
 describe('SqlLab datasource panel', () => {
   beforeEach(() => {
     cy.login();
-    cy.visit('/superset/sqllab');
+    cy.visit('/sqllab');
   });
 
   // TODO the test bellow is flaky, and has been disabled for the time being

@@ -389,7 +389,7 @@ class SupersetTestCase(TestCase):
             json_payload["schema"] = schema
 
         resp = self.get_json_resp(
-            "/superset/sql_json/", raise_on_error=False, json_=json_payload
+            "/sql_json/", raise_on_error=False, json_=json_payload
         )
         if raise_on_error and "error" in resp:
             raise Exception("run_sql failed")
@@ -464,7 +464,7 @@ class SupersetTestCase(TestCase):
             self.login(username=(user_name if user_name else "admin"))
         dbid = SupersetTestCase.get_database_by_name(database_name).id
         resp = self.get_json_resp(
-            "/superset/validate_sql_json/",
+            "/validate_sql_json/",
             raise_on_error=False,
             data=dict(database_id=dbid, sql=sql, client_id=client_id),
         )

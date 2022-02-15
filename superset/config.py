@@ -229,7 +229,7 @@ APP_ICON = "/static/assets/images/choiceform-logo-horiz.png"
 APP_ICON_WIDTH = 126
 
 # Specify where clicking the logo would take the user
-# e.g. setting it to '/' would take the user to '/superset/welcome/'
+# e.g. setting it to '/' would take the user to '/welcome/'
 LOGO_TARGET_PATH = None
 
 # Specify tooltip that should appear when hovering over the App Icon/Logo

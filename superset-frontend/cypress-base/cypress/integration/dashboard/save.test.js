@@ -38,7 +38,7 @@ describe('Dashboard save action', () => {
       cy.get('[data-test="dashboard-header"]').then(headerElement => {
         const dashboardId = headerElement.attr('data-test-id');
 
-        cy.intercept('POST', `/superset/copy_dash/${dashboardId}/`).as(
+        cy.intercept('POST', `/copy_dash/${dashboardId}/`).as(
           'copyRequest',
         );
 

@@ -32,7 +32,7 @@ describe('Dashboard form data', () => {
   });
 
   it('should apply url params to slice requests', () => {
-    cy.intercept('/superset/explore_json/*', request => {
+    cy.intercept('/explore_json/*', request => {
       const requestParams = JSON.parse(
         parsePostForm(request.body).form_data as string,
       );

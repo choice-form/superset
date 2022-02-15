@@ -342,7 +342,7 @@ const AdhocFilterEditPopoverSimpleTabContent: React.FC<Props> = props => {
         setLoadingComparatorSuggestions(true);
         SupersetClient.get({
           signal,
-          endpoint: `/superset/filter/${datasource.type}/${datasource.id}/${col}/`,
+          endpoint: `/filter/${datasource.type}/${datasource.id}/${col}/`,
         })
           .then(({ json }) => {
             setSuggestions(json);

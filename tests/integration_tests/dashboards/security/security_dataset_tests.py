@@ -153,7 +153,7 @@ class TestDashboardDatasetSecurity(DashboardTestCase):
         get_dashboards_response = self.get_resp(DASHBOARDS_API_URL)
 
         # assert
-        self.assertIn(f"/superset/dashboard/{fav_dash_slug}/", get_dashboards_response)
+        self.assertIn(f"/dashboard/{fav_dash_slug}/", get_dashboards_response)
 
     def test_get_dashboards__user_can_not_view_unpublished_dash(self):
         # arrange

@@ -106,22 +106,22 @@ class TestCore(SupersetTestCase):
 
     def test_dashboard_endpoint(self):
         self.login()
-        resp = self.client.get("/superset/dashboard/-1/")
+        resp = self.client.get("/dashboard/-1/")
         assert resp.status_code == 404
 
     @pytest.mark.usefixtures("load_birth_names_dashboard_with_slices")
     def test_slice_endpoint(self):
         self.login(username="admin")
         slc = self.get_slice("Girls", db.session)
-        resp = self.get_resp("/superset/slice/{}/".format(slc.id))
+        resp = self.get_resp("/slice/{}/".format(slc.id))
         assert "Original value" in resp
         assert "List Roles" in resp
 
         # Testing overrides
-        resp = self.get_resp("/superset/slice/{}/?standalone=true".format(slc.id))
+        resp = self.get_resp("/slice/{}/?standalone=true".format(slc.id))
         assert '<div class="navbar' not in resp
 
-        resp = self.client.get("/superset/slice/-1/")
+        resp = self.client.get("/slice/-1/")
         assert resp.status_code == 404
 
     @pytest.mark.usefixtures("load_birth_names_dashboard_with_slices")
@@ -154,7 +154,7 @@ class TestCore(SupersetTestCase):
         example_db = utils.get_example_database()
         schema_name = self.default_schema_backend_map[example_db.backend]
         self.login(username="gamma")
-        uri = f"superset/tables/{example_db.id}/{schema_name}/undefined/"
+        uri = f"/tables/{example_db.id}/{schema_name}/undefined/"
         rv = self.client.get(uri)
         self.assertEqual(rv.status_code, 404)
 
@@ -165,7 +165,7 @@ class TestCore(SupersetTestCase):
             return
         self.login(username="admin")
         schema_name = self.default_schema_backend_map[example_db.backend]
-        uri = f"superset/tables/{example_db.id}/{schema_name}/ab_role/"
+        uri = f"/tables/{example_db.id}/{schema_name}/ab_role/"
         rv = self.client.get(uri)
         response = json.loads(rv.data.decode("utf-8"))
         self.assertEqual(rv.status_code, 200)
@@ -187,7 +187,7 @@ class TestCore(SupersetTestCase):
 
     def test_get_superset_tables_not_found(self):
         self.login(username="admin")
-        uri = f"superset/tables/invalid/public/undefined/"
+        uri = f"/tables/invalid/public/undefined/"
         rv = self.client.get(uri)
         self.assertEqual(rv.status_code, 404)
 
@@ -216,7 +216,7 @@ class TestCore(SupersetTestCase):
         self.assertIn("name", resp_annotations["result"][0])
 
         response = self.get_resp(
-            f"/superset/annotation_json/{layer.id}?form_data="
+            f"/annotation_json/{layer.id}?form_data="
             + quote(json.dumps({"time_range": "100 years ago : now"}))
         )
         assert "my_annotation" in response
@@ -261,7 +261,7 @@ class TestCore(SupersetTestCase):
         new_slice_name = f"{copy_name_prefix}[overwrite]{random.random()}"
 
         url = (
-            "/superset/explore/table/{}/?slice_name={}&"
+            "/explore/table/{}/?slice_name={}&"
             "action={}&datasource_name=energy_usage"
         )
 
@@ -327,7 +327,7 @@ class TestCore(SupersetTestCase):
         table = db.session.query(SqlaTable).filter(SqlaTable.id == tbl_id)
         table.filter_select_enabled = True
         url = (
-            "/superset/filter/table/{}/target/?viz_type=sankey&groupby=source"
+            "/filter/table/{}/target/?viz_type=sankey&groupby=source"
             "&metric=sum__value&flt_col_0=source&flt_op_0=in&flt_eq_0=&"
             "slice_id={}&datasource_name=energy_usage&"
             "datasource_id=1&datasource_type=table"
@@ -375,7 +375,7 @@ class TestCore(SupersetTestCase):
         # assert that a table is listed
         table = db.session.query(SqlaTable).first()
         assert table.name in resp
-        assert "/superset/explore/table/{}".format(table.id) in resp
+        assert "/explore/table/{}".format(table.id) in resp
 
     def test_add_slice(self):
         self.login(username="admin")
@@ -391,7 +391,7 @@ class TestCore(SupersetTestCase):
         slice_name = "Girls"
 
         # ensure user is not owner of any slices
-        url = f"/superset/user_slices/{user.id}/"
+        url = f"/user_slices/{user.id}/"
         resp = self.client.get(url)
         data = json.loads(resp.data)
         self.assertEqual(data, [])
@@ -403,7 +403,7 @@ class TestCore(SupersetTestCase):
         slc.owners = [user]
         db.session.merge(slc)
         db.session.commit()
-        url = f"/superset/user_slices/{user.id}/"
+        url = f"/user_slices/{user.id}/"
         resp = self.client.get(url)
         data = json.loads(resp.data)
         self.assertEqual(len(data), 1)
@@ -416,7 +416,7 @@ class TestCore(SupersetTestCase):
         slc.owners = []
         db.session.merge(slc)
         db.session.commit()
-        url = f"/superset/user_slices/{user.id}/"
+        url = f"/user_slices/{user.id}/"
         resp = self.client.get(url)
         data = json.loads(resp.data)
         self.assertEqual(data, [])
@@ -478,7 +478,7 @@ class TestCore(SupersetTestCase):
             }
         )
         response = self.client.post(
-            "/superset/testconn", data=data, content_type="application/json"
+            "/testconn", data=data, content_type="application/json"
         )
         assert response.status_code == 200
         assert response.headers["Content-Type"] == "application/json"
@@ -492,7 +492,7 @@ class TestCore(SupersetTestCase):
             }
         )
         response = self.client.post(
-            "/superset/testconn", data=data, content_type="application/json"
+            "/testconn", data=data, content_type="application/json"
         )
         assert response.status_code == 200
         assert response.headers["Content-Type"] == "application/json"
@@ -504,7 +504,7 @@ class TestCore(SupersetTestCase):
             {"uri": "broken://url", "name": "examples", "impersonate_user": False}
         )
         response = self.client.post(
-            "/superset/testconn", data=data, content_type="application/json"
+            "/testconn", data=data, content_type="application/json"
         )
         assert response.status_code == 400
         assert response.headers["Content-Type"] == "application/json"
@@ -523,7 +523,7 @@ class TestCore(SupersetTestCase):
             }
         )
         response = self.client.post(
-            "/superset/testconn", data=data, content_type="application/json"
+            "/testconn", data=data, content_type="application/json"
         )
         assert response.status_code == 400
         assert response.headers["Content-Type"] == "application/json"
@@ -539,7 +539,7 @@ class TestCore(SupersetTestCase):
         app.config["PREVENT_UNSAFE_DB_CONNECTIONS"] = True
 
         response = self.client.post(
-            "/superset/testconn",
+            "/testconn",
             data=json.dumps(
                 {
                     "uri": "sqlite:///home/superset/unsafe.db",
@@ -596,24 +596,24 @@ class TestCore(SupersetTestCase):
     def test_warm_up_cache(self):
         self.login()
         slc = self.get_slice("Girls", db.session)
-        data = self.get_json_resp("/superset/warm_up_cache?slice_id={}".format(slc.id))
+        data = self.get_json_resp("/warm_up_cache?slice_id={}".format(slc.id))
         self.assertEqual(
             data, [{"slice_id": slc.id, "viz_error": None, "viz_status": "success"}]
         )
 
         data = self.get_json_resp(
-            "/superset/warm_up_cache?table_name=energy_usage&db_name=main"
+            "/warm_up_cache?table_name=energy_usage&db_name=main"
         )
         assert len(data) > 0
 
         dashboard = self.get_dash_by_slug("births")
 
         assert self.get_json_resp(
-            f"/superset/warm_up_cache?dashboard_id={dashboard.id}&slice_id={slc.id}"
+            f"/warm_up_cache?dashboard_id={dashboard.id}&slice_id={slc.id}"
         ) == [{"slice_id": slc.id, "viz_error": None, "viz_status": "success"}]
 
         assert self.get_json_resp(
-            f"/superset/warm_up_cache?dashboard_id={dashboard.id}&slice_id={slc.id}&extra_filters="
+            f"/warm_up_cache?dashboard_id={dashboard.id}&slice_id={slc.id}&extra_filters="
             + quote(json.dumps([{"col": "name", "op": "in", "val": ["Jennifer"]}]))
         ) == [{"slice_id": slc.id, "viz_error": None, "viz_status": "success"}]
 
@@ -623,7 +623,7 @@ class TestCore(SupersetTestCase):
         store_cache_keys = app.config["STORE_CACHE_KEYS_IN_METADATA_DB"]
         app.config["STORE_CACHE_KEYS_IN_METADATA_DB"] = True
         girls_slice = self.get_slice("Girls", db.session)
-        self.get_json_resp("/superset/warm_up_cache?slice_id={}".format(girls_slice.id))
+        self.get_json_resp("/warm_up_cache?slice_id={}".format(girls_slice.id))
         ck = db.session.query(CacheKey).order_by(CacheKey.id.desc()).first()
         assert ck.datasource_uid == f"{girls_slice.table.id}__table"
         app.config["STORE_CACHE_KEYS_IN_METADATA_DB"] = store_cache_keys
@@ -631,7 +631,7 @@ class TestCore(SupersetTestCase):
     def test_shortner(self):
         self.login(username="admin")
         data = (
-            "//superset/explore/table/1/?viz_type=sankey&groupby=source&"
+            "//explore/table/1/?viz_type=sankey&groupby=source&"
             "groupby=target&metric=sum__value&row_limit=5000&where=&having=&"
             "flt_col_0=source&flt_op_0=in&flt_eq_0=&slice_id=78&slice_name="
             "Energy+Sankey&collapsed_fieldsets=&action=&datasource_name="
@@ -717,14 +717,14 @@ class TestCore(SupersetTestCase):
         client_id = "{}".format(random.getrandbits(64))[:10]
         self.run_sql(sql, client_id, raise_on_error=True)
 
-        resp = self.get_resp("/superset/csv/{}".format(client_id))
+        resp = self.get_resp("/csv/{}".format(client_id))
         data = csv.reader(io.StringIO(resp))
         expected_data = csv.reader(io.StringIO(f"name\n{name}\n"))
 
         client_id = "{}".format(random.getrandbits(64))[:10]
         self.run_sql(sql, client_id, raise_on_error=True)
 
-        resp = self.get_resp("/superset/csv/{}".format(client_id))
+        resp = self.get_resp("/csv/{}".format(client_id))
         data = csv.reader(io.StringIO(resp))
         expected_data = csv.reader(io.StringIO(f"name\n{name}\n"))
 
@@ -737,7 +737,7 @@ class TestCore(SupersetTestCase):
         example_db = utils.get_example_database()
         schema = "default" if example_db.backend in {"presto", "hive"} else "superset"
         self.get_json_resp(
-            f"/superset/extra_table_metadata/{example_db.id}/birth_names/{schema}/"
+            f"/extra_table_metadata/{example_db.id}/birth_names/{schema}/"
         )
 
     def test_templated_sql_json(self):
@@ -769,7 +769,7 @@ class TestCore(SupersetTestCase):
         dbobj = self.create_fake_db_for_macros()
         json_payload = dict(database_id=dbobj.id, sql=sql)
         self.get_json_resp(
-            "/superset/sql_json/", raise_on_error=False, json_=json_payload
+            "/sql_json/", raise_on_error=False, json_=json_payload
         )
         assert sql_lab_mock.called
         self.assertEqual(sql_lab_mock.call_args[0][1], "SELECT '1970-01-01' as test")
@@ -778,7 +778,7 @@ class TestCore(SupersetTestCase):
 
     def test_fetch_datasource_metadata(self):
         self.login(username="admin")
-        url = "/superset/fetch_datasource_metadata?" "datasourceKey=1__table"
+        url = "/fetch_datasource_metadata?" "datasourceKey=1__table"
         resp = self.get_json_resp(url)
         keys = [
             "name",
@@ -797,36 +797,36 @@ class TestCore(SupersetTestCase):
         slc = self.get_slice("Girls", db.session)
 
         # Setting some faves
-        url = f"/superset/favstar/Slice/{slc.id}/select/"
+        url = f"/favstar/Slice/{slc.id}/select/"
         resp = self.get_json_resp(url)
         self.assertEqual(resp["count"], 1)
 
         dash = db.session.query(Dashboard).filter_by(slug="births").first()
-        url = f"/superset/favstar/Dashboard/{dash.id}/select/"
+        url = f"/favstar/Dashboard/{dash.id}/select/"
         resp = self.get_json_resp(url)
         self.assertEqual(resp["count"], 1)
 
         userid = security_manager.find_user("admin").id
-        resp = self.get_resp(f"/superset/profile/{username}/")
+        resp = self.get_resp(f"/profile/{username}/")
         self.assertIn('"app"', resp)
-        data = self.get_json_resp(f"/superset/recent_activity/{userid}/")
+        data = self.get_json_resp(f"/recent_activity/{userid}/")
         self.assertNotIn("message", data)
-        data = self.get_json_resp(f"/superset/created_slices/{userid}/")
+        data = self.get_json_resp(f"/created_slices/{userid}/")
         self.assertNotIn("message", data)
-        data = self.get_json_resp(f"/superset/created_dashboards/{userid}/")
+        data = self.get_json_resp(f"/created_dashboards/{userid}/")
         self.assertNotIn("message", data)
-        data = self.get_json_resp(f"/superset/fave_slices/{userid}/")
+        data = self.get_json_resp(f"/fave_slices/{userid}/")
         self.assertNotIn("message", data)
-        data = self.get_json_resp(f"/superset/fave_dashboards/{userid}/")
+        data = self.get_json_resp(f"/fave_dashboards/{userid}/")
         self.assertNotIn("message", data)
-        data = self.get_json_resp(f"/superset/user_slices/{userid}/")
+        data = self.get_json_resp(f"/user_slices/{userid}/")
         self.assertNotIn("message", data)
-        data = self.get_json_resp(f"/superset/fave_dashboards_by_username/{username}/")
+        data = self.get_json_resp(f"/fave_dashboards_by_username/{username}/")
         self.assertNotIn("message", data)
 
     @pytest.mark.usefixtures("load_birth_names_dashboard_with_slices")
     def test_slice_id_is_always_logged_correctly_on_web_request(self):
-        # superset/explore case
+        # /explore case
         self.login("admin")
         slc = db.session.query(Slice).filter_by(slice_name="Girls").one()
         qry = db.session.query(models.Log).filter_by(slice_id=slc.id)
@@ -902,7 +902,7 @@ class TestCore(SupersetTestCase):
 
     def test_slice_payload_no_datasource(self):
         self.login(username="admin")
-        data = self.get_json_resp("/superset/explore_json/", raise_on_error=False)
+        data = self.get_json_resp("/explore_json/", raise_on_error=False)
 
         self.assertEqual(
             data["errors"][0]["message"],
@@ -925,7 +925,7 @@ class TestCore(SupersetTestCase):
         }
         self.login(username="admin")
         rv = self.client.post(
-            "/superset/explore_json/", data={"form_data": json.dumps(form_data)},
+            "/explore_json/", data={"form_data": json.dumps(form_data)},
         )
         data = json.loads(rv.data.decode("utf-8"))
 
@@ -1001,7 +1001,7 @@ class TestCore(SupersetTestCase):
 
         self.login(username="admin")
         rv = self.client.post(
-            "/superset/explore_json/", data={"form_data": json.dumps(form_data)},
+            "/explore_json/", data={"form_data": json.dumps(form_data)},
         )
         data = json.loads(rv.data.decode("utf-8"))
 
@@ -1049,7 +1049,7 @@ class TestCore(SupersetTestCase):
         async_query_manager.init_app(app)
         self.login(username="admin")
         rv = self.client.post(
-            "/superset/explore_json/", data={"form_data": json.dumps(form_data)},
+            "/explore_json/", data={"form_data": json.dumps(form_data)},
         )
         data = json.loads(rv.data.decode("utf-8"))
         keys = list(data.keys())
@@ -1080,7 +1080,7 @@ class TestCore(SupersetTestCase):
         async_query_manager.init_app(app)
         self.login(username="admin")
         rv = self.client.post(
-            "/superset/explore_json/?results=true",
+            "/explore_json/?results=true",
             data={"form_data": json.dumps(form_data)},
         )
         self.assertEqual(rv.status_code, 200)
@@ -1120,7 +1120,7 @@ class TestCore(SupersetTestCase):
         mock_force_cached.return_value = False
 
         self.login(username="admin")
-        rv = self.client.get("/superset/explore_json/data/valid-cache-key")
+        rv = self.client.get("/explore_json/data/valid-cache-key")
         data = json.loads(rv.data.decode("utf-8"))
 
         self.assertEqual(rv.status_code, 200)
@@ -1157,13 +1157,13 @@ class TestCore(SupersetTestCase):
 
         mock_cache.return_value = MockCache()
 
-        rv = self.client.get("/superset/explore_json/data/valid-cache-key")
+        rv = self.client.get("/explore_json/data/valid-cache-key")
         self.assertEqual(rv.status_code, 401)
 
     def test_explore_json_data_invalid_cache_key(self):
         self.login(username="admin")
         cache_key = "invalid-cache-key"
-        rv = self.client.get(f"/superset/explore_json/data/{cache_key}")
+        rv = self.client.get(f"/explore_json/data/{cache_key}")
         data = json.loads(rv.data.decode("utf-8"))
 
         self.assertEqual(rv.status_code, 404)
@@ -1186,7 +1186,7 @@ class TestCore(SupersetTestCase):
         mock_can_access_database.return_value = False
         mock_schemas_accessible.return_value = ["this_schema_is_allowed_too"]
         data = self.get_json_resp(
-            url="/superset/schemas_access_for_file_upload?db_id={db_id}".format(
+            url="/schemas_access_for_file_upload?db_id={db_id}".format(
                 db_id=dbobj.id
             )
         )
@@ -1197,7 +1197,7 @@ class TestCore(SupersetTestCase):
     def test_select_star(self):
         self.login(username="admin")
         examples_db = utils.get_example_database()
-        resp = self.get_resp(f"/superset/select_star/{examples_db.id}/birth_names")
+        resp = self.get_resp(f"/select_star/{examples_db.id}/birth_names")
         self.assertIn("gender", resp)
 
     def test_get_select_star_not_allowed(self):
@@ -1206,7 +1206,7 @@ class TestCore(SupersetTestCase):
         """
         self.login(username="gamma")
         example_db = utils.get_example_database()
-        resp = self.client.get(f"/superset/select_star/{example_db.id}/birth_names")
+        resp = self.client.get(f"/select_star/{example_db.id}/birth_names")
         self.assertEqual(resp.status_code, 403)
 
     @mock.patch("superset.views.core.results_backend_use_msgpack", False)
@@ -1247,8 +1247,8 @@ class TestCore(SupersetTestCase):
                 query_mock
             )
             # get all results
-            result_key = json.loads(self.get_resp("/superset/results/key/"))
-            result_limited = json.loads(self.get_resp("/superset/results/key/?rows=1"))
+            result_key = json.loads(self.get_resp("/results/key/"))
+            result_limited = json.loads(self.get_resp("/results/key/?rows=1"))
 
         self.assertEqual(result_key, expected_key)
         self.assertEqual(result_limited, expected_limited)
@@ -1382,11 +1382,11 @@ class TestCore(SupersetTestCase):
         dash_id = db.session.query(Dashboard.id).first()[0]
         tbl_id = self.table_ids.get("wb_health_population")
         urls = [
-            "/superset/sqllab",
-            "/superset/welcome",
-            f"/superset/dashboard/{dash_id}/",
-            "/superset/profile/admin/",
-            f"/superset/explore/table/{tbl_id}",
+            "/sqllab",
+            "/welcome",
+            f"/dashboard/{dash_id}/",
+            "/profile/admin/",
+            f"/explore/table/{tbl_id}",
         ]
         for url in urls:
             data = self.get_resp(url)
@@ -1505,7 +1505,7 @@ class TestCore(SupersetTestCase):
         exception = SupersetException("Error message")
         mock_db_connection_mutator.side_effect = exception
         slice = db.session.query(Slice).first()
-        url = f"/superset/explore/?form_data=%7B%22slice_id%22%3A%20{slice.id}%7D"
+        url = f"/explore/?form_data=%7B%22slice_id%22%3A%20{slice.id}%7D"
 
         self.login()
         data = self.get_resp(url)
@@ -1515,7 +1515,7 @@ class TestCore(SupersetTestCase):
         exception = SQLAlchemyError("Error message")
         mock_db_connection_mutator.side_effect = exception
         slice = db.session.query(Slice).first()
-        url = f"/superset/explore/?form_data=%7B%22slice_id%22%3A%20{slice.id}%7D"
+        url = f"/explore/?form_data=%7B%22slice_id%22%3A%20{slice.id}%7D"
 
         self.login()
         data = self.get_resp(url)
@@ -1532,7 +1532,7 @@ class TestCore(SupersetTestCase):
         exception = SupersetException("Error message")
         mock_db_connection_mutator.side_effect = exception
         dash = db.session.query(Dashboard).first()
-        url = f"/superset/dashboard/{dash.id}/"
+        url = f"/dashboard/{dash.id}/"
 
         self.login()
         data = self.get_resp(url)
@@ -1542,7 +1542,7 @@ class TestCore(SupersetTestCase):
         exception = SQLAlchemyError("Error message")
         mock_db_connection_mutator.side_effect = exception
         dash = db.session.query(Dashboard).first()
-        url = f"/superset/dashboard/{dash.id}/"
+        url = f"/dashboard/{dash.id}/"
 
         self.login()
         data = self.get_resp(url)

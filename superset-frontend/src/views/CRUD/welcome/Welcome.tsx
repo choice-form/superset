@@ -144,7 +144,7 @@ export const LoadingCards = ({ cover }: LoadingProps) => (
 function Welcome({ user, addDangerToast }: WelcomeProps) {
   const userid = user.userId;
   const id = userid.toString();
-  const recent = `/superset/recent_activity/${user.userId}/?limit=6`;
+  const recent = `/recent_activity/${user.userId}/?limit=6`;
   const [activeChild, setActiveChild] = useState('Loading');
   const userKey = getFromLocalStorage(id, null);
   let defaultChecked = false;

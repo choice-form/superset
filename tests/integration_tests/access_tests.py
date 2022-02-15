@@ -71,11 +71,11 @@ ROLE_ALL_PERM_DATA = {
 }
 
 EXTEND_ROLE_REQUEST = (
-    "/superset/approve?datasource_type={}&datasource_id={}&"
+    "/approve?datasource_type={}&datasource_id={}&"
     "created_by={}&role_to_extend={}"
 )
 GRANT_ROLE_REQUEST = (
-    "/superset/approve?datasource_type={}&datasource_id={}&"
+    "/approve?datasource_type={}&datasource_id={}&"
     "created_by={}&role_to_grant={}"
 )
 TEST_ROLE_1 = "test_role1"
@@ -145,7 +145,7 @@ class TestRequestAccess(SupersetTestCase):
         self.logout()
         self.login("alpha")
         response = self.client.post(
-            "/superset/override_role_permissions/",
+            "/override_role_permissions/",
             data=json.dumps(ROLE_TABLES_PERM_DATA),
             content_type="application/json",
             follow_redirects=True,
@@ -162,7 +162,7 @@ class TestRequestAccess(SupersetTestCase):
         perm_data["database"][0]["schema"][0]["name"] = schema
 
         response = self.client.post(
-            "/superset/override_role_permissions/",
+            "/override_role_permissions/",
             data=json.dumps(perm_data),
             content_type="application/json",
         )
@@ -187,7 +187,7 @@ class TestRequestAccess(SupersetTestCase):
         perm_data = ROLE_ALL_PERM_DATA.copy()
         perm_data["database"][0]["schema"][0]["name"] = schema
         response = self.client.post(
-            "/superset/override_role_permissions/",
+            "/override_role_permissions/",
             data=json.dumps(ROLE_ALL_PERM_DATA),
             content_type="application/json",
         )
@@ -233,7 +233,7 @@ class TestRequestAccess(SupersetTestCase):
         perm_data["database"][0]["schema"][0]["name"] = schema
 
         response = self.client.post(
-            "/superset/override_role_permissions/",
+            "/override_role_permissions/",
             data=json.dumps(perm_data),
             content_type="application/json",
         )
@@ -539,13 +539,13 @@ class TestRequestAccess(SupersetTestCase):
             session.commit()
 
             ACCESS_REQUEST = (
-                "/superset/request_access?"
+                "/request_access?"
                 "datasource_type={}&"
                 "datasource_id={}&"
                 "action={}&"
             )
             ROLE_GRANT_LINK = (
-                '<a href="/superset/approve?datasource_type={}&datasource_id={}&'
+                '<a href="/approve?datasource_type={}&datasource_id={}&'
                 'created_by={}&role_to_grant={}">Grant {} Role</a>'
             )
 

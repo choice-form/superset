@@ -50,7 +50,7 @@ const defaultProps = {
 };
 
 const openQuery = id => {
-  const url = `/superset/sqllab?queryId=${id}`;
+  const url = `/sqllab?queryId=${id}`;
   window.open(url);
 };
 

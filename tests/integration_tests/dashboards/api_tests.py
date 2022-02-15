@@ -344,7 +344,7 @@ class TestDashboardApi(SupersetTestCase, ApiOwnersTestCaseMixin, InsertChartMixi
             "roles": [],
             "position_json": "",
             "published": False,
-            "url": "/superset/dashboard/slug1/",
+            "url": "/dashboard/slug1/",
             "slug": "slug1",
             "thumbnail_url": dashboard.thumbnail_url,
         }

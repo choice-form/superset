@@ -26,7 +26,7 @@ function parseClockStr(node: JQuery) {
 describe('SqlLab query panel', () => {
   beforeEach(() => {
     cy.login();
-    cy.visit('/superset/sqllab');
+    cy.visit('/sqllab');
   });
 
   it.skip('supports entering and running a query', () => {
@@ -44,7 +44,7 @@ describe('SqlLab query panel', () => {
 
     cy.intercept({
       method: 'POST',
-      url: '/superset/sql_json/',
+      url: '/sql_json/',
       delay: 1000,
       response: () => sampleResponse,
     }).as('mockSQLResponse');
@@ -93,7 +93,7 @@ describe('SqlLab query panel', () => {
 
   it.skip('successfully saves a query', () => {
     cy.intercept('savedqueryviewapi/**').as('getSavedQuery');
-    cy.intercept('superset/tables/**').as('getTables');
+    cy.intercept('/tables/**').as('getTables');
 
     const query =
       'SELECT ds, gender, name, num FROM main.birth_names ORDER BY name LIMIT 3';

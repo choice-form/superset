@@ -124,7 +124,7 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
 
     try {
       const response = await SupersetClient.get({
-        endpoint: insertParams('/superset/search_queries', params),
+        endpoint: insertParams('/search_queries', params),
       });
       const queries = Object.values(response.json);
       setQueriesArray(queries);

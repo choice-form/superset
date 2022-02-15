@@ -21,7 +21,7 @@ import { FORM_DATA_DEFAULTS, NUM_METRIC } from './visualizations/shared.helper';
 describe('No Results', () => {
   beforeEach(() => {
     cy.login();
-    cy.intercept('POST', '/superset/explore_json/**').as('getJson');
+    cy.intercept('POST', '/explore_json/**').as('getJson');
   });
 
   it('No results message shows up', () => {

@@ -50,6 +50,6 @@ describe('Dashboard load', () => {
 
   it('should send log data', () => {
     cy.visit(WORLD_HEALTH_DASHBOARD);
-    cy.intercept('/superset/log/?explode=events&dashboard_id=*');
+    cy.intercept('/log/?explode=events&dashboard_id=*');
   });
 });

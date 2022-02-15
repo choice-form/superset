@@ -33,7 +33,7 @@ const store = mockStore({
   sqlLab: user,
 });
 
-const SEARCH_ENDPOINT = 'glob:*/superset/search_queries?*';
+const SEARCH_ENDPOINT = 'glob:*/search_queries?*';
 const USER_ENDPOINT = 'glob:*/api/v1/query/related/user';
 const DATABASE_ENDPOINT = 'glob:*/api/v1/database/?*';
 

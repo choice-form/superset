@@ -192,6 +192,8 @@ SqlResults = Dict[str, Any]
 
 class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
     """The base views for Superset!"""
+    # 设置这里的路由前缀为 /, 不使用默认的类名作为前缀。
+    route_base = '/'
 
     logger = logging.getLogger(__name__)
 
@@ -288,7 +290,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
             )
         )
         if has_access_:
-            return redirect("/superset/dashboard/{}".format(dashboard_id))
+            return redirect("/dashboard/{}".format(dashboard_id))
 
         if request.args.get("action") == "go":
             for datasource in datasources:
@@ -417,7 +419,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
         _, slc = get_form_data(slice_id, use_slice_data=True)
         if not slc:
             abort(404)
-        endpoint = "/superset/explore/?form_data={}".format(
+        endpoint = "/explore/?form_data={}".format(
             parse.quote(json.dumps({"slice_id": slice_id}))
         )
 
@@ -748,7 +750,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
                 )
             )
         ):
-            url = Href("/superset/explore/")(
+            url = Href("/explore/")(
                 {
                     "form_data": json.dumps(
                         {
@@ -791,7 +793,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
                     "danger",
                 )
                 return redirect(
-                    "superset/request_access/?"
+                    "/request_access/?"
                     f"datasource_type={datasource_type}&"
                     f"datasource_id={datasource_id}&"
                 )
@@ -1557,7 +1559,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
             if o.Dashboard.created_by:
                 user = o.Dashboard.created_by
                 dash["creator"] = str(user)
-                dash["creator_url"] = "/superset/profile/{}/".format(user.username)
+                dash["creator_url"] = "/profile/{}/".format(user.username)
             payload.append(dash)
         return json_success(json.dumps(payload, default=utils.json_int_dttm_ser))
 
@@ -1705,7 +1707,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
             if o.Slice.created_by:
                 user = o.Slice.created_by
                 dash["creator"] = str(user)
-                dash["creator_url"] = "/superset/profile/{}/".format(user.username)
+                dash["creator_url"] = "/profile/{}/".format(user.username)
             payload.append(dash)
         return json_success(json.dumps(payload, default=utils.json_int_dttm_ser))
 
@@ -1921,7 +1923,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
                         "danger",
                     )
                     return redirect(
-                        f"/superset/request_access/?dashboard_id={dashboard.id}"
+                        f"/request_access/?dashboard_id={dashboard.id}"
                     )
 
         dash_edit_perm = check_ownership(
@@ -2644,7 +2646,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
     def search_queries(self) -> FlaskResponse:  # pylint: disable=no-self-use
         """
         Search for previously run sqllab queries. Used for Sqllab Query Search
-        page /superset/sqllab#search.
+        page /sqllab#search.
 
         Custom permission can_only_search_queries_owned restricts queries
         to only queries run by current user.
@@ -2843,7 +2845,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
     @event_logger.log_this
     def sqllab_history(self) -> FlaskResponse:
         if not is_feature_enabled("ENABLE_REACT_CRUD_VIEWS"):
-            return redirect("/superset/sqllab#search", code=307)
+            return redirect("/sqllab#search", code=307)
 
         return super().render_app_template()
 

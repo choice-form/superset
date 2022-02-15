@@ -212,7 +212,7 @@ const SavedQueries = ({
       {canEdit && (
         <Menu.Item
           onClick={() => {
-            window.location.href = `/superset/sqllab?savedQueryId=${query.id}`;
+            window.location.href = `/sqllab?savedQueryId=${query.id}`;
           }}
         >
           {t('Edit')}
@@ -288,7 +288,7 @@ const SavedQueries = ({
             ),
             buttonStyle: 'tertiary',
             onClick: () => {
-              window.location.href = '/superset/sqllab?new=true';
+              window.location.href = '/sqllab?new=true';
             },
           },
           {
@@ -305,13 +305,13 @@ const SavedQueries = ({
           {queries.map(q => (
             <CardStyles
               onClick={() => {
-                window.location.href = `/superset/sqllab?savedQueryId=${q.id}`;
+                window.location.href = `/sqllab?savedQueryId=${q.id}`;
               }}
               key={q.id}
             >
               <ListViewCard
                 imgURL=""
-                url={`/superset/sqllab?savedQueryId=${q.id}`}
+                url={`/sqllab?savedQueryId=${q.id}`}
                 title={q.label}
                 imgFallbackURL="/static/assets/images/empty-query.svg"
                 description={t('Ran %s', q.changed_on_delta_humanized)}

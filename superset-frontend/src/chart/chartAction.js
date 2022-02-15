@@ -558,7 +558,7 @@ export function redirectSQLLab(formData) {
   return dispatch => {
     getChartDataRequest({ formData, resultFormat: 'json', resultType: 'query' })
       .then(({ json }) => {
-        const redirectUrl = '/superset/sqllab/';
+        const redirectUrl = '/sqllab/';
         const payload = {
           datasourceKey: formData.datasource,
           sql: json.result[0].query,

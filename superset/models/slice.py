@@ -253,7 +253,7 @@ class Slice(  # pylint: disable=too-many-public-methods
 
     def get_explore_url(
         self,
-        base_url: str = "/superset/explore",
+        base_url: str = "/explore",
         overrides: Optional[Dict[str, Any]] = None,
     ) -> str:
         overrides = overrides or {}
@@ -270,7 +270,7 @@ class Slice(  # pylint: disable=too-many-public-methods
     @property
     def explore_json_url(self) -> str:
         """Defines the url to access the slice"""
-        return self.get_explore_url("/superset/explore_json")
+        return self.get_explore_url("/explore_json")
 
     @property
     def edit_url(self) -> str:
@@ -287,7 +287,7 @@ class Slice(  # pylint: disable=too-many-public-methods
 
     @property
     def changed_by_url(self) -> str:
-        return f"/superset/profile/{self.changed_by.username}"  # type: ignore
+        return f"/profile/{self.changed_by.username}"  # type: ignore
 
     @property
     def icons(self) -> str:
@@ -302,7 +302,7 @@ class Slice(  # pylint: disable=too-many-public-methods
 
     @property
     def url(self) -> str:
-        return f"/superset/explore/?form_data=%7B%22slice_id%22%3A%20{self.id}%7D"
+        return f"/explore/?form_data=%7B%22slice_id%22%3A%20{self.id}%7D"
 
 
 def set_related_perm(_mapper: Mapper, _connection: Connection, target: Slice) -> None:

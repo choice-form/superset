@@ -363,7 +363,7 @@ class ImportExportMixin:
 def _user_link(user: User) -> Union[Markup, str]:
     if not user:
         return ""
-    url = "/superset/profile/{}/".format(user.username)
+    url = "/profile/{}/".format(user.username)
     return Markup('<a href="{}">{}</a>'.format(url, escape(user) or ""))
 
 

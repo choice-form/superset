@@ -647,7 +647,7 @@ def test_email_chart_report_schedule(
         )
         # assert that the link sent is correct
         assert (
-            f'<a href="http://0.0.0.0:8080/superset/slice/'
+            f'<a href="http://0.0.0.0:8080/slice/'
             f'{create_report_email_chart.chart.id}/">Explore in Superset</a>'
             in email_mock.call_args[0][2]
         )
@@ -713,7 +713,7 @@ def test_email_chart_report_schedule_with_csv(
         )
         # assert that the link sent is correct
         assert (
-            f'<a href="http://0.0.0.0:8080/superset/slice/'
+            f'<a href="http://0.0.0.0:8080/slice/'
             f'{create_report_email_chart_with_csv.chart.id}/">Explore in Superset</a>'
             in email_mock.call_args[0][2]
         )

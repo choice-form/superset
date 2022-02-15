@@ -162,7 +162,7 @@ class SaveModal extends React.PureComponent<SaveModalProps, SaveModalState> {
           resp.json &&
           resp.json.id
         ) {
-          window.location.href = `/superset/dashboard/${resp.json.id}/`;
+          window.location.href = `/dashboard/${resp.json.id}/`;
         }
       });
       this.modal?.close();

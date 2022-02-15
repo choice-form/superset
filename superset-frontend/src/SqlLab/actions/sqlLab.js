@@ -171,8 +171,8 @@ export function estimateQueryCost(query) {
   const { dbId, schema, sql, templateParams } = query;
   const endpoint =
     schema === null
-      ? `/superset/estimate_query_cost/${dbId}/`
-      : `/superset/estimate_query_cost/${dbId}/${schema}/`;
+      ? `/estimate_query_cost/${dbId}/`
+      : `/estimate_query_cost/${dbId}/${schema}/`;
   return dispatch =>
     Promise.all([
       dispatch({ type: COST_ESTIMATE_STARTED, query }),
@@ -290,7 +290,7 @@ export function fetchQueryResults(query, displayLimit) {
     dispatch(requestQueryResults(query));
 
     return SupersetClient.get({
-      endpoint: `/superset/results/${query.resultsKey}/?rows=${displayLimit}`,
+      endpoint: `/results/${query.resultsKey}/?rows=${displayLimit}`,
       parseMethod: 'text',
     })
       .then(({ text = '{}' }) => {
@@ -333,7 +333,7 @@ export function runQuery(query) {
     };
 
     return SupersetClient.post({
-      endpoint: '/superset/sql_json/',
+      endpoint: '/sql_json/',
       body: JSON.stringify(postPayload),
       headers: { 'Content-Type': 'application/json' },
       parseMethod: 'text',
@@ -379,7 +379,7 @@ export function validateQuery(query) {
     };
 
     return SupersetClient.post({
-      endpoint: `/superset/validate_sql_json/${window.location.search}`,
+      endpoint: `/validate_sql_json/${window.location.search}`,
       postPayload,
       stringify: false,
     })
@@ -399,7 +399,7 @@ export function validateQuery(query) {
 export function postStopQuery(query) {
   return function (dispatch) {
     return SupersetClient.post({
-      endpoint: '/superset/stop_query/',
+      endpoint: '/stop_query/',
       postPayload: { client_id: query.id },
       stringify: false,
     })
@@ -1035,7 +1035,7 @@ function getTableMetadata(table, query, dispatch) {
 function getTableExtendedMetadata(table, query, dispatch) {
   return SupersetClient.get({
     endpoint: encodeURI(
-      `/superset/extra_table_metadata/${query.dbId}/` +
+      `/extra_table_metadata/${query.dbId}/` +
         `${encodeURIComponent(table.name)}/${encodeURIComponent(
           table.schema,
         )}/`,
@@ -1268,7 +1268,7 @@ export function popQuery(queryId) {
 export function popDatasourceQuery(datasourceKey, sql) {
   return function (dispatch) {
     return SupersetClient.get({
-      endpoint: `/superset/fetch_datasource_metadata?datasourceKey=${datasourceKey}`,
+      endpoint: `/fetch_datasource_metadata?datasourceKey=${datasourceKey}`,
     })
       .then(({ json }) =>
         dispatch(
@@ -1301,7 +1301,7 @@ export function createDatasource(vizOptions) {
   return dispatch => {
     dispatch(createDatasourceStarted());
     return SupersetClient.post({
-      endpoint: '/superset/sqllab_viz/',
+      endpoint: '/sqllab_viz/',
       postPayload: { data: vizOptions },
     })
       .then(({ json }) => {
@@ -1325,7 +1325,7 @@ export function createCtasDatasource(vizOptions) {
   return dispatch => {
     dispatch(createDatasourceStarted());
     return SupersetClient.post({
-      endpoint: '/superset/get_or_create_table/',
+      endpoint: '/get_or_create_table/',
       postPayload: { data: vizOptions },
     })
       .then(({ json }) => {

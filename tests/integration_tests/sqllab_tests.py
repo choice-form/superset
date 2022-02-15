@@ -312,22 +312,22 @@ class TestSqlLab(SupersetTestCase):
         self.run_some_queries()
 
         # Not logged in, should error out
-        resp = self.client.get("/superset/queries/0")
+        resp = self.client.get("/queries/0")
         # Redirects to the login page
         self.assertEqual(401, resp.status_code)
 
         # Admin sees queries
         self.login("admin")
-        data = self.get_json_resp("/superset/queries/0")
+        data = self.get_json_resp("/queries/0")
         self.assertEqual(2, len(data))
-        data = self.get_json_resp("/superset/queries/0.0")
+        data = self.get_json_resp("/queries/0.0")
         self.assertEqual(2, len(data))
 
         # Run 2 more queries
         self.run_sql("SELECT * FROM birth_names LIMIT 1", client_id="client_id_4")
         self.run_sql("SELECT * FROM birth_names LIMIT 2", client_id="client_id_5")
         self.login("admin")
-        data = self.get_json_resp("/superset/queries/0")
+        data = self.get_json_resp("/queries/0")
         self.assertEqual(4, len(data))
 
         now = datetime.now() + timedelta(days=1)
@@ -340,12 +340,12 @@ class TestSqlLab(SupersetTestCase):
         db.session.commit()
 
         data = self.get_json_resp(
-            "/superset/queries/{}".format(float(datetime_to_epoch(now)) - 1000)
+            "/queries/{}".format(float(datetime_to_epoch(now)) - 1000)
         )
         self.assertEqual(1, len(data))
 
         self.logout()
-        resp = self.client.get("/superset/queries/0")
+        resp = self.client.get("/queries/0")
         # Redirects to the login page
         self.assertEqual(401, resp.status_code)
 
@@ -356,13 +356,13 @@ class TestSqlLab(SupersetTestCase):
 
         # Test search queries on database Id
         data = self.get_json_resp(
-            f"/superset/search_queries?database_id={examples_dbid}"
+            f"/search_queries?database_id={examples_dbid}"
         )
         self.assertEqual(3, len(data))
         db_ids = [k["dbId"] for k in data]
         self.assertEqual([examples_dbid for i in range(3)], db_ids)
 
-        resp = self.get_resp("/superset/search_queries?database_id=-1")
+        resp = self.get_resp("/search_queries?database_id=-1")
         data = json.loads(resp)
         self.assertEqual(0, len(data))
 
@@ -372,13 +372,13 @@ class TestSqlLab(SupersetTestCase):
 
         # Test search queries on user Id
         user_id = security_manager.find_user("admin").id
-        data = self.get_json_resp("/superset/search_queries?user_id={}".format(user_id))
+        data = self.get_json_resp("/search_queries?user_id={}".format(user_id))
         self.assertEqual(2, len(data))
         user_ids = {k["userId"] for k in data}
         self.assertEqual(set([user_id]), user_ids)
 
         user_id = security_manager.find_user("gamma_sqllab").id
-        resp = self.get_resp("/superset/search_queries?user_id={}".format(user_id))
+        resp = self.get_resp("/search_queries?user_id={}".format(user_id))
         data = json.loads(resp)
         self.assertEqual(1, len(data))
         self.assertEqual(data[0]["userId"], user_id)
@@ -388,13 +388,13 @@ class TestSqlLab(SupersetTestCase):
         self.run_some_queries()
         self.login("admin")
         # Test search queries on status
-        resp = self.get_resp("/superset/search_queries?status=success")
+        resp = self.get_resp("/search_queries?status=success")
         data = json.loads(resp)
         self.assertEqual(2, len(data))
         states = [k["state"] for k in data]
         self.assertEqual(["success", "success"], states)
 
-        resp = self.get_resp("/superset/search_queries?status=failed")
+        resp = self.get_resp("/search_queries?status=failed")
         data = json.loads(resp)
         self.assertEqual(1, len(data))
         self.assertEqual(data[0]["state"], "failed")
@@ -402,7 +402,7 @@ class TestSqlLab(SupersetTestCase):
     def test_search_query_on_text(self):
         self.run_some_queries()
         self.login("admin")
-        url = "/superset/search_queries?search_text=birth"
+        url = "/search_queries?search_text=birth"
         data = self.get_json_resp(url)
         self.assertEqual(2, len(data))
         self.assertIn("birth", data[0]["sql"])
@@ -420,7 +420,7 @@ class TestSqlLab(SupersetTestCase):
         from_time = "from={}".format(int(first_query_time))
         to_time = "to={}".format(int(second_query_time))
         params = [from_time, to_time]
-        resp = self.get_resp("/superset/search_queries?" + "&".join(params))
+        resp = self.get_resp("/search_queries?" + "&".join(params))
         data = json.loads(resp)
         self.assertEqual(2, len(data))
 
@@ -433,7 +433,7 @@ class TestSqlLab(SupersetTestCase):
         self.login("gamma_sqllab")
 
         user_id = security_manager.find_user("gamma_sqllab").id
-        data = self.get_json_resp("/superset/search_queries")
+        data = self.get_json_resp("/search_queries")
 
         self.assertEqual(1, len(data))
         user_ids = {k["userId"] for k in data}
@@ -489,7 +489,7 @@ class TestSqlLab(SupersetTestCase):
             "dbId": examples_dbid,
         }
         data = {"data": json.dumps(payload)}
-        resp = self.get_json_resp("/superset/sqllab_viz/", data=data)
+        resp = self.get_json_resp("/sqllab_viz/", data=data)
         self.assertIn("table_id", resp)
 
         # ensure owner is set correctly
@@ -518,7 +518,7 @@ class TestSqlLab(SupersetTestCase):
                 LIMIT 10""",
         }
         data = {"data": json.dumps(payload)}
-        url = "/superset/sqllab_viz/"
+        url = "/sqllab_viz/"
         response = self.client.post(url, data=data, follow_redirects=True)
         assert response.status_code == 400
 
@@ -540,7 +540,7 @@ class TestSqlLab(SupersetTestCase):
         }
 
         data = {"data": json.dumps(payload)}
-        resp = self.get_json_resp("/superset/get_or_create_table/", data=data)
+        resp = self.get_json_resp("/get_or_create_table/", data=data)
         self.assertIn("table_id", resp)
 
         # ensure owner is set correctly

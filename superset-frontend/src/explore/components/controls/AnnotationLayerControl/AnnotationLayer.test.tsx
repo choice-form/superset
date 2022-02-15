@@ -40,7 +40,7 @@ beforeAll(() => {
     result: [{ label: 'Chart A', value: 'a' }],
   });
 
-  fetchMock.get('glob:*/superset/user_slices*', [
+  fetchMock.get('glob:*/user_slices*', [
     { id: 'a', title: 'Chart A', viz_type: 'table', data: {} },
   ]);
 

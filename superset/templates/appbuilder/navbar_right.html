@@ -35,7 +35,7 @@
           <i class="fa fa-plus"></i> {{ _("New") }}
         </button>
         <ul class="dropdown-menu">
-            <li><a href="/superset/sqllab"><span class="fa fa-fw fa-search"></span> {{_("SQL Query")}}</a></li>
+            <li><a href="/sqllab"><span class="fa fa-fw fa-search"></span> {{_("SQL Query")}}</a></li>
             <li><a href="/chart/add"><span class="fa fa-fw fa-bar-chart"></span> {{_("Chart")}}</a></li>
             <li><a href="/dashboard/new/"><span class="fa fa-fw fa-dashboard"></span> {{_("Dashboard")}}</a></li>
         </ul>
@@ -106,7 +106,7 @@
         <i class="fa fa-user"></i>&nbsp;<b class="caret"></b>
       </a>
         <ul class="dropdown-menu">
-            <li><a href="/superset/profile/{{g.user.username}}"><span class="fa fa-fw fa-user"></span>{{_("Profile")}}</a></li>
+            <li><a href="/profile/{{g.user.username}}"><span class="fa fa-fw fa-user"></span>{{_("Profile")}}</a></li>
             <li><a href="{{appbuilder.get_url_for_userinfo}}"><span class="fa fa-fw fa-user"></span>{{_("Info")}}</a></li>
             <li><a href="{{appbuilder.get_url_for_logout}}"><span class="fa fa-fw fa-sign-out"></span>{{_("Logout")}}</a></li>
             {% if version_string or version_sha %}

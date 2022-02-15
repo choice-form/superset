@@ -38,7 +38,7 @@ import Icons from 'src/components/Icons';
 import EmptyState from './EmptyState';
 
 /**
- * Return result from /superset/recent_activity/{user_id}
+ * Return result from /recent_activity/{user_id}
  */
 interface RecentActivity {
   action: string;
@@ -113,7 +113,7 @@ const getEntityIcon = (entity: ActivityObject) => {
 };
 
 const getEntityUrl = (entity: ActivityObject) => {
-  if ('sql' in entity) return `/superset/sqllab?savedQueryId=${entity.id}`;
+  if ('sql' in entity) return `/sqllab?savedQueryId=${entity.id}`;
   if ('url' in entity) return entity.url;
   return entity.item_url;
 };

@@ -117,21 +117,21 @@ describe('TabbedSqlEditors', () => {
       uriStub.returns({ id: 1 });
       await mountWithAct();
       expect(window.history.replaceState.getCall(0).args[2]).toBe(
-        '/superset/sqllab',
+        '/sqllab',
       );
     });
     it('should handle savedQueryId', async () => {
       uriStub.returns({ savedQueryId: 1 });
       await mountWithAct();
       expect(window.history.replaceState.getCall(0).args[2]).toBe(
-        '/superset/sqllab',
+        '/sqllab',
       );
     });
     it('should handle sql', async () => {
       uriStub.returns({ sql: 1, dbid: 1 });
       await mountWithAct();
       expect(window.history.replaceState.getCall(0).args[2]).toBe(
-        '/superset/sqllab',
+        '/sqllab',
       );
     });
   });

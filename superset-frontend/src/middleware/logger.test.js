@@ -63,7 +63,7 @@ describe('logger middleware', () => {
     expect(next.callCount).toBe(1);
   });
 
-  it('should POST an event to /superset/log/ when called', () => {
+  it('should POST an event to /log/ when called', () => {
     const clock = sinon.useFakeTimers();
     logger(mockStore)(next)(action);
     expect(next.callCount).toBe(0);
@@ -71,7 +71,7 @@ describe('logger middleware', () => {
     clock.tick(2000);
     expect(SupersetClient.post.callCount).toBe(1);
     expect(SupersetClient.post.getCall(0).args[0].endpoint).toMatch(
-      '/superset/log/',
+      '/log/',
     );
   });
 

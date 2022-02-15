@@ -158,7 +158,7 @@ class TestThumbnails(SupersetTestCase):
             rv = self.client.get(uri)
             self.assertEqual(rv.status_code, 202)
 
-            expected_uri = f"{get_url_host()}superset/dashboard/{dashboard.id}/"
+            expected_uri = f"{get_url_host()}/dashboard/{dashboard.id}/"
             expected_digest = dashboard.digest
             expected_kwargs = {"force": True}
             mock_task.assert_called_with(
@@ -200,7 +200,7 @@ class TestThumbnails(SupersetTestCase):
         ) as mock_task:
             rv = self.client.get(uri)
             self.assertEqual(rv.status_code, 202)
-            expected_uri = f"{get_url_host()}superset/slice/{chart.id}/?standalone=true"
+            expected_uri = f"{get_url_host()}/slice/{chart.id}/?standalone=true"
             expected_digest = chart.digest
             expected_kwargs = {"force": True}
             mock_task.assert_called_with(

@@ -19,7 +19,7 @@
 describe('SqlLab query tabs', () => {
   beforeEach(() => {
     cy.login();
-    cy.visit('/superset/sqllab');
+    cy.visit('/sqllab');
   });
 
   it('allows you to create a tab', () => {

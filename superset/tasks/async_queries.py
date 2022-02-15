@@ -119,7 +119,7 @@ def load_explore_json_into_cache(  # pylint: disable=too-many-locals
         }
         cache_key = generate_cache_key(cache_value, cache_key_prefix)
         set_and_log_cache(cache_manager.cache, cache_key, cache_value)
-        result_url = f"/superset/explore_json/data/{cache_key}"
+        result_url = f"/explore_json/data/{cache_key}"
         async_query_manager.update_job(
             job_metadata, async_query_manager.STATUS_DONE, result_url=result_url,
         )

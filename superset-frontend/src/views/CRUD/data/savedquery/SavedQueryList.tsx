@@ -140,7 +140,7 @@ function SavedQueryList({
     hasPerm('can_read') && isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT);
 
   const openNewQuery = () => {
-    window.open(`${window.location.origin}/superset/sqllab?new=true`);
+    window.open(`${window.location.origin}/sqllab?new=true`);
   };
 
   const handleSavedQueryPreview = useCallback(
@@ -208,13 +208,13 @@ function SavedQueryList({
 
   // Action methods
   const openInSqlLab = (id: number) => {
-    window.open(`${window.location.origin}/superset/sqllab?savedQueryId=${id}`);
+    window.open(`${window.location.origin}/sqllab?savedQueryId=${id}`);
   };
 
   const copyQueryLink = useCallback(
     (id: number) => {
       copyTextToClipboard(
-        `${window.location.origin}/superset/sqllab?savedQueryId=${id}`,
+        `${window.location.origin}/sqllab?savedQueryId=${id}`,
       )
         .then(() => {
           addSuccessToast(t('Link Copied!'));

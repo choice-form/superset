@@ -104,7 +104,7 @@ type Routes = {
 
 export const routes: Routes = [
   {
-    path: '/superset/welcome/',
+    path: '/welcome/',
     Component: Welcome,
   },
   {
@@ -112,7 +112,7 @@ export const routes: Routes = [
     Component: DashboardList,
   },
   {
-    path: '/superset/dashboard/:idOrSlug/',
+    path: '/dashboard/:idOrSlug/',
     Component: DashboardPage,
   },
   {
@@ -144,7 +144,7 @@ export const routes: Routes = [
     Component: AnnotationList,
   },
   {
-    path: '/superset/sqllab/history/',
+    path: '/sqllab/history/',
     Component: QueryList,
   },
   {

@@ -529,7 +529,7 @@ export function useFavoriteStatus(
     (id: number, isStarred: boolean) => {
       const urlSuffix = isStarred ? 'unselect' : 'select';
       SupersetClient.get({
-        endpoint: `/superset/favstar/${
+        endpoint: `/favstar/${
           type === 'chart' ? FavStarClassName.CHART : FavStarClassName.DASHBOARD
         }/${id}/${urlSuffix}/`,
       }).then(
@@ -597,7 +597,7 @@ export const copyQueryLink = (
   addSuccessToast: (arg0: string) => void,
 ) => {
   copyTextToClipboard(
-    `${window.location.origin}/superset/sqllab?savedQueryId=${id}`,
+    `${window.location.origin}/sqllab?savedQueryId=${id}`,
   )
     .then(() => {
       addSuccessToast(t('Link Copied!'));
