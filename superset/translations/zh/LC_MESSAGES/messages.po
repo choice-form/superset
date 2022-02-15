@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-02-15 17:06+0800\n"
-"PO-Revision-Date: 2022-02-15 17:56+0800\n"
+"PO-Revision-Date: 2022-02-15 22:25+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
 "Language-Team: zh <benedictjin2016@gmail.com>\n"
@@ -7323,14 +7323,13 @@ msgid "Showing %s of %s"
 msgstr "显示 %s个 总计 %s个"
 
 #: superset-frontend/src/explore/components/DatasourcePanel/index.tsx:326
-#, fuzzy
 msgid "Show less..."
-msgstr "显示值"
+msgstr "显示部分…"
 
 #: superset-frontend/src/explore/components/DatasourcePanel/index.tsx:326
 #: superset-frontend/src/explore/components/DatasourcePanel/index.tsx:359
 msgid "Show all..."
-msgstr ""
+msgstr "显示全部…"
 
 #: superset-frontend/src/explore/components/DatasourcePanel/index.tsx:359
 #, fuzzy
