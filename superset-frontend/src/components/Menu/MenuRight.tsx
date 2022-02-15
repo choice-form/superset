@@ -156,9 +156,7 @@ const RightMenu = ({
           <Menu.ItemGroup key="about-section" title={t('About')}>
             <div className="about-section">
               {navbarRight.show_watermark && (
-                <div css={versionInfoStyles}>
-                  {t('Powered by Apache Superset')}
-                </div>
+                <div css={versionInfoStyles}>{t('Powered by Choiceform')}</div>
               )}
               {navbarRight.version_string && (
                 <div css={versionInfoStyles}>
