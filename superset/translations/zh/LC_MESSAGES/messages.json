@@ -4,7 +4,7 @@
     "superset": {
       "": {
         "domain": "superset",
-        "plural_forms": "nplurals=1; plural=0",
+        "plural_forms": "nplurals=1; plural=0;",
         "lang": "zh"
       },
       "The hostname provided can't be resolved.": [""],
@@ -196,6 +196,7 @@
       "Chart has no query context saved. Please save the chart again.": [""],
       "Request is incorrect: %(error)s": ["请求不正确: %(error)s"],
       "Request is not JSON": ["请求不是JSON"],
+      "Is certified": ["已认证"],
       "`confidence_interval` must be between 0 and 1 (exclusive)": [
         "`置信区间` 必须介于0和1之间（开区间）"
       ],
@@ -1619,7 +1620,11 @@
       "Basic information": ["基本情况"],
       "URL slug": ["使用 Slug"],
       "A readable URL for your dashboard": ["为看板生成一个可读的 URL"],
+      "Certification": ["认证"],
       "Certified by": ["认证"],
+      "Person or group that has certified this dashboard.": [
+        "认证此看板的个人或团体"
+      ],
       "Certification details": ["认证细节"],
       "Any additional detail to show in the certification tooltip.": [""],
       "Advanced": ["进阶"],
@@ -1750,6 +1755,7 @@
       " standard to ensure that the lexicographical ordering\n                      coincides with the chronological ordering. If the\n                      timestamp format does not adhere to the ISO 8601 standard\n                      you will need to define an expression and type for\n                      transforming the string into a date or timestamp. Note\n                      currently time zones are not supported. If time is stored\n                      in epoch format, put `epoch_s` or `epoch_ms`. If no pattern\n                      is specified we fall back to using the optional defaults on a per\n                      database/column name level via the extra parameter.": [
         "来确保字符的表达顺序与时间顺序一致的标准。如果时间戳格式不符合 ISO 8601 标准，则需要定义表达式和类型，以便将字符串转换为日期或时间戳。注意：当前不支持时区。如果时间以epoch格式存储，请输入 `epoch_s` or `epoch_ms` 。如果没有指定任何模式，我们可以通过额外的参数在每个数据库/列名级别上使用可选的默认值。"
       ],
+      "Certified By": ["认证"],
       "Person or group that has certified this metric": [
         "认证此指标的个人或团体"
       ],
@@ -1884,6 +1890,10 @@
       "Customize": ["定制化配置"],
       "Height": ["高度"],
       "Width": ["宽度"],
+      "Copy chart URL to clipboard": ["将图表链接复制到剪贴板"],
+      "Superset Chart": ["巧思图表"],
+      "Export to .JSON format": ["导出为 .json 格式"],
+      "Export to .CSV format": ["导出为 .csv 格式"],
       "%s - untitled": ["%s  - 无标题"],
       "Edit chart properties": ["编辑图表属性"],
       "Control labeled ": ["控件名称为 "],
@@ -1901,6 +1911,7 @@
       "Save as ...": ["另存为"],
       "Chart name": ["图表名称"],
       "Add to dashboard": ["添加到看板"],
+      "Select a dashboard": ["选择看板"],
       "rows retrieved": ["行被检索到"],
       "Sorry, An error occurred": ["抱歉，发生错误"],
       "No data": ["没有数据"],
@@ -1916,6 +1927,9 @@
       ],
       "The description can be displayed as widget headers in the dashboard view. Supports markdown.": [
         "作为为小部件标题可以在仪表板视图中显示的描述，支持markdown格式语法。"
+      ],
+      "Person or group that has certified this chart.": [
+        "认证此图表的个人或团体。"
       ],
       "Duration (in seconds) of the caching timeout for this chart. Note this defaults to the dataset's timeout if undefined.": [
         "此图表的缓存超时前的持续时间（秒）。请注意，如果未定义则默认为数据集的超时时间。"
@@ -2274,6 +2288,7 @@
         "确实要删除选定的图层吗？"
       ],
       "Are you sure you want to delete": ["确定要删除吗"],
+      "Modified %s": ["最后修改 %s"],
       "The passwords for the databases below are needed in order to import them together with the charts. Please note that the \"Secure Extra\" and \"Certificate\" sections of the database configuration are not present in export files, and should be added manually after the import if they are needed.": [
         "需要以下数据库的密码才能将其与图表一起导入。请注意，数据库配置的 \"Secure Extra\" 和 \"Certificate\" 部分不在导出文件中，如果需要，应在导入后手动添加。"
       ],
@@ -2297,6 +2312,7 @@
         "获取图表的创建人时出错：%s"
       ],
       "Viz type": ["可视化类型"],
+      "Certified": ["已认证的"],
       "Alphabetical": ["按字母顺序排列"],
       "Recently modified": ["最近修改"],
       "Least recently modified": ["最远修改"],
