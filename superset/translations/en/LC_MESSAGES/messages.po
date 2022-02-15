@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-14 16:15+0800\n"
+"POT-Creation-Date: 2022-02-15 10:19+0800\n"
 "PO-Revision-Date: 2016-05-02 08:49-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -5757,7 +5757,7 @@ msgid "Discard changes"
 msgstr ""
 
 #: superset-frontend/src/dashboard/components/Header/index.jsx:600
-#, fuzzy, python-format
+#, fuzzy
 msgid "Edit dashboard"
 msgstr ""
 
@@ -7072,7 +7072,7 @@ msgid "Add to dashboard"
 msgstr ""
 
 #: superset-frontend/src/explore/components/SaveModal.tsx:264
-#, fuzzy, python-format
+#, fuzzy
 msgid "Select a dashboard"
 msgstr ""
 

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: zhouyao94@qq.com\n"
-"POT-Creation-Date: 2022-02-14 16:15+0800\n"
+"POT-Creation-Date: 2022-02-15 10:19+0800\n"
 "PO-Revision-Date: 2019-01-04 22:19+0800\n"
 "Last-Translator: cdmikechen \n"
 "Language: zh\n"
@@ -2049,19 +2049,19 @@ msgstr ""
 #: superset/db_engine_specs/bigquery.py:156
 #, fuzzy, python-format
 msgid ""
-"The table \"%(table_name)s\" does not exist. A valid table must be used to run"
+"The table \"%(table)s\" does not exist. A valid table must be used to run"
 " this query."
 msgstr "表 \"%(table_name)s\" 不存在。必须使用有效的表来运行此查询。"
 
 #: superset/db_engine_specs/bigquery.py:164
 #, fuzzy, python-format
-msgid "We can't seem to resolve column \"%(column_name)s\" at line %(location)s."
+msgid "We can't seem to resolve column \"%(column)s\" at line %(location)s."
 msgstr "我们似乎无法解析行 %(location)s 所处的列 \"%(column_name)s\" 。"
 
 #: superset/db_engine_specs/bigquery.py:169
 #, fuzzy, python-format
 msgid ""
-"The schema \"%(schema_name)s\" does not exist. A valid schema must be used to "
+"The schema \"%(schema)s\" does not exist. A valid schema must be used to "
 "run this query."
 msgstr "表 \"%(schema_name)s\" 不存在。必须使用有效的表来运行此查询。"
 
@@ -2150,7 +2150,7 @@ msgid ""
 msgstr "我们似乎无法解析行 %(location)s 所处的列 \"%(column_name)s\" 。"
 
 #: superset/db_engine_specs/presto.py:179
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "The table \"%(table_name)s\" does not exist. A valid table must be used "
 "to run this query."
@@ -3287,7 +3287,7 @@ msgid "Table %(table)s wasn't found in the database %(db)s"
 msgstr "在数据库 %(db)s 中找不到表 %(table)s"
 
 #: superset/views/core.py:1996
-#, fuzzy, python-format
+#, fuzzy
 msgid "Can't find user, please ask your admin to create one."
 msgstr "用户’%(name)s’没有找到，请联系管理员创建。"
 
@@ -3720,7 +3720,7 @@ msgid "Specify duplicate columns as \"X.0, X.1\"."
 msgstr "将重复列指定为“x.0，x.1”。"
 
 #: superset/views/database/forms.py:173 superset/views/database/forms.py:527
-#, fuzzy, python-format
+#, fuzzy
 msgid "Use Columns"
 msgstr "%s 列"
 
@@ -6333,7 +6333,7 @@ msgid "Filter set with this name already exists"
 msgstr "同名数据库已存在"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/FilterSets/EditSection.tsx:149
-#, fuzzy, python-format
+#, fuzzy
 msgid "Filter set already exists"
 msgstr "数据集 %(name)s 已存在"
 
@@ -6409,7 +6409,7 @@ msgid "Undo?"
 msgstr "撤消？"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigModal.tsx:189
-#, fuzzy, python-format
+#, fuzzy
 msgid "[untitled]"
 msgstr "%s  - 无标题"
 
@@ -6429,7 +6429,7 @@ msgid "Select a column"
 msgstr "反选所有"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/ColumnSelect.tsx:135
-#, fuzzy, python-format
+#, fuzzy
 msgid "No compatible columns found"
 msgstr "不兼容的条件 (%d)"
 
@@ -7678,7 +7678,7 @@ msgstr "必填"
 
 #: superset-frontend/src/explore/components/controls/ConditionalFormattingControl/FormattingPopoverContent.tsx:125
 #: superset-frontend/src/explore/components/controls/ConditionalFormattingControl/FormattingPopoverContent.tsx:129
-#, fuzzy, python-format
+#, fuzzy
 msgid "Operator"
 msgstr "%s 运算符"
 
@@ -7879,7 +7879,7 @@ msgid "Drop columns/metrics here or click"
 msgstr ""
 
 #: superset-frontend/src/explore/components/controls/DndColumnSelectControl/DndFilterSelect.tsx:389
-#, fuzzy, python-format
+#, fuzzy
 msgid "Drop columns or metrics here"
 msgstr "%s 列与计量指标"
 
@@ -7983,7 +7983,7 @@ msgid "%s operator(s)"
 msgstr "%s 运算符"
 
 #: superset-frontend/src/explore/components/controls/FilterControl/AdhocFilterEditPopoverSimpleTabContent/index.tsx:305
-#, fuzzy, python-format
+#, fuzzy
 msgid "Select operator"
 msgstr "%s 运算符"
 
@@ -8029,7 +8029,7 @@ msgid "Add metric"
 msgstr "添加指标"
 
 #: superset-frontend/src/explore/components/controls/MetricControl/AdhocMetricEditPopover/index.jsx:308
-#, fuzzy, python-format
+#, fuzzy
 msgid "Select aggregate options"
 msgstr "%s 聚合"
 
@@ -8039,7 +8039,7 @@ msgid "%s aggregates(s)"
 msgstr "%s 聚合"
 
 #: superset-frontend/src/explore/components/controls/MetricControl/AdhocMetricEditPopover/index.jsx:317
-#, fuzzy, python-format
+#, fuzzy
 msgid "Select saved metrics"
 msgstr "%s 列与计量指标"
 
@@ -9899,7 +9899,7 @@ msgid "Query name"
 msgstr "查询名称"
 
 #: superset-frontend/src/views/CRUD/welcome/ActivityTable.tsx:93
-#, fuzzy, python-format
+#, fuzzy
 msgid "[Untitled]"
 msgstr "%s  - 无标题"
 
