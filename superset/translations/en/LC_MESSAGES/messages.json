@@ -1282,6 +1282,7 @@
       "CREATE TABLE AS": [""],
       "CREATE VIEW AS": [""],
       "Estimate the cost before running a query": [""],
+      "LIMIT:": [""],
       "${isActive ? 'Collapse' : 'Expand'} table preview": [""],
       "Reset state": [""],
       "Enter a new title for the tab": [""],

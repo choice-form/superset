@@ -645,7 +645,7 @@ class SqlEditor extends React.PureComponent {
             <LimitSelectStyled>
               <Dropdown overlay={this.renderQueryLimit()} trigger="click">
                 <a onClick={e => e.preventDefault()}>
-                  <span>LIMIT:</span>
+                  <span>{t('LIMIT:')}</span>
                   <span>
                     {this.convertToNumWithSpaces(
                       this.props.queryEditor.queryLimit ||

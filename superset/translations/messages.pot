@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-15 17:06+0800\n"
+"POT-Creation-Date: 2022-02-16 11:01+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4712,6 +4712,10 @@ msgstr ""
 
 #: superset-frontend/src/SqlLab/components/SqlEditor/index.jsx:640
 msgid "Estimate the cost before running a query"
+msgstr ""
+
+#: superset-frontend/src/SqlLab/components/SqlEditor/index.jsx:648
+msgid "LIMIT:"
 msgstr ""
 
 #: superset-frontend/src/SqlLab/components/SqlEditorLeftBar/index.jsx:151

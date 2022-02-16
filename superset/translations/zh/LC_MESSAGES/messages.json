@@ -4,7 +4,7 @@
     "superset": {
       "": {
         "domain": "superset",
-        "plural_forms": "nplurals=1; plural=0",
+        "plural_forms": "nplurals=1; plural=0;",
         "lang": "zh"
       },
       "The datasource is too large to query.": ["数据源太大，无法查询。"],
@@ -1405,6 +1405,7 @@
       "Estimate the cost before running a query": [
         "在运行查询之前计算执行计划"
       ],
+      "LIMIT:": ["行数："],
       "${isActive ? 'Collapse' : 'Expand'} table preview": [""],
       "Reset state": ["状态重置"],
       "Enter a new title for the tab": ["输入标签的新标题"],
