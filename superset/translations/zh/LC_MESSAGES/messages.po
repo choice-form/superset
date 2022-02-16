@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-02-16 11:01+0800\n"
-"PO-Revision-Date: 2022-02-16 15:00+0800\n"
+"PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
 "Language-Team: zh <benedictjin2016@gmail.com>\n"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: superset/errors.py:103
 msgid "The port is closed."
-msgstr "端口已被关闭"
+msgstr "端口已被关闭。"
 
 #: superset/errors.py:104
 msgid "The host might be down, and can't be reached on the provided port."
@@ -101,7 +101,7 @@ msgstr "该模式已在数据库中删除或重命名。"
 
 #: superset/errors.py:112
 msgid "User doesn't have the proper permissions."
-msgstr "您没有授权"
+msgstr "您没有授权。"
 
 #: superset/errors.py:113
 msgid "One or more parameters needed to configure a database are missing."
@@ -124,7 +124,6 @@ msgid "Database does not allow data manipulation."
 msgstr ""
 
 #: superset/errors.py:118
-#, fuzzy
 msgid ""
 "The CTAS (create table as select) doesn't have a SELECT statement at the "
 "end. Please make sure your query has a SELECT as its last statement. "
@@ -155,7 +154,7 @@ msgstr "查询中指定的一个或多个参数丢失。"
 
 #: superset/errors.py:128
 msgid "The object does not exist in the given database."
-msgstr "源数据库中存在的表的名称"
+msgstr "给定的数据库中没有目标对象。"
 
 #: superset/errors.py:129
 msgid "The query has a syntax error."
@@ -291,7 +290,7 @@ msgstr "选择至少一个指标"
 
 #: superset/viz.py:822
 msgid "When using 'Group By' you are limited to use a single metric"
-msgstr "当使用“Group by”时，只限于使用单个度量。"
+msgstr "当使用“Group by”时，只限于使用单个度量"
 
 #: superset/viz.py:850
 msgid "Pivot Table"
@@ -567,7 +566,7 @@ msgstr "分区图"
 #, python-format
 msgid "Deleted %(num)d annotation layer"
 msgid_plural "Deleted %(num)d annotation layers"
-msgstr[0] "选择一个注释图层"
+msgstr[0] "删除了 %(num)d 个注释层"
 
 #: superset/annotation_layers/annotations/filters.py:28
 #: superset/annotation_layers/filters.py:30 superset/charts/filters.py:31
@@ -580,7 +579,7 @@ msgstr "所有文本"
 #, python-format
 msgid "Deleted %(num)d annotation"
 msgid_plural "Deleted %(num)d annotations"
-msgstr[0] "选择一个注释图层"
+msgstr[0] "删除了 %(num)d 个注释"
 
 #: superset/annotation_layers/annotations/commands/exceptions.py:35
 msgid "End date must be after start date"
@@ -612,7 +611,7 @@ msgstr "注释无法更新。"
 
 #: superset/annotation_layers/annotations/commands/exceptions.py:72
 msgid "Annotation delete failed."
-msgstr "注释与注释层"
+msgstr "删除注释失败。"
 
 #: superset/annotation_layers/commands/exceptions.py:29
 msgid "Annotation layer parameters are invalid."
@@ -624,11 +623,11 @@ msgstr "注释层仍在加载。"
 
 #: superset/annotation_layers/commands/exceptions.py:37
 msgid "Annotation layer could not be created."
-msgstr "您的查询无法保存"
+msgstr "无法创建注释层。"
 
 #: superset/annotation_layers/commands/exceptions.py:41
 msgid "Annotation layer could not be updated."
-msgstr "您的查询无法保存"
+msgstr "无法更新注释层。"
 
 #: superset/annotation_layers/commands/exceptions.py:45
 msgid "Annotation layer not found."
@@ -680,7 +679,7 @@ msgstr "`置信区间` 必须介于0和1之间（开区间）"
 msgid ""
 "lower percentile must be greater than 0 and less than 100. Must be lower "
 "than upper percentile."
-msgstr "下百分位数必须大于0且小于100。而且必须低于上百分位"
+msgstr "下百分位数必须大于0且小于100。且必须低于上百分位。"
 
 #: superset/charts/schemas.py:634
 msgid ""
@@ -777,7 +776,7 @@ msgstr "禁止更改此图表"
 
 #: superset/charts/commands/exceptions.py:135
 msgid "Charts could not be deleted."
-msgstr "这个查询无法被加载"
+msgstr "无法删除图表。"
 
 #: superset/charts/commands/exceptions.py:151
 msgid "Import chart failed for an unknown reason"
@@ -848,7 +847,7 @@ msgstr "度量(s) {} 必须是聚合。"
 
 #: superset/connectors/druid/models.py:1490
 msgid "Unsupported extraction function: "
-msgstr "不支持的提取函数："
+msgstr "不支持的提取函数: "
 
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:1210
 #: superset-frontend/src/explore/components/DatasourcePanel/index.tsx:334
@@ -1188,9 +1187,8 @@ msgid "Error while rendering virtual dataset query: %(msg)s"
 msgstr "渲染虚拟数据集时出错：%(msg)s"
 
 #: superset/connectors/sqla/models.py:828 superset/connectors/sqla/utils.py:81
-#, fuzzy
 msgid "Virtual dataset query cannot be empty"
-msgstr "虚拟数据集查询必须是只读的"
+msgstr "虚拟数据集查询不能为空"
 
 #: superset/connectors/sqla/models.py:831
 msgid "Virtual dataset query cannot consist of multiple statements"
@@ -1199,7 +1197,7 @@ msgstr "虚拟数据集查询不能由多个语句组成"
 #: superset/connectors/sqla/models.py:935
 #, python-format
 msgid "Error in jinja expression in RLS filters: %(msg)s"
-msgstr "jinja表达式中的 RLS filters 出错：%(msg)s"
+msgstr "Jinja表达式中的 RLS filters 出错：%(msg)s"
 
 #: superset/connectors/sqla/models.py:1015
 msgid ""
@@ -1228,9 +1226,8 @@ msgid "Time column \"%(col)s\" does not exist in dataset"
 msgstr ""
 
 #: superset/connectors/sqla/models.py:1212
-#, fuzzy
 msgid "Filter value list cannot be empty"
-msgstr "不能为空"
+msgstr "过滤器值列表不能为空"
 
 #: superset/connectors/sqla/models.py:1237
 msgid "Must specify a value for filters with comparison operators"
@@ -1244,12 +1241,12 @@ msgstr "选择框的操作类型无效: %(op)s"
 #: superset/connectors/sqla/models.py:1271
 #, python-format
 msgid "Error in jinja expression in WHERE clause: %(msg)s"
-msgstr "jinja表达式中的WHERE子句出错：%(msg)s"
+msgstr "Jinja表达式中的WHERE子句出错：%(msg)s"
 
 #: superset/connectors/sqla/models.py:1283
 #, python-format
 msgid "Error in jinja expression in HAVING clause: %(msg)s"
-msgstr "jinja表达式中的HAVING子句出错：%(msg)s"
+msgstr "Jinja表达式中的HAVING子句出错：%(msg)s"
 
 #: superset/connectors/sqla/models.py:1404
 #, fuzzy
@@ -1592,11 +1589,11 @@ msgstr[0] "删除了 %(num)d 个css模板"
 
 #: superset/css_templates/commands/exceptions.py:23
 msgid "CSS template could not be deleted."
-msgstr "CSS模板不能被删除"
+msgstr "CSS模板不能被删除。"
 
 #: superset/css_templates/commands/exceptions.py:27
 msgid "CSS template not found."
-msgstr "CSS模板未找到"
+msgstr "CSS模板未找到。"
 
 #: superset/dashboards/api.py:671
 #, python-format
@@ -1609,9 +1606,8 @@ msgid "Title or Slug"
 msgstr "标题或者Slug"
 
 #: superset/dashboards/filters.py:153
-#, fuzzy
 msgid "Role"
-msgstr "用户信息"
+msgstr "角色"
 
 #: superset/dashboards/commands/exceptions.py:39
 msgid "Must be unique"
@@ -1623,7 +1619,7 @@ msgstr "看板参数无效。"
 
 #: superset/dashboards/commands/exceptions.py:54
 msgid "Dashboard could not be created."
-msgstr "看板无法被创建"
+msgstr "无法创建看板。"
 
 #: superset/dashboards/commands/exceptions.py:58
 msgid "Dashboards could not be deleted."
@@ -1646,7 +1642,6 @@ msgid "Import dashboard failed for an unknown reason"
 msgstr "因为未知原因导入看板失败"
 
 #: superset/dashboards/commands/exceptions.py:86
-#, fuzzy
 msgid "You don't have access to this dashboard."
 msgstr "您没有编辑此看板的权限。"
 
@@ -1695,12 +1690,11 @@ msgstr ""
 
 #: superset/databases/commands/exceptions.py:32
 msgid "Database parameters are invalid."
-msgstr "数据库参数无效"
+msgstr "数据库参数无效。"
 
 #: superset/databases/commands/exceptions.py:42
-#, fuzzy
 msgid "A database with the same name already exists."
-msgstr "同名数据库已存在"
+msgstr "同名数据库已存在。"
 
 #: superset/databases/commands/exceptions.py:50
 msgid "Field is required"
@@ -1719,15 +1713,15 @@ msgstr "额外字段中的元数据参数配置不正确。键 %{key}s 无效。
 
 #: superset/databases/commands/exceptions.py:91
 msgid "Database not found."
-msgstr "数据库没有找到"
+msgstr "数据库没有找到。"
 
 #: superset/databases/commands/exceptions.py:95
 msgid "Database could not be created."
-msgstr "数据库无法被创建"
+msgstr "无法创建数据库。"
 
 #: superset/databases/commands/exceptions.py:99
 msgid "Database could not be updated."
-msgstr "数据库无法更新"
+msgstr "无法更新数据库。"
 
 #: superset/databases/commands/exceptions.py:105
 #: superset/databases/commands/exceptions.py:122 superset/views/core.py:1383
@@ -1735,9 +1729,8 @@ msgid "Connection failed, please check your connection settings"
 msgstr "连接失败，请检查您的连接配置"
 
 #: superset/databases/commands/exceptions.py:109
-#, fuzzy
 msgid "Cannot delete a database that has datasets attached"
-msgstr "无法删除已含有表的数据库"
+msgstr "无法删除已含有数据集的数据库"
 
 #: superset/databases/commands/exceptions.py:113
 msgid "Database could not be deleted."
@@ -1769,9 +1762,8 @@ msgid "Engine \"%(engine)s\" cannot be configured through parameters."
 msgstr ""
 
 #: superset/databases/commands/validate.py:136
-#, fuzzy
 msgid "Database is offline."
-msgstr "数据库名称"
+msgstr "数据库处于离线状态。"
 
 #: superset/datasets/api.py:666
 #, python-format
@@ -1784,20 +1776,17 @@ msgid "Null or Empty"
 msgstr "Null或空"
 
 #: superset/datasets/columns/commands/exceptions.py:23
-#, fuzzy
 msgid "Dataset column not found."
-msgstr "数据库没有找到"
+msgstr "无法找到数据集列。"
 
 #: superset/datasets/columns/commands/exceptions.py:27
-#, fuzzy
 msgid "Dataset column delete failed."
-msgstr "注释与注释层"
+msgstr "删除数据集列错误。"
 
 #: superset/datasets/columns/commands/exceptions.py:31
 #: superset/datasets/metrics/commands/exceptions.py:31
-#, fuzzy
 msgid "Changing this dataset is forbidden."
-msgstr "没有权限更新此数据集"
+msgstr "没有权限更新此数据集。"
 
 #: superset/datasets/commands/exceptions.py:32
 #, python-format
@@ -1854,11 +1843,11 @@ msgstr "无法更新数据集。"
 
 #: superset/datasets/commands/exceptions.py:165
 msgid "Dataset could not be deleted."
-msgstr "无法删除数据集"
+msgstr "无法删除数据集。"
 
 #: superset/datasets/commands/exceptions.py:169
 msgid "Dataset(s) could not be bulk deleted."
-msgstr "数据集无法批量删除"
+msgstr "数据集无法批量删除。"
 
 #: superset/datasets/commands/exceptions.py:177
 msgid "Changing this dataset is forbidden"
@@ -1869,14 +1858,12 @@ msgid "Import dataset failed for an unknown reason"
 msgstr "因为未知的原因导入数据集失败"
 
 #: superset/datasets/metrics/commands/exceptions.py:23
-#, fuzzy
 msgid "Dataset metric not found."
-msgstr "数据库没有找到"
+msgstr "没有找到数据集指标。"
 
 #: superset/datasets/metrics/commands/exceptions.py:27
-#, fuzzy
 msgid "Dataset metric delete failed."
-msgstr "注释与注释层"
+msgstr "删除数据集指标错误。"
 
 #: superset/db_engine_specs/athena.py:54
 #: superset/db_engine_specs/bigquery.py:177
@@ -1893,87 +1880,70 @@ msgid "Original value"
 msgstr ""
 
 #: superset/db_engine_specs/base.py:87
-#, fuzzy
 msgid "Second"
 msgstr "秒"
 
 #: superset/db_engine_specs/base.py:88
-#, fuzzy
 msgid "5 second"
-msgstr "秒"
+msgstr "5秒"
 
 #: superset/db_engine_specs/base.py:89
-#, fuzzy
 msgid "30 second"
 msgstr "30秒钟"
 
 #: superset/db_engine_specs/base.py:90
-#, fuzzy
 msgid "Minute"
 msgstr "分"
 
 #: superset/db_engine_specs/base.py:91
-#, fuzzy
 msgid "5 minute"
 msgstr "5分钟"
 
 #: superset/db_engine_specs/base.py:92
-#, fuzzy
 msgid "10 minute"
-msgstr "1分钟"
+msgstr "10分钟"
 
 #: superset/db_engine_specs/base.py:93
-#, fuzzy
 msgid "15 minute"
-msgstr "1分钟"
+msgstr "15分钟"
 
 #: superset/db_engine_specs/base.py:94
-#, fuzzy
 msgid "30 minute"
 msgstr "30分钟"
 
 #: superset/db_engine_specs/base.py:95
-#, fuzzy
 msgid "Hour"
 msgstr "小时"
 
 #: superset/db_engine_specs/base.py:96
-#, fuzzy
 msgid "6 hour"
 msgstr "6小时"
 
 #: superset/db_engine_specs/base.py:97
-#, fuzzy
 msgid "Day"
 msgstr "天"
 
 #: superset/db_engine_specs/base.py:98
-#, fuzzy
 msgid "Week"
 msgstr "周"
 
 #: superset/db_engine_specs/base.py:99
-#, fuzzy
 msgid "Month"
 msgstr "月"
 
 #: superset/db_engine_specs/base.py:100
-#, fuzzy
 msgid "Quarter"
 msgstr "季度"
 
 #: superset/db_engine_specs/base.py:101
-#, fuzzy
 msgid "Year"
 msgstr "年"
 
 #: superset/db_engine_specs/base.py:102
-#, fuzzy
 msgid "Week starting Sunday"
-msgstr "周日为一周结束"
+msgstr "周日为一周开始"
 
 #: superset/db_engine_specs/base.py:103
-#, fuzzy
 msgid "Week starting Monday"
 msgstr "周一为一周开始"
 
@@ -1982,37 +1952,32 @@ msgid "Week ending Saturday"
 msgstr ""
 
 #: superset/db_engine_specs/base.py:105
-#, fuzzy
 msgid "Week_ending Sunday"
 msgstr "周日为一周结束"
 
 #: superset/db_engine_specs/base.py:1368
-#, fuzzy
 msgid "Username"
-msgstr "查询名称"
+msgstr "用户名"
 
 #: superset/db_engine_specs/base.py:1369
-#, fuzzy
 msgid "Password"
-msgstr "Broker的密码"
+msgstr "密码"
 
 #: superset/db_engine_specs/base.py:1370
 msgid "Hostname or IP address"
 msgstr ""
 
 #: superset/db_engine_specs/base.py:1373
-#, fuzzy
 msgid "Database port"
-msgstr "数据库"
+msgstr "数据库端口"
 
 #: superset/db_engine_specs/base.py:1376
 msgid "Database name"
 msgstr "数据库名称"
 
 #: superset/db_engine_specs/base.py:1378
-#, fuzzy
 msgid "Additional parameters"
-msgstr "编辑模板参数"
+msgstr "附加参数"
 
 #: superset/db_engine_specs/base.py:1381
 msgid "Use an encrypted connection to the database"
@@ -2106,9 +2071,9 @@ msgid "Unable to connect to database \"%(database)s\"."
 msgstr ""
 
 #: superset/db_engine_specs/postgres.py:112
-#, fuzzy, python-format
+#, python-format
 msgid "The username \"%(username)s\" does not exist."
-msgstr "用户 '%(username)s' 不存在"
+msgstr "用户 '%(username)s' 不存在。"
 
 #: superset/db_engine_specs/postgres.py:117
 #, python-format
@@ -2128,18 +2093,18 @@ msgid ""
 msgstr "我们似乎无法解析行 %(location)s 所处的列 \"%(column_name)s\" 。"
 
 #: superset/db_engine_specs/presto.py:179
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The table \"%(table_name)s\" does not exist. A valid table must be used "
 "to run this query."
 msgstr "表 \"%(table_name)s\" 不存在。必须使用有效的表来运行此查询。"
 
 #: superset/db_engine_specs/presto.py:187
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The schema \"%(schema_name)s\" does not exist. A valid schema must be "
 "used to run this query."
-msgstr "表 \"%(schema_name)s\" 不存在。必须使用有效的表来运行此查询。"
+msgstr "模式 \"%(schema_name)s\" 不存在。必须使用有效的表来运行此查询。"
 
 #: superset/db_engine_specs/presto.py:218
 #, python-format
@@ -2163,9 +2128,9 @@ msgid "%(object)s does not exist in this database."
 msgstr ""
 
 #: superset/db_engine_specs/sqlite.py:63
-#, fuzzy, python-format
+#, python-format
 msgid "We can't seem to resolve the column \"%(column_name)s\""
-msgstr "我们似乎无法解析列 \"%(column_name)s\" 。"
+msgstr "我们似乎无法解析列 \"%(column_name)s\""
 
 #: superset-frontend/src/views/CRUD/welcome/Welcome.tsx:268
 #: superset/initialization/__init__.py:219
@@ -2327,21 +2292,19 @@ msgstr[0] "已经删除 %(num)d 个保存的查询"
 
 #: superset/queries/saved_queries/commands/exceptions.py:28
 msgid "Saved queries could not be deleted."
-msgstr "保存的查询无法被删除"
+msgstr "无法删除已保存的查询。"
 
 #: superset/queries/saved_queries/commands/exceptions.py:32
 msgid "Saved query not found."
-msgstr "保存的查询未找到"
+msgstr "找不到已保存的查询。"
 
 #: superset/queries/saved_queries/commands/exceptions.py:36
-#, fuzzy
 msgid "Import saved query failed for an unknown reason."
-msgstr "导入图表失败，原因未知"
+msgstr "导入图表失败，原因未知。"
 
 #: superset/queries/saved_queries/commands/exceptions.py:40
-#, fuzzy
 msgid "Saved query parameters are invalid."
-msgstr "图表参数无效。"
+msgstr "保存查询参数无效。"
 
 #: superset/reports/api.py:452
 #, python-format
@@ -2352,9 +2315,8 @@ msgstr[0] "已经删除了 %(num)d 个报告时间表"
 #: superset/reports/schemas.py:185 superset/reports/schemas.py:191
 #: superset/reports/schemas.py:197 superset/reports/schemas.py:275
 #: superset/reports/schemas.py:281 superset/reports/schemas.py:288
-#, fuzzy
 msgid "Value must be greater than 0"
-msgstr "`行偏移量` 必须大于或等于0"
+msgstr "值必须大于0"
 
 #: superset/reports/commands/alert.py:96
 #, python-format
@@ -2510,7 +2472,7 @@ msgstr "未找到报表计划状态"
 
 #: superset/reports/commands/exceptions.py:234
 msgid "Report schedule unexpected error"
-msgstr "报告计划意外错误。"
+msgstr "报告计划意外错误"
 
 #: superset/reports/commands/exceptions.py:238
 msgid "Changing this report is forbidden"
@@ -2981,7 +2943,7 @@ msgstr "这个警报的日志要保存多久"
 msgid ""
 "Once an alert is triggered, how long, in seconds, before Superset nags "
 "you again."
-msgstr "在Superset再次提醒您之前需要多长时间--以秒为单位--来触发一个警报"
+msgstr "在 Choiceform 再次提醒您之前需要多长时间--以秒为单位--来触发一个警报。"
 
 #: superset/views/alerts.py:195
 msgid ""
@@ -3179,7 +3141,6 @@ msgid "An unknown error occurred. Please contact your Superset administrator"
 msgstr "发生未知错误。请与管理员联系"
 
 #: superset/views/core.py:785
-#, fuzzy
 msgid "[Missing Dataset]"
 msgstr "丢失数据集"
 
@@ -3273,9 +3234,8 @@ msgid "Can't find user, please ask your admin to create one."
 msgstr "用户’%(name)s’没有找到，请联系管理员创建。"
 
 #: superset/views/core.py:2007
-#, fuzzy
 msgid "Can't find DruidCluster"
-msgstr "添加 Druid 集群"
+msgstr "无法找到 Druid 集群"
 
 #: superset/views/core.py:2069
 msgid ""
@@ -3284,9 +3244,8 @@ msgid ""
 msgstr ""
 
 #: superset/views/core.py:2079 superset/views/core.py:2149
-#, fuzzy
 msgid "The database was not found."
-msgstr "数据库没有找到"
+msgstr "数据库没有找到。"
 
 #: superset/views/core.py:2169
 msgid ""
@@ -3364,7 +3323,7 @@ msgstr "人性化的名称"
 msgid ""
 "Used internally to identify the plugin. Should be set to the package name"
 " from the pluginʼs package.json"
-msgstr "在内部用于标识插件。应该在插件的 package.json 内被设置为包名。"
+msgstr "在内部用于标识插件。应该在插件的 package.json 内被设置为包名"
 
 #: superset/views/dynamic_plugins.py:52
 msgid ""
@@ -3466,9 +3425,8 @@ msgid "Changed on"
 msgstr "改变为"
 
 #: superset-frontend/src/chart/Chart.jsx:72 superset/views/utils.py:268
-#, fuzzy
 msgid "The dataset associated with this chart no longer exists"
-msgstr "这个图表所链接的数据集可能被删除了。"
+msgstr "这个图表所链接的数据集可能被删除了"
 
 #: superset/views/utils.py:547
 msgid "Could not determine datasource type"
@@ -3551,7 +3509,7 @@ msgid ""
 "This JSON object is generated dynamically when clicking the save or "
 "overwrite button in the dashboard view. It is exposed here for reference "
 "and for power users who may want to alter specific parameters."
-msgstr "这个JSON对象描述了部件在看板中的位置。它是动态生成的，可以通过拖放，在看板中调整整部件的大小和位置"
+msgstr "这个JSON对象描述了部件在看板中的位置。它是动态生成的，可以通过拖放，在看板中调整整部件的大小和位置。"
 
 #: superset/views/dashboard/mixin.py:65
 msgid "Owners is a list of users who can alter the dashboard."
@@ -3992,7 +3950,7 @@ msgstr ""
 
 #: superset/views/database/views.py:118
 msgid "CSV to Database configuration"
-msgstr "csv 到数据库配置"
+msgstr "CSV 到数据库配置"
 
 #: superset/views/database/views.py:136
 #, python-format
@@ -4008,7 +3966,7 @@ msgid ""
 "\"%(csv_table.schema)s\". Please remove one"
 msgstr ""
 "不能同时在表名 \"%(csv_table.table)s\" 和schema字段 \"%(csv_table.schema)s\" "
-"中指定命名空间。请删除一个。"
+"中指定命名空间。请删除一个"
 
 #: superset/views/database/views.py:240
 #, python-format
@@ -4024,7 +3982,7 @@ msgstr ""
 msgid ""
 "CSV file \"%(csv_filename)s\" uploaded to table \"%(table_name)s\" in "
 "database \"%(db_name)s\""
-msgstr "csv 文件 \"%(csv_filename)s\" 上传到数据库 \"%(db_name)s\" 中的表 \"%(table_name)s\""
+msgstr "CSV 文件 \"%(csv_filename)s\" 上传到数据库 \"%(db_name)s\" 中的表 \"%(table_name)s\""
 
 #: superset/views/database/views.py:268
 msgid "Excel to Database configuration"
@@ -4044,7 +4002,7 @@ msgid ""
 "\"%(excel_table.schema)s\". Please remove one"
 msgstr ""
 "不能同时在表名 \"%(excel_table.table)s\" 和schema字段 \"%(excel_table.schema)s\" "
-"中指定命名空间。请删除一个。"
+"中指定命名空间。请删除一个"
 
 #: superset/views/database/views.py:386
 #, python-format
@@ -4155,7 +4113,7 @@ msgstr "这个查询无法被加载"
 msgid ""
 "Your query has been scheduled. To see details of your query, navigate to "
 "Saved queries"
-msgstr "您的查询已被调度。要查看查询的详细信息，请跳转到保存查询页面查看。"
+msgstr "您的查询已被调度。要查看查询的详细信息，请跳转到保存查询页面查看"
 
 #: superset-frontend/src/SqlLab/actions/sqlLab.js:166
 msgid "Your query could not be scheduled"
@@ -4383,20 +4341,20 @@ msgstr "在数据探索视图中探索结果集"
 #: superset-frontend/src/SqlLab/components/ExploreResultsButton/index.jsx:110
 #, python-format
 msgid "This query took %s seconds to run, "
-msgstr "这个查询使用了 %s 秒去执行，"
+msgstr "这个查询使用了 %s 秒去执行, "
 
 #: superset-frontend/src/SqlLab/components/ExploreResultsButton/index.jsx:112
 #, python-format
 msgid "and the explore view times out at %s seconds "
-msgstr "，浏览视图在 %s 秒超时"
+msgstr "，浏览视图在 %s 秒超时 "
 
 #: superset-frontend/src/SqlLab/components/ExploreResultsButton/index.jsx:116
 msgid "following this flow will most likely lead to your query timing out. "
-msgstr "遵循此流程很可能会导致查询超时。"
+msgstr "遵循此流程很可能会导致查询超时。 "
 
 #: superset-frontend/src/SqlLab/components/ExploreResultsButton/index.jsx:119
 msgid "We recommend your summarize your data further before following that flow. "
-msgstr "我们建议您在遵循流程之前进一步总结数据。"
+msgstr "我们建议您在遵循流程之前进一步总结数据。 "
 
 #: superset-frontend/src/SqlLab/components/ExploreResultsButton/index.jsx:122
 msgid "If activated you can use the "
@@ -4408,7 +4366,7 @@ msgstr "用于存储可供浏览的汇总数据集的功能。"
 
 #: superset-frontend/src/SqlLab/components/ExploreResultsButton/index.jsx:140
 msgid "Column name(s) "
-msgstr "列名"
+msgstr "列名 "
 
 #: superset-frontend/src/SqlLab/components/ExploreResultsButton/index.jsx:144
 msgid ""
@@ -4432,9 +4390,8 @@ msgid "Source SQL"
 msgstr "源 SQL"
 
 #: superset-frontend/src/SqlLab/components/HighlightedSql/index.tsx:82
-#, fuzzy
 msgid "Executed SQL"
-msgstr "已执行查询"
+msgstr "已执行的 SQL"
 
 #: superset-frontend/src/SqlLab/components/HighlightedSql/index.tsx:101
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:898
@@ -4497,9 +4454,8 @@ msgid "Running"
 msgstr "正在执行"
 
 #: superset-frontend/src/SqlLab/components/QueryTable/index.jsx:87
-#, fuzzy
 msgid "fetching"
-msgstr "设置"
+msgstr "获取"
 
 #: superset-frontend/src/SqlLab/components/QueryTable/index.jsx:93
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:165
@@ -4561,7 +4517,6 @@ msgid "Download to CSV"
 msgstr ""
 
 #: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:551
-#, fuzzy
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
 
@@ -4895,9 +4850,8 @@ msgid "Duplicate tab"
 msgstr "复制tab页"
 
 #: superset-frontend/src/SqlLab/components/TabbedSqlEditors/index.jsx:421
-#, fuzzy
 msgid "New tab (Ctrl + q)"
-msgstr "新建Tab页 (Ctrl + t)"
+msgstr "新建Tab页 (Ctrl + q)"
 
 #: superset-frontend/src/SqlLab/components/TabbedSqlEditors/index.jsx:422
 msgid "New tab (Ctrl + t)"
@@ -4978,9 +4932,8 @@ msgid "Instructions to add a dataset are available in the Superset tutorial."
 msgstr ""
 
 #: superset-frontend/src/addSlice/AddSliceContainer.tsx:312
-#, fuzzy
 msgid "Choose chart type"
-msgstr "图表类型"
+msgstr "选择图表类型"
 
 #: superset-frontend/src/addSlice/AddSliceContainer.tsx:326
 msgid "Please select both a Dataset and a Chart type to proceed"
@@ -5013,7 +4966,7 @@ msgstr "选择图表"
 
 #: superset-frontend/src/components/AnchorLink/index.jsx:89
 msgid "Check out this chart in dashboard:"
-msgstr "查看这个看板：%s"
+msgstr "查看这个看板："
 
 #: superset-frontend/src/components/AsyncSelect/index.jsx:41
 #: superset-frontend/src/components/Select/Select.tsx:190
@@ -5149,13 +5102,12 @@ msgid ":"
 msgstr ""
 
 #: superset-frontend/src/components/CronPicker/CronPicker.tsx:51
-#, fuzzy
 msgid "minute(s)"
 msgstr "分钟"
 
 #: superset-frontend/src/components/CronPicker/CronPicker.tsx:52
 msgid "Invalid cron expression"
-msgstr "cron表达式无效"
+msgstr "Cron表达式无效"
 
 #: superset-frontend/src/components/CronPicker/CronPicker.tsx:53
 msgid "Clear"
@@ -5357,7 +5309,7 @@ msgstr "您没有权利修改这个标题。"
 #: superset-frontend/src/components/ErrorBoundary/index.jsx:51
 #: superset-frontend/src/components/ErrorMessage/ErrorMessageWithStackTrace.tsx:26
 msgid "Unexpected error"
-msgstr "意外错误。"
+msgstr "意外错误"
 
 #: superset-frontend/src/components/ErrorMessage/DatabaseErrorMessage.tsx:47
 #: superset-frontend/src/components/ErrorMessage/TimeoutErrorMessage.tsx:63
@@ -5473,9 +5425,8 @@ msgstr "上次更新 %s"
 
 #: superset-frontend/src/components/ListView/CardSortSelect.tsx:82
 #: superset-frontend/src/components/ListView/CardSortSelect.tsx:83
-#, fuzzy
 msgid "Sort"
-msgstr "排序:"
+msgstr "排序"
 
 #: superset-frontend/src/components/ListView/ListView.tsx:243
 #, python-format
@@ -5501,9 +5452,8 @@ msgid "Type a value"
 msgstr "输入值"
 
 #: superset-frontend/src/components/ListView/Filters/Select.tsx:77
-#, fuzzy
 msgid "Filter"
-msgstr "无筛选"
+msgstr "筛选"
 
 #: superset-frontend/src/components/ListView/Filters/Select.tsx:84
 msgid "Select or type a value"
@@ -5528,14 +5478,12 @@ msgid "Powered by Choiceform"
 msgstr ""
 
 #: superset-frontend/src/components/Menu/MenuRight.tsx:192
-#, fuzzy
 msgid "Documentation"
-msgstr "执行时间"
+msgstr "文档"
 
 #: superset-frontend/src/components/Menu/MenuRight.tsx:203
-#, fuzzy
 msgid "Report a bug"
-msgstr "报告"
+msgstr "报告错误"
 
 #: superset-frontend/src/components/Modal/Modal.tsx:198
 #: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:780
@@ -5543,9 +5491,8 @@ msgid "OK"
 msgstr "确认"
 
 #: superset-frontend/src/components/OmniContainer/index.tsx:102
-#, fuzzy
 msgid "Search all dashboards"
-msgstr "刷新看板"
+msgstr "查找所有看板"
 
 #: superset-frontend/src/components/ReportModal/index.tsx:251
 msgid "Edit Email Report"
@@ -5565,7 +5512,6 @@ msgid "Add"
 msgstr "新增"
 
 #: superset-frontend/src/components/ReportModal/index.tsx:275
-#, fuzzy
 msgid "Message Content"
 msgstr "消息内容"
 
@@ -5620,7 +5566,6 @@ msgid "This action will permanently delete %s."
 msgstr "此操作将永久删除 %s 。"
 
 #: superset-frontend/src/components/ReportModal/HeaderReportActionsDropdown/index.tsx:112
-#, fuzzy
 msgid "Delete Report?"
 msgstr "删除模板？"
 
@@ -5649,9 +5594,8 @@ msgid "Force refresh table list"
 msgstr "强制刷新数据"
 
 #: superset-frontend/src/components/TimezoneSelector/index.tsx:124
-#, fuzzy
 msgid "Timezone selector"
-msgstr "运行选定的查询"
+msgstr "时区选择器"
 
 #: superset-frontend/src/components/URLShortLinkButton/index.jsx:59
 #: superset-frontend/src/explore/components/ExploreActionButtons.tsx:117
@@ -5699,9 +5643,8 @@ msgid "This dashboard was saved successfully."
 msgstr "该看板已成功保存。"
 
 #: superset-frontend/src/dashboard/actions/dashboardState.js:308
-#, fuzzy
 msgid "Sorry, an unknown error occured"
-msgstr "抱歉，发生错误"
+msgstr "抱歉，出现未知错误"
 
 #: superset-frontend/src/dashboard/actions/dashboardState.js:311
 #, fuzzy, python-format
@@ -5722,7 +5665,7 @@ msgstr "无法获取所有保存的图表"
 
 #: superset-frontend/src/dashboard/actions/sliceEntities.js:116
 msgid "Sorry there was an error fetching saved charts: "
-msgstr "抱歉，这个看板在获取图表时发生错误："
+msgstr "抱歉，这个看板在获取图表时发生错误: "
 
 #: superset-frontend/src/dashboard/components/AddSliceCard.jsx:132
 msgid "Visualization"
@@ -5857,7 +5800,7 @@ msgstr "过滤您的图表"
 #: superset-frontend/src/dashboard/components/SliceAdder.jsx:251
 #: superset-frontend/src/explore/controls.jsx:379
 msgid "Sort by"
-msgstr "排序 "
+msgstr "排序"
 
 #: superset-frontend/src/dashboard/components/CrossFilterScopingModal/CrossFilterScopingModal.tsx:65
 #, fuzzy
@@ -5915,7 +5858,6 @@ msgid "Discard changes"
 msgstr "放弃更改"
 
 #: superset-frontend/src/dashboard/components/Header/index.jsx:600
-#, fuzzy
 msgid "Edit dashboard"
 msgstr "编辑看板"
 
@@ -5929,17 +5871,15 @@ msgstr "看板"
 
 #: superset-frontend/src/dashboard/components/Header/HeaderActionsDropdown/index.jsx:216
 msgid "Check out this dashboard: "
-msgstr "查看此看板："
+msgstr "查看此看板: "
 
 #: superset-frontend/src/dashboard/components/Header/HeaderActionsDropdown/index.jsx:259
-#, fuzzy
 msgid "Copy dashboard URL"
-msgstr "没有看板"
+msgstr "复制看板 URL"
 
 #: superset-frontend/src/dashboard/components/Header/HeaderActionsDropdown/index.jsx:260
-#, fuzzy
 msgid "Share dashboard by email"
-msgstr "分享看板"
+msgstr "通过电子邮件分享看板"
 
 #: superset-frontend/src/dashboard/components/Header/HeaderActionsDropdown/index.jsx:272
 msgid "Refresh dashboard"
@@ -5968,14 +5908,12 @@ msgid "Download as image"
 msgstr "下载为图片"
 
 #: superset-frontend/src/dashboard/components/Header/HeaderActionsDropdown/index.jsx:321
-#, fuzzy
 msgid "Exit fullscreen"
-msgstr "切换全屏"
+msgstr "退出全屏"
 
 #: superset-frontend/src/dashboard/components/Header/HeaderActionsDropdown/index.jsx:322
-#, fuzzy
 msgid "Enter fullscreen"
-msgstr "切换全屏"
+msgstr "进入全屏"
 
 #: superset-frontend/src/dashboard/components/PropertiesModal/index.tsx:98
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Header/index.tsx:136
@@ -6000,7 +5938,7 @@ msgstr "需要有效的配色方案"
 
 #: superset-frontend/src/dashboard/components/PropertiesModal/index.tsx:337
 msgid "The dashboard has been saved"
-msgstr "该看板已成功保存。"
+msgstr "该看板已成功保存"
 
 #: superset-frontend/src/dashboard/components/PropertiesModal/index.tsx:353
 #: superset-frontend/src/dashboard/components/PropertiesModal/index.tsx:396
@@ -6061,7 +5999,7 @@ msgstr "认证"
 
 #: superset-frontend/src/dashboard/components/PropertiesModal/index.tsx:555
 msgid "Person or group that has certified this dashboard."
-msgstr "认证此看板的个人或团体"
+msgstr "认证此看板的个人或团体。"
 
 #: superset-frontend/src/dashboard/components/PropertiesModal/index.tsx:560
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:270
@@ -6169,15 +6107,13 @@ msgid "View query"
 msgstr "检查查询"
 
 #: superset-frontend/src/dashboard/components/SliceHeaderControls/index.tsx:316
-#, fuzzy
 msgid "Copy chart URL"
-msgstr "没有图表"
+msgstr "复制图表 URL"
 
 #: superset-frontend/src/dashboard/components/SliceHeaderControls/index.tsx:317
 #: superset-frontend/src/explore/components/ExploreActionButtons.tsx:161
-#, fuzzy
 msgid "Share chart by email"
-msgstr "共享图表"
+msgstr "通过电子邮件共享图表"
 
 #: superset-frontend/src/dashboard/components/SliceHeaderControls/index.tsx:319
 #, fuzzy
@@ -6266,7 +6202,7 @@ msgstr "预览"
 #: superset-frontend/src/views/CRUD/data/components/SyntaxHighlighterCopy/index.tsx:76
 #: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:221
 msgid "Sorry, your browser does not support copying."
-msgstr "抱歉，您的浏览器不支持复制操作。使用 Ctrl / Cmd + C！"
+msgstr "抱歉，您的浏览器不支持复制操作。使用 Ctrl / Cmd + C。"
 
 #: superset-frontend/src/dashboard/components/menu/ShareMenuItems/index.tsx:65
 #: superset-frontend/src/explore/components/ExploreActionButtons.tsx:120
@@ -6353,14 +6289,12 @@ msgid "Please filter set name"
 msgstr "请输入图表名称"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/FilterSets/Footer.tsx:96
-#, fuzzy
 msgid "Create"
-msgstr "创建一个 "
+msgstr "创建"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/FilterSets/Footer.tsx:111
-#, fuzzy
 msgid "Create new filter set"
-msgstr "创建新图表"
+msgstr "创建过滤器集"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/FilterSets/index.tsx:78
 #, fuzzy
@@ -6368,9 +6302,8 @@ msgid "New filter set"
 msgstr "配置过滤范围"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Header/index.tsx:126
-#, fuzzy
 msgid "Clear all"
-msgstr "查看所有"
+msgstr "清理所有"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FilterTabs.tsx:228
 #: superset-frontend/src/explore/components/controls/FilterControl/AdhocFilterControl/index.jsx:367
@@ -6386,9 +6319,8 @@ msgid "Undo?"
 msgstr "撤消？"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigModal.tsx:189
-#, fuzzy
 msgid "[untitled]"
-msgstr "%s  - 无标题"
+msgstr "[未命名]"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigModal.tsx:323
 #, fuzzy
@@ -6401,9 +6333,8 @@ msgid "Column select"
 msgstr "运行选定的查询"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/ColumnSelect.tsx:134
-#, fuzzy
 msgid "Select a column"
-msgstr "反选所有"
+msgstr "选择列"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/ColumnSelect.tsx:135
 #, fuzzy
@@ -6431,7 +6362,6 @@ msgid "Basic"
 msgstr "基础"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:280
-#, fuzzy
 msgid "Select filter"
 msgstr "选择过滤器"
 
@@ -6443,9 +6373,8 @@ msgid "Value"
 msgstr "值"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:281
-#, fuzzy
 msgid "Range filter"
-msgstr "日期过滤器"
+msgstr "范围过滤"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:281
 #, fuzzy
@@ -6453,9 +6382,8 @@ msgid "Numerical range"
 msgstr "时间范围"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:282
-#, fuzzy
 msgid "Time filter"
-msgstr "日期过滤器"
+msgstr "日期过滤"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:282
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:1056
@@ -6473,7 +6401,6 @@ msgid "Time grain"
 msgstr "时间粒度（grain）"
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:285
-#, fuzzy
 msgid "Group By"
 msgstr "分组"
 
@@ -6774,9 +6701,13 @@ msgid ""
 "defaults on a per\n"
 "                      database/column name level via the extra parameter."
 msgstr ""
-"来确保字符的表达顺序与时间顺序一致的标准。如果时间戳格式不符合 ISO 8601 "
-"标准，则需要定义表达式和类型，以便将字符串转换为日期或时间戳。注意：当前不支持时区。如果时间以epoch格式存储，请输入 `epoch_s` or"
-" `epoch_ms` 。如果没有指定任何模式，我们可以通过额外的参数在每个数据库/列名级别上使用可选的默认值。"
+" 来确保字符的表达顺序与时间顺序一致的标准。\n"
+"                      如果时间戳格式不符合 ISO 8601 标准，\n"
+"                      则需要定义表达式和类型，\n"
+"                      以便将字符串转换为日期或时间戳。\n"
+"                      注意：当前不支持时区。\n"
+"                      如果时间以epoch格式存储，请输入 `epoch_s` or `epoch_ms` 。\n"
+"                      如果没有指定任何模式，我们可以通过额外的参数在每个数据库/列名级别上使用可选的默认值。"
 
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:259
 msgid "Certified By"
@@ -7002,7 +6933,7 @@ msgstr "确认保存"
 
 #: superset-frontend/src/datasource/DatasourceModal.tsx:192
 msgid "Edit Dataset "
-msgstr "编辑数据集"
+msgstr "编辑数据集 "
 
 #: superset-frontend/src/datasource/DatasourceModal.tsx:209
 msgid "Use legacy datasource editor"
@@ -7078,7 +7009,7 @@ msgid ""
 "The time column for the visualization. Note that you can define arbitrary"
 " expression that return a DATETIME column in the table. Also note that "
 "the filter below is applied against this column or expression"
-msgstr "可视化的时间栏。注意，您可以定义返回表中的DATETIMLE列的任意表达式。还请注意下面的筛选器应用于该列或表达式。"
+msgstr "可视化的时间栏。注意，您可以定义返回表中的DATETIMLE列的任意表达式。还请注意下面的筛选器应用于该列或表达式"
 
 #: superset-frontend/src/explore/controls.jsx:323
 msgid ""
@@ -7171,7 +7102,7 @@ msgstr "Y 轴格式化"
 msgid ""
 "When `Calculation type` is set to \"Percentage change\", the Y Axis "
 "Format is forced to `.1%`"
-msgstr "当设置“周期比”时，y轴格式强制为“1%”。"
+msgstr "当设置“周期比”时，y轴格式强制为“1%”"
 
 #: superset-frontend/src/explore/controls.jsx:476
 msgid "The color scheme for rendering chart"
@@ -7189,7 +7120,7 @@ msgstr "螺栓"
 
 #: superset-frontend/src/explore/components/ControlHeader.jsx:77
 msgid "Changing this control takes effect instantly"
-msgstr "更改此控件立即生效。"
+msgstr "更改此控件立即生效"
 
 #: superset-frontend/src/explore/components/ControlPanelsContainer.tsx:417
 msgid "Customize"
@@ -7275,7 +7206,7 @@ msgstr "保存（覆盖）"
 
 #: superset-frontend/src/explore/components/SaveModal.tsx:243
 msgid "Save as ..."
-msgstr "另存为"
+msgstr "另存为…"
 
 #: superset-frontend/src/explore/components/SaveModal.tsx:247
 msgid "Chart name"
@@ -7386,7 +7317,7 @@ msgstr "错误的经纬度配置。"
 
 #: superset-frontend/src/explore/components/controls/SpatialControl.jsx:155
 msgid "Reverse lat/long "
-msgstr "经纬度互换"
+msgstr "经纬度互换 "
 
 #: superset-frontend/src/explore/components/controls/SpatialControl.jsx:168
 msgid "Longitude & Latitude columns"
@@ -7536,7 +7467,7 @@ msgstr "配置Layer"
 
 #: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:709
 msgid "Configure the basics of your Annotation Layer."
-msgstr "注释层基本配置"
+msgstr "注释层基本配置。"
 
 #: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:717
 #: superset-frontend/src/explore/components/controls/AnnotationLayerControl/AnnotationLayer.jsx:746
@@ -7709,7 +7640,7 @@ msgstr "编辑时间范围"
 
 #: superset-frontend/src/explore/components/controls/DateFilterControl/components/AdvancedFrame.tsx:58
 msgid "Configure Advanced Time Range "
-msgstr "配置进阶时间范围"
+msgstr "配置进阶时间范围 "
 
 #: superset-frontend/src/explore/components/controls/DateFilterControl/components/AdvancedFrame.tsx:64
 #: superset-frontend/src/explore/components/controls/DateFilterControl/components/CustomFrame.tsx:113
@@ -7791,7 +7722,7 @@ msgstr "例子"
 
 #: superset-frontend/src/explore/components/controls/DateFilterControl/components/DateFunctionTooltip.tsx:43
 msgid "Moves the given set of dates by a specified interval."
-msgstr "将给定的日期集以指定的间隔进行移动"
+msgstr "将给定的日期集以指定的间隔进行移动。"
 
 #: superset-frontend/src/explore/components/controls/DateFilterControl/components/DateFunctionTooltip.tsx:58
 msgid "Truncates the specified date to the accuracy specified by the date unit."
@@ -7865,7 +7796,11 @@ msgid ""
 "                This filter was inherited from the dashboard's context.\n"
 "                It won't be saved when saving the chart.\n"
 "              "
-msgstr "此过滤条件是从看板上下文继承的。保存图表时不会保存。"
+msgstr ""
+"\n"
+"                此过滤条件是从看板上下文继承的。\n"
+"                保存图表时不会保存。\n"
+"              "
 
 #: superset-frontend/src/explore/components/controls/FilterBoxItemControl/index.jsx:167
 msgid "Default"
@@ -8074,7 +8009,7 @@ msgstr "示例"
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/index.tsx:67
 msgid "This visualization type is not supported."
-msgstr "选择可视化类型"
+msgstr "选择可视化类型。"
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/index.tsx:106
 msgid "Select Viz Type"
@@ -8196,7 +8131,7 @@ msgstr "高级分析"
 msgid ""
 "This section contains options that allow for advanced analytical post "
 "processing of query results"
-msgstr "本节包含允许对查询结果进行高级分析处理后的选项。"
+msgstr "本节包含允许对查询结果进行高级分析处理后的选项"
 
 #: superset-frontend/src/explore/controlPanels/sections.tsx:152
 msgid "Rolling window"
@@ -8373,7 +8308,7 @@ msgstr ""
 
 #: superset-frontend/src/reports/actions/reports.js:172
 msgid "Your report could not be deleted"
-msgstr "报告无法删除。"
+msgstr "报告无法删除"
 
 #: superset-frontend/src/reports/actions/reports.js:176
 #: superset-frontend/src/views/CRUD/alert/AlertList.tsx:156
@@ -8628,7 +8563,7 @@ msgstr "警报状态"
 
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1139
 msgid "Trigger Alert If..."
-msgstr "如果 ... 则触发警报"
+msgstr "触发警报，当…"
 
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1144
 msgid "Condition"
@@ -9137,7 +9072,7 @@ msgstr "获取仪表板时出错：%s"
 
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:226
 msgid "There was an issue deleting the selected dashboards: "
-msgstr "删除所选仪表板时出现问题："
+msgstr "删除所选仪表板时出现问题: "
 
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:460
 #, python-format
@@ -9693,7 +9628,7 @@ msgstr "持续时间：%s"
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:220
 #: superset-frontend/src/views/CRUD/data/query/QueryPreviewModal.tsx:149
 msgid "Tab name"
-msgstr "tab名"
+msgstr "标签名"
 
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:252
 #: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:307
