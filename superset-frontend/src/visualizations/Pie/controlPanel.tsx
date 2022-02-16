@@ -28,7 +28,7 @@ import {
   emitFilterControl,
 } from 'src/chartConntrols';
 
-import { legendSection } from '../../constants';
+import { legendSection } from 'src/controls';
 import { DEFAULT_FORM_DATA } from './types';
 
 const {

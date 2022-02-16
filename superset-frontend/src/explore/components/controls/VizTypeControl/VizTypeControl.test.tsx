@@ -28,11 +28,9 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { DynamicPluginProvider } from 'src/components/DynamicPlugins';
 import { testWithId } from 'src/utils/testUtils';
-import {
-  EchartsMixedTimeseriesChartPlugin,
-  EchartsTimeseriesChartPlugin,
-} from '@superset-ui/plugin-chart-echarts/lib';
 import { LineChartPlugin } from '@superset-ui/preset-chart-xy/lib';
+import EchartsMixedTimeseriesChartPlugin from '../../../../visualizations/MixedTimeseries';
+import EchartsTimeseriesChartPlugin from '../../../../visualizations/Timeseries';
 import TimeTableChartPlugin from '../../../../visualizations/TimeTable/TimeTableChartPlugin';
 import VizTypeControl, { VIZ_TYPE_CONTROL_TEST_ID } from './index';
 

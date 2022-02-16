@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -18,12 +16,8 @@ import React from 'react';
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t } from 'src/core';
-import { ControlPanelsContainerProps } from 'src/chartConntrols';
-import { DEFAULT_LEGEND_FORM_DATA } from './types';
 
-const { legendMargin, legendOrientation, legendType, showLegend } =
-  DEFAULT_LEGEND_FORM_DATA;
+import { LabelPositionEnum } from './types';
 
 export const DATETIME_WITH_TIME_ZONE = 'YYYY-MM-DD HH:mm:ssZ';
 export const TIME_WITH_MS = 'HH:mm:ss.SSS';
@@ -64,77 +58,6 @@ export const FAST_DEBOUNCE = 250;
  */
 export const SLOW_DEBOUNCE = 500;
 
-const showLegendControl = {
-  name: 'show_legend',
-  config: {
-    type: 'CheckboxControl',
-    label: t('Show legend'),
-    renderTrigger: true,
-    default: showLegend,
-    description: t('Whether to display a legend for the chart'),
-  },
-};
-
-const legendTypeControl = {
-  name: 'legendType',
-  config: {
-    type: 'SelectControl',
-    freeForm: false,
-    label: 'Type',
-    choices: [
-      ['scroll', 'Scroll'],
-      ['plain', 'Plain'],
-    ],
-    default: legendType,
-    renderTrigger: true,
-    description: t('Legend type'),
-    visibility: ({ controls }: ControlPanelsContainerProps) =>
-      Boolean(controls?.show_legend?.value),
-  },
-};
-
-const legendOrientationControl = {
-  name: 'legendOrientation',
-  config: {
-    type: 'SelectControl',
-    freeForm: false,
-    label: 'Orientation',
-    choices: [
-      ['top', 'Top'],
-      ['bottom', 'Bottom'],
-      ['left', 'Left'],
-      ['right', 'Right'],
-    ],
-    default: legendOrientation,
-    renderTrigger: true,
-    description: t('Legend type'),
-    visibility: ({ controls }: ControlPanelsContainerProps) =>
-      Boolean(controls?.show_legend?.value),
-  },
-};
-
-const legendMarginControl = {
-  name: 'legendMargin',
-  config: {
-    type: 'TextControl',
-    label: t('Margin'),
-    renderTrigger: true,
-    isInt: true,
-    default: legendMargin,
-    description: t('Additional padding for legend.'),
-    visibility: ({ controls }: ControlPanelsContainerProps) =>
-      Boolean(controls?.show_legend?.value),
-  },
-};
-
-export const legendSection = [
-  [<h1 className="section-header">{t('Legend')}</h1>],
-  [showLegendControl],
-  [legendTypeControl],
-  [legendOrientationControl],
-  [legendMarginControl],
-];
-
 export enum OpacityEnum {
   Transparent = 0,
   SemiTransparent = 0.3,
@@ -158,3 +81,19 @@ export const TIMESERIES_CONSTANTS = {
 };
 
 export const NULL_STRING = '<NULL>';
+
+export const LABEL_POSITION: [LabelPositionEnum, string][] = [
+  [LabelPositionEnum.Top, 'Top'],
+  [LabelPositionEnum.Left, 'Left'],
+  [LabelPositionEnum.Right, 'Right'],
+  [LabelPositionEnum.Bottom, 'Bottom'],
+  [LabelPositionEnum.Inside, 'Inside'],
+  [LabelPositionEnum.InsideBottomLeft, 'Inside left'],
+  [LabelPositionEnum.InsideBottomRight, 'Inside right'],
+  [LabelPositionEnum.InsideTop, 'Inside top'],
+  [LabelPositionEnum.InsideBottom, 'Inside bottom'],
+  [LabelPositionEnum.InsideTopLeft, 'Inside top left'],
+  [LabelPositionEnum.InsideBottomLeft, 'Inside bottom left'],
+  [LabelPositionEnum.InsideTopRight, 'Inside top right'],
+  [LabelPositionEnum.InsideBottomRight, 'Inside bottom right'],
+];

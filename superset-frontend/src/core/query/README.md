@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-## @superset-ui/core/query
+## src/core/query
 
 Utility to make API requests to Superset backend.
 

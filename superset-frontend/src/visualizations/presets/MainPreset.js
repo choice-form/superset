@@ -54,23 +54,6 @@ import {
 } from '@superset-ui/legacy-preset-chart-nvd3';
 import { DeckGLChartPreset } from '@superset-ui/legacy-preset-chart-deckgl';
 import {
-  EchartsBoxPlotChartPlugin,
-  EchartsAreaChartPlugin,
-  EchartsTimeseriesChartPlugin,
-  EchartsTimeseriesBarChartPlugin,
-  EchartsTimeseriesLineChartPlugin,
-  EchartsTimeseriesScatterChartPlugin,
-  EchartsTimeseriesSmoothLineChartPlugin,
-  EchartsTimeseriesStepChartPlugin,
-  EchartsGraphChartPlugin,
-  EchartsGaugeChartPlugin,
-  EchartsRadarChartPlugin,
-  EchartsFunnelChartPlugin,
-  EchartsTreemapChartPlugin,
-  EchartsMixedTimeseriesChartPlugin,
-  EchartsTreeChartPlugin,
-} from '@superset-ui/plugin-chart-echarts';
-import {
   SelectFilterPlugin,
   RangeFilterPlugin,
   TimeFilterPlugin,
@@ -79,7 +62,24 @@ import {
   GroupByFilterPlugin,
 } from 'src/filters/components';
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '@superset-ui/plugin-chart-pivot-table';
+
+// 正常显示的图
+import EchartsBoxPlotChartPlugin from '../BoxPlot';
+import EchartsTimeseriesChartPlugin from '../Timeseries';
+import EchartsAreaChartPlugin from '../Timeseries/Area';
+import EchartsTimeseriesBarChartPlugin from '../Timeseries/Regular/Bar';
+import EchartsTimeseriesLineChartPlugin from '../Timeseries/Regular/Line';
+import EchartsTimeseriesScatterChartPlugin from '../Timeseries/Regular/Scatter';
+import EchartsTimeseriesSmoothLineChartPlugin from '../Timeseries/Regular/SmoothLine';
+import EchartsTimeseriesStepChartPlugin from '../Timeseries/Step';
 import EchartsPieChartPlugin from '../Pie';
+import EchartsTreeChartPlugin from '../Tree';
+import EchartsTreemapChartPlugin from '../Treemap';
+import EchartsGraphChartPlugin from '../Graph';
+import EchartsGaugeChartPlugin from '../Gauge';
+import EchartsRadarChartPlugin from '../Radar';
+import EchartsFunnelChartPlugin from '../Funnel';
+import EchartsMixedTimeseriesChartPlugin from '../MixedTimeseries';
 import FilterBoxChartPlugin from '../FilterBox/FilterBoxChartPlugin';
 import TimeTableChartPlugin from '../TimeTable/TimeTableChartPlugin';
 
@@ -111,6 +111,7 @@ export default class MainPreset extends Preset {
         new EventFlowChartPlugin().configure({ key: 'event_flow' }),
         new FilterBoxChartPlugin().configure({ key: 'filter_box' }),
         new EchartsFunnelChartPlugin().configure({ key: 'funnel' }),
+        new EchartsTreeChartPlugin().configure({ key: 'tree_chart' }),
         new EchartsTreemapChartPlugin().configure({ key: 'treemap_v2' }),
         new EchartsGaugeChartPlugin().configure({ key: 'gauge_chart' }),
         new EchartsGraphChartPlugin().configure({ key: 'graph_chart' }),
@@ -165,7 +166,6 @@ export default class MainPreset extends Preset {
         new TimeFilterPlugin().configure({ key: 'filter_time' }),
         new TimeColumnFilterPlugin().configure({ key: 'filter_timecolumn' }),
         new TimeGrainFilterPlugin().configure({ key: 'filter_timegrain' }),
-        new EchartsTreeChartPlugin().configure({ key: 'tree_chart' }),
         ...experimentalplugins,
       ],
     });
