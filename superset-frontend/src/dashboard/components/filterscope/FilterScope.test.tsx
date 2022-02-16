@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { supersetTheme } from '@superset-ui/core';
+import { supersetTheme } from 'src/core';
 import { render, screen } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 import FilterScopeSelector from './FilterScopeSelector';

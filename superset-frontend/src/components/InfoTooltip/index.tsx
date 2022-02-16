@@ -18,7 +18,7 @@
  */
 
 import React from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import Icons from 'src/components/Icons';
 

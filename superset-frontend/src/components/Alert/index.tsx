@@ -21,7 +21,7 @@ import {
   Alert as AntdAlert,
   AlertProps as AntdAlertProps,
 } from 'src/common/components';
-import { useTheme } from '@superset-ui/core';
+import { useTheme } from 'src/core';
 import Icons from 'src/components/Icons';
 
 export type AlertProps = PropsWithChildren<

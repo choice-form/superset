@@ -17,9 +17,9 @@
  * under the License.
  */
 import React, { ReactNode, useEffect, useState } from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import { Checkbox } from 'src/common/components';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 
 interface CollapsibleControlProps {
   initialValue?: boolean;

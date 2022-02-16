@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { FC } from 'react';
-import { styled, t, useTheme } from '@superset-ui/core';
+import { styled, t, useTheme } from 'src/core';
 import { Collapse, Typography, Tooltip } from 'src/common/components';
 import { DataMaskState } from 'src/dataMask/types';
 import Icons from 'src/components/Icons';

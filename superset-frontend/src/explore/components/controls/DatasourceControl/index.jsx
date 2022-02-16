@@ -19,7 +19,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t, styled, supersetTheme } from '@superset-ui/core';
+import { t, styled, supersetTheme } from 'src/core';
 
 import { Dropdown, Menu } from 'src/common/components';
 import { Tooltip } from 'src/components/Tooltip';
@@ -114,9 +114,8 @@ class DatasourceControl extends React.PureComponent {
       showChangeDatasourceModal: false,
     };
     this.onDatasourceSave = this.onDatasourceSave.bind(this);
-    this.toggleChangeDatasourceModal = this.toggleChangeDatasourceModal.bind(
-      this,
-    );
+    this.toggleChangeDatasourceModal =
+      this.toggleChangeDatasourceModal.bind(this);
     this.toggleEditDatasourceModal = this.toggleEditDatasourceModal.bind(this);
     this.toggleShowDatasource = this.toggleShowDatasource.bind(this);
     this.handleMenuItemClick = this.handleMenuItemClick.bind(this);

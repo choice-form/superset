@@ -19,7 +19,7 @@
 
 import React, { useMemo, useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useHistory } from 'react-router-dom';
-import { t, styled, SupersetClient } from '@superset-ui/core';
+import { t, styled, SupersetClient } from 'src/core';
 import moment from 'moment';
 import rison from 'rison';
 
@@ -65,18 +65,13 @@ function AnnotationList({
     addDangerToast,
     false,
   );
-  const [annotationModalOpen, setAnnotationModalOpen] = useState<boolean>(
-    false,
-  );
+  const [annotationModalOpen, setAnnotationModalOpen] =
+    useState<boolean>(false);
   const [annotationLayerName, setAnnotationLayerName] = useState<string>('');
-  const [
-    currentAnnotation,
-    setCurrentAnnotation,
-  ] = useState<AnnotationObject | null>(null);
-  const [
-    annotationCurrentlyDeleting,
-    setAnnotationCurrentlyDeleting,
-  ] = useState<AnnotationObject | null>(null);
+  const [currentAnnotation, setCurrentAnnotation] =
+    useState<AnnotationObject | null>(null);
+  const [annotationCurrentlyDeleting, setAnnotationCurrentlyDeleting] =
+    useState<AnnotationObject | null>(null);
   const handleAnnotationEdit = (annotation: AnnotationObject | null) => {
     setCurrentAnnotation(annotation);
     setAnnotationModalOpen(true);

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { styled, css, SupersetTheme } from '@superset-ui/core';
+import { styled, css, SupersetTheme } from 'src/core';
 import { JsonEditor } from 'src/components/AsyncAceEditor';
 import Button from 'src/components/Button';
 

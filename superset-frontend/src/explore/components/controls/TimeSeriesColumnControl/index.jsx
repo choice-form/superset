@@ -22,8 +22,8 @@ import { Row, Col, Input } from 'src/common/components';
 import Button from 'src/components/Button';
 import Popover from 'src/components/Popover';
 import { Select } from 'src/components';
-import { t, styled } from '@superset-ui/core';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { t, styled } from 'src/core';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 import BoundsControl from '../BoundsControl';
 import CheckboxControl from '../CheckboxControl';
 

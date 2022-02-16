@@ -17,7 +17,7 @@
  * under the License.
  */
 import shortid from 'shortid';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 
 import {
   CHART_TYPE,

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { AppSection, GenericDataType } from '@superset-ui/core';
+import { AppSection, GenericDataType } from 'src/core';
 import React from 'react';
 import { render } from 'spec/helpers/testing-library';
 import RangeFilterPlugin from './RangeFilterPlugin';

@@ -20,7 +20,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { t, supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { t, supersetTheme, ThemeProvider } from 'src/core';
 import { FeatureFlag, isFeatureEnabled } from 'src/featureFlags';
 import throttle from 'lodash/throttle';
 import ToastContainer from 'src/components/MessageToasts/ToastContainer';

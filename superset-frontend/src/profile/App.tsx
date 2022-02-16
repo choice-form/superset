@@ -21,7 +21,7 @@ import { hot } from 'react-hot-loader/root';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from '@superset-ui/core';
+import { ThemeProvider } from 'src/core';
 import App from 'src/profile/components/App';
 import messageToastReducer from 'src/components/MessageToasts/reducers';
 import { initEnhancer } from 'src/reduxUtils';

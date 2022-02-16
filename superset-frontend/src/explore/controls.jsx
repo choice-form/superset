@@ -63,7 +63,7 @@ import {
   getSequentialSchemeRegistry,
   legacyValidateInteger,
   validateNonEmpty,
-} from '@superset-ui/core';
+} from 'src/core';
 import { formatSelectOptions } from 'src/modules/utils';
 import { TIME_FILTER_LABELS } from './constants';
 import { StyledColumnOption } from './components/optionRenderers';

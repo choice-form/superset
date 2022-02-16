@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import moment from 'moment';
 import React, { useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';

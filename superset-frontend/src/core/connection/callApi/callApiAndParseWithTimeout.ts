@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -16,41 +16,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-export const DATETIME_WITH_TIME_ZONE = 'YYYY-MM-DD HH:mm:ssZ';
-export const TIME_WITH_MS = 'HH:mm:ss.SSS';
 
-export const BOOL_TRUE_DISPLAY = 'True';
-export const BOOL_FALSE_DISPLAY = 'False';
+import callApi from './callApi';
+import rejectAfterTimeout from './rejectAfterTimeout';
+import parseResponse from './parseResponse';
+import { CallApi, ClientTimeout, ParseMethod } from '../types';
 
-export const URL_PARAMS = {
-  standalone: {
-    name: 'standalone',
-    type: 'number',
-  },
-  preselectFilters: {
-    name: 'preselect_filters',
-    type: 'object',
-  },
-  nativeFilters: {
-    name: 'native_filters',
-    type: 'rison',
-  },
-  filterSet: {
-    name: 'filter_set',
-    type: 'string',
-  },
-  showFilters: {
-    name: 'show_filters',
-    type: 'boolean',
-  },
-} as const;
+export default async function callApiAndParseWithTimeout<
+  T extends ParseMethod = 'json',
+>({
+  timeout,
+  parseMethod,
+  ...rest
+}: { timeout?: ClientTimeout; parseMethod?: T } & CallApi) {
+  const apiPromise = callApi(rest);
+  const racedPromise =
+    typeof timeout === 'number' && timeout > 0
+      ? Promise.race([apiPromise, rejectAfterTimeout<Response>(timeout)])
+      : apiPromise;
 
-/**
- * Faster debounce delay for inputs without expensive operation.
- */
-export const FAST_DEBOUNCE = 250;
-
-/**
- * Slower debounce delay for inputs with expensive API calls.
- */
-export const SLOW_DEBOUNCE = 500;
+  return parseResponse(racedPromise, parseMethod);
+}

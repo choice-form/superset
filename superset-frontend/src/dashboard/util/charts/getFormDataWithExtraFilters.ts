@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { DataRecordFilters, JsonObject } from '@superset-ui/core';
+import { DataRecordFilters, JsonObject } from 'src/core';
 import { ChartQueryPayload, Charts, LayoutItem } from 'src/dashboard/types';
 import { getExtraFormData } from 'src/dashboard/components/nativeFilters/utils';
 import { DataMaskStateWithId } from 'src/dataMask/types';

@@ -18,7 +18,7 @@
  */
 import React, { useCallback, useMemo } from 'react';
 import rison from 'rison';
-import { t, SupersetClient } from '@superset-ui/core';
+import { t, SupersetClient } from 'src/core';
 import { Select } from 'src/components';
 import { cacheWrapper } from 'src/utils/cacheWrapper';
 import {

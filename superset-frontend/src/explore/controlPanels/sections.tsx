@@ -17,8 +17,8 @@
  * under the License.
  */
 import React from 'react';
-import { t } from '@superset-ui/core';
-import { ControlPanelSectionConfig } from '@superset-ui/chart-controls';
+import { t } from 'src/core';
+import { ControlPanelSectionConfig } from 'src/chartConntrols';
 import { formatSelectOptions } from 'src/modules/utils';
 
 export const druidTimeSeries: ControlPanelSectionConfig = {

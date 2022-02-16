@@ -17,7 +17,7 @@
  * under the License.
  */
 import { DatePicker as AntdDatePicker } from 'antd';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 
 const AntdRangePicker = AntdDatePicker.RangePicker;
 

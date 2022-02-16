@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { useTheme } from '@superset-ui/core';
+import { useTheme } from 'src/core';
 import { List, ListItemProps } from 'src/common/components';
 
 export interface CustomListItemProps extends ListItemProps {

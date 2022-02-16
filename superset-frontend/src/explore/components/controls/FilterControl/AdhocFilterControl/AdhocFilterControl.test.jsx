@@ -20,7 +20,7 @@
 import React from 'react';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
-import { supersetTheme } from '@superset-ui/core';
+import { supersetTheme } from 'src/core';
 
 import AdhocFilter, {
   EXPRESSION_TYPES,

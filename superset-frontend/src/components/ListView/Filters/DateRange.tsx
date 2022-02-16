@@ -18,7 +18,7 @@
  */
 import React, { useState, useMemo } from 'react';
 import moment, { Moment } from 'moment';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import { RangePicker } from 'src/components/DatePicker';
 import { FormLabel } from 'src/components/Form';
 import { BaseFilter } from './Base';

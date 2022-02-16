@@ -21,8 +21,8 @@ import {
   GenericDataType,
   QueryObject,
   QueryObjectFilterClause,
-} from '@superset-ui/core';
-import { BuildQuery } from '@superset-ui/core/lib/chart/registries/ChartBuildQueryRegistrySingleton';
+} from 'src/core';
+import { BuildQuery } from 'src/core/chart/registries/ChartBuildQueryRegistrySingleton';
 import { DEFAULT_FORM_DATA, PluginFilterSelectQueryFormData } from './types';
 
 const buildQuery: BuildQuery<PluginFilterSelectQueryFormData> = (

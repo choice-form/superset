@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t, useTheme, styled } from '@superset-ui/core';
+import { t, useTheme, styled } from 'src/core';
 import Button from 'src/components/Button';
 import Icons from 'src/components/Icons';
 import withToasts from 'src/components/MessageToasts/withToasts';

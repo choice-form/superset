@@ -29,7 +29,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { QueryParamProvider } from 'use-query-params';
 import { initFeatureFlags } from 'src/featureFlags';
-import { ThemeProvider } from '@superset-ui/core';
+import { ThemeProvider } from 'src/core';
 import { DynamicPluginProvider } from 'src/components/DynamicPlugins';
 import ErrorBoundary from 'src/components/ErrorBoundary';
 import Loading from 'src/components/Loading';

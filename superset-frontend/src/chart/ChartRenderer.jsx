@@ -19,7 +19,7 @@
 import { snakeCase, isEqual } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SuperChart, logging, Behavior } from '@superset-ui/core';
+import { SuperChart, logging, Behavior } from 'src/core';
 import { Logger, LOG_ACTIONS_RENDER_CHART } from 'src/logger/LogUtils';
 
 const propTypes = {
@@ -162,13 +162,8 @@ class ChartRenderer extends React.Component {
   }
 
   render() {
-    const {
-      chartAlert,
-      chartStatus,
-      vizType,
-      chartId,
-      refreshOverlayVisible,
-    } = this.props;
+    const { chartAlert, chartStatus, vizType, chartId, refreshOverlayVisible } =
+      this.props;
 
     // Skip chart rendering
     if (

@@ -24,7 +24,7 @@ import {
   t,
   TimeRangeEndpoints,
   useTheme,
-} from '@superset-ui/core';
+} from 'src/core';
 import {
   buildTimeRangeString,
   formatTimeRange,

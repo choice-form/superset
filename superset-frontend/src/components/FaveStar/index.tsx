@@ -18,7 +18,7 @@
  */
 
 import React, { useCallback } from 'react';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import { useComponentDidMount } from 'src/common/hooks/useComponentDidMount';
 import Icons from 'src/components/Icons';

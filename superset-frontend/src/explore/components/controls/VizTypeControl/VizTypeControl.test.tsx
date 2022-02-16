@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Preset } from '@superset-ui/core';
+import { Preset } from 'src/core';
 import { render, cleanup, screen, act } from 'spec/helpers/testing-library';
 import { Provider } from 'react-redux';
 import {

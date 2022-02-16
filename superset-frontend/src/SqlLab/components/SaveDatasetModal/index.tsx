@@ -23,7 +23,7 @@ import { Radio } from 'src/components/Radio';
 import { AutoComplete, Input } from 'src/common/components';
 import StyledModal from 'src/components/Modal';
 import Button from 'src/components/Button';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { RadioChangeEvent } from 'antd/lib/radio';
 
 interface SaveDatasetModalProps {

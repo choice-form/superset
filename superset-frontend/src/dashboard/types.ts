@@ -21,8 +21,8 @@ import {
   ExtraFormData,
   GenericDataType,
   JsonObject,
-} from '@superset-ui/core';
-import { DatasourceMeta } from '@superset-ui/chart-controls';
+} from 'src/core';
+import { DatasourceMeta } from 'src/chartConntrols';
 import { chart } from 'src/chart/chartReducer';
 import componentTypes from 'src/dashboard/util/componentTypes';
 

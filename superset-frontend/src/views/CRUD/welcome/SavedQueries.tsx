@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState } from 'react';
-import { t, SupersetClient, styled, useTheme } from '@superset-ui/core';
+import { t, SupersetClient, styled, useTheme } from 'src/core';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/light';
 import sql from 'react-syntax-highlighter/dist/cjs/languages/hljs/sql';
 import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/github';

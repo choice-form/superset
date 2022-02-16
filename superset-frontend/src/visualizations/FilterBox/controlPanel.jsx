@@ -17,8 +17,8 @@
  * under the License.
  */
 import React from 'react';
-import { t } from '@superset-ui/core';
-import { sections } from '@superset-ui/chart-controls';
+import { t } from 'src/core';
+import { sections } from 'src/chartConntrols';
 
 const appContainer = document.getElementById('app');
 const bootstrapData = JSON.parse(appContainer.getAttribute('data-bootstrap'));

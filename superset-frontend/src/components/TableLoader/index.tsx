@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState, useEffect, useMemo } from 'react';
-import { t, SupersetClient, JsonObject } from '@superset-ui/core';
+import { t, SupersetClient, JsonObject } from 'src/core';
 import TableView, { EmptyWrapperType } from 'src/components/TableView';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import Loading from 'src/components/Loading';

@@ -17,7 +17,7 @@
  * under the License.
  */
 import { ReactNode } from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import { SELECT_WIDTH } from 'src/components/ListView/utils';
 
 export interface BaseFilter {

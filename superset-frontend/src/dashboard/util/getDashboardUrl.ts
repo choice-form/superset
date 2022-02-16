@@ -17,7 +17,7 @@
  * under the License.
  */
 import rison from 'rison';
-import { JsonObject } from '@superset-ui/core';
+import { JsonObject } from 'src/core';
 import { URL_PARAMS } from 'src/constants';
 import replaceUndefinedByNull from './replaceUndefinedByNull';
 import serializeActiveFilterValues from './serializeActiveFilterValues';

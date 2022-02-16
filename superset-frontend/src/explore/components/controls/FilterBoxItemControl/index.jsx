@@ -18,8 +18,8 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t } from '@superset-ui/core';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { t } from 'src/core';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 
 import Popover from 'src/components/Popover';
 import FormRow from 'src/components/FormRow';

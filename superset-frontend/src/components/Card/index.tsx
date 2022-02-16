@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { SupersetTheme } from '@superset-ui/core';
+import { SupersetTheme } from 'src/core';
 import AntdCard, { CardProps as AntdCardProps } from 'antd/lib/card';
 
 export interface CardProps extends AntdCardProps {

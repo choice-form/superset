@@ -17,7 +17,7 @@
  * under the License.
  */
 /* eslint-disable no-param-reassign */
-import { styled, t, useTheme } from '@superset-ui/core';
+import { styled, t, useTheme } from 'src/core';
 import React, { FC } from 'react';
 import Icons from 'src/components/Icons';
 import Button from 'src/components/Button';

@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import { Collapse as AntdCollapse } from 'antd';
 import { CollapseProps as AntdCollapseProps } from 'antd/lib/collapse';
 

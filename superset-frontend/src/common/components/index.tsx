@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { RefObject } from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import {
   Dropdown,
   Menu as AntdMenu,

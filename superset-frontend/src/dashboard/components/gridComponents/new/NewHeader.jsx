@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 
 import { HEADER_TYPE } from '../../../util/componentTypes';
 import { NEW_HEADER_ID } from '../../../util/constants';

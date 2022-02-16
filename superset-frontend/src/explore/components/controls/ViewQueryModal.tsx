@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useEffect, useState } from 'react';
-import { ensureIsArray, styled, t } from '@superset-ui/core';
+import { ensureIsArray, styled, t } from 'src/core';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/light';
 import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/github';
 import CopyToClipboard from 'src/components/CopyToClipboard';

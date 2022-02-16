@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useCallback, useEffect, useState } from 'react';
-import { styled, css, t, useTheme } from '@superset-ui/core';
+import { styled, css, t, useTheme } from 'src/core';
 import Icons from 'src/components/Icons';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import { useComponentDidUpdate } from 'src/common/hooks/useComponentDidUpdate';
@@ -74,10 +74,8 @@ const ConditionalFormattingControl = ({
   ...props
 }: ConditionalFormattingControlProps) => {
   const theme = useTheme();
-  const [
-    conditionalFormattingConfigs,
-    setConditionalFormattingConfigs,
-  ] = useState<ConditionalFormattingConfig[]>(value ?? []);
+  const [conditionalFormattingConfigs, setConditionalFormattingConfigs] =
+    useState<ConditionalFormattingConfig[]>(value ?? []);
 
   useEffect(() => {
     if (onChange) {

@@ -22,7 +22,7 @@ import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 import * as featureFlags from 'src/featureFlags';
 import { Provider } from 'react-redux';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 import { render, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';

@@ -18,7 +18,7 @@
  */
 
 /* eslint-disable no-param-reassign */
-import { DataMask, HandlerFunction, styled, t } from '@superset-ui/core';
+import { DataMask, HandlerFunction, styled, t } from 'src/core';
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import cx from 'classnames';
@@ -151,9 +151,8 @@ const FilterBar: React.FC<FiltersBarProps> = ({
   const history = useHistory();
   const dataMaskApplied: DataMaskStateWithId = useNativeFiltersDataMask();
   const [editFilterSetId, setEditFilterSetId] = useState<string | null>(null);
-  const [dataMaskSelected, setDataMaskSelected] = useImmer<DataMaskStateWithId>(
-    dataMaskApplied,
-  );
+  const [dataMaskSelected, setDataMaskSelected] =
+    useImmer<DataMaskStateWithId>(dataMaskApplied);
   const dispatch = useDispatch();
   const filterSets = useFilterSets();
   const filterSetFilterValues = Object.values(filterSets);

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Behavior, FeatureFlag } from '@superset-ui/core';
+import { Behavior, FeatureFlag } from 'src/core';
 import * as featureFlags from 'src/featureFlags';
 import { nativeFilterGate } from './utils';
 

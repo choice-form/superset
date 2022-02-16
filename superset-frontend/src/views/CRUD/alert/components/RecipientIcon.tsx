@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t, SupersetTheme, css } from '@superset-ui/core';
+import { t, SupersetTheme, css } from 'src/core';
 import React, { ReactElement } from 'react';
 import { Tooltip } from 'src/components/Tooltip';
 import Icons from 'src/components/Icons';

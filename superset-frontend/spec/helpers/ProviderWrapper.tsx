@@ -18,7 +18,7 @@
  */
 
 import React from 'react';
-import { ThemeProvider } from '@superset-ui/core';
+import { ThemeProvider } from 'src/core';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { QueryParamProvider } from 'use-query-params';
 

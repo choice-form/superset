@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AdhocFilter, DataMask } from '@superset-ui/core';
+import { AdhocFilter, DataMask } from 'src/core';
 
 export interface Column {
   name: string;

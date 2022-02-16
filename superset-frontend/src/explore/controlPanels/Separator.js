@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t, validateNonEmpty } from '@superset-ui/core';
+import { t, validateNonEmpty } from 'src/core';
 import { formatSelectOptions } from 'src/modules/utils';
 
 export default {

@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { QueryFormData } from '@superset-ui/core';
-import { ControlStateMapping } from '@superset-ui/chart-controls';
+import { QueryFormData } from 'src/core';
+import { ControlStateMapping } from 'src/chartConntrols';
 
 export function getFormDataFromControls(
   controlsState: ControlStateMapping,

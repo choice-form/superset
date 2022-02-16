@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState, ReactNode } from 'react';
-import { styled, useTheme, t } from '@superset-ui/core';
+import { styled, useTheme, t } from 'src/core';
 import { noOp } from 'src/utils/common';
 import Modal from 'src/components/Modal';
 import Button from 'src/components/Button';

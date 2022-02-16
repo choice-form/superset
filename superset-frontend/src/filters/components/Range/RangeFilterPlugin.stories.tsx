@@ -22,7 +22,7 @@ import {
   SuperChart,
   getChartTransformPropsRegistry,
   GenericDataType,
-} from '@superset-ui/core';
+} from 'src/core';
 import RangeFilterPlugin from './index';
 import transformProps from './transformProps';
 

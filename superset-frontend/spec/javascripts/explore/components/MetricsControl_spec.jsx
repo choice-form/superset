@@ -23,7 +23,7 @@ import { shallow } from 'enzyme';
 
 import { AGGREGATES } from 'src/explore/constants';
 import { LabelsContainer } from 'src/explore/components/controls/OptionControls';
-import { supersetTheme } from '@superset-ui/core';
+import { supersetTheme } from 'src/core';
 import MetricsControl from 'src/explore/components/controls/MetricControl/MetricsControl';
 import AdhocMetric, {
   EXPRESSION_TYPES,

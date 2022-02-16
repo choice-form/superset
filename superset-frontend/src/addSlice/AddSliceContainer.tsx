@@ -18,7 +18,7 @@
  */
 import React, { ReactNode } from 'react';
 import rison from 'rison';
-import { styled, t, SupersetClient, JsonResponse } from '@superset-ui/core';
+import { styled, t, SupersetClient, JsonResponse } from 'src/core';
 import { Steps } from 'src/common/components';
 import Button from 'src/components/Button';
 import { Select } from 'src/components';

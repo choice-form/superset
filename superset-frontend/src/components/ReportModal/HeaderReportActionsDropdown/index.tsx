@@ -18,7 +18,7 @@
  */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { t, SupersetTheme, css, useTheme } from '@superset-ui/core';
+import { t, SupersetTheme, css, useTheme } from 'src/core';
 import Icons from 'src/components/Icons';
 import { Switch } from 'src/components/Switch';
 import { AlertObject } from 'src/views/CRUD/alert/types';
@@ -43,10 +43,8 @@ export default function HeaderReportActionsDropDown({
   const reports = useSelector<any, AlertObject>(state => state.reports);
   const reportsIds = Object.keys(reports);
   const report = reports[reportsIds[0]];
-  const [
-    currentReportDeleting,
-    setCurrentReportDeleting,
-  ] = useState<AlertObject | null>(null);
+  const [currentReportDeleting, setCurrentReportDeleting] =
+    useState<AlertObject | null>(null);
   const theme = useTheme();
 
   const toggleActiveKey = async (data: AlertObject, checked: boolean) => {

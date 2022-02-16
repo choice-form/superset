@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useMemo } from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { Column } from 'react-table';
 import debounce from 'lodash/debounce';
 import { Input } from 'src/common/components';

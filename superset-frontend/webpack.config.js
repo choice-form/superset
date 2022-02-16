@@ -26,10 +26,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
-const {
-  WebpackManifestPlugin,
-  getCompilerHooks,
-} = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin, getCompilerHooks } = require('webpack-manifest-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const parsedArgs = require('yargs').argv;
 const getProxyConfig = require('./webpack.proxy-config');
@@ -280,16 +277,6 @@ const config = {
     modules: [APP_DIR, 'node_modules', ROOT_DIR],
     alias: {
       'react-dom': '@hot-loader/react-dom',
-      // Force using absolute import path of some packages in the root node_modules,
-      // as they can be dependencies of other packages via `npm link`.
-      '@superset-ui/core': path.resolve(
-        APP_DIR,
-        './node_modules/@superset-ui/core',
-      ),
-      '@superset-ui/chart-controls': path.resolve(
-        APP_DIR,
-        './node_modules/@superset-ui/chart-controls',
-      ),
       react: path.resolve('./node_modules/react'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.yml'],

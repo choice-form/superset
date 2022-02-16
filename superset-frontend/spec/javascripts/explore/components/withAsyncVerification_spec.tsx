@@ -25,7 +25,7 @@ import withAsyncVerification, {
   ControlPropsWithExtras,
   WithAsyncVerificationOptions,
 } from 'src/explore/components/controls/withAsyncVerification';
-import { ExtraControlProps } from '@superset-ui/chart-controls';
+import { ExtraControlProps } from 'src/chartConntrols';
 import MetricsControl from 'src/explore/components/controls/MetricControl/MetricsControl';
 
 const VALID_METRIC = {

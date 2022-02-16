@@ -18,7 +18,7 @@
  */
 import React, { useEffect, useState, useRef } from 'react';
 import cx from 'classnames';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 
 export interface EditableTitleProps {
@@ -52,10 +52,8 @@ export default function EditableTitle({
   const [isEditing, setIsEditing] = useState(editing);
   const [currentTitle, setCurrentTitle] = useState(title);
   const [lastTitle, setLastTitle] = useState(title);
-  const [
-    contentBoundingRect,
-    setContentBoundingRect,
-  ] = useState<DOMRect | null>(null);
+  const [contentBoundingRect, setContentBoundingRect] =
+    useState<DOMRect | null>(null);
   // Used so we can access the DOM element if a user clicks on this component.
 
   const contentRef = useRef<any | HTMLInputElement | HTMLTextAreaElement>();

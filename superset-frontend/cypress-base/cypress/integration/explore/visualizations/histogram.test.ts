@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { QueryFormData } from '@superset-ui/core';
+import { QueryFormData } from 'src/core';
 
 describe('Visualization > Histogram', () => {
   const HISTOGRAM_FORM_DATA: QueryFormData = {

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { DataMask } from '@superset-ui/core';
+import { DataMask } from 'src/core';
 
 export enum DataMaskType {
   NativeFilters = 'nativeFilters',

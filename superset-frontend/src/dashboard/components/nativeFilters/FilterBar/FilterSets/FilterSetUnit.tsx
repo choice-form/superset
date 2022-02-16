@@ -21,7 +21,7 @@ import React, { FC } from 'react';
 import { FilterSet } from 'src/dashboard/reducers/types';
 import { DataMaskState } from 'src/dataMask/types';
 import { CheckOutlined, EllipsisOutlined } from '@ant-design/icons';
-import { HandlerFunction, styled, supersetTheme, t } from '@superset-ui/core';
+import { HandlerFunction, styled, supersetTheme, t } from 'src/core';
 import Button from 'src/components/Button';
 import { Tooltip } from 'src/components/Tooltip';
 import FiltersHeader from './FiltersHeader';

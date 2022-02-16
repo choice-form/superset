@@ -19,7 +19,7 @@
 /* eslint-disable camelcase */
 /* eslint prefer-const: 2 */
 import shortid from 'shortid';
-import { SupersetClient } from '@superset-ui/core';
+import { SupersetClient } from 'src/core';
 
 import { safeStringify } from '../utils/safeStringify';
 import { LOG_EVENT } from '../logger/actions';
@@ -68,12 +68,8 @@ const loggerMiddleware = store => next => action => {
     return next(action);
   }
 
-  const {
-    dashboardInfo,
-    explore,
-    impressionId,
-    dashboardLayout,
-  } = store.getState();
+  const { dashboardInfo, explore, impressionId, dashboardLayout } =
+    store.getState();
   let logMetadata = {
     impression_id: impressionId,
     version: 'v2',

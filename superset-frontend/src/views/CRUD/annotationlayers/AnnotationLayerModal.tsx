@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 
 import Icons from 'src/components/Icons';
@@ -86,10 +86,8 @@ const AnnotationLayerModal: FunctionComponent<AnnotationLayerModalProps> = ({
   layer = null,
 }) => {
   const [disableSave, setDisableSave] = useState<boolean>(true);
-  const [
-    currentLayer,
-    setCurrentLayer,
-  ] = useState<AnnotationLayerObject | null>();
+  const [currentLayer, setCurrentLayer] =
+    useState<AnnotationLayerObject | null>();
   const [isHidden, setIsHidden] = useState<boolean>(true);
   const isEditMode = layer !== null;
 

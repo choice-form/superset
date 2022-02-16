@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { FilterState, QueryFormData, DataRecord } from '@superset-ui/core';
+import { FilterState, QueryFormData, DataRecord } from 'src/core';
 import { RefObject } from 'react';
 import { PluginFilterHooks, PluginFilterStylesProps } from '../types';
 

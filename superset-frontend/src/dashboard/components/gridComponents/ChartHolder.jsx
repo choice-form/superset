@@ -19,7 +19,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { useTheme } from '@superset-ui/core';
+import { useTheme } from 'src/core';
 import { useSelector, connect } from 'react-redux';
 
 import { getChartIdsInFilterScope } from 'src/dashboard/util/activeDashboardFilters';
@@ -167,10 +167,8 @@ class ChartHolder extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     const { component, directPathToChild, directPathLastUpdated } = props;
-    const {
-      label: columnName,
-      chart: chartComponentId,
-    } = getChartAndLabelComponentIdFromPath(directPathToChild);
+    const { label: columnName, chart: chartComponentId } =
+      getChartAndLabelComponentIdFromPath(directPathToChild);
 
     if (
       directPathLastUpdated !== state.directPathLastUpdated &&

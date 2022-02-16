@@ -20,7 +20,7 @@
 /* eslint-disable no-param-reassign */
 // <- When we work with Immer, we need reassign, so disabling lint
 import produce from 'immer';
-import { DataMask, FeatureFlag } from '@superset-ui/core';
+import { DataMask, FeatureFlag } from 'src/core';
 import { NATIVE_FILTER_PREFIX } from 'src/dashboard/components/nativeFilters/FiltersConfigModal/utils';
 import { HYDRATE_DASHBOARD } from 'src/dashboard/actions/hydrate';
 import { isFeatureEnabled } from 'src/featureFlags';

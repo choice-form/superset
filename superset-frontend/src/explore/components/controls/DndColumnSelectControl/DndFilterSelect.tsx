@@ -26,8 +26,8 @@ import {
   QueryFormMetric,
   SupersetClient,
   t,
-} from '@superset-ui/core';
-import { ColumnMeta } from '@superset-ui/chart-controls';
+} from 'src/core';
+import { ColumnMeta } from 'src/chartConntrols';
 import {
   OPERATOR_ENUM_TO_OPERATOR_TYPE,
   Operators,

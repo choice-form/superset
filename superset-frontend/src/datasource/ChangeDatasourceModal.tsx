@@ -24,7 +24,7 @@ import React, {
   useCallback,
 } from 'react';
 import Alert from 'src/components/Alert';
-import { SupersetClient, t, styled } from '@superset-ui/core';
+import { SupersetClient, t, styled } from 'src/core';
 import TableView, { EmptyWrapperType } from 'src/components/TableView';
 import { ServerPagination, SortByType } from 'src/components/TableView/types';
 import StyledModal from 'src/components/Modal';

@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import { styledMount as mount } from 'spec/helpers/theming';
-import { getChartControlPanelRegistry } from '@superset-ui/core';
+import { getChartControlPanelRegistry } from 'src/core';
 
 import AlteredSliceTag from 'src/components/AlteredSliceTag';
 import ModalTrigger from 'src/components/ModalTrigger';

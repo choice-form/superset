@@ -20,7 +20,7 @@ import React, { useState } from 'react';
 import Collapse from 'src/components/Collapse';
 import Card from 'src/components/Card';
 import ButtonGroup from 'src/components/ButtonGroup';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import { debounce } from 'lodash';
 
 import { Tooltip } from 'src/components/Tooltip';

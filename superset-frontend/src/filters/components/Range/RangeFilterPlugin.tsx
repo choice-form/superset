@@ -16,12 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  getNumberFormatter,
-  NumberFormats,
-  styled,
-  t,
-} from '@superset-ui/core';
+import { getNumberFormatter, NumberFormats, styled, t } from 'src/core';
 import React, { useEffect, useState } from 'react';
 import { Slider } from 'src/common/components';
 import { rgba } from 'emotion-rgba';

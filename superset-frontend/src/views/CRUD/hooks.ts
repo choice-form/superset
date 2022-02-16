@@ -18,7 +18,7 @@
  */
 import rison from 'rison';
 import { useState, useEffect, useCallback } from 'react';
-import { makeApi, SupersetClient, t, JsonObject } from '@superset-ui/core';
+import { makeApi, SupersetClient, t, JsonObject } from 'src/core';
 
 import {
   createErrorHandler,
@@ -555,10 +555,8 @@ export const useChartEditModal = (
   setCharts: (charts: Array<Chart>) => void,
   charts: Array<Chart>,
 ) => {
-  const [
-    sliceCurrentlyEditing,
-    setSliceCurrentlyEditing,
-  ] = useState<Slice | null>(null);
+  const [sliceCurrentlyEditing, setSliceCurrentlyEditing] =
+    useState<Slice | null>(null);
 
   function openChartEditModal(chart: Chart) {
     setSliceCurrentlyEditing({

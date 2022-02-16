@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useEffect, useState } from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import Collapse from 'src/components/Collapse';
 import { User } from 'src/types/bootstrapTypes';
 import { reject } from 'lodash';

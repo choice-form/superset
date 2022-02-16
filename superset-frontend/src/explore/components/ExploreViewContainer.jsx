@@ -21,7 +21,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { styled, t, css, useTheme } from '@superset-ui/core';
+import { styled, t, css, useTheme } from 'src/core';
 import { debounce } from 'lodash';
 import { Resizable } from 're-resizable';
 

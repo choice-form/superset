@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { FeatureFlagMap, FeatureFlag } from '@superset-ui/core';
+import { FeatureFlagMap, FeatureFlag } from 'src/core';
 
-export { FeatureFlagMap, FeatureFlag } from '@superset-ui/core';
+export { FeatureFlagMap, FeatureFlag } from 'src/core';
 
 export function initFeatureFlags(featureFlags: FeatureFlagMap) {
   if (!window.featureFlags) {

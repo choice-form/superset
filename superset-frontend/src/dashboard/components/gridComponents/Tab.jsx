@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 
 import DashboardComponent from '../../containers/DashboardComponent';
 import DragDroppable from '../dnd/DragDroppable';

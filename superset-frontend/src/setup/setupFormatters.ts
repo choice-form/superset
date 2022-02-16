@@ -24,7 +24,7 @@ import {
   getTimeFormatterRegistry,
   smartDateFormatter,
   smartDateVerboseFormatter,
-} from '@superset-ui/core';
+} from 'src/core';
 
 export default function setupFormatters() {
   getNumberFormatterRegistry()

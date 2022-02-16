@@ -28,7 +28,7 @@ import {
   QueryFormData,
   DatasourceType,
   css,
-} from '@superset-ui/core';
+} from 'src/core';
 import {
   ControlPanelSectionConfig,
   ControlState,
@@ -37,7 +37,7 @@ import {
   ExpandedControlItem,
   InfoTooltipWithTrigger,
   sections,
-} from '@superset-ui/chart-controls';
+} from 'src/chartConntrols';
 
 import Collapse from 'src/components/Collapse';
 import Tabs from 'src/components/Tabs';

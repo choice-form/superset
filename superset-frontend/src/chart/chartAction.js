@@ -19,7 +19,7 @@
 /* eslint no-undef: 'error' */
 /* eslint no-param-reassign: ["error", { "props": false }] */
 import moment from 'moment';
-import { t, SupersetClient } from '@superset-ui/core';
+import { t, SupersetClient } from 'src/core';
 import { getControlsState } from 'src/explore/store';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import {
@@ -574,8 +574,8 @@ export function redirectSQLLab(formData) {
 export function refreshChart(chartKey, force, dashboardId) {
   return (dispatch, getState) => {
     const chart = (getState().charts || {})[chartKey];
-    const timeout = getState().dashboardInfo.common.conf
-      .SUPERSET_WEBSERVER_TIMEOUT;
+    const timeout =
+      getState().dashboardInfo.common.conf.SUPERSET_WEBSERVER_TIMEOUT;
 
     if (
       !chart.latestQueryFormData ||

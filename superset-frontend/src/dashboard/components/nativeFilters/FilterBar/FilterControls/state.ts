@@ -19,7 +19,7 @@
 import { useSelector } from 'react-redux';
 import { NativeFiltersState } from 'src/dashboard/reducers/types';
 import { DataMaskStateWithId } from 'src/dataMask/types';
-import { ExtraFormData } from '@superset-ui/core';
+import { ExtraFormData } from 'src/core';
 import { mergeExtraFormData } from '../../utils';
 
 // eslint-disable-next-line import/prefer-default-export

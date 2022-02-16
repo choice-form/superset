@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState, useMemo } from 'react';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { Select } from 'src/components';
 import { Filter, SelectOption } from 'src/components/ListView/types';
 import { FormLabel } from 'src/components/Form';

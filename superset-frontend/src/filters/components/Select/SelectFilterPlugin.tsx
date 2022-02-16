@@ -28,7 +28,7 @@ import {
   smartDateDetailedFormatter,
   t,
   tn,
-} from '@superset-ui/core';
+} from 'src/core';
 import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import { Select } from 'src/components';
 import debounce from 'lodash/debounce';

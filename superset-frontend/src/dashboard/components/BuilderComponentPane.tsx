@@ -22,7 +22,7 @@ import Tabs from 'src/components/Tabs';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { ParentSize } from '@vx/responsive';
 
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 
 import NewColumn from './gridComponents/new/NewColumn';
 import NewDivider from './gridComponents/new/NewDivider';

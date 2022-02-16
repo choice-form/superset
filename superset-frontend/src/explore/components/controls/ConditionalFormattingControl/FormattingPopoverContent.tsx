@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { Form, FormItem, FormProps } from 'src/components/Form';
 import { Select } from 'src/components';
 import { Col, InputNumber, Row } from 'src/common/components';
@@ -57,22 +57,22 @@ const operatorOptions = [
   { value: COMPARATOR.BETWEEN_OR_RIGHT_EQUAL, label: '< x ≤' },
 ];
 
-const targetValueValidator = (
-  compare: (targetValue: number, compareValue: number) => boolean,
-  rejectMessage: string,
-) => (targetValue: number | string) => (
-  _: any,
-  compareValue: number | string,
-) => {
-  if (
-    !targetValue ||
-    !compareValue ||
-    compare(Number(targetValue), Number(compareValue))
-  ) {
-    return Promise.resolve();
-  }
-  return Promise.reject(new Error(rejectMessage));
-};
+const targetValueValidator =
+  (
+    compare: (targetValue: number, compareValue: number) => boolean,
+    rejectMessage: string,
+  ) =>
+  (targetValue: number | string) =>
+  (_: any, compareValue: number | string) => {
+    if (
+      !targetValue ||
+      !compareValue ||
+      compare(Number(targetValue), Number(compareValue))
+    ) {
+      return Promise.resolve();
+    }
+    return Promise.reject(new Error(rejectMessage));
+  };
 
 const targetValueLeftValidator = targetValueValidator(
   (target: number, val: number) => target > val,

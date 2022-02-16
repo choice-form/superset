@@ -19,7 +19,7 @@
 
 import React, { useEffect, useRef, useCallback } from 'react';
 import moment from 'moment-timezone';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { Select } from 'src/components';
 
 const DEFAULT_TIMEZONE = {

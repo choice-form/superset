@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { SupersetClient } from '@superset-ui/core';
+import { SupersetClient } from 'src/core';
 import { buildV1ChartDataPayload, getExploreUrl } from '../exploreUtils';
 
 export const FETCH_DASHBOARDS_SUCCEEDED = 'FETCH_DASHBOARDS_SUCCEEDED';

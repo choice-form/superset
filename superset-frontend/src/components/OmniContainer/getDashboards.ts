@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { t, SupersetClient } from '@superset-ui/core';
+import { t, SupersetClient } from 'src/core';
 
 interface DashboardItem {
   changed_by_name: string;

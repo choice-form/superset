@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { withTheme } from '@superset-ui/core';
+import { withTheme } from 'src/core';
 
 import {
   FilterValue,

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { sharedControlComponents } from '@superset-ui/chart-controls';
+import { sharedControlComponents } from 'src/chartConntrols';
 import AnnotationLayerControl from './AnnotationLayerControl';
 import BoundsControl from './BoundsControl';
 import CheckboxControl from './CheckboxControl';

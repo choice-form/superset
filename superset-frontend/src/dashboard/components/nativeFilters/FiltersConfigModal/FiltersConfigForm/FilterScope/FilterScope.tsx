@@ -18,7 +18,7 @@
  */
 
 import React, { FC, useCallback, useState } from 'react';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import { Radio } from 'src/components/Radio';
 import { Form, Typography } from 'src/common/components';
 import { useComponentDidUpdate } from 'src/common/hooks/useComponentDidUpdate/useComponentDidUpdate';

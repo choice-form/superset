@@ -17,10 +17,11 @@
  * under the License.
  */
 import React from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import Select, { SelectProps } from 'antd/lib/select';
 
 export {
+  // @ts-ignore
   OptionType as NativeSelectOptionType,
   SelectProps as NativeSelectProps,
 } from 'antd/lib/select';

@@ -19,7 +19,7 @@
 import React from 'react';
 import { render, screen } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import { supersetTheme } from '@superset-ui/core';
+import { supersetTheme } from 'src/core';
 import Button from 'src/components/Button';
 import Icons from 'src/components/Icons';
 import { Tooltip } from '.';

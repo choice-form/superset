@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import * as Core from '@superset-ui/core';
+import * as Core from 'src/core';
 import { shouldUseLegacyApi } from '.';
 
 test('Should return false', () => {

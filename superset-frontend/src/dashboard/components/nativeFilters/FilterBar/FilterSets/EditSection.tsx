@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { FC, useMemo, useState } from 'react';
-import { HandlerFunction, styled, t } from '@superset-ui/core';
+import { HandlerFunction, styled, t } from 'src/core';
 import { Typography, Tooltip } from 'src/common/components';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/Button';

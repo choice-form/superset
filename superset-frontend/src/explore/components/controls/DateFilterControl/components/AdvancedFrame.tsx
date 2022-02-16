@@ -17,10 +17,10 @@
  * under the License.
  */
 import React from 'react';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { SEPARATOR } from 'src/explore/components/controls/DateFilterControl/utils';
 import { Input } from 'src/common/components';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 import { FrameComponentProps } from 'src/explore/components/controls/DateFilterControl/types';
 import DateFunctionTooltip from './DateFunctionTooltip';
 

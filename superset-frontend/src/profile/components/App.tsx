@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import { Row, Col } from 'src/common/components';
 import Tabs from 'src/components/Tabs';
 import { UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';

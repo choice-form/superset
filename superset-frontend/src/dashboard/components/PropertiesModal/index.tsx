@@ -29,7 +29,7 @@ import {
   SupersetClient,
   getCategoricalSchemeRegistry,
   ensureIsArray,
-} from '@superset-ui/core';
+} from 'src/core';
 
 import Modal from 'src/components/Modal';
 import { JsonEditor } from 'src/components/AsyncAceEditor';
@@ -278,12 +278,8 @@ const PropertiesModal = ({
   };
 
   const onFinish = () => {
-    const {
-      title,
-      slug,
-      certifiedBy,
-      certificationDetails,
-    } = form.getFieldsValue();
+    const { title, slug, certifiedBy, certificationDetails } =
+      form.getFieldsValue();
     let currentColorScheme = colorScheme;
     let colorNamespace = '';
 

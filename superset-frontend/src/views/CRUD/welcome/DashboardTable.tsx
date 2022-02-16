@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState, useMemo, useEffect } from 'react';
-import { SupersetClient, t } from '@superset-ui/core';
+import { SupersetClient, t } from 'src/core';
 import { filter } from 'lodash';
 import { useListViewResource, useFavoriteStatus } from 'src/views/CRUD/hooks';
 import {

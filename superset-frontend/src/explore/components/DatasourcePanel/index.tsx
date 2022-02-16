@@ -17,14 +17,10 @@
  * under the License.
  */
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import {
-  ControlConfig,
-  DatasourceMeta,
-  ColumnMeta,
-} from '@superset-ui/chart-controls';
+import { ControlConfig, DatasourceMeta, ColumnMeta } from 'src/chartConntrols';
 import { debounce } from 'lodash';
 import { matchSorter, rankings } from 'match-sorter';
-import { css, styled, t } from '@superset-ui/core';
+import { css, styled, t } from 'src/core';
 import Collapse from 'src/components/Collapse';
 import { Input } from 'src/common/components';
 import { FAST_DEBOUNCE } from 'src/constants';

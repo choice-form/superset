@@ -20,7 +20,7 @@
 import moment from 'moment';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import ButtonGroup from 'src/components/ButtonGroup';
 import CertifiedIcon from 'src/components/CertifiedIcon';
 

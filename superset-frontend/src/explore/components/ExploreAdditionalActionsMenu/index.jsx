@@ -20,7 +20,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { Dropdown, Menu } from 'src/common/components';
 import downloadAsImage from 'src/utils/downloadAsImage';
 import ModalTrigger from 'src/components/ModalTrigger';

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import { Radio as AntdRadio } from 'antd';
 
 const StyledRadio = styled(AntdRadio)`

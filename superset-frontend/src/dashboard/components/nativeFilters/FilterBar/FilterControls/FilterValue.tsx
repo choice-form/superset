@@ -27,7 +27,7 @@ import {
   ChartDataResponseResult,
   JsonObject,
   getChartMetadataRegistry,
-} from '@superset-ui/core';
+} from 'src/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { isEqual, isEqualWith } from 'lodash';
 import { getChartDataRequest } from 'src/chart/chartAction';

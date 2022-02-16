@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState } from 'react';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import Icons from 'src/components/Icons';
 import { AntdInput as Input } from 'src/common/components';
 import { SELECT_WIDTH } from 'src/components/ListView/utils';

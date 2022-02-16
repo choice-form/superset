@@ -17,7 +17,7 @@
  * under the License.
  */
 import fetchMock from 'fetch-mock';
-import { SupersetClient } from '@superset-ui/core';
+import { SupersetClient } from 'src/core';
 
 export default function setupSupersetClient() {
   // The following is needed to mock out SupersetClient requests

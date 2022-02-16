@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import Button from 'src/components/Button';
 import { ButtonProps as AntdButtonProps } from 'antd/lib/button';
 import Icons from 'src/components/Icons';

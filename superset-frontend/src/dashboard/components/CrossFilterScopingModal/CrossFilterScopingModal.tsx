@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StyledModal } from 'src/components/Modal';

@@ -21,7 +21,7 @@ import {
   FeatureFlag,
   FilterState,
   isFeatureEnabled,
-} from '@superset-ui/core';
+} from 'src/core';
 import { NO_TIME_RANGE, TIME_FILTER_MAP } from 'src/explore/constants';
 import { getChartIdsInFilterScope } from 'src/dashboard/util/activeDashboardFilters';
 import { ChartConfiguration, Filters } from 'src/dashboard/reducers/types';

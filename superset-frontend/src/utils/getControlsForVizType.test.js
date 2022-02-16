@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { getChartControlPanelRegistry } from '@superset-ui/core';
+import { getChartControlPanelRegistry } from 'src/core';
 import getControlsForVizType from 'src/utils/getControlsForVizType';
 
 const fakePluginControls = {

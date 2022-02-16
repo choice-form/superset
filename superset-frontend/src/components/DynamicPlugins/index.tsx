@@ -23,7 +23,7 @@ import {
   getChartMetadataRegistry,
   logging,
   makeApi,
-} from '@superset-ui/core';
+} from 'src/core';
 import { FeatureFlag, isFeatureEnabled } from 'src/featureFlags';
 import { omitBy } from 'lodash';
 
@@ -158,8 +158,6 @@ const sharedModules = {
   react: () => import('react'),
   lodash: () => import('lodash'),
   'react-dom': () => import('react-dom'),
-  '@superset-ui/chart-controls': () => import('@superset-ui/chart-controls'),
-  '@superset-ui/core': () => import('@superset-ui/core'),
 };
 
 export const DynamicPluginProvider: React.FC = ({ children }) => {

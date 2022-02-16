@@ -17,7 +17,7 @@
  * under the License.
  */
 import userEvent from '@testing-library/user-event';
-import { AppSection } from '@superset-ui/core';
+import { AppSection } from 'src/core';
 import React from 'react';
 import { render, screen } from 'spec/helpers/testing-library';
 import SelectFilterPlugin from './SelectFilterPlugin';

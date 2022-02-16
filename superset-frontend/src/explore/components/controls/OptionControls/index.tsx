@@ -18,8 +18,8 @@
  */
 import React, { useRef } from 'react';
 import { useDrag, useDrop, DropTargetMonitor } from 'react-dnd';
-import { styled, t, useTheme } from '@superset-ui/core';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { styled, t, useTheme } from 'src/core';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 import { Tooltip } from 'src/components/Tooltip';
 import Icons from 'src/components/Icons';
 import { savedMetricType } from 'src/explore/components/controls/MetricControl/types';

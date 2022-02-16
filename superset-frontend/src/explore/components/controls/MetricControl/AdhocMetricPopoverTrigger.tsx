@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { ReactNode } from 'react';
-import { Metric } from '@superset-ui/core';
+import { Metric } from 'src/core';
 import Popover from 'src/components/Popover';
 import AdhocMetricEditPopoverTitle from 'src/explore/components/controls/MetricControl/AdhocMetricEditPopoverTitle';
 import { ExplorePopoverContent } from 'src/explore/components/ExploreContentPopover';

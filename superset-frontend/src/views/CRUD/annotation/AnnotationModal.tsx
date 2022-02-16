@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 import { RangePicker } from 'src/components/DatePicker';
 import moment from 'moment';
@@ -91,10 +91,8 @@ const AnnotationModal: FunctionComponent<AnnotationModalProps> = ({
   show,
 }) => {
   const [disableSave, setDisableSave] = useState<boolean>(true);
-  const [
-    currentAnnotation,
-    setCurrentAnnotation,
-  ] = useState<AnnotationObject | null>(null);
+  const [currentAnnotation, setCurrentAnnotation] =
+    useState<AnnotationObject | null>(null);
   const isEditMode = annotation !== null;
 
   // annotation fetch logic

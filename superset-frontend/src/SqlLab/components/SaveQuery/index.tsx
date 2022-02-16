@@ -18,7 +18,7 @@
  */
 import React, { useState } from 'react';
 import { Row, Col, Input, TextArea } from 'src/common/components';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import Button from 'src/components/Button';
 import { Form, FormItem } from 'src/components/Form';
 import Modal from 'src/components/Modal';

@@ -26,7 +26,7 @@ import {
   ensureIsArray,
   getChartBuildQueryRegistry,
   getChartMetadataRegistry,
-} from '@superset-ui/core';
+} from 'src/core';
 import { availableDomains } from 'src/utils/hostNamesConfig';
 import { safeStringify } from 'src/utils/safeStringify';
 import { URL_PARAMS } from 'src/constants';

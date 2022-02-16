@@ -19,7 +19,7 @@
 import React, { FunctionComponent, useState, useRef } from 'react';
 import Alert from 'src/components/Alert';
 import Button from 'src/components/Button';
-import { styled, t, SupersetClient } from '@superset-ui/core';
+import { styled, t, SupersetClient } from 'src/core';
 
 import Modal from 'src/components/Modal';
 import AsyncEsmComponent from 'src/components/AsyncEsmComponent';

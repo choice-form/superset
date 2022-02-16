@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import { Dropdown as AntdDropdown } from 'antd';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 
 const MenuDots = styled.div`
   width: ${({ theme }) => theme.gridUnit * 0.75}px;

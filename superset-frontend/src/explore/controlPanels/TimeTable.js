@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t, validateNonEmpty } from '@superset-ui/core';
-import { sections } from '@superset-ui/chart-controls';
+import { t, validateNonEmpty } from 'src/core';
+import { sections } from 'src/chartConntrols';
 
 export default {
   controlPanelSections: [

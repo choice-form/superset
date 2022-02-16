@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { GenericDataType } from '@superset-ui/core';
+import { GenericDataType } from 'src/core';
 import { render, screen } from 'spec/helpers/testing-library';
 import AdhocMetric from 'src/explore/components/controls/MetricControl/AdhocMetric';
 import AdhocFilter, {

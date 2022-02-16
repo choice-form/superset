@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import PropTypes from 'prop-types';
 import { Input } from 'src/common/components';
 import { Tooltip } from 'src/components/Tooltip';

@@ -22,7 +22,7 @@ import { mount, shallow } from 'enzyme';
 
 import HighlightedSql from 'src/SqlLab/components/HighlightedSql';
 import ModalTrigger from 'src/components/ModalTrigger';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 
 describe('HighlightedSql', () => {
   const sql =

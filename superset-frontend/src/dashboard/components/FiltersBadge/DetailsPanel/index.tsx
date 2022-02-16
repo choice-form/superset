@@ -19,7 +19,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Global, css } from '@emotion/react';
-import { t, useTheme } from '@superset-ui/core';
+import { t, useTheme } from 'src/core';
 import {
   MinusCircleFilled,
   CheckCircleFilled,

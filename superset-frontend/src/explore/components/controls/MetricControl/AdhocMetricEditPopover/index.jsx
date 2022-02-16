@@ -22,7 +22,7 @@ import PropTypes from 'prop-types';
 import Tabs from 'src/components/Tabs';
 import Button from 'src/components/Button';
 import { Select } from 'src/components';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 
 import { Form, FormItem } from 'src/components/Form';
 import { SQLEditor } from 'src/components/AsyncAceEditor';

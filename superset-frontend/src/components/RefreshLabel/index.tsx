@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { MouseEventHandler } from 'react';
-import { SupersetTheme } from '@superset-ui/core';
+import { SupersetTheme } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import Icons, { IconType } from 'src/components/Icons';
 

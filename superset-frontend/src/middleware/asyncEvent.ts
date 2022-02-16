@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ensureIsArray, makeApi, SupersetClient } from '@superset-ui/core';
+import { ensureIsArray, makeApi, SupersetClient } from 'src/core';
 import { SupersetError } from 'src/components/ErrorMessage/types';
 import { FeatureFlag, isFeatureEnabled } from '../featureFlags';
 import {

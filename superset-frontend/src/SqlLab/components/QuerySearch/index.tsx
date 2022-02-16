@@ -19,7 +19,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from 'src/components/Button';
 import Select from 'src/components/Select';
-import { styled, t, SupersetClient } from '@superset-ui/core';
+import { styled, t, SupersetClient } from 'src/core';
 import { debounce } from 'lodash';
 import Loading from 'src/components/Loading';
 import {
@@ -221,7 +221,7 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
               value: xt,
               label: xt,
             }))}
-            value={(from as unknown) as undefined}
+            value={from as unknown as undefined}
             autosize={false}
             onChange={(selected: any) => setFrom(selected?.value)}
           />
@@ -230,7 +230,7 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
             name="select-to"
             placeholder={t('[To]-')}
             options={TIME_OPTIONS.map(xt => ({ value: xt, label: xt }))}
-            value={(to as unknown) as undefined}
+            value={to as unknown as undefined}
             autosize={false}
             onChange={(selected: any) => setTo(selected?.value)}
           />
@@ -242,7 +242,7 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
               value: s,
               label: s,
             }))}
-            value={(status as unknown) as undefined}
+            value={status as unknown as undefined}
             isLoading={false}
             autosize={false}
             onChange={(selected: any) => setStatus(selected?.value)}

@@ -19,7 +19,7 @@
 import { setConfig as setHotLoaderConfig } from 'react-hot-loader';
 import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
 import moment from 'moment';
-import { configure, supersetTheme } from '@superset-ui/core';
+import { configure, supersetTheme } from 'src/core';
 import { merge } from 'lodash';
 import setupClient from './setup/setupClient';
 import setupColors from './setup/setupColors';

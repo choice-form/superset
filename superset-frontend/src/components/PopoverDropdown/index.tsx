@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import cx from 'classnames';
-import { styled, useTheme } from '@superset-ui/core';
+import { styled, useTheme } from 'src/core';
 import { Dropdown, Menu } from 'src/common/components';
 import Icons from 'src/components/Icons';
 

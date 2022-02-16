@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DataMask } from '@superset-ui/core';
+import { DataMask } from 'src/core';
 import { Filter } from '../../types';
 
 export type CascadeFilter = Filter & { dataMask?: DataMask } & {

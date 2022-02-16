@@ -27,7 +27,7 @@ import '@testing-library/jest-dom/extend-expect';
 import thunk from 'redux-thunk';
 import SqlEditorLeftBar from 'src/SqlLab/components/SqlEditorLeftBar';
 import TableElement from 'src/SqlLab/components/TableElement';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 import {
   table,
   initialState,

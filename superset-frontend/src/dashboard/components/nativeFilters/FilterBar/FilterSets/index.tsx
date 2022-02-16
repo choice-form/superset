@@ -18,7 +18,7 @@
  */
 
 import React, { useEffect, useState, MouseEvent } from 'react';
-import { DataMask, HandlerFunction, styled, t } from '@superset-ui/core';
+import { DataMask, HandlerFunction, styled, t } from 'src/core';
 import { useDispatch } from 'react-redux';
 import { DataMaskState, DataMaskWithId } from 'src/dataMask/types';
 import { setFilterSetsConfiguration } from 'src/dashboard/actions/nativeFilters';

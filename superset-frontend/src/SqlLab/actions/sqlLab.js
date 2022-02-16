@@ -18,7 +18,7 @@
  */
 import shortid from 'shortid';
 import JSONbig from 'json-bigint';
-import { t, SupersetClient } from '@superset-ui/core';
+import { t, SupersetClient } from 'src/core';
 import invert from 'lodash/invert';
 import mapKeys from 'lodash/mapKeys';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';

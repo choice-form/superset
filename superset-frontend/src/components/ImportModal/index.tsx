@@ -18,7 +18,7 @@
  */
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { UploadChangeParam, UploadFile } from 'antd/lib/upload/interface';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 
 import Button from 'src/components/Button';
 import Modal from 'src/components/Modal';
@@ -126,9 +126,8 @@ const ImportModelsModal: FunctionComponent<ImportModelsModalProps> = ({
 }) => {
   const [isHidden, setIsHidden] = useState<boolean>(true);
   const [passwords, setPasswords] = useState<Record<string, string>>({});
-  const [needsOverwriteConfirm, setNeedsOverwriteConfirm] = useState<boolean>(
-    false,
-  );
+  const [needsOverwriteConfirm, setNeedsOverwriteConfirm] =
+    useState<boolean>(false);
   const [confirmedOverwrite, setConfirmedOverwrite] = useState<boolean>(false);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [importingModel, setImportingModel] = useState<boolean>(false);

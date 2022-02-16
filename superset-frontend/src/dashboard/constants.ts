@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { DatasourceType } from '@superset-ui/core';
+import { DatasourceType } from 'src/core';
 import { Datasource } from 'src/dashboard/types';
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

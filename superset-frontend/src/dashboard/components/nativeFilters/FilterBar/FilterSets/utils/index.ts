@@ -18,7 +18,7 @@
  */
 
 import shortid from 'shortid';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { areObjectsEqual } from 'src/reduxUtils';
 import { DataMaskState } from 'src/dataMask/types';
 import { FilterSet } from 'src/dashboard/reducers/types';

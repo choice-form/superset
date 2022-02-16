@@ -19,8 +19,8 @@
 import { flatMapDeep } from 'lodash';
 import { FormInstance } from 'antd/lib/form';
 import React from 'react';
-import { CustomControlItem, DatasourceMeta } from '@superset-ui/chart-controls';
-import { Column, ensureIsArray, GenericDataType } from '@superset-ui/core';
+import { CustomControlItem, DatasourceMeta } from 'src/chartConntrols';
+import { Column, ensureIsArray, GenericDataType } from 'src/core';
 import { DatasourcesState, ChartsState } from 'src/dashboard/types';
 
 const FILTERS_FIELD_NAME = 'filters';

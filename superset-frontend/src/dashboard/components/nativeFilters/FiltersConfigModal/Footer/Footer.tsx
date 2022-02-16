@@ -18,7 +18,7 @@
  */
 import React, { FC } from 'react';
 import Button, { OnClickHandler } from 'src/components/Button';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { CancelConfirmationAlert } from './CancelConfirmationAlert';
 
 type FooterProps = {

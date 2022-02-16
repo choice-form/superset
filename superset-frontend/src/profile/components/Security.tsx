@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import Badge from 'src/components/Badge';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 
 import Label from 'src/components/Label';
 import { UserWithPermissionsAndRoles } from '../../types/bootstrapTypes';

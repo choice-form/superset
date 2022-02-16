@@ -24,7 +24,7 @@ import { Provider } from 'react-redux';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 import sinon from 'sinon';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 
 import waitForComponentToPaint from 'spec/helpers/waitForComponentToPaint';
 import Modal from 'src/components/Modal';

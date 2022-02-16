@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import BaseSwitch, { SwitchProps } from 'antd/lib/switch';
 
 const StyledSwitch = styled(BaseSwitch)`

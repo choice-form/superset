@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useEffect } from 'react';
-import { styled, logging } from '@superset-ui/core';
+import { styled, logging } from 'src/core';
 
 export type BackgroundPosition = 'top' | 'bottom';
 interface ImageContainerProps {

@@ -22,8 +22,8 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Alert from 'src/components/Alert';
-import { t } from '@superset-ui/core';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { t } from 'src/core';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 import shortid from 'shortid';
 import Button from 'src/components/Button';
 import * as actions from 'src/SqlLab/actions/sqlLab';
@@ -44,9 +44,8 @@ class ExploreResultsButton extends React.PureComponent {
   constructor(props) {
     super(props);
     this.getInvalidColumns = this.getInvalidColumns.bind(this);
-    this.renderInvalidColumnMessage = this.renderInvalidColumnMessage.bind(
-      this,
-    );
+    this.renderInvalidColumnMessage =
+      this.renderInvalidColumnMessage.bind(this);
   }
 
   getColumns() {

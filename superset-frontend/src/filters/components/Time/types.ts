@@ -16,12 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  Behavior,
-  DataRecord,
-  FilterState,
-  QueryFormData,
-} from '@superset-ui/core';
+import { Behavior, DataRecord, FilterState, QueryFormData } from 'src/core';
 import { PluginFilterHooks, PluginFilterStylesProps } from '../types';
 
 interface PluginFilterTimeCustomizeProps {

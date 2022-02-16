@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { AdhocFilter, DataMask } from '@superset-ui/core';
+import { AdhocFilter, DataMask } from 'src/core';
 import { NativeFilterType, Scope } from '../types';
 
 export interface NativeFiltersFormItem {

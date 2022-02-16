@@ -21,7 +21,7 @@ import { kebabCase } from 'lodash';
 import { mix } from 'polished';
 import cx from 'classnames';
 import { Button as AntdButton } from 'antd';
-import { useTheme } from '@superset-ui/core';
+import { useTheme } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 
 export type OnClickHandler = React.MouseEventHandler<HTMLElement>;

@@ -20,7 +20,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 

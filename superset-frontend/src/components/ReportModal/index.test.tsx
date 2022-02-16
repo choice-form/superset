@@ -20,7 +20,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from 'spec/helpers/testing-library';
 import * as featureFlags from 'src/featureFlags';
-import { FeatureFlag } from '@superset-ui/core';
+import { FeatureFlag } from 'src/core';
 import ReportModal from '.';
 
 let isFeatureEnabledMock: jest.MockInstance<boolean, [string]>;

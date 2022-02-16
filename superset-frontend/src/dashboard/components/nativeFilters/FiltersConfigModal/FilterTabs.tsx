@@ -17,7 +17,7 @@
  * under the License.
  */
 import { PlusOutlined } from '@ant-design/icons';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import React, { FC } from 'react';
 import { LineEditableTabs } from 'src/components/Tabs';
 import Icons from 'src/components/Icons';
@@ -215,9 +215,8 @@ const FilterTabs: FC<FilterTabsProps> = ({
             setTimeout(() => {
               const element = document.getElementById('native-filters-tabs');
               if (element) {
-                const navList = element.getElementsByClassName(
-                  'ant-tabs-nav-list',
-                )[0];
+                const navList =
+                  element.getElementsByClassName('ant-tabs-nav-list')[0];
                 navList.scrollTop = navList.scrollHeight;
               }
             }, 0);

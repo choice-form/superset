@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { SupersetClient, t, styled } from '@superset-ui/core';
+import { SupersetClient, t, styled } from 'src/core';
 import React, { useState, useMemo } from 'react';
 import Loading from 'src/components/Loading';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
@@ -89,10 +89,8 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
     addDangerToast,
   );
   const [databaseModalOpen, setDatabaseModalOpen] = useState<boolean>(false);
-  const [
-    databaseCurrentlyDeleting,
-    setDatabaseCurrentlyDeleting,
-  ] = useState<DatabaseDeleteObject | null>(null);
+  const [databaseCurrentlyDeleting, setDatabaseCurrentlyDeleting] =
+    useState<DatabaseDeleteObject | null>(null);
   const [currentDatabase, setCurrentDatabase] = useState<DatabaseObject | null>(
     null,
   );

@@ -18,7 +18,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { setInLocalStorage } from 'src/utils/localStorageHelpers';
 
 import ListViewCard from 'src/components/ListViewCard';

@@ -24,7 +24,7 @@ import React, {
   useRef,
 } from 'react';
 import { uniq, isEqual, sortBy, debounce } from 'lodash';
-import { t, styled, SLOW_DEBOUNCE } from '@superset-ui/core';
+import { t, styled, SLOW_DEBOUNCE } from 'src/core';
 import { Form } from 'src/common/components';
 import { StyledModal } from 'src/components/Modal';
 import ErrorBoundary from 'src/components/ErrorBoundary';

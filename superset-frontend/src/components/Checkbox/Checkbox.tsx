@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import { CheckboxChecked, CheckboxUnchecked } from 'src/components/Checkbox';
 
 interface CheckboxProps {

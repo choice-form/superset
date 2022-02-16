@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ColumnMeta } from '@superset-ui/chart-controls';
-import { GenericDataType } from '@superset-ui/core';
+import { ColumnMeta } from 'src/chartConntrols';
+import { GenericDataType } from 'src/core';
 
 export const columns: ColumnMeta[] = [
   {

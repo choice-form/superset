@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 
 import URLShortLinkButton from 'src/components/URLShortLinkButton';
 import getDashboardUrl from 'src/dashboard/util/getDashboardUrl';
@@ -70,12 +70,8 @@ class AnchorLink extends React.PureComponent {
   }
 
   render() {
-    const {
-      anchorLinkId,
-      filters,
-      showShortLinkButton,
-      placement,
-    } = this.props;
+    const { anchorLinkId, filters, showShortLinkButton, placement } =
+      this.props;
     return (
       <span className="anchor-link-container" id={anchorLinkId}>
         {showShortLinkButton && (

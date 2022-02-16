@@ -17,7 +17,7 @@
  * under the License.
  */
 import { ActionCreators as UndoActionCreators } from 'redux-undo';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { addWarningToast } from 'src/components/MessageToasts/actions';
 import { TABS_TYPE, ROW_TYPE } from 'src/dashboard/util/componentTypes';
 import {
@@ -38,28 +38,29 @@ export const UPDATE_COMPONENTS = 'UPDATE_COMPONENTS';
 // an additional setUnsavedChanges(true) action after the dispatch in the case
 // that dashboardState.hasUnsavedChanges is false.
 function setUnsavedChangesAfterAction(action) {
-  return (...args) => (dispatch, getState) => {
-    const result = action(...args);
-    if (typeof result === 'function') {
-      dispatch(result(dispatch, getState));
-    } else {
-      dispatch(result);
-    }
+  return (...args) =>
+    (dispatch, getState) => {
+      const result = action(...args);
+      if (typeof result === 'function') {
+        dispatch(result(dispatch, getState));
+      } else {
+        dispatch(result);
+      }
 
-    const isComponentLevelEvent =
-      result.type === UPDATE_COMPONENTS &&
-      result.payload &&
-      result.payload.nextComponents;
-    // trigger dashboardFilters state update if dashboard layout is changed.
-    if (!isComponentLevelEvent) {
-      const components = getState().dashboardLayout.present;
-      dispatch(updateLayoutComponents(components));
-    }
+      const isComponentLevelEvent =
+        result.type === UPDATE_COMPONENTS &&
+        result.payload &&
+        result.payload.nextComponents;
+      // trigger dashboardFilters state update if dashboard layout is changed.
+      if (!isComponentLevelEvent) {
+        const components = getState().dashboardLayout.present;
+        dispatch(updateLayoutComponents(components));
+      }
 
-    if (!getState().dashboardState.hasUnsavedChanges) {
-      dispatch(setUnsavedChanges(true));
-    }
-  };
+      if (!getState().dashboardState.hasUnsavedChanges) {
+        dispatch(setUnsavedChanges(true));
+      }
+    };
 }
 
 export const updateComponents = setUnsavedChangesAfterAction(

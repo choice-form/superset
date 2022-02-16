@@ -19,7 +19,7 @@
 
 import React, { useMemo, useState } from 'react';
 import rison from 'rison';
-import { t, SupersetClient } from '@superset-ui/core';
+import { t, SupersetClient } from 'src/core';
 import { Link, useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { useListViewResource } from 'src/views/CRUD/hooks';
@@ -73,19 +73,13 @@ function AnnotationLayersList({
     addDangerToast,
   );
 
-  const [
-    annotationLayerModalOpen,
-    setAnnotationLayerModalOpen,
-  ] = useState<boolean>(false);
-  const [
-    currentAnnotationLayer,
-    setCurrentAnnotationLayer,
-  ] = useState<AnnotationLayerObject | null>(null);
+  const [annotationLayerModalOpen, setAnnotationLayerModalOpen] =
+    useState<boolean>(false);
+  const [currentAnnotationLayer, setCurrentAnnotationLayer] =
+    useState<AnnotationLayerObject | null>(null);
 
-  const [
-    layerCurrentlyDeleting,
-    setLayerCurrentlyDeleting,
-  ] = useState<AnnotationLayerObject | null>(null);
+  const [layerCurrentlyDeleting, setLayerCurrentlyDeleting] =
+    useState<AnnotationLayerObject | null>(null);
 
   const handleLayerDelete = ({ id, name }: AnnotationLayerObject) => {
     SupersetClient.delete({

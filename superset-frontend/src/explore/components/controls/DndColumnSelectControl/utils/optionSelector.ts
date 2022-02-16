@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ColumnMeta } from '@superset-ui/chart-controls';
-import { ensureIsArray } from '@superset-ui/core';
+import { ColumnMeta } from 'src/chartConntrols';
+import { ensureIsArray } from 'src/core';
 
 export class OptionSelector {
   values: ColumnMeta[];

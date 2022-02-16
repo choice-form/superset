@@ -16,9 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ControlPanelConfig, sections } from '@superset-ui/chart-controls';
-import { t } from '@superset-ui/core';
-import { sharedControls } from '@superset-ui/chart-controls/lib';
+import {
+  ControlPanelConfig,
+  sections,
+  sharedControls,
+} from 'src/chartConntrols';
+import { t } from 'src/core';
 import { DEFAULT_FORM_DATA } from './types';
 
 const { multiSelect } = DEFAULT_FORM_DATA;

@@ -19,7 +19,7 @@
 
 import React from 'react';
 import { render, screen } from 'spec/helpers/testing-library';
-import { supersetTheme } from '@superset-ui/core';
+import { supersetTheme } from 'src/core';
 import BasicErrorAlert from './BasicErrorAlert';
 import { ErrorLevel } from './types';
 

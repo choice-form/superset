@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { SupersetClient } from '@superset-ui/core';
+import { SupersetClient } from 'src/core';
 import rison from 'rison';
 import { getClientErrorObject } from './getClientErrorObject';
 import { URL_PARAMS } from '../constants';

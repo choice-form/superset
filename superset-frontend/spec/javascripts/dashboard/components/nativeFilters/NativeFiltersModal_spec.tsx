@@ -40,9 +40,9 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-jest.mock('@superset-ui/core', () => ({
+jest.mock('src/core', () => ({
   // @ts-ignore
-  ...jest.requireActual('@superset-ui/core'),
+  ...jest.requireActual('src/core'),
   getChartMetadataRegistry: () => ({
     items: {
       filter_select: {

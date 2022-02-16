@@ -18,11 +18,7 @@
  */
 import React from 'react';
 import { styledShallow as shallow } from 'spec/helpers/theming';
-import {
-  DatasourceType,
-  getChartControlPanelRegistry,
-  t,
-} from '@superset-ui/core';
+import { DatasourceType, getChartControlPanelRegistry, t } from 'src/core';
 import { defaultControls } from 'src/explore/store';
 import { getFormDataFromControls } from 'src/explore/controlUtils';
 import {

@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ColumnTypeLabel } from '@superset-ui/chart-controls';
+import { ColumnTypeLabel } from 'src/chartConntrols';
 
 import aggregateOptionType from './aggregateOptionType';
 

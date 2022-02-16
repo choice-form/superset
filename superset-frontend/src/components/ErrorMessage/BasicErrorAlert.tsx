@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { styled, useTheme } from '@superset-ui/core';
+import { styled, useTheme } from 'src/core';
 import Icons from 'src/components/Icons';
 import { ErrorLevel } from './types';
 

@@ -19,7 +19,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonGroup from 'src/components/ButtonGroup';
-import { t, useTheme } from '@superset-ui/core';
+import { t, useTheme } from 'src/core';
 
 import { Tooltip } from 'src/components/Tooltip';
 import Button from 'src/components/Button';

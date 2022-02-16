@@ -19,7 +19,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { styled, SupersetClient, t } from '@superset-ui/core';
+import { styled, SupersetClient, t } from 'src/core';
 
 import { Menu, NoAnimationDropdown } from 'src/common/components';
 import Icons from 'src/components/Icons';

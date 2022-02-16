@@ -17,11 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import {
-  getCategoricalSchemeRegistry,
-  styled,
-  SupersetTheme,
-} from '@superset-ui/core';
+import { getCategoricalSchemeRegistry, styled, SupersetTheme } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import { Avatar } from 'src/common/components';
 import { getRandomColor } from './utils';

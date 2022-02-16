@@ -18,7 +18,7 @@
  */
 import React, { RefObject } from 'react';
 import { Select } from 'src/components';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import Alert from 'src/components/Alert';
 import Button from 'src/components/Button';
 

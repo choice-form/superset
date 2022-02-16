@@ -23,7 +23,7 @@ import {
   TAB_TYPE,
 } from 'src/dashboard/util/componentTypes';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { BuildTreeLeafTitle, TreeItem } from './types';
 import { Scope } from '../../../types';
 

@@ -26,8 +26,8 @@ import {
   Metric,
   QueryFormMetric,
   tn,
-} from '@superset-ui/core';
-import { ColumnMeta } from '@superset-ui/chart-controls';
+} from 'src/core';
+import { ColumnMeta } from 'src/chartConntrols';
 import { isEqual } from 'lodash';
 import { usePrevious } from 'src/common/hooks/usePrevious';
 import AdhocMetric from 'src/explore/components/controls/MetricControl/AdhocMetric';

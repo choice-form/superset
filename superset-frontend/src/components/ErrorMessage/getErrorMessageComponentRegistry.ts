@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Registry, makeSingleton, OverwritePolicy } from '@superset-ui/core';
+import { Registry, makeSingleton, OverwritePolicy } from 'src/core';
 import { ErrorMessageComponent } from './types';
 
 class ErrorMessageComponentRegistry extends Registry<

@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import { Input } from 'antd';
-import { styled, css, SupersetTheme } from '@superset-ui/core';
+import { styled, css, SupersetTheme } from 'src/core';
 import InfoTooltip from 'src/components/InfoTooltip';
 import errorIcon from 'src/assets/images/icons/error.svg';
 import FormItem from './FormItem';

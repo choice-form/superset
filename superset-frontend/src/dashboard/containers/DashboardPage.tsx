@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useEffect, useRef, FC } from 'react';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
@@ -48,15 +48,12 @@ const DashboardPage: FC = () => {
   const dispatch = useDispatch();
   const { addDangerToast } = useToasts();
   const { idOrSlug } = useParams<{ idOrSlug: string }>();
-  const { result: dashboard, error: dashboardApiError } = useDashboard(
-    idOrSlug,
-  );
-  const { result: charts, error: chartsApiError } = useDashboardCharts(
-    idOrSlug,
-  );
-  const { result: datasets, error: datasetsApiError } = useDashboardDatasets(
-    idOrSlug,
-  );
+  const { result: dashboard, error: dashboardApiError } =
+    useDashboard(idOrSlug);
+  const { result: charts, error: chartsApiError } =
+    useDashboardCharts(idOrSlug);
+  const { result: datasets, error: datasetsApiError } =
+    useDashboardDatasets(idOrSlug);
   const isDashboardHydrated = useRef(false);
 
   const error = dashboardApiError || chartsApiError;

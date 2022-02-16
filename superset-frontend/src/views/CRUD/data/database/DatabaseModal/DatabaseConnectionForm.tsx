@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { FormEvent, useState } from 'react';
-import { SupersetTheme, JsonObject, t } from '@superset-ui/core';
+import { SupersetTheme, JsonObject, t } from 'src/core';
 import { InputProps } from 'antd/lib/input';
 import { Switch, Select, Button } from 'src/common/components';
 import InfoTooltip from 'src/components/InfoTooltip';
@@ -233,9 +233,9 @@ const CredentialsInfo = ({
                     checked: false,
                   },
                 });
-                (document.getElementById(
-                  'selectedFile',
-                ) as HTMLInputElement).value = null as any;
+                (
+                  document.getElementById('selectedFile') as HTMLInputElement
+                ).value = null as any;
               }}
             />
           </div>

@@ -16,14 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  CustomControlItem,
-  InfoTooltipWithTrigger,
-} from '@superset-ui/chart-controls';
+import { CustomControlItem, InfoTooltipWithTrigger } from 'src/chartConntrols';
 import React from 'react';
 import { Checkbox } from 'src/common/components';
 import { FormInstance } from 'antd/lib/form';
-import { getChartControlPanelRegistry, styled, t } from '@superset-ui/core';
+import { getChartControlPanelRegistry, styled, t } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import { FormItem } from 'src/components/Form';
 import {

@@ -20,7 +20,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Dropdown } from 'src/common/components';
 import Button from 'src/components/Button';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import ModalTrigger from 'src/components/ModalTrigger';
 import { CssEditor as AceCssEditor } from 'src/components/AsyncAceEditor';
 

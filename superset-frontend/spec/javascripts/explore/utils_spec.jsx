@@ -28,7 +28,7 @@ import {
 } from 'src/explore/exploreUtils';
 import { DashboardStandaloneMode } from 'src/dashboard/util/constants';
 import * as hostNamesConfig from 'src/utils/hostNamesConfig';
-import { getChartMetadataRegistry } from '@superset-ui/core';
+import { getChartMetadataRegistry } from 'src/core';
 
 describe('exploreUtils', () => {
   const { location } = window;

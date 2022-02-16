@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 
 import getErrorMessageComponentRegistry from './getErrorMessageComponentRegistry';
 import { SupersetError, ErrorSource } from './types';

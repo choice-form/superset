@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import AntDForm, { FormProps } from 'antd/lib/form';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 
 const StyledForm = styled(AntDForm)`
   &.ant-form label {

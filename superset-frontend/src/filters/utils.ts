@@ -23,7 +23,7 @@ import {
   QueryObjectFilterClause,
   TimeFormatter,
   ExtraFormData,
-} from '@superset-ui/core';
+} from 'src/core';
 import { FALSE_STRING, NULL_STRING, TRUE_STRING } from 'src/utils/common';
 
 export const getSelectExtraFormData = (

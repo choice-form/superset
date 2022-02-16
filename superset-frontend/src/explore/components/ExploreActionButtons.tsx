@@ -18,7 +18,7 @@
  */
 import React, { useState } from 'react';
 import cx from 'classnames';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import Icons from 'src/components/Icons';
 import { Tooltip } from 'src/components/Tooltip';
 import copyTextToClipboard from 'src/utils/copy';
@@ -49,14 +49,8 @@ type ExploreActionButtonsProps = {
 };
 
 const ActionButton = (props: ActionButtonProps) => {
-  const {
-    icon,
-    text,
-    tooltip,
-    className,
-    onTooltipVisibilityChange,
-    ...rest
-  } = props;
+  const { icon, text, tooltip, className, onTooltipVisibilityChange, ...rest } =
+    props;
   return (
     <Tooltip
       id={`${icon}-tooltip`}

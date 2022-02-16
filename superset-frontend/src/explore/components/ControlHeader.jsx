@@ -18,8 +18,8 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t, css, withTheme } from '@superset-ui/core';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { t, css, withTheme } from 'src/core';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 import { Tooltip } from 'src/components/Tooltip';
 import { FormLabel } from 'src/components/Form';
 import Icons from 'src/components/Icons';

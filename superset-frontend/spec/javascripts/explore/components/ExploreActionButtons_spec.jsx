@@ -22,7 +22,7 @@ import { mockStore } from 'spec/fixtures/mockStore';
 import ExploreActionButtons from 'src/explore/components/ExploreActionButtons';
 import * as exploreUtils from 'src/explore/exploreUtils';
 
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 import { Provider } from 'react-redux';
 import sinon from 'sinon';
 

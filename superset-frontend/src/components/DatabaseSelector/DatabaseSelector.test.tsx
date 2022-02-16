@@ -19,7 +19,7 @@
 
 import React from 'react';
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
-import { SupersetClient } from '@superset-ui/core';
+import { SupersetClient } from 'src/core';
 import userEvent from '@testing-library/user-event';
 import DatabaseSelector from '.';
 

@@ -19,7 +19,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { ReactNode, ReactElement } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
-import { ThemeProvider, supersetTheme } from '@superset-ui/core';
+import { ThemeProvider, supersetTheme } from 'src/core';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';

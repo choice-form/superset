@@ -19,7 +19,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'src/components/Button';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 
 import ErrorBoundary from 'src/components/ErrorBoundary';
 import Tabs from 'src/components/Tabs';

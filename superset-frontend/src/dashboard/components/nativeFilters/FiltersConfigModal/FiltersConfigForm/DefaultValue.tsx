@@ -17,13 +17,7 @@
  * under the License.
  */
 import React, { FC } from 'react';
-import {
-  Behavior,
-  SetDataMaskHook,
-  SuperChart,
-  AppSection,
-  t,
-} from '@superset-ui/core';
+import { Behavior, SetDataMaskHook, SuperChart, AppSection, t } from 'src/core';
 import { FormInstance } from 'antd/lib/form';
 import Loading from 'src/components/Loading';
 import { NativeFiltersForm } from '../types';

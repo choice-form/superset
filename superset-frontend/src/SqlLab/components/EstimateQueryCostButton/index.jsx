@@ -19,7 +19,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Alert from 'src/components/Alert';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import TableView from 'src/components/TableView';
 import Button from 'src/components/Button';
 import Loading from 'src/components/Loading';

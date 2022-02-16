@@ -18,7 +18,7 @@
  */
 import React, { useEffect } from 'react';
 import isEqual from 'lodash/isEqual';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { useFilters, usePagination, useSortBy, useTable } from 'react-table';
 import { Empty } from 'src/common/components';
 import { TableCollection, Pagination } from 'src/components/dataViewCommon';

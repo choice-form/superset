@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import { Form, FormItem } from 'src/components/Form';
 import FilterValue from './FilterValue';
 import { FilterProps } from './types';

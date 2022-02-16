@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import { MainNav as Menu } from 'src/common/components';
-import { t, styled, css, SupersetTheme } from '@superset-ui/core';
+import { t, styled, css, SupersetTheme } from 'src/core';
 import { Link } from 'react-router-dom';
 import Icons from 'src/components/Icons';
 import LanguagePicker from './LanguagePicker';

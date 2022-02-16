@@ -25,7 +25,7 @@ import {
   waitFor,
 } from 'spec/helpers/testing-library';
 import brace from 'brace';
-import { ThemeProvider, supersetTheme } from '@superset-ui/core';
+import { ThemeProvider, supersetTheme } from 'src/core';
 
 import TemplateParamsEditor from 'src/SqlLab/components/TemplateParamsEditor';
 

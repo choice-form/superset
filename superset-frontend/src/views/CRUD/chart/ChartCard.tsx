@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t, useTheme } from '@superset-ui/core';
+import { t, useTheme } from 'src/core';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import ConfirmStatusChange from 'src/components/ConfirmStatusChange';
 import Icons from 'src/components/Icons';

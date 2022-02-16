@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState } from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import Modal from 'src/components/Modal';
 import cx from 'classnames';
 import Button from 'src/components/Button';
@@ -99,16 +99,12 @@ function QueryPreviewModal({
   addDangerToast,
   addSuccessToast,
 }: QueryPreviewModalProps) {
-  const {
-    handleKeyPress,
-    handleDataChange,
-    disablePrevious,
-    disableNext,
-  } = useQueryPreviewState<QueryObject>({
-    queries,
-    currentQueryId: query.id,
-    fetchData,
-  });
+  const { handleKeyPress, handleDataChange, disablePrevious, disableNext } =
+    useQueryPreviewState<QueryObject>({
+      queries,
+      currentQueryId: query.id,
+      fetchData,
+    });
 
   const [currentTab, setCurrentTab] = useState<'user' | 'executed'>('user');
 

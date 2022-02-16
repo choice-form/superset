@@ -24,7 +24,7 @@ import { Menu } from 'src/common/components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import URI from 'urijs';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import { areArraysShallowEqual } from 'src/reduxUtils';
 import { Tooltip } from 'src/components/Tooltip';
@@ -84,9 +84,8 @@ class TabbedSqlEditors extends React.PureComponent {
     this.removeQueryEditor = this.removeQueryEditor.bind(this);
     this.renameTab = this.renameTab.bind(this);
     this.toggleLeftBar = this.toggleLeftBar.bind(this);
-    this.removeAllOtherQueryEditors = this.removeAllOtherQueryEditors.bind(
-      this,
-    );
+    this.removeAllOtherQueryEditors =
+      this.removeAllOtherQueryEditors.bind(this);
     this.duplicateQueryEditor = this.duplicateQueryEditor.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleEdit = this.handleEdit.bind(this);

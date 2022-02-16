@@ -19,7 +19,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import AntdIcon from '@ant-design/icons';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import TransparentIcon from 'src/assets/images/icons/transparent.svg';
 import IconType from './IconType';
 

@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatNumber } from '@superset-ui/core';
+import { formatNumber } from 'src/core';
 
 const propTypes = {
   num: PropTypes.number,

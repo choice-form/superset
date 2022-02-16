@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ExtraFormData } from '@superset-ui/core';
+import { ExtraFormData } from 'src/core';
 import { NativeFilterType } from 'src/dashboard/components/nativeFilters/types';
 import { NativeFiltersState } from 'src/dashboard/reducers/types';
 import { DataMaskStateWithId } from '../../src/dataMask/types';

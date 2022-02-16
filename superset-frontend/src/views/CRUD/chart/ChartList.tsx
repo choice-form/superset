@@ -16,12 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  getChartMetadataRegistry,
-  styled,
-  SupersetClient,
-  t,
-} from '@superset-ui/core';
+import { getChartMetadataRegistry, styled, SupersetClient, t } from 'src/core';
 import React, { useMemo, useState } from 'react';
 import rison from 'rison';
 import { uniqBy } from 'lodash';

@@ -18,7 +18,7 @@
  */
 import React, { ReactNode, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import cx from 'classnames';
 import { debounce } from 'lodash';
 import { Row } from 'antd';

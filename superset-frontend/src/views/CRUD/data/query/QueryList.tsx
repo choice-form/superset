@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useMemo, useState, useCallback, ReactElement } from 'react';
-import { SupersetClient, t, styled, useTheme } from '@superset-ui/core';
+import { SupersetClient, t, styled, useTheme } from 'src/core';
 import moment from 'moment';
 import {
   createFetchRelated,
@@ -91,10 +91,8 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
     false,
   );
 
-  const [
-    queryCurrentlyPreviewing,
-    setQueryCurrentlyPreviewing,
-  ] = useState<QueryObject>();
+  const [queryCurrentlyPreviewing, setQueryCurrentlyPreviewing] =
+    useState<QueryObject>();
 
   const theme = useTheme();
 

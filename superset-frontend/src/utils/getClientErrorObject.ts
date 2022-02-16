@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { JsonObject, SupersetClientResponse, t } from '@superset-ui/core';
+import { JsonObject, SupersetClientResponse, t } from 'src/core';
 import {
   SupersetError,
   ErrorTypeEnum,

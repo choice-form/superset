@@ -19,7 +19,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'src/common/components';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 
 import Label from 'src/components/Label';
 import Popover from 'src/components/Popover';

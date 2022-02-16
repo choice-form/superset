@@ -18,7 +18,7 @@
  */
 import React, { ReactNode } from 'react';
 import { Tooltip } from 'src/components/Tooltip';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 
 export interface Props {
   children?: ReactNode;

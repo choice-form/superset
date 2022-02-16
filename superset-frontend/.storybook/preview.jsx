@@ -21,7 +21,7 @@ import { addDecorator } from '@storybook/react';
 import { jsxDecorator } from 'storybook-addon-jsx';
 import { addParameters } from '@storybook/react';
 import WithPaddings from 'storybook-addon-paddings';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';

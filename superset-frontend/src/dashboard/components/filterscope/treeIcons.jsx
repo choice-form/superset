@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 import {

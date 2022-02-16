@@ -21,11 +21,8 @@ import PropTypes from 'prop-types';
 import Mustache from 'mustache';
 import { scaleLinear } from 'd3-scale';
 import TableView from 'src/components/TableView';
-import { formatNumber, formatTime, styled } from '@superset-ui/core';
-import {
-  InfoTooltipWithTrigger,
-  MetricOption,
-} from '@superset-ui/chart-controls';
+import { formatNumber, formatTime, styled } from 'src/core';
+import { InfoTooltipWithTrigger, MetricOption } from 'src/chartConntrols';
 import moment from 'moment';
 
 import FormattedNumber from './FormattedNumber';

@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useCallback } from 'react';
-import { css, SupersetTheme } from '@superset-ui/core';
+import { css, SupersetTheme } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import { FormItem, FormLabel } from 'src/components/Form';
 import './crud.less';

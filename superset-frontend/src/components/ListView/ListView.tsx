@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import React, { useEffect } from 'react';
 import { Empty } from 'src/common/components';
 import Alert from 'src/components/Alert';

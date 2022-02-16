@@ -17,7 +17,7 @@
  * under the License.
  */
 import { Dispatch } from 'redux';
-import { SupersetClient } from '@superset-ui/core';
+import { SupersetClient } from 'src/core';
 import { Datasource, RootState } from 'src/dashboard/types';
 
 // update datasources index for Dashboard

@@ -18,7 +18,7 @@
  */
 /* eslint camelcase: 0 */
 import { ActionCreators as UndoActionCreators } from 'redux-undo';
-import { ensureIsArray, t, SupersetClient } from '@superset-ui/core';
+import { ensureIsArray, t, SupersetClient } from 'src/core';
 import { addChart, removeChart, refreshChart } from 'src/chart/chartAction';
 import { chart as initChart } from 'src/chart/chartReducer';
 import { applyDefaultFormData } from 'src/explore/store';

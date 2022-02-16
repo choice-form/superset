@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useCallback } from 'react';
-import { styled, t, useTheme } from '@superset-ui/core';
+import { styled, t, useTheme } from 'src/core';
 import Icons from 'src/components/Icons';
 import {
   CaretContainer,
@@ -26,7 +26,7 @@ import {
   Label,
 } from 'src/explore/components/controls/OptionControls';
 import { OptionProps } from 'src/explore/components/controls/DndColumnSelectControl/types';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 
 const StyledInfoTooltipWithTrigger = styled(InfoTooltipWithTrigger)`
   margin: 0 ${({ theme }) => theme.gridUnit}px;

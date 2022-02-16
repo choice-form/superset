@@ -23,7 +23,7 @@ import Button from 'src/components/Button';
 import { Select } from 'src/components';
 import { SelectValue } from 'antd/lib/select';
 import rison from 'rison';
-import { t, SupersetClient, styled } from '@superset-ui/core';
+import { t, SupersetClient, styled } from 'src/core';
 import Chart, { Slice } from 'src/types/Chart';
 import { getClientErrorObject } from 'src/utils/getClientErrorObject';
 
@@ -94,24 +94,25 @@ export default function PropertiesModal({
   );
 
   const loadOptions = useMemo(
-    () => (input = '', page: number, pageSize: number) => {
-      const query = rison.encode({
-        filter: input,
-        page,
-        page_size: pageSize,
-      });
-      return SupersetClient.get({
-        endpoint: `/api/v1/chart/related/owners?q=${query}`,
-      }).then(response => ({
-        data: response.json.result.map(
-          (item: { value: number; text: string }) => ({
-            value: item.value,
-            label: item.text,
-          }),
-        ),
-        totalCount: response.json.count,
-      }));
-    },
+    () =>
+      (input = '', page: number, pageSize: number) => {
+        const query = rison.encode({
+          filter: input,
+          page,
+          page_size: pageSize,
+        });
+        return SupersetClient.get({
+          endpoint: `/api/v1/chart/related/owners?q=${query}`,
+        }).then(response => ({
+          data: response.json.result.map(
+            (item: { value: number; text: string }) => ({
+              value: item.value,
+              label: item.text,
+            }),
+          ),
+          totalCount: response.json.count,
+        }));
+      },
     [],
   );
 
@@ -137,10 +138,12 @@ export default function PropertiesModal({
         certifiedBy && certificationDetails ? certificationDetails : null,
     };
     if (selectedOwners) {
-      payload.owners = (selectedOwners as {
-        value: number;
-        label: string;
-      }[]).map(o => o.value);
+      payload.owners = (
+        selectedOwners as {
+          value: number;
+          label: string;
+        }[]
+      ).map(o => o.value);
     }
     try {
       const res = await SupersetClient.put({

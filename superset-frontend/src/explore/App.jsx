@@ -21,7 +21,7 @@ import { hot } from 'react-hot-loader/root';
 import { Provider } from 'react-redux';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { ThemeProvider } from '@superset-ui/core';
+import { ThemeProvider } from 'src/core';
 import { DynamicPluginProvider } from 'src/components/DynamicPlugins';
 import ToastContainer from 'src/components/MessageToasts/ToastContainer';
 import setupApp from 'src/setup/setupApp';

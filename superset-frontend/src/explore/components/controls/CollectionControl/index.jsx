@@ -20,7 +20,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'src/common/components';
 import shortid from 'shortid';
-import { t, withTheme } from '@superset-ui/core';
+import { t, withTheme } from 'src/core';
 import {
   SortableContainer,
   SortableHandle,
@@ -32,7 +32,7 @@ import {
   HeaderContainer,
   AddIconButton,
 } from 'src/explore/components/controls/OptionControls';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import CustomListItem from 'src/explore/components/controls/CustomListItem';
 import controlMap from '..';

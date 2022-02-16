@@ -18,13 +18,13 @@
  */
 
 import React from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import {
   MetricOption,
   ColumnOption,
   MetricOptionProps,
   ColumnOptionProps,
-} from '@superset-ui/chart-controls';
+} from 'src/chartConntrols';
 
 const OptionContainer = styled.div`
   width: 100%;

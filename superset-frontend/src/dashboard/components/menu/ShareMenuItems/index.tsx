@@ -19,7 +19,7 @@
 import React from 'react';
 import { useUrlShortener } from 'src/common/hooks/useUrlShortener';
 import copyTextToClipboard from 'src/utils/copy';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { Menu } from 'src/common/components';
 
 interface ShareMenuItemProps {

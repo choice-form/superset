@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ColumnMeta, Metric } from '@superset-ui/chart-controls';
+import { ColumnMeta, Metric } from 'src/chartConntrols';
 import { DndItemType } from '../DndItemType';
 
 export type DndItemValue = ColumnMeta | Metric;

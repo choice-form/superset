@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ChartProps, Datasource } from '@superset-ui/core';
+import { ChartProps, Datasource } from 'src/core';
 
 export interface FilterConfig {
   column: string;

@@ -18,7 +18,7 @@
  */
 import React, { useEffect, useState } from 'react';
 import { Select } from 'src/components';
-import { t, SupersetClient, styled } from '@superset-ui/core';
+import { t, SupersetClient, styled } from 'src/core';
 import {
   Operators,
   OPERATORS_OPTIONS,
@@ -227,10 +227,8 @@ const AdhocFilterEditPopoverSimpleTabContent: React.FC<Props> = props => {
   } = useSimpleTabFilterProps(props);
   const [suggestions, setSuggestions] = useState<Record<string, any>>([]);
   const [comparator, setComparator] = useState(props.adhocFilter.comparator);
-  const [
-    loadingComparatorSuggestions,
-    setLoadingComparatorSuggestions,
-  ] = useState(false);
+  const [loadingComparatorSuggestions, setLoadingComparatorSuggestions] =
+    useState(false);
 
   const onInputComparatorChange = (
     event: React.ChangeEvent<HTMLInputElement>,

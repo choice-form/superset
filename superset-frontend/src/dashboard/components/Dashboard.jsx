@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isFeatureEnabled, t, FeatureFlag } from '@superset-ui/core';
+import { isFeatureEnabled, t, FeatureFlag } from 'src/core';
 
 import { PluginContext } from 'src/components/DynamicPlugins';
 import Loading from 'src/components/Loading';

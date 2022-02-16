@@ -18,10 +18,10 @@
  */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { supersetTheme } from '@superset-ui/core';
+import { supersetTheme } from 'src/core';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
-import * as SupersetUI from '@superset-ui/core';
+import * as SupersetUI from 'src/core';
 import { styledMount as mount } from 'spec/helpers/theming';
 import {
   CHART_RENDERING_SUCCEEDED,

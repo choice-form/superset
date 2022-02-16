@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useEffect, useState } from 'react';
-import { t, SupersetClient } from '@superset-ui/core';
+import { t, SupersetClient } from 'src/core';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import { Select } from 'src/components';
 import { SelectProps, OptionsType } from 'src/components/Select/Select';

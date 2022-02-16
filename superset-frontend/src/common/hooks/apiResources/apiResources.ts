@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { makeApi } from '@superset-ui/core';
+import { makeApi } from 'src/core';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 export enum ResourceStatus {

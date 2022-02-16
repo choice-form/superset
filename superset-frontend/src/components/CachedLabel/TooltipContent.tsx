@@ -19,7 +19,7 @@
 
 import React from 'react';
 import moment from 'moment';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 
 interface Props {
   cachedTimestamp?: string;

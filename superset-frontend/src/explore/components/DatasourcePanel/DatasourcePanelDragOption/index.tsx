@@ -18,13 +18,13 @@
  */
 import React from 'react';
 import { useDrag } from 'react-dnd';
-import { Metric, styled } from '@superset-ui/core';
+import { Metric, styled } from 'src/core';
 import { DndItemType } from 'src/explore/components/DndItemType';
 import {
   StyledColumnOption,
   StyledMetricOption,
 } from 'src/explore/components/optionRenderers';
-import { ColumnMeta } from '@superset-ui/chart-controls';
+import { ColumnMeta } from 'src/chartConntrols';
 import { DatasourcePanelDndItem } from '../types';
 
 const DatasourceItemContainer = styled.div`

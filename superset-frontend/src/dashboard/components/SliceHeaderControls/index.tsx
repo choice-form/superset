@@ -18,12 +18,7 @@
  */
 import React from 'react';
 import moment from 'moment';
-import {
-  Behavior,
-  getChartMetadataRegistry,
-  styled,
-  t,
-} from '@superset-ui/core';
+import { Behavior, getChartMetadataRegistry, styled, t } from 'src/core';
 import { Menu, NoAnimationDropdown } from 'src/common/components';
 import ShareMenuItems from 'src/dashboard/components/menu/ShareMenuItems';
 import downloadAsImage from 'src/utils/downloadAsImage';
@@ -257,6 +252,7 @@ class SliceHeaderControls extends React.PureComponent<
     const resizeLabel = isFullSize ? t('Minimize chart') : t('Maximize chart');
     const menu = (
       <Menu
+        // @ts-ignore
         onClick={this.handleMenuClick}
         selectable={false}
         data-test={`slice_${slice.slice_id}-menu`}

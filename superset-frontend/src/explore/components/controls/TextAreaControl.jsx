@@ -19,7 +19,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TextArea } from 'src/common/components';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 
 import Button from 'src/components/Button';
 import { TextAreaEditor } from 'src/components/AsyncAceEditor';

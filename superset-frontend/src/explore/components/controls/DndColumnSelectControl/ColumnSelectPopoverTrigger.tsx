@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useCallback, useMemo, useState } from 'react';
-import { ColumnMeta } from '@superset-ui/chart-controls';
+import { ColumnMeta } from 'src/chartConntrols';
 import Popover from 'src/components/Popover';
 import { ExplorePopoverContent } from 'src/explore/components/ExploreContentPopover';
 import ColumnSelectPopover from './ColumnSelectPopover';
@@ -51,21 +51,18 @@ const ColumnSelectPopoverTrigger = ({
     setPopoverVisible(false);
   }, []);
 
-  const {
-    visible,
-    handleTogglePopover,
-    handleClosePopover,
-  } = isControlledComponent
-    ? {
-        visible: props.visible,
-        handleTogglePopover: props.togglePopover!,
-        handleClosePopover: props.closePopover!,
-      }
-    : {
-        visible: popoverVisible,
-        handleTogglePopover: togglePopover,
-        handleClosePopover: closePopover,
-      };
+  const { visible, handleTogglePopover, handleClosePopover } =
+    isControlledComponent
+      ? {
+          visible: props.visible,
+          handleTogglePopover: props.togglePopover!,
+          handleClosePopover: props.closePopover!,
+        }
+      : {
+          visible: popoverVisible,
+          handleTogglePopover: togglePopover,
+          handleClosePopover: closePopover,
+        };
 
   const overlayContent = useMemo(
     () => (

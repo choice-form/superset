@@ -21,12 +21,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import Icons from 'src/components/Icons';
-import {
-  CategoricalColorNamespace,
-  SupersetClient,
-  styled,
-  t,
-} from '@superset-ui/core';
+import { CategoricalColorNamespace, SupersetClient, styled, t } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import ReportModal from 'src/components/ReportModal';
 import {

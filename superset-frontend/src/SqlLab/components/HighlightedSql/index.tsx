@@ -20,7 +20,7 @@ import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/light';
 import sql from 'react-syntax-highlighter/dist/cjs/languages/hljs/sql';
 import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/github';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import ModalTrigger from 'src/components/ModalTrigger';
 
 SyntaxHighlighter.registerLanguage('sql', sql);

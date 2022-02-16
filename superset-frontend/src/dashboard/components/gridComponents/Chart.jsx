@@ -19,7 +19,7 @@
 import cx from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import { isEqual } from 'lodash';
 
 import { exportChart, getExploreLongUrl } from 'src/explore/exploreUtils';

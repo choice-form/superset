@@ -17,7 +17,7 @@
  * under the License.
  */
 import querystring from 'query-string';
-import { JsonObject } from '@superset-ui/core';
+import { JsonObject } from 'src/core';
 
 const reservedQueryParams = new Set(['standalone', 'edit']);
 

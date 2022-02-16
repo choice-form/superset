@@ -19,7 +19,7 @@
 import cx from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 
 const propTypes = {
   datasourceUrl: PropTypes.string,

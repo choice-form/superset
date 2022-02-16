@@ -1,4 +1,4 @@
-import { JsonObject, Locale } from '@superset-ui/core';
+import { JsonObject, Locale } from 'src/core';
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

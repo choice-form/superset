@@ -21,8 +21,8 @@ import {
   QueryFormData,
   AnnotationData,
   AdhocMetric,
-} from '@superset-ui/core';
-import { ColumnMeta, DatasourceMeta } from '@superset-ui/chart-controls';
+} from 'src/core';
+import { ColumnMeta, DatasourceMeta } from 'src/chartConntrols';
 import { DatabaseObject } from 'src/views/CRUD/types';
 
 export { Slice, Chart } from 'src/types/Chart';

@@ -17,11 +17,8 @@
  * under the License.
  */
 import shortid from 'shortid';
-import { DatasourceType, JsonObject, QueryFormData } from '@superset-ui/core';
-import {
-  ControlStateMapping,
-  DatasourceMeta,
-} from '@superset-ui/chart-controls';
+import { DatasourceType, JsonObject, QueryFormData } from 'src/core';
+import { ControlStateMapping, DatasourceMeta } from 'src/chartConntrols';
 import {
   CommonBootstrapData,
   UserWithPermissionsAndRoles,

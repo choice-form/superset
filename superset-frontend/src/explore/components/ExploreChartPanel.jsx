@@ -19,7 +19,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Split from 'react-split';
-import { styled, SupersetClient, useTheme } from '@superset-ui/core';
+import { styled, SupersetClient, useTheme } from 'src/core';
 import { useResizeDetector } from 'react-resize-detector';
 import { chartPropShape } from 'src/dashboard/util/propShapes';
 import ChartContainer from 'src/chart/ChartContainer';

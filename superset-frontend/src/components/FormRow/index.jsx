@@ -20,7 +20,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'src/common/components';
 
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 
 const STYLE_ROW = { marginTop: '5px', minHeight: '30px' };
 const STYLE_RALIGN = { textAlign: 'right' };

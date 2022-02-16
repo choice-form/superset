@@ -23,7 +23,7 @@ import {
   getTimeFormatter,
   NumberFormats,
   TimeFormats,
-} from '@superset-ui/core';
+} from 'src/core';
 import {
   getDataRecordFormatter,
   getRangeExtraFormData,

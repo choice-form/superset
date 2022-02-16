@@ -25,7 +25,7 @@ import {
   GenericDataType,
   QueryFormData,
   ChartDataResponseResult,
-} from '@superset-ui/core';
+} from 'src/core';
 import { RefObject } from 'react';
 import { PluginFilterHooks, PluginFilterStylesProps } from '../types';
 

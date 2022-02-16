@@ -19,7 +19,7 @@
 import React from 'react';
 import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
-import { getChartMetadataRegistry, ChartMetadata } from '@superset-ui/core';
+import { getChartMetadataRegistry, ChartMetadata } from 'src/core';
 import { render, screen } from 'spec/helpers/testing-library';
 import VizTypeControl from 'src/explore/components/controls/VizTypeControl';
 import { DynamicPluginProvider } from 'src/components/DynamicPlugins';

@@ -25,13 +25,7 @@ import { RadioChangeEvent } from 'antd/lib/radio';
 import Button from 'src/components/Button';
 import shortid from 'shortid';
 import rison from 'rison';
-import {
-  styled,
-  t,
-  makeApi,
-  SupersetClient,
-  JsonResponse,
-} from '@superset-ui/core';
+import { styled, t, makeApi, SupersetClient, JsonResponse } from 'src/core';
 import { debounce } from 'lodash';
 import ErrorMessageWithStackTrace from 'src/components/ErrorMessage/ErrorMessageWithStackTrace';
 import { SaveDatasetModal } from 'src/SqlLab/components/SaveDatasetModal';
@@ -201,30 +195,25 @@ export default class ResultSet extends React.PureComponent<
     this.fetchResults = this.fetchResults.bind(this);
     this.popSelectStar = this.popSelectStar.bind(this);
     this.reFetchQueryResults = this.reFetchQueryResults.bind(this);
-    this.toggleExploreResultsButton = this.toggleExploreResultsButton.bind(
-      this,
-    );
+    this.toggleExploreResultsButton =
+      this.toggleExploreResultsButton.bind(this);
     this.handleSaveInDataset = this.handleSaveInDataset.bind(this);
     this.handleHideSaveModal = this.handleHideSaveModal.bind(this);
     this.handleDatasetNameChange = this.handleDatasetNameChange.bind(this);
-    this.handleSaveDatasetRadioBtnState = this.handleSaveDatasetRadioBtnState.bind(
-      this,
-    );
+    this.handleSaveDatasetRadioBtnState =
+      this.handleSaveDatasetRadioBtnState.bind(this);
     this.handleOverwriteCancel = this.handleOverwriteCancel.bind(this);
     this.handleOverwriteDataset = this.handleOverwriteDataset.bind(this);
-    this.handleOverwriteDatasetOption = this.handleOverwriteDatasetOption.bind(
-      this,
-    );
+    this.handleOverwriteDatasetOption =
+      this.handleOverwriteDatasetOption.bind(this);
     this.handleSaveDatasetModalSearch = debounce(
       this.handleSaveDatasetModalSearch.bind(this),
       1000,
     );
-    this.handleFilterAutocompleteOption = this.handleFilterAutocompleteOption.bind(
-      this,
-    );
-    this.handleOnChangeAutoComplete = this.handleOnChangeAutoComplete.bind(
-      this,
-    );
+    this.handleFilterAutocompleteOption =
+      this.handleFilterAutocompleteOption.bind(this);
+    this.handleOnChangeAutoComplete =
+      this.handleOnChangeAutoComplete.bind(this);
     this.handleExploreBtnClick = this.handleExploreBtnClick.bind(this);
   }
 

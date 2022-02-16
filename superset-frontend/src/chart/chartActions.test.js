@@ -20,7 +20,7 @@ import URI from 'urijs';
 import fetchMock from 'fetch-mock';
 import sinon from 'sinon';
 
-import * as chartlib from '@superset-ui/core';
+import * as chartlib from 'src/core';
 import { LOG_EVENT } from 'src/logger/actions';
 import * as exploreUtils from 'src/explore/exploreUtils';
 import * as actions from 'src/chart/chartAction';

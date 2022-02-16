@@ -19,7 +19,7 @@
 /* eslint-env browser */
 import cx from 'classnames';
 import React, { FC, useCallback, useMemo } from 'react';
-import { JsonObject, styled, css } from '@superset-ui/core';
+import { JsonObject, styled, css } from 'src/core';
 import ErrorBoundary from 'src/components/ErrorBoundary';
 import BuilderComponentPane from 'src/dashboard/components/BuilderComponentPane';
 import DashboardHeader from 'src/dashboard/containers/DashboardHeader';

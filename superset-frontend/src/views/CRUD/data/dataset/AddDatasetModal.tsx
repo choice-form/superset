@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 import Modal from 'src/components/Modal';
 import TableSelector from 'src/components/TableSelector';

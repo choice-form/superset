@@ -21,7 +21,7 @@
  * The Chart model as returned from the API
  */
 
-import { QueryFormData } from '@superset-ui/core';
+import { QueryFormData } from 'src/core';
 import Owner from './Owner';
 
 export interface Chart {

@@ -21,11 +21,11 @@ import React, { useCallback, useMemo, useState } from 'react';
 import Tabs from 'src/components/Tabs';
 import Button from 'src/components/Button';
 import { Select } from 'src/components';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 
 import { Form, FormItem } from 'src/components/Form';
 import { StyledColumnOption } from 'src/explore/components/optionRenderers';
-import { ColumnMeta } from '@superset-ui/chart-controls';
+import { ColumnMeta } from 'src/chartConntrols';
 
 const StyledSelect = styled(Select)`
   .metric-option {
@@ -52,18 +52,15 @@ const ColumnSelectPopover = ({
   onChange,
   onClose,
 }: ColumnSelectPopoverProps) => {
-  const [
-    initialCalculatedColumn,
-    initialSimpleColumn,
-  ] = editedColumn?.expression
-    ? [editedColumn, undefined]
-    : [undefined, editedColumn];
+  const [initialCalculatedColumn, initialSimpleColumn] =
+    editedColumn?.expression
+      ? [editedColumn, undefined]
+      : [undefined, editedColumn];
   const [selectedCalculatedColumn, setSelectedCalculatedColumn] = useState(
     initialCalculatedColumn,
   );
-  const [selectedSimpleColumn, setSelectedSimpleColumn] = useState(
-    initialSimpleColumn,
-  );
+  const [selectedSimpleColumn, setSelectedSimpleColumn] =
+    useState(initialSimpleColumn);
 
   const [calculatedColumns, simpleColumns] = useMemo(
     () =>

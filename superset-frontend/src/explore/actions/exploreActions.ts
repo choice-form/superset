@@ -17,13 +17,8 @@
  * under the License.
  */
 /* eslint camelcase: 0 */
-import { DatasourceMeta } from '@superset-ui/chart-controls';
-import {
-  t,
-  SupersetClient,
-  DatasourceType,
-  QueryFormData,
-} from '@superset-ui/core';
+import { DatasourceMeta } from 'src/chartConntrols';
+import { t, SupersetClient, DatasourceType, QueryFormData } from 'src/core';
 import { Dispatch } from 'redux';
 import {
   addDangerToast,

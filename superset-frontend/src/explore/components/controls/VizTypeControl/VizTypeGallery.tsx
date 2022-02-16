@@ -33,7 +33,7 @@ import {
   ChartMetadata,
   SupersetTheme,
   useTheme,
-} from '@superset-ui/core';
+} from 'src/core';
 import { Collapse, Input } from 'src/common/components';
 import Label from 'src/components/Label';
 import { usePluginContext } from 'src/components/DynamicPlugins';

@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { DataMask } from '@superset-ui/core';
+import { DataMask } from 'src/core';
 import { DataMaskStateWithId } from 'src/dataMask/types';
 import { Filter } from '../../types';
 

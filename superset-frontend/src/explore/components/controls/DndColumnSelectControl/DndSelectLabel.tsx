@@ -18,7 +18,7 @@
  */
 import React, { ReactNode } from 'react';
 import { useDrop } from 'react-dnd';
-import { t, useTheme } from '@superset-ui/core';
+import { t, useTheme } from 'src/core';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import {
   AddControlLabel,

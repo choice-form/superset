@@ -17,14 +17,14 @@
  * under the License.
  */
 import React from 'react';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { Moment } from 'moment';
 import { isInteger } from 'lodash';
 import { Col, InputNumber, Row } from 'src/common/components';
 import { DatePicker } from 'src/components/DatePicker';
 import { Radio } from 'src/components/Radio';
 import { Select } from 'src/components';
-import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
+import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 import {
   SINCE_GRAIN_OPTIONS,
   SINCE_MODE_OPTIONS,

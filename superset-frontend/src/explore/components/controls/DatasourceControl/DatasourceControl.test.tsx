@@ -20,7 +20,7 @@
 import React from 'react';
 import { render, screen, act } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import { SupersetClient } from '@superset-ui/core';
+import { SupersetClient } from 'src/core';
 import * as Utils from 'src/explore/exploreUtils';
 import DatasourceControl from '.';
 

@@ -26,7 +26,7 @@ import ModalTrigger from 'src/components/ModalTrigger';
 import RefreshIntervalModal from 'src/dashboard/components/RefreshIntervalModal';
 import HeaderActionsDropdown from 'src/dashboard/components/Header/HeaderActionsDropdown';
 import Alert from 'src/components/Alert';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 
 describe('RefreshIntervalModal - Enzyme', () => {
   const getMountWrapper = (props: any) =>

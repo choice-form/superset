@@ -19,7 +19,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { InputNumber } from 'src/common/components';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import { isEqual, debounce } from 'lodash';
 import ControlHeader from 'src/explore/components/ControlHeader';
 

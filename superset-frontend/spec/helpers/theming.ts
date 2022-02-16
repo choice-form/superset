@@ -17,7 +17,7 @@
  * under the License.
  */
 import { shallow as enzymeShallow, mount as enzymeMount } from 'enzyme';
-import { supersetTheme } from '@superset-ui/core';
+import { supersetTheme } from 'src/core';
 import { ReactElement } from 'react';
 import { ProviderWrapper } from './ProviderWrapper';
 

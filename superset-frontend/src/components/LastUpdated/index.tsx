@@ -18,7 +18,7 @@
  */
 import React, { useEffect, useState, FunctionComponent } from 'react';
 import moment, { Moment, MomentInput } from 'moment';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import Icons from 'src/components/Icons';
 
 const REFRESH_INTERVAL = 60000; // every minute

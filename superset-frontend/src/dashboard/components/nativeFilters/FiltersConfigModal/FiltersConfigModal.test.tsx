@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { Preset } from '@superset-ui/core';
+import { Preset } from 'src/core';
 import fetchMock from 'fetch-mock';
 import userEvent, { specialChars } from '@testing-library/user-event';
 import {

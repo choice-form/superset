@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { legacyValidateNumber, legacyValidateInteger } from '@superset-ui/core';
+import { legacyValidateNumber, legacyValidateInteger } from 'src/core';
 import debounce from 'lodash/debounce';
 import { FAST_DEBOUNCE } from 'src/constants';
 import ControlHeader from 'src/explore/components/ControlHeader';
@@ -46,7 +46,7 @@ const safeStringify = (value?: InputValueType | null) =>
   value == null ? '' : String(value);
 
 export default class TextControl<
-  T extends InputValueType = InputValueType
+  T extends InputValueType = InputValueType,
 > extends React.Component<TextControlProps<T>, TextControlState> {
   initialValue?: TextControlProps['value'];
 

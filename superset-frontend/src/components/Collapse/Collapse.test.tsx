@@ -19,7 +19,7 @@
 import React from 'react';
 import { render, screen } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import { supersetTheme } from '@superset-ui/core';
+import { supersetTheme } from 'src/core';
 import { hexToRgb } from 'src/utils/colorUtils';
 import Collapse, { CollapseProps } from '.';
 
@@ -93,8 +93,8 @@ test('renders with custom properties', () => {
   });
 
   const header = document.getElementsByClassName('ant-collapse-header')[0];
-  const arrow = document.getElementsByClassName('ant-collapse-arrow')[0]
-    .children[0];
+  const arrow =
+    document.getElementsByClassName('ant-collapse-arrow')[0].children[0];
 
   const headerStyle = window.getComputedStyle(header);
   const arrowStyle = window.getComputedStyle(arrow);

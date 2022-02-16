@@ -20,7 +20,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Button from 'src/components/Button';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 
 import buildFilterScopeTreeEntry from 'src/dashboard/util/buildFilterScopeTreeEntry';
 import getFilterScopeNodesTree from 'src/dashboard/util/getFilterScopeNodesTree';
@@ -179,11 +179,8 @@ export default class FilterScopeSelector extends React.PureComponent {
   }
 
   onCheckFilterScope(checked = []) {
-    const {
-      activeFilterField,
-      filterScopeMap,
-      checkedFilterFields,
-    } = this.state;
+    const { activeFilterField, filterScopeMap, checkedFilterFields } =
+      this.state;
 
     const key = getKeyForFilterScopeTree({
       activeFilterField,
@@ -213,11 +210,8 @@ export default class FilterScopeSelector extends React.PureComponent {
   }
 
   onExpandFilterScope(expanded = []) {
-    const {
-      activeFilterField,
-      checkedFilterFields,
-      filterScopeMap,
-    } = this.state;
+    const { activeFilterField, checkedFilterFields, filterScopeMap } =
+      this.state;
     const key = getKeyForFilterScopeTree({
       activeFilterField,
       checkedFilterFields,
@@ -347,11 +341,8 @@ export default class FilterScopeSelector extends React.PureComponent {
     // Reset nodes back to unfiltered state
     if (!this.state.searchText) {
       this.setState(prevState => {
-        const {
-          activeFilterField,
-          checkedFilterFields,
-          filterScopeMap,
-        } = prevState;
+        const { activeFilterField, checkedFilterFields, filterScopeMap } =
+          prevState;
         const key = getKeyForFilterScopeTree({
           activeFilterField,
           checkedFilterFields,
@@ -370,11 +361,8 @@ export default class FilterScopeSelector extends React.PureComponent {
       });
     } else {
       const updater = prevState => {
-        const {
-          activeFilterField,
-          checkedFilterFields,
-          filterScopeMap,
-        } = prevState;
+        const { activeFilterField, checkedFilterFields, filterScopeMap } =
+          prevState;
         const key = getKeyForFilterScopeTree({
           activeFilterField,
           checkedFilterFields,

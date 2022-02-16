@@ -16,13 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  ensureIsArray,
-  ExtraFormData,
-  t,
-  TimeGranularity,
-  tn,
-} from '@superset-ui/core';
+import { ensureIsArray, ExtraFormData, t, TimeGranularity, tn } from 'src/core';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Select } from 'src/components';
 import { FormItemProps } from 'antd/lib/form';

@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { EventHandler, ChangeEvent, MouseEvent } from 'react';
-import { t, SupersetTheme } from '@superset-ui/core';
+import { t, SupersetTheme } from 'src/core';
 import Button from 'src/components/Button';
 import { StyledInputContainer, wideButton } from './styles';
 

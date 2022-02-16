@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ChartProps } from '@superset-ui/core';
+import { ChartProps } from 'src/core';
 
 export default function transformProps(chartProps: ChartProps) {
   const {

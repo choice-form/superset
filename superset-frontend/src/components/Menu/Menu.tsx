@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState, useEffect } from 'react';
-import { styled, css } from '@superset-ui/core';
+import { styled, css } from 'src/core';
 import { debounce } from 'lodash';
 import { Global } from '@emotion/react';
 import { getUrlParam } from 'src/utils/urlUtils';

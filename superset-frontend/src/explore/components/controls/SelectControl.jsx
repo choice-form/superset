@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css, t } from '@superset-ui/core';
+import { css, t } from 'src/core';
 import { Select } from 'src/components';
 import ControlHeader from 'src/explore/components/ControlHeader';
 

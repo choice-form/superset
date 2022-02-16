@@ -17,7 +17,7 @@
  * under the License.
  */
 /* eslint camelcase: 0 */
-import { t, SupersetClient } from '@superset-ui/core';
+import { t, SupersetClient } from 'src/core';
 import rison from 'rison';
 import { getClientErrorObject } from 'src/utils/getClientErrorObject';
 import {

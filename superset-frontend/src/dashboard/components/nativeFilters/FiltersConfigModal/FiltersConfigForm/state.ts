@@ -18,7 +18,7 @@
  */
 import { useEffect, useState } from 'react';
 import { FormInstance } from 'antd/lib/form';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { NativeFiltersForm, NativeFiltersFormItem } from '../types';
 import { setNativeFilterFieldValues, useForceUpdate } from './utils';
 import { Filter } from '../../types';

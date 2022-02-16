@@ -25,7 +25,7 @@ import {
   EXTRA_FORM_DATA_OVERRIDE_KEYS,
   AdhocFilter,
   FeatureFlag,
-} from '@superset-ui/core';
+} from 'src/core';
 import { Charts, DashboardLayout } from 'src/dashboard/types';
 import { RefObject } from 'react';
 import { DataMaskStateWithId } from 'src/dataMask/types';

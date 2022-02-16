@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import Alert from 'src/components/Alert';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { Query } from 'src/SqlLab/types';
 import QueryTable from 'src/SqlLab/components/QueryTable';
 

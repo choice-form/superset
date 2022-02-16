@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getNumberFormatter, t } from '@superset-ui/core';
+import { getNumberFormatter, t } from 'src/core';
 
 import Label from 'src/components/Label';
 import { Tooltip } from 'src/components/Tooltip';

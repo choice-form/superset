@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
-import { ThemeProvider } from '@superset-ui/core';
+import { ThemeProvider } from 'src/core';
 import setupApp from '../setup/setupApp';
 import setupPlugins from '../setup/setupPlugins';
 import { DynamicPluginProvider } from '../components/DynamicPlugins';

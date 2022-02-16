@@ -23,11 +23,8 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {
-  ExtraControlProps,
-  sharedControlComponents,
-} from '@superset-ui/chart-controls';
-import { JsonArray, JsonValue, t } from '@superset-ui/core';
+import { ExtraControlProps, sharedControlComponents } from 'src/chartConntrols';
+import { JsonArray, JsonValue, t } from 'src/core';
 import { ControlProps } from 'src/explore/components/Control';
 import builtInControlComponents from 'src/explore/components/controls';
 

@@ -19,7 +19,7 @@
 import { SyntheticEvent } from 'react';
 import domToImage, { Options } from 'dom-to-image';
 import kebabCase from 'lodash/kebabCase';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { addWarningToast } from 'src/components/MessageToasts/actions';
 
 /**

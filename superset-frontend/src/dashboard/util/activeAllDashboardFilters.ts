@@ -17,7 +17,7 @@
  * under the License.
  */
 import { DataMaskStateWithId } from 'src/dataMask/types';
-import { JsonObject } from '@superset-ui/core';
+import { JsonObject } from 'src/core';
 import { CHART_TYPE } from './componentTypes';
 import { Scope } from '../components/nativeFilters/types';
 import { ActiveFilters, Layout, LayoutItem } from '../types';

@@ -17,7 +17,7 @@
  * under the License.
  */
 import moment from 'moment';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import {
   SelectOptionType,
   PreviousCalendarWeek,
@@ -87,7 +87,8 @@ export const SINCE_MODE_OPTIONS: SelectOptionType[] = [
   { value: 'today', label: t('Midnight') },
 ];
 
-export const UNTIL_MODE_OPTIONS: SelectOptionType[] = SINCE_MODE_OPTIONS.slice();
+export const UNTIL_MODE_OPTIONS: SelectOptionType[] =
+  SINCE_MODE_OPTIONS.slice();
 
 export const COMMON_RANGE_SET: Set<CommonRangeType> = new Set([
   'Last day',

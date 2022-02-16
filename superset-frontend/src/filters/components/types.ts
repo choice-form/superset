@@ -1,4 +1,4 @@
-import { SetDataMaskHook } from '@superset-ui/core';
+import { SetDataMaskHook } from 'src/core';
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

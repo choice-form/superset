@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SuperChart } from '@superset-ui/core';
+import { SuperChart } from 'src/core';
 
 import ChartRenderer from 'src/chart/ChartRenderer';
 

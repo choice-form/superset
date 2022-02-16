@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 
 import Popover from 'src/components/Popover';
 import { FormLabel } from 'src/components/Form';

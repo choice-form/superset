@@ -21,7 +21,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'react-virtualized';
 import { createFilter } from 'react-search-input';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 import { Input } from 'src/common/components';
 import { Select } from 'src/components';
 import Loading from 'src/components/Loading';

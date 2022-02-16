@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 
 import Icons from 'src/components/Icons';
@@ -75,10 +75,8 @@ const CssTemplateModal: FunctionComponent<CssTemplateModalProps> = ({
   cssTemplate = null,
 }) => {
   const [disableSave, setDisableSave] = useState<boolean>(true);
-  const [
-    currentCssTemplate,
-    setCurrentCssTemplate,
-  ] = useState<TemplateObject | null>(null);
+  const [currentCssTemplate, setCurrentCssTemplate] =
+    useState<TemplateObject | null>(null);
   const [isHidden, setIsHidden] = useState<boolean>(true);
   const isEditMode = cssTemplate !== null;
 

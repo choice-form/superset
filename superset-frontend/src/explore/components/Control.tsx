@@ -17,9 +17,9 @@
  * under the License.
  */
 import React, { ReactNode, useCallback, useState } from 'react';
-import { ControlType } from '@superset-ui/chart-controls';
-import { ControlComponentProps as BaseControlComponentProps } from '@superset-ui/chart-controls/lib/shared-controls/components/types';
-import { JsonValue, QueryFormData } from '@superset-ui/core';
+import { ControlType } from 'src/chartConntrols';
+import { ControlComponentProps as BaseControlComponentProps } from 'src/chartConntrols/shared-controls/components/types';
+import { JsonValue, QueryFormData } from 'src/core';
 import ErrorBoundary from 'src/components/ErrorBoundary';
 import { ExploreActions } from 'src/explore/actions/exploreActions';
 import controlMap from './controls';
@@ -47,9 +47,8 @@ export type ControlProps = {
 /**
  *
  */
-export type ControlComponentProps<
-  ValueType extends JsonValue = JsonValue
-> = Omit<ControlProps, 'value'> & BaseControlComponentProps<ValueType>;
+export type ControlComponentProps<ValueType extends JsonValue = JsonValue> =
+  Omit<ControlProps, 'value'> & BaseControlComponentProps<ValueType>;
 
 export default function Control(props: ControlProps) {
   const {

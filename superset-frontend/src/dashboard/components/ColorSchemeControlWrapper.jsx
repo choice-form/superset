@@ -19,7 +19,7 @@
 /* eslint-env browser */
 import PropTypes from 'prop-types';
 import React from 'react';
-import { getCategoricalSchemeRegistry, t } from '@superset-ui/core';
+import { getCategoricalSchemeRegistry, t } from 'src/core';
 
 import ColorSchemeControl from 'src/explore/components/controls/ColorSchemeControl';
 

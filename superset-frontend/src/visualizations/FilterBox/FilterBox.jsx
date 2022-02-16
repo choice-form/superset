@@ -22,7 +22,7 @@ import { debounce } from 'lodash';
 import { max as d3Max } from 'd3-array';
 import { AsyncCreatableSelect, CreatableSelect } from 'src/components/Select';
 import Button from 'src/components/Button';
-import { t, SupersetClient, ensureIsArray } from '@superset-ui/core';
+import { t, SupersetClient, ensureIsArray } from 'src/core';
 
 import {
   BOOL_FALSE_DISPLAY,

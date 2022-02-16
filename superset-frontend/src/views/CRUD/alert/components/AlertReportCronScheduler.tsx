@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState, useCallback, useRef, FunctionComponent } from 'react';
-import { t, useTheme } from '@superset-ui/core';
+import { t, useTheme } from 'src/core';
 
 import { Input, AntdInput } from 'src/common/components';
 import { Radio } from 'src/components/Radio';
@@ -29,10 +29,9 @@ interface AlertReportCronSchedulerProps {
   onChange: (change: string) => any;
 }
 
-export const AlertReportCronScheduler: FunctionComponent<AlertReportCronSchedulerProps> = ({
-  value,
-  onChange,
-}) => {
+export const AlertReportCronScheduler: FunctionComponent<
+  AlertReportCronSchedulerProps
+> = ({ value, onChange }) => {
   const theme = useTheme();
   const inputRef = useRef<AntdInput>(null);
   const [scheduleFormat, setScheduleFormat] = useState<'picker' | 'input'>(

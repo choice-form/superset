@@ -19,7 +19,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { t, SupersetClient, makeApi, styled } from '@superset-ui/core';
+import { t, SupersetClient, makeApi, styled } from 'src/core';
 import moment from 'moment';
 import ActionsBar, { ActionProps } from 'src/components/ListView/ActionsBar';
 import Button from 'src/components/Button';
@@ -123,10 +123,8 @@ function AlertList({
   const [currentAlert, setCurrentAlert] = useState<Partial<AlertObject> | null>(
     null,
   );
-  const [
-    currentAlertDeleting,
-    setCurrentAlertDeleting,
-  ] = useState<AlertObject | null>(null);
+  const [currentAlertDeleting, setCurrentAlertDeleting] =
+    useState<AlertObject | null>(null);
 
   // Actions
   function handleAlertEdit(alert: AlertObject | null) {

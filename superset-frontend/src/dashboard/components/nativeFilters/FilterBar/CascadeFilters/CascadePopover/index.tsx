@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { styled, t, DataMask, css, SupersetTheme } from '@superset-ui/core';
+import { styled, t, DataMask, css, SupersetTheme } from 'src/core';
 import Popover from 'src/components/Popover';
 import Icons from 'src/components/Icons';
 import { Pill } from 'src/dashboard/components/FiltersBadge/Styles';
@@ -128,10 +128,10 @@ const CascadePopover: React.FC<CascadePopoverProps> = ({
   };
 
   const allFilters = getAllFilters(filter);
-  const activeFilters = useMemo(() => getActiveChildren(filter) || [filter], [
-    filter,
-    getActiveChildren,
-  ]);
+  const activeFilters = useMemo(
+    () => getActiveChildren(filter) || [filter],
+    [filter, getActiveChildren],
+  );
 
   useEffect(() => {
     const focusedFilterId = currentPathToChild?.[0];

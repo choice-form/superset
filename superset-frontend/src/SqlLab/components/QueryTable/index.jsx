@@ -22,7 +22,7 @@ import moment from 'moment';
 import Card from 'src/components/Card';
 import ProgressBar from 'src/components/ProgressBar';
 import Label from 'src/components/Label';
-import { t, useTheme } from '@superset-ui/core';
+import { t, useTheme } from 'src/core';
 import { useSelector } from 'react-redux';
 import TableView from 'src/components/TableView';
 import Button from 'src/components/Button';

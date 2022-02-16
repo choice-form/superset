@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import cx from 'classnames';
 
-import { t, SafeMarkdown } from '@superset-ui/core';
+import { t, SafeMarkdown } from 'src/core';
 import { Logger, LOG_ACTIONS_RENDER_CHART } from 'src/logger/LogUtils';
 import { MarkdownEditor } from 'src/components/AsyncAceEditor';
 
@@ -110,13 +110,8 @@ class Markdown extends React.PureComponent {
   }
 
   static getDerivedStateFromProps(nextProps, state) {
-    const {
-      hasError,
-      editorMode,
-      markdownSource,
-      undoLength,
-      redoLength,
-    } = state;
+    const { hasError, editorMode, markdownSource, undoLength, redoLength } =
+      state;
     const {
       component: nextComponent,
       undoLength: nextUndoLength,

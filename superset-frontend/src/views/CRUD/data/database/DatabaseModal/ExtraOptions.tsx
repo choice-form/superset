@@ -18,7 +18,7 @@
  */
 import React, { ChangeEvent, EventHandler } from 'react';
 import cx from 'classnames';
-import { t, SupersetTheme } from '@superset-ui/core';
+import { t, SupersetTheme } from 'src/core';
 import InfoTooltip from 'src/components/InfoTooltip';
 import IndeterminateCheckbox from 'src/components/IndeterminateCheckbox';
 import Collapse from 'src/components/Collapse';

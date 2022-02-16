@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import { MainNav as Menu } from 'src/common/components';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import Icons from 'src/components/Icons';
 
 const { SubMenu } = Menu;

@@ -17,9 +17,9 @@
  * under the License.
  */
 import { ReactNode } from 'react';
-import { JsonValue } from '@superset-ui/core';
+import { JsonValue } from 'src/core';
 import { ControlComponentProps } from 'src/explore/components/Control';
-import { ColumnMeta } from '@superset-ui/chart-controls';
+import { ColumnMeta } from 'src/chartConntrols';
 
 export interface OptionProps {
   children?: ReactNode;
@@ -41,13 +41,12 @@ export interface OptionItemInterface {
 /**
  * Shared control props for all DnD control.
  */
-export type DndControlProps<
-  ValueType extends JsonValue
-> = ControlComponentProps<ValueType | ValueType[] | null> & {
-  multi?: boolean;
-  canDelete?: boolean;
-  ghostButtonText?: string;
-  onChange: (value: ValueType | ValueType[] | null | undefined) => void;
-};
+export type DndControlProps<ValueType extends JsonValue> =
+  ControlComponentProps<ValueType | ValueType[] | null> & {
+    multi?: boolean;
+    canDelete?: boolean;
+    ghostButtonText?: string;
+    onChange: (value: ValueType | ValueType[] | null | undefined) => void;
+  };
 
 export type OptionValueType = Record<string, any>;

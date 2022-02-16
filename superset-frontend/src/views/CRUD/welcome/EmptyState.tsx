@@ -19,7 +19,7 @@
 import React from 'react';
 import Button from 'src/components/Button';
 import { Empty } from 'src/common/components';
-import { t, styled } from '@superset-ui/core';
+import { t, styled } from 'src/core';
 
 interface EmptyStateProps {
   tableName: string;

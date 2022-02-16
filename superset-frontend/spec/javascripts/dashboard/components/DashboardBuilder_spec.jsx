@@ -22,7 +22,7 @@ import { mount } from 'enzyme';
 import sinon from 'sinon';
 import fetchMock from 'fetch-mock';
 import { ParentSize } from '@vx/responsive';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 import Tabs from 'src/components/Tabs';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';

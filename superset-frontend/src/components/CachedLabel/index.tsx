@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useState } from 'react';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import Label from 'src/components/Label';
 import { Tooltip } from 'src/components/Tooltip';
 import { TooltipContent } from './TooltipContent';

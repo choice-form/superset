@@ -23,7 +23,7 @@ import React, {
   useMemo,
   useEffect,
 } from 'react';
-import { styled, SupersetClient, t } from '@superset-ui/core';
+import { styled, SupersetClient, t } from 'src/core';
 import { Select } from 'src/components';
 import { FormLabel } from 'src/components/Form';
 import Icons from 'src/components/Icons';

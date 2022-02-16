@@ -24,7 +24,7 @@ import React, {
   Reducer,
   FunctionComponent,
 } from 'react';
-import { t, SupersetTheme } from '@superset-ui/core';
+import { t, SupersetTheme } from 'src/core';
 import { bindActionCreators } from 'redux';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { addReport, editReport } from 'src/reports/actions/reports';

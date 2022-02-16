@@ -17,7 +17,7 @@
  * under the License.
  */
 /* eslint camelcase: 0 */
-import { getChartControlPanelRegistry } from '@superset-ui/core';
+import { getChartControlPanelRegistry } from 'src/core';
 import { getAllControlsState, getFormDataFromControls } from './controlUtils';
 import { controls } from './controls';
 

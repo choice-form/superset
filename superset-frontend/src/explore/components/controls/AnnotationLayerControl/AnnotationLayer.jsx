@@ -27,7 +27,7 @@ import {
   getChartMetadataRegistry,
   validateNonEmpty,
   isValidExpression,
-} from '@superset-ui/core';
+} from 'src/core';
 
 import SelectControl from 'src/explore/components/controls/SelectControl';
 import TextControl from 'src/explore/components/controls/TextControl';
@@ -164,9 +164,8 @@ export default class AnnotationLayer extends React.PureComponent {
     this.applyAnnotation = this.applyAnnotation.bind(this);
     this.fetchOptions = this.fetchOptions.bind(this);
     this.handleAnnotationType = this.handleAnnotationType.bind(this);
-    this.handleAnnotationSourceType = this.handleAnnotationSourceType.bind(
-      this,
-    );
+    this.handleAnnotationSourceType =
+      this.handleAnnotationSourceType.bind(this);
     this.handleValue = this.handleValue.bind(this);
     this.isValidForm = this.isValidForm.bind(this);
   }

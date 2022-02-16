@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import sqlSyntax from 'react-syntax-highlighter/dist/cjs/languages/hljs/sql';
 import htmlSyntax from 'react-syntax-highlighter/dist/cjs/languages/hljs/htmlbars';

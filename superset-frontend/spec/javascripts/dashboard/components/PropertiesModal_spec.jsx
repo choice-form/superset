@@ -21,11 +21,7 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import fetchMock from 'fetch-mock';
 
-import {
-  supersetTheme,
-  SupersetClient,
-  ThemeProvider,
-} from '@superset-ui/core';
+import { supersetTheme, SupersetClient, ThemeProvider } from 'src/core';
 
 import Modal from 'src/components/Modal';
 import PropertiesModal from 'src/dashboard/components/PropertiesModal';

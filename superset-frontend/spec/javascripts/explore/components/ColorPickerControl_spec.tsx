@@ -18,10 +18,7 @@
  */
 import React from 'react';
 import { render } from 'spec/helpers/testing-library';
-import {
-  CategoricalScheme,
-  getCategoricalSchemeRegistry,
-} from '@superset-ui/core';
+import { CategoricalScheme, getCategoricalSchemeRegistry } from 'src/core';
 import ColorPickerControl from 'src/explore/components/controls/ColorPickerControl';
 
 const defaultProps = {

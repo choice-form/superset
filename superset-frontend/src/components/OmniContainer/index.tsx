@@ -18,7 +18,7 @@
  */
 
 import React, { useRef, useState } from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import Modal from 'src/components/Modal';
 import { useComponentDidMount } from 'src/common/hooks/useComponentDidMount';

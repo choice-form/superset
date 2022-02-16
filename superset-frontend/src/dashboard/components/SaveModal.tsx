@@ -21,7 +21,7 @@ import React from 'react';
 import { Radio } from 'src/components/Radio';
 import { RadioChangeEvent, Input } from 'src/common/components';
 import Button from 'src/components/Button';
-import { t, JsonResponse } from '@superset-ui/core';
+import { t, JsonResponse } from 'src/core';
 
 import ModalTrigger from 'src/components/ModalTrigger';
 import Checkbox from 'src/components/Checkbox';

@@ -17,8 +17,8 @@
  * under the License.
  */
 import React, { useCallback, useMemo, useState } from 'react';
-import { FeatureFlag, isFeatureEnabled, tn } from '@superset-ui/core';
-import { ColumnMeta } from '@superset-ui/chart-controls';
+import { FeatureFlag, isFeatureEnabled, tn } from 'src/core';
+import { ColumnMeta } from 'src/chartConntrols';
 import { isEmpty } from 'lodash';
 import DndSelectLabel from 'src/explore/components/controls/DndColumnSelectControl/DndSelectLabel';
 import OptionWrapper from 'src/explore/components/controls/DndColumnSelectControl/OptionWrapper';

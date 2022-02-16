@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
 import { isFunction } from 'lodash';
 import { Select } from 'src/components';
 import { Tooltip } from 'src/components/Tooltip';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import ControlHeader from '../ControlHeader';
 
 const propTypes = {

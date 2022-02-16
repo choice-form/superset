@@ -23,7 +23,7 @@ import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 import { act } from 'react-dom/test-utils';
 import sinon from 'sinon';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 import Modal from 'src/components/Modal';
 import ChangeDatasourceModal from 'src/datasource/ChangeDatasourceModal';
 import waitForComponentToPaint from 'spec/helpers/waitForComponentToPaint';

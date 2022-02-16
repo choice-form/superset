@@ -22,7 +22,7 @@ import configureStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import QuerySearch from 'src/SqlLab/components/QuerySearch';
 import { Provider } from 'react-redux';
-import { supersetTheme, ThemeProvider } from '@superset-ui/core';
+import { supersetTheme, ThemeProvider } from 'src/core';
 import { fireEvent, render, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';

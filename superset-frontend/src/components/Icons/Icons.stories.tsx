@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { styled, supersetTheme } from '@superset-ui/core';
+import { styled, supersetTheme } from 'src/core';
 import Icons from '.';
 import IconType from './IconType';
 import Icon from './Icon';

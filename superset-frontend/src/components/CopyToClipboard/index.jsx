@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t } from '@superset-ui/core';
+import { t } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import copyTextToClipboard from 'src/utils/copy';

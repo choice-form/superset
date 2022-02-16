@@ -20,7 +20,7 @@
 // when its container size changes, due to e.g., builder side panel opening
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FeatureFlag, isFeatureEnabled } from '@superset-ui/core';
+import { FeatureFlag, isFeatureEnabled } from 'src/core';
 import { ParentSize } from '@vx/responsive';
 import Tabs from 'src/components/Tabs';
 import DashboardGrid from 'src/dashboard/containers/DashboardGrid';

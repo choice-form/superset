@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t, tn } from '@superset-ui/core';
+import { t, tn } from 'src/core';
 
 import { ErrorMessageComponentProps } from './types';
 import IssueCode from './IssueCode';

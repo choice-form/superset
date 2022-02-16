@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useEffect, useRef, useState } from 'react';
-import { styled } from '@superset-ui/core';
+import { styled } from 'src/core';
 import Label, { Type } from 'src/components/Label';
 
 import { now, fDuration } from 'src/modules/dates';

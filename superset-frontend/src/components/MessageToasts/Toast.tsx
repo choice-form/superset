@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { styled, css, SupersetTheme } from '@superset-ui/core';
+import { styled, css, SupersetTheme } from 'src/core';
 import cx from 'classnames';
 import Interweave from 'interweave';
 import React, { useCallback, useEffect, useRef, useState } from 'react';

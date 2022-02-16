@@ -20,7 +20,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from 'spec/helpers/testing-library';
-import { supersetTheme } from '@superset-ui/core';
+import { supersetTheme } from 'src/core';
 import ErrorAlert from './ErrorAlert';
 import { ErrorLevel, ErrorSource } from './types';
 

@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { FC, useMemo } from 'react';
-import { styled, t } from '@superset-ui/core';
+import { styled, t } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import { useDispatch, useSelector } from 'react-redux';
 import EditableTitle from 'src/components/EditableTitle';

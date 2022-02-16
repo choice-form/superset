@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { isFeatureEnabled, Preset, FeatureFlag } from '@superset-ui/core';
+import { isFeatureEnabled, Preset, FeatureFlag } from 'src/core';
 import {
   BigNumberChartPlugin,
   BigNumberTotalChartPlugin,
@@ -54,7 +54,6 @@ import {
 } from '@superset-ui/legacy-preset-chart-nvd3';
 import { DeckGLChartPreset } from '@superset-ui/legacy-preset-chart-deckgl';
 import {
-  EchartsPieChartPlugin,
   EchartsBoxPlotChartPlugin,
   EchartsAreaChartPlugin,
   EchartsTimeseriesChartPlugin,
@@ -80,6 +79,7 @@ import {
   GroupByFilterPlugin,
 } from 'src/filters/components/';
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '@superset-ui/plugin-chart-pivot-table';
+import EchartsPieChartPlugin from '../Pie';
 import FilterBoxChartPlugin from '../FilterBox/FilterBoxChartPlugin';
 import TimeTableChartPlugin from '../TimeTable/TimeTableChartPlugin';
 
