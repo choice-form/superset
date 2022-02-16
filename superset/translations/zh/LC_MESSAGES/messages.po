@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-02-16 11:01+0800\n"
-"PO-Revision-Date: 2022-02-16 11:36+0800\n"
+"PO-Revision-Date: 2022-02-16 11:59+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
 "Language-Team: zh <benedictjin2016@gmail.com>\n"
@@ -5492,7 +5492,6 @@ msgid "Deselect all"
 msgstr "反选所有"
 
 #: superset-frontend/src/components/ListView/ListView.tsx:397
-#, fuzzy
 msgid "No Data"
 msgstr "没有数据"
 
@@ -6955,9 +6954,8 @@ msgid "D3 format"
 msgstr "D3 格式"
 
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:1095
-#, fuzzy
 msgid "Warning"
-msgstr "警告！"
+msgstr "警告"
 
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:1097
 msgid "Optional warning about use of this metric"
@@ -7335,9 +7333,8 @@ msgid "Show all..."
 msgstr "显示全部…"
 
 #: superset-frontend/src/explore/components/DatasourcePanel/index.tsx:359
-#, fuzzy
 msgid "Show Less..."
-msgstr "显示值"
+msgstr "隐藏部分…"
 
 #: superset-frontend/src/explore/components/ExploreAdditionalActionsMenu/index.jsx:61
 msgid "New chart"
@@ -8051,7 +8048,6 @@ msgid "ECharts"
 msgstr "图表"
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:124
-#, fuzzy
 msgid "Advanced-Analytics"
 msgstr "高级分析"
 
@@ -8064,19 +8060,16 @@ msgid "Category"
 msgstr ""
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:607
-#, fuzzy
 msgid "Tags"
-msgstr "状态"
+msgstr "标签"
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:703
-#, fuzzy
 msgid "Search all charts"
-msgstr "所有图表"
+msgstr "搜索所有图表"
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:752
-#, fuzzy
 msgid "No description available."
-msgstr "描述"
+msgstr "没有可用的描述。"
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:759
 #: superset-frontend/src/views/CRUD/welcome/ChartTable.tsx:179
@@ -8089,9 +8082,8 @@ msgid "This visualization type is not supported."
 msgstr "选择可视化类型"
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/index.tsx:106
-#, fuzzy
 msgid "Select Viz Type"
-msgstr "选择一个可视化类型"
+msgstr "选择可视化类型"
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/index.tsx:114
 msgid "Click to change visualization type"
@@ -8102,9 +8094,8 @@ msgid "Select a visualization type"
 msgstr "选择一个可视化类型"
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/index.tsx:132
-#, fuzzy
 msgid "Select"
-msgstr "批量选择"
+msgstr "选择"
 
 #: superset-frontend/src/explore/controlPanels/Separator.js:25
 #: superset-frontend/src/explore/controlPanels/Separator.js:46
@@ -8299,26 +8290,24 @@ msgid "Pandas resample method"
 msgstr "Pandas 重新采样的填充方法"
 
 #: superset-frontend/src/filters/components/GroupBy/GroupByFilterPlugin.tsx:80
-#, fuzzy
 msgid "No columns"
-msgstr "列"
+msgstr "没有列"
 
 #: superset-frontend/src/filters/components/GroupBy/GroupByFilterPlugin.tsx:81
 #: superset-frontend/src/filters/components/Select/SelectFilterPlugin.tsx:246
 #: superset-frontend/src/filters/components/TimeColumn/TimeColumnFilterPlugin.tsx:82
 #: superset-frontend/src/filters/components/TimeGrain/TimeGrainFilterPlugin.tsx:92
-#, fuzzy, python-format
+#, python-format
 msgid "%s option"
-msgstr "%s 个选项"
+msgstr "%s 选项"
 
 #: superset-frontend/src/filters/components/Range/RangeFilterPlugin.tsx:174
 msgid "Chosen non-numeric column"
 msgstr ""
 
 #: superset-frontend/src/filters/components/TimeColumn/TimeColumnFilterPlugin.tsx:81
-#, fuzzy
 msgid "No time columns"
-msgstr "时间列"
+msgstr "无时间列"
 
 #: superset-frontend/src/profile/components/App.tsx:52
 msgid "Favorites"
@@ -8375,14 +8364,13 @@ msgid "The report has been created"
 msgstr "数据集已保存"
 
 #: superset-frontend/src/reports/actions/reports.js:120
-#, fuzzy, python-format
+#, python-format
 msgid "An error occurred while editing this report: %s"
-msgstr "获取数据集时出错：%s"
+msgstr "编辑报告时出错：%s"
 
 #: superset-frontend/src/reports/actions/reports.js:138
-#, fuzzy
 msgid "An error occurred while editing this report."
-msgstr "创建数据源时发生错误"
+msgstr "编辑报告时发生错误。"
 
 #: superset-frontend/src/reports/actions/reports.js:156
 msgid "We were unable to active or deactivate this report."
@@ -8840,14 +8828,12 @@ msgid "Are you sure you want to delete the selected annotations?"
 msgstr "确实要删除选定的注释吗？"
 
 #: superset-frontend/src/views/CRUD/annotation/AnnotationModal.tsx:154
-#, fuzzy
 msgid "The annotation has been updated"
-msgstr "注释无法更新。"
+msgstr "注释已经更新"
 
 #: superset-frontend/src/views/CRUD/annotation/AnnotationModal.tsx:170
-#, fuzzy
 msgid "The annotation has been saved"
-msgstr "该看板已成功保存。"
+msgstr "注释已经保存"
 
 #: superset-frontend/src/views/CRUD/annotation/AnnotationModal.tsx:285
 msgid "Add annotation"
