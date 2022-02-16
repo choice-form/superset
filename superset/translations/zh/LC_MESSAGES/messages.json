@@ -1066,8 +1066,9 @@
       "Specify duplicate columns as \"X.0, X.1\".": [
         "将重复列指定为“x.0，x.1”。"
       ],
+      "Use Columns": ["使用列名"],
       "Json list of the column names that should be read. If not None, only these columns will be read from the file.": [
-        ""
+        "用 JSON 列表格式提供要读取的列名称，只有指定的列名称才会从文件中读取。"
       ],
       "Skip Initial Space": ["跳过初始空格"],
       "Skip spaces after delimiter.": ["在分隔符之后跳过空格。"],
@@ -1111,6 +1112,13 @@
       "Sheet Name": ["Sheet名称"],
       "Strings used for sheet names (default is the first sheet).": [
         "用于sheet名称的字符串（默认为第一个sheet）。"
+      ],
+      "Name of table to be created from columnar data.": [
+        "从列式文件创建表的名称。"
+      ],
+      "Columnar File": ["列式文件"],
+      "Select a Columnar file to be uploaded to a database.": [
+        "选择要上传到数据库的列式文件。"
       ],
       "Show Database": ["显示数据库"],
       "Add Database": ["添加数据库"],
@@ -1189,6 +1197,7 @@
       "Excel file \"%(excel_filename)s\" uploaded to table \"%(table_name)s\" in database \"%(db_name)s\"": [
         "Excel 文件 \"%(excel_filename)s\" 上传到数据库 \"%(db_name)s\" 中的表 \"%(table_name)s\""
       ],
+      "Columnar to Database configuration": ["列式文件到数据库配置"],
       "Multiple file extensions are not allowed for columnar uploads. Please make sure all files are of the same extension.": [
         ""
       ],

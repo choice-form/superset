@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-02-16 11:01+0800\n"
-"PO-Revision-Date: 2022-02-16 11:59+0800\n"
+"PO-Revision-Date: 2022-02-16 15:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
 "Language-Team: zh <benedictjin2016@gmail.com>\n"
@@ -3701,15 +3701,14 @@ msgid "Specify duplicate columns as \"X.0, X.1\"."
 msgstr "将重复列指定为“x.0，x.1”。"
 
 #: superset/views/database/forms.py:173 superset/views/database/forms.py:527
-#, fuzzy
 msgid "Use Columns"
-msgstr "%s 列"
+msgstr "使用列名"
 
 #: superset/views/database/forms.py:175 superset/views/database/forms.py:529
 msgid ""
 "Json list of the column names that should be read. If not None, only "
 "these columns will be read from the file."
-msgstr ""
+msgstr "用 JSON 列表格式提供要读取的列名称，只有指定的列名称才会从文件中读取。"
 
 #: superset/views/database/forms.py:182
 msgid "Skip Initial Space"
@@ -3823,19 +3822,16 @@ msgid "Strings used for sheet names (default is the first sheet)."
 msgstr "用于sheet名称的字符串（默认为第一个sheet）。"
 
 #: superset/views/database/forms.py:474
-#, fuzzy
 msgid "Name of table to be created from columnar data."
-msgstr "从excel数据将创建的表的名称。"
+msgstr "从列式文件创建表的名称。"
 
 #: superset/views/database/forms.py:479
-#, fuzzy
 msgid "Columnar File"
-msgstr "列"
+msgstr "列式文件"
 
 #: superset/views/database/forms.py:480
-#, fuzzy
 msgid "Select a Columnar file to be uploaded to a database."
-msgstr "选择要上传到数据库的Excel文件。"
+msgstr "选择要上传到数据库的列式文件。"
 
 #: superset/views/database/mixins.py:34
 msgid "Show Database"
@@ -4069,9 +4065,8 @@ msgstr ""
 "\"%(table_name)s\""
 
 #: superset/views/database/views.py:414
-#, fuzzy
 msgid "Columnar to Database configuration"
-msgstr "Excel 到数据库配置"
+msgstr "列式文件到数据库配置"
 
 #: superset/views/database/views.py:439
 msgid ""
