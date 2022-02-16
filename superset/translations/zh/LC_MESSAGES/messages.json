@@ -4,7 +4,7 @@
     "superset": {
       "": {
         "domain": "superset",
-        "plural_forms": "nplurals=1; plural=0;",
+        "plural_forms": "nplurals=1; plural=0",
         "lang": "zh"
       },
       "The datasource is too large to query.": ["数据源太大，无法查询。"],
@@ -1385,6 +1385,7 @@
       "There was an error with your request": ["您的请求有错误"],
       "Please save the query to enable sharing": ["请保存查询以启用共享"],
       "Copy query link to your clipboard": ["将查询链接复制到剪贴板"],
+      "Save the query to enable this feature": ["请保存查询以启用此功能"],
       "Copy link": ["复制链接"],
       "No stored results found, you need to re-run your query": [
         "找不到存储的结果，需要重新运行查询"
