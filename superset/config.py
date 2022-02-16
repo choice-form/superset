@@ -364,6 +364,8 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     # Exposes API endpoint to compute thumbnails
     "THUMBNAILS": False,
     "DASHBOARD_CACHE": False,
+    # 开启下钻功能
+    "DASHBOARD_DRILL_DOWN": True,
     "REMOVE_SLICE_LEVEL_LABEL_COLORS": False,
     "SHARE_QUERIES_VIA_KV_STORE": False,
     "TAGGING_SYSTEM": False,

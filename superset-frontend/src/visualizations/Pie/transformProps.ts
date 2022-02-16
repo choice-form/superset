@@ -88,6 +88,9 @@ export default function transformProps(
 ): PieChartTransformedProps {
   const { ownState, formData, height, hooks, filterState, queriesData, width } =
     chartProps;
+
+  console.log('props:', chartProps);
+
   const { data = [] } = queriesData[0];
   const coltypeMapping = getColtypesMapping(queriesData[0]);
 
