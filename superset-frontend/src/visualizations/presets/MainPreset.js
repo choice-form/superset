@@ -65,8 +65,8 @@ import SankeyLoopChartPlugin from '../D3/SankeyLoopChart';
 import SunburstChartPlugin from '../D3/SunburstChart';
 import TreemapChartPlugin from '../D3/TreemapChart';
 import WorldMapChartPlugin from '../D3/WorldMapChart';
+import RoseChartPlugin from '../D3/RoseChart';
 
-import RoseChartPlugin from '../D3/Nvd3/RoseChart';
 import {
   AreaChartPlugin,
   BarChartPlugin,
