@@ -63,6 +63,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@babel/runtime-corejs3": "^7.12.5",
+    "@data-ui/event-flow": "^0.0.84",
     "@data-ui/sparkline": "^0.0.84",
     "@data-ui/theme": "^0.0.84",
     "@data-ui/xy-chart": "^0.0.84",
@@ -71,7 +72,6 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@react-icons/all-files": "^4.1.0",
-    "@superset-ui/legacy-plugin-chart-event-flow": "^0.18.19",
     "@superset-ui/legacy-plugin-chart-force-directed": "^0.18.19",
     "@superset-ui/legacy-plugin-chart-heatmap": "^0.18.19",
     "@superset-ui/legacy-plugin-chart-histogram": "^0.18.19",
