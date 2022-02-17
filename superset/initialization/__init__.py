@@ -381,20 +381,21 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
                 )
             ),
         )
-        appbuilder.add_link(
-            "Upload a Columnar file",
-            label=__("Upload a Columnar file"),
-            href="/columnartodatabaseview/form",
-            icon="fa-upload",
-            category="Data",
-            category_label=__("Data"),
-            category_icon="fa-wrench",
-            cond=lambda: bool(
-                self.config["COLUMNAR_EXTENSIONS"].intersection(
-                    self.config["ALLOWED_EXTENSIONS"]
-                )
-            ),
-        )
+        # 上传列式数据库文件
+        # appbuilder.add_link(
+        #     "Upload a Columnar file",
+        #     label=__("Upload a Columnar file"),
+        #     href="/columnartodatabaseview/form",
+        #     icon="fa-upload",
+        #     category="Data",
+        #     category_label=__("Data"),
+        #     category_icon="fa-wrench",
+        #     cond=lambda: bool(
+        #         self.config["COLUMNAR_EXTENSIONS"].intersection(
+        #             self.config["ALLOWED_EXTENSIONS"]
+        #         )
+        #     ),
+        # )
         try:
             import xlrd  # pylint: disable=unused-import
 
