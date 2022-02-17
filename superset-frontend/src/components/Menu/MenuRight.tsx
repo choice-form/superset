@@ -25,11 +25,11 @@ import LanguagePicker from './LanguagePicker';
 import { NavBarProps, MenuObjectProps } from './Menu';
 
 export const dropdownItems = [
-  {
-    label: t('SQL query'),
-    url: '/sqllab?new=true',
-    icon: 'fa-fw fa-search',
-  },
+  // {
+  //   label: t('SQL query'),
+  //   url: '/sqllab?new=true',
+  //   icon: 'fa-fw fa-search',
+  // },
   {
     label: t('Chart'),
     url: '/chart/add',
