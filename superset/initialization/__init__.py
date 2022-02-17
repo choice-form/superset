@@ -318,30 +318,30 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
                 "VERSIONED_EXPORT"
             ),
         )
-        appbuilder.add_link(
-            "SQL Editor",
-            label=_("SQL Editor"),
-            href="/sqllab/",
-            category_icon="fa-flask",
-            icon="fa-flask",
-            category="SQL Lab",
-            category_label=__("SQL Lab"),
-        )
-        appbuilder.add_link(
-            __("Saved Queries"),
-            href="/savedqueryview/list/",
-            icon="fa-save",
-            category="SQL Lab",
-        )
-        appbuilder.add_link(
-            "Query Search",
-            label=_("Query History"),
-            href="/sqllab/history/",
-            icon="fa-search",
-            category_icon="fa-flask",
-            category="SQL Lab",
-            category_label=__("SQL Lab"),
-        )
+        # appbuilder.add_link(
+        #     "SQL Editor",
+        #     label=_("SQL Editor"),
+        #     href="/sqllab/",
+        #     category_icon="fa-flask",
+        #     icon="fa-flask",
+        #     category="SQL Lab",
+        #     category_label=__("SQL Lab"),
+        # )
+        # appbuilder.add_link(
+        #     __("Saved Queries"),
+        #     href="/savedqueryview/list/",
+        #     icon="fa-save",
+        #     category="SQL Lab",
+        # )
+        # appbuilder.add_link(
+        #     "Query Search",
+        #     label=_("Query History"),
+        #     href="/sqllab/history/",
+        #     icon="fa-search",
+        #     category_icon="fa-flask",
+        #     category="SQL Lab",
+        #     category_label=__("SQL Lab"),
+        # )
         appbuilder.add_view(
             DatabaseView,
             "Databases",
