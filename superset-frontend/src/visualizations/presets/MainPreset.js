@@ -21,8 +21,6 @@ import {
   BigNumberChartPlugin,
   BigNumberTotalChartPlugin,
 } from '@superset-ui/legacy-preset-chart-big-number';
-// import HeatmapChartPlugin from '@superset-ui/legacy-plugin-chart-heatmap';
-import HistogramChartPlugin from '@superset-ui/legacy-plugin-chart-histogram';
 import HorizonChartPlugin from '@superset-ui/legacy-plugin-chart-horizon';
 import MapBoxChartPlugin from '@superset-ui/legacy-plugin-chart-map-box';
 import PairedTTestChartPlugin from '@superset-ui/legacy-plugin-chart-paired-t-test';
@@ -84,6 +82,8 @@ import ChordChartPlugin from '../D3/ChordChart';
 import CountryMapChartPlugin from '../D3/CountryMapChart';
 import ForceDirectedChartPlugin from '../D3/ForceDirectedChart';
 import HeatmapChartPlugin from '../D3/HeatmapChart';
+
+import HistogramChartPlugin from '../DataUI/HistogramChart';
 
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '../PivotTable';
 
