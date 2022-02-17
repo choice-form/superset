@@ -16,10 +16,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-declare module 'regenerator-runtime/runtime';
-declare module '*.svg';
-declare module '*.jpg';
-declare module '*.png' {
-  const value: any;
-  export default value;
+export default function isEqualArray<T extends unknown[] | undefined | null>(
+  arrA: T,
+  arrB: T,
+) {
+  return (
+    arrA === arrB ||
+    (!arrA && !arrB) ||
+    (arrA &&
+      arrB &&
+      arrA.length === arrB.length &&
+      arrA.every((x, i) => x === arrB[i]))
+  );
 }

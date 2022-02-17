@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-declare module 'regenerator-runtime/runtime';
-declare module '*.svg';
-declare module '*.jpg';
-declare module '*.png' {
-  const value: any;
-  export default value;
-}
+export * from './hooks/useSticky';
+export * from './components/GlobalFilter';
+export * from './components/Pagination';
+export * from './components/SelectPageSize';
+export * from './DataTable';
+
+export { default } from './DataTable';

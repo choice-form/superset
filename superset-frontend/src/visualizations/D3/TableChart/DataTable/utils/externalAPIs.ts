@@ -16,10 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-declare module 'regenerator-runtime/runtime';
-declare module '*.svg';
-declare module '*.jpg';
-declare module '*.png' {
-  const value: any;
-  export default value;
-}
+
+import { SetDataMaskHook } from 'src/core';
+
+export const updateExternalFormData = (
+  setDataMask: SetDataMaskHook = () => {},
+  pageNumber: number,
+  pageSize: number,
+) =>
+  setDataMask({
+    ownState: {
+      currentPage: pageNumber,
+      pageSize,
+    },
+  });

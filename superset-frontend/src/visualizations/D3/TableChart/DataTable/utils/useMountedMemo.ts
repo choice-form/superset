@@ -16,10 +16,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-declare module 'regenerator-runtime/runtime';
-declare module '*.svg';
-declare module '*.jpg';
-declare module '*.png' {
-  const value: any;
-  export default value;
+import { useLayoutEffect, useRef, useMemo } from 'react';
+
+/**
+ * Execute a memoized callback only when mounted. Execute again when factory updated.
+ * Returns undefined if not mounted yet.
+ */
+export default function useMountedMemo<T>(
+  factory: () => T,
+  deps?: unknown[],
+): T | undefined {
+  const mounted = useRef<typeof factory>();
+  useLayoutEffect(() => {
+    mounted.current = factory;
+  });
+  return useMemo(() => {
+    if (mounted.current) {
+      return factory();
+    }
+    return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mounted.current, mounted.current === factory, ...(deps || [])]);
 }
