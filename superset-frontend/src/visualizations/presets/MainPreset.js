@@ -21,8 +21,6 @@ import {
   BigNumberChartPlugin,
   BigNumberTotalChartPlugin,
 } from '@superset-ui/legacy-preset-chart-big-number';
-// import MapBoxChartPlugin from '@superset-ui/legacy-plugin-chart-map-box';
-import PairedTTestChartPlugin from '@superset-ui/legacy-plugin-chart-paired-t-test';
 import ParallelCoordinatesChartPlugin from '@superset-ui/legacy-plugin-chart-parallel-coordinates';
 import PartitionChartPlugin from '@superset-ui/legacy-plugin-chart-partition';
 import PivotTableChartPlugin from '@superset-ui/legacy-plugin-chart-pivot-table';
@@ -73,6 +71,7 @@ import EchartsMixedTimeseriesChartPlugin from '../ECharts/MixedTimeseries';
 
 import FilterBoxChartPlugin from '../FilterBox';
 import MapBoxChartPlugin from '../MapBoxChart';
+import PairedTTestChartPlugin from '../PairedTTestChart';
 
 import { WordCloudChartPlugin } from '../D3/WordCloud';
 import TableChartPlugin from '../D3/TableChart';
