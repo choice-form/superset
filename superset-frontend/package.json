@@ -71,7 +71,6 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@react-icons/all-files": "^4.1.0",
-    "@superset-ui/legacy-plugin-chart-country-map": "^0.18.19",
     "@superset-ui/legacy-plugin-chart-event-flow": "^0.18.19",
     "@superset-ui/legacy-plugin-chart-force-directed": "^0.18.19",
     "@superset-ui/legacy-plugin-chart-heatmap": "^0.18.19",
