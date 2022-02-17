@@ -20,7 +20,7 @@ import { FeatureFlag, isFeatureEnabled } from 'src/featureFlags';
 import React, { lazy } from 'react';
 
 // not lazy loaded since this is the home page.
-import Welcome from 'src/views/CRUD/welcome/Welcome';
+// import Welcome from 'src/views/CRUD/welcome/Welcome';
 
 const AnnotationLayersList = lazy(
   () =>
@@ -105,7 +105,7 @@ type Routes = {
 export const routes: Routes = [
   {
     path: '/welcome/',
-    Component: Welcome,
+    Component: DashboardList, // 首页暂时定向到仪表盘列表界面
   },
   {
     path: '/dashboard/list/',
