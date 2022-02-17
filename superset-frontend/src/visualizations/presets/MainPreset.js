@@ -81,6 +81,7 @@ import ParallelCoordinatesChartPlugin from '../D3/ParallelCoordinatesChart';
 import PartitionChartPlugin from '../D3/PartitionChart';
 import PivotTableChartPlugin from '../D3/PivotTableChart';
 import SankeyChartPlugin from '../D3/SankeyChart';
+import SankeyLoopChartPlugin from '../D3/SankeyLoopChart';
 
 import RoseChartPlugin from '../D3/Nvd3/RoseChart';
 
@@ -143,6 +144,7 @@ export default class MainPreset extends Preset {
         new PivotTableChartPluginV2().configure({ key: 'pivot_table_v2' }),
         new RoseChartPlugin().configure({ key: 'rose' }),
         new SankeyChartPlugin().configure({ key: 'sankey' }),
+        new SankeyLoopChartPlugin().configure({ key: 'sankey_loop' }),
         new SunburstChartPlugin().configure({ key: 'sunburst' }),
         new TableChartPlugin().configure({ key: 'table' }),
         new TimePivotChartPlugin().configure({ key: 'time_pivot' }),
