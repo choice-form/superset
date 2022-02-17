@@ -21,7 +21,7 @@ import {
   BigNumberChartPlugin,
   BigNumberTotalChartPlugin,
 } from '@superset-ui/legacy-preset-chart-big-number';
-import HeatmapChartPlugin from '@superset-ui/legacy-plugin-chart-heatmap';
+// import HeatmapChartPlugin from '@superset-ui/legacy-plugin-chart-heatmap';
 import HistogramChartPlugin from '@superset-ui/legacy-plugin-chart-histogram';
 import HorizonChartPlugin from '@superset-ui/legacy-plugin-chart-horizon';
 import MapBoxChartPlugin from '@superset-ui/legacy-plugin-chart-map-box';
@@ -82,6 +82,8 @@ import TableChartPlugin from '../D3/TableChart';
 import CalendarChartPlugin from '../D3/CalendarChart';
 import ChordChartPlugin from '../D3/ChordChart';
 import CountryMapChartPlugin from '../D3/CountryMapChart';
+import ForceDirectedChartPlugin from '../D3/ForceDirectedChart';
+import HeatmapChartPlugin from '../D3/HeatmapChart';
 
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '../PivotTable';
 
@@ -120,6 +122,9 @@ export default class MainPreset extends Preset {
         new EchartsRadarChartPlugin().configure({ key: 'radar' }),
         new EchartsMixedTimeseriesChartPlugin().configure({
           key: 'mixed_timeseries',
+        }),
+        new ForceDirectedChartPlugin().configure({
+          key: 'force_directed_graph',
         }),
         new HeatmapChartPlugin().configure({ key: 'heatmap' }),
         new HistogramChartPlugin().configure({ key: 'histogram' }),

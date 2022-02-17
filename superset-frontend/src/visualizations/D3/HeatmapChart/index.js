@@ -18,29 +18,40 @@
  */
 import { t, ChartMetadata, ChartPlugin } from 'src/core';
 import transformProps from './transformProps';
+import transportation from './images/transportation.jpg';
+import channels from './images/channels.jpg';
+import employment from './images/employment.jpg';
 import thumbnail from './images/thumbnail.png';
 import controlPanel from './controlPanel';
 
 const metadata = new ChartMetadata({
-  credits: ['http://bl.ocks.org/d3noob/5141278'],
-  description: '',
-  name: t('Force-directed Graph'),
+  category: t('Correlation'),
+  credits: ['http://bl.ocks.org/mbostock/3074470'],
+  description: t(
+    'Visualize a related metric across pairs of groups. Heatmaps excel at showcasing the correlation or strength between two groups. Color is used to emphasize the strength of the link between each pair of groups.',
+  ),
+  exampleGallery: [
+    { url: transportation, caption: t('Sizes of vehicles') },
+    { url: channels, caption: t('Relationships between community channels') },
+    { url: employment, caption: t('Employment and education') },
+  ],
+  name: t('Heatmap'),
   tags: [
-    t('Aesthetic'),
-    t('Categorical'),
-    t('Comparison'),
-    t('Description'),
+    t('Business'),
+    t('Intensity'),
+    t('Legacy'),
     t('Density'),
+    t('Predictive'),
     t('Single Metric'),
   ],
   thumbnail,
   useLegacyApi: true,
 });
 
-export default class ForceDirectedChartPlugin extends ChartPlugin {
+export default class HeatmapChartPlugin extends ChartPlugin {
   constructor() {
     super({
-      loadChart: () => import('./ReactForceDirected'),
+      loadChart: () => import('./ReactHeatmap'),
       metadata,
       transformProps,
       controlPanel,

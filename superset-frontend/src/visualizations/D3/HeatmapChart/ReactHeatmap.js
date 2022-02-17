@@ -16,34 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t, ChartMetadata, ChartPlugin } from 'src/core';
-import transformProps from './transformProps';
-import thumbnail from './images/thumbnail.png';
-import controlPanel from './controlPanel';
+import { reactify } from 'src/core';
+import Component from './Heatmap';
 
-const metadata = new ChartMetadata({
-  credits: ['http://bl.ocks.org/d3noob/5141278'],
-  description: '',
-  name: t('Force-directed Graph'),
-  tags: [
-    t('Aesthetic'),
-    t('Categorical'),
-    t('Comparison'),
-    t('Description'),
-    t('Density'),
-    t('Single Metric'),
-  ],
-  thumbnail,
-  useLegacyApi: true,
-});
-
-export default class ForceDirectedChartPlugin extends ChartPlugin {
-  constructor() {
-    super({
-      loadChart: () => import('./ReactForceDirected'),
-      metadata,
-      transformProps,
-      controlPanel,
-    });
-  }
-}
+export default reactify(Component);
