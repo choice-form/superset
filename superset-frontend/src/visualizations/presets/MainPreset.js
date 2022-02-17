@@ -17,10 +17,6 @@
  * under the License.
  */
 import { isFeatureEnabled, Preset, FeatureFlag } from 'src/core';
-import {
-  BigNumberChartPlugin,
-  BigNumberTotalChartPlugin,
-} from '@superset-ui/legacy-preset-chart-big-number';
 
 import {
   AreaChartPlugin,
@@ -88,6 +84,10 @@ import RoseChartPlugin from '../D3/Nvd3/RoseChart';
 import HistogramChartPlugin from '../DataUI/HistogramChart';
 import EventFlowChartPlugin from '../DataUI/EventFlowChart';
 import TimeTableChartPlugin from '../DataUI/TimeTable';
+import {
+  BigNumberChartPlugin,
+  BigNumberTotalChartPlugin,
+} from '../DataUI/BigNumber';
 
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '../PivotTable';
 
