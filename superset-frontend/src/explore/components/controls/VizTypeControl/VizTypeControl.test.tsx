@@ -29,9 +29,9 @@ import userEvent from '@testing-library/user-event';
 import { DynamicPluginProvider } from 'src/components/DynamicPlugins';
 import { testWithId } from 'src/utils/testUtils';
 import { LineChartPlugin } from '@superset-ui/preset-chart-xy/lib';
-import EchartsMixedTimeseriesChartPlugin from '../../../../visualizations/MixedTimeseries';
-import EchartsTimeseriesChartPlugin from '../../../../visualizations/Timeseries';
-import TimeTableChartPlugin from '../../../../visualizations/TimeTable/TimeTableChartPlugin';
+import EchartsMixedTimeseriesChartPlugin from 'src/visualizations/ECharts/MixedTimeseries';
+import EchartsTimeseriesChartPlugin from 'src/visualizations/ECharts/Timeseries';
+import TimeTableChartPlugin from 'src/visualizations/TimeTable/TimeTableChartPlugin';
 import VizTypeControl, { VIZ_TYPE_CONTROL_TEST_ID } from './index';
 
 jest.useFakeTimers();

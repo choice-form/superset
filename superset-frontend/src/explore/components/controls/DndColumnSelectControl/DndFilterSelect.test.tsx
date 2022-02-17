@@ -28,7 +28,7 @@ import {
   DndFilterSelectProps,
 } from 'src/explore/components/controls/DndColumnSelectControl/DndFilterSelect';
 import { PLACEHOLDER_DATASOURCE } from 'src/dashboard/constants';
-import { DEFAULT_FORM_DATA } from 'src/visualizations/Timeseries/types';
+import { DEFAULT_FORM_DATA } from 'src/visualizations/ECharts/Timeseries/types';
 
 const defaultProps: DndFilterSelectProps = {
   type: 'DndFilterSelect',
