@@ -17,19 +17,6 @@
  * under the License.
  */
 import { isFeatureEnabled, Preset, FeatureFlag } from 'src/core';
-
-import {
-  AreaChartPlugin,
-  BarChartPlugin,
-  BubbleChartPlugin,
-  BulletChartPlugin,
-  CompareChartPlugin,
-  DistBarChartPlugin,
-  DualLineChartPlugin,
-  LineChartPlugin,
-  LineMultiChartPlugin,
-  TimePivotChartPlugin,
-} from '@superset-ui/legacy-preset-chart-nvd3';
 import { DeckGLChartPreset } from '@superset-ui/legacy-preset-chart-deckgl';
 import {
   SelectFilterPlugin,
@@ -80,6 +67,18 @@ import TreemapChartPlugin from '../D3/TreemapChart';
 import WorldMapChartPlugin from '../D3/WorldMapChart';
 
 import RoseChartPlugin from '../D3/Nvd3/RoseChart';
+import {
+  AreaChartPlugin,
+  BarChartPlugin,
+  BubbleChartPlugin,
+  BulletChartPlugin,
+  CompareChartPlugin,
+  DistBarChartPlugin,
+  DualLineChartPlugin,
+  LineChartPlugin,
+  LineMultiChartPlugin,
+  TimePivotChartPlugin,
+} from '../NVD3';
 
 import HistogramChartPlugin from '../DataUI/HistogramChart';
 import EventFlowChartPlugin from '../DataUI/EventFlowChart';
