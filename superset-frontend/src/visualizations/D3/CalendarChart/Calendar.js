@@ -19,11 +19,7 @@
 import PropTypes from 'prop-types';
 import { extent as d3Extent, range as d3Range } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
-import {
-  getNumberFormatter,
-  getTimeFormatter,
-  getSequentialSchemeRegistry,
-} from 'src/core';
+import { getNumberFormatter, getTimeFormatter, getSequentialSchemeRegistry } from 'src/core';
 import CalHeatMap from './vendor/cal-heatmap';
 import './vendor/cal-heatmap.css';
 
@@ -92,15 +88,11 @@ function Calendar(element, props) {
   const valueFormatter = getNumberFormatter(valueFormat);
   const timeFormatter = getTimeFormatter(timeFormat);
 
-  const container = d3Select(element)
-    .classed('superset-legacy-chart-calendar', true)
-    .style('height', height);
+  const container = d3Select(element).classed('superset-legacy-chart-calendar', true).style('height', height);
   container.selectAll('*').remove();
   const div = container.append('div');
 
-  const subDomainTextFormat = showValues
-    ? (date, value) => valueFormatter(value)
-    : null;
+  const subDomainTextFormat = showValues ? (date, value) => valueFormatter(value) : null;
 
   // Trick to convert all timestamps to UTC
   // TODO: Verify if this conversion is really necessary
@@ -109,8 +101,7 @@ function Calendar(element, props) {
   Object.keys(data.data).forEach(metric => {
     metricsData[metric] = {};
     Object.keys(data.data[metric]).forEach(ts => {
-      metricsData[metric][convertUTCTS(ts * 1000) / 1000] =
-        data.data[metric][ts];
+      metricsData[metric][convertUTCTS(ts * 1000) / 1000] = data.data[metric][ts];
     });
   });
 
@@ -122,9 +113,7 @@ function Calendar(element, props) {
     const timestamps = metricsData[metric];
     const extents = d3Extent(Object.keys(timestamps), key => timestamps[key]);
     const step = (extents[1] - extents[0]) / (steps - 1);
-    const colorScale = getSequentialSchemeRegistry()
-      .get(linearColorScheme)
-      .createLinearScale(extents);
+    const colorScale = getSequentialSchemeRegistry().get(linearColorScheme).createLinearScale(extents);
 
     const legend = d3Range(steps).map(i => extents[0] + step * i);
     const legendColors = legend.map(x => colorScale(x));

@@ -79,12 +79,7 @@ function getSparklineTextWidth(text) {
 }
 
 function isValidBoundValue(value) {
-  return (
-    value !== null &&
-    value !== undefined &&
-    value !== '' &&
-    !Number.isNaN(value)
-  );
+  return value !== null && value !== undefined && value !== '' && !Number.isNaN(value);
 }
 
 class SparklineCell extends React.Component {
@@ -102,16 +97,7 @@ class SparklineCell extends React.Component {
   }
 
   render() {
-    const {
-      width,
-      height,
-      data,
-      ariaLabel,
-      numberFormat,
-      yAxisBounds,
-      showYAxis,
-      renderTooltip,
-    } = this.props;
+    const { width, height, data, ariaLabel, numberFormat, yAxisBounds, showYAxis, renderTooltip } = this.props;
 
     const yScale = {};
     let hasMinBound = false;
@@ -136,19 +122,12 @@ class SparklineCell extends React.Component {
     let labelLength = 0;
     if (showYAxis) {
       const [minBound, maxBound] = yAxisBounds;
-      min = hasMinBound
-        ? minBound
-        : data.reduce((acc, current) => Math.min(acc, current), data[0]);
-      max = hasMaxBound
-        ? maxBound
-        : data.reduce((acc, current) => Math.max(acc, current), data[0]);
+      min = hasMinBound ? minBound : data.reduce((acc, current) => Math.min(acc, current), data[0]);
+      max = hasMaxBound ? maxBound : data.reduce((acc, current) => Math.max(acc, current), data[0]);
 
       minLabel = formatNumber(numberFormat, min);
       maxLabel = formatNumber(numberFormat, max);
-      labelLength = Math.max(
-        getSparklineTextWidth(minLabel),
-        getSparklineTextWidth(maxLabel),
-      );
+      labelLength = Math.max(getSparklineTextWidth(minLabel), getSparklineTextWidth(maxLabel));
     }
 
     const margin = {
@@ -157,11 +136,7 @@ class SparklineCell extends React.Component {
     };
 
     return (
-      <WithTooltip
-        tooltipProps={tooltipProps}
-        hoverStyles={null}
-        renderTooltip={renderTooltip}
-      >
+      <WithTooltip tooltipProps={tooltipProps} hoverStyles={null} renderTooltip={renderTooltip}>
         {({ onMouseLeave, onMouseMove, tooltipData }) => (
           <Sparkline
             ariaLabel={ariaLabel}
@@ -177,19 +152,9 @@ class SparklineCell extends React.Component {
             {showYAxis && this.renderHorizontalReferenceLine(max, maxLabel)}
             <LineSeries showArea={false} stroke="#767676" />
             {tooltipData && (
-              <VerticalReferenceLine
-                reference={tooltipData.index}
-                strokeDasharray="3 3"
-                strokeWidth={1}
-              />
+              <VerticalReferenceLine reference={tooltipData.index} strokeDasharray="3 3" strokeWidth={1} />
             )}
-            {tooltipData && (
-              <PointSeries
-                points={[tooltipData.index]}
-                fill="#767676"
-                strokeWidth={1}
-              />
-            )}
+            {tooltipData && <PointSeries points={[tooltipData.index]} fill="#767676" strokeWidth={1} />}
           </Sparkline>
         )}
       </WithTooltip>

@@ -54,9 +54,7 @@ describe('Add database', () => {
     cy.get('.preferred > :nth-child(1)').click();
     cy.get('input[name="host"]').focus().type('badhost');
     cy.get('input[name="port"]').focus().type('5432');
-    cy.get('.ant-form-item-explain-error').contains(
-      "The hostname provided can't be resolved",
-    );
+    cy.get('.ant-form-item-explain-error').contains("The hostname provided can't be resolved");
   });
 
   it('show error alerts on dynamic form for bad port', () => {

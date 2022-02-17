@@ -100,9 +100,7 @@ const config: ControlPanelConfig = {
               label: t('Rich Tooltip'),
               renderTrigger: true,
               default: true,
-              description: t(
-                'The rich tooltip shows a list of all series for that point in time',
-              ),
+              description: t('The rich tooltip shows a list of all series for that point in time'),
             },
           },
           {
@@ -111,8 +109,7 @@ const config: ControlPanelConfig = {
               type: 'CheckboxControl',
               label: t('Use Area Proportions'),
               description: t(
-                'Check if the Rose Chart should use segment area instead of ' +
-                  'segment radius for proportioning',
+                'Check if the Rose Chart should use segment area instead of ' + 'segment radius for proportioning',
               ),
               default: false,
               renderTrigger: true,
@@ -125,9 +122,7 @@ const config: ControlPanelConfig = {
       label: t('Advanced Analytics'),
       tabOverride: 'data',
       description: t(
-        'This section contains options ' +
-          'that allow for advanced analytical post processing ' +
-          'of query results',
+        'This section contains options ' + 'that allow for advanced analytical post processing ' + 'of query results',
       ),
       controlSetRows: [
         // eslint-disable-next-line react/jsx-key
@@ -139,16 +134,9 @@ const config: ControlPanelConfig = {
               type: 'SelectControl',
               label: t('Rolling Function'),
               default: 'None',
-              choices: formatSelectOptions([
-                'None',
-                'mean',
-                'sum',
-                'std',
-                'cumsum',
-              ]),
+              choices: formatSelectOptions(['None', 'mean', 'sum', 'std', 'cumsum']),
               description: t(
-                'Defines a rolling window function to apply, works along ' +
-                  'with the [Periods] text box',
+                'Defines a rolling window function to apply, works along ' + 'with the [Periods] text box',
               ),
             },
           },
@@ -161,8 +149,7 @@ const config: ControlPanelConfig = {
               label: t('Periods'),
               isInt: true,
               description: t(
-                'Defines the size of the rolling window function, ' +
-                  'relative to the time granularity selected',
+                'Defines the size of the rolling window function, ' + 'relative to the time granularity selected',
               ),
             },
           },
@@ -242,14 +229,7 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Rule'),
               default: null,
-              choices: formatSelectOptions([
-                '1T',
-                '1H',
-                '1D',
-                '7D',
-                '1M',
-                '1AS',
-              ]),
+              choices: formatSelectOptions(['1T', '1H', '1D', '7D', '1M', '1AS']),
               description: t('Pandas resample rule'),
             },
           },
@@ -260,14 +240,7 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Method'),
               default: null,
-              choices: formatSelectOptions([
-                'asfreq',
-                'bfill',
-                'ffill',
-                'median',
-                'mean',
-                'sum',
-              ]),
+              choices: formatSelectOptions(['asfreq', 'bfill', 'ffill', 'median', 'mean', 'sum']),
               description: t('Pandas resample method'),
             },
           },

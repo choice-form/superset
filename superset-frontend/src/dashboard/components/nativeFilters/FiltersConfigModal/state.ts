@@ -32,21 +32,13 @@ export const useRemoveCurrentFilter = (
     // if the currently viewed filter is fully removed, change to another tab
     const currentFilterRemoved = removedFilters[currentFilterId];
     if (currentFilterRemoved && !currentFilterRemoved.isPending) {
-      const nextFilterIndex = findLastIndex(
-        filterIds,
-        id => !removedFilters[id] && id !== currentFilterId,
-      );
-      if (nextFilterIndex !== -1)
-        setCurrentFilterId(filterIds[nextFilterIndex]);
+      const nextFilterIndex = findLastIndex(filterIds, id => !removedFilters[id] && id !== currentFilterId);
+      if (nextFilterIndex !== -1) setCurrentFilterId(filterIds[nextFilterIndex]);
     }
   }, [currentFilterId, removedFilters, filterIds]);
 };
 
-export const useOpenModal = (
-  isOpen: boolean,
-  addFilter: Function,
-  createNewOnOpen?: boolean,
-) => {
+export const useOpenModal = (isOpen: boolean, addFilter: Function, createNewOnOpen?: boolean) => {
   const wasOpen = usePrevious(isOpen);
   // if this is a "create" modal rather than an "edit" modal,
   // add a filter on modal open

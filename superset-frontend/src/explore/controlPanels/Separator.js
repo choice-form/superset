@@ -46,10 +46,7 @@ export default {
               label: t('Code'),
               description: t('Put your code here'),
               mapStateToProps: state => ({
-                language:
-                  state.controls && state.controls.markup_type
-                    ? state.controls.markup_type.value
-                    : 'markdown',
+                language: state.controls && state.controls.markup_type ? state.controls.markup_type.value : 'markdown',
               }),
               default: '',
             },

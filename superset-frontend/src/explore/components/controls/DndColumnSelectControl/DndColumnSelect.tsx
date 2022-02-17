@@ -34,22 +34,10 @@ export type DndColumnSelectProps = DndControlProps<string> & {
 };
 
 export function DndColumnSelect(props: DndColumnSelectProps) {
-  const {
-    value,
-    options,
-    multi = true,
-    onChange,
-    canDelete = true,
-    ghostButtonText,
-    name,
-    label,
-  } = props;
+  const { value, options, multi = true, onChange, canDelete = true, ghostButtonText, name, label } = props;
   const [newColumnPopoverVisible, setNewColumnPopoverVisible] = useState(false);
 
-  const optionSelector = useMemo(
-    () => new OptionSelector(options, multi, value),
-    [multi, options, value],
-  );
+  const optionSelector = useMemo(() => new OptionSelector(options, multi, value), [multi, options, value]);
 
   // synchronize values in case of dataset changes
   const handleOptionsChange = useCallback(() => {
@@ -57,18 +45,13 @@ export function DndColumnSelect(props: DndColumnSelectProps) {
     if (typeof value !== typeof optionSelectorValues) {
       onChange(optionSelectorValues);
     }
-    if (
-      typeof value === 'string' &&
-      typeof optionSelectorValues === 'string' &&
-      value !== optionSelectorValues
-    ) {
+    if (typeof value === 'string' && typeof optionSelectorValues === 'string' && value !== optionSelectorValues) {
       onChange(optionSelectorValues);
     }
     if (
       Array.isArray(optionSelectorValues) &&
       Array.isArray(value) &&
-      (optionSelectorValues.length !== value.length ||
-        optionSelectorValues.every((val, index) => val === value[index]))
+      (optionSelectorValues.length !== value.length || optionSelectorValues.every((val, index) => val === value[index]))
     ) {
       onChange(optionSelectorValues);
     }
@@ -95,9 +78,7 @@ export function DndColumnSelect(props: DndColumnSelectProps) {
   const canDrop = useCallback(
     (item: DatasourcePanelDndItem) => {
       const columnName = (item.value as ColumnMeta).column_name;
-      return (
-        columnName in optionSelector.options && !optionSelector.has(columnName)
-      );
+      return columnName in optionSelector.options && !optionSelector.has(columnName);
     },
     [optionSelector],
   );
@@ -121,10 +102,7 @@ export function DndColumnSelect(props: DndColumnSelectProps) {
   const popoverOptions = useMemo(
     () =>
       Object.values(options).filter(
-        col =>
-          !optionSelector.values
-            .map(val => val.column_name)
-            .includes(col.column_name),
+        col => !optionSelector.values.map(val => val.column_name).includes(col.column_name),
       ),
     [optionSelector.values, options],
   );
@@ -164,16 +142,7 @@ export function DndColumnSelect(props: DndColumnSelectProps) {
           />
         ),
       ),
-    [
-      canDelete,
-      label,
-      name,
-      onChange,
-      onClickClose,
-      onShiftOptions,
-      optionSelector,
-      popoverOptions,
-    ],
+    [canDelete, label, name, onChange, onClickClose, onShiftOptions, optionSelector, popoverOptions],
   );
 
   const addNewColumnWithPopover = useCallback(
@@ -196,14 +165,8 @@ export function DndColumnSelect(props: DndColumnSelectProps) {
     togglePopover(true);
   }, [togglePopover]);
 
-  const defaultGhostButtonText = isFeatureEnabled(
-    FeatureFlag.ENABLE_DND_WITH_CLICK_UX,
-  )
-    ? tn(
-        'Drop a column here or click',
-        'Drop columns here or click',
-        multi ? 2 : 1,
-      )
+  const defaultGhostButtonText = isFeatureEnabled(FeatureFlag.ENABLE_DND_WITH_CLICK_UX)
+    ? tn('Drop a column here or click', 'Drop columns here or click', multi ? 2 : 1)
     : tn('Drop column here', 'Drop columns here', multi ? 2 : 1);
 
   return (
@@ -215,11 +178,7 @@ export function DndColumnSelect(props: DndColumnSelectProps) {
         accept={DndItemType.Column}
         displayGhostButton={multi || optionSelector.values.length === 0}
         ghostButtonText={ghostButtonText || defaultGhostButtonText}
-        onClickGhostButton={
-          isFeatureEnabled(FeatureFlag.ENABLE_DND_WITH_CLICK_UX)
-            ? openPopover
-            : undefined
-        }
+        onClickGhostButton={isFeatureEnabled(FeatureFlag.ENABLE_DND_WITH_CLICK_UX) ? openPopover : undefined}
         {...props}
       />
       <ColumnSelectPopoverTrigger

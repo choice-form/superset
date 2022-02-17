@@ -24,27 +24,16 @@ import { CHART_TYPE, DASHBOARD_ROOT_TYPE, TAB_TYPE } from './componentTypes';
 
 const FILTER_SCOPE_CONTAINER_TYPES = [TAB_TYPE, DASHBOARD_ROOT_TYPE];
 
-function traverse({
-  currentNode = {},
-  components = {},
-  filterFields = [],
-  selectedChartId,
-}) {
+function traverse({ currentNode = {}, components = {}, filterFields = [], selectedChartId }) {
   if (!currentNode) {
     return null;
   }
 
   const { type } = currentNode;
-  if (
-    CHART_TYPE === type &&
-    currentNode &&
-    currentNode.meta &&
-    currentNode.meta.chartId
-  ) {
+  if (CHART_TYPE === type && currentNode && currentNode.meta && currentNode.meta.chartId) {
     const chartNode = {
       value: currentNode.meta.chartId,
-      label:
-        currentNode.meta.sliceName || `${type} ${currentNode.meta.chartId}`,
+      label: currentNode.meta.sliceName || `${type} ${currentNode.meta.chartId}`,
       type,
       showCheckbox: selectedChartId !== currentNode.meta.chartId,
     };
@@ -84,10 +73,7 @@ function traverse({
     if (type === DASHBOARD_ROOT_TYPE) {
       label = t('All charts');
     } else {
-      label =
-        currentNode.meta && currentNode.meta.text
-          ? currentNode.meta.text
-          : `${type} ${currentNode.id}`;
+      label = currentNode.meta && currentNode.meta.text ? currentNode.meta.text : `${type} ${currentNode.id}`;
     }
 
     return {
@@ -101,11 +87,7 @@ function traverse({
   return children;
 }
 
-export default function getFilterScopeNodesTree({
-  components = {},
-  filterFields = [],
-  selectedChartId,
-}) {
+export default function getFilterScopeNodesTree({ components = {}, filterFields = [], selectedChartId }) {
   if (isEmpty(components)) {
     return [];
   }

@@ -30,11 +30,7 @@ type CrossFilterScopingFormProps = {
   form: FormInstance<CrossFilterScopingFormType>;
 };
 
-const CrossFilterScopingForm: FC<CrossFilterScopingFormProps> = ({
-  form,
-  scope,
-  chartId,
-}) => {
+const CrossFilterScopingForm: FC<CrossFilterScopingFormProps> = ({ form, scope, chartId }) => {
   const forceUpdate = useForceUpdate();
   const formScope = form.getFieldValue('scope');
   const formScoping = form.getFieldValue('scoping');

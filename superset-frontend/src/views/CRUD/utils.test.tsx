@@ -35,8 +35,7 @@ const terminalErrors = {
         issue_codes: [
           {
             code: 1010,
-            message:
-              'Issue 1010 - Superset encountered an error while running a command.',
+            message: 'Issue 1010 - Superset encountered an error while running a command.',
           },
         ],
       },
@@ -51,13 +50,11 @@ const overwriteNeededErrors = {
       error_type: 'GENERIC_COMMAND_ERROR',
       level: 'warning',
       extra: {
-        'databases/imported_database.yaml':
-          'Database already exists and `overwrite=true` was not passed',
+        'databases/imported_database.yaml': 'Database already exists and `overwrite=true` was not passed',
         issue_codes: [
           {
             code: 1010,
-            message:
-              'Issue 1010 - Superset encountered an error while running a command.',
+            message: 'Issue 1010 - Superset encountered an error while running a command.',
           },
         ],
       },
@@ -78,8 +75,7 @@ const passwordNeededErrors = {
         issue_codes: [
           {
             code: 1010,
-            message:
-              'Issue 1010 - Superset encountered an error while running a command.',
+            message: 'Issue 1010 - Superset encountered an error while running a command.',
           },
         ],
       },
@@ -95,9 +91,7 @@ test('identifies error payloads indicating that password is needed', () => {
   });
   expect(needsPassword).toBe(true);
 
-  needsPassword = isNeedsPassword(
-    'Database already exists and `overwrite=true` was not passed',
-  );
+  needsPassword = isNeedsPassword('Database already exists and `overwrite=true` was not passed');
   expect(needsPassword).toBe(false);
 
   needsPassword = isNeedsPassword({ type: ['Must be equal to Database.'] });
@@ -107,9 +101,7 @@ test('identifies error payloads indicating that password is needed', () => {
 test('identifies error payloads indicating that overwrite confirmation is needed', () => {
   let alreadyExists;
 
-  alreadyExists = isAlreadyExists(
-    'Database already exists and `overwrite=true` was not passed',
-  );
+  alreadyExists = isAlreadyExists('Database already exists and `overwrite=true` was not passed');
   expect(alreadyExists).toBe(true);
 
   alreadyExists = isAlreadyExists({

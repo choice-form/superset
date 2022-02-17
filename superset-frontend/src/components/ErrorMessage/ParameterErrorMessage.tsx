@@ -38,9 +38,7 @@ const findMatches = (undefinedParameters: string[], templateKeys: string[]) => {
   const matches: { [undefinedParameter: string]: string[] } = {};
   undefinedParameters.forEach(undefinedParameter => {
     templateKeys.forEach(templateKey => {
-      if (
-        levenshtein(undefinedParameter, templateKey) <= maxDistanceForSuggestion
-      ) {
+      if (levenshtein(undefinedParameter, templateKey) <= maxDistanceForSuggestion) {
         if (!matches[undefinedParameter]) {
           matches[undefinedParameter] = [];
         }
@@ -58,16 +56,9 @@ function ParameterErrorMessage({
 }: ErrorMessageComponentProps<ParameterErrorExtra>) {
   const { extra = { issue_codes: [] }, level, message } = error;
 
-  const triggerMessage = tn(
-    'This was triggered by:',
-    'This may be triggered by:',
-    extra.issue_codes.length,
-  );
+  const triggerMessage = tn('This was triggered by:', 'This may be triggered by:', extra.issue_codes.length);
 
-  const matches = findMatches(
-    extra.undefined_parameters || [],
-    Object.keys(extra.template_parameters || {}),
-  );
+  const matches = findMatches(extra.undefined_parameters || [], Object.keys(extra.template_parameters || {}));
 
   const body = (
     <>
@@ -76,23 +67,21 @@ function ParameterErrorMessage({
           <>
             <p>{t('Did you mean:')}</p>
             <ul>
-              {Object.entries(matches).map(
-                ([undefinedParameter, templateKeys]) => (
-                  <li>
-                    {tn(
-                      '%(suggestion)s instead of "%(undefinedParameter)s?"',
-                      '%(firstSuggestions)s or %(lastSuggestion)s instead of "%(undefinedParameter)s"?',
-                      templateKeys.length,
-                      {
-                        suggestion: templateKeys.join(', '),
-                        firstSuggestions: templateKeys.slice(0, -1).join(', '),
-                        lastSuggestion: templateKeys[templateKeys.length - 1],
-                        undefinedParameter,
-                      },
-                    )}
-                  </li>
-                ),
-              )}
+              {Object.entries(matches).map(([undefinedParameter, templateKeys]) => (
+                <li>
+                  {tn(
+                    '%(suggestion)s instead of "%(undefinedParameter)s?"',
+                    '%(firstSuggestions)s or %(lastSuggestion)s instead of "%(undefinedParameter)s"?',
+                    templateKeys.length,
+                    {
+                      suggestion: templateKeys.join(', '),
+                      firstSuggestions: templateKeys.slice(0, -1).join(', '),
+                      lastSuggestion: templateKeys[templateKeys.length - 1],
+                      undefinedParameter,
+                    },
+                  )}
+                </li>
+              ))}
             </ul>
             <br />
           </>

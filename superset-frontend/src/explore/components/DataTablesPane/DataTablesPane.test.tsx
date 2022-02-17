@@ -23,10 +23,7 @@ import { render, screen } from 'spec/helpers/testing-library';
 import fetchMock from 'fetch-mock';
 import { DataTablesPane } from '.';
 
-fetchMock.post(
-  'http://api/v1/chart/data?form_data=%7B%22slice_id%22%3A456%7D',
-  { body: {} },
-);
+fetchMock.post('http://api/v1/chart/data?form_data=%7B%22slice_id%22%3A456%7D', { body: {} });
 
 const createProps = () => ({
   queryFormData: {

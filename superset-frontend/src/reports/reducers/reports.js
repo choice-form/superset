@@ -23,10 +23,7 @@ export default function reportsReducer(state = {}, action) {
   const actionHandlers = {
     [SET_REPORT]() {
       return {
-        ...action.report.result.reduce(
-          (obj, report) => ({ ...obj, [report.id]: report }),
-          {},
-        ),
+        ...action.report.result.reduce((obj, report) => ({ ...obj, [report.id]: report }), {}),
       };
     },
     [ADD_REPORT]() {

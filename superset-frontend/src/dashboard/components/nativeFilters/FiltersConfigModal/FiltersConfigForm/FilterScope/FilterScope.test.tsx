@@ -18,12 +18,7 @@
  */
 import React from 'react';
 import { Provider } from 'react-redux';
-import {
-  render,
-  screen,
-  fireEvent,
-  waitFor,
-} from 'spec/helpers/testing-library';
+import { render, screen, fireEvent, waitFor } from 'spec/helpers/testing-library';
 import { mockStoreWithChartsInTabsAndRoot } from 'spec/fixtures/mockStore';
 import { Form, FormInstance } from 'src/common/components';
 import { NativeFiltersForm } from 'src/dashboard/components/nativeFilters/FiltersConfigModal/types';
@@ -62,8 +57,7 @@ describe('FilterScope', () => {
     );
   };
 
-  const getTreeSwitcher = (order = 0) =>
-    document.querySelectorAll('.ant-tree-switcher')[order];
+  const getTreeSwitcher = (order = 0) => document.querySelectorAll('.ant-tree-switcher')[order];
 
   it('renders "apply to all" filter scope', () => {
     render(<MockModal />);
@@ -78,9 +72,7 @@ describe('FilterScope', () => {
     fireEvent.click(getTreeSwitcher(2));
     fireEvent.click(screen.getByText('CHART_ID2'));
     await waitFor(() =>
-      expect(
-        form.getFieldValue('filters')?.[mockedProps.filterId].scope,
-      ).toEqual({
+      expect(form.getFieldValue('filters')?.[mockedProps.filterId].scope).toEqual({
         excluded: [20],
         rootPath: ['ROOT_ID'],
       }),
@@ -96,9 +88,7 @@ describe('FilterScope', () => {
     fireEvent.click(screen.getByText('CHART_ID2'));
     fireEvent.click(screen.getByText('tab1'));
     await waitFor(() =>
-      expect(
-        form.getFieldValue('filters')?.[mockedProps.filterId].scope,
-      ).toEqual({
+      expect(form.getFieldValue('filters')?.[mockedProps.filterId].scope).toEqual({
         excluded: [18, 20],
         rootPath: ['ROOT_ID'],
       }),
@@ -119,9 +109,7 @@ describe('FilterScope', () => {
 
     await waitFor(() => {
       expect(screen.getByRole('tree')).toBeInTheDocument();
-      expect(
-        document.querySelectorAll('.ant-tree-checkbox-checked').length,
-      ).toBe(1);
+      expect(document.querySelectorAll('.ant-tree-checkbox-checked').length).toBe(1);
     });
   });
 });

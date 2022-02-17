@@ -33,23 +33,18 @@ export default function getRevertedFilterScope({
   filterFields = [],
   filterScopeMap = {},
 }: GetRevertFilterScopeProps) {
-  const checkedChartIdsByFilterField = checked.reduce<FilterScopeMap>(
-    (map, value) => {
-      const [chartId, filterField] = value.split(':');
-      return {
-        ...map,
-        [filterField]: (map[filterField] || []).concat(parseInt(chartId, 10)),
-      };
-    },
-    {},
-  );
+  const checkedChartIdsByFilterField = checked.reduce<FilterScopeMap>((map, value) => {
+    const [chartId, filterField] = value.split(':');
+    return {
+      ...map,
+      [filterField]: (map[filterField] || []).concat(parseInt(chartId, 10)),
+    };
+  }, {});
 
   return filterFields.reduce<FilterScopeMap>((map, filterField) => {
     const { chartId } = getChartIdAndColumnFromFilterKey(filterField);
     // force display filter_box chart as unchecked, but show checkbox as disabled
-    const updatedCheckedIds = (
-      checkedChartIdsByFilterField[filterField] || []
-    ).filter(id => id !== chartId);
+    const updatedCheckedIds = (checkedChartIdsByFilterField[filterField] || []).filter(id => id !== chartId);
 
     return {
       ...map,

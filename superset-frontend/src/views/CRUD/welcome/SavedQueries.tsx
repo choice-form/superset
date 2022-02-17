@@ -30,12 +30,7 @@ import DeleteModal from 'src/components/DeleteModal';
 import Icons from 'src/components/Icons';
 import SubMenu from 'src/components/Menu/SubMenu';
 import EmptyState from './EmptyState';
-import {
-  CardContainer,
-  createErrorHandler,
-  shortenSQL,
-  PAGE_SIZE,
-} from '../utils';
+import { CardContainer, createErrorHandler, shortenSQL, PAGE_SIZE } from '../utils';
 
 SyntaxHighlighter.registerLanguage('sql', sql);
 
@@ -103,8 +98,7 @@ const QueryContainer = styled.div`
   pre {
     height: ${({ theme }) => theme.gridUnit * 40}px;
     border: none !important;
-    background-color: ${({ theme }) =>
-      theme.colors.grayscale.light5} !important;
+    background-color: ${({ theme }) => theme.colors.grayscale.light5} !important;
     overflow: hidden;
     padding: ${({ theme }) => theme.gridUnit * 4}px !important;
   }
@@ -123,15 +117,7 @@ const SavedQueries = ({
     hasPerm,
     fetchData,
     refreshData,
-  } = useListViewResource<Query>(
-    'saved_query',
-    t('query'),
-    addDangerToast,
-    true,
-    mine,
-    [],
-    false,
-  );
+  } = useListViewResource<Query>('saved_query', t('query'), addDangerToast, true, mine, [], false);
   const [queryFilter, setQueryFilter] = useState('Mine');
   const [queryDeleteModal, setQueryDeleteModal] = useState(false);
   const [currentlyEdited, setCurrentlyEdited] = useState<Query>({});
@@ -170,9 +156,7 @@ const SavedQueries = ({
         setQueryDeleteModal(false);
         addSuccessToast(t('Deleted: %s', label));
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(t('There was an issue deleting %s: %s', label, errMsg)),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting %s: %s', label, errMsg))),
     );
   };
 
@@ -245,9 +229,7 @@ const SavedQueries = ({
     <>
       {queryDeleteModal && (
         <DeleteModal
-          description={t(
-            'This action will permanently delete the saved query.',
-          )}
+          description={t('This action will permanently delete the saved query.')}
           onConfirm={() => {
             if (queryDeleteModal) {
               handleQueryDelete(currentlyEdited);
@@ -352,9 +334,7 @@ const SavedQueries = ({
                       }}
                     >
                       <Dropdown overlay={renderMenu(q)}>
-                        <Icons.MoreVert
-                          iconColor={theme.colors.grayscale.base}
-                        />
+                        <Icons.MoreVert iconColor={theme.colors.grayscale.base} />
                       </Dropdown>
                     </ListViewCard.Actions>
                   </QueryData>

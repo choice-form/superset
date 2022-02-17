@@ -19,12 +19,7 @@
 
 import React from 'react';
 import { styled } from 'src/core';
-import {
-  MetricOption,
-  ColumnOption,
-  MetricOptionProps,
-  ColumnOptionProps,
-} from 'src/chartConntrols';
+import { MetricOption, ColumnOption, MetricOptionProps, ColumnOptionProps } from 'src/chartConntrols';
 
 const OptionContainer = styled.div`
   width: 100%;

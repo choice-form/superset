@@ -56,9 +56,7 @@ describe('utils/common', () => {
       ];
       const column = ['column1', 'column2', 'column3'];
       console.log(prepareCopyToClipboardTabularData(array, column));
-      expect(prepareCopyToClipboardTabularData(array, column)).toEqual(
-        'lorem\tipsum\t\ndolor\tsit\tamet\n',
-      );
+      expect(prepareCopyToClipboardTabularData(array, column)).toEqual('lorem\tipsum\t\ndolor\tsit\tamet\n');
     });
   });
   describe('applyFormattingToTabularData', () => {

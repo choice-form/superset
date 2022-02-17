@@ -30,8 +30,7 @@ const defaultProps = {
 };
 
 test('renders with unpublished status and readonly permissions', async () => {
-  const tooltip =
-    /This dashboard is not published which means it will not show up in the list of dashboards/;
+  const tooltip = /This dashboard is not published which means it will not show up in the list of dashboards/;
   render(<PublishedStatus {...defaultProps} />);
   expect(screen.getByText('Draft')).toBeInTheDocument();
   userEvent.hover(screen.getByText('Draft'));
@@ -39,17 +38,9 @@ test('renders with unpublished status and readonly permissions', async () => {
 });
 
 test('renders with unpublished status and write permissions', async () => {
-  const tooltip =
-    /This dashboard is not published, it will not show up in the list of dashboards/;
+  const tooltip = /This dashboard is not published, it will not show up in the list of dashboards/;
   const savePublished = jest.fn();
-  render(
-    <PublishedStatus
-      {...defaultProps}
-      canEdit
-      canSave
-      savePublished={savePublished}
-    />,
-  );
+  render(<PublishedStatus {...defaultProps} canEdit canSave savePublished={savePublished} />);
   expect(screen.getByText('Draft')).toBeInTheDocument();
   userEvent.hover(screen.getByText('Draft'));
   expect(await screen.findByText(tooltip)).toBeInTheDocument();
@@ -66,15 +57,7 @@ test('renders with published status and readonly permissions', () => {
 test('renders with published status and write permissions', async () => {
   const tooltip = /This dashboard is published. Click to make it a draft/;
   const savePublished = jest.fn();
-  render(
-    <PublishedStatus
-      {...defaultProps}
-      isPublished
-      canEdit
-      canSave
-      savePublished={savePublished}
-    />,
-  );
+  render(<PublishedStatus {...defaultProps} isPublished canEdit canSave savePublished={savePublished} />);
   expect(screen.getByText('Published')).toBeInTheDocument();
   userEvent.hover(screen.getByText('Published'));
   expect(await screen.findByText(tooltip)).toBeInTheDocument();

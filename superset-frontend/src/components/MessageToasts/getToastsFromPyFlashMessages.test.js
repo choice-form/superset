@@ -29,9 +29,7 @@ describe('getToastsFromPyFlashMessages', () => {
   });
 
   it('should return a success toast', () => {
-    const toast = getToastsFromPyFlashMessages([
-      ['success', 'success test'],
-    ])[0];
+    const toast = getToastsFromPyFlashMessages([['success', 'success test']])[0];
     expect(toast).toMatchObject({
       toastType: ToastType.SUCCESS,
       text: 'success test',

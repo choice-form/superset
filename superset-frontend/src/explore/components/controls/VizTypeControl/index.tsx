@@ -24,9 +24,7 @@ import Modal from 'src/components/Modal';
 import { Tooltip } from 'src/components/Tooltip';
 import Label, { Type } from 'src/components/Label';
 import ControlHeader from 'src/explore/components/ControlHeader';
-import VizTypeGallery, {
-  MAX_ADVISABLE_VIZ_GALLERY_WIDTH,
-} from './VizTypeGallery';
+import VizTypeGallery, { MAX_ADVISABLE_VIZ_GALLERY_WIDTH } from './VizTypeGallery';
 
 const propTypes = {
   description: PropTypes.string,
@@ -108,17 +106,9 @@ const VizTypeControl = (props: VizTypeControlProps) => {
   return (
     <div>
       <ControlHeader {...props} />
-      <Tooltip
-        id="error-tooltip"
-        placement="right"
-        title={t('Click to change visualization type')}
-      >
+      <Tooltip id="error-tooltip" placement="right" title={t('Click to change visualization type')}>
         <>
-          <Label
-            onClick={openModal}
-            type={labelType}
-            data-test="visualization-type"
-          >
+          <Label onClick={openModal} type={labelType} data-test="visualization-type">
             {labelContent}
           </Label>
           {initialValue && <VizSupportValidation vizType={initialValue} />}
@@ -136,11 +126,7 @@ const VizTypeControl = (props: VizTypeControlProps) => {
         responsive
       >
         {/* When the key increments, it forces react to re-init the gallery component */}
-        <VizTypeGallery
-          key={modalKey}
-          selectedViz={selectedViz}
-          onChange={setSelectedViz}
-        />
+        <VizTypeGallery key={modalKey} selectedViz={selectedViz} onChange={setSelectedViz} />
       </UnpaddedModal>
     </div>
   );

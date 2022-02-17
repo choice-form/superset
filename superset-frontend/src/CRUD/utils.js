@@ -30,11 +30,7 @@ export function recurseReactClone(children, type, propExtender) {
     }
     if (newChild && newChild.props.children) {
       newChild = React.cloneElement(newChild, {
-        children: recurseReactClone(
-          newChild.props.children,
-          type,
-          propExtender,
-        ),
+        children: recurseReactClone(newChild.props.children, type, propExtender),
       });
     }
     return newChild;

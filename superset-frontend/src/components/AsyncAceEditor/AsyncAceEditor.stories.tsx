@@ -28,24 +28,9 @@ import {
   AsyncAceEditorOptions,
 } from '.';
 
-type EditorType =
-  | 'sql'
-  | 'full-sql'
-  | 'markdown'
-  | 'text-area'
-  | 'css'
-  | 'json'
-  | 'config';
+type EditorType = 'sql' | 'full-sql' | 'markdown' | 'text-area' | 'css' | 'json' | 'config';
 
-const editorTypes: EditorType[] = [
-  'sql',
-  'full-sql',
-  'markdown',
-  'text-area',
-  'css',
-  'json',
-  'config',
-];
+const editorTypes: EditorType[] = ['sql', 'full-sql', 'markdown', 'text-area', 'css', 'json', 'config'];
 
 export default {
   title: 'AsyncAceEditor',
@@ -70,9 +55,7 @@ const parseEditorType = (editorType: EditorType) => {
   }
 };
 
-export const AsyncAceEditor = (
-  args: AsyncAceEditorOptions & { editorType: EditorType },
-) => {
+export const AsyncAceEditor = (args: AsyncAceEditorOptions & { editorType: EditorType }) => {
   const { editorType, ...props } = args;
   const Editor = parseEditorType(editorType);
   return <Editor {...props} />;

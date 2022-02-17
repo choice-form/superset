@@ -50,11 +50,7 @@ export default class DraggableNewComponent extends React.PureComponent {
         editMode
       >
         {({ dragSourceRef }) => (
-          <div
-            ref={dragSourceRef}
-            className="new-component"
-            data-test="new-component"
-          >
+          <div ref={dragSourceRef} className="new-component" data-test="new-component">
             <div className={cx('new-component-placeholder', className)} />
             {label}
           </div>

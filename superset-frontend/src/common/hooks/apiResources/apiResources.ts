@@ -84,9 +84,7 @@ const initialState: LoadingState = {
  *
  * @param endpoint The url where the resource is located.
  */
-export function useApiResourceFullBody<RESULT>(
-  endpoint: string,
-): Resource<RESULT> {
+export function useApiResourceFullBody<RESULT>(endpoint: string): Resource<RESULT> {
   const [resource, setResource] = useState<Resource<RESULT>>(initialState);
   const cancelRef = useRef<() => void>(() => {});
 
@@ -161,8 +159,7 @@ export function useTransformedResource<IN, OUT>(
 }
 
 // returns the "result" field from a fetched API v1 endpoint
-const extractInnerResult = <T>(responseBody: { result: T }) =>
-  responseBody.result;
+const extractInnerResult = <T>(responseBody: { result: T }) => responseBody.result;
 
 /**
  * A general-purpose hook to fetch a Superset resource from a v1 API endpoint.
@@ -174,8 +171,5 @@ const extractInnerResult = <T>(responseBody: { result: T }) =>
  * @param endpoint The url where the resource is located.
  */
 export function useApiV1Resource<RESULT>(endpoint: string): Resource<RESULT> {
-  return useTransformedResource(
-    useApiResourceFullBody<{ result: RESULT }>(endpoint),
-    extractInnerResult,
-  );
+  return useTransformedResource(useApiResourceFullBody<{ result: RESULT }>(endpoint), extractInnerResult);
 }

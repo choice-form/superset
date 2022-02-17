@@ -36,10 +36,7 @@ export interface AxisLayout {
   tickTextAnchor?: string;
 }
 
-export default function computeAxisLayout<
-  Def extends ChannelDef<Output>,
-  Output extends Value
->(
+export default function computeAxisLayout<Def extends ChannelDef<Output>, Output extends Value>(
   axis: ChannelEncoderAxis<Def, Output>,
   {
     axisTitleHeight = 20,
@@ -65,54 +62,33 @@ export default function computeAxisLayout<
     }),
   );
 
-  const {
-    labelAngle,
-    labelFlush,
-    labelOverlap,
-    labelPadding,
-    orient,
-    tickSize = defaultTickSize,
-  } = axis.config;
+  const { labelAngle, labelFlush, labelOverlap, labelPadding, orient, tickSize = defaultTickSize } = axis.config;
 
   const maxWidth = Math.max(...tickLabelDimensions.map(d => d.width), 0);
 
   // cheap heuristic, can improve
   const widthPerTick = axisWidth / tickLabels.length;
   const isLabelOverlap = maxWidth > widthPerTick;
-  const labelAngleIfOverlap =
-    labelOverlap.strategy === 'rotate' ? labelOverlap.labelAngle : 0;
+  const labelAngleIfOverlap = labelOverlap.strategy === 'rotate' ? labelOverlap.labelAngle : 0;
   const labelAngleAfterOverlapCheck = isLabelOverlap ? labelAngleIfOverlap : 0;
-  const finalLabelAngle =
-    labelAngle === 0 ? labelAngleAfterOverlapCheck : labelAngle;
+  const finalLabelAngle = labelAngle === 0 ? labelAngleAfterOverlapCheck : labelAngle;
 
-  const spaceForAxisTitle = axis.hasTitle()
-    ? labelPadding + axisTitleHeight
-    : 0;
+  const spaceForAxisTitle = axis.hasTitle() ? labelPadding + axisTitleHeight : 0;
   let tickTextAnchor = 'middle';
   let labelOffset = 0;
-  let requiredMargin =
-    tickSize +
-    gapBetweenTickAndTickLabel +
-    spaceForAxisTitle +
-    gapBetweenAxisLabelAndBorder;
+  let requiredMargin = tickSize + gapBetweenTickAndTickLabel + spaceForAxisTitle + gapBetweenAxisLabelAndBorder;
 
   if (axis.channelEncoder.isX()) {
     if (finalLabelAngle === 0) {
-      const labelHeight =
-        tickLabelDimensions.length > 0 ? tickLabelDimensions[0].height : 0;
+      const labelHeight = tickLabelDimensions.length > 0 ? tickLabelDimensions[0].height : 0;
       labelOffset = labelHeight + labelPadding;
       requiredMargin += labelHeight;
     } else {
-      const labelHeight = Math.ceil(
-        Math.abs(maxWidth * Math.sin((finalLabelAngle * Math.PI) / 180)),
-      );
+      const labelHeight = Math.ceil(Math.abs(maxWidth * Math.sin((finalLabelAngle * Math.PI) / 180)));
       labelOffset = labelHeight + labelPadding;
       requiredMargin += labelHeight;
       tickTextAnchor =
-        (orient === 'top' && finalLabelAngle > 0) ||
-        (orient === 'bottom' && finalLabelAngle < 0)
-          ? 'end'
-          : 'start';
+        (orient === 'top' && finalLabelAngle > 0) || (orient === 'bottom' && finalLabelAngle < 0) ? 'end' : 'start';
     }
     requiredMargin += 8;
   } else {

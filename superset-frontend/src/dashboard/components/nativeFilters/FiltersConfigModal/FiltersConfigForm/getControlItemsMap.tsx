@@ -23,17 +23,9 @@ import { FormInstance } from 'antd/lib/form';
 import { getChartControlPanelRegistry, styled, t } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import { FormItem } from 'src/components/Form';
-import {
-  doesColumnMatchFilterType,
-  getControlItems,
-  setNativeFilterFieldValues,
-} from './utils';
+import { doesColumnMatchFilterType, getControlItems, setNativeFilterFieldValues } from './utils';
 import { NativeFiltersForm, NativeFiltersFormItem } from '../types';
-import {
-  StyledFormItem,
-  StyledLabel,
-  StyledRowFormItem,
-} from './FiltersConfigForm';
+import { StyledFormItem, StyledLabel, StyledRowFormItem } from './FiltersConfigForm';
 import { Filter } from '../../types';
 import { ColumnSelect } from './ColumnSelect';
 
@@ -65,26 +57,14 @@ export default function getControlItemsMap({
   removed,
 }: ControlItemsProps) {
   const controlPanelRegistry = getChartControlPanelRegistry();
-  const controlItems =
-    getControlItems(controlPanelRegistry.get(filterType)) ?? [];
-  const mapControlItems: Record<
-    string,
-    { element: React.ReactNode; checked: boolean }
-  > = {};
-  const mapMainControlItems: Record<
-    string,
-    { element: React.ReactNode; checked: boolean }
-  > = {};
+  const controlItems = getControlItems(controlPanelRegistry.get(filterType)) ?? [];
+  const mapControlItems: Record<string, { element: React.ReactNode; checked: boolean }> = {};
+  const mapMainControlItems: Record<string, { element: React.ReactNode; checked: boolean }> = {};
 
   controlItems
-    .filter(
-      (mainControlItem: CustomControlItem) =>
-        mainControlItem?.name === 'groupby',
-    )
+    .filter((mainControlItem: CustomControlItem) => mainControlItem?.name === 'groupby')
     .forEach(mainControlItem => {
-      const initialValue =
-        filterToEdit?.controlValues?.[mainControlItem.name] ??
-        mainControlItem?.config?.default;
+      const initialValue = filterToEdit?.controlValues?.[mainControlItem.name] ?? mainControlItem?.config?.default;
       const initColumn = filterToEdit?.targets[0]?.column?.name;
 
       const element = (
@@ -92,20 +72,13 @@ export default function getControlItemsMap({
           <CleanFormItem
             name={['filters', filterId, 'requiredFirst', mainControlItem.name]}
             hidden
-            initialValue={
-              mainControlItem?.config?.requiredFirst &&
-              filterToEdit?.requiredFirst
-            }
+            initialValue={mainControlItem?.config?.requiredFirst && filterToEdit?.requiredFirst}
           />
           <StyledFormItem
             // don't show the column select unless we have a dataset
             name={['filters', filterId, 'column']}
             initialValue={initColumn}
-            label={
-              <StyledLabel>
-                {t(`${mainControlItem.config?.label}`) || t('Column')}
-              </StyledLabel>
-            }
+            label={<StyledLabel>{t(`${mainControlItem.config?.label}`) || t('Column')}</StyledLabel>}
             rules={[
               {
                 required: mainControlItem.config?.required && !removed, // TODO: need to move ColumnSelect settings to controlPanel for all filters
@@ -119,9 +92,7 @@ export default function getControlItemsMap({
               form={form}
               filterId={filterId}
               datasetId={datasetId}
-              filterValues={column =>
-                doesColumnMatchFilterType(formFilter?.filterType || '', column)
-              }
+              filterValues={column => doesColumnMatchFilterType(formFilter?.filterType || '', column)}
               onChange={() => {
                 // We need reset default value when when column changed
                 setNativeFilterFieldValues(form, filterId, {
@@ -140,30 +111,22 @@ export default function getControlItemsMap({
     });
   controlItems
     .filter(
-      (controlItem: CustomControlItem) =>
-        controlItem?.config?.renderTrigger &&
-        controlItem.name !== 'sortAscending',
+      (controlItem: CustomControlItem) => controlItem?.config?.renderTrigger && controlItem.name !== 'sortAscending',
     )
     .forEach(controlItem => {
-      const initialValue =
-        filterToEdit?.controlValues?.[controlItem.name] ??
-        controlItem?.config?.default;
+      const initialValue = filterToEdit?.controlValues?.[controlItem.name] ?? controlItem?.config?.default;
       const element = (
         <>
           <CleanFormItem
             name={['filters', filterId, 'requiredFirst', controlItem.name]}
             hidden
-            initialValue={
-              controlItem?.config?.requiredFirst && filterToEdit?.requiredFirst
-            }
+            initialValue={controlItem?.config?.requiredFirst && filterToEdit?.requiredFirst}
           />
           <Tooltip
             key={controlItem.name}
             placement="left"
             title={
-              controlItem.config.affectsDataMask &&
-              disabled &&
-              t('Populate "Default value" to enable this control')
+              controlItem.config.affectsDataMask && disabled && t('Populate "Default value" to enable this control')
             }
           >
             <StyledRowFormItem

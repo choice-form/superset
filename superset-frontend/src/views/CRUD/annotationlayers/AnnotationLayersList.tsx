@@ -27,11 +27,7 @@ import { createFetchRelated, createErrorHandler } from 'src/views/CRUD/utils';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import SubMenu, { SubMenuProps } from 'src/components/Menu/SubMenu';
 import ActionsBar, { ActionProps } from 'src/components/ListView/ActionsBar';
-import ListView, {
-  ListViewProps,
-  Filters,
-  FilterOperator,
-} from 'src/components/ListView';
+import ListView, { ListViewProps, Filters, FilterOperator } from 'src/components/ListView';
 import Button from 'src/components/Button';
 import DeleteModal from 'src/components/DeleteModal';
 import ConfirmStatusChange from 'src/components/ConfirmStatusChange';
@@ -51,35 +47,19 @@ interface AnnotationLayersListProps {
   };
 }
 
-function AnnotationLayersList({
-  addDangerToast,
-  addSuccessToast,
-  user,
-}: AnnotationLayersListProps) {
+function AnnotationLayersList({ addDangerToast, addSuccessToast, user }: AnnotationLayersListProps) {
   const {
-    state: {
-      loading,
-      resourceCount: layersCount,
-      resourceCollection: layers,
-      bulkSelectEnabled,
-    },
+    state: { loading, resourceCount: layersCount, resourceCollection: layers, bulkSelectEnabled },
     hasPerm,
     fetchData,
     refreshData,
     toggleBulkSelect,
-  } = useListViewResource<AnnotationLayerObject>(
-    'annotation_layer',
-    t('Annotation layers'),
-    addDangerToast,
-  );
+  } = useListViewResource<AnnotationLayerObject>('annotation_layer', t('Annotation layers'), addDangerToast);
 
-  const [annotationLayerModalOpen, setAnnotationLayerModalOpen] =
-    useState<boolean>(false);
-  const [currentAnnotationLayer, setCurrentAnnotationLayer] =
-    useState<AnnotationLayerObject | null>(null);
+  const [annotationLayerModalOpen, setAnnotationLayerModalOpen] = useState<boolean>(false);
+  const [currentAnnotationLayer, setCurrentAnnotationLayer] = useState<AnnotationLayerObject | null>(null);
 
-  const [layerCurrentlyDeleting, setLayerCurrentlyDeleting] =
-    useState<AnnotationLayerObject | null>(null);
+  const [layerCurrentlyDeleting, setLayerCurrentlyDeleting] = useState<AnnotationLayerObject | null>(null);
 
   const handleLayerDelete = ({ id, name }: AnnotationLayerObject) => {
     SupersetClient.delete({
@@ -90,27 +70,19 @@ function AnnotationLayersList({
         setLayerCurrentlyDeleting(null);
         addSuccessToast(t('Deleted: %s', name));
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(t('There was an issue deleting %s: %s', name, errMsg)),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting %s: %s', name, errMsg))),
     );
   };
 
   const handleBulkLayerDelete = (layersToDelete: AnnotationLayerObject[]) => {
     SupersetClient.delete({
-      endpoint: `/api/v1/annotation_layer/?q=${rison.encode(
-        layersToDelete.map(({ id }) => id),
-      )}`,
+      endpoint: `/api/v1/annotation_layer/?q=${rison.encode(layersToDelete.map(({ id }) => id))}`,
     }).then(
       ({ json = {} }) => {
         refreshData();
         addSuccessToast(json.message);
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(
-          t('There was an issue deleting the selected layers: %s', errMsg),
-        ),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting the selected layers: %s', errMsg))),
     );
   };
 
@@ -144,9 +116,7 @@ function AnnotationLayersList({
           }
 
           if (hasHistory) {
-            return (
-              <Link to={`/annotationmodelview/${id}/annotation`}>{name}</Link>
-            );
+            return <Link to={`/annotationmodelview/${id}/annotation`}>{name}</Link>;
           }
 
           return <a href={`/annotationmodelview/${id}/annotation`}>{name}</a>;
@@ -214,8 +184,7 @@ function AnnotationLayersList({
           row: {
             original: { created_by: createdBy },
           },
-        }: any) =>
-          createdBy ? `${createdBy.first_name} ${createdBy.last_name}` : '',
+        }: any) => (createdBy ? `${createdBy.first_name} ${createdBy.last_name}` : ''),
         size: 'xl',
       },
       {
@@ -291,12 +260,7 @@ function AnnotationLayersList({
         fetchSelects: createFetchRelated(
           'annotation_layer',
           'created_by',
-          createErrorHandler(errMsg =>
-            t(
-              'An error occurred while fetching dataset datasource values: %s',
-              errMsg,
-            ),
-          ),
+          createErrorHandler(errMsg => t('An error occurred while fetching dataset datasource values: %s', errMsg)),
           user,
         ),
         paginate: true,

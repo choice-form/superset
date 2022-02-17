@@ -35,10 +35,7 @@ import shortid from 'shortid';
 
 // Some reducers don't do anything, and redux is just used to reference the initial "state".
 // This may change later, as the client application takes on more responsibilities.
-const noopReducer =
-  <STATE = unknown>(initialState: STATE) =>
-  (state: STATE = initialState) =>
-    state;
+const noopReducer = <STATE = unknown>(initialState: STATE) => (state: STATE = initialState) => state;
 
 const container = document.getElementById('app');
 const bootstrap = JSON.parse(container?.getAttribute('data-bootstrap') ?? '{}');
@@ -66,8 +63,4 @@ export const rootReducer = combineReducers({
   ...dashboardReducers,
 });
 
-export const store = createStore(
-  rootReducer,
-  {},
-  compose(applyMiddleware(thunk, logger), initEnhancer(false)),
-);
+export const store = createStore(rootReducer, {}, compose(applyMiddleware(thunk, logger), initEnhancer(false)));

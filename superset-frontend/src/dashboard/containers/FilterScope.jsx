@@ -40,7 +40,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(FilterScopeSelector);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterScopeSelector);

@@ -69,34 +69,21 @@ export default class SqlEditorLeftBar extends React.PureComponent {
   }
 
   onSchemasLoad(schemas) {
-    this.props.actions.queryEditorSetSchemaOptions(
-      this.props.queryEditor,
-      schemas,
-    );
+    this.props.actions.queryEditorSetSchemaOptions(this.props.queryEditor, schemas);
   }
 
   onTablesLoad(tables) {
-    this.props.actions.queryEditorSetTableOptions(
-      this.props.queryEditor,
-      tables,
-    );
+    this.props.actions.queryEditorSetTableOptions(this.props.queryEditor, tables);
   }
 
   onDbChange(db) {
     this.props.actions.queryEditorSetDb(this.props.queryEditor, db.id);
-    this.props.actions.queryEditorSetFunctionNames(
-      this.props.queryEditor,
-      db.id,
-    );
+    this.props.actions.queryEditorSetFunctionNames(this.props.queryEditor, db.id);
   }
 
   onTableChange(tableName, schemaName) {
     if (tableName && schemaName) {
-      this.props.actions.addTable(
-        this.props.queryEditor,
-        tableName,
-        schemaName,
-      );
+      this.props.actions.addTable(this.props.queryEditor, tableName, schemaName);
     }
   }
 
@@ -121,9 +108,7 @@ export default class SqlEditorLeftBar extends React.PureComponent {
     }));
     this.props.actions.setDatabases(data.result);
     if (data.result.length === 0) {
-      this.props.actions.addDangerToast(
-        t("It seems you don't have access to any database"),
-      );
+      this.props.actions.addDangerToast(t("It seems you don't have access to any database"));
     }
     return options;
   }
@@ -182,9 +167,7 @@ export default class SqlEditorLeftBar extends React.PureComponent {
         <StyledScrollbarContainer>
           <StyledScrollbarContent contentHeight={tableMetaDataHeight}>
             <Collapse
-              activeKey={this.props.tables
-                .filter(({ expanded }) => expanded)
-                .map(({ id }) => id)}
+              activeKey={this.props.tables.filter(({ expanded }) => expanded).map(({ id }) => id)}
               css={theme => css`
                 .ant-collapse-item {
                   margin-bottom: ${theme.gridUnit * 3}px;
@@ -211,21 +194,13 @@ export default class SqlEditorLeftBar extends React.PureComponent {
               expandIcon={this.renderExpandIconWithTooltip}
             >
               {this.props.tables.map(table => (
-                <TableElement
-                  table={table}
-                  key={table.id}
-                  actions={this.props.actions}
-                />
+                <TableElement table={table} key={table.id} actions={this.props.actions} />
               ))}
             </Collapse>
           </StyledScrollbarContent>
         </StyledScrollbarContainer>
         {shouldShowReset && (
-          <Button
-            buttonSize="small"
-            buttonStyle="danger"
-            onClick={this.resetState}
-          >
+          <Button buttonSize="small" buttonStyle="danger" onClick={this.resetState}>
             <i className="fa fa-bomb" /> {t('Reset state')}
           </Button>
         )}

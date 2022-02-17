@@ -75,10 +75,7 @@ export default function EchartsPie({
             filters: drilldown.filters,
           },
           filterState: {
-            value:
-              groupbyValues.length && drilldown.filters.length > 0
-                ? groupbyValues
-                : null,
+            value: groupbyValues.length && drilldown.filters.length > 0 ? groupbyValues : null,
           },
           ownState: {
             drilldown,
@@ -88,14 +85,7 @@ export default function EchartsPie({
 
       setDataMask(dataMask);
     },
-    [
-      formData.emitFilter,
-      formData.drillDown,
-      ownState,
-      setDataMask,
-      labelMap,
-      groupby,
-    ],
+    [formData.emitFilter, formData.drillDown, ownState, setDataMask, labelMap, groupby],
   );
 
   const eventHandlers: EventHandlers = {

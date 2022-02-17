@@ -20,29 +20,17 @@ import React from 'react';
 import { useTheme } from 'src/core';
 import { Popover } from 'antd';
 import ColumnTypeLabel from '../../../components/ColumnTypeLabel';
-import ColumnConfigPopover, {
-  ColumnConfigPopoverProps,
-} from './ColumnConfigPopover';
+import ColumnConfigPopover, { ColumnConfigPopoverProps } from './ColumnConfigPopover';
 
 export type ColumnConfigItemProps = ColumnConfigPopoverProps;
 
-export default React.memo(function ColumnConfigItem({
-  column,
-  onChange,
-  configFormLayout,
-}: ColumnConfigItemProps) {
+export default React.memo(function ColumnConfigItem({ column, onChange, configFormLayout }: ColumnConfigItemProps) {
   const { colors, gridUnit } = useTheme();
   const caretWidth = gridUnit * 6;
   return (
     <Popover
       title={column.name}
-      content={() => (
-        <ColumnConfigPopover
-          column={column}
-          onChange={onChange}
-          configFormLayout={configFormLayout}
-        />
-      )}
+      content={() => <ColumnConfigPopover column={column} onChange={onChange} configFormLayout={configFormLayout} />}
       trigger="click"
       placement="right"
     >

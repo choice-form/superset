@@ -109,10 +109,7 @@ export default class SpatialControl extends React.Component {
   }
 
   toggleCheckbox() {
-    this.setState(
-      prevState => ({ reverseCheckbox: !prevState.reverseCheckbox }),
-      this.onChange,
-    );
+    this.setState(prevState => ({ reverseCheckbox: !prevState.reverseCheckbox }), this.onChange);
   }
 
   renderLabelContent() {
@@ -153,10 +150,7 @@ export default class SpatialControl extends React.Component {
     return (
       <span>
         {t('Reverse lat/long ')}
-        <Checkbox
-          checked={this.state.reverseCheckbox}
-          onChange={this.toggleCheckbox}
-        />
+        <Checkbox checked={this.state.reverseCheckbox} onChange={this.toggleCheckbox} />
       </span>
     );
   }
@@ -182,10 +176,7 @@ export default class SpatialControl extends React.Component {
         </PopoverSection>
         <PopoverSection
           title={t('Delimited long & lat single column')}
-          info={t(
-            'Multiple formats accepted, look the geopy.points ' +
-              'Python library for more details',
-          )}
+          info={t('Multiple formats accepted, look the geopy.points ' + 'Python library for more details')}
           isSelected={this.state.type === spatialTypes.delimited}
           onSelect={this.setType.bind(this, spatialTypes.delimited)}
         >

@@ -42,12 +42,7 @@ const StyledInput = styled(Input)`
   border-radius: ${({ theme }) => theme.gridUnit}px;
 `;
 
-export default function SearchFilter({
-  Header,
-  name,
-  initialValue,
-  onSubmit,
-}: SearchHeaderProps) {
+export default function SearchFilter({ Header, name, initialValue, onSubmit }: SearchHeaderProps) {
   const [value, setValue] = useState(initialValue || '');
   const handleSubmit = () => {
     if (value) {

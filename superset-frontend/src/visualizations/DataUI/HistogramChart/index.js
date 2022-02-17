@@ -26,14 +26,8 @@ import controlPanel from './controlPanel';
 
 const metadata = new ChartMetadata({
   category: t('Distribution'),
-  description: t(
-    'Take your data points, and group them into "bins" to see where the densest areas of information lie',
-  ),
-  exampleGallery: [
-    { url: example1, caption: t('Population age data') },
-    { url: example2 },
-    { url: example3 },
-  ],
+  description: t('Take your data points, and group them into "bins" to see where the densest areas of information lie'),
+  exampleGallery: [{ url: example1, caption: t('Population age data') }, { url: example2 }, { url: example3 }],
   name: t('Histogram'),
   tags: [t('Comparison'), t('Legacy'), t('Pattern'), t('Range')],
   thumbnail,

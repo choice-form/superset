@@ -19,10 +19,7 @@
 import { ensureIsArray, makeApi, SupersetClient } from 'src/core';
 import { SupersetError } from 'src/components/ErrorMessage/types';
 import { FeatureFlag, isFeatureEnabled } from '../featureFlags';
-import {
-  getClientErrorObject,
-  parseErrorJson,
-} from '../utils/getClientErrorObject';
+import { getClientErrorObject, parseErrorJson } from '../utils/getClientErrorObject';
 
 type AsyncEvent = {
   id?: string | null;
@@ -76,9 +73,7 @@ export const init = (appConfig?: AppConfig) => {
     // load bootstrap data from DOM
     const appContainer = document.getElementById('app');
     if (appContainer) {
-      const bootstrapData = JSON.parse(
-        appContainer?.getAttribute('data-bootstrap') || '{}',
-      );
+      const bootstrapData = JSON.parse(appContainer?.getAttribute('data-bootstrap') || '{}');
       config = bootstrapData?.common?.conf;
     } else {
       config = {};
@@ -140,17 +135,12 @@ export const waitForAsyncData = async (asyncResponse: AsyncEvent) =>
     addListener(jobId, listener);
   });
 
-const fetchEvents = makeApi<
-  { last_id?: string | null },
-  { result: AsyncEvent[] }
->({
+const fetchEvents = makeApi<{ last_id?: string | null }, { result: AsyncEvent[] }>({
   method: 'GET',
   endpoint: POLLING_URL,
 });
 
-const fetchCachedData = async (
-  asyncEvent: AsyncEvent,
-): Promise<CachedDataResponse> => {
+const fetchCachedData = async (asyncEvent: AsyncEvent): Promise<CachedDataResponse> => {
   let status = 'success';
   let data;
   try {

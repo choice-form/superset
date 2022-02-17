@@ -16,17 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  DASHBOARD_GRID_TYPE,
-  HEADER_TYPE,
-  DASHBOARD_ROOT_TYPE,
-} from '../util/componentTypes';
+import { DASHBOARD_GRID_TYPE, HEADER_TYPE, DASHBOARD_ROOT_TYPE } from '../util/componentTypes';
 
-import {
-  DASHBOARD_ROOT_ID,
-  DASHBOARD_HEADER_ID,
-  DASHBOARD_GRID_ID,
-} from '../util/constants';
+import { DASHBOARD_ROOT_ID, DASHBOARD_HEADER_ID, DASHBOARD_GRID_ID } from '../util/constants';
 
 export default {
   [DASHBOARD_ROOT_ID]: {

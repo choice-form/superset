@@ -90,9 +90,7 @@ export default {
               label: t('Instant filtering'),
               renderTrigger: true,
               default: false,
-              description: t(
-                'Check to apply filters instantly as they change instead of displaying [Apply] button',
-              ),
+              description: t('Check to apply filters instantly as they change instead of displaying [Apply] button'),
             },
           },
         ],
@@ -101,9 +99,7 @@ export default {
             name: 'show_sqla_time_granularity',
             config: {
               type: 'CheckboxControl',
-              label: druidIsActive
-                ? t('Show SQL time grain dropdown')
-                : t('Show time grain dropdown'),
+              label: druidIsActive ? t('Show SQL time grain dropdown') : t('Show time grain dropdown'),
               default: false,
               description: druidIsActive
                 ? t('Check to include SQL time grain dropdown')
@@ -116,9 +112,7 @@ export default {
             name: 'show_sqla_time_column',
             config: {
               type: 'CheckboxControl',
-              label: druidIsActive
-                ? t('Show SQL time column')
-                : t('Show time column'),
+              label: druidIsActive ? t('Show SQL time column') : t('Show time column'),
               default: false,
               description: t('Check to include time column dropdown'),
             },
@@ -132,9 +126,7 @@ export default {
   controlOverrides: {
     adhoc_filters: {
       label: t('Limit selector values'),
-      description: t(
-        'These filters apply to the values available in the dropdowns',
-      ),
+      description: t('These filters apply to the values available in the dropdowns'),
     },
   },
 };

@@ -17,13 +17,7 @@
  * under the License.
  */
 import React, { useContext, useEffect, useReducer } from 'react';
-import {
-  ChartMetadata,
-  defineSharedModules,
-  getChartMetadataRegistry,
-  logging,
-  makeApi,
-} from 'src/core';
+import { ChartMetadata, defineSharedModules, getChartMetadataRegistry, logging, makeApi } from 'src/core';
 import { FeatureFlag, isFeatureEnabled } from 'src/featureFlags';
 import { omitBy } from 'lodash';
 
@@ -99,17 +93,14 @@ type PluginAction = BeginAction | CompleteAction | ChangedKeysAction;
 function getRegistryData() {
   return {
     keys: metadataRegistry.keys(),
-    mountedPluginMetadata: omitBy(
-      metadataRegistry.getMap(),
-      value => value === undefined,
-    ) as Record<string, ChartMetadata>, // cast required to get rid of undefined values
+    mountedPluginMetadata: omitBy(metadataRegistry.getMap(), value => value === undefined) as Record<
+      string,
+      ChartMetadata
+    >, // cast required to get rid of undefined values
   };
 }
 
-function pluginContextReducer(
-  state: PluginContextType,
-  action: PluginAction,
-): PluginContextType {
+function pluginContextReducer(state: PluginContextType, action: PluginAction): PluginContextType {
   switch (action.type) {
     case 'begin': {
       const plugins = { ...state.dynamicPlugins };
@@ -125,9 +116,7 @@ function pluginContextReducer(
     case 'complete': {
       return {
         ...state,
-        loading: Object.values(state.dynamicPlugins).some(
-          plugin => plugin.mounting && plugin.key !== action.key,
-        ),
+        loading: Object.values(state.dynamicPlugins).some(plugin => plugin.mounting && plugin.key !== action.key),
         dynamicPlugins: {
           ...state.dynamicPlugins,
           [action.key]: {
@@ -161,18 +150,14 @@ const sharedModules = {
 };
 
 export const DynamicPluginProvider: React.FC = ({ children }) => {
-  const [pluginState, dispatch] = useReducer(
-    pluginContextReducer,
-    dummyPluginContext,
-    state => ({
-      ...state,
-      ...getRegistryData(),
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      fetchAll,
-      loading: isFeatureEnabled(FeatureFlag.DYNAMIC_PLUGINS),
-      // TODO: Write fetchByKeys
-    }),
-  );
+  const [pluginState, dispatch] = useReducer(pluginContextReducer, dummyPluginContext, state => ({
+    ...state,
+    ...getRegistryData(),
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    fetchAll,
+    loading: isFeatureEnabled(FeatureFlag.DYNAMIC_PLUGINS),
+    // TODO: Write fetchByKeys
+  }));
 
   // For now, we fetch all the plugins at the same time.
   // In the future it would be nice to fetch on an as-needed basis.
@@ -188,10 +173,7 @@ export const DynamicPluginProvider: React.FC = ({ children }) => {
           try {
             await import(/* webpackIgnore: true */ plugin.bundle_url);
           } catch (err) {
-            logging.error(
-              `Failed to load plugin ${plugin.key} with the following error:`,
-              err.stack,
-            );
+            logging.error(`Failed to load plugin ${plugin.key} with the following error:`, err.stack);
             error = err;
           }
           dispatch({
@@ -219,9 +201,5 @@ export const DynamicPluginProvider: React.FC = ({ children }) => {
     };
   }, []);
 
-  return (
-    <PluginContext.Provider value={pluginState}>
-      {children}
-    </PluginContext.Provider>
-  );
+  return <PluginContext.Provider value={pluginState}>{children}</PluginContext.Provider>;
 };

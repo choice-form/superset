@@ -29,9 +29,7 @@ function traverse({ currentNode = {}, selectedChartId }) {
 
   const { label, value, type, children } = currentNode;
   if (children && children.length) {
-    const updatedChildren = children.map(child =>
-      traverse({ currentNode: child, selectedChartId }),
-    );
+    const updatedChildren = children.map(child => traverse({ currentNode: child, selectedChartId }));
     return {
       ...currentNode,
       label: (

@@ -34,9 +34,7 @@ const LEGEND_CONTAINER_STYLE: CSSProperties = {
 
 export type Props<Config extends EncodingConfig> = LegendRendererProps<Config>;
 
-export default class DefaultLegend<
-  Config extends EncodingConfig,
-> extends PureComponent<Props<Config>> {
+export default class DefaultLegend<Config extends EncodingConfig> extends PureComponent<Props<Config>> {
   render() {
     const {
       groups,
@@ -48,9 +46,7 @@ export default class DefaultLegend<
     } = this.props;
 
     const combinedStyle =
-      typeof style === 'undefined'
-        ? LEGEND_CONTAINER_STYLE
-        : { ...LEGEND_CONTAINER_STYLE, ...style };
+      typeof style === 'undefined' ? LEGEND_CONTAINER_STYLE : { ...LEGEND_CONTAINER_STYLE, ...style };
 
     return (
       <div style={combinedStyle}>

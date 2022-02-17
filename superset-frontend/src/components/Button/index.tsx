@@ -46,16 +46,7 @@ export interface ButtonProps {
     | 'rightBottom';
   onClick?: OnClickHandler;
   disabled?: boolean;
-  buttonStyle?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'default'
-    | 'link'
-    | 'dashed';
+  buttonStyle?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | 'default' | 'link' | 'dashed';
   buttonSize?: 'default' | 'small' | 'xsmall';
   style?: CSSProperties;
   children?: React.ReactNode;
@@ -156,8 +147,7 @@ export default function Button(props: ButtonProps) {
   } else {
     renderedChildren = Children.toArray(children);
   }
-  const firstChildMargin =
-    showMarginRight && renderedChildren.length > 1 ? theme.gridUnit * 2 : 0;
+  const firstChildMargin = showMarginRight && renderedChildren.length > 1 ? theme.gridUnit * 2 : 0;
 
   const button = (
     <AntdButton
@@ -219,11 +209,7 @@ export default function Button(props: ButtonProps) {
 
   if (tooltip) {
     return (
-      <Tooltip
-        placement={placement}
-        id={`${kebabCase(tooltip)}-tooltip`}
-        title={tooltip}
-      >
+      <Tooltip placement={placement} id={`${kebabCase(tooltip)}-tooltip`} title={tooltip}>
         {/* this ternary wraps the button in a span so that the tooltip shows up
         when the button is disabled.  */}
         {disabled ? <span>{button}</span> : button}

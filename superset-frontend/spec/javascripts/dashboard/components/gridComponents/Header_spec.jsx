@@ -30,10 +30,7 @@ import WithPopoverMenu from 'src/dashboard/components/menu/WithPopoverMenu';
 import DragDroppable from 'src/dashboard/components/dnd/DragDroppable';
 import Header from 'src/dashboard/components/gridComponents/Header';
 import newComponentFactory from 'src/dashboard/util/newComponentFactory';
-import {
-  HEADER_TYPE,
-  DASHBOARD_GRID_TYPE,
-} from 'src/dashboard/util/componentTypes';
+import { HEADER_TYPE, DASHBOARD_GRID_TYPE } from 'src/dashboard/util/componentTypes';
 
 import { mockStoreWithTabs } from 'spec/fixtures/mockStore';
 
@@ -87,9 +84,7 @@ describe('Header', () => {
   it('should render an EditableTitle with meta.text', () => {
     const wrapper = setup();
     expect(wrapper.find(EditableTitle)).toExist();
-    expect(wrapper.find('.editable-title')).toHaveText(
-      props.component.meta.text,
-    );
+    expect(wrapper.find('.editable-title')).toHaveText(props.component.meta.text);
   });
 
   it('should call updateComponents when EditableTitle changes', () => {
@@ -99,9 +94,7 @@ describe('Header', () => {
 
     const headerId = props.component.id;
     expect(updateComponents.callCount).toBe(1);
-    expect(updateComponents.getCall(0).args[0][headerId].meta.text).toBe(
-      'New title',
-    );
+    expect(updateComponents.getCall(0).args[0][headerId].meta.text).toBe('New title');
   });
 
   it('should render a DeleteComponentButton when focused in editMode', () => {

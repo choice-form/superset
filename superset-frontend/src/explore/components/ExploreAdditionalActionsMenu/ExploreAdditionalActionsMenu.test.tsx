@@ -108,18 +108,10 @@ test('Should open a menu', () => {
   expect(props.onOpenInEditor).toBeCalledTimes(0);
   expect(props.onOpenPropertiesModal).toBeCalledTimes(0);
 
-  expect(
-    screen.getByRole('menuitem', { name: 'Edit properties' }),
-  ).toBeInTheDocument();
-  expect(
-    screen.getByRole('menuitem', { name: 'View query' }),
-  ).toBeInTheDocument();
-  expect(
-    screen.getByRole('menuitem', { name: 'Run in SQL Lab' }),
-  ).toBeInTheDocument();
-  expect(
-    screen.getByRole('menuitem', { name: 'Download as image' }),
-  ).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'Edit properties' })).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'View query' })).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'Run in SQL Lab' })).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'Download as image' })).toBeInTheDocument();
 });
 
 test('Should call onOpenPropertiesModal when click on "Edit properties"', () => {

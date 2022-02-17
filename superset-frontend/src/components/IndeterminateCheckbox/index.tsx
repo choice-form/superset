@@ -69,14 +69,7 @@ const InputContainer = styled.div`
 
 const IndeterminateCheckbox = React.forwardRef(
   (
-    {
-      indeterminate,
-      id,
-      checked,
-      onChange,
-      title = '',
-      labelText = '',
-    }: IndeterminateCheckboxProps,
+    { indeterminate, id, checked, onChange, title = '', labelText = '' }: IndeterminateCheckboxProps,
     ref: React.MutableRefObject<any>,
   ) => {
     const defaultRef = React.useRef<HTMLInputElement>();
@@ -92,14 +85,7 @@ const IndeterminateCheckbox = React.forwardRef(
           {indeterminate && <CheckboxHalf />}
           {!indeterminate && checked && <CheckboxOn />}
           {!indeterminate && !checked && <CheckboxOff />}
-          <HiddenInput
-            name={id}
-            id={id}
-            type="checkbox"
-            ref={resolvedRef}
-            checked={checked}
-            onChange={onChange}
-          />
+          <HiddenInput name={id} id={id} type="checkbox" ref={resolvedRef} checked={checked} onChange={onChange} />
         </InputContainer>
         <CheckboxLabel title={title} htmlFor={id}>
           {labelText}

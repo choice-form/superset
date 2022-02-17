@@ -16,12 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  ChartProps,
-  ExtraFormData,
-  GenericDataType,
-  JsonObject,
-} from 'src/core';
+import { ChartProps, ExtraFormData, GenericDataType, JsonObject } from 'src/core';
 import { DatasourceMeta } from 'src/chartConntrols';
 import { chart } from 'src/chart/chartReducer';
 import componentTypes from 'src/dashboard/util/componentTypes';

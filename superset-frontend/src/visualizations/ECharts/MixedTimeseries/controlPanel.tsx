@@ -51,10 +51,7 @@ const {
   yAxisIndex,
 } = DEFAULT_FORM_DATA;
 
-function createQuerySection(
-  label: string,
-  controlSuffix: string,
-): ControlPanelSectionConfig {
+function createQuerySection(label: string, controlSuffix: string): ControlPanelSectionConfig {
   return {
     label,
     expanded: true,
@@ -121,10 +118,7 @@ function createQuerySection(
   };
 }
 
-function createCustomizeSection(
-  label: string,
-  controlSuffix: string,
-): ControlSetRow[] {
+function createCustomizeSection(label: string, controlSuffix: string): ControlSetRow[] {
   return [
     [<h1 className="section-header">{label}</h1>],
     [
@@ -168,9 +162,7 @@ function createCustomizeSection(
           label: t('Area chart'),
           renderTrigger: true,
           default: area,
-          description: t(
-            'Draw area under curves. Only applicable for line types.',
-          ),
+          description: t('Draw area under curves. Only applicable for line types.'),
         },
       },
     ],
@@ -182,9 +174,7 @@ function createCustomizeSection(
           label: t('Show Values'),
           renderTrigger: true,
           default: showValues,
-          description: t(
-            'Whether to display the numerical values within the cells',
-          ),
+          description: t('Whether to display the numerical values within the cells'),
         },
       },
     ],
@@ -211,9 +201,7 @@ function createCustomizeSection(
           label: t('Marker'),
           renderTrigger: true,
           default: markerEnabled,
-          description: t(
-            'Draw a marker on data points. Only applicable for line types.',
-          ),
+          description: t('Draw a marker on data points. Only applicable for line types.'),
         },
       },
     ],
@@ -227,9 +215,7 @@ function createCustomizeSection(
           min: 0,
           max: 100,
           default: markerSize,
-          description: t(
-            'Size of marker. Also applies to forecast observations.',
-          ),
+          description: t('Size of marker. Also applies to forecast observations.'),
         },
       },
     ],
@@ -311,9 +297,7 @@ const config: ControlPanelConfig = {
               ],
               default: xAxisLabelRotation,
               renderTrigger: true,
-              description: t(
-                'Input field supports custom rotation. e.g. 30 for 30°',
-              ),
+              description: t('Input field supports custom rotation. e.g. 30 for 30°'),
             },
           },
         ],
@@ -340,9 +324,7 @@ const config: ControlPanelConfig = {
               label: t('Truncate Y Axis'),
               default: truncateYAxis,
               renderTrigger: true,
-              description: t(
-                'Truncate Y Axis. Can be overridden by specifying a min or max bound.',
-              ),
+              description: t('Truncate Y Axis. Can be overridden by specifying a min or max bound.'),
             },
           },
         ],

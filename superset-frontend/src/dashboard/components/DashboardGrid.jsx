@@ -39,14 +39,10 @@ const propTypes = {
 const defaultProps = {};
 
 const renderDraggableContentBottom = dropProps =>
-  dropProps.dropIndicatorProps && (
-    <div className="drop-indicator drop-indicator--bottom" />
-  );
+  dropProps.dropIndicatorProps && <div className="drop-indicator drop-indicator--bottom" />;
 
 const renderDraggableContentTop = dropProps =>
-  dropProps.dropIndicatorProps && (
-    <div className="drop-indicator drop-indicator--top" />
-  );
+  dropProps.dropIndicatorProps && <div className="drop-indicator drop-indicator--top" />;
 
 class DashboardGrid extends React.PureComponent {
   constructor(props) {
@@ -67,11 +63,7 @@ class DashboardGrid extends React.PureComponent {
 
   getRowGuidePosition(resizeRef) {
     if (resizeRef && this.grid) {
-      return (
-        resizeRef.getBoundingClientRect().bottom -
-        this.grid.getBoundingClientRect().top -
-        2
-      );
+      return resizeRef.getBoundingClientRect().bottom - this.grid.getBoundingClientRect().top - 2;
     }
     return null;
   }
@@ -125,16 +117,8 @@ class DashboardGrid extends React.PureComponent {
   }
 
   render() {
-    const {
-      gridComponent,
-      handleComponentDrop,
-      depth,
-      editMode,
-      width,
-      isComponentVisible,
-    } = this.props;
-    const columnPlusGutterWidth =
-      (width + GRID_GUTTER_SIZE) / GRID_COLUMN_COUNT;
+    const { gridComponent, handleComponentDrop, depth, editMode, width, isComponentVisible } = this.props;
+    const columnPlusGutterWidth = (width + GRID_GUTTER_SIZE) / GRID_COLUMN_COUNT;
 
     const columnWidth = columnPlusGutterWidth - GRID_GUTTER_SIZE;
     const { isResizing, rowGuideTop } = this.state;

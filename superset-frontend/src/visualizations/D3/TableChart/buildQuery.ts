@@ -16,14 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  buildQueryContext,
-  ensureIsArray,
-  getMetricLabel,
-  QueryMode,
-  QueryObject,
-  removeDuplicates,
-} from 'src/core';
+import { buildQueryContext, ensureIsArray, getMetricLabel, QueryMode, QueryObject, removeDuplicates } from 'src/core';
 import { PostProcessingRule } from 'src/core/query/types/PostProcessing';
 import { BuildQuery } from 'src/core/chart/registries/ChartBuildQueryRegistrySingleton';
 import { TableChartFormData } from './types';
@@ -45,14 +38,8 @@ export function getQueryMode(formData: TableChartFormData) {
   return hasRawColumns ? QueryMode.raw : QueryMode.aggregate;
 }
 
-const buildQuery: BuildQuery<TableChartFormData> = (
-  formData: TableChartFormData,
-  options,
-) => {
-  const {
-    percent_metrics: percentMetrics,
-    order_desc: orderDesc = false,
-  } = formData;
+const buildQuery: BuildQuery<TableChartFormData> = (formData: TableChartFormData, options) => {
+  const { percent_metrics: percentMetrics, order_desc: orderDesc = false } = formData;
   const queryMode = getQueryMode(formData);
   const sortByMetric = ensureIsArray(formData.timeseries_limit_metric)[0];
   let formDataCopy = formData;
@@ -80,13 +67,8 @@ const buildQuery: BuildQuery<TableChartFormData> = (
       }
       // add postprocessing for percent metrics only when in aggregation mode
       if (percentMetrics && percentMetrics.length > 0) {
-        const percentMetricLabels = removeDuplicates(
-          percentMetrics.map(getMetricLabel),
-        );
-        metrics = removeDuplicates(
-          metrics.concat(percentMetrics),
-          getMetricLabel,
-        );
+        const percentMetricLabels = removeDuplicates(percentMetrics.map(getMetricLabel));
+        metrics = removeDuplicates(metrics.concat(percentMetrics), getMetricLabel);
         postProcessing = [
           {
             operation: 'contribution',
@@ -102,10 +84,8 @@ const buildQuery: BuildQuery<TableChartFormData> = (
     const moreProps: Partial<QueryObject> = {};
     const ownState = options?.ownState ?? {};
     if (formDataCopy.server_pagination) {
-      moreProps.row_limit =
-        ownState.pageSize ?? formDataCopy.server_page_length;
-      moreProps.row_offset =
-        (ownState.currentPage ?? 0) * (ownState.pageSize ?? 0);
+      moreProps.row_limit = ownState.pageSize ?? formDataCopy.server_page_length;
+      moreProps.row_offset = (ownState.currentPage ?? 0) * (ownState.pageSize ?? 0);
     }
 
     let queryObject = {
@@ -119,15 +99,10 @@ const buildQuery: BuildQuery<TableChartFormData> = (
     if (
       formData.server_pagination &&
       options?.extras?.cachedChanges?.[formData.slice_id] &&
-      JSON.stringify(options?.extras?.cachedChanges?.[formData.slice_id]) !==
-        JSON.stringify(queryObject.filters)
+      JSON.stringify(options?.extras?.cachedChanges?.[formData.slice_id]) !== JSON.stringify(queryObject.filters)
     ) {
       queryObject = { ...queryObject, row_offset: 0 };
-      updateExternalFormData(
-        options?.hooks?.setDataMask,
-        0,
-        queryObject.row_limit ?? 0,
-      );
+      updateExternalFormData(options?.hooks?.setDataMask, 0, queryObject.row_limit ?? 0);
     }
     // Because we use same buildQuery for all table on the page we need split them by id
     options?.hooks?.setCachedChanges({
@@ -135,11 +110,7 @@ const buildQuery: BuildQuery<TableChartFormData> = (
     });
 
     const extraQueries: QueryObject[] = [];
-    if (
-      metrics?.length &&
-      formData.show_totals &&
-      queryMode === QueryMode.aggregate
-    ) {
+    if (metrics?.length && formData.show_totals && queryMode === QueryMode.aggregate) {
       extraQueries.push({
         ...queryObject,
         columns: [],
@@ -151,9 +122,7 @@ const buildQuery: BuildQuery<TableChartFormData> = (
 
     const interactiveGroupBy = formData.extra_form_data?.interactive_groupby;
     if (interactiveGroupBy && queryObject.columns) {
-      queryObject.columns = [
-        ...new Set([...queryObject.columns, ...interactiveGroupBy]),
-      ];
+      queryObject.columns = [...new Set([...queryObject.columns, ...interactiveGroupBy])];
     }
 
     if (formData.server_pagination) {

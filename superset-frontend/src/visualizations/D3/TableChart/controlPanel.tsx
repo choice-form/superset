@@ -56,9 +56,7 @@ function getQueryMode(controls: ControlStateMapping): QueryMode {
   if (mode === QueryMode.aggregate || mode === QueryMode.raw) {
     return mode as QueryMode;
   }
-  const rawColumns = controls?.all_columns?.value as
-    | QueryFormColumn[]
-    | undefined;
+  const rawColumns = controls?.all_columns?.value as QueryFormColumn[] | undefined;
   const hasRawColumns = rawColumns && rawColumns.length > 0;
   return hasRawColumns ? QueryMode.raw : QueryMode.aggregate;
 }
@@ -67,17 +65,13 @@ function getQueryMode(controls: ControlStateMapping): QueryMode {
  * Visibility check
  */
 function isQueryMode(mode: QueryMode) {
-  return ({ controls }: Pick<ControlPanelsContainerProps, 'controls'>) =>
-    getQueryMode(controls) === mode;
+  return ({ controls }: Pick<ControlPanelsContainerProps, 'controls'>) => getQueryMode(controls) === mode;
 }
 
 const isAggMode = isQueryMode(QueryMode.aggregate);
 const isRawMode = isQueryMode(QueryMode.raw);
 
-const validateAggControlValues = (
-  controls: ControlStateMapping,
-  values: any[],
-) => {
+const validateAggControlValues = (controls: ControlStateMapping, values: any[]) => {
   const areControlsEmpty = values.every(val => ensureIsArray(val).length === 0);
   return areControlsEmpty && isAggMode({ controls })
     ? [t('Group By, Metrics or Percentage Metrics must have a value')]
@@ -112,9 +106,7 @@ const all_columns: typeof sharedControls.groupby = {
     options: datasource?.columns || [],
     queryMode: getQueryMode(controls),
     externalValidationErrors:
-      isRawMode({ controls }) && ensureIsArray(controlState.value).length === 0
-        ? [t('must have a value')]
-        : [],
+      isRawMode({ controls }) && ensureIsArray(controlState.value).length === 0 ? [t('must have a value')] : [],
   }),
   visibility: isRawMode,
 };
@@ -128,15 +120,11 @@ const dnd_all_columns: typeof sharedControls.groupby = {
     const newState: ExtraControlProps = {};
     if (datasource) {
       const options = datasource.columns;
-      newState.options = Object.fromEntries(
-        options.map(option => [option.column_name, option]),
-      );
+      newState.options = Object.fromEntries(options.map(option => [option.column_name, option]));
     }
     newState.queryMode = getQueryMode(controls);
     newState.externalValidationErrors =
-      isRawMode({ controls }) && ensureIsArray(controlState.value).length === 0
-        ? [t('must have a value')]
-        : [];
+      isRawMode({ controls }) && ensureIsArray(controlState.value).length === 0 ? [t('must have a value')] : [];
     return newState;
   },
   visibility: isRawMode,
@@ -190,23 +178,15 @@ const config: ControlPanelConfig = {
             name: 'groupby',
             override: {
               visibility: isAggMode,
-              mapStateToProps: (
-                state: ControlPanelState,
-                controlState: ControlState,
-              ) => {
+              mapStateToProps: (state: ControlPanelState, controlState: ControlState) => {
                 const { controls } = state;
-                const originalMapStateToProps =
-                  sharedControls?.groupby?.mapStateToProps;
-                const newState =
-                  originalMapStateToProps?.(state, controlState) ?? {};
-                newState.externalValidationErrors = validateAggControlValues(
-                  controls,
-                  [
-                    controls.metrics?.value,
-                    controls.percent_metrics?.value,
-                    controlState.value,
-                  ],
-                );
+                const originalMapStateToProps = sharedControls?.groupby?.mapStateToProps;
+                const newState = originalMapStateToProps?.(state, controlState) ?? {};
+                newState.externalValidationErrors = validateAggControlValues(controls, [
+                  controls.metrics?.value,
+                  controls.percent_metrics?.value,
+                  controlState.value,
+                ]);
 
                 return newState;
               },
@@ -227,9 +207,7 @@ const config: ControlPanelConfig = {
                 columns: datasource?.columns.filter(c => c.filterable) || [],
                 savedMetrics: datasource?.metrics || [],
                 // current active adhoc metrics
-                selectedMetrics:
-                  form_data.metrics ||
-                  (form_data.metric ? [form_data.metric] : []),
+                selectedMetrics: form_data.metrics || (form_data.metric ? [form_data.metric] : []),
                 datasource,
                 externalValidationErrors: validateAggControlValues(controls, [
                   controls.groupby?.value,
@@ -242,18 +220,14 @@ const config: ControlPanelConfig = {
           },
           {
             name: 'all_columns',
-            config: isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP)
-              ? dnd_all_columns
-              : all_columns,
+            config: isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP) ? dnd_all_columns : all_columns,
           },
         ],
         [
           {
             name: 'percent_metrics',
             config: {
-              ...(isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP)
-                ? dnd_percent_metrics
-                : percent_metrics),
+              ...(isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP) ? dnd_percent_metrics : percent_metrics),
             },
           },
         ],
@@ -279,17 +253,14 @@ const config: ControlPanelConfig = {
             },
           },
         ],
-        isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS) ||
-        isFeatureEnabled(FeatureFlag.DASHBOARD_NATIVE_FILTERS)
+        isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS) || isFeatureEnabled(FeatureFlag.DASHBOARD_NATIVE_FILTERS)
           ? [
               {
                 name: 'server_pagination',
                 config: {
                   type: 'CheckboxControl',
                   label: t('Server pagination'),
-                  description: t(
-                    'Enable server side pagination of results (experimental feature)',
-                  ),
+                  description: t('Enable server side pagination of results (experimental feature)'),
                   default: false,
                 },
               },
@@ -299,8 +270,7 @@ const config: ControlPanelConfig = {
           {
             name: 'row_limit',
             override: {
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !controls?.server_pagination?.value,
+              visibility: ({ controls }: ControlPanelsContainerProps) => !controls?.server_pagination?.value,
             },
           },
           {
@@ -312,8 +282,7 @@ const config: ControlPanelConfig = {
               default: 10,
               choices: PAGE_SIZE_OPTIONS,
               description: t('Rows per page, 0 means no pagination'),
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                Boolean(controls?.server_pagination?.value),
+              visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.server_pagination?.value),
             },
           },
         ],
@@ -323,9 +292,7 @@ const config: ControlPanelConfig = {
             config: {
               type: 'CheckboxControl',
               label: t('Include time'),
-              description: t(
-                'Whether to include the time granularity as defined in the time section',
-              ),
+              description: t('Whether to include the time granularity as defined in the time section'),
               default: false,
               visibility: isAggMode,
             },
@@ -389,8 +356,7 @@ const config: ControlPanelConfig = {
               default: null,
               choices: PAGE_SIZE_OPTIONS,
               description: t('Rows per page, 0 means no pagination'),
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !controls?.server_pagination?.value,
+              visibility: ({ controls }: ControlPanelsContainerProps) => !controls?.server_pagination?.value,
             },
           },
           null,
@@ -413,9 +379,7 @@ const config: ControlPanelConfig = {
               label: t('Cell bars'),
               renderTrigger: true,
               default: true,
-              description: t(
-                'Whether to display a bar chart background in table columns',
-              ),
+              description: t('Whether to display a bar chart background in table columns'),
             },
           },
         ],
@@ -427,9 +391,7 @@ const config: ControlPanelConfig = {
               label: t('Align +/-'),
               renderTrigger: true,
               default: false,
-              description: t(
-                'Whether to align background charts with both positive and negative values at 0',
-              ),
+              description: t('Whether to align background charts with both positive and negative values at 0'),
             },
           },
           {
@@ -439,9 +401,7 @@ const config: ControlPanelConfig = {
               label: t('Color +/-'),
               renderTrigger: true,
               default: true,
-              description: t(
-                'Whether to colorize numeric values by if they are positive or negative',
-              ),
+              description: t('Whether to colorize numeric values by if they are positive or negative'),
             },
           },
         ],
@@ -455,9 +415,7 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               mapStateToProps(explore, control, chart) {
                 return {
-                  queryResponse: chart?.queriesResponse?.[0] as
-                    | ChartDataResponseResult
-                    | undefined,
+                  queryResponse: chart?.queriesResponse?.[0] as ChartDataResponseResult | undefined,
                   emitFilter: explore?.controls?.table_filter?.value,
                 };
               },
@@ -471,20 +429,14 @@ const config: ControlPanelConfig = {
               type: 'ConditionalFormattingControl',
               renderTrigger: true,
               label: t('Conditional formatting'),
-              description: t(
-                'Apply conditional color formatting to numeric columns',
-              ),
+              description: t('Apply conditional color formatting to numeric columns'),
               mapStateToProps(explore, control, chart) {
                 const verboseMap = explore?.datasource?.verbose_map ?? {};
-                const { colnames, coltypes } =
-                  chart?.queriesResponse?.[0] ?? {};
+                const { colnames, coltypes } = chart?.queriesResponse?.[0] ?? {};
                 const numericColumns =
                   Array.isArray(colnames) && Array.isArray(coltypes)
                     ? colnames
-                        .filter(
-                          (colname: string, index: number) =>
-                            coltypes[index] === GenericDataType.NUMERIC,
-                        )
+                        .filter((colname: string, index: number) => coltypes[index] === GenericDataType.NUMERIC)
                         .map(colname => ({
                           value: colname,
                           label: verboseMap[colname] ?? colname,

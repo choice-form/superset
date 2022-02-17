@@ -225,15 +225,10 @@ describe('ListView', () => {
     wrapper.update();
 
     act(() => {
-      wrapper
-        .find('[data-test="bulk-select-controls"]')
-        .find(Button)
-        .props()
-        .onClick();
+      wrapper.find('[data-test="bulk-select-controls"]').find(Button).props().onClick();
     });
 
-    expect(mockedProps.bulkActions[0].onSelect.mock.calls[0])
-      .toMatchInlineSnapshot(`
+    expect(mockedProps.bulkActions[0].onSelect.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         Array [
           Object {
@@ -256,15 +251,10 @@ describe('ListView', () => {
     wrapper.update();
 
     act(() => {
-      wrapper
-        .find('[data-test="bulk-select-controls"]')
-        .find(Button)
-        .props()
-        .onClick();
+      wrapper.find('[data-test="bulk-select-controls"]').find(Button).props().onClick();
     });
 
-    expect(mockedProps.bulkActions[0].onSelect.mock.calls[0])
-      .toMatchInlineSnapshot(`
+    expect(mockedProps.bulkActions[0].onSelect.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         Array [
           Object {
@@ -303,9 +293,7 @@ describe('ListView', () => {
   it('disables bulk select based on prop', async () => {
     const wrapper2 = factory({ ...mockedProps, bulkSelectEnabled: false });
     await waitForComponentToPaint(wrapper2);
-    expect(wrapper2.find('[data-test="bulk-select-controls"]').exists()).toBe(
-      false,
-    );
+    expect(wrapper2.find('[data-test="bulk-select-controls"]').exists()).toBe(false);
   });
 
   it('disables card view based on prop', async () => {
@@ -357,9 +345,7 @@ describe('ListView', () => {
         wrappingComponent: ThemeProvider,
         wrappingComponentProps: { theme: supersetTheme },
       });
-    }).toThrowErrorMatchingInlineSnapshot(
-      '"Invalid filter config, some_column is not present in columns"',
-    );
+    }).toThrowErrorMatchingInlineSnapshot('"Invalid filter config, some_column is not present in columns"');
   });
 
   it('renders and empty state when there is no data', async () => {
@@ -383,11 +369,7 @@ describe('ListView', () => {
 
   it('calls fetchData on filter', () => {
     act(() => {
-      wrapper
-        .find('[data-test="filters-select"]')
-        .first()
-        .props()
-        .onChange({ label: 'bar', value: 'bar' });
+      wrapper.find('[data-test="filters-select"]').first().props().onChange({ label: 'bar', value: 'bar' });
     });
 
     act(() => {

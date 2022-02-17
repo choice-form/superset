@@ -17,11 +17,7 @@
  * under the License.
  */
 import { t } from 'src/core';
-import {
-  ControlPanelConfig,
-  formatSelectOptions,
-  sections,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, formatSelectOptions, sections } from 'src/chartConntrols';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -44,15 +40,8 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Whisker/outlier options'),
               default: 'Tukey',
-              description: t(
-                'Determines how whiskers and outliers are calculated.',
-              ),
-              choices: formatSelectOptions([
-                'Tukey',
-                'Min/max (no outliers)',
-                '2/98 percentiles',
-                '9/91 percentiles',
-              ]),
+              description: t('Determines how whiskers and outliers are calculated.'),
+              choices: formatSelectOptions(['Tukey', 'Min/max (no outliers)', '2/98 percentiles', '9/91 percentiles']),
             },
           },
           {
@@ -60,12 +49,7 @@ const config: ControlPanelConfig = {
             config: {
               type: 'SelectControl',
               label: t('X Tick Layout'),
-              choices: formatSelectOptions([
-                'auto',
-                'flat',
-                '45°',
-                'staggered',
-              ]),
+              choices: formatSelectOptions(['auto', 'flat', '45°', 'staggered']),
               default: 'auto',
               clearable: false,
               renderTrigger: true,

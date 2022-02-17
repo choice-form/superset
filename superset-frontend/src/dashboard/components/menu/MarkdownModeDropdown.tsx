@@ -19,9 +19,7 @@
 import React from 'react';
 import { t } from 'src/core';
 
-import PopoverDropdown, {
-  OnChangeHandler,
-} from 'src/components/PopoverDropdown';
+import PopoverDropdown, { OnChangeHandler } from 'src/components/PopoverDropdown';
 
 interface MarkdownModeDropdownProps {
   id: string;
@@ -44,13 +42,6 @@ export default class MarkdownModeDropdown extends React.PureComponent<MarkdownMo
   render() {
     const { id, value, onChange } = this.props;
 
-    return (
-      <PopoverDropdown
-        id={id}
-        options={dropdownOptions}
-        value={value}
-        onChange={onChange}
-      />
-    );
+    return <PopoverDropdown id={id} options={dropdownOptions} value={value} onChange={onChange} />;
   }
 }

@@ -37,12 +37,7 @@ import {
 } from './types';
 import { ForecastSeriesEnum } from '../types';
 import { parseYAxisBound } from '../utils/controls';
-import {
-  currentSeries,
-  dedupSeries,
-  extractTimeseriesSeries,
-  getLegendProps,
-} from '../utils/series';
+import { currentSeries, dedupSeries, extractTimeseriesSeries, getLegendProps } from '../utils/series';
 import { extractAnnotationLabels } from '../utils/annotation';
 import {
   extractForecastSeriesContext,
@@ -65,14 +60,7 @@ import {
 export default function transformProps(
   chartProps: EchartsMixedTimeseriesFormData,
 ): EchartsMixedTimeseriesChartTransformedProps {
-  const {
-    width,
-    height,
-    formData,
-    queriesData,
-    hooks,
-    filterState,
-  } = chartProps;
+  const { width, height, formData, queriesData, hooks, filterState } = chartProps;
   const { annotation_data: annotationData_ } = queriesData[0];
   const annotationData = annotationData_ || {};
   const data1: TimeseriesDataRecord[] = queriesData[0].data || [];
@@ -136,28 +124,19 @@ export default function transformProps(
 
   const series: SeriesOption[] = [];
   const formatter = getNumberFormatter(contributionMode ? ',.0%' : yAxisFormat);
-  const formatterSecondary = getNumberFormatter(
-    contributionMode ? ',.0%' : yAxisFormatSecondary,
-  );
+  const formatterSecondary = getNumberFormatter(contributionMode ? ',.0%' : yAxisFormatSecondary);
 
   const primarySeries = new Set<string>();
   const secondarySeries = new Set<string>();
-  const mapSeriesIdToAxis = (
-    seriesOption: SeriesOption,
-    index?: number,
-  ): void => {
+  const mapSeriesIdToAxis = (seriesOption: SeriesOption, index?: number): void => {
     if (index === 1) {
       secondarySeries.add(seriesOption.id as string);
     } else {
       primarySeries.add(seriesOption.id as string);
     }
   };
-  rawSeriesA.forEach(seriesOption =>
-    mapSeriesIdToAxis(seriesOption, yAxisIndex),
-  );
-  rawSeriesB.forEach(seriesOption =>
-    mapSeriesIdToAxis(seriesOption, yAxisIndexB),
-  );
+  rawSeriesA.forEach(seriesOption => mapSeriesIdToAxis(seriesOption, yAxisIndex));
+  rawSeriesB.forEach(seriesOption => mapSeriesIdToAxis(seriesOption, yAxisIndexB));
 
   rawSeriesA.forEach(entry => {
     const transformedSeries = transformSeries(entry, colorScale, {
@@ -191,30 +170,13 @@ export default function transformProps(
   annotationLayers
     .filter((layer: AnnotationLayer) => layer.show)
     .forEach((layer: AnnotationLayer) => {
-      if (isFormulaAnnotationLayer(layer))
-        series.push(transformFormulaAnnotation(layer, data1, colorScale));
+      if (isFormulaAnnotationLayer(layer)) series.push(transformFormulaAnnotation(layer, data1, colorScale));
       else if (isIntervalAnnotationLayer(layer)) {
-        series.push(
-          ...transformIntervalAnnotation(
-            layer,
-            data1,
-            annotationData,
-            colorScale,
-          ),
-        );
+        series.push(...transformIntervalAnnotation(layer, data1, annotationData, colorScale));
       } else if (isEventAnnotationLayer(layer)) {
-        series.push(
-          ...transformEventAnnotation(layer, data1, annotationData, colorScale),
-        );
+        series.push(...transformEventAnnotation(layer, data1, annotationData, colorScale));
       } else if (isTimeseriesAnnotationLayer(layer)) {
-        series.push(
-          ...transformTimeseriesAnnotation(
-            layer,
-            markerSize,
-            data1,
-            annotationData,
-          ),
-        );
+        series.push(...transformTimeseriesAnnotation(layer, markerSize, data1, annotationData));
       }
     });
 
@@ -310,9 +272,7 @@ export default function transformProps(
       appendToBody: true,
       trigger: richTooltip ? 'axis' : 'item',
       formatter: (params: any) => {
-        const xValue: number = richTooltip
-          ? params[0].value[0]
-          : params.value[0];
+        const xValue: number = richTooltip ? params[0].value[0] : params.value[0];
         const prophetValue: any[] = richTooltip ? params : [params];
 
         if (richTooltip && tooltipSortByMetric) {
@@ -320,9 +280,7 @@ export default function transformProps(
         }
 
         const rows: Array<string> = [`${tooltipTimeFormatter(xValue)}`];
-        const prophetValues = extractProphetValuesFromTooltipParams(
-          prophetValue,
-        );
+        const prophetValues = extractProphetValuesFromTooltipParams(prophetValue);
 
         Object.keys(prophetValues).forEach(key => {
           const value = prophetValues[key];
@@ -346,9 +304,7 @@ export default function transformProps(
       data: rawSeriesA
         .concat(rawSeriesB)
         .filter(
-          entry =>
-            extractForecastSeriesContext((entry.name || '') as string).type ===
-            ForecastSeriesEnum.Observation,
+          entry => extractForecastSeriesContext((entry.name || '') as string).type === ForecastSeriesEnum.Observation,
         )
         .map(entry => entry.name || '')
         .concat(extractAnnotationLabels(annotationLayers, annotationData)),

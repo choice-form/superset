@@ -16,13 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, {
-  FunctionComponent,
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-} from 'react';
+import React, { FunctionComponent, useState, useRef, useEffect, useCallback } from 'react';
 import Alert from 'src/components/Alert';
 import { SupersetClient, t, styled } from 'src/core';
 import TableView, { EmptyWrapperType } from 'src/components/TableView';
@@ -36,16 +30,11 @@ import { SLOW_DEBOUNCE } from 'src/constants';
 import { getClientErrorObject } from 'src/utils/getClientErrorObject';
 import Loading from 'src/components/Loading';
 import { Input, AntdInput } from 'src/common/components';
-import {
-  PAGE_SIZE as DATASET_PAGE_SIZE,
-  SORT_BY as DATASET_SORT_BY,
-} from 'src/views/CRUD/data/dataset/constants';
+import { PAGE_SIZE as DATASET_PAGE_SIZE, SORT_BY as DATASET_SORT_BY } from 'src/views/CRUD/data/dataset/constants';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import FacePile from '../components/FacePile';
 
-const CONFIRM_WARNING_MESSAGE = t(
-  'Warning! Changing the dataset may break the chart if the metadata does not exist.',
-);
+const CONFIRM_WARNING_MESSAGE = t('Warning! Changing the dataset may break the chart if the metadata does not exist.');
 
 const CHANGE_WARNING_MSG = t(
   'Changing the dataset may break the chart if the chart relies ' +
@@ -154,15 +143,7 @@ const ChangeDatasourceModal: FunctionComponent<ChangeDatasourceModalProps> = ({
     if (show) {
       onEnterModal();
     }
-  }, [
-    addDangerToast,
-    fetchData,
-    onChange,
-    onDatasourceSave,
-    onHide,
-    selectDatasource,
-    show,
-  ]);
+  }, [addDangerToast, fetchData, onChange, onDatasourceSave, onHide, selectDatasource, show]);
 
   const changeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchValue = event.target.value ?? '';
@@ -179,14 +160,10 @@ const ChangeDatasourceModal: FunctionComponent<ChangeDatasourceModalProps> = ({
         onChange(`${confirmedDataset?.id}__table`);
       })
       .catch(response => {
-        getClientErrorObject(response).then(
-          ({ error, message }: { error: any; message: string }) => {
-            const errorMessage = error
-              ? error.error || error.statusText || error
-              : message;
-            addDangerToast(errorMessage);
-          },
-        );
+        getClientErrorObject(response).then(({ error, message }: { error: any; message: string }) => {
+          const errorMessage = error ? error.error || error.statusText || error : message;
+          addDangerToast(errorMessage);
+        });
       });
     onHide();
     addSuccessToast('Successfully changed dataset!');
@@ -260,11 +237,7 @@ const ChangeDatasourceModal: FunctionComponent<ChangeDatasourceModalProps> = ({
             <ConfirmModalStyled>
               <div className="btn-container">
                 <Button onClick={handlerCancelConfirm}>Cancel</Button>
-                <Button
-                  className="proceed-btn"
-                  buttonStyle="primary"
-                  onClick={handleChangeConfirm}
-                >
+                <Button className="proceed-btn" buttonStyle="primary" onClick={handleChangeConfirm}>
                   Proceed
                 </Button>
               </div>

@@ -32,14 +32,7 @@ const StyledInfoTooltipWithTrigger = styled(InfoTooltipWithTrigger)`
   margin: 0 ${({ theme }) => theme.gridUnit}px;
 `;
 
-export default function Option({
-  children,
-  index,
-  clickClose,
-  withCaret,
-  isExtra,
-  canDelete = true,
-}: OptionProps) {
+export default function Option({ children, index, clickClose, withCaret, isExtra, canDelete = true }: OptionProps) {
   const theme = useTheme();
   const onClickClose = useCallback(
     e => {
@@ -51,11 +44,7 @@ export default function Option({
   return (
     <OptionControlContainer data-test="option-label" withCaret={withCaret}>
       {canDelete && (
-        <CloseContainer
-          role="button"
-          data-test="remove-control-button"
-          onClick={onClickClose}
-        >
+        <CloseContainer role="button" data-test="remove-control-button" onClick={onClickClose}>
           <Icons.XSmall iconColor={theme.colors.grayscale.light1} />
         </CloseContainer>
       )}

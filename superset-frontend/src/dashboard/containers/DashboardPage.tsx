@@ -22,11 +22,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import Loading from 'src/components/Loading';
-import {
-  useDashboard,
-  useDashboardCharts,
-  useDashboardDatasets,
-} from 'src/common/hooks/apiResources';
+import { useDashboard, useDashboardCharts, useDashboardDatasets } from 'src/common/hooks/apiResources';
 import { hydrateDashboard } from 'src/dashboard/actions/hydrate';
 import { setDatasources } from 'src/dashboard/actions/datasources';
 import injectCustomCss from 'src/dashboard/util/injectCustomCss';
@@ -48,12 +44,9 @@ const DashboardPage: FC = () => {
   const dispatch = useDispatch();
   const { addDangerToast } = useToasts();
   const { idOrSlug } = useParams<{ idOrSlug: string }>();
-  const { result: dashboard, error: dashboardApiError } =
-    useDashboard(idOrSlug);
-  const { result: charts, error: chartsApiError } =
-    useDashboardCharts(idOrSlug);
-  const { result: datasets, error: datasetsApiError } =
-    useDashboardDatasets(idOrSlug);
+  const { result: dashboard, error: dashboardApiError } = useDashboard(idOrSlug);
+  const { result: charts, error: chartsApiError } = useDashboardCharts(idOrSlug);
+  const { result: datasets, error: datasetsApiError } = useDashboardDatasets(idOrSlug);
   const isDashboardHydrated = useRef(false);
 
   const error = dashboardApiError || chartsApiError;
@@ -85,9 +78,7 @@ const DashboardPage: FC = () => {
 
   useEffect(() => {
     if (datasetsApiError) {
-      addDangerToast(
-        t('Error loading chart datasources. Filters may not work correctly.'),
-      );
+      addDangerToast(t('Error loading chart datasources. Filters may not work correctly.'));
     } else {
       dispatch(setDatasources(datasets));
     }

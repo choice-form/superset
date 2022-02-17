@@ -21,10 +21,7 @@ import { JsonValue, useTheme } from 'src/core';
 import ControlHeader from '../../components/ControlHeader';
 
 // [value, label]
-export type RadioButtonOption = [
-  JsonValue,
-  Exclude<ReactNode, null | undefined | boolean>,
-];
+export type RadioButtonOption = [JsonValue, Exclude<ReactNode, null | undefined | boolean>];
 
 export interface RadioButtonControlProps {
   label?: ReactNode;
@@ -69,9 +66,7 @@ export default function RadioButtonControl({
           <button
             key={JSON.stringify(val)}
             type="button"
-            className={`btn btn-default ${
-              val === currentValue ? 'active' : ''
-            }`}
+            className={`btn btn-default ${val === currentValue ? 'active' : ''}`}
             onClick={() => {
               onChange(val);
             }}

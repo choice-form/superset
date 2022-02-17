@@ -24,12 +24,7 @@ import cx from 'classnames';
 
 import { componentShape } from '../../util/propShapes';
 import { dragConfig, dropConfig } from './dragDroppableConfig';
-import {
-  DROP_TOP,
-  DROP_RIGHT,
-  DROP_BOTTOM,
-  DROP_LEFT,
-} from '../../util/getDropPosition';
+import { DROP_TOP, DROP_RIGHT, DROP_BOTTOM, DROP_LEFT } from '../../util/getDropPosition';
 
 const propTypes = {
   children: PropTypes.func,
@@ -156,6 +151,4 @@ UnwrappedDragDroppable.defaultProps = defaultProps;
 
 // note that the composition order here determines using
 // component.method() vs decoratedComponentInstance.method() in the drag/drop config
-export default DragSource(...dragConfig)(
-  DropTarget(...dropConfig)(UnwrappedDragDroppable),
-);
+export default DragSource(...dragConfig)(DropTarget(...dropConfig)(UnwrappedDragDroppable));

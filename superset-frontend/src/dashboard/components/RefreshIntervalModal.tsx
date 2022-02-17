@@ -61,10 +61,7 @@ type RefreshIntervalModalState = {
   refreshFrequency: number;
 };
 
-class RefreshIntervalModal extends React.PureComponent<
-  RefreshIntervalModalProps,
-  RefreshIntervalModalState
-> {
+class RefreshIntervalModal extends React.PureComponent<RefreshIntervalModalProps, RefreshIntervalModalState> {
   static defaultProps = {
     refreshLimit: 0,
     refreshWarning: null,
@@ -104,8 +101,7 @@ class RefreshIntervalModal extends React.PureComponent<
   render() {
     const { refreshLimit = 0, refreshWarning, editMode } = this.props;
     const { refreshFrequency = 0 } = this.state;
-    const showRefreshWarning =
-      !!refreshFrequency && !!refreshWarning && refreshFrequency < refreshLimit;
+    const showRefreshWarning = !!refreshFrequency && !!refreshWarning && refreshFrequency < refreshLimit;
 
     return (
       <StyledModalTrigger
@@ -139,11 +135,7 @@ class RefreshIntervalModal extends React.PureComponent<
         }
         modalFooter={
           <>
-            <Button
-              buttonStyle="primary"
-              buttonSize="small"
-              onClick={this.onSave}
-            >
+            <Button buttonStyle="primary" buttonSize="small" onClick={this.onSave}>
               {editMode ? t('Save') : t('Save for this session')}
             </Button>
             <Button onClick={this.onCancel} buttonSize="small">

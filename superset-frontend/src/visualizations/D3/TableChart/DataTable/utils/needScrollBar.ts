@@ -33,7 +33,6 @@ export default function needScrollBar({
   innerWidth: number;
 }): [boolean, boolean] {
   const hasVerticalScroll = innerHeight > height;
-  const hasHorizontalScroll =
-    innerWidth > width - (hasVerticalScroll ? scrollBarSize : 0);
+  const hasHorizontalScroll = innerWidth > width - (hasVerticalScroll ? scrollBarSize : 0);
   return [hasVerticalScroll, hasHorizontalScroll];
 }

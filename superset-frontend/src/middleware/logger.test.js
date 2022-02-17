@@ -103,8 +103,6 @@ describe('logger middleware', () => {
     clock.tick(2000);
 
     expect(SupersetClient.post.callCount).toBe(1);
-    expect(
-      SupersetClient.post.getCall(0).args[0].postPayload.events,
-    ).toHaveLength(3);
+    expect(SupersetClient.post.getCall(0).args[0].postPayload.events).toHaveLength(3);
   });
 });

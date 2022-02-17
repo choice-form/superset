@@ -16,11 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  initFeatureFlags,
-  isFeatureEnabled,
-  FeatureFlag,
-} from 'src/featureFlags';
+import { initFeatureFlags, isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 
 function getDomainsConfig() {
   const appContainer = document.getElementById('app');

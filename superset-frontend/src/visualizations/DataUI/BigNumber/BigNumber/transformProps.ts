@@ -30,9 +30,7 @@ import {
 } from 'src/core';
 
 const TIME_COLUMN = '__timestamp';
-const formatPercentChange = getNumberFormatter(
-  NumberFormats.PERCENT_SIGNED_1_POINT,
-);
+const formatPercentChange = getNumberFormatter(NumberFormats.PERCENT_SIGNED_1_POINT);
 
 // we trust both the x (time) and y (big number) to be numeric
 export interface BigNumberDatum {
@@ -81,11 +79,7 @@ export default function transformProps(chartProps: BigNumberChartProps) {
   const granularity = extractTimegrain(rawFormData as QueryFormData);
   let { yAxisFormat } = formData;
   const { headerFormatSelector, headerTimestampFormat } = formData;
-  const {
-    data = [],
-    from_dttm: fromDatetime,
-    to_dttm: toDatetime,
-  } = queriesData[0];
+  const { data = [], from_dttm: fromDatetime, to_dttm: toDatetime } = queriesData[0];
   const metricName = typeof metric === 'string' ? metric : metric.label;
   const compareLag = Number(compareLag_) || 0;
   const supportTrendLine = vizType === 'big_number';
@@ -126,9 +120,7 @@ export default function transformProps(chartProps: BigNumberChartProps) {
         // compare values must both be non-nulls
         if (bigNumber !== null && compareValue !== null && compareValue !== 0) {
           percentChange = (bigNumber - compareValue) / Math.abs(compareValue);
-          formattedSubheader = `${formatPercentChange(
-            percentChange,
-          )} ${compareSuffix}`;
+          formattedSubheader = `${formatPercentChange(percentChange)} ${compareSuffix}`;
         }
       }
     }
@@ -159,9 +151,7 @@ export default function transformProps(chartProps: BigNumberChartProps) {
     ? getTimeFormatter(headerTimestampFormat)
     : getNumberFormatter(yAxisFormat);
   const formatTime =
-    timeFormat === smartDateFormatter.id
-      ? getTimeFormatterForGranularity(granularity)
-      : getTimeFormatter(timeFormat);
+    timeFormat === smartDateFormatter.id ? getTimeFormatterForGranularity(granularity) : getTimeFormatter(timeFormat);
 
   return {
     width,

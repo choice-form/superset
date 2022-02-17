@@ -24,9 +24,7 @@ export default {
   component: Slider,
 };
 
-export const InteractiveSlider = (args: SliderSingleProps) => (
-  <Slider {...args} style={{ width: 400, height: 400 }} />
-);
+export const InteractiveSlider = (args: SliderSingleProps) => <Slider {...args} style={{ width: 400, height: 400 }} />;
 
 InteractiveSlider.args = {
   min: 0,

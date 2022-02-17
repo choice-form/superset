@@ -18,11 +18,7 @@
  */
 import { DASHBOARD_ROOT_TYPE, DASHBOARD_GRID_TYPE } from './componentTypes';
 
-import {
-  DASHBOARD_GRID_ID,
-  DASHBOARD_ROOT_ID,
-  DASHBOARD_VERSION_KEY,
-} from './constants';
+import { DASHBOARD_GRID_ID, DASHBOARD_ROOT_ID, DASHBOARD_VERSION_KEY } from './constants';
 
 export default function getEmptyLayout() {
   return {

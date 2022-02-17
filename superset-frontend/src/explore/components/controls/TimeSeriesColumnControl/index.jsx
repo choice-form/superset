@@ -195,11 +195,7 @@ export default class TimeSeriesColumnControl extends React.Component {
           'Label',
           'The column header label',
           'time-lag',
-          <Input
-            value={this.state.label}
-            onChange={this.onTextInputChange.bind(this, 'label')}
-            placeholder="Label"
-          />,
+          <Input value={this.state.label} onChange={this.onTextInputChange.bind(this, 'label')} placeholder="Label" />,
         )}
         {this.formRow(
           'Tooltip',
@@ -284,20 +280,14 @@ export default class TimeSeriesColumnControl extends React.Component {
             'Show Y-axis',
             'Show Y-axis on the sparkline. Will display the manually set min/max if set or min/max values in the data otherwise.',
             'show-y-axis-bounds',
-            <CheckboxControl
-              value={this.state.showYAxis}
-              onChange={this.onCheckboxChange.bind(this, 'showYAxis')}
-            />,
+            <CheckboxControl value={this.state.showYAxis} onChange={this.onCheckboxChange.bind(this, 'showYAxis')} />,
           )}
         {this.state.colType === 'spark' &&
           this.formRow(
             'Y-axis bounds',
             'Manually set min/max values for the y-axis.',
             'y-axis-bounds',
-            <BoundsControl
-              value={this.state.yAxisBounds}
-              onChange={this.onYAxisBoundsChange.bind(this)}
-            />,
+            <BoundsControl value={this.state.yAxisBounds} onChange={this.onYAxisBoundsChange.bind(this)} />,
           )}
         {this.state.colType !== 'spark' &&
           this.formRow(
@@ -306,10 +296,7 @@ export default class TimeSeriesColumnControl extends React.Component {
               Reverse the numbers for blue to red. To get pure red or blue,
               you can enter either only min or max.`,
             'bounds',
-            <BoundsControl
-              value={this.state.bounds}
-              onChange={this.onBoundsChange.bind(this)}
-            />,
+            <BoundsControl value={this.state.bounds} onChange={this.onBoundsChange.bind(this)} />,
           )}
         {this.formRow(
           'Number format',
@@ -336,12 +323,7 @@ export default class TimeSeriesColumnControl extends React.Component {
           <Button buttonSize="small" onClick={this.onClose} cta>
             {t('Close')}
           </Button>
-          <Button
-            buttonStyle="primary"
-            buttonSize="small"
-            onClick={this.onSave}
-            cta
-          >
+          <Button buttonStyle="primary" buttonSize="small" onClick={this.onSave} cta>
             {t('Save')}
           </Button>
         </ButtonBar>
@@ -361,11 +343,7 @@ export default class TimeSeriesColumnControl extends React.Component {
           visible={this.state.popoverVisible}
           onVisibleChange={this.onPopoverVisibleChange}
         >
-          <InfoTooltipWithTrigger
-            icon="edit"
-            className="text-primary"
-            label="edit-ts-column"
-          />
+          <InfoTooltipWithTrigger icon="edit" className="text-primary" label="edit-ts-column" />
         </Popover>
       </span>
     );

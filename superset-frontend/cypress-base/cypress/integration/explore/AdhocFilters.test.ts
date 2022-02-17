@@ -53,15 +53,11 @@ describe('AdhocFilters', () => {
 
   xit('Set simple adhoc filter', () => {
     cy.get('[aria-label="Comparator option"] .Select__control').click();
-    cy.get('[data-test=adhoc-filter-simple-value] input[type=text]')
-      .focus()
-      .type('Jack{enter}', { delay: 20 });
+    cy.get('[data-test=adhoc-filter-simple-value] input[type=text]').focus().type('Jack{enter}', { delay: 20 });
 
     cy.get('[data-test="adhoc-filter-edit-popover-save-button"]').click();
 
-    cy.get(
-      '[data-test=adhoc_filters] .Select__control span.option-label',
-    ).contains('name = Jack');
+    cy.get('[data-test=adhoc_filters] .Select__control span.option-label').contains('name = Jack');
 
     cy.get('button[data-test="run-query-button"]').click();
     cy.verifySliceSuccess({
@@ -74,18 +70,12 @@ describe('AdhocFilters', () => {
     const filterType = 'name';
     const filterContent = "'Amy' OR name = 'Donald'";
 
-    cy.get('[data-test=adhoc_filters] .Select__control')
-      .scrollIntoView()
-      .click();
+    cy.get('[data-test=adhoc_filters] .Select__control').scrollIntoView().click();
 
     // remove previous input
-    cy.get('[data-test=adhoc_filters] input[type=text]')
-      .focus()
-      .type('{backspace}');
+    cy.get('[data-test=adhoc_filters] input[type=text]').focus().type('{backspace}');
 
-    cy.get('[data-test=adhoc_filters] input[type=text]')
-      .focus()
-      .type(`${filterType}{enter}`);
+    cy.get('[data-test=adhoc_filters] input[type=text]').focus().type(`${filterType}{enter}`);
 
     cy.wait('@filterValues');
 
@@ -97,9 +87,7 @@ describe('AdhocFilters', () => {
     cy.get('[data-test="adhoc-filter-edit-popover-save-button"]').click();
 
     // check if the filter was saved correctly
-    cy.get(
-      '[data-test=adhoc_filters] .Select__control span.option-label',
-    ).contains(`${filterType} = ${filterContent}`);
+    cy.get('[data-test=adhoc_filters] .Select__control span.option-label').contains(`${filterType} = ${filterContent}`);
 
     cy.get('button[data-test="run-query-button"]').click();
     cy.verifySliceSuccess({

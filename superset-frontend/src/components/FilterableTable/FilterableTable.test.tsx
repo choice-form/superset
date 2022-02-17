@@ -19,9 +19,7 @@
 import React from 'react';
 import { ReactWrapper } from 'enzyme';
 import { styledMount as mount } from 'spec/helpers/theming';
-import FilterableTable, {
-  MAX_COLUMNS_FOR_TABLE,
-} from 'src/components/FilterableTable/FilterableTable';
+import FilterableTable, { MAX_COLUMNS_FOR_TABLE } from 'src/components/FilterableTable/FilterableTable';
 import { render, screen } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 
@@ -40,9 +38,7 @@ describe('FilterableTable', () => {
     wrapper = mount(<FilterableTable {...mockedProps} />);
   });
   it('is valid element', () => {
-    expect(React.isValidElement(<FilterableTable {...mockedProps} />)).toBe(
-      true,
-    );
+    expect(React.isValidElement(<FilterableTable {...mockedProps} />)).toBe(true);
   });
   it('renders a grid with 2 Table rows', () => {
     expect(wrapper.find('.ReactVirtualized__Grid')).toExist();
@@ -51,10 +47,7 @@ describe('FilterableTable', () => {
   it('renders a grid with 2 Grid rows for wide tables', () => {
     const wideTableColumns = MAX_COLUMNS_FOR_TABLE + 1;
     const wideTableMockedProps = {
-      orderedColumnKeys: Array.from(
-        Array(wideTableColumns),
-        (_, x) => `col_${x}`,
-      ),
+      orderedColumnKeys: Array.from(Array(wideTableColumns), (_, x) => `col_${x}`),
       data: [
         {
           ...Array.from(Array(wideTableColumns)).map((val, x) => ({
@@ -64,9 +57,7 @@ describe('FilterableTable', () => {
       ],
       height: 500,
     };
-    const wideTableWrapper = mount(
-      <FilterableTable {...wideTableMockedProps} />,
-    );
+    const wideTableWrapper = mount(<FilterableTable {...wideTableMockedProps} />);
     expect(wideTableWrapper.find('.ReactVirtualized__Grid')).toHaveLength(2);
   });
   it('filters on a string', () => {

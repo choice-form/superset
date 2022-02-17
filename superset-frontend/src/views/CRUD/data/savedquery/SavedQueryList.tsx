@@ -21,25 +21,14 @@ import { SupersetClient, t, styled } from 'src/core';
 import React, { useState, useMemo, useCallback } from 'react';
 import rison from 'rison';
 import moment from 'moment';
-import {
-  createFetchRelated,
-  createFetchDistinct,
-  createErrorHandler,
-} from 'src/views/CRUD/utils';
+import { createFetchRelated, createFetchDistinct, createErrorHandler } from 'src/views/CRUD/utils';
 import Popover from 'src/components/Popover';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import ConfirmStatusChange from 'src/components/ConfirmStatusChange';
 import handleResourceExport from 'src/utils/export';
-import SubMenu, {
-  SubMenuProps,
-  ButtonProps,
-} from 'src/components/Menu/SubMenu';
-import ListView, {
-  ListViewProps,
-  Filters,
-  FilterOperator,
-} from 'src/components/ListView';
+import SubMenu, { SubMenuProps, ButtonProps } from 'src/components/Menu/SubMenu';
+import ListView, { ListViewProps, Filters, FilterOperator } from 'src/components/ListView';
 import Loading from 'src/components/Loading';
 import DeleteModal from 'src/components/DeleteModal';
 import ActionsBar, { ActionProps } from 'src/components/ListView/ActionsBar';
@@ -87,31 +76,16 @@ const StyledPopoverItem = styled.div`
   color: ${({ theme }) => theme.colors.grayscale.dark2};
 `;
 
-function SavedQueryList({
-  addDangerToast,
-  addSuccessToast,
-  user,
-}: SavedQueryListProps) {
+function SavedQueryList({ addDangerToast, addSuccessToast, user }: SavedQueryListProps) {
   const {
-    state: {
-      loading,
-      resourceCount: queryCount,
-      resourceCollection: queries,
-      bulkSelectEnabled,
-    },
+    state: { loading, resourceCount: queryCount, resourceCollection: queries, bulkSelectEnabled },
     hasPerm,
     fetchData,
     toggleBulkSelect,
     refreshData,
-  } = useListViewResource<SavedQueryObject>(
-    'saved_query',
-    t('Saved queries'),
-    addDangerToast,
-  );
-  const [queryCurrentlyDeleting, setQueryCurrentlyDeleting] =
-    useState<SavedQueryObject | null>(null);
-  const [savedQueryCurrentlyPreviewing, setSavedQueryCurrentlyPreviewing] =
-    useState<SavedQueryObject | null>(null);
+  } = useListViewResource<SavedQueryObject>('saved_query', t('Saved queries'), addDangerToast);
+  const [queryCurrentlyDeleting, setQueryCurrentlyDeleting] = useState<SavedQueryObject | null>(null);
+  const [savedQueryCurrentlyPreviewing, setSavedQueryCurrentlyPreviewing] = useState<SavedQueryObject | null>(null);
   const [importingSavedQuery, showImportModal] = useState<boolean>(false);
   const [passwordFields, setPasswordFields] = useState<string[]>([]);
   const [preparingExport, setPreparingExport] = useState<boolean>(false);
@@ -132,8 +106,7 @@ function SavedQueryList({
   const canCreate = hasPerm('can_write');
   const canEdit = hasPerm('can_write');
   const canDelete = hasPerm('can_write');
-  const canExport =
-    hasPerm('can_read') && isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT);
+  const canExport = hasPerm('can_read') && isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT);
 
   const openNewQuery = () => {
     window.open(`${window.location.origin}/sqllab?new=true`);
@@ -147,11 +120,7 @@ function SavedQueryList({
         ({ json = {} }) => {
           setSavedQueryCurrentlyPreviewing({ ...json.result });
         },
-        createErrorHandler(errMsg =>
-          addDangerToast(
-            t('There was an issue previewing the selected query %s', errMsg),
-          ),
-        ),
+        createErrorHandler(errMsg => addDangerToast(t('There was an issue previewing the selected query %s', errMsg))),
       );
     },
     [addDangerToast],
@@ -229,15 +198,11 @@ function SavedQueryList({
         setQueryCurrentlyDeleting(null);
         addSuccessToast(t('Deleted: %s', label));
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(t('There was an issue deleting %s: %s', label, errMsg)),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting %s: %s', label, errMsg))),
     );
   };
 
-  const handleBulkSavedQueryExport = (
-    savedQueriesToExport: SavedQueryObject[],
-  ) => {
+  const handleBulkSavedQueryExport = (savedQueriesToExport: SavedQueryObject[]) => {
     const ids = savedQueriesToExport.map(({ id }) => id);
     handleResourceExport('saved_query', ids, () => {
       setPreparingExport(false);
@@ -247,19 +212,13 @@ function SavedQueryList({
 
   const handleBulkQueryDelete = (queriesToDelete: SavedQueryObject[]) => {
     SupersetClient.delete({
-      endpoint: `/api/v1/saved_query/?q=${rison.encode(
-        queriesToDelete.map(({ id }) => id),
-      )}`,
+      endpoint: `/api/v1/saved_query/?q=${rison.encode(queriesToDelete.map(({ id }) => id))}`,
     }).then(
       ({ json = {} }) => {
         refreshData();
         addSuccessToast(json.message);
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(
-          t('There was an issue deleting the selected queries: %s', errMsg),
-        ),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting the selected queries: %s', errMsg))),
     );
   };
 
@@ -428,12 +387,7 @@ function SavedQueryList({
           'saved_query',
           'database',
           createErrorHandler(errMsg =>
-            addDangerToast(
-              t(
-                'An error occurred while fetching dataset datasource values: %s',
-                errMsg,
-              ),
-            ),
+            addDangerToast(t('An error occurred while fetching dataset datasource values: %s', errMsg)),
           ),
         ),
         paginate: true,
@@ -447,11 +401,7 @@ function SavedQueryList({
         fetchSelects: createFetchDistinct(
           'saved_query',
           'schema',
-          createErrorHandler(errMsg =>
-            addDangerToast(
-              t('An error occurred while fetching schema values: %s', errMsg),
-            ),
-          ),
+          createErrorHandler(errMsg => addDangerToast(t('An error occurred while fetching schema values: %s', errMsg))),
         ),
         paginate: true,
       },
@@ -470,9 +420,7 @@ function SavedQueryList({
       <SubMenu {...menuData} />
       {queryCurrentlyDeleting && (
         <DeleteModal
-          description={t(
-            'This action will permanently delete the saved query.',
-          )}
+          description={t('This action will permanently delete the saved query.')}
           onConfirm={() => {
             if (queryCurrentlyDeleting) {
               handleQueryDelete(queryCurrentlyDeleting);

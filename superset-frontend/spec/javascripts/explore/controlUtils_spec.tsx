@@ -17,12 +17,7 @@
  * under the License.
  */
 import { getChartControlPanelRegistry, t } from 'src/core';
-import {
-  ControlConfig,
-  ControlPanelState,
-  CustomControlItem,
-  DatasourceMeta,
-} from 'src/chartConntrols';
+import { ControlConfig, ControlPanelState, CustomControlItem, DatasourceMeta } from 'src/chartConntrols';
 import {
   getControlConfig,
   getControlState,
@@ -43,10 +38,10 @@ const getKnownControlState = (...args: Parameters<typeof getControlState>) =>
 
 describe('controlUtils', () => {
   const state: ControlPanelState = {
-    datasource: {
+    datasource: ({
       columns: [{ column_name: 'a' }],
       metrics: [{ metric_name: 'first' }, { metric_name: 'second' }],
-    } as unknown as DatasourceMeta,
+    } as unknown) as DatasourceMeta,
     controls: {},
     form_data: { datasource: '1__table', viz_type: 'table' },
   };
@@ -70,9 +65,7 @@ describe('controlUtils', () => {
   });
 
   afterAll(() => {
-    getChartControlPanelRegistry()
-      .remove('test-chart')
-      .remove('test-chart-override');
+    getChartControlPanelRegistry().remove('test-chart').remove('test-chart-override');
   });
 
   describe('getControlConfig', () => {
@@ -89,26 +82,18 @@ describe('controlUtils', () => {
       expect(control.label).toEqual('My beautiful colors');
     });
 
-    it(
-      'returns correct control config when control config is defined ' +
-        'in the control panel definition',
-      () => {
-        const roseAreaProportionControlConfig = getControlConfig(
-          'rose_area_proportion',
-          'test-chart',
-        );
-        expect(roseAreaProportionControlConfig).toEqual({
-          type: 'CheckboxControl',
-          label: t('Use Area Proportions'),
-          description: t(
-            'Check if the Rose Chart should use segment area instead of ' +
-              'segment radius for proportioning',
-          ),
-          default: false,
-          renderTrigger: true,
-        });
-      },
-    );
+    it('returns correct control config when control config is defined ' + 'in the control panel definition', () => {
+      const roseAreaProportionControlConfig = getControlConfig('rose_area_proportion', 'test-chart');
+      expect(roseAreaProportionControlConfig).toEqual({
+        type: 'CheckboxControl',
+        label: t('Use Area Proportions'),
+        description: t(
+          'Check if the Rose Chart should use segment area instead of ' + 'segment radius for proportioning',
+        ),
+        default: false,
+        renderTrigger: true,
+      });
+    });
   });
 
   describe('applyMapStateToPropsToControl,', () => {
@@ -132,12 +117,7 @@ describe('controlUtils', () => {
     });
 
     it('removes missing/invalid choice', () => {
-      let control = getControlState(
-        'stacked_style',
-        'test-chart',
-        state,
-        'stack',
-      );
+      let control = getControlState('stacked_style', 'test-chart', state, 'stack');
       expect(control?.value).toBe('stack');
 
       control = getControlState('stacked_style', 'test-chart', state, 'FOO');
@@ -174,46 +154,29 @@ describe('controlUtils', () => {
       expect(control?.validationErrors).toEqual(['cannot be empty']);
     });
     it('should not validate if control panel is initializing', () => {
-      const control = getControlState(
-        'metric',
-        'table',
-        { ...state, controls: undefined },
-        undefined,
-      );
+      const control = getControlState('metric', 'table', { ...state, controls: undefined }, undefined);
       expect(control?.validationErrors).toBeUndefined();
     });
   });
 
   describe('findControlItem', () => {
     it('find control as a string', () => {
-      const controlItem = findControlItem(
-        controlPanelSectionsChartOptions,
-        'color_scheme',
-      );
+      const controlItem = findControlItem(controlPanelSectionsChartOptions, 'color_scheme');
       expect(controlItem).toEqual('color_scheme');
     });
 
     it('find control as a control object', () => {
-      let controlItem = findControlItem(
-        controlPanelSectionsChartOptions,
-        'rose_area_proportion',
-      ) as CustomControlItem;
+      let controlItem = findControlItem(controlPanelSectionsChartOptions, 'rose_area_proportion') as CustomControlItem;
       expect(controlItem.name).toEqual('rose_area_proportion');
       expect(controlItem).toHaveProperty('config');
 
-      controlItem = findControlItem(
-        controlPanelSectionsChartOptions,
-        'stacked_style',
-      ) as CustomControlItem;
+      controlItem = findControlItem(controlPanelSectionsChartOptions, 'stacked_style') as CustomControlItem;
       expect(controlItem.name).toEqual('stacked_style');
       expect(controlItem).toHaveProperty('config');
     });
 
     it('returns null when key is not found', () => {
-      const controlItem = findControlItem(
-        controlPanelSectionsChartOptions,
-        'non_existing_key',
-      );
+      const controlItem = findControlItem(controlPanelSectionsChartOptions, 'non_existing_key');
       expect(controlItem).toBeNull();
     });
   });

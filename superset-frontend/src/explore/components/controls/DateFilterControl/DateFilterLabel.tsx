@@ -18,13 +18,7 @@
  */
 import React, { useState, useEffect, useMemo } from 'react';
 import rison from 'rison';
-import {
-  SupersetClient,
-  styled,
-  t,
-  TimeRangeEndpoints,
-  useTheme,
-} from 'src/core';
+import { SupersetClient, styled, t, TimeRangeEndpoints, useTheme } from 'src/core';
 import {
   buildTimeRangeString,
   formatTimeRange,
@@ -48,12 +42,7 @@ import { SLOW_DEBOUNCE } from 'src/constants';
 import { testWithId } from 'src/utils/testUtils';
 import { FrameType } from './types';
 
-import {
-  CommonFrame,
-  CalendarFrame,
-  CustomFrame,
-  AdvancedFrame,
-} from './components';
+import { CommonFrame, CalendarFrame, CustomFrame, AdvancedFrame } from './components';
 
 const guessFrame = (timeRange: string): FrameType => {
   if (COMMON_RANGE_VALUES_SET.has(timeRange)) {
@@ -71,10 +60,7 @@ const guessFrame = (timeRange: string): FrameType => {
   return 'Advanced';
 };
 
-const fetchTimeRange = async (
-  timeRange: string,
-  endpoints?: TimeRangeEndpoints,
-) => {
+const fetchTimeRange = async (timeRange: string, endpoints?: TimeRangeEndpoints) => {
   const query = rison.encode(timeRange);
   const endpoint = `/api/v1/time_range/?q=${query}`;
   try {
@@ -176,9 +162,7 @@ interface DateFilterControlProps {
 }
 
 export const DATE_FILTER_CONTROL_TEST_ID = 'date-filter-control';
-export const getDateFilterControlTestId = testWithId(
-  DATE_FILTER_CONTROL_TEST_ID,
-);
+export const getDateFilterControlTestId = testWithId(DATE_FILTER_CONTROL_TEST_ID);
 
 export default function DateFilterLabel(props: DateFilterControlProps) {
   const { value = DEFAULT_TIME_RANGE, endpoints, onChange, type } = props;
@@ -211,17 +195,9 @@ export default function DateFilterLabel(props: DateFilterControlProps) {
           | tooltip      | ADR  | ADR      | HRT    | HRT      |   ADR     |
           +--------------+------+----------+--------+----------+-----------+
         */
-        if (
-          guessedFrame === 'Common' ||
-          guessedFrame === 'Calendar' ||
-          guessedFrame === 'No filter'
-        ) {
+        if (guessedFrame === 'Common' || guessedFrame === 'Calendar' || guessedFrame === 'No filter') {
           setActualTimeRange(value);
-          setTooltipTitle(
-            type === ('error' as Type)
-              ? t('Default value is required')
-              : actualRange || '',
-          );
+          setTooltipTitle(type === ('error' as Type) ? t('Default value is required') : actualRange || '');
         } else {
           setActualTimeRange(actualRange || '');
           setTooltipTitle(value || '');
@@ -235,18 +211,16 @@ export default function DateFilterLabel(props: DateFilterControlProps) {
   useDebouncedEffect(
     () => {
       if (lastFetchedTimeRange !== timeRangeValue) {
-        fetchTimeRange(timeRangeValue, endpoints).then(
-          ({ value: actualRange, error }) => {
-            if (error) {
-              setEvalResponse(error || '');
-              setValidTimeRange(false);
-            } else {
-              setEvalResponse(actualRange || '');
-              setValidTimeRange(true);
-            }
-            setLastFetchedTimeRange(timeRangeValue);
-          },
-        );
+        fetchTimeRange(timeRangeValue, endpoints).then(({ value: actualRange, error }) => {
+          if (error) {
+            setEvalResponse(error || '');
+            setValidTimeRange(false);
+          } else {
+            setEvalResponse(actualRange || '');
+            setValidTimeRange(true);
+          }
+          setLastFetchedTimeRange(timeRangeValue);
+        });
       }
     },
     SLOW_DEBOUNCE,
@@ -290,25 +264,12 @@ export default function DateFilterLabel(props: DateFilterControlProps) {
   const overlayContent = (
     <ContentStyleWrapper>
       <div className="control-label">{t('RANGE TYPE')}</div>
-      <StyledRangeType
-        ariaLabel={t('RANGE TYPE')}
-        options={FRAME_OPTIONS}
-        value={frame}
-        onChange={onChangeFrame}
-      />
+      <StyledRangeType ariaLabel={t('RANGE TYPE')} options={FRAME_OPTIONS} value={frame} onChange={onChangeFrame} />
       {frame !== 'No filter' && <Divider />}
-      {frame === 'Common' && (
-        <CommonFrame value={timeRangeValue} onChange={setTimeRangeValue} />
-      )}
-      {frame === 'Calendar' && (
-        <CalendarFrame value={timeRangeValue} onChange={setTimeRangeValue} />
-      )}
-      {frame === 'Advanced' && (
-        <AdvancedFrame value={timeRangeValue} onChange={setTimeRangeValue} />
-      )}
-      {frame === 'Custom' && (
-        <CustomFrame value={timeRangeValue} onChange={setTimeRangeValue} />
-      )}
+      {frame === 'Common' && <CommonFrame value={timeRangeValue} onChange={setTimeRangeValue} />}
+      {frame === 'Calendar' && <CalendarFrame value={timeRangeValue} onChange={setTimeRangeValue} />}
+      {frame === 'Advanced' && <AdvancedFrame value={timeRangeValue} onChange={setTimeRangeValue} />}
+      {frame === 'Custom' && <CustomFrame value={timeRangeValue} onChange={setTimeRangeValue} />}
       {frame === 'No filter' && <div data-test="no-filter" />}
       <Divider />
       <div>
@@ -323,13 +284,7 @@ export default function DateFilterLabel(props: DateFilterControlProps) {
       </div>
       <Divider />
       <div className="footer">
-        <Button
-          buttonStyle="secondary"
-          cta
-          key="cancel"
-          onClick={onHide}
-          data-test="cancel-button"
-        >
+        <Button buttonStyle="secondary" cta key="cancel" onClick={onHide} data-test="cancel-button">
           {t('CANCEL')}
         </Button>
         <Button
@@ -371,11 +326,7 @@ export default function DateFilterLabel(props: DateFilterControlProps) {
         overlayStyle={overlayStyle}
       >
         <Tooltip placement="top" title={tooltipTitle}>
-          <Label
-            className="pointer"
-            data-test="time-range-trigger"
-            onClick={onOpen}
-          >
+          <Label className="pointer" data-test="time-range-trigger" onClick={onOpen}>
             {actualTimeRange}
           </Label>
         </Tooltip>

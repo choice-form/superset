@@ -55,11 +55,8 @@ export default class FixedOrMetricControl extends React.Component {
     this.setType = this.setType.bind(this);
     this.setFixedValue = this.setFixedValue.bind(this);
     this.setMetric = this.setMetric.bind(this);
-    const type =
-      (props.value ? props.value.type : props.default.type) ||
-      controlTypes.fixed;
-    const value =
-      (props.value ? props.value.value : props.default.value) || '100';
+    const type = (props.value ? props.value.type : props.default.type) || controlTypes.fixed;
+    const value = (props.value ? props.value.value : props.default.value) || '100';
     this.state = {
       type,
       fixedValue: type === controlTypes.fixed ? value : '',
@@ -70,10 +67,7 @@ export default class FixedOrMetricControl extends React.Component {
   onChange() {
     this.props.onChange({
       type: this.state.type,
-      value:
-        this.state.type === controlTypes.fixed
-          ? this.state.fixedValue
-          : this.state.metricValue,
+      value: this.state.type === controlTypes.fixed ? this.state.fixedValue : this.state.metricValue,
     });
   }
 
@@ -92,29 +86,20 @@ export default class FixedOrMetricControl extends React.Component {
   render() {
     const value = this.props.value || this.props.default;
     const type = value.type || controlTypes.fixed;
-    const columns = this.props.datasource
-      ? this.props.datasource.columns
-      : null;
-    const metrics = this.props.datasource
-      ? this.props.datasource.metrics
-      : null;
+    const columns = this.props.datasource ? this.props.datasource.columns : null;
+    const metrics = this.props.datasource ? this.props.datasource.metrics : null;
     return (
       <div>
         <ControlHeader {...this.props} />
         <Collapse
           ghost
           css={theme => css`
-            &.ant-collapse
-              > .ant-collapse-item.ant-collapse-no-arrow
-              > .ant-collapse-header {
+            &.ant-collapse > .ant-collapse-item.ant-collapse-no-arrow > .ant-collapse-header {
               border: 0px;
               padding: 0px 0px ${theme.gridUnit * 2}px 0px;
               display: inline-block;
             }
-            &.ant-collapse-ghost
-              > .ant-collapse-item
-              > .ant-collapse-content
-              > .ant-collapse-content-box {
+            &.ant-collapse-ghost > .ant-collapse-item > .ant-collapse-content > .ant-collapse-content-box {
               padding: 0px;
 
               & .well {
@@ -128,17 +113,11 @@ export default class FixedOrMetricControl extends React.Component {
             showArrow={false}
             header={
               <Label onClick={() => undefined}>
-                {this.state.type === controlTypes.fixed && (
-                  <span>{this.state.fixedValue}</span>
-                )}
+                {this.state.type === controlTypes.fixed && <span>{this.state.fixedValue}</span>}
                 {this.state.type === controlTypes.metric && (
                   <span>
                     <span>metric: </span>
-                    <strong>
-                      {this.state.metricValue
-                        ? this.state.metricValue.label
-                        : null}
-                    </strong>
+                    <strong>{this.state.metricValue ? this.state.metricValue.label : null}</strong>
                   </span>
                 )}
               </Label>

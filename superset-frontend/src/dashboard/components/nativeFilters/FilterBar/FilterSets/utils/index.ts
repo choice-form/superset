@@ -27,9 +27,7 @@ export const generateFiltersSetId = () => `FILTERS_SET-${shortid.generate()}`;
 
 export const APPLY_FILTERS_HINT = t('Please apply filter changes');
 
-export const getFilterValueForDisplay = (
-  value?: string[] | null | string | number | object,
-): string => {
+export const getFilterValueForDisplay = (value?: string[] | null | string | number | object): string => {
   if (value === null || value === undefined) {
     return '';
   }
@@ -55,13 +53,8 @@ export const findExistingFilterSet = ({
   filterSetFilterValues.find(({ dataMask: dataMaskFromFilterSet = {} }) => {
     const dataMaskSelectedEntries = Object.entries(dataMaskSelected);
     return dataMaskSelectedEntries.every(([id, filterFromSelectedFilters]) => {
-      const isEqual = areObjectsEqual(
-        filterFromSelectedFilters.filterState,
-        dataMaskFromFilterSet?.[id]?.filterState,
-      );
-      const hasSamePropsNumber =
-        dataMaskSelectedEntries.length ===
-        Object.keys(dataMaskFromFilterSet ?? {}).length;
+      const isEqual = areObjectsEqual(filterFromSelectedFilters.filterState, dataMaskFromFilterSet?.[id]?.filterState);
+      const hasSamePropsNumber = dataMaskSelectedEntries.length === Object.keys(dataMaskFromFilterSet ?? {}).length;
       return isEqual && hasSamePropsNumber;
     });
   });

@@ -29,122 +29,92 @@ jest.mock('src/featureFlags', () => ({
 }));
 
 test('Do not open Omnibar with the featureflag disabled', () => {
-  (isFeatureEnabled as jest.Mock).mockImplementation(
-    (ff: string) => !(ff === 'OMNIBAR'),
-  );
+  (isFeatureEnabled as jest.Mock).mockImplementation((ff: string) => !(ff === 'OMNIBAR'));
   render(
     <div data-test="test">
       <OmniContainer />
     </div>,
   );
 
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).not.toBeInTheDocument();
   fireEvent.keyDown(screen.getByTestId('test'), {
     ctrlKey: true,
     code: 'KeyK',
   });
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).not.toBeInTheDocument();
 });
 
 test('Open Omnibar with ctrl + k with featureflag enabled', () => {
-  (isFeatureEnabled as jest.Mock).mockImplementation(
-    (ff: string) => ff === 'OMNIBAR',
-  );
+  (isFeatureEnabled as jest.Mock).mockImplementation((ff: string) => ff === 'OMNIBAR');
   render(
     <div data-test="test">
       <OmniContainer />
     </div>,
   );
 
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).not.toBeInTheDocument();
 
   // show Omnibar
   fireEvent.keyDown(screen.getByTestId('test'), {
     ctrlKey: true,
     code: 'KeyK',
   });
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).toBeInTheDocument();
 
   // hide Omnibar
   fireEvent.keyDown(screen.getByTestId('test'), {
     ctrlKey: true,
     code: 'KeyK',
   });
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).not.toBeInTheDocument();
 });
 
 test('Open Omnibar with Command + k with featureflag enabled', () => {
-  (isFeatureEnabled as jest.Mock).mockImplementation(
-    (ff: string) => ff === 'OMNIBAR',
-  );
+  (isFeatureEnabled as jest.Mock).mockImplementation((ff: string) => ff === 'OMNIBAR');
   render(
     <div data-test="test">
       <OmniContainer />
     </div>,
   );
 
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).not.toBeInTheDocument();
 
   // show Omnibar
   fireEvent.keyDown(screen.getByTestId('test'), {
     metaKey: true,
     code: 'KeyK',
   });
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).toBeInTheDocument();
 
   // hide Omnibar
   fireEvent.keyDown(screen.getByTestId('test'), {
     metaKey: true,
     code: 'KeyK',
   });
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).not.toBeInTheDocument();
 });
 
 test('Open Omnibar with Cmd/Ctrl-K and close with ESC', () => {
-  (isFeatureEnabled as jest.Mock).mockImplementation(
-    (ff: string) => ff === 'OMNIBAR',
-  );
+  (isFeatureEnabled as jest.Mock).mockImplementation((ff: string) => ff === 'OMNIBAR');
   render(
     <div data-test="test">
       <OmniContainer />
     </div>,
   );
 
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).not.toBeInTheDocument();
 
   // show Omnibar
   fireEvent.keyDown(screen.getByTestId('test'), {
     ctrlKey: true,
     code: 'KeyK',
   });
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).toBeInTheDocument();
 
   // Close Omnibar
   fireEvent.keyDown(screen.getByTestId('test'), {
     key: 'Escape',
     code: 'Escape',
   });
-  expect(
-    screen.queryByPlaceholderText('Search all dashboards'),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByPlaceholderText('Search all dashboards')).not.toBeInTheDocument();
 });

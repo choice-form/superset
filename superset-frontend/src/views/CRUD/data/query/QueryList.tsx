@@ -19,22 +19,13 @@
 import React, { useMemo, useState, useCallback, ReactElement } from 'react';
 import { SupersetClient, t, styled, useTheme } from 'src/core';
 import moment from 'moment';
-import {
-  createFetchRelated,
-  createFetchDistinct,
-  createErrorHandler,
-  shortenSQL,
-} from 'src/views/CRUD/utils';
+import { createFetchRelated, createFetchDistinct, createErrorHandler, shortenSQL } from 'src/views/CRUD/utils';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import SubMenu, { SubMenuProps } from 'src/components/Menu/SubMenu';
 import Popover from 'src/components/Popover';
 import { commonMenuData } from 'src/views/CRUD/data/common';
-import ListView, {
-  Filters,
-  FilterOperator,
-  ListViewProps,
-} from 'src/components/ListView';
+import ListView, { Filters, FilterOperator, ListViewProps } from 'src/components/ListView';
 import { Tooltip } from 'src/components/Tooltip';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/light';
 import sql from 'react-syntax-highlighter/dist/cjs/languages/hljs/sql';
@@ -84,15 +75,9 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
   const {
     state: { loading, resourceCount: queryCount, resourceCollection: queries },
     fetchData,
-  } = useListViewResource<QueryObject>(
-    'query',
-    t('Query history'),
-    addDangerToast,
-    false,
-  );
+  } = useListViewResource<QueryObject>('query', t('Query history'), addDangerToast, false);
 
-  const [queryCurrentlyPreviewing, setQueryCurrentlyPreviewing] =
-    useState<QueryObject>();
+  const [queryCurrentlyPreviewing, setQueryCurrentlyPreviewing] = useState<QueryObject>();
 
   const theme = useTheme();
 
@@ -104,11 +89,7 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
         ({ json = {} }) => {
           setQueryCurrentlyPreviewing({ ...json.result });
         },
-        createErrorHandler(errMsg =>
-          addDangerToast(
-            t('There was an issue previewing the selected query. %s', errMsg),
-          ),
-        ),
+        createErrorHandler(errMsg => addDangerToast(t('There was an issue previewing the selected query. %s', errMsg))),
       );
     },
     [addDangerToast],
@@ -136,35 +117,21 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
             label: '',
           };
           if (status === 'success') {
-            statusConfig.name = (
-              <Icons.Check iconColor={theme.colors.success.base} />
-            );
+            statusConfig.name = <Icons.Check iconColor={theme.colors.success.base} />;
             statusConfig.label = t('Success');
           } else if (status === 'failed' || status === 'stopped') {
             statusConfig.name = (
-              <Icons.XSmall
-                iconColor={
-                  status === 'failed'
-                    ? theme.colors.error.base
-                    : theme.colors.grayscale.base
-                }
-              />
+              <Icons.XSmall iconColor={status === 'failed' ? theme.colors.error.base : theme.colors.grayscale.base} />
             );
             statusConfig.label = t('Failed');
           } else if (status === 'running') {
-            statusConfig.name = (
-              <Icons.Running iconColor={theme.colors.primary.base} />
-            );
+            statusConfig.name = <Icons.Running iconColor={theme.colors.primary.base} />;
             statusConfig.label = t('Running');
           } else if (status === 'timed_out') {
-            statusConfig.name = (
-              <Icons.Offline iconColor={theme.colors.grayscale.light1} />
-            );
+            statusConfig.name = <Icons.Offline iconColor={theme.colors.grayscale.light1} />;
             statusConfig.label = t('Offline');
           } else if (status === 'scheduled' || status === 'pending') {
-            statusConfig.name = (
-              <Icons.Queued iconColor={theme.colors.grayscale.base} />
-            );
+            statusConfig.name = <Icons.Queued iconColor={theme.colors.grayscale.base} />;
             statusConfig.label = t('Scheduled');
           }
           return (
@@ -187,9 +154,7 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
           },
         }: any) => {
           const startMoment = moment.utc(start_time).local();
-          const formattedStartTimeData = startMoment
-            .format(DATETIME_WITH_TIME_ZONE)
-            .split(' ');
+          const formattedStartTimeData = startMoment.format(DATETIME_WITH_TIME_ZONE).split(' ');
 
           const formattedStartTime = (
             <>
@@ -200,10 +165,7 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
 
           return end_time ? (
             <Tooltip
-              title={t(
-                'Duration: %s',
-                moment(moment.utc(end_time - start_time)).format(TIME_WITH_MS),
-              )}
+              title={t('Duration: %s', moment(moment.utc(end_time - start_time)).format(TIME_WITH_MS))}
               placement="bottom"
             >
               <span>{formattedStartTime}</span>
@@ -337,9 +299,7 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
           'query',
           'database',
           createErrorHandler(errMsg =>
-            addDangerToast(
-              t('An error occurred while fetching database values: %s', errMsg),
-            ),
+            addDangerToast(t('An error occurred while fetching database values: %s', errMsg)),
           ),
         ),
         paginate: true,
@@ -353,11 +313,7 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
         fetchSelects: createFetchDistinct(
           'query',
           'status',
-          createErrorHandler(errMsg =>
-            addDangerToast(
-              t('An error occurred while fetching schema values: %s', errMsg),
-            ),
-          ),
+          createErrorHandler(errMsg => addDangerToast(t('An error occurred while fetching schema values: %s', errMsg))),
         ),
         paginate: true,
       },
@@ -370,11 +326,7 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
         fetchSelects: createFetchRelated(
           'query',
           'user',
-          createErrorHandler(errMsg =>
-            addDangerToast(
-              t('An error occurred while fetching user values: %s', errMsg),
-            ),
-          ),
+          createErrorHandler(errMsg => addDangerToast(t('An error occurred while fetching user values: %s', errMsg))),
         ),
         paginate: true,
       },
@@ -403,9 +355,7 @@ function QueryList({ addDangerToast, addSuccessToast }: QueryListProps) {
           query={queryCurrentlyPreviewing}
           queries={queries}
           fetchData={handleQueryPreview}
-          openInSqlLab={(id: number) =>
-            window.location.assign(`/sqllab?queryId=${id}`)
-          }
+          openInSqlLab={(id: number) => window.location.assign(`/sqllab?queryId=${id}`)}
           show
         />
       )}

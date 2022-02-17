@@ -69,12 +69,8 @@ test('should render the owners', () => {
   render(<TimeoutErrorMessage {...mockedProps} />, { useRedux: true });
   const button = screen.getByText('See more');
   userEvent.click(button);
-  expect(
-    screen.getByText('Please reach out to the Chart Owners for assistance.'),
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText('Chart Owners: Owner A, Owner B'),
-  ).toBeInTheDocument();
+  expect(screen.getByText('Please reach out to the Chart Owners for assistance.')).toBeInTheDocument();
+  expect(screen.getByText('Chart Owners: Owner A, Owner B')).toBeInTheDocument();
 });
 
 test('should NOT render the owners', () => {
@@ -87,9 +83,7 @@ test('should NOT render the owners', () => {
   });
   const button = screen.getByText('See more');
   userEvent.click(button);
-  expect(
-    screen.queryByText('Chart Owners: Owner A, Owner B'),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByText('Chart Owners: Owner A, Owner B')).not.toBeInTheDocument();
 });
 
 test('should render the timeout message', () => {
@@ -97,8 +91,6 @@ test('should render the timeout message', () => {
   const button = screen.getByText('See more');
   userEvent.click(button);
   expect(
-    screen.getByText(
-      /We’re having trouble loading this visualization. Queries are set to timeout after 30 seconds./,
-    ),
+    screen.getByText(/We’re having trouble loading this visualization. Queries are set to timeout after 30 seconds./),
   ).toBeInTheDocument();
 });

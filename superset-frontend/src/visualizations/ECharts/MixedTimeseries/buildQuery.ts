@@ -16,12 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  buildQueryContext,
-  QueryFormData,
-  QueryObject,
-  normalizeOrderBy,
-} from 'src/core';
+import { buildQueryContext, QueryFormData, QueryObject, normalizeOrderBy } from 'src/core';
 import { pivotOperator } from 'src/chartConntrols';
 
 export default function buildQuery(formData: QueryFormData) {
@@ -64,9 +59,7 @@ export default function buildQuery(formData: QueryFormData) {
     const queryObjectA = {
       ...baseQueryObject,
       is_timeseries: true,
-      post_processing: [
-        pivotOperator(formData1, { ...baseQueryObject, is_timeseries: true }),
-      ],
+      post_processing: [pivotOperator(formData1, { ...baseQueryObject, is_timeseries: true })],
     } as QueryObject;
     return [normalizeOrderBy(queryObjectA)];
   });
@@ -75,9 +68,7 @@ export default function buildQuery(formData: QueryFormData) {
     const queryObjectB = {
       ...baseQueryObject,
       is_timeseries: true,
-      post_processing: [
-        pivotOperator(formData2, { ...baseQueryObject, is_timeseries: true }),
-      ],
+      post_processing: [pivotOperator(formData2, { ...baseQueryObject, is_timeseries: true })],
     } as QueryObject;
     return [normalizeOrderBy(queryObjectB)];
   });

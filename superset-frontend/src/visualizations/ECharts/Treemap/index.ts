@@ -26,10 +26,7 @@ import example1 from './images/treemap_v2_1.png';
 import example2 from './images/treemap_v2_2.jpg';
 import { EchartsTreemapChartProps, EchartsTreemapFormData } from './types';
 
-export default class EchartsTreemapChartPlugin extends ChartPlugin<
-  EchartsTreemapFormData,
-  EchartsTreemapChartProps
-> {
+export default class EchartsTreemapChartPlugin extends ChartPlugin<EchartsTreemapFormData, EchartsTreemapChartProps> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library

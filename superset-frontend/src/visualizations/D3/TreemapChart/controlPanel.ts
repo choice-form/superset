@@ -17,12 +17,7 @@
  * under the License.
  */
 import { t } from 'src/core';
-import {
-  ControlPanelConfig,
-  D3_FORMAT_OPTIONS,
-  D3_FORMAT_DOCS,
-  sections,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, D3_FORMAT_OPTIONS, D3_FORMAT_DOCS, sections } from 'src/chartConntrols';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [

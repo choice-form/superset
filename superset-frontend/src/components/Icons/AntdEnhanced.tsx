@@ -24,9 +24,7 @@ import IconType from './IconType';
 
 const AntdEnhancedIcons = Object.keys(AntdIcons)
   .map(k => ({
-    [k]: (props: IconType) => (
-      <StyledIcon component={AntdIcons[k]} {...props} />
-    ),
+    [k]: (props: IconType) => <StyledIcon component={AntdIcons[k]} {...props} />,
   }))
   .reduce((l, r) => ({ ...l, ...r }));
 

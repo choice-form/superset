@@ -52,9 +52,7 @@ const interactiveTypes = {
   },
 };
 
-export const InteractiveDatePicker = (args: DatePickerProps) => (
-  <DatePicker {...args} />
-);
+export const InteractiveDatePicker = (args: DatePickerProps) => <DatePicker {...args} />;
 
 InteractiveDatePicker.args = {
   ...commonArgs,
@@ -73,9 +71,7 @@ InteractiveDatePicker.story = {
   },
 };
 
-export const InteractiveRangePicker = (args: RangePickerProps) => (
-  <RangePicker {...args} />
-);
+export const InteractiveRangePicker = (args: RangePickerProps) => <RangePicker {...args} />;
 
 InteractiveRangePicker.args = {
   ...commonArgs,

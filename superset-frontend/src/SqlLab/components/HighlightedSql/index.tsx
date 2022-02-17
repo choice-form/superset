@@ -89,25 +89,12 @@ function HighlightSqlModal({ rawSql, sql }: HighlightedSqlModalTypes) {
   );
 }
 
-function HighlightedSql({
-  sql,
-  rawSql,
-  maxWidth = 50,
-  maxLines = 5,
-  shrink = false,
-}: HighlightedSqlProps) {
+function HighlightedSql({ sql, rawSql, maxWidth = 50, maxLines = 5, shrink = false }: HighlightedSqlProps) {
   return (
     <ModalTrigger
       modalTitle={t('SQL')}
       modalBody={<HighlightSqlModal rawSql={rawSql} sql={sql} />}
-      triggerNode={
-        <TriggerNode
-          shrink={shrink}
-          sql={sql}
-          maxLines={maxLines}
-          maxWidth={maxWidth}
-        />
-      }
+      triggerNode={<TriggerNode shrink={shrink} sql={sql} maxLines={maxLines} maxWidth={maxWidth} />}
     />
   );
 }

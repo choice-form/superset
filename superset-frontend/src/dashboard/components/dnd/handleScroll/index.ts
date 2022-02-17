@@ -22,13 +22,10 @@ const INTERVAL_DELAY = 50;
 
 export default function handleScroll(scroll: string) {
   const setupScroll =
-    scroll === 'SCROLL_TOP' &&
-    !scrollTopDashboardInterval &&
-    document.documentElement.scrollTop !== 0;
+    scroll === 'SCROLL_TOP' && !scrollTopDashboardInterval && document.documentElement.scrollTop !== 0;
 
   const clearScroll =
-    scrollTopDashboardInterval &&
-    (scroll !== 'SCROLL_TOP' || document.documentElement.scrollTop === 0);
+    scrollTopDashboardInterval && (scroll !== 'SCROLL_TOP' || document.documentElement.scrollTop === 0);
 
   if (setupScroll) {
     scrollTopDashboardInterval = setInterval(() => {

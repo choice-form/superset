@@ -25,10 +25,7 @@ import { t, JsonResponse } from 'src/core';
 
 import ModalTrigger from 'src/components/ModalTrigger';
 import Checkbox from 'src/components/Checkbox';
-import {
-  SAVE_TYPE_OVERWRITE,
-  SAVE_TYPE_NEWDASHBOARD,
-} from 'src/dashboard/util/constants';
+import { SAVE_TYPE_OVERWRITE, SAVE_TYPE_NEWDASHBOARD } from 'src/dashboard/util/constants';
 
 type SaveType = typeof SAVE_TYPE_OVERWRITE | typeof SAVE_TYPE_NEWDASHBOARD;
 
@@ -70,11 +67,7 @@ class SaveModal extends React.PureComponent<SaveModalProps, SaveModalState> {
 
   modal: ModalTrigger | null;
 
-  onSave: (
-    data: Record<string, any>,
-    dashboardId: number | string,
-    saveType: SaveType,
-  ) => Promise<JsonResponse>;
+  onSave: (data: Record<string, any>, dashboardId: number | string, saveType: SaveType) => Promise<JsonResponse>;
 
   constructor(props: SaveModalProps) {
     super(props);
@@ -137,8 +130,7 @@ class SaveModal extends React.PureComponent<SaveModalProps, SaveModalState> {
       certified_by: dashboardInfo.certified_by,
       certification_details: dashboardInfo.certification_details,
       css: customCss,
-      dashboard_title:
-        saveType === SAVE_TYPE_NEWDASHBOARD ? newDashName : dashboardTitle,
+      dashboard_title: saveType === SAVE_TYPE_NEWDASHBOARD ? newDashName : dashboardTitle,
       duplicate_slices: this.state.duplicateSlices,
       last_modified_time: lastModifiedTime,
       owners: dashboardInfo.owners,
@@ -151,17 +143,10 @@ class SaveModal extends React.PureComponent<SaveModalProps, SaveModalState> {
     };
 
     if (saveType === SAVE_TYPE_NEWDASHBOARD && !newDashName) {
-      this.props.addDangerToast(
-        t('You must pick a name for the new dashboard'),
-      );
+      this.props.addDangerToast(t('You must pick a name for the new dashboard'));
     } else {
       this.onSave(data, dashboardId, saveType).then((resp: JsonResponse) => {
-        if (
-          saveType === SAVE_TYPE_NEWDASHBOARD &&
-          resp &&
-          resp.json &&
-          resp.json.id
-        ) {
+        if (saveType === SAVE_TYPE_NEWDASHBOARD && resp && resp.json && resp.json.id) {
           window.location.href = `/dashboard/${resp.json.id}/`;
         }
       });
@@ -201,21 +186,14 @@ class SaveModal extends React.PureComponent<SaveModalProps, SaveModalState> {
               onChange={e => this.handleNameChange(e.target.value)}
             />
             <div className="m-l-25 m-t-5">
-              <Checkbox
-                checked={this.state.duplicateSlices}
-                onChange={() => this.toggleDuplicateSlices()}
-              />
+              <Checkbox checked={this.state.duplicateSlices} onChange={() => this.toggleDuplicateSlices()} />
               <span className="m-l-5">{t('also copy (duplicate) charts')}</span>
             </div>
           </div>
         }
         modalFooter={
           <div>
-            <Button
-              data-test="modal-save-dashboard-button"
-              buttonStyle="primary"
-              onClick={this.saveDashboard}
-            >
+            <Button data-test="modal-save-dashboard-button" buttonStyle="primary" onClick={this.saveDashboard}>
               {t('Save')}
             </Button>
           </div>

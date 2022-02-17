@@ -53,9 +53,7 @@ describe('AsyncSelect', () => {
 
   it('calls onChange on select change', () => {
     const onChangeSpy = jest.fn();
-    const wrapper = shallow(
-      <AsyncSelect {...mockedProps} onChange={onChangeSpy} />,
-    );
+    const wrapper = shallow(<AsyncSelect {...mockedProps} onChange={onChangeSpy} />);
 
     wrapper.find(Select).simulate('change', { value: 1 });
     expect(onChangeSpy.mock.calls).toHaveLength(1);
@@ -81,16 +79,12 @@ describe('AsyncSelect', () => {
         expect.assertions(3);
 
         const onChangeSpy = jest.fn();
-        const wrapper = shallow(
-          <AsyncSelect {...mockedProps} onChange={onChangeSpy} autoSelect />,
-        );
+        const wrapper = shallow(<AsyncSelect {...mockedProps} onChange={onChangeSpy} autoSelect />);
 
         setTimeout(() => {
           expect(fetchMock.calls(dataGlob)).toHaveLength(1);
           expect(onChangeSpy.mock.calls).toHaveLength(1);
-          expect(onChangeSpy).toBeCalledWith(
-            wrapper.instance().state.options[0],
-          );
+          expect(onChangeSpy).toBeCalledWith(wrapper.instance().state.options[0]);
           done();
         });
       }));
@@ -100,14 +94,7 @@ describe('AsyncSelect', () => {
         expect.assertions(3);
 
         const onChangeSpy = jest.fn();
-        const wrapper = shallow(
-          <AsyncSelect
-            {...mockedProps}
-            value={2}
-            onChange={onChangeSpy}
-            autoSelect
-          />,
-        );
+        const wrapper = shallow(<AsyncSelect {...mockedProps} value={2} onChange={onChangeSpy} autoSelect />);
 
         setTimeout(() => {
           expect(fetchMock.calls(dataGlob)).toHaveLength(1);
@@ -126,11 +113,7 @@ describe('AsyncSelect', () => {
 
       const onAsyncError = jest.fn();
       const wrapper = shallow(
-        <AsyncSelect
-          {...mockedProps}
-          dataEndpoint={errorEndpoint}
-          onAsyncError={onAsyncError}
-        />,
+        <AsyncSelect {...mockedProps} dataEndpoint={errorEndpoint} onAsyncError={onAsyncError} />,
       );
 
       return wrapper

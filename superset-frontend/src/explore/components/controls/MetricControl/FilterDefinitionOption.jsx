@@ -33,23 +33,13 @@ const propTypes = {
 
 export default function FilterDefinitionOption({ option }) {
   if (option.saved_metric_name) {
-    return (
-      <StyledColumnOption
-        column={{ column_name: option.saved_metric_name, type: 'expression' }}
-        showType
-      />
-    );
+    return <StyledColumnOption column={{ column_name: option.saved_metric_name, type: 'expression' }} showType />;
   }
   if (option.column_name) {
     return <StyledColumnOption column={option} showType />;
   }
   if (option.label) {
-    return (
-      <StyledColumnOption
-        column={{ column_name: option.label, type: 'expression' }}
-        showType
-      />
-    );
+    return <StyledColumnOption column={{ column_name: option.label, type: 'expression' }} showType />;
   }
   return null;
 }

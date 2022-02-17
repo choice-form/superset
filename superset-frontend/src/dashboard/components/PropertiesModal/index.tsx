@@ -23,13 +23,7 @@ import jsonStringify from 'json-stringify-pretty-compact';
 import Button from 'src/components/Button';
 import { Select } from 'src/components';
 import rison from 'rison';
-import {
-  styled,
-  t,
-  SupersetClient,
-  getCategoricalSchemeRegistry,
-  ensureIsArray,
-} from 'src/core';
+import { styled, t, SupersetClient, getCategoricalSchemeRegistry, ensureIsArray } from 'src/core';
 
 import Modal from 'src/components/Modal';
 import { JsonEditor } from 'src/components/AsyncAceEditor';
@@ -117,40 +111,26 @@ const PropertiesModal = ({
     });
   };
 
-  const loadAccessOptions = useCallback(
-    (accessType = 'owners', input = '', page: number, pageSize: number) => {
-      const query = rison.encode({
-        filter: input,
-        page,
-        page_size: pageSize,
-      });
-      return SupersetClient.get({
-        endpoint: `/api/v1/dashboard/related/${accessType}?q=${query}`,
-      }).then(response => ({
-        data: response.json.result.map(
-          (item: { value: number; text: string }) => ({
-            value: item.value,
-            label: item.text,
-          }),
-        ),
-        totalCount: response.json.count,
-      }));
-    },
-    [],
-  );
+  const loadAccessOptions = useCallback((accessType = 'owners', input = '', page: number, pageSize: number) => {
+    const query = rison.encode({
+      filter: input,
+      page,
+      page_size: pageSize,
+    });
+    return SupersetClient.get({
+      endpoint: `/api/v1/dashboard/related/${accessType}?q=${query}`,
+    }).then(response => ({
+      data: response.json.result.map((item: { value: number; text: string }) => ({
+        value: item.value,
+        label: item.text,
+      })),
+      totalCount: response.json.count,
+    }));
+  }, []);
 
   const handleDashboardData = useCallback(
     dashboardData => {
-      const {
-        id,
-        dashboard_title,
-        slug,
-        certified_by,
-        certification_details,
-        owners,
-        roles,
-        metadata,
-      } = dashboardData;
+      const { id, dashboard_title, slug, certified_by, certification_details, owners, roles, metadata } = dashboardData;
       const dashboardInfo = {
         id,
         title: dashboard_title,
@@ -184,9 +164,7 @@ const PropertiesModal = ({
       endpoint: `/api/v1/dashboard/${dashboardId}`,
     }).then(response => {
       const dashboard = response.json.result;
-      const jsonMetadataObj = dashboard.json_metadata?.length
-        ? JSON.parse(dashboard.json_metadata)
-        : {};
+      const jsonMetadataObj = dashboard.json_metadata?.length ? JSON.parse(dashboard.json_metadata) : {};
 
       handleDashboardData({
         ...dashboard,
@@ -199,9 +177,7 @@ const PropertiesModal = ({
 
   const getJsonMetadata = () => {
     try {
-      const jsonMetadataObj = jsonMetadata?.length
-        ? JSON.parse(jsonMetadata)
-        : {};
+      const jsonMetadataObj = jsonMetadata?.length ? JSON.parse(jsonMetadata) : {};
       return jsonMetadataObj;
     } catch (_) {
       return {};
@@ -226,12 +202,7 @@ const PropertiesModal = ({
 
   const handleOwnersSelectValue = () => {
     const parsedOwners = (owners || []).map(
-      (owner: {
-        id: number;
-        first_name?: string;
-        last_name?: string;
-        full_name?: string;
-      }) => ({
+      (owner: { id: number; first_name?: string; last_name?: string; full_name?: string }) => ({
         value: owner.id,
         label: owner.full_name || `${owner.first_name} ${owner.last_name}`,
       }),
@@ -240,19 +211,14 @@ const PropertiesModal = ({
   };
 
   const handleRolesSelectValue = () => {
-    const parsedRoles = (roles || []).map(
-      (role: { id: number; name: string }) => ({
-        value: role.id,
-        label: `${role.name}`,
-      }),
-    );
+    const parsedRoles = (roles || []).map((role: { id: number; name: string }) => ({
+      value: role.id,
+      label: `${role.name}`,
+    }));
     return parsedRoles;
   };
 
-  const onColorSchemeChange = (
-    colorScheme?: string,
-    { updateMetadata = true } = {},
-  ) => {
+  const onColorSchemeChange = (colorScheme?: string, { updateMetadata = true } = {}) => {
     // check that color_scheme is valid
     const colorChoices = getCategoricalSchemeRegistry().keys();
     const jsonMetadataObj = getJsonMetadata();
@@ -278,8 +244,7 @@ const PropertiesModal = ({
   };
 
   const onFinish = () => {
-    const { title, slug, certifiedBy, certificationDetails } =
-      form.getFieldsValue();
+    const { title, slug, certifiedBy, certificationDetails } = form.getFieldsValue();
     let currentColorScheme = colorScheme;
     let colorNamespace = '';
 
@@ -325,8 +290,7 @@ const PropertiesModal = ({
           json_metadata: jsonMetadata || null,
           owners: (owners || []).map(o => o.id),
           certified_by: certifiedBy || null,
-          certification_details:
-            certifiedBy && certificationDetails ? certificationDetails : null,
+          certification_details: certifiedBy && certificationDetails ? certificationDetails : null,
           ...morePutProps,
         }),
       }).then(() => {
@@ -339,9 +303,7 @@ const PropertiesModal = ({
 
   const getRowsWithoutRoles = () => {
     const jsonMetadataObj = getJsonMetadata();
-    const hasCustomLabelColors = !!Object.keys(
-      jsonMetadataObj?.label_colors || {},
-    ).length;
+    const hasCustomLabelColors = !!Object.keys(jsonMetadataObj?.label_colors || {}).length;
 
     return (
       <Row gutter={16}>
@@ -354,16 +316,12 @@ const PropertiesModal = ({
               disabled={isLoading}
               mode="multiple"
               onChange={handleOnChangeOwners}
-              options={(input, page, pageSize) =>
-                loadAccessOptions('owners', input, page, pageSize)
-              }
+              options={(input, page, pageSize) => loadAccessOptions('owners', input, page, pageSize)}
               value={handleOwnersSelectValue()}
             />
           </StyledFormItem>
           <p className="help-block">
-            {t(
-              'Owners is a list of users who can alter the dashboard. Searchable by name or username.',
-            )}
+            {t('Owners is a list of users who can alter the dashboard. Searchable by name or username.')}
           </p>
         </Col>
         <Col xs={24} md={12}>
@@ -381,9 +339,7 @@ const PropertiesModal = ({
 
   const getRowsWithRoles = () => {
     const jsonMetadataObj = getJsonMetadata();
-    const hasCustomLabelColors = !!Object.keys(
-      jsonMetadataObj?.label_colors || {},
-    ).length;
+    const hasCustomLabelColors = !!Object.keys(jsonMetadataObj?.label_colors || {}).length;
 
     return (
       <>
@@ -401,16 +357,12 @@ const PropertiesModal = ({
                 disabled={isLoading}
                 mode="multiple"
                 onChange={handleOnChangeOwners}
-                options={(input, page, pageSize) =>
-                  loadAccessOptions('owners', input, page, pageSize)
-                }
+                options={(input, page, pageSize) => loadAccessOptions('owners', input, page, pageSize)}
                 value={handleOwnersSelectValue()}
               />
             </StyledFormItem>
             <p className="help-block">
-              {t(
-                'Owners is a list of users who can alter the dashboard. Searchable by name or username.',
-              )}
+              {t('Owners is a list of users who can alter the dashboard. Searchable by name or username.')}
             </p>
           </Col>
           <Col xs={24} md={12}>
@@ -421,9 +373,7 @@ const PropertiesModal = ({
                 disabled={isLoading}
                 mode="multiple"
                 onChange={handleOnChangeRoles}
-                options={(input, page, pageSize) =>
-                  loadAccessOptions('roles', input, page, pageSize)
-                }
+                options={(input, page, pageSize) => loadAccessOptions('roles', input, page, pageSize)}
                 value={handleRolesSelectValue()}
               />
             </StyledFormItem>
@@ -462,11 +412,7 @@ const PropertiesModal = ({
 
   useEffect(() => {
     // the title can be changed inline in the dashboard, this catches it
-    if (
-      dashboardTitle &&
-      dashboardInfo &&
-      dashboardInfo.title !== dashboardTitle
-    ) {
+    if (dashboardTitle && dashboardInfo && dashboardInfo.title !== dashboardTitle) {
       form.setFieldsValue({
         ...dashboardInfo,
         title: dashboardTitle,
@@ -481,22 +427,10 @@ const PropertiesModal = ({
       title={t('Dashboard properties')}
       footer={
         <>
-          <Button
-            htmlType="button"
-            buttonSize="small"
-            onClick={onHide}
-            data-test="properties-modal-cancel-button"
-            cta
-          >
+          <Button htmlType="button" buttonSize="small" onClick={onHide} data-test="properties-modal-cancel-button" cta>
             {t('Cancel')}
           </Button>
-          <Button
-            onClick={form.submit}
-            buttonSize="small"
-            buttonStyle="primary"
-            className="m-r-5"
-            cta
-          >
+          <Button onClick={form.submit} buttonSize="small" buttonStyle="primary" className="m-r-5" cta>
             {saveLabel}
           </Button>
         </>
@@ -518,25 +452,17 @@ const PropertiesModal = ({
         <Row gutter={16}>
           <Col xs={24} md={12}>
             <FormItem label={t('Title')} name="title">
-              <Input
-                data-test="dashboard-title-input"
-                type="text"
-                disabled={isLoading}
-              />
+              <Input data-test="dashboard-title-input" type="text" disabled={isLoading} />
             </FormItem>
           </Col>
           <Col xs={24} md={12}>
             <StyledFormItem label={t('URL slug')} name="slug">
               <Input type="text" disabled={isLoading} />
             </StyledFormItem>
-            <p className="help-block">
-              {t('A readable URL for your dashboard')}
-            </p>
+            <p className="help-block">{t('A readable URL for your dashboard')}</p>
           </Col>
         </Row>
-        {isFeatureEnabled(FeatureFlag.DASHBOARD_RBAC)
-          ? getRowsWithRoles()
-          : getRowsWithoutRoles()}
+        {isFeatureEnabled(FeatureFlag.DASHBOARD_RBAC) ? getRowsWithRoles() : getRowsWithoutRoles()}
         <Row>
           <Col xs={24} md={24}>
             <h3>{t('Certification')}</h3>
@@ -547,33 +473,20 @@ const PropertiesModal = ({
             <StyledFormItem label={t('Certified by')} name="certifiedBy">
               <Input type="text" disabled={isLoading} />
             </StyledFormItem>
-            <p className="help-block">
-              {t('Person or group that has certified this dashboard.')}
-            </p>
+            <p className="help-block">{t('Person or group that has certified this dashboard.')}</p>
           </Col>
           <Col xs={24} md={12}>
-            <StyledFormItem
-              label={t('Certification details')}
-              name="certificationDetails"
-            >
+            <StyledFormItem label={t('Certification details')} name="certificationDetails">
               <Input type="text" disabled={isLoading} />
             </StyledFormItem>
-            <p className="help-block">
-              {t('Any additional detail to show in the certification tooltip.')}
-            </p>
+            <p className="help-block">{t('Any additional detail to show in the certification tooltip.')}</p>
           </Col>
         </Row>
         <Row>
           <Col xs={24} md={24}>
             <h3 style={{ marginTop: '1em' }}>
-              <Button
-                buttonStyle="link"
-                onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}
-              >
-                <i
-                  className={`fa fa-angle-${isAdvancedOpen ? 'down' : 'right'}`}
-                  style={{ minWidth: '1em' }}
-                />
+              <Button buttonStyle="link" onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}>
+                <i className={`fa fa-angle-${isAdvancedOpen ? 'down' : 'right'}`} style={{ minWidth: '1em' }} />
                 {t('Advanced')}
               </Button>
             </h3>

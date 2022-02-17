@@ -19,17 +19,11 @@
 import sinon from 'sinon';
 import { SupersetClient } from 'src/core';
 
-import {
-  removeSliceFromDashboard,
-  saveDashboardRequest,
-} from 'src/dashboard/actions/dashboardState';
+import { removeSliceFromDashboard, saveDashboardRequest } from 'src/dashboard/actions/dashboardState';
 import { REMOVE_FILTER } from 'src/dashboard/actions/dashboardFilters';
 import { UPDATE_COMPONENTS_PARENTS_LIST } from 'src/dashboard/actions/dashboardLayout';
 import { DASHBOARD_GRID_ID } from 'src/dashboard/util/constants';
-import {
-  filterId,
-  sliceEntitiesForDashboard as sliceEntities,
-} from 'spec/fixtures/mockSliceEntities';
+import { filterId, sliceEntitiesForDashboard as sliceEntities } from 'spec/fixtures/mockSliceEntities';
 import { emptyFilters } from 'spec/fixtures/mockDashboardFilters';
 import mockDashboardData from 'spec/fixtures/mockDashboardData';
 
@@ -52,9 +46,7 @@ describe('dashboardState actions', () => {
 
   let postStub;
   beforeEach(() => {
-    postStub = sinon
-      .stub(SupersetClient, 'post')
-      .resolves('the value you want to return');
+    postStub = sinon.stub(SupersetClient, 'post').resolves('the value you want to return');
   });
   afterEach(() => {
     postStub.restore();
@@ -75,9 +67,7 @@ describe('dashboardState actions', () => {
       const thunk = saveDashboardRequest(newDashboardData, 1, 'save_dash');
       thunk(dispatch, getState);
       expect(dispatch.callCount).toBe(1);
-      expect(dispatch.getCall(0).args[0].type).toBe(
-        UPDATE_COMPONENTS_PARENTS_LIST,
-      );
+      expect(dispatch.getCall(0).args[0].type).toBe(UPDATE_COMPONENTS_PARENTS_LIST);
     });
 
     it('should post dashboard data with updated redux state', () => {
@@ -86,15 +76,12 @@ describe('dashboardState actions', () => {
       });
 
       // start with mockDashboardData, it didn't have parents attr
-      expect(
-        newDashboardData.positions[DASHBOARD_GRID_ID].parents,
-      ).not.toBeDefined();
+      expect(newDashboardData.positions[DASHBOARD_GRID_ID].parents).not.toBeDefined();
 
       // mock redux work: dispatch an event, cause modify redux state
       const mockParentsList = ['ROOT_ID'];
       dispatch.callsFake(() => {
-        mockState.dashboardLayout.present[DASHBOARD_GRID_ID].parents =
-          mockParentsList;
+        mockState.dashboardLayout.present[DASHBOARD_GRID_ID].parents = mockParentsList;
       });
 
       // call saveDashboardRequest, it should post dashboard data with updated
@@ -103,9 +90,7 @@ describe('dashboardState actions', () => {
       thunk(dispatch, getState);
       expect(postStub.callCount).toBe(1);
       const { postPayload } = postStub.getCall(0).args[0];
-      expect(postPayload.data.positions[DASHBOARD_GRID_ID].parents).toBe(
-        mockParentsList,
-      );
+      expect(postPayload.data.positions[DASHBOARD_GRID_ID].parents).toBe(mockParentsList);
     });
   });
 

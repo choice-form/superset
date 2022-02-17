@@ -32,10 +32,7 @@ import PopoverDropdown from 'src/components/PopoverDropdown';
 import headerStyleOptions from 'src/dashboard/util/headerStyleOptions';
 import backgroundStyleOptions from 'src/dashboard/util/backgroundStyleOptions';
 import { componentShape } from 'src/dashboard/util/propShapes';
-import {
-  SMALL_HEADER,
-  BACKGROUND_TRANSPARENT,
-} from 'src/dashboard/util/constants';
+import { SMALL_HEADER, BACKGROUND_TRANSPARENT } from 'src/dashboard/util/constants';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -65,10 +62,7 @@ class Header extends React.PureComponent {
     this.handleChangeFocus = this.handleChangeFocus.bind(this);
     this.handleUpdateMeta = this.handleUpdateMeta.bind(this);
     this.handleChangeSize = this.handleUpdateMeta.bind(this, 'headerSize');
-    this.handleChangeBackground = this.handleUpdateMeta.bind(
-      this,
-      'background',
-    );
+    this.handleChangeBackground = this.handleUpdateMeta.bind(this, 'background');
     this.handleChangeText = this.handleUpdateMeta.bind(this, 'text');
   }
 
@@ -99,23 +93,12 @@ class Header extends React.PureComponent {
   render() {
     const { isFocused } = this.state;
 
-    const {
-      component,
-      depth,
-      parentComponent,
-      index,
-      handleComponentDrop,
-      editMode,
-      filters,
-    } = this.props;
+    const { component, depth, parentComponent, index, handleComponentDrop, editMode, filters } = this.props;
 
-    const headerStyle = headerStyleOptions.find(
-      opt => opt.value === (component.meta.headerSize || SMALL_HEADER),
-    );
+    const headerStyle = headerStyleOptions.find(opt => opt.value === (component.meta.headerSize || SMALL_HEADER));
 
     const rowStyle = backgroundStyleOptions.find(
-      opt =>
-        opt.value === (component.meta.background || BACKGROUND_TRANSPARENT),
+      opt => opt.value === (component.meta.background || BACKGROUND_TRANSPARENT),
     );
 
     return (
@@ -170,13 +153,7 @@ class Header extends React.PureComponent {
                   onSaveTitle={this.handleChangeText}
                   showTooltip={false}
                 />
-                {!editMode && (
-                  <AnchorLink
-                    anchorLinkId={component.id}
-                    filters={filters}
-                    showShortLinkButton
-                  />
-                )}
+                {!editMode && <AnchorLink anchorLinkId={component.id} filters={filters} showShortLinkButton />}
               </div>
             </WithPopoverMenu>
 

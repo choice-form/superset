@@ -89,8 +89,7 @@ class WithLegend extends React.Component {
   }
 
   render() {
-    const { className, width, height, position, renderChart, renderLegend } =
-      this.props;
+    const { className, width, height, position, renderChart, renderLegend } = this.props;
 
     const isHorizontal = position === 'left' || position === 'right';
 

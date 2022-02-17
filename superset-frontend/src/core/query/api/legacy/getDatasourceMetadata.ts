@@ -25,11 +25,7 @@ export interface Params extends BaseParams {
   datasourceKey: string;
 }
 
-export default function getDatasourceMetadata({
-  client = SupersetClient,
-  datasourceKey,
-  requestConfig,
-}: Params) {
+export default function getDatasourceMetadata({ client = SupersetClient, datasourceKey, requestConfig }: Params) {
   return client
     .get({
       endpoint: `/superset/fetch_datasource_metadata?datasourceKey=${datasourceKey}`,

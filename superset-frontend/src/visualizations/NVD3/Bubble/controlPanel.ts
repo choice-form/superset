@@ -17,12 +17,7 @@
  * under the License.
  */
 import { t } from 'src/core';
-import {
-  ControlPanelConfig,
-  formatSelectOptions,
-  D3_FORMAT_OPTIONS,
-  sections,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, formatSelectOptions, D3_FORMAT_OPTIONS, sections } from 'src/chartConntrols';
 import {
   showLegend,
   xAxisLabel,
@@ -58,15 +53,7 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Max Bubble Size'),
               default: '25',
-              choices: formatSelectOptions([
-                '5',
-                '10',
-                '15',
-                '25',
-                '50',
-                '75',
-                '100',
-              ]),
+              choices: formatSelectOptions(['5', '10', '15', '25', '50', '75', '100']),
             },
           },
         ],

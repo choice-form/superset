@@ -23,9 +23,7 @@ export default {
   title: 'CertifiedIconWithTooltip',
 };
 
-export const InteractiveIcon = (args: CertifiedIconProps) => (
-  <CertifiedIcon {...args} />
-);
+export const InteractiveIcon = (args: CertifiedIconProps) => <CertifiedIcon {...args} />;
 
 InteractiveIcon.args = {
   certifiedBy: 'Trusted Authority',

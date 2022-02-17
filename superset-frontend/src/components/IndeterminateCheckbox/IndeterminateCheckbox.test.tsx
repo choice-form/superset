@@ -52,10 +52,7 @@ test('should render the checkbox-half icon', () => {
   };
   render(<IndeterminateCheckbox {...indeterminateProps} />);
   expect(screen.getByRole('img')).toBeInTheDocument();
-  expect(screen.getByRole('img')).toHaveAttribute(
-    'aria-label',
-    'checkbox-half',
-  );
+  expect(screen.getByRole('img')).toHaveAttribute('aria-label', 'checkbox-half');
 });
 
 test('should render the checkbox-off icon', () => {

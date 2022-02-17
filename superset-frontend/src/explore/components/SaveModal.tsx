@@ -84,9 +84,7 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
 
   componentDidMount() {
     this.props.actions.fetchDashboards(this.props.userId).then(() => {
-      const dashboardIds = this.props.dashboards.map(
-        dashboard => dashboard.value,
-      );
+      const dashboardIds = this.props.dashboards.map(dashboard => dashboard.value);
       const lastDashboard = sessionStorage.getItem(SK_DASHBOARD_ID);
       let recentDashboard = lastDashboard && parseInt(lastDashboard, 10);
 
@@ -94,10 +92,7 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
         recentDashboard = this.props.dashboardId;
       }
 
-      if (
-        recentDashboard !== null &&
-        dashboardIds.indexOf(recentDashboard) !== -1
-      ) {
+      if (recentDashboard !== null && dashboardIds.indexOf(recentDashboard) !== -1) {
         this.setState({
           saveToDashboardId: recentDashboard,
         });
@@ -111,8 +106,7 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
 
   onDashboardSelectChange(selected: SelectValue) {
     const newDashboardName = selected ? String(selected) : undefined;
-    const saveToDashboardId =
-      selected && typeof selected === 'number' ? selected : null;
+    const saveToDashboardId = selected && typeof selected === 'number' ? selected : null;
     this.setState({ saveToDashboardId, newDashboardName });
   }
 
@@ -139,18 +133,16 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
     sliceParams.save_to_dashboard_id = this.state.saveToDashboardId;
     sliceParams.new_dashboard_name = this.state.newDashboardName;
 
-    this.props.actions
-      .saveSlice(this.props.form_data, sliceParams)
-      .then((data: JsonObject) => {
-        if (data.dashboard_id === null) {
-          sessionStorage.removeItem(SK_DASHBOARD_ID);
-        } else {
-          sessionStorage.setItem(SK_DASHBOARD_ID, data.dashboard_id);
-        }
-        // Go to new slice url or dashboard url
-        const url = gotodash ? data.dashboard_url : data.slice.slice_url;
-        window.location.assign(url);
-      });
+    this.props.actions.saveSlice(this.props.form_data, sliceParams).then((data: JsonObject) => {
+      if (data.dashboard_id === null) {
+        sessionStorage.removeItem(SK_DASHBOARD_ID);
+      } else {
+        sessionStorage.setItem(SK_DASHBOARD_ID, data.dashboard_id);
+      }
+      // Go to new slice url or dashboard url
+      const url = gotodash ? data.dashboard_url : data.slice.slice_url;
+      window.location.assign(url);
+    });
     this.props.onHide();
   }
 
@@ -162,8 +154,7 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
   }
 
   render() {
-    const dashboardSelectValue =
-      this.state.saveToDashboardId || this.state.newDashboardName;
+    const dashboardSelectValue = this.state.saveToDashboardId || this.state.newDashboardName;
     return (
       <StyledModal
         show
@@ -171,20 +162,13 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
         title={t('Save chart')}
         footer={
           <div data-test="save-modal-footer">
-            <Button
-              id="btn_cancel"
-              buttonSize="small"
-              onClick={this.props.onHide}
-            >
+            <Button id="btn_cancel" buttonSize="small" onClick={this.props.onHide}>
               {t('Cancel')}
             </Button>
             <Button
               id="btn_modal_save_goto_dash"
               buttonSize="small"
-              disabled={
-                !this.state.newSliceName ||
-                (!this.state.saveToDashboardId && !this.state.newDashboardName)
-              }
+              disabled={!this.state.newSliceName || (!this.state.saveToDashboardId && !this.state.newDashboardName)}
               onClick={() => this.saveOrOverwrite(true)}
             >
               {t('Save & go to dashboard')}
@@ -197,9 +181,7 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
               disabled={!this.state.newSliceName}
               data-test="btn-modal-save"
             >
-              {!this.canOverwriteSlice() && this.props.slice
-                ? t('Save as new chart')
-                : t('Save')}
+              {!this.canOverwriteSlice() && this.props.slice ? t('Save as new chart') : t('Save')}
             </Button>
           </div>
         }
@@ -254,10 +236,7 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
               data-test="new-chart-name"
             />
           </FormItem>
-          <FormItem
-            label={t('Add to dashboard')}
-            data-test="save-chart-modal-select-dashboard-form"
-          >
+          <FormItem label={t('Add to dashboard')} data-test="save-chart-modal-select-dashboard-form">
             <Select
               allowClear
               allowNewOptions
@@ -267,10 +246,7 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
               value={dashboardSelectValue || undefined}
               placeholder={
                 // Using markdown to allow for good i18n
-                <ReactMarkdown
-                  source={SELECT_PLACEHOLDER}
-                  renderers={{ paragraph: 'span' }}
-                />
+                <ReactMarkdown source={SELECT_PLACEHOLDER} renderers={{ paragraph: 'span' }} />
               }
             />
           </FormItem>
@@ -280,10 +256,7 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
   }
 }
 
-function mapStateToProps({
-  explore,
-  saveModal,
-}: Record<string, any>): Partial<SaveModalProps> {
+function mapStateToProps({ explore, saveModal }: Record<string, any>): Partial<SaveModalProps> {
   return {
     datasource: explore.datasource,
     slice: explore.slice,

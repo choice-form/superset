@@ -75,44 +75,23 @@ const ExploreAdditionalActionsMenu = props => {
       data-test="query-dropdown"
       overlay={
         <Menu onClick={handleMenuClick} selectable={false}>
-          {slice && (
-            <Menu.Item key={MENU_KEYS.EDIT_PROPERTIES}>
-              {t('Edit properties')}
-            </Menu.Item>
-          )}
+          {slice && <Menu.Item key={MENU_KEYS.EDIT_PROPERTIES}>{t('Edit properties')}</Menu.Item>}
           <Menu.Item key={MENU_KEYS.VIEW_QUERY}>
             <ModalTrigger
-              triggerNode={
-                <span data-test="view-query-menu-item">{t('View query')}</span>
-              }
+              triggerNode={<span data-test="view-query-menu-item">{t('View query')}</span>}
               modalTitle={t('View query')}
-              modalBody={
-                <ViewQueryModal
-                  latestQueryFormData={props.latestQueryFormData}
-                />
-              }
+              modalBody={<ViewQueryModal latestQueryFormData={props.latestQueryFormData} />}
               draggable
               resizable
               responsive
             />
           </Menu.Item>
-          {sqlSupported && (
-            <Menu.Item key={MENU_KEYS.RUN_IN_SQL_LAB}>
-              {t('Run in SQL Lab')}
-            </Menu.Item>
-          )}
-          <Menu.Item key={MENU_KEYS.DOWNLOAD_AS_IMAGE}>
-            {t('Download as image')}
-          </Menu.Item>
+          {sqlSupported && <Menu.Item key={MENU_KEYS.RUN_IN_SQL_LAB}>{t('Run in SQL Lab')}</Menu.Item>}
+          <Menu.Item key={MENU_KEYS.DOWNLOAD_AS_IMAGE}>{t('Download as image')}</Menu.Item>
         </Menu>
       }
     >
-      <div
-        role="button"
-        id="query"
-        tabIndex={0}
-        className="btn btn-default btn-sm"
-      >
+      <div role="button" id="query" tabIndex={0} className="btn btn-default btn-sm">
         <i role="img" className="fa fa-bars" />
       </div>
     </Dropdown>

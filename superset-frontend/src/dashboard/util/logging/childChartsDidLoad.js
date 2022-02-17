@@ -27,10 +27,7 @@ export default function childChartsDidLoad({ chartQueries, layout, id }) {
 
     // filterbox's don't re-render, don't use stale update time
     if (query.formData && query.formData.viz_type !== 'filter_box') {
-      minQueryStartTime = Math.min(
-        query.chartUpdateStartTime,
-        minQueryStartTime,
-      );
+      minQueryStartTime = Math.min(query.chartUpdateStartTime, minQueryStartTime);
     }
     return ['stopped', 'failed', 'rendered'].indexOf(query.chartStatus) > -1;
   });

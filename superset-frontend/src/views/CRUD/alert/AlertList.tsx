@@ -25,11 +25,7 @@ import ActionsBar, { ActionProps } from 'src/components/ListView/ActionsBar';
 import Button from 'src/components/Button';
 import FacePile from 'src/components/FacePile';
 import { Tooltip } from 'src/components/Tooltip';
-import ListView, {
-  FilterOperator,
-  Filters,
-  ListViewProps,
-} from 'src/components/ListView';
+import ListView, { FilterOperator, Filters, ListViewProps } from 'src/components/ListView';
 import SubMenu, { SubMenuProps } from 'src/components/Menu/SubMenu';
 import { Switch } from 'src/components/Switch';
 import { DATETIME_WITH_TIME_ZONE } from 'src/constants';
@@ -40,10 +36,7 @@ import ConfirmStatusChange from 'src/components/ConfirmStatusChange';
 import DeleteModal from 'src/components/DeleteModal';
 import LastUpdated from 'src/components/LastUpdated';
 
-import {
-  useListViewResource,
-  useSingleViewResource,
-} from 'src/views/CRUD/hooks';
+import { useListViewResource, useSingleViewResource } from 'src/views/CRUD/hooks';
 import { createErrorHandler, createFetchRelated } from 'src/views/CRUD/utils';
 import AlertReportModal from './AlertReportModal';
 import { AlertObject, AlertState } from './types';
@@ -68,17 +61,11 @@ const deleteAlerts = makeApi<number[], { message: string }>({
 
 const RefreshContainer = styled.div`
   width: 100%;
-  padding: 0 ${({ theme }) => theme.gridUnit * 4}px
-    ${({ theme }) => theme.gridUnit * 3}px;
+  padding: 0 ${({ theme }) => theme.gridUnit * 4}px ${({ theme }) => theme.gridUnit * 3}px;
   background-color: ${({ theme }) => theme.colors.grayscale.light5};
 `;
 
-function AlertList({
-  addDangerToast,
-  isReportEnabled = false,
-  user,
-  addSuccessToast,
-}: AlertListProps) {
+function AlertList({ addDangerToast, isReportEnabled = false, user, addSuccessToast }: AlertListProps) {
   const title = isReportEnabled ? t('report') : t('alert');
   const titlePlural = isReportEnabled ? t('reports') : t('alerts');
   const pathName = isReportEnabled ? 'Reports' : 'Alerts';
@@ -93,38 +80,18 @@ function AlertList({
     [isReportEnabled],
   );
   const {
-    state: {
-      loading,
-      resourceCount: alertsCount,
-      resourceCollection: alerts,
-      bulkSelectEnabled,
-      lastFetched,
-    },
+    state: { loading, resourceCount: alertsCount, resourceCollection: alerts, bulkSelectEnabled, lastFetched },
     hasPerm,
     fetchData,
     refreshData,
     toggleBulkSelect,
-  } = useListViewResource<AlertObject>(
-    'report',
-    t('reports'),
-    addDangerToast,
-    true,
-    undefined,
-    initalFilters,
-  );
+  } = useListViewResource<AlertObject>('report', t('reports'), addDangerToast, true, undefined, initalFilters);
 
-  const { updateResource } = useSingleViewResource<Partial<AlertObject>>(
-    'report',
-    t('reports'),
-    addDangerToast,
-  );
+  const { updateResource } = useSingleViewResource<Partial<AlertObject>>('report', t('reports'), addDangerToast);
 
   const [alertModalOpen, setAlertModalOpen] = useState<boolean>(false);
-  const [currentAlert, setCurrentAlert] = useState<Partial<AlertObject> | null>(
-    null,
-  );
-  const [currentAlertDeleting, setCurrentAlertDeleting] =
-    useState<AlertObject | null>(null);
+  const [currentAlert, setCurrentAlert] = useState<Partial<AlertObject> | null>(null);
+  const [currentAlertDeleting, setCurrentAlertDeleting] = useState<AlertObject | null>(null);
 
   // Actions
   function handleAlertEdit(alert: AlertObject | null) {
@@ -153,28 +120,18 @@ function AlertList({
         setCurrentAlertDeleting(null);
         addSuccessToast(t('Deleted: %s', name));
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(t('There was an issue deleting %s: %s', name, errMsg)),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting %s: %s', name, errMsg))),
     );
   };
 
   const handleBulkAlertDelete = async (alertsToDelete: AlertObject[]) => {
     try {
-      const { message } = await deleteAlerts(
-        alertsToDelete.map(({ id }) => id),
-      );
+      const { message } = await deleteAlerts(alertsToDelete.map(({ id }) => id));
       refreshData();
       addSuccessToast(message);
     } catch (e) {
       createErrorHandler(errMsg =>
-        addDangerToast(
-          t(
-            'There was an issue deleting the selected %s: %s',
-            titlePlural,
-            errMsg,
-          ),
-        ),
+        addDangerToast(t('There was an issue deleting the selected %s: %s', titlePlural, errMsg)),
       )(e);
     }
   };
@@ -197,12 +154,7 @@ function AlertList({
           row: {
             original: { last_state: lastState },
           },
-        }: any) => (
-          <AlertStatusIcon
-            state={lastState}
-            isReportEnabled={isReportEnabled}
-          />
-        ),
+        }: any) => <AlertStatusIcon state={lastState} isReportEnabled={isReportEnabled} />,
         accessor: 'last_state',
         size: 'xs',
         disableSortBy: true,
@@ -212,10 +164,7 @@ function AlertList({
           row: {
             original: { last_eval_dttm: lastEvalDttm },
           },
-        }: any) =>
-          lastEvalDttm
-            ? moment.utc(lastEvalDttm).local().format(DATETIME_WITH_TIME_ZONE)
-            : '',
+        }: any) => (lastEvalDttm ? moment.utc(lastEvalDttm).local().format(DATETIME_WITH_TIME_ZONE) : ''),
         accessor: 'last_eval_dttm',
         Header: t('Last run'),
         size: 'lg',
@@ -244,10 +193,7 @@ function AlertList({
           row: {
             original: { recipients },
           },
-        }: any) =>
-          recipients.map((r: any) => (
-            <RecipientIcon key={r.id} type={r.type} />
-          )),
+        }: any) => recipients.map((r: any) => <RecipientIcon key={r.id} type={r.type} />),
         accessor: 'recipients',
         Header: t('Notification method'),
         disableSortBy: true,
@@ -289,8 +235,7 @@ function AlertList({
           const history = useHistory();
           const handleEdit = () => handleAlertEdit(original);
           const handleDelete = () => setCurrentAlertDeleting(original);
-          const handleGotoExecutionLog = () =>
-            history.push(`/${original.type.toLowerCase()}/${original.id}/log`);
+          const handleGotoExecutionLog = () => history.push(`/${original.type.toLowerCase()}/${original.id}/log`);
 
           const actions = [
             canEdit
@@ -380,9 +325,7 @@ function AlertList({
         fetchSelects: createFetchRelated(
           'report',
           'created_by',
-          createErrorHandler(errMsg =>
-            t('An error occurred while fetching created by values: %s', errMsg),
-          ),
+          createErrorHandler(errMsg => t('An error occurred while fetching created by values: %s', errMsg)),
           user,
         ),
         paginate: true,
@@ -453,10 +396,7 @@ function AlertList({
       />
       {currentAlertDeleting && (
         <DeleteModal
-          description={t(
-            'This action will permanently delete %s.',
-            currentAlertDeleting.name,
-          )}
+          description={t('This action will permanently delete %s.', currentAlertDeleting.name)}
           onConfirm={() => {
             if (currentAlertDeleting) {
               handleAlertDelete(currentAlertDeleting);
@@ -469,10 +409,7 @@ function AlertList({
       )}
       <ConfirmStatusChange
         title={t('Please confirm')}
-        description={t(
-          'Are you sure you want to delete the selected %s?',
-          titlePlural,
-        )}
+        description={t('Are you sure you want to delete the selected %s?', titlePlural)}
         onConfirm={handleBulkAlertDelete}
       >
         {confirmDelete => {

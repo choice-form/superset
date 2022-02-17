@@ -24,10 +24,7 @@ export default PropTypes.oneOfType([
     expressionType: PropTypes.oneOf([EXPRESSION_TYPES.SIMPLE]).isRequired,
     clause: PropTypes.oneOf([CLAUSES.HAVING, CLAUSES.WHERE]).isRequired,
     subject: PropTypes.string.isRequired,
-    comparator: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.string),
-    ]).isRequired,
+    comparator: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
   }),
   PropTypes.shape({
     expressionType: PropTypes.oneOf([EXPRESSION_TYPES.SQL]).isRequired,

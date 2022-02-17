@@ -86,9 +86,7 @@ test('triggers onChange when type changes', () => {
   userEvent.click(screen.getByText('Time comparison'));
   expect(onChange).not.toHaveBeenCalled();
   userEvent.click(screen.getByRole('button', { name: 'Save' }));
-  expect(onChange).toHaveBeenCalledWith(
-    expect.objectContaining({ colType: 'time' }),
-  );
+  expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ colType: 'time' }));
 });
 
 test('triggers onChange when time lag changes', () => {
@@ -116,9 +114,7 @@ test('triggers onChange when color bounds changes', () => {
   userEvent.type(maxInput, max.toString());
   expect(onChange).not.toHaveBeenCalled();
   userEvent.click(screen.getByRole('button', { name: 'Save' }));
-  expect(onChange).toHaveBeenLastCalledWith(
-    expect.objectContaining({ bounds: [min, max] }),
-  );
+  expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ bounds: [min, max] }));
 });
 
 test('triggers onChange when time type changes', () => {
@@ -129,9 +125,7 @@ test('triggers onChange when time type changes', () => {
   userEvent.click(screen.getByText('Difference'));
   expect(onChange).not.toHaveBeenCalled();
   userEvent.click(screen.getByRole('button', { name: 'Save' }));
-  expect(onChange).toHaveBeenCalledWith(
-    expect.objectContaining({ comparisonType: 'diff' }),
-  );
+  expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ comparisonType: 'diff' }));
 });
 
 test('triggers onChange when number format changes', () => {
@@ -139,15 +133,10 @@ test('triggers onChange when number format changes', () => {
   const onChange = jest.fn();
   render(<TimeSeriesColumnControl colType="time" onChange={onChange} />);
   userEvent.click(screen.getByRole('button'));
-  userEvent.type(
-    screen.getByPlaceholderText('Number format string'),
-    numberFormatString,
-  );
+  userEvent.type(screen.getByPlaceholderText('Number format string'), numberFormatString);
   expect(onChange).not.toHaveBeenCalled();
   userEvent.click(screen.getByRole('button', { name: 'Save' }));
-  expect(onChange).toHaveBeenCalledWith(
-    expect.objectContaining({ d3format: numberFormatString }),
-  );
+  expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ d3format: numberFormatString }));
 });
 
 test('triggers onChange when width changes', () => {
@@ -190,9 +179,7 @@ test('triggers onChange when show Y-axis changes', () => {
   userEvent.click(screen.getByRole('checkbox'));
   expect(onChange).not.toHaveBeenCalled();
   userEvent.click(screen.getByRole('button', { name: 'Save' }));
-  expect(onChange).toHaveBeenCalledWith(
-    expect.objectContaining({ showYAxis: true }),
-  );
+  expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ showYAxis: true }));
 });
 
 test('triggers onChange when Y-axis bounds changes', () => {
@@ -208,9 +195,7 @@ test('triggers onChange when Y-axis bounds changes', () => {
   userEvent.type(maxInput, max.toString());
   expect(onChange).not.toHaveBeenCalled();
   userEvent.click(screen.getByRole('button', { name: 'Save' }));
-  expect(onChange).toHaveBeenCalledWith(
-    expect.objectContaining({ yAxisBounds: [min, max] }),
-  );
+  expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ yAxisBounds: [min, max] }));
 });
 
 test('triggers onChange when date format changes', () => {
@@ -221,7 +206,5 @@ test('triggers onChange when date format changes', () => {
   userEvent.type(screen.getByPlaceholderText('Date format string'), dateFormat);
   expect(onChange).not.toHaveBeenCalled();
   userEvent.click(screen.getByRole('button', { name: 'Save' }));
-  expect(onChange).toHaveBeenCalledWith(
-    expect.objectContaining({ dateFormat }),
-  );
+  expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ dateFormat }));
 });

@@ -21,10 +21,7 @@ import { styled, t } from 'src/core';
 import Collapse from 'src/components/Collapse';
 import { User } from 'src/types/bootstrapTypes';
 import { reject } from 'lodash';
-import {
-  getFromLocalStorage,
-  setInLocalStorage,
-} from 'src/utils/localStorageHelpers';
+import { getFromLocalStorage, setInLocalStorage } from 'src/utils/localStorageHelpers';
 import ListViewCard from 'src/components/ListViewCard';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import {
@@ -35,10 +32,7 @@ import {
   getUserOwnedObjects,
   loadingCardCount,
 } from 'src/views/CRUD/utils';
-import {
-  HOMEPAGE_ACTIVITY_FILTER,
-  HOMEPAGE_COLLAPSE_STATE,
-} from 'src/views/CRUD/storageKeys';
+import { HOMEPAGE_ACTIVITY_FILTER, HOMEPAGE_COLLAPSE_STATE } from 'src/views/CRUD/storageKeys';
 import { FeatureFlag, isFeatureEnabled } from 'src/featureFlags';
 import { Switch } from 'src/common/components';
 
@@ -98,8 +92,7 @@ const WelcomeContainer = styled.div`
   .ant-collapse-item .ant-collapse-content {
     margin-bottom: ${({ theme }) => theme.gridUnit * -6}px;
   }
-  div.ant-collapse-item:last-child.ant-collapse-item-active
-    .ant-collapse-header {
+  div.ant-collapse-item:last-child.ant-collapse-item-active .ant-collapse-header {
     padding-bottom: ${({ theme }) => theme.gridUnit * 3}px;
   }
   div.ant-collapse-item:last-child .ant-collapse-header {
@@ -149,16 +142,13 @@ function Welcome({ user, addDangerToast }: WelcomeProps) {
   const userKey = getFromLocalStorage(id, null);
   let defaultChecked = false;
   if (isFeatureEnabled(FeatureFlag.THUMBNAILS)) {
-    defaultChecked =
-      userKey?.thumbnails === undefined ? true : userKey?.thumbnails;
+    defaultChecked = userKey?.thumbnails === undefined ? true : userKey?.thumbnails;
   }
   const [checked, setChecked] = useState(defaultChecked);
   const [activityData, setActivityData] = useState<ActivityData | null>(null);
   const [chartData, setChartData] = useState<Array<object> | null>(null);
   const [queryData, setQueryData] = useState<Array<object> | null>(null);
-  const [dashboardData, setDashboardData] = useState<Array<object> | null>(
-    null,
-  );
+  const [dashboardData, setDashboardData] = useState<Array<object> | null>(null);
   const [loadedCount, setLoadedCount] = useState(0);
 
   const collapseState = getFromLocalStorage(HOMEPAGE_COLLAPSE_STATE, null);
@@ -191,9 +181,7 @@ function Welcome({ user, addDangerToast }: WelcomeProps) {
       .catch(
         createErrorHandler((errMsg: unknown) => {
           setActivityData(activityData => ({ ...activityData, Viewed: [] }));
-          addDangerToast(
-            t('There was an issue fetching your recent activity: %s', errMsg),
-          );
+          addDangerToast(t('There was an issue fetching your recent activity: %s', errMsg));
         }),
       );
 
@@ -207,9 +195,7 @@ function Welcome({ user, addDangerToast }: WelcomeProps) {
       .catch((err: unknown) => {
         setDashboardData([]);
         setLoadedCount(loadedCount => loadedCount + 1);
-        addDangerToast(
-          t('There was an issues fetching your dashboards: %s', err),
-        );
+        addDangerToast(t('There was an issues fetching your dashboards: %s', err));
       });
     getUserOwnedObjects(id, 'chart')
       .then(r => {
@@ -229,9 +215,7 @@ function Welcome({ user, addDangerToast }: WelcomeProps) {
       .catch((err: unknown) => {
         setQueryData([]);
         setLoadedCount(loadedCount => loadedCount + 1);
-        addDangerToast(
-          t('There was an issues fetching your saved queries: %s', err),
-        );
+        addDangerToast(t('There was an issues fetching your saved queries: %s', err));
       });
   }, []);
 
@@ -260,8 +244,7 @@ function Welcome({ user, addDangerToast }: WelcomeProps) {
     }
   }, [activityData]);
 
-  const isRecentActivityLoading =
-    !activityData?.Examples && !activityData?.Viewed;
+  const isRecentActivityLoading = !activityData?.Examples && !activityData?.Viewed;
   return (
     <WelcomeContainer>
       <WelcomeNav>
@@ -276,9 +259,7 @@ function Welcome({ user, addDangerToast }: WelcomeProps) {
       <Collapse activeKey={activeState} onChange={handleCollapse} ghost bigger>
         <Collapse.Panel header={t('Recents')} key="1">
           {activityData &&
-          (activityData.Viewed ||
-            activityData.Examples ||
-            activityData.Created) &&
+          (activityData.Viewed || activityData.Examples || activityData.Created) &&
           activeChild !== 'Loading' ? (
             <ActivityTable
               user={user}
@@ -307,12 +288,7 @@ function Welcome({ user, addDangerToast }: WelcomeProps) {
           {!chartData || isRecentActivityLoading ? (
             <LoadingCards cover={checked} />
           ) : (
-            <ChartTable
-              showThumbnails={checked}
-              user={user}
-              mine={chartData}
-              examples={activityData?.Examples}
-            />
+            <ChartTable showThumbnails={checked} user={user} mine={chartData} examples={activityData?.Examples} />
           )}
         </Collapse.Panel>
         <Collapse.Panel header={t('Saved queries')} key="4">

@@ -91,9 +91,7 @@ export function formatTooltip({
   const currentNode = treePathInfo[treePathInfo.length - 1];
   const parentNode = treePathInfo[treePathInfo.length - 2];
   if (parentNode) {
-    const percent: number = parentNode.value
-      ? (currentNode.value as number) / (parentNode.value as number)
-      : 0;
+    const percent: number = parentNode.value ? (currentNode.value as number) / (parentNode.value as number) : 0;
     formattedPercent = percentFormatter(percent);
   }
 
@@ -106,17 +104,8 @@ export function formatTooltip({
   ].join('');
 }
 
-export default function transformProps(
-  chartProps: EchartsTreemapChartProps,
-): TreemapTransformedProps {
-  const {
-    formData,
-    height,
-    queriesData,
-    width,
-    hooks,
-    filterState,
-  } = chartProps;
+export default function transformProps(chartProps: EchartsTreemapChartProps): TreemapTransformedProps {
+  const { formData, height, queriesData, width, hooks, filterState } = chartProps;
   const { data = [] } = queriesData[0];
   const { setDataMask = () => {} } = hooks;
   const coltypeMapping = getColtypesMapping(queriesData[0]);
@@ -177,10 +166,7 @@ export default function transformProps(
             const joinedName = path.concat(name).join(',');
             // map(joined_name: [columnLabel_1, columnLabel_2, ...])
             columnsLabelMap.set(joinedName, path.concat(name));
-            if (
-              filterState.selectedValues &&
-              !filterState.selectedValues.includes(joinedName)
-            ) {
+            if (filterState.selectedValues && !filterState.selectedValues.includes(joinedName)) {
               item.itemStyle = {
                 colorAlpha: OpacityEnum.SemiTransparent,
               };
@@ -204,20 +190,11 @@ export default function transformProps(
             coltype: coltypeMapping[currGroupby],
           }),
         });
-        const children = transformer(
-          value,
-          restGroupby,
-          metric,
-          depth + 1,
-          path.concat(name),
-        );
+        const children = transformer(value, restGroupby, metric, depth + 1, path.concat(name));
         result.push({
           name,
           children,
-          value: children.reduce(
-            (prev, cur) => prev + (cur.value as number),
-            0,
-          ),
+          value: children.reduce((prev, cur) => prev + (cur.value as number), 0),
         });
         result.sort((a, b) => (b.value as number) - (a.value as number));
       },

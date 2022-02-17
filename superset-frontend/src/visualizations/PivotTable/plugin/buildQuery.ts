@@ -16,22 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  buildQueryContext,
-  ensureIsArray,
-  getMetricLabel,
-  normalizeOrderBy,
-  QueryFormColumn,
-} from 'src/core';
+import { buildQueryContext, ensureIsArray, getMetricLabel, normalizeOrderBy, QueryFormColumn } from 'src/core';
 import { PivotTableQueryFormData } from '../types';
 
 export default function buildQuery(formData: PivotTableQueryFormData) {
-  const {
-    groupbyColumns = [],
-    groupbyRows = [],
-    order_desc = true,
-    legacy_order_by,
-  } = formData;
+  const { groupbyColumns = [], groupbyRows = [], order_desc = true, legacy_order_by } = formData;
   // TODO: add deduping of AdhocColumns
   const groupbySet = new Set([
     ...ensureIsArray<QueryFormColumn>(groupbyColumns),
@@ -45,12 +34,7 @@ export default function buildQuery(formData: PivotTableQueryFormData) {
     });
     const { metrics } = queryObject;
     const orderBy = ensureIsArray(legacy_order_by);
-    if (
-      orderBy.length &&
-      !metrics?.find(
-        metric => getMetricLabel(metric) === getMetricLabel(orderBy[0]),
-      )
-    ) {
+    if (orderBy.length && !metrics?.find(metric => getMetricLabel(metric) === getMetricLabel(orderBy[0]))) {
       metrics?.push(orderBy[0]);
     }
     return [

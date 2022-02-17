@@ -125,9 +125,7 @@ class HeaderActionsDropdown extends React.PureComponent {
         this.setState({ cssTemplates });
       })
       .catch(() => {
-        this.props.addDangerToast(
-          t('An error occurred while fetching available CSS templates'),
-        );
+        this.props.addDangerToast(t('An error occurred while fetching available CSS templates'));
       });
   }
 
@@ -155,9 +153,7 @@ class HeaderActionsDropdown extends React.PureComponent {
       case MENU_KEYS.DOWNLOAD_AS_IMAGE: {
         // menu closes with a delay, we need to hide it manually,
         // so that we don't capture it on the screenshot
-        const menu = document.querySelector(
-          '.ant-dropdown:not(.ant-dropdown-hidden)',
-        );
+        const menu = document.querySelector('.ant-dropdown:not(.ant-dropdown-hidden)');
         menu.style.visibility = 'hidden';
         downloadAsImage(
           SCREENSHOT_NODE_SELECTOR,
@@ -223,11 +219,7 @@ class HeaderActionsDropdown extends React.PureComponent {
     });
 
     const menu = (
-      <Menu
-        onClick={this.handleMenuClick}
-        selectable={false}
-        data-test="header-actions-menu"
-      >
+      <Menu onClick={this.handleMenuClick} selectable={false} data-test="header-actions-menu">
         {userCanSave && (
           <Menu.Item key={MENU_KEYS.SAVE_MODAL}>
             <SaveModal
@@ -246,9 +238,7 @@ class HeaderActionsDropdown extends React.PureComponent {
               colorNamespace={colorNamespace}
               colorScheme={colorScheme}
               onSave={onSave}
-              triggerNode={
-                <span data-test="save-as-menu-item">{t('Save as')}</span>
-              }
+              triggerNode={<span data-test="save-as-menu-item">{t('Save as')}</span>}
               canOverwrite={userCanEdit}
             />
           </Menu.Item>
@@ -264,11 +254,7 @@ class HeaderActionsDropdown extends React.PureComponent {
             addDangerToast={addDangerToast}
           />
         )}
-        <Menu.Item
-          key={MENU_KEYS.REFRESH_DASHBOARD}
-          data-test="refresh-dashboard-menu-item"
-          disabled={isLoading}
-        >
+        <Menu.Item key={MENU_KEYS.REFRESH_DASHBOARD} data-test="refresh-dashboard-menu-item" disabled={isLoading}>
           {t('Refresh dashboard')}
         </Menu.Item>
         <Menu.Divider />
@@ -285,18 +271,11 @@ class HeaderActionsDropdown extends React.PureComponent {
 
         {editMode && (
           <Menu.Item key={MENU_KEYS.SET_FILTER_MAPPING}>
-            <FilterScopeModal
-              className="m-r-5"
-              triggerNode={t('Set filter mapping')}
-            />
+            <FilterScopeModal className="m-r-5" triggerNode={t('Set filter mapping')} />
           </Menu.Item>
         )}
 
-        {editMode && (
-          <Menu.Item key={MENU_KEYS.EDIT_PROPERTIES}>
-            {t('Edit dashboard properties')}
-          </Menu.Item>
-        )}
+        {editMode && <Menu.Item key={MENU_KEYS.EDIT_PROPERTIES}>{t('Edit dashboard properties')}</Menu.Item>}
 
         {editMode && (
           <Menu.Item key={MENU_KEYS.EDIT_CSS}>
@@ -309,17 +288,11 @@ class HeaderActionsDropdown extends React.PureComponent {
           </Menu.Item>
         )}
 
-        {!editMode && (
-          <Menu.Item key={MENU_KEYS.DOWNLOAD_AS_IMAGE}>
-            {t('Download as image')}
-          </Menu.Item>
-        )}
+        {!editMode && <Menu.Item key={MENU_KEYS.DOWNLOAD_AS_IMAGE}>{t('Download as image')}</Menu.Item>}
 
         {!editMode && (
           <Menu.Item key={MENU_KEYS.TOGGLE_FULLSCREEN}>
-            {getUrlParam(URL_PARAMS.standalone)
-              ? t('Exit fullscreen')
-              : t('Enter fullscreen')}
+            {getUrlParam(URL_PARAMS.standalone) ? t('Exit fullscreen') : t('Enter fullscreen')}
           </Menu.Item>
         )}
       </Menu>
@@ -328,9 +301,7 @@ class HeaderActionsDropdown extends React.PureComponent {
       <NoAnimationDropdown
         overlay={menu}
         trigger={['click']}
-        getPopupContainer={triggerNode =>
-          triggerNode.closest('.dashboard-header')
-        }
+        getPopupContainer={triggerNode => triggerNode.closest('.dashboard-header')}
       >
         <DropdownButton id="save-dash-split-button" role="button">
           <Icons.MoreHoriz />

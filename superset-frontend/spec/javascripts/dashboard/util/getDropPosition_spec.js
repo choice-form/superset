@@ -16,12 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import getDropPosition, {
-  DROP_TOP,
-  DROP_RIGHT,
-  DROP_BOTTOM,
-  DROP_LEFT,
-} from 'src/dashboard/util/getDropPosition';
+import getDropPosition, { DROP_TOP, DROP_RIGHT, DROP_BOTTOM, DROP_LEFT } from 'src/dashboard/util/getDropPosition';
 
 import {
   CHART_TYPE,

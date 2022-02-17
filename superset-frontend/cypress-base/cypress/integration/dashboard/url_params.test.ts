@@ -17,11 +17,7 @@
  * under the License.
  */
 import { parsePostForm, JsonObject } from 'cypress/utils';
-import {
-  WORLD_HEALTH_DASHBOARD,
-  WORLD_HEALTH_CHARTS,
-  waitForChartLoad,
-} from './dashboard.helper';
+import { WORLD_HEALTH_DASHBOARD, WORLD_HEALTH_CHARTS, waitForChartLoad } from './dashboard.helper';
 
 describe('Dashboard form data', () => {
   const urlParams = { param1: '123', param2: 'abc' };
@@ -33,9 +29,7 @@ describe('Dashboard form data', () => {
 
   it('should apply url params to slice requests', () => {
     cy.intercept('/explore_json/*', request => {
-      const requestParams = JSON.parse(
-        parsePostForm(request.body).form_data as string,
-      );
+      const requestParams = JSON.parse(parsePostForm(request.body).form_data as string);
       expect(requestParams.url_params).deep.eq(urlParams);
     });
     cy.intercept('/api/v1/chart/data?*', request => {

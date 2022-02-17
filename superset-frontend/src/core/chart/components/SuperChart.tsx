@@ -18,10 +18,7 @@
  */
 
 import React, { ReactNode, RefObject } from 'react';
-import ErrorBoundary, {
-  ErrorBoundaryProps,
-  FallbackProps,
-} from 'react-error-boundary';
+import ErrorBoundary, { ErrorBoundaryProps, FallbackProps } from 'react-error-boundary';
 import { ParentSize } from '@vx/responsive';
 import { createSelector } from 'reselect';
 import { parseLength, Dimension } from '../../dimension';
@@ -97,12 +94,8 @@ export default class SuperChart extends React.PureComponent<Props, {}> {
       const widthInfo = parseLength(width);
       const heightInfo = parseLength(height);
 
-      const boxHeight = heightInfo.isDynamic
-        ? `${heightInfo.multiplier * 100}%`
-        : heightInfo.value;
-      const boxWidth = widthInfo.isDynamic
-        ? `${widthInfo.multiplier * 100}%`
-        : widthInfo.value;
+      const boxHeight = heightInfo.isDynamic ? `${heightInfo.multiplier * 100}%` : heightInfo.value;
+      const boxWidth = widthInfo.isDynamic ? `${widthInfo.multiplier * 100}%` : widthInfo.value;
       const style = {
         height: boxHeight,
         width: boxWidth,
@@ -113,14 +106,9 @@ export default class SuperChart extends React.PureComponent<Props, {}> {
       // the auto size will be bound to that value instead of being 100% by default
       // e.g. height: 300 instead of height: '100%'
       const BoundingBox =
-        widthInfo.isDynamic &&
-        heightInfo.isDynamic &&
-        widthInfo.multiplier === 1 &&
-        heightInfo.multiplier === 1
+        widthInfo.isDynamic && heightInfo.isDynamic && widthInfo.multiplier === 1 && heightInfo.multiplier === 1
           ? React.Fragment
-          : ({ children }: { children: ReactNode }) => (
-              <div style={style}>{children}</div>
-            );
+          : ({ children }: { children: ReactNode }) => <div style={style}>{children}</div>;
 
       return { BoundingBox, heightInfo, widthInfo };
     },
@@ -162,19 +150,9 @@ export default class SuperChart extends React.PureComponent<Props, {}> {
     // Render the no results component if the query data is null or empty
     const noResultQueries =
       enableNoResults &&
-      (!queriesData ||
-        queriesData.every(
-          ({ data }) => !data || (Array.isArray(data) && data.length === 0),
-        ));
+      (!queriesData || queriesData.every(({ data }) => !data || (Array.isArray(data) && data.length === 0)));
     if (noResultQueries) {
-      chart = (
-        <NoResultsComponent
-          id={id}
-          className={className}
-          height={height}
-          width={width}
-        />
-      );
+      chart = <NoResultsComponent id={id} className={className} height={height} width={width} />;
     } else {
       const chartWithoutWrapper = (
         <SuperChartCore
@@ -203,9 +181,7 @@ export default class SuperChart extends React.PureComponent<Props, {}> {
       chart
     ) : (
       <ErrorBoundary
-        FallbackComponent={(props: FallbackProps) => (
-          <FallbackComponent width={width} height={height} {...props} />
-        )}
+        FallbackComponent={(props: FallbackProps) => <FallbackComponent width={width} height={height} {...props} />}
         onError={onErrorBoundary}
       >
         {chart}
@@ -214,9 +190,7 @@ export default class SuperChart extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const { heightInfo, widthInfo, BoundingBox } = this.parseDimension(
-      this.props as PropsWithDefault,
-    );
+    const { heightInfo, widthInfo, BoundingBox } = this.parseDimension(this.props as PropsWithDefault);
 
     // If any of the dimension is dynamic, get parent's dimension
     if (widthInfo.isDynamic || heightInfo.isDynamic) {

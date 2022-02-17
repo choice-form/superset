@@ -26,21 +26,11 @@ export interface WarningIconWithTooltipProps {
   size?: IconType['iconSize'];
 }
 
-function WarningIconWithTooltip({
-  warningMarkdown,
-  size,
-}: WarningIconWithTooltipProps) {
+function WarningIconWithTooltip({ warningMarkdown, size }: WarningIconWithTooltipProps) {
   const theme = useTheme();
   return (
-    <Tooltip
-      id="warning-tooltip"
-      title={<SafeMarkdown source={warningMarkdown} />}
-    >
-      <Icons.AlertSolid
-        iconColor={theme.colors.alert.base}
-        iconSize={size}
-        css={{ marginRight: theme.gridUnit * 2 }}
-      />
+    <Tooltip id="warning-tooltip" title={<SafeMarkdown source={warningMarkdown} />}>
+      <Icons.AlertSolid iconColor={theme.colors.alert.base} iconSize={size} css={{ marginRight: theme.gridUnit * 2 }} />
     </Tooltip>
   );
 }

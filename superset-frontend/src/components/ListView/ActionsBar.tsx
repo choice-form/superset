@@ -60,12 +60,7 @@ export default function ActionsBar({ actions }: ActionsBarProps) {
         const ActionIcon = Icons[action.icon];
         if (action.tooltip) {
           return (
-            <Tooltip
-              id={`${action.label}-tooltip`}
-              title={action.tooltip}
-              placement={action.placement}
-              key={index}
-            >
+            <Tooltip id={`${action.label}-tooltip`} title={action.tooltip} placement={action.placement} key={index}>
               <ActionWrapper
                 role="button"
                 tabIndex={0}

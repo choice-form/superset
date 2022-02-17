@@ -76,9 +76,7 @@ export default function getInitialState({
         title: activeTab.label,
         sql: activeTab.sql || undefined,
         selectedText: undefined,
-        latestQueryId: activeTab.latest_query
-          ? activeTab.latest_query.id
-          : null,
+        latestQueryId: activeTab.latest_query ? activeTab.latest_query.id : null,
         autorun: activeTab.autorun,
         templateParams: activeTab.template_params || undefined,
         dbId: activeTab.database_id,
@@ -149,10 +147,7 @@ export default function getInitialState({
    * hasn't used SQL Lab after it has been turned on, the state will be stored
    * in the browser's local storage.
    */
-  if (
-    localStorage.getItem('redux') &&
-    JSON.parse(localStorage.getItem('redux')).sqlLab
-  ) {
+  if (localStorage.getItem('redux') && JSON.parse(localStorage.getItem('redux')).sqlLab) {
     const { sqlLab } = JSON.parse(localStorage.getItem('redux'));
 
     if (sqlLab.queryEditors.length === 0) {
@@ -168,9 +163,7 @@ export default function getInitialState({
           loaded: true,
         }),
       );
-      sqlLab.tables.forEach(table =>
-        tables.push({ ...table, inLocalStorage: true }),
-      );
+      sqlLab.tables.forEach(table => tables.push({ ...table, inLocalStorage: true }));
       Object.values(sqlLab.queries).forEach(query => {
         queries[query.id] = { ...query, inLocalStorage: true };
       });
@@ -192,9 +185,7 @@ export default function getInitialState({
       user,
     },
     requestedQuery,
-    messageToasts: getToastsFromPyFlashMessages(
-      (common || {}).flash_messages || [],
-    ),
+    messageToasts: getToastsFromPyFlashMessages((common || {}).flash_messages || []),
     localStorageUsageInKilobytes: 0,
     common: {
       flash_messages: common.flash_messages,

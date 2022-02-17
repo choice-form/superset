@@ -48,19 +48,11 @@ import {
   updateDashboardTitle,
   dashboardTitleChanged,
 } from 'src/dashboard/actions/dashboardLayout';
-import {
-  addSuccessToast,
-  addDangerToast,
-  addWarningToast,
-} from 'src/components/MessageToasts/actions';
+import { addSuccessToast, addDangerToast, addWarningToast } from 'src/components/MessageToasts/actions';
 
 import { logEvent } from 'src/logger/actions';
 import { DASHBOARD_HEADER_ID } from 'src/dashboard/util/constants';
-import {
-  fetchUISpecificReport,
-  toggleActive,
-  deleteActiveReport,
-} from 'src/reports/actions/reports';
+import { fetchUISpecificReport, toggleActive, deleteActiveReport } from 'src/reports/actions/reports';
 
 function mapStateToProps({
   dashboardLayout: undoableLayout,
@@ -76,13 +68,10 @@ function mapStateToProps({
     undoLength: undoableLayout.past.length,
     redoLength: undoableLayout.future.length,
     layout: undoableLayout.present,
-    dashboardTitle: (
-      (undoableLayout.present[DASHBOARD_HEADER_ID] || {}).meta || {}
-    ).text,
+    dashboardTitle: ((undoableLayout.present[DASHBOARD_HEADER_ID] || {}).meta || {}).text,
     expandedSlices: dashboardState.expandedSlices,
     refreshFrequency: dashboardState.refreshFrequency,
-    shouldPersistRefreshFrequency:
-      !!dashboardState.shouldPersistRefreshFrequency,
+    shouldPersistRefreshFrequency: !!dashboardState.shouldPersistRefreshFrequency,
     customCss: dashboardState.css,
     colorNamespace: dashboardState.colorNamespace,
     colorScheme: dashboardState.colorScheme,
@@ -94,10 +83,7 @@ function mapStateToProps({
     isLoading: isDashboardLoading(charts),
     hasUnsavedChanges: !!dashboardState.hasUnsavedChanges,
     maxUndoHistoryExceeded: !!dashboardState.maxUndoHistoryExceeded,
-    lastModifiedTime: Math.max(
-      dashboardState.lastModifiedTime,
-      dashboardInfo.last_modified_time,
-    ),
+    lastModifiedTime: Math.max(dashboardState.lastModifiedTime, dashboardInfo.last_modified_time),
     editMode: !!dashboardState.editMode,
     slug: dashboardInfo.slug,
     metadata: dashboardInfo.metadata,

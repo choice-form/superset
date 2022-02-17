@@ -63,8 +63,7 @@ const config: ControlPanelConfig = {
                   mapStateToProps: _ref => {
                     const { form_data } = _ref;
                     return {
-                      chartId:
-                        (form_data == null ? 0 : form_data.slice_id) || 0,
+                      chartId: (form_data == null ? 0 : form_data.slice_id) || 0,
                       columns: form_data.groupby,
                     };
                   },
@@ -83,9 +82,7 @@ const config: ControlPanelConfig = {
               default: true,
               type: 'CheckboxControl',
               label: t('Sort by metric'),
-              description: t(
-                'Whether to sort results by the selected metric in descending order.',
-              ),
+              description: t('Whether to sort results by the selected metric in descending order.'),
             },
           },
         ],
@@ -105,9 +102,7 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               isFloat: true,
               default: 5,
-              description: t(
-                'Minimum threshold in percentage points for showing labels.',
-              ),
+              description: t('Minimum threshold in percentage points for showing labels.'),
             },
           },
         ],
@@ -144,9 +139,9 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: numberFormat,
               choices: D3_FORMAT_OPTIONS,
-              description: `${t(
-                'D3 format syntax: https://github.com/d3/d3-format',
-              )} ${t('Only applies when "Label Type" is set to show values.')}`,
+              description: `${t('D3 format syntax: https://github.com/d3/d3-format')} ${t(
+                'Only applies when "Label Type" is set to show values.',
+              )}`,
             },
           },
         ],
@@ -185,8 +180,7 @@ const config: ControlPanelConfig = {
               default: labelsOutside,
               renderTrigger: true,
               description: t('Put the labels outside of the pie?'),
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                Boolean(controls?.show_labels?.value),
+              visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_labels?.value),
             },
           },
         ],
@@ -198,11 +192,8 @@ const config: ControlPanelConfig = {
               label: t('Label Line'),
               default: labelLine,
               renderTrigger: true,
-              description: t(
-                'Draw line from Pie to label when labels outside?',
-              ),
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                Boolean(controls?.show_labels?.value),
+              description: t('Draw line from Pie to label when labels outside?'),
+              visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_labels?.value),
             },
           },
         ],
@@ -247,8 +238,7 @@ const config: ControlPanelConfig = {
               step: 1,
               default: innerRadius,
               description: t('Inner radius of donut hole'),
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                Boolean(controls?.donut?.value),
+              visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.donut?.value),
             },
           },
         ],

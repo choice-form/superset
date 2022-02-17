@@ -22,12 +22,9 @@ import userEvent from '@testing-library/user-event';
 import FilterConfigurationLink from '.';
 
 test('should render', () => {
-  const { container } = render(
-    <FilterConfigurationLink>Config link</FilterConfigurationLink>,
-    {
-      useRedux: true,
-    },
-  );
+  const { container } = render(<FilterConfigurationLink>Config link</FilterConfigurationLink>, {
+    useRedux: true,
+  });
   expect(container).toBeInTheDocument();
 });
 

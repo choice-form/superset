@@ -24,11 +24,7 @@ import Icons from 'src/components/Icons';
 import { CategoricalColorNamespace, SupersetClient, styled, t } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import ReportModal from 'src/components/ReportModal';
-import {
-  fetchUISpecificReport,
-  toggleActive,
-  deleteActiveReport,
-} from 'src/reports/actions/reports';
+import { fetchUISpecificReport, toggleActive, deleteActiveReport } from 'src/reports/actions/reports';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import HeaderReportActionsDropdown from 'src/components/ReportModal/HeaderReportActionsDropdown';
 import { chartPropShape } from 'src/dashboard/util/propShapes';
@@ -94,8 +90,7 @@ const StyledHeader = styled.div`
 
   .action-button {
     color: ${({ theme }) => theme.colors.grayscale.base};
-    margin: 0 ${({ theme }) => theme.gridUnit * 1.5}px 0
-      ${({ theme }) => theme.gridUnit}px;
+    margin: 0 ${({ theme }) => theme.gridUnit * 1.5}px 0 ${({ theme }) => theme.gridUnit}px;
   }
 `;
 
@@ -124,12 +119,7 @@ export class ExploreChartHeader extends React.PureComponent {
     if (this.canAddReports()) {
       const { user, chart } = this.props;
       // this is in the case that there is an anonymous user.
-      this.props.fetchUISpecificReport(
-        user.userId,
-        'chart_id',
-        'charts',
-        chart.id,
-      );
+      this.props.fetchUISpecificReport(user.userId, 'chart_id', 'charts', chart.id);
     }
     if (dashboardId) {
       this.fetchChartDashboardData();
@@ -143,15 +133,11 @@ export class ExploreChartHeader extends React.PureComponent {
     });
     const chart = response.json.result;
     const dashboards = chart.dashboards || [];
-    const dashboard =
-      dashboardId &&
-      dashboards.length &&
-      dashboards.find(d => d.id === dashboardId);
+    const dashboard = dashboardId && dashboards.length && dashboards.find(d => d.id === dashboardId);
 
     if (dashboard && dashboard.json_metadata) {
       // setting the chart to use the dashboard custom label colors if any
-      const labelColors =
-        JSON.parse(dashboard.json_metadata).label_colors || {};
+      const labelColors = JSON.parse(dashboard.json_metadata).label_colors || {};
       const categoricalNamespace = CategoricalColorNamespace.getNamespace();
 
       Object.keys(labelColors).forEach(label => {
@@ -232,9 +218,7 @@ export class ExploreChartHeader extends React.PureComponent {
     }
     const roles = Object.keys(user.roles || []);
     const permissions = roles.map(key =>
-      user.roles[key].filter(
-        perms => perms[0] === 'menu_access' && perms[1] === 'Manage',
-      ),
+      user.roles[key].filter(perms => perms[0] === 'menu_access' && perms[1] === 'Manage'),
     );
     return permissions[0].length > 0;
   }
@@ -250,18 +234,13 @@ export class ExploreChartHeader extends React.PureComponent {
     } = this.props.chart;
     // TODO: when will get appropriate design for multi queries use all results and not first only
     const queryResponse = queriesResponse?.[0];
-    const chartFinished = ['failed', 'rendered', 'success'].includes(
-      this.props.chart.chartStatus,
-    );
+    const chartFinished = ['failed', 'rendered', 'success'].includes(this.props.chart.chartStatus);
     return (
       <StyledHeader id="slice-header" className="panel-title-large">
         <div className="title-panel">
           {slice?.certified_by && (
             <>
-              <CertifiedIcon
-                certifiedBy={slice.certified_by}
-                details={slice.certification_details}
-              />{' '}
+              <CertifiedIcon certifiedBy={slice.certified_by} details={slice.certification_details} />{' '}
             </>
           )}
           <EditableTitle
@@ -287,16 +266,8 @@ export class ExploreChartHeader extends React.PureComponent {
                 onSave={this.props.sliceUpdated}
                 slice={this.props.slice}
               />
-              <Tooltip
-                id="edit-desc-tooltip"
-                title={t('Edit chart properties')}
-              >
-                <span
-                  role="button"
-                  tabIndex={0}
-                  className="edit-desc-icon"
-                  onClick={this.openPropertiesModal}
-                >
+              <Tooltip id="edit-desc-tooltip" title={t('Edit chart properties')}>
+                <span role="button" tabIndex={0} className="edit-desc-icon" onClick={this.openPropertiesModal}>
                   <i className="fa fa-edit" />
                 </span>
               </Tooltip>
@@ -312,16 +283,10 @@ export class ExploreChartHeader extends React.PureComponent {
         </div>
         <div className="right-button-panel">
           {chartFinished && queryResponse && (
-            <RowCountLabel
-              rowcount={Number(queryResponse.rowcount) || 0}
-              limit={Number(formData.row_limit) || 0}
-            />
+            <RowCountLabel rowcount={Number(queryResponse.rowcount) || 0} limit={Number(formData.row_limit) || 0} />
           )}
           {chartFinished && queryResponse && queryResponse.is_cached && (
-            <CachedLabel
-              onClick={this.postChartFormData.bind(this)}
-              cachedTimestamp={queryResponse.cached_dttm}
-            />
+            <CachedLabel onClick={this.postChartFormData.bind(this)} cachedTimestamp={queryResponse.cached_dttm} />
           )}
           <Timer
             startTime={chartUpdateStartTime}
@@ -360,10 +325,7 @@ export class ExploreChartHeader extends React.PureComponent {
 ExploreChartHeader.propTypes = propTypes;
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    { sliceUpdated, fetchUISpecificReport, toggleActive, deleteActiveReport },
-    dispatch,
-  );
+  return bindActionCreators({ sliceUpdated, fetchUISpecificReport, toggleActive, deleteActiveReport }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(ExploreChartHeader);

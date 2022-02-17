@@ -34,9 +34,7 @@ const allColumns = {
   }),
 };
 
-const columnsConfig = isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP)
-  ? dndEntity
-  : allColumns;
+const columnsConfig = isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP) ? dndEntity : allColumns;
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -73,17 +71,7 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Clustering Radius'),
               default: '60',
-              choices: formatSelectOptions([
-                '0',
-                '20',
-                '40',
-                '60',
-                '80',
-                '100',
-                '200',
-                '500',
-                '1000',
-              ]),
+              choices: formatSelectOptions(['0', '20', '40', '60', '80', '100', '200', '500', '1000']),
               description: t(
                 'The radius (in pixels) the algorithm uses to define a cluster. ' +
                   'Choose 0 to turn off clustering, but beware that a large ' +
@@ -114,9 +102,7 @@ const config: ControlPanelConfig = {
               ),
               mapStateToProps: state => {
                 const datasourceChoices = columnChoices(state.datasource);
-                const choices: [string, string][] = formatSelectOptions([
-                  'Auto',
-                ]);
+                const choices: [string, string][] = formatSelectOptions(['Auto']);
                 return {
                   choices: choices.concat(datasourceChoices),
                 };
@@ -132,9 +118,7 @@ const config: ControlPanelConfig = {
               label: t('Point Radius Unit'),
               default: 'Pixels',
               choices: formatSelectOptions(['Pixels', 'Miles', 'Kilometers']),
-              description: t(
-                'The unit of measure for the specified point radius',
-              ),
+              description: t('The unit of measure for the specified point radius'),
             },
           },
         ],
@@ -170,18 +154,10 @@ const config: ControlPanelConfig = {
               type: 'SelectControl',
               label: t('Cluster label aggregator'),
               clearable: false,
-              choices: formatSelectOptions([
-                'sum',
-                'mean',
-                'min',
-                'max',
-                'std',
-                'var',
-              ]),
+              choices: formatSelectOptions(['sum', 'mean', 'min', 'max', 'std', 'var']),
               default: 'sum',
               description: t(
-                'Aggregate function applied to the list of points ' +
-                  'in each cluster to produce the cluster label.',
+                'Aggregate function applied to the list of points ' + 'in each cluster to produce the cluster label.',
               ),
             },
           },
@@ -198,9 +174,7 @@ const config: ControlPanelConfig = {
               type: 'CheckboxControl',
               label: t('Live render'),
               default: true,
-              description: t(
-                'Points and clusters will update as the viewport is being changed',
-              ),
+              description: t('Points and clusters will update as the viewport is being changed'),
             },
           },
         ],
@@ -216,10 +190,7 @@ const config: ControlPanelConfig = {
                 ['mapbox://styles/mapbox/streets-v9', 'Streets'],
                 ['mapbox://styles/mapbox/dark-v9', 'Dark'],
                 ['mapbox://styles/mapbox/light-v9', 'Light'],
-                [
-                  'mapbox://styles/mapbox/satellite-streets-v9',
-                  'Satellite Streets',
-                ],
+                ['mapbox://styles/mapbox/satellite-streets-v9', 'Satellite Streets'],
                 ['mapbox://styles/mapbox/satellite-v9', 'Satellite'],
                 ['mapbox://styles/mapbox/outdoors-v9', 'Outdoors'],
               ],
@@ -236,9 +207,7 @@ const config: ControlPanelConfig = {
               label: t('Opacity'),
               default: 1,
               isFloat: true,
-              description: t(
-                'Opacity of all clusters, points, and labels. Between 0 and 1.',
-              ),
+              description: t('Opacity of all clusters, points, and labels. Between 0 and 1.'),
             },
           },
         ],
@@ -321,8 +290,7 @@ const config: ControlPanelConfig = {
   controlOverrides: {
     groupby: {
       description: t(
-        'One or many controls to group by. If grouping, latitude ' +
-          'and longitude columns must be present.',
+        'One or many controls to group by. If grouping, latitude ' + 'and longitude columns must be present.',
       ),
     },
   },

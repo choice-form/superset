@@ -25,10 +25,7 @@ import { Filter } from '../../types';
 
 // When some fields in form changed we need re-fetch data for Filter defaultValue
 // eslint-disable-next-line import/prefer-default-export
-export const useBackendFormUpdate = (
-  form: FormInstance<NativeFiltersForm>,
-  filterId: string,
-) => {
+export const useBackendFormUpdate = (form: FormInstance<NativeFiltersForm>, filterId: string) => {
   const forceUpdate = useForceUpdate();
   const formFilter = (form.getFieldValue('filters') || {})[filterId];
   useEffect(() => {
@@ -67,34 +64,22 @@ export const useDefaultValue = (
   };
 
   useEffect(() => {
-    setHasDefaultValue(
-      defaultToFirstItem
-        ? false
-        : !!formFilter?.defaultDataMask?.filterState?.value,
-    );
+    setHasDefaultValue(defaultToFirstItem ? false : !!formFilter?.defaultDataMask?.filterState?.value);
     // TODO: this logic should be unhardcoded
   }, [defaultToFirstItem, enableEmptyFilter]);
 
   useEffect(() => {
-    setHasDefaultValue(
-      defaultToFirstItem
-        ? false
-        : !!filterToEdit?.defaultDataMask?.filterState?.value,
-    );
+    setHasDefaultValue(defaultToFirstItem ? false : !!filterToEdit?.defaultDataMask?.filterState?.value);
   }, []);
 
   useEffect(() => {
     let tooltip = '';
     if (defaultToFirstItem) {
-      tooltip = t(
-        'Default value set automatically when "Default to first item" is checked',
-      );
+      tooltip = t('Default value set automatically when "Default to first item" is checked');
     } else if (isRequired) {
       tooltip = t('Default value must be set when "Required" is checked');
     } else if (hasDefaultValue) {
-      tooltip = t(
-        'Default value must be set when "Filter has default value" is checked',
-      );
+      tooltip = t('Default value must be set when "Filter has default value" is checked');
     }
     setDefaultValueTooltip(tooltip);
   }, [hasDefaultValue, isRequired, defaultToFirstItem]);

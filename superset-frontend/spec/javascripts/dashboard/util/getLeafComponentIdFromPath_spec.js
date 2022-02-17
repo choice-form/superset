@@ -29,8 +29,7 @@ describe('getLeafComponentIdFromPath', () => {
   });
 
   it('should not return label component', () => {
-    const updatedPath =
-      dashboardFilters[filterId].directPathToFilter.concat('LABEL-test123');
+    const updatedPath = dashboardFilters[filterId].directPathToFilter.concat('LABEL-test123');
     expect(getLeafComponentIdFromPath(updatedPath)).toBe(leaf);
   });
 });

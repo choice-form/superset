@@ -29,12 +29,7 @@ const CONTAINER_STYLE = {
   padding: 32,
 };
 
-export default function FallbackComponent({
-  componentStack,
-  error,
-  height,
-  width,
-}: Props) {
+export default function FallbackComponent({ componentStack, error, height, width }: Props) {
   return (
     <div style={{ ...CONTAINER_STYLE, height, width }}>
       <div>

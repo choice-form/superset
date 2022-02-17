@@ -27,10 +27,7 @@ export const fromHierarchy = (hierarchy: string[]): DrillDownType => {
   };
 };
 
-export const drillDown = (
-  value: DrillDownType,
-  selectValue: string,
-): DrillDownType => {
+export const drillDown = (value: DrillDownType, selectValue: string): DrillDownType => {
   const idx = value.currentIdx;
   const len = value.hierarchy.length;
 
@@ -63,10 +60,7 @@ export const rollUp = (value: DrillDownType): DrillDownType => {
   };
 };
 
-export const getColumn = (
-  value: DrillDownType | undefined | null,
-  hierarchy: string[],
-): string => {
+export const getColumn = (value: DrillDownType | undefined | null, hierarchy: string[]): string => {
   if (value) {
     return value.hierarchy[value.currentIdx];
   }
@@ -75,10 +69,7 @@ export const getColumn = (
   return val.hierarchy[val.currentIdx];
 };
 
-export const getFilters = (
-  value: DrillDownType | undefined | null,
-  hierarchy: string[],
-): any[] => {
+export const getFilters = (value: DrillDownType | undefined | null, hierarchy: string[]): any[] => {
   if (value) {
     return value.filters;
   }

@@ -31,9 +31,7 @@ export default function buildFilterScopeTreeEntry({
     checkedFilterFields,
     activeFilterField,
   });
-  const editingList = activeFilterField
-    ? [activeFilterField]
-    : checkedFilterFields;
+  const editingList = activeFilterField ? [activeFilterField] : checkedFilterFields;
   const selectedChartId = getSelectedChartIdForFilterScopeTree({
     checkedFilterFields,
     activeFilterField,
@@ -50,9 +48,7 @@ export default function buildFilterScopeTreeEntry({
     });
   });
   const checked = [...checkedChartIdSet];
-  const expanded = filterScopeMap[key]
-    ? filterScopeMap[key].expanded
-    : getFilterScopeParentNodes(nodes, 1);
+  const expanded = filterScopeMap[key] ? filterScopeMap[key].expanded : getFilterScopeParentNodes(nodes, 1);
 
   return {
     [key]: {

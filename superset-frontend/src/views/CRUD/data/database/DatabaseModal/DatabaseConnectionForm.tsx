@@ -88,21 +88,11 @@ interface FieldPropTypes {
   editNewDb?: boolean;
 }
 
-const CredentialsInfo = ({
-  changeMethods,
-  isEditMode,
-  db,
-  editNewDb,
-}: FieldPropTypes) => {
-  const [uploadOption, setUploadOption] = useState<number>(
-    CredentialInfoOptions.jsonUpload.valueOf(),
-  );
-  const [fileToUpload, setFileToUpload] = useState<string | null | undefined>(
-    null,
-  );
+const CredentialsInfo = ({ changeMethods, isEditMode, db, editNewDb }: FieldPropTypes) => {
+  const [uploadOption, setUploadOption] = useState<number>(CredentialInfoOptions.jsonUpload.valueOf());
+  const [fileToUpload, setFileToUpload] = useState<string | null | undefined>(null);
   const [isPublic, setIsPublic] = useState<boolean>(true);
-  const showCredentialsInfo =
-    db?.engine === 'gsheets' ? !isEditMode && !isPublic : !isEditMode;
+  const showCredentialsInfo = db?.engine === 'gsheets' ? !isEditMode && !isPublic : !isEditMode;
   // a database that has an optional encrypted field has an encrypted_extra that is an empty object, this checks for that.
   const isEncrypted = isEditMode && db?.encrypted_extra !== '{}';
   const encryptedField = db?.engine && encryptedCredentialsMap[db.engine];
@@ -114,18 +104,13 @@ const CredentialsInfo = ({
     <CredentialInfoForm>
       {db?.engine === 'gsheets' && (
         <div className="catalog-type-select">
-          <FormLabel
-            css={(theme: SupersetTheme) => labelMarginBotton(theme)}
-            required
-          >
+          <FormLabel css={(theme: SupersetTheme) => labelMarginBotton(theme)} required>
             {t('Type of Google Sheets allowed')}
           </FormLabel>
           <Select
             style={{ width: '100%' }}
             defaultValue={isEncrypted ? 'false' : 'true'}
-            onChange={(value: string) =>
-              setIsPublic(castStringToBoolean(value))
-            }
+            onChange={(value: string) => setIsPublic(castStringToBoolean(value))}
           >
             <Select.Option value="true" key={1}>
               {t('Publicly shared sheets only')}
@@ -138,17 +123,9 @@ const CredentialsInfo = ({
       )}
       {showCredentialsInfo && (
         <>
-          <FormLabel required>
-            {t('How∂ do you want to enter service account credentials?')}
-          </FormLabel>
-          <Select
-            defaultValue={uploadOption}
-            style={{ width: '100%' }}
-            onChange={option => setUploadOption(option)}
-          >
-            <Select.Option value={CredentialInfoOptions.jsonUpload}>
-              {t('Upload JSON file')}
-            </Select.Option>
+          <FormLabel required>{t('How∂ do you want to enter service account credentials?')}</FormLabel>
+          <Select defaultValue={uploadOption} style={{ width: '100%' }} onChange={option => setUploadOption(option)}>
+            <Select.Option value={CredentialInfoOptions.jsonUpload}>{t('Upload JSON file')}</Select.Option>
 
             <Select.Option value={CredentialInfoOptions.copyPaste}>
               {t('Copy and Paste JSON credentials')}
@@ -156,9 +133,7 @@ const CredentialsInfo = ({
           </Select>
         </>
       )}
-      {uploadOption === CredentialInfoOptions.copyPaste ||
-      isEditMode ||
-      editNewDb ? (
+      {uploadOption === CredentialInfoOptions.copyPaste || isEditMode || editNewDb ? (
         <div className="input-container">
           <FormLabel required>{t('Service Account')}</FormLabel>
           <textarea
@@ -168,33 +143,21 @@ const CredentialsInfo = ({
             onChange={changeMethods.onParametersChange}
             placeholder="Paste content of service credentials JSON file here"
           />
-          <span className="label-paste">
-            {t('Copy and paste the entire service account .json file here')}
-          </span>
+          <span className="label-paste">{t('Copy and paste the entire service account .json file here')}</span>
         </div>
       ) : (
         showCredentialsInfo && (
-          <div
-            className="input-container"
-            css={(theme: SupersetTheme) => infoTooltip(theme)}
-          >
+          <div className="input-container" css={(theme: SupersetTheme) => infoTooltip(theme)}>
             <div css={{ display: 'flex', alignItems: 'center' }}>
               <FormLabel required>{t('Upload Credentials')}</FormLabel>
               <InfoTooltip
-                tooltip={t(
-                  'Use the JSON file you automatically downloaded when creating your service account.',
-                )}
+                tooltip={t('Use the JSON file you automatically downloaded when creating your service account.')}
                 viewBox="0 0 24 24"
               />
             </div>
 
             {!fileToUpload && (
-              <Button
-                className="input-upload-btn"
-                onClick={() =>
-                  document?.getElementById('selectedFile')?.click()
-                }
-              >
+              <Button className="input-upload-btn" onClick={() => document?.getElementById('selectedFile')?.click()}>
                 {t('Choose File')}
               </Button>
             )}
@@ -233,9 +196,7 @@ const CredentialsInfo = ({
                     checked: false,
                   },
                 });
-                (
-                  document.getElementById('selectedFile') as HTMLInputElement
-                ).value = null as any;
+                (document.getElementById('selectedFile') as HTMLInputElement).value = null as any;
               }}
             />
           </div>
@@ -245,21 +206,13 @@ const CredentialsInfo = ({
   );
 };
 
-const TableCatalog = ({
-  required,
-  changeMethods,
-  getValidation,
-  validationErrors,
-  db,
-}: FieldPropTypes) => {
+const TableCatalog = ({ required, changeMethods, getValidation, validationErrors, db }: FieldPropTypes) => {
   const tableCatalog = db?.catalog || [];
   const catalogError = validationErrors || {};
 
   return (
     <StyledCatalogTable>
-      <h4 className="gsheet-title">
-        {t('Connect Google Sheets as tables to this database')}
-      </h4>
+      <h4 className="gsheet-title">{t('Connect Google Sheets as tables to this database')}</h4>
       <div>
         {tableCatalog?.map((sheet: CatalogObject, idx: number) => (
           <>
@@ -285,10 +238,7 @@ const TableCatalog = ({
                 value={sheet.name}
               />
               {tableCatalog?.length > 1 && (
-                <CloseOutlined
-                  className="catalog-delete"
-                  onClick={() => changeMethods.onRemoveTableCatalog(idx)}
-                />
+                <CloseOutlined className="catalog-delete" onClick={() => changeMethods.onRemoveTableCatalog(idx)} />
               )}
             </div>
             <ValidatedInput
@@ -323,22 +273,14 @@ const TableCatalog = ({
   );
 };
 
-const hostField = ({
-  required,
-  changeMethods,
-  getValidation,
-  validationErrors,
-  db,
-}: FieldPropTypes) => (
+const hostField = ({ required, changeMethods, getValidation, validationErrors, db }: FieldPropTypes) => (
   <ValidatedInput
     id="host"
     name="host"
     value={db?.parameters?.host}
     required={required}
     hasTooltip
-    tooltipText={t(
-      'This can be either an IP address (e.g. 127.0.0.1) or a domain name (e.g. mydatabase.com).',
-    )}
+    tooltipText={t('This can be either an IP address (e.g. 127.0.0.1) or a domain name (e.g. mydatabase.com).')}
     validationMethods={{ onBlur: getValidation }}
     errorMessage={validationErrors?.host}
     placeholder="e.g. 127.0.0.1"
@@ -347,13 +289,7 @@ const hostField = ({
     onChange={changeMethods.onParametersChange}
   />
 );
-const portField = ({
-  required,
-  changeMethods,
-  getValidation,
-  validationErrors,
-  db,
-}: FieldPropTypes) => (
+const portField = ({ required, changeMethods, getValidation, validationErrors, db }: FieldPropTypes) => (
   <>
     <ValidatedInput
       id="port"
@@ -370,13 +306,7 @@ const portField = ({
     />
   </>
 );
-const databaseField = ({
-  required,
-  changeMethods,
-  getValidation,
-  validationErrors,
-  db,
-}: FieldPropTypes) => (
+const databaseField = ({ required, changeMethods, getValidation, validationErrors, db }: FieldPropTypes) => (
   <ValidatedInput
     id="database"
     name="database"
@@ -390,13 +320,7 @@ const databaseField = ({
     helpText={t('Copy the name of the  database you are trying to connect to.')}
   />
 );
-const usernameField = ({
-  required,
-  changeMethods,
-  getValidation,
-  validationErrors,
-  db,
-}: FieldPropTypes) => (
+const usernameField = ({ required, changeMethods, getValidation, validationErrors, db }: FieldPropTypes) => (
   <ValidatedInput
     id="username"
     name="username"
@@ -430,12 +354,7 @@ const passwordField = ({
     onChange={changeMethods.onParametersChange}
   />
 );
-const displayField = ({
-  changeMethods,
-  getValidation,
-  validationErrors,
-  db,
-}: FieldPropTypes) => (
+const displayField = ({ changeMethods, getValidation, validationErrors, db }: FieldPropTypes) => (
   <>
     <ValidatedInput
       id="database_name"
@@ -447,20 +366,12 @@ const displayField = ({
       placeholder=""
       label={t('Display Name')}
       onChange={changeMethods.onChange}
-      helpText={t(
-        'Pick a nickname for this database to display as in Superset.',
-      )}
+      helpText={t('Pick a nickname for this database to display as in Superset.')}
     />
   </>
 );
 
-const queryField = ({
-  required,
-  changeMethods,
-  getValidation,
-  validationErrors,
-  db,
-}: FieldPropTypes) => (
+const queryField = ({ required, changeMethods, getValidation, validationErrors, db }: FieldPropTypes) => (
   <ValidatedInput
     id="query_input"
     name="query_input"
@@ -475,12 +386,7 @@ const queryField = ({
   />
 );
 
-const forceSSLField = ({
-  isEditMode,
-  changeMethods,
-  db,
-  sslForced,
-}: FieldPropTypes) => (
+const forceSSLField = ({ isEditMode, changeMethods, db, sslForced }: FieldPropTypes) => (
   <div css={(theme: SupersetTheme) => infoTooltip(theme)}>
     <Switch
       disabled={sslForced && !isEditMode}
@@ -497,11 +403,7 @@ const forceSSLField = ({
       }}
     />
     <span css={toggleStyle}>SSL</span>
-    <InfoTooltip
-      tooltip={t('SSL Mode "require" will be used.')}
-      placement="right"
-      viewBox="0 -5 24 24"
-    />
+    <InfoTooltip tooltip={t('SSL Mode "require" will be used.')} placement="right" viewBox="0 -5 24 24" />
   </div>
 );
 
@@ -539,18 +441,10 @@ const DatabaseConnectionForm = ({
   editNewDb?: boolean;
   dbModel: DatabaseForm;
   db: Partial<DatabaseObject> | null;
-  onParametersChange: (
-    event: FormEvent<InputProps> | { target: HTMLInputElement },
-  ) => void;
-  onChange: (
-    event: FormEvent<InputProps> | { target: HTMLInputElement },
-  ) => void;
-  onQueryChange: (
-    event: FormEvent<InputProps> | { target: HTMLInputElement },
-  ) => void;
-  onParametersUploadFileChange?: (
-    event: FormEvent<InputProps> | { target: HTMLInputElement },
-  ) => void;
+  onParametersChange: (event: FormEvent<InputProps> | { target: HTMLInputElement }) => void;
+  onChange: (event: FormEvent<InputProps> | { target: HTMLInputElement }) => void;
+  onQueryChange: (event: FormEvent<InputProps> | { target: HTMLInputElement }) => void;
+  onParametersUploadFileChange?: (event: FormEvent<InputProps> | { target: HTMLInputElement }) => void;
   onAddTableCatalog: () => void;
   onRemoveTableCatalog: (idx: number) => void;
   validationErrors: JsonObject | null;
@@ -559,16 +453,11 @@ const DatabaseConnectionForm = ({
   <>
     <div
       // @ts-ignore
-      css={(theme: SupersetTheme) => [
-        formScrollableStyles,
-        validatedFormStyles(theme),
-      ]}
+      css={(theme: SupersetTheme) => [formScrollableStyles, validatedFormStyles(theme)]}
     >
       {parameters &&
         FormFieldOrder.filter(
-          (key: string) =>
-            Object.keys(parameters.properties).includes(key) ||
-            key === 'database_name',
+          (key: string) => Object.keys(parameters.properties).includes(key) || key === 'database_name',
         ).map(field =>
           FORM_FIELD_MAP[field]({
             required: parameters.required?.includes(field),

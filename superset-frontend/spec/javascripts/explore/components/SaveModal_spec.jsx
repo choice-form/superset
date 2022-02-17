@@ -218,9 +218,7 @@ describe('SaveModal', () => {
           wrapper.instance().saveOrOverwrite(true);
           defaultProps.actions.saveSlice().then(() => {
             expect(window.location.assign.callCount).toEqual(1);
-            expect(window.location.assign.getCall(0).args[0]).toEqual(
-              'http://localhost/mock_dashboard/',
-            );
+            expect(window.location.assign.getCall(0).args[0]).toEqual('http://localhost/mock_dashboard/');
             done();
           });
         }));
@@ -234,9 +232,7 @@ describe('SaveModal', () => {
           wrapper.instance().saveOrOverwrite(false);
           defaultProps.actions.saveSlice().then(() => {
             expect(window.location.assign.callCount).toEqual(1);
-            expect(window.location.assign.getCall(0).args[0]).toEqual(
-              '/mock_slice/',
-            );
+            expect(window.location.assign.getCall(0).args[0]).toEqual('/mock_slice/');
             done();
           });
         }));
@@ -247,9 +243,7 @@ describe('SaveModal', () => {
           wrapper.instance().saveOrOverwrite(false);
           defaultProps.actions.saveSlice().then(() => {
             expect(window.location.assign.callCount).toEqual(1);
-            expect(window.location.assign.getCall(0).args[0]).toEqual(
-              '/mock_slice/',
-            );
+            expect(window.location.assign.getCall(0).args[0]).toEqual('/mock_slice/');
             done();
           });
         }));
@@ -281,25 +275,17 @@ describe('SaveModal', () => {
     it('calls correct actions on success', () =>
       makeRequest().then(() => {
         expect(dispatch.callCount).toBe(1);
-        expect(dispatch.getCall(0).args[0].type).toBe(
-          saveModalActions.FETCH_DASHBOARDS_SUCCEEDED,
-        );
+        expect(dispatch.getCall(0).args[0].type).toBe(saveModalActions.FETCH_DASHBOARDS_SUCCEEDED);
 
         return Promise.resolve();
       }));
 
     it('calls correct actions on error', () => {
-      fetchMock.get(
-        saveEndpoint,
-        { throws: 'error' },
-        { overwriteRoutes: true },
-      );
+      fetchMock.get(saveEndpoint, { throws: 'error' }, { overwriteRoutes: true });
 
       return makeRequest().then(() => {
         expect(dispatch.callCount).toBe(1);
-        expect(dispatch.getCall(0).args[0].type).toBe(
-          saveModalActions.FETCH_DASHBOARDS_FAILED,
-        );
+        expect(dispatch.getCall(0).args[0].type).toBe(saveModalActions.FETCH_DASHBOARDS_FAILED);
 
         fetchMock.get(saveEndpoint, mockDashboardData, {
           overwriteRoutes: true,

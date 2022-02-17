@@ -46,25 +46,19 @@ describe('chart actions', () => {
 
   beforeEach(() => {
     dispatch = sinon.spy();
-    getExploreUrlStub = sinon
-      .stub(exploreUtils, 'getExploreUrl')
-      .callsFake(() => MOCK_URL);
-    getChartDataUriStub = sinon
-      .stub(exploreUtils, 'getChartDataUri')
-      .callsFake(() => URI(MOCK_URL));
+    getExploreUrlStub = sinon.stub(exploreUtils, 'getExploreUrl').callsFake(() => MOCK_URL);
+    getChartDataUriStub = sinon.stub(exploreUtils, 'getChartDataUri').callsFake(() => URI(MOCK_URL));
     fakeMetadata = { useLegacyApi: true };
     metadataRegistryStub = sinon
       .stub(chartlib, 'getChartMetadataRegistry')
       .callsFake(() => ({ get: () => fakeMetadata }));
-    buildQueryRegistryStub = sinon
-      .stub(chartlib, 'getChartBuildQueryRegistry')
-      .callsFake(() => ({
-        get: () => () => ({
-          some_param: 'fake query!',
-          result_type: 'full',
-          result_format: 'json',
-        }),
-      }));
+    buildQueryRegistryStub = sinon.stub(chartlib, 'getChartBuildQueryRegistry').callsFake(() => ({
+      get: () => () => ({
+        some_param: 'fake query!',
+        result_type: 'full',
+        result_format: 'json',
+      }),
+    }));
   });
 
   afterEach(() => {
@@ -175,11 +169,7 @@ describe('chart actions', () => {
     });
 
     it('should dispatch CHART_UPDATE_FAILED action upon non-timeout non-abort failure', () => {
-      fetchMock.post(
-        MOCK_URL,
-        { throws: { statusText: 'misc error' } },
-        { overwriteRoutes: true },
-      );
+      fetchMock.post(MOCK_URL, { throws: { statusText: 'misc error' } }, { overwriteRoutes: true });
 
       const timeoutInSec = 100; // Set to a time that is longer than the time this will take to fail
       const actionThunk = actions.postChartFormData({}, false, timeoutInSec);

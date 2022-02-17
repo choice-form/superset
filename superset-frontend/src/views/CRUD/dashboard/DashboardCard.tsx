@@ -77,9 +77,7 @@ function DashboardCard({
             role="button"
             tabIndex={0}
             className="action-button"
-            onClick={() =>
-              openDashboardEditModal && openDashboardEditModal(dashboard)
-            }
+            onClick={() => openDashboardEditModal && openDashboardEditModal(dashboard)}
             data-test="dashboard-card-option-edit-button"
           >
             <Icons.EditAlt iconSize="l" data-test="edit-alt" /> {t('Edit')}
@@ -105,19 +103,11 @@ function DashboardCard({
             title={t('Please confirm')}
             description={
               <>
-                {t('Are you sure you want to delete')}{' '}
-                <b>{dashboard.dashboard_title}</b>?
+                {t('Are you sure you want to delete')} <b>{dashboard.dashboard_title}</b>?
               </>
             }
             onConfirm={() =>
-              handleDashboardDelete(
-                dashboard,
-                refreshData,
-                addSuccessToast,
-                addDangerToast,
-                dashboardFilter,
-                userId,
-              )
+              handleDashboardDelete(dashboard, refreshData, addSuccessToast, addDangerToast, dashboardFilter, userId)
             }
           >
             {confirmDelete => (
@@ -149,14 +139,8 @@ function DashboardCard({
         title={dashboard.dashboard_title}
         certifiedBy={dashboard.certified_by}
         certificationDetails={dashboard.certification_details}
-        titleRight={
-          <Label>{dashboard.published ? t('published') : t('draft')}</Label>
-        }
-        cover={
-          !isFeatureEnabled(FeatureFlag.THUMBNAILS) || !showThumbnails ? (
-            <></>
-          ) : null
-        }
+        titleRight={<Label>{dashboard.published ? t('published') : t('draft')}</Label>}
+        cover={!isFeatureEnabled(FeatureFlag.THUMBNAILS) || !showThumbnails ? <></> : null}
         url={bulkSelectEnabled ? undefined : dashboard.url}
         linkComponent={Link}
         imgURL={dashboard.thumbnail_url}
@@ -170,11 +154,7 @@ function DashboardCard({
               e.preventDefault();
             }}
           >
-            <FaveStar
-              itemId={dashboard.id}
-              saveFaveStar={saveFavoriteStatus}
-              isStarred={favoriteStatus}
-            />
+            <FaveStar itemId={dashboard.id} saveFaveStar={saveFavoriteStatus} isStarred={favoriteStatus} />
             <Dropdown overlay={menu}>
               <Icons.MoreVert iconColor={theme.colors.grayscale.base} />
             </Dropdown>

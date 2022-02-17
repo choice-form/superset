@@ -19,10 +19,7 @@
 import { isEmpty } from 'lodash';
 import { mapValues, flow, keyBy } from 'lodash/fp';
 
-import {
-  getChartIdAndColumnFromFilterKey,
-  getDashboardFilterKey,
-} from './getDashboardFilterKey';
+import { getChartIdAndColumnFromFilterKey, getDashboardFilterKey } from './getDashboardFilterKey';
 import { CHART_TYPE } from './componentTypes';
 import { DASHBOARD_FILTER_SCOPE_GLOBAL } from '../reducers/dashboardFilters';
 
@@ -49,22 +46,18 @@ export function isFilterBox(chartId) {
 export function getAppliedFilterValues(chartId) {
   // use cached data if possible
   if (!(chartId in appliedFilterValuesByChart)) {
-    const applicableFilters = Object.entries(activeFilters).filter(
-      ([, { scope: chartIds }]) => chartIds.includes(chartId),
+    const applicableFilters = Object.entries(activeFilters).filter(([, { scope: chartIds }]) =>
+      chartIds.includes(chartId),
     );
     appliedFilterValuesByChart[chartId] = flow(
-      keyBy(
-        ([filterKey]) => getChartIdAndColumnFromFilterKey(filterKey).column,
-      ),
+      keyBy(([filterKey]) => getChartIdAndColumnFromFilterKey(filterKey).column),
       mapValues(([, { values }]) => values),
     )(applicableFilters);
   }
   return appliedFilterValuesByChart[chartId];
 }
 
-export function getChartIdsInFilterScope({
-  filterScope = DASHBOARD_FILTER_SCOPE_GLOBAL,
-}) {
+export function getChartIdsInFilterScope({ filterScope = DASHBOARD_FILTER_SCOPE_GLOBAL }) {
   function traverse(chartIds = [], component = {}, immuneChartIds = []) {
     if (!component) {
       return;
@@ -78,17 +71,13 @@ export function getChartIdsInFilterScope({
     ) {
       chartIds.push(component.meta.chartId);
     } else if (component.children) {
-      component.children.forEach(child =>
-        traverse(chartIds, allComponents[child], immuneChartIds),
-      );
+      component.children.forEach(child => traverse(chartIds, allComponents[child], immuneChartIds));
     }
   }
 
   const chartIds = [];
   const { scope: scopeComponentIds, immune: immuneChartIds } = filterScope;
-  scopeComponentIds.forEach(componentId =>
-    traverse(chartIds, allComponents[componentId], immuneChartIds),
-  );
+  scopeComponentIds.forEach(componentId => traverse(chartIds, allComponents[componentId], immuneChartIds));
 
   return chartIds;
 }
@@ -98,9 +87,7 @@ export function getChartIdsInFilterScope({
 // values: array of selected values
 // scope: array of chartIds that applicable to the filter field.
 export function buildActiveFilters({ dashboardFilters = {}, components = {} }) {
-  allFilterBoxChartIds = Object.values(dashboardFilters).map(
-    filter => filter.chartId,
-  );
+  allFilterBoxChartIds = Object.values(dashboardFilters).map(filter => filter.chartId);
 
   // clear cache
   if (!isEmpty(components)) {
@@ -112,11 +99,7 @@ export function buildActiveFilters({ dashboardFilters = {}, components = {} }) {
     const nonEmptyFilters = {};
 
     Object.keys(columns).forEach(column => {
-      if (
-        Array.isArray(columns[column])
-          ? columns[column].length
-          : columns[column] !== undefined
-      ) {
+      if (Array.isArray(columns[column]) ? columns[column].length : columns[column] !== undefined) {
         // remove filter itself
         const scope = getChartIdsInFilterScope({
           filterScope: scopes[column],

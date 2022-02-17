@@ -21,9 +21,7 @@ import { styled, t } from 'src/core';
 import { Tooltip } from 'src/components/Tooltip';
 import { useDispatch, useSelector } from 'react-redux';
 import EditableTitle from 'src/components/EditableTitle';
-import SliceHeaderControls, {
-  SliceHeaderControlsProps,
-} from 'src/dashboard/components/SliceHeaderControls';
+import SliceHeaderControls, { SliceHeaderControlsProps } from 'src/dashboard/components/SliceHeaderControls';
 import FiltersBadge from 'src/dashboard/components/FiltersBadge';
 import Icons from 'src/components/Icons';
 import { RootState } from 'src/dashboard/types';
@@ -85,9 +83,7 @@ const SliceHeader: FC<SliceHeaderProps> = ({
 }) => {
   const dispatch = useDispatch();
   // TODO: change to indicator field after it will be implemented
-  const crossFilterValue = useSelector<RootState, any>(
-    state => state.dataMask[slice?.slice_id]?.filterState?.value,
-  );
+  const crossFilterValue = useSelector<RootState, any>(state => state.dataMask[slice?.slice_id]?.filterState?.value);
 
   const indicator = useMemo(
     () => ({
@@ -113,29 +109,13 @@ const SliceHeader: FC<SliceHeaderProps> = ({
           showTooltip={false}
         />
         {!!Object.values(annotationQuery).length && (
-          <Tooltip
-            id="annotations-loading-tooltip"
-            placement="top"
-            title={annotationsLoading}
-          >
-            <i
-              role="img"
-              aria-label={annotationsLoading}
-              className="fa fa-refresh warning"
-            />
+          <Tooltip id="annotations-loading-tooltip" placement="top" title={annotationsLoading}>
+            <i role="img" aria-label={annotationsLoading} className="fa fa-refresh warning" />
           </Tooltip>
         )}
         {!!Object.values(annotationError).length && (
-          <Tooltip
-            id="annoation-errors-tooltip"
-            placement="top"
-            title={annotationsError}
-          >
-            <i
-              role="img"
-              aria-label={annotationsError}
-              className="fa fa-exclamation-circle danger"
-            />
+          <Tooltip id="annoation-errors-tooltip" placement="top" title={annotationsError}>
+            <i role="img" aria-label={annotationsError} className="fa fa-exclamation-circle danger" />
           </Tooltip>
         )}
       </div>
@@ -145,16 +125,9 @@ const SliceHeader: FC<SliceHeaderProps> = ({
             {crossFilterValue && (
               <Tooltip
                 placement="top"
-                title={
-                  <FilterIndicator
-                    indicator={indicator}
-                    text={t('Click to clear emitted filters')}
-                  />
-                }
+                title={<FilterIndicator indicator={indicator} text={t('Click to clear emitted filters')} />}
               >
-                <CrossFilterIcon
-                  onClick={() => dispatch(clearDataMask(slice?.slice_id))}
-                />
+                <CrossFilterIcon onClick={() => dispatch(clearDataMask(slice?.slice_id))} />
               </Tooltip>
             )}
             <FiltersBadge chartId={slice.slice_id} />

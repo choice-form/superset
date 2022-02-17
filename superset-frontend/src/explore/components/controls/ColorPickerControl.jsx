@@ -51,8 +51,7 @@ const styles = {
     borderRadius: '1px',
     display: 'inline-block',
     cursor: 'pointer',
-    boxShadow:
-      'rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 4px inset',
+    boxShadow: 'rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 4px inset',
   },
   color: {
     ...swatchCommon,
@@ -80,11 +79,7 @@ export default class ColorPickerControl extends React.Component {
       .colors.filter((s, i) => i < 7);
     return (
       <div id="filter-popover" className="color-popover">
-        <SketchPicker
-          color={this.props.value}
-          onChange={this.onChange}
-          presetColors={presetColors}
-        />
+        <SketchPicker color={this.props.value} onChange={this.onChange} presetColors={presetColors} />
       </div>
     );
   }
@@ -98,11 +93,7 @@ export default class ColorPickerControl extends React.Component {
     return (
       <div>
         <ControlHeader {...this.props} />
-        <Popover
-          trigger="click"
-          placement="right"
-          content={this.renderPopover()}
-        >
+        <Popover trigger="click" placement="right" content={this.renderPopover()}>
           <div style={styles.swatch}>
             <div style={styles.checkboard} />
             <div style={colStyle} />

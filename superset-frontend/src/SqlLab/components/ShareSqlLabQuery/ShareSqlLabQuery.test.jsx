@@ -67,9 +67,7 @@ describe('ShareSqlLabQuery', () => {
 
   describe('via /kv/store', () => {
     beforeAll(() => {
-      isFeatureEnabledMock = jest
-        .spyOn(featureFlags, 'isFeatureEnabled')
-        .mockImplementation(() => true);
+      isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => true);
     });
 
     afterAll(() => {
@@ -92,9 +90,7 @@ describe('ShareSqlLabQuery', () => {
 
   describe('via saved query', () => {
     beforeAll(() => {
-      isFeatureEnabledMock = jest
-        .spyOn(featureFlags, 'isFeatureEnabled')
-        .mockImplementation(() => false);
+      isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => false);
     });
 
     afterAll(() => {

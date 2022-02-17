@@ -68,25 +68,12 @@ const config: ControlPanelConfig = {
     {
       label: t('X Axis'),
       expanded: true,
-      controlSetRows: [
-        [xAxisLabel],
-        [bottomMargin],
-        [xTicksLayout],
-        [xAxisFormat],
-        [xAxisShowMinmax, null],
-      ],
+      controlSetRows: [[xAxisLabel], [bottomMargin], [xTicksLayout], [xAxisFormat], [xAxisShowMinmax, null]],
     },
     {
       label: t('Y Axis'),
       expanded: true,
-      controlSetRows: [
-        [yAxisLabel],
-        [leftMargin],
-        [yAxisShowMinmax],
-        [yLogScale],
-        ['y_axis_format'],
-        [yAxisBounds],
-      ],
+      controlSetRows: [[yAxisLabel], [leftMargin], [yAxisShowMinmax], [yLogScale], ['y_axis_format'], [yAxisBounds]],
     },
     timeSeriesSection[1],
     sections.annotations,

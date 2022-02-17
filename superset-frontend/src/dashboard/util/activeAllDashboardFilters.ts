@@ -71,16 +71,10 @@ export const findAffectedCharts = ({
   );
 };
 
-export const getRelevantDataMask = (
-  dataMask: DataMaskStateWithId,
-  prop: string,
-): JsonObject | DataMaskStateWithId =>
+export const getRelevantDataMask = (dataMask: DataMaskStateWithId, prop: string): JsonObject | DataMaskStateWithId =>
   Object.values(dataMask)
     .filter(item => item[prop])
-    .reduce(
-      (prev, next) => ({ ...prev, [next.id]: prop ? next[prop] : next }),
-      {},
-    );
+    .reduce((prev, next) => ({ ...prev, [next.id]: prop ? next[prop] : next }), {});
 
 export const getAllActiveFilters = ({
   chartConfiguration,

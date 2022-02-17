@@ -23,76 +23,30 @@ import React, { lazy } from 'react';
 // import Welcome from 'src/views/CRUD/welcome/Welcome';
 
 const AnnotationLayersList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "AnnotationLayersList" */ 'src/views/CRUD/annotationlayers/AnnotationLayersList'
-    ),
+  () => import(/* webpackChunkName: "AnnotationLayersList" */ 'src/views/CRUD/annotationlayers/AnnotationLayersList'),
 );
-const AlertList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "AlertList" */ 'src/views/CRUD/alert/AlertList'
-    ),
-);
+const AlertList = lazy(() => import(/* webpackChunkName: "AlertList" */ 'src/views/CRUD/alert/AlertList'));
 const AnnotationList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "AnnotationList" */ 'src/views/CRUD/annotation/AnnotationList'
-    ),
+  () => import(/* webpackChunkName: "AnnotationList" */ 'src/views/CRUD/annotation/AnnotationList'),
 );
-const ChartList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "ChartList" */ 'src/views/CRUD/chart/ChartList'
-    ),
-);
+const ChartList = lazy(() => import(/* webpackChunkName: "ChartList" */ 'src/views/CRUD/chart/ChartList'));
 const CssTemplatesList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "CssTemplatesList" */ 'src/views/CRUD/csstemplates/CssTemplatesList'
-    ),
+  () => import(/* webpackChunkName: "CssTemplatesList" */ 'src/views/CRUD/csstemplates/CssTemplatesList'),
 );
 const DashboardList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "DashboardList" */ 'src/views/CRUD/dashboard/DashboardList'
-    ),
+  () => import(/* webpackChunkName: "DashboardList" */ 'src/views/CRUD/dashboard/DashboardList'),
 );
 const DashboardPage = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "DashboardPage" */ 'src/dashboard/containers/DashboardPage'
-    ),
+  () => import(/* webpackChunkName: "DashboardPage" */ 'src/dashboard/containers/DashboardPage'),
 );
 const DatabaseList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "DatabaseList" */ 'src/views/CRUD/data/database/DatabaseList'
-    ),
+  () => import(/* webpackChunkName: "DatabaseList" */ 'src/views/CRUD/data/database/DatabaseList'),
 );
-const DatasetList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "DatasetList" */ 'src/views/CRUD/data/dataset/DatasetList'
-    ),
-);
-const ExecutionLog = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "ExecutionLog" */ 'src/views/CRUD/alert/ExecutionLog'
-    ),
-);
-const QueryList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "QueryList" */ 'src/views/CRUD/data/query/QueryList'
-    ),
-);
+const DatasetList = lazy(() => import(/* webpackChunkName: "DatasetList" */ 'src/views/CRUD/data/dataset/DatasetList'));
+const ExecutionLog = lazy(() => import(/* webpackChunkName: "ExecutionLog" */ 'src/views/CRUD/alert/ExecutionLog'));
+const QueryList = lazy(() => import(/* webpackChunkName: "QueryList" */ 'src/views/CRUD/data/query/QueryList'));
 const SavedQueryList = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "SavedQueryList" */ 'src/views/CRUD/data/savedquery/SavedQueryList'
-    ),
+  () => import(/* webpackChunkName: "SavedQueryList" */ 'src/views/CRUD/data/savedquery/SavedQueryList'),
 );
 
 type Routes = {

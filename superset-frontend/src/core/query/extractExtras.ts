@@ -51,10 +51,7 @@ export default function extractExtras(formData: QueryFormData): ExtractedExtra {
     applied_time_extras,
   };
 
-  const reservedColumnsToQueryField: Record<
-    TimeColumnConfigKey,
-    keyof ExtraFilterQueryField
-  > = {
+  const reservedColumnsToQueryField: Record<TimeColumnConfigKey, keyof ExtraFilterQueryField> = {
     __time_range: 'time_range',
     __time_col: 'granularity_sqla',
     __time_grain: 'time_grain_sqla',
@@ -79,19 +76,14 @@ export default function extractExtras(formData: QueryFormData): ExtractedExtra {
     delete extract.druid_time_origin;
   } else {
     // SQL
-    extras.time_grain_sqla =
-      extract.time_grain_sqla || formData.time_grain_sqla;
-    extract.granularity =
-      extract.granularity_sqla ||
-      formData.granularity ||
-      formData.granularity_sqla;
+    extras.time_grain_sqla = extract.time_grain_sqla || formData.time_grain_sqla;
+    extract.granularity = extract.granularity_sqla || formData.granularity || formData.granularity_sqla;
     delete extract.granularity_sqla;
     delete extract.time_grain_sqla;
   }
 
   // map time range endpoints:
-  if (formData.time_range_endpoints)
-    extras.time_range_endpoints = formData.time_range_endpoints;
+  if (formData.time_range_endpoints) extras.time_range_endpoints = formData.time_range_endpoints;
 
   return extract;
 }

@@ -75,11 +75,7 @@ export type OptionsTypePage = {
   totalCount: number;
 };
 
-export type OptionsPagePromise = (
-  search: string,
-  page: number,
-  pageSize: number,
-) => Promise<OptionsTypePage>;
+export type OptionsPagePromise = (search: string, page: number, pageSize: number) => Promise<OptionsTypePage>;
 
 export interface SelectProps extends PickedSelectProps {
   allowNewOptions?: boolean;
@@ -195,13 +191,9 @@ const Select = ({
   const isAsync = typeof options === 'function';
   const isSingleMode = mode === 'single';
   const shouldShowSearch = isAsync || allowNewOptions ? true : showSearch;
-  const initialOptions =
-    options && Array.isArray(options) ? options : EMPTY_OPTIONS;
-  const [selectOptions, setSelectOptions] =
-    useState<OptionsType>(initialOptions);
-  const shouldUseChildrenOptions = !!selectOptions.find(
-    opt => opt?.customLabel,
-  );
+  const initialOptions = options && Array.isArray(options) ? options : EMPTY_OPTIONS;
+  const [selectOptions, setSelectOptions] = useState<OptionsType>(initialOptions);
+  const shouldUseChildrenOptions = !!selectOptions.find(opt => opt?.customLabel);
   const [selectValue, setSelectValue] = useState(value);
   const [searchedValue, setSearchedValue] = useState('');
   const [isLoading, setIsLoading] = useState(loading);
@@ -213,11 +205,7 @@ const Select = ({
   const [loadingEnabled, setLoadingEnabled] = useState(!lazyLoading);
   const [allValuesLoaded, setAllValuesLoaded] = useState(false);
   const fetchedQueries = useRef(new Map<string, number>());
-  const mappedMode = isSingleMode
-    ? undefined
-    : allowNewOptions
-    ? 'tags'
-    : 'multiple';
+  const mappedMode = isSingleMode ? undefined : allowNewOptions ? 'tags' : 'multiple';
 
   // TODO: Don't assume that isAsync is always labelInValue
   const handleTopOptions = useCallback(
@@ -232,10 +220,7 @@ const Select = ({
           let found = false;
           if (Array.isArray(selectedValue)) {
             if (isLabeledValue) {
-              found =
-                (selectedValue as AntdLabeledValue[]).find(
-                  element => element.value === opt.value,
-                ) !== undefined;
+              found = (selectedValue as AntdLabeledValue[]).find(element => element.value === opt.value) !== undefined;
             } else {
               found = selectedValue.includes(opt.value);
             }
@@ -256,13 +241,7 @@ const Select = ({
         // do not appear in the selectOptions state
         if (!isSingleMode && Array.isArray(selectedValue)) {
           selectedValue.forEach((val: string | number | AntdLabeledValue) => {
-            if (
-              !topOptions.find(
-                tOpt =>
-                  tOpt.value ===
-                  (isLabeledValue ? (val as AntdLabeledValue)?.value : val),
-              )
-            ) {
+            if (!topOptions.find(tOpt => tOpt.value === (isLabeledValue ? (val as AntdLabeledValue)?.value : val))) {
               if (isLabeledValue) {
                 const labelValue = val as AntdLabeledValue;
                 topOptions.push({
@@ -286,30 +265,15 @@ const Select = ({
     [isAsync, isSingleMode, labelInValue, selectOptions],
   );
 
-  const handleOnSelect = (
-    selectedValue: string | number | AntdLabeledValue,
-  ) => {
+  const handleOnSelect = (selectedValue: string | number | AntdLabeledValue) => {
     if (isSingleMode) {
       setSelectValue(selectedValue);
     } else {
-      const currentSelected = selectValue
-        ? Array.isArray(selectValue)
-          ? selectValue
-          : [selectValue]
-        : [];
-      if (
-        typeof selectedValue === 'number' ||
-        typeof selectedValue === 'string'
-      ) {
-        setSelectValue([
-          ...(currentSelected as (string | number)[]),
-          selectedValue as string | number,
-        ]);
+      const currentSelected = selectValue ? (Array.isArray(selectValue) ? selectValue : [selectValue]) : [];
+      if (typeof selectedValue === 'number' || typeof selectedValue === 'string') {
+        setSelectValue([...(currentSelected as (string | number)[]), selectedValue as string | number]);
       } else {
-        setSelectValue([
-          ...(currentSelected as AntdLabeledValue[]),
-          selectedValue as AntdLabeledValue,
-        ]);
+        setSelectValue([...(currentSelected as AntdLabeledValue[]), selectedValue as AntdLabeledValue]);
       }
     }
     setSearchedValue('');
@@ -345,17 +309,12 @@ const Select = ({
     let mergedData: OptionsType = [];
     if (data && Array.isArray(data) && data.length) {
       const dataValues = new Set();
-      data.forEach(option =>
-        dataValues.add(String(option.value).toLocaleLowerCase()),
-      );
+      data.forEach(option => dataValues.add(String(option.value).toLocaleLowerCase()));
 
       // merges with existing and creates unique options
       setSelectOptions(prevOptions => {
         mergedData = [
-          ...prevOptions.filter(
-            previousOption =>
-              !dataValues.has(String(previousOption.value).toLocaleLowerCase()),
-          ),
+          ...prevOptions.filter(previousOption => !dataValues.has(String(previousOption.value).toLocaleLowerCase())),
           ...data,
         ];
         return mergedData;
@@ -386,11 +345,7 @@ const Select = ({
           const mergedData = handleData(data);
           fetchedQueries.current.set(key, totalCount);
           setTotalCount(totalCount);
-          if (
-            !fetchOnlyOnSearch &&
-            value === '' &&
-            mergedData.length >= totalCount
-          ) {
+          if (!fetchOnlyOnSearch && value === '' && mergedData.length >= totalCount) {
             setAllValuesLoaded(true);
           }
         })
@@ -414,10 +369,7 @@ const Select = ({
               value: searchValue,
             };
           const newOptions = newOption
-            ? [
-                newOption,
-                ...selectOptions.filter(opt => opt.value !== searchedValue),
-              ]
+            ? [newOption, ...selectOptions.filter(opt => opt.value !== searchedValue)]
             : [...selectOptions.filter(opt => opt.value !== searchedValue)];
 
           setSelectOptions(newOptions);
@@ -433,8 +385,7 @@ const Select = ({
 
   const handlePagination = (e: UIEvent<HTMLElement>) => {
     const vScroll = e.currentTarget;
-    const thresholdReached =
-      vScroll.scrollTop > (vScroll.scrollHeight - vScroll.offsetHeight) * 0.7;
+    const thresholdReached = vScroll.scrollTop > (vScroll.scrollHeight - vScroll.offsetHeight) * 0.7;
     const hasMoreData = page * pageSize + pageSize < totalCount;
 
     if (!isLoading && isAsync && hasMoreData && thresholdReached) {
@@ -454,9 +405,7 @@ const Select = ({
 
       if (optionFilterProps && optionFilterProps.length) {
         return optionFilterProps.some(prop => {
-          const optionProp = option?.[prop]
-            ? String(option[prop]).trim().toLowerCase()
-            : '';
+          const optionProp = option?.[prop] ? String(option[prop]).trim().toLowerCase() : '';
           return optionProp.includes(searchValue);
         });
       }
@@ -479,9 +428,7 @@ const Select = ({
     }
   };
 
-  const dropdownRender = (
-    originNode: ReactElement & { ref?: RefObject<HTMLElement> },
-  ) => {
+  const dropdownRender = (originNode: ReactElement & { ref?: RefObject<HTMLElement> }) => {
     if (!isDropdownVisible) {
       originNode.ref?.current?.scrollTo({ top: 0 });
     }
@@ -516,9 +463,7 @@ const Select = ({
 
   useEffect(() => {
     fetchedQueries.current.clear();
-    setSelectOptions(
-      options && Array.isArray(options) ? options : EMPTY_OPTIONS,
-    );
+    setSelectOptions(options && Array.isArray(options) ? options : EMPTY_OPTIONS);
     setAllValuesLoaded(false);
   }, [options]);
 
@@ -535,15 +480,11 @@ const Select = ({
       const isLabeledValue = isAsync || labelInValue;
       array.forEach(element => {
         const found = selectOptions.find((option: { value: string | number }) =>
-          isLabeledValue
-            ? option.value === (element as AntdLabeledValue).value
-            : option.value === element,
+          isLabeledValue ? option.value === (element as AntdLabeledValue).value : option.value === element,
         );
         if (!found) {
           options.push(
-            isLabeledValue
-              ? (element as AntdLabeledValue)
-              : ({ value: element, label: element } as AntdLabeledValue),
+            isLabeledValue ? (element as AntdLabeledValue) : ({ value: element, label: element } as AntdLabeledValue),
           );
         }
       });
@@ -563,14 +504,7 @@ const Select = ({
       handlePaginatedFetch(searchedValue, page, pageSize);
       setPage(page);
     }
-  }, [
-    isAsync,
-    searchedValue,
-    pageSize,
-    handlePaginatedFetch,
-    loadingEnabled,
-    fetchOnlyOnSearch,
-  ]);
+  }, [isAsync, searchedValue, pageSize, handlePaginatedFetch, loadingEnabled, fetchOnlyOnSearch]);
 
   useEffect(() => {
     if (isSingleMode) {
@@ -618,11 +552,7 @@ const Select = ({
         value={selectValue}
         suffixIcon={<SuffixIcon />}
         menuItemSelectedIcon={
-          invertSelection ? (
-            <StyledStopOutlined iconSize="m" />
-          ) : (
-            <StyledCheckOutlined iconSize="m" />
-          )
+          invertSelection ? <StyledStopOutlined iconSize="m" /> : <StyledCheckOutlined iconSize="m" />
         }
         {...props}
       >

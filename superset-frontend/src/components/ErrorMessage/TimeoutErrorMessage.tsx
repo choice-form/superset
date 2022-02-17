@@ -32,15 +32,10 @@ interface TimeoutErrorExtra {
   timeout: number;
 }
 
-function TimeoutErrorMessage({
-  error,
-  source,
-}: ErrorMessageComponentProps<TimeoutErrorExtra>) {
+function TimeoutErrorMessage({ error, source }: ErrorMessageComponentProps<TimeoutErrorExtra>) {
   const { extra, level } = error;
 
-  const isVisualization = (
-    ['dashboard', 'explore'] as (string | undefined)[]
-  ).includes(source);
+  const isVisualization = (['dashboard', 'explore'] as (string | undefined)[]).includes(source);
 
   const subtitle = isVisualization
     ? tn(
@@ -75,14 +70,7 @@ function TimeoutErrorMessage({
               extra.owners.length,
             )}
           </p>
-          <p>
-            {tn(
-              'Chart Owner: %s',
-              'Chart Owners: %s',
-              extra.owners.length,
-              extra.owners.join(', '),
-            )}
-          </p>
+          <p>{tn('Chart Owner: %s', 'Chart Owners: %s', extra.owners.length, extra.owners.join(', '))}</p>
         </>
       )}
     </>

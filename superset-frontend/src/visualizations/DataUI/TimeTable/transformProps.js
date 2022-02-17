@@ -28,9 +28,7 @@ export default function transformProps(chartProps) {
   // each row in the table is a metric
   let rows;
   if (isGroupBy) {
-    rows = columns.map(column =>
-      typeof column === 'object' ? column : { label: column },
-    );
+    rows = columns.map(column => (typeof column === 'object' ? column : { label: column }));
   } else {
     const metricMap = datasource.metrics.reduce((acc, current) => {
       const map = acc;
@@ -38,9 +36,7 @@ export default function transformProps(chartProps) {
       return map;
     }, {});
 
-    rows = metrics.map(metric =>
-      typeof metric === 'object' ? metric : metricMap[metric],
-    );
+    rows = metrics.map(metric => (typeof metric === 'object' ? metric : metricMap[metric]));
   }
 
   // TODO: Better parse this from controls instead of mutative value here.

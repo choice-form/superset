@@ -30,9 +30,7 @@ describe('RowCountLabel', () => {
   };
 
   it('is valid', () => {
-    expect(React.isValidElement(<RowCountLabel {...defaultProps} />)).toBe(
-      true,
-    );
+    expect(React.isValidElement(<RowCountLabel {...defaultProps} />)).toBe(true);
   });
   it('renders a Label and a Tooltip', () => {
     const wrapper = shallow(<RowCountLabel {...defaultProps} />);

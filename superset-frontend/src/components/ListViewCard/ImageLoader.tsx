@@ -34,24 +34,14 @@ const ImageContainer = styled.div<ImageContainerProps>`
   width: calc(100% - 2px);
   margin: 1px 1px 0 1px;
 `;
-interface ImageLoaderProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > {
+interface ImageLoaderProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   fallback: string;
   src: string;
   isLoading?: boolean;
   position: BackgroundPosition;
 }
 
-export default function ImageLoader({
-  src,
-  fallback,
-  isLoading,
-  position,
-  ...rest
-}: ImageLoaderProps) {
+export default function ImageLoader({ src, fallback, isLoading, position, ...rest }: ImageLoaderProps) {
   const [imgSrc, setImgSrc] = React.useState<string>(fallback);
 
   useEffect(() => {
@@ -77,11 +67,5 @@ export default function ImageLoader({
     };
   }, [src, fallback]);
 
-  return (
-    <ImageContainer
-      src={isLoading ? fallback : imgSrc}
-      {...rest}
-      position={position}
-    />
-  );
+  return <ImageContainer src={isLoading ? fallback : imgSrc} {...rest} position={position} />;
 }

@@ -25,16 +25,10 @@ import {
 } from 'src/dashboard/actions/dashboardState';
 import { updateComponents } from 'src/dashboard/actions/dashboardLayout';
 import { changeFilter } from 'src/dashboard/actions/dashboardFilters';
-import {
-  addSuccessToast,
-  addDangerToast,
-} from 'src/components/MessageToasts/actions';
+import { addSuccessToast, addDangerToast } from 'src/components/MessageToasts/actions';
 import { refreshChart } from 'src/chart/chartAction';
 import { logEvent } from 'src/logger/actions';
-import {
-  getActiveFilters,
-  getAppliedFilterValues,
-} from 'src/dashboard/util/activeDashboardFilters';
+import { getActiveFilters, getAppliedFilterValues } from 'src/dashboard/util/activeDashboardFilters';
 import getFormDataWithExtraFilters from 'src/dashboard/util/charts/getFormDataWithExtraFilters';
 import Chart from 'src/dashboard/components/gridComponents/Chart';
 import { PLACEHOLDER_DATASOURCE } from 'src/dashboard/constants';
@@ -57,9 +51,7 @@ function mapStateToProps(
 ) {
   const { id } = ownProps;
   const chart = chartQueries[id] || EMPTY_OBJECT;
-  const datasource =
-    (chart && chart.form_data && datasources[chart.form_data.datasource]) ||
-    PLACEHOLDER_DATASOURCE;
+  const datasource = (chart && chart.form_data && datasources[chart.form_data.datasource]) || PLACEHOLDER_DATASOURCE;
   const { colorScheme, colorNamespace } = dashboardState;
   const labelColors = dashboardInfo?.metadata?.label_colors || {};
   // note: this method caches filters if possible to prevent render cascades

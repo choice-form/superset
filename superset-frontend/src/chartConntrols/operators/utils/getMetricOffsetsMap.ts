@@ -21,10 +21,7 @@ import { getMetricLabel, ensureIsArray } from 'src/core';
 import { PostProcessingFactory } from '../types';
 import { TIME_COMPARISON_SEPARATOR } from './constants';
 
-export const getMetricOffsetsMap: PostProcessingFactory<Map<string, string>> = (
-  formData,
-  queryObject,
-) => {
+export const getMetricOffsetsMap: PostProcessingFactory<Map<string, string>> = (formData, queryObject) => {
   /*
     return metric offset-label and metric-label hashmap, for instance:
     {
@@ -39,10 +36,7 @@ export const getMetricOffsetsMap: PostProcessingFactory<Map<string, string>> = (
   const metricOffsetMap = new Map<string, string>();
   metricLabels.forEach((metric: string) => {
     timeOffsets.forEach((offset: string) => {
-      metricOffsetMap.set(
-        [metric, offset].join(TIME_COMPARISON_SEPARATOR),
-        metric,
-      );
+      metricOffsetMap.set([metric, offset].join(TIME_COMPARISON_SEPARATOR), metric);
     });
   });
 

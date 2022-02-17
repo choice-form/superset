@@ -29,9 +29,7 @@ describe('IconTooltip', () => {
     expect(React.isValidElement(<IconTooltip>TEST</IconTooltip>)).toBe(true);
   });
   it('renders with props', () => {
-    expect(
-      React.isValidElement(<IconTooltip {...mockedProps}>TEST</IconTooltip>),
-    ).toBe(true);
+    expect(React.isValidElement(<IconTooltip {...mockedProps}>TEST</IconTooltip>)).toBe(true);
   });
   it('renders a tooltip', () => {
     const wrapper = shallow(<IconTooltip {...mockedProps}>TEST</IconTooltip>);

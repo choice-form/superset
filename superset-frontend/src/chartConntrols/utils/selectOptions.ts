@@ -24,9 +24,7 @@ export type Formattable = string | number;
 export type Formatted = [Formattable, string];
 
 /** Turns an array of string/number options into options for a select input */
-export function formatSelectOptions<T extends Formattable>(
-  options: (T | [T, string])[],
-): [T, string][] {
+export function formatSelectOptions<T extends Formattable>(options: (T | [T, string])[]): [T, string][] {
   return options.map(opt => (Array.isArray(opt) ? opt : [opt, opt.toString()]));
 }
 

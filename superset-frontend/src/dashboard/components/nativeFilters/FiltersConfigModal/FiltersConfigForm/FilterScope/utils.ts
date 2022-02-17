@@ -17,11 +17,7 @@
  * under the License.
  */
 import { Charts, Layout, LayoutItem } from 'src/dashboard/types';
-import {
-  CHART_TYPE,
-  DASHBOARD_ROOT_TYPE,
-  TAB_TYPE,
-} from 'src/dashboard/util/componentTypes';
+import { CHART_TYPE, DASHBOARD_ROOT_TYPE, TAB_TYPE } from 'src/dashboard/util/componentTypes';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
 import { t } from 'src/core';
 import { BuildTreeLeafTitle, TreeItem } from './types';
@@ -41,11 +37,7 @@ export const buildTree = (
   buildTreeLeafTitle: BuildTreeLeafTitle,
 ) => {
   let itemToPass: TreeItem = treeItem;
-  if (
-    isShowTypeInTree(node, charts) &&
-    node.type !== DASHBOARD_ROOT_TYPE &&
-    validNodes.includes(node.id)
-  ) {
+  if (isShowTypeInTree(node, charts) && node.type !== DASHBOARD_ROOT_TYPE && validNodes.includes(node.id)) {
     const title = buildTreeLeafTitle(
       node.meta.sliceNameOverride ||
         node.meta.sliceName ||
@@ -53,9 +45,7 @@ export const buildTree = (
         node.meta.defaultText ||
         node.id.toString(),
       initiallyExcludedCharts.includes(node.meta?.chartId),
-      t(
-        "This chart might be incompatible with the filter (datasets don't match)",
-      ),
+      t("This chart might be incompatible with the filter (datasets don't match)"),
     );
 
     const currentTreeItem = {
@@ -67,15 +57,7 @@ export const buildTree = (
     itemToPass = currentTreeItem;
   }
   node.children.forEach(child =>
-    buildTree(
-      layout[child],
-      itemToPass,
-      layout,
-      charts,
-      validNodes,
-      initiallyExcludedCharts,
-      buildTreeLeafTitle,
-    ),
+    buildTree(layout[child], itemToPass, layout, charts, validNodes, initiallyExcludedCharts, buildTreeLeafTitle),
   );
 };
 
@@ -92,23 +74,10 @@ const addInvisibleParents = (layout: Layout, item: string) => [
 ];
 
 // Generate checked options for Ant tree from redux scope
-const checkTreeItem = (
-  checkedItems: string[],
-  layout: Layout,
-  items: string[],
-  excluded: number[],
-) => {
+const checkTreeItem = (checkedItems: string[], layout: Layout, items: string[], excluded: number[]) => {
   items.forEach(item => {
-    checkTreeItem(
-      checkedItems,
-      layout,
-      addInvisibleParents(layout, item),
-      excluded,
-    );
-    if (
-      layout[item]?.type === CHART_TYPE &&
-      !excluded.includes(layout[item]?.meta.chartId)
-    ) {
+    checkTreeItem(checkedItems, layout, addInvisibleParents(layout, item), excluded);
+    if (layout[item]?.type === CHART_TYPE && !excluded.includes(layout[item]?.meta.chartId)) {
       checkedItems.push(item);
     }
   });
@@ -121,10 +90,7 @@ export const getTreeCheckedItems = (scope: Scope, layout: Layout) => {
 };
 
 // Looking for first common parent for selected charts/tabs/tab
-export const findFilterScope = (
-  checkedKeys: string[],
-  layout: Layout,
-): Scope => {
+export const findFilterScope = (checkedKeys: string[], layout: Layout): Scope => {
   if (!checkedKeys.length) {
     return {
       rootPath: [],
@@ -142,21 +108,15 @@ export const findFilterScope = (
   // Sort arrays of parents to get first shortest array of parents,
   // that means on it's level of parents located common parent, from this place parents start be different
   checkedItemParents.sort((p1, p2) => p1.length - p2.length);
-  const rootPath = checkedItemParents.map(
-    parents => parents[checkedItemParents[0].length - 1],
-  );
+  const rootPath = checkedItemParents.map(parents => parents[checkedItemParents[0].length - 1]);
 
   const excluded: number[] = [];
-  const isExcluded = (parent: string, item: string) =>
-    rootPath.includes(parent) && !checkedKeys.includes(item);
+  const isExcluded = (parent: string, item: string) => rootPath.includes(parent) && !checkedKeys.includes(item);
   // looking for charts to be excluded: iterate over all charts
   // and looking for charts that have one of their parents in `rootPath` and not in selected items
   Object.entries(layout).forEach(([key, value]) => {
     const parents = value.parents || [];
-    if (
-      value.type === CHART_TYPE &&
-      [DASHBOARD_ROOT_ID, ...parents]?.find(parent => isExcluded(parent, key))
-    ) {
+    if (value.type === CHART_TYPE && [DASHBOARD_ROOT_ID, ...parents]?.find(parent => isExcluded(parent, key))) {
       excluded.push(value.meta.chartId);
     }
   });
@@ -167,17 +127,10 @@ export const findFilterScope = (
   };
 };
 
-export const getDefaultScopeValue = (
-  chartId?: number,
-  initiallyExcludedCharts: number[] = [],
-): Scope => ({
+export const getDefaultScopeValue = (chartId?: number, initiallyExcludedCharts: number[] = []): Scope => ({
   rootPath: [DASHBOARD_ROOT_ID],
-  excluded: chartId
-    ? [chartId, ...initiallyExcludedCharts]
-    : initiallyExcludedCharts,
+  excluded: chartId ? [chartId, ...initiallyExcludedCharts] : initiallyExcludedCharts,
 });
 
 export const isScopingAll = (scope: Scope, chartId?: number) =>
-  !scope ||
-  (scope.rootPath[0] === DASHBOARD_ROOT_ID &&
-    !scope.excluded.filter(item => item !== chartId).length);
+  !scope || (scope.rootPath[0] === DASHBOARD_ROOT_ID && !scope.excluded.filter(item => item !== chartId).length);

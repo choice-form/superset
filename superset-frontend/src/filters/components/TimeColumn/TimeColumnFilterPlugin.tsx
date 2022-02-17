@@ -23,19 +23,8 @@ import { FormItemProps } from 'antd/lib/form';
 import { FilterPluginStyle, StyledFormItem, StatusMessage } from '../common';
 import { PluginFilterTimeColumnProps } from './types';
 
-export default function PluginFilterTimeColumn(
-  props: PluginFilterTimeColumnProps,
-) {
-  const {
-    data,
-    formData,
-    height,
-    width,
-    setDataMask,
-    setFocusedFilter,
-    unsetFocusedFilter,
-    filterState,
-  } = props;
+export default function PluginFilterTimeColumn(props: PluginFilterTimeColumnProps) {
+  const { data, formData, height, width, setDataMask, setFocusedFilter, unsetFocusedFilter, filterState } = props;
   const { defaultValue, inputRef } = formData;
 
   const [value, setValue] = useState<string[]>(defaultValue ?? []);
@@ -66,9 +55,7 @@ export default function PluginFilterTimeColumn(
     handleChange(filterState.value ?? null);
   }, [JSON.stringify(filterState.value)]);
 
-  const timeColumns = (data || []).filter(
-    row => row.dtype === GenericDataType.TEMPORAL,
-  );
+  const timeColumns = (data || []).filter(row => row.dtype === GenericDataType.TEMPORAL);
 
   const placeholderText =
     timeColumns.length === 0
@@ -78,28 +65,21 @@ export default function PluginFilterTimeColumn(
   const formItemData: FormItemProps = {};
   if (filterState.validateMessage) {
     formItemData.extra = (
-      <StatusMessage status={filterState.validateStatus}>
-        {filterState.validateMessage}
-      </StatusMessage>
+      <StatusMessage status={filterState.validateStatus}>{filterState.validateMessage}</StatusMessage>
     );
   }
 
-  const options = timeColumns.map(
-    (row: { column_name: string; verbose_name: string | null }) => {
-      const { column_name: columnName, verbose_name: verboseName } = row;
-      return {
-        label: verboseName ?? columnName,
-        value: columnName,
-      };
-    },
-  );
+  const options = timeColumns.map((row: { column_name: string; verbose_name: string | null }) => {
+    const { column_name: columnName, verbose_name: verboseName } = row;
+    return {
+      label: verboseName ?? columnName,
+      value: columnName,
+    };
+  });
 
   return (
     <FilterPluginStyle height={height} width={width}>
-      <StyledFormItem
-        validateStatus={filterState.validateStatus}
-        {...formItemData}
-      >
+      <StyledFormItem validateStatus={filterState.validateStatus} {...formItemData}>
         <Select
           allowClear
           value={value}

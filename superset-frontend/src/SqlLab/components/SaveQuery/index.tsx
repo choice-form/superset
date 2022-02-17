@@ -77,9 +77,7 @@ export default function SaveQuery({
   onUpdate,
   saveQueryWarning = null,
 }: SaveQueryProps) {
-  const [description, setDescription] = useState<string>(
-    query.description || '',
-  );
+  const [description, setDescription] = useState<string>(query.description || '');
   const [label, setLabel] = useState<string>(defaultLabel);
   const [showSave, setShowSave] = useState<boolean>(false);
   const isSaved = !!query.remoteId;
@@ -129,11 +127,7 @@ export default function SaveQuery({
       <Row>
         <Col xs={24}>
           <FormItem label={t('Description')}>
-            <TextArea
-              rows={4}
-              value={description}
-              onChange={onDescriptionChange}
-            />
+            <TextArea rows={4} value={description} onChange={onDescriptionChange} />
           </FormItem>
         </Col>
       </Row>
@@ -172,21 +166,11 @@ export default function SaveQuery({
             <Button onClick={close} data-test="cancel-query" cta>
               {t('Cancel')}
             </Button>
-            <Button
-              buttonStyle={isSaved ? undefined : 'primary'}
-              onClick={onSaveWrapper}
-              className="m-r-3"
-              cta
-            >
+            <Button buttonStyle={isSaved ? undefined : 'primary'} onClick={onSaveWrapper} className="m-r-3" cta>
               {isSaved ? t('Save as new') : t('Save')}
             </Button>
             {isSaved && (
-              <Button
-                buttonStyle="primary"
-                onClick={onUpdateWrapper}
-                className="m-r-3"
-                cta
-              >
+              <Button buttonStyle="primary" onClick={onUpdateWrapper} className="m-r-3" cta>
                 {t('Update')}
               </Button>
             )}

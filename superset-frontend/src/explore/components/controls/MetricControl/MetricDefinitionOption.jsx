@@ -18,10 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  StyledColumnOption,
-  StyledMetricOption,
-} from 'src/explore/components/optionRenderers';
+import { StyledColumnOption, StyledMetricOption } from 'src/explore/components/optionRenderers';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import AggregateOption from './AggregateOption';
 import columnType from './columnType';
@@ -29,11 +26,7 @@ import aggregateOptionType from './aggregateOptionType';
 import savedMetricType from './savedMetricType';
 
 const propTypes = {
-  option: PropTypes.oneOfType([
-    columnType,
-    savedMetricType,
-    aggregateOptionType,
-  ]).isRequired,
+  option: PropTypes.oneOfType([columnType, savedMetricType, aggregateOptionType]).isRequired,
   addWarningToast: PropTypes.func.isRequired,
 };
 
@@ -47,9 +40,7 @@ function MetricDefinitionOption({ option, addWarningToast }) {
   if (option.aggregate_name) {
     return <AggregateOption aggregate={option} showType />;
   }
-  addWarningToast(
-    'You must supply either a saved metric, column or aggregate to MetricDefinitionOption',
-  );
+  addWarningToast('You must supply either a saved metric, column or aggregate to MetricDefinitionOption');
   return null;
 }
 

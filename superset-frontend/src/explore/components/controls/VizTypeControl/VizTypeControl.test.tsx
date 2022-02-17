@@ -19,11 +19,7 @@
 import { Preset } from 'src/core';
 import { render, cleanup, screen, act } from 'spec/helpers/testing-library';
 import { Provider } from 'react-redux';
-import {
-  getMockStore,
-  mockStore,
-  stateWithoutNativeFilters,
-} from 'spec/fixtures/mockStore';
+import { getMockStore, mockStore, stateWithoutNativeFilters } from 'spec/fixtures/mockStore';
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { DynamicPluginProvider } from 'src/components/DynamicPlugins';
@@ -62,8 +58,7 @@ const getTestId = testWithId<string>(VIZ_TYPE_CONTROL_TEST_ID, true);
  * wrapped in act(). This sufficiently act-ifies whatever side effects are going
  * on and prevents those warnings.
  */
-const waitForEffects = () =>
-  act(() => new Promise(resolve => setTimeout(resolve, 0)));
+const waitForEffects = () => act(() => new Promise(resolve => setTimeout(resolve, 0)));
 
 describe('VizTypeControl', () => {
   new MainPreset().register();
@@ -77,14 +72,9 @@ describe('VizTypeControl', () => {
     isModalOpenInit: true,
   } as const;
 
-  const renderWrapper = async (
-    props = newVizTypeControlProps,
-    state: object = stateWithoutNativeFilters,
-  ) => {
+  const renderWrapper = async (props = newVizTypeControlProps, state: object = stateWithoutNativeFilters) => {
     render(
-      <Provider
-        store={state ? getMockStore(stateWithoutNativeFilters) : mockStore}
-      >
+      <Provider store={state ? getMockStore(stateWithoutNativeFilters) : mockStore}>
         <DynamicPluginProvider>
           <VizTypeControl {...props} />
         </DynamicPluginProvider>
@@ -110,10 +100,7 @@ describe('VizTypeControl', () => {
     const searchInputText = 'time series';
 
     // search
-    userEvent.type(
-      screen.getByTestId(getTestId('search-input')),
-      searchInputText,
-    );
+    userEvent.type(screen.getByTestId(getTestId('search-input')), searchInputText);
     await waitForEffects();
 
     expect(visualizations).toHaveTextContent(/Time-series Table/);

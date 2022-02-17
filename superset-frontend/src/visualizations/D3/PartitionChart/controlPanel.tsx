@@ -100,23 +100,17 @@ const config: ControlPanelConfig = {
                 {
                   label: t('Difference'),
                   value: 'point_diff',
-                  description: t(
-                    'Metric change in value from `since` to `until`',
-                  ),
+                  description: t('Metric change in value from `since` to `until`'),
                 },
                 {
                   label: t('Percent Change'),
                   value: 'point_percent',
-                  description: t(
-                    'Metric percent change in value from `since` to `until`',
-                  ),
+                  description: t('Metric percent change in value from `since` to `until`'),
                 },
                 {
                   label: t('Factor'),
                   value: 'point_factor',
-                  description: t(
-                    'Metric factor change from `since` to `until`',
-                  ),
+                  description: t('Metric factor change from `since` to `until`'),
                 },
                 {
                   label: t('Advanced Analytics'),
@@ -124,12 +118,8 @@ const config: ControlPanelConfig = {
                   description: t('Use the Advanced Analytics options below'),
                 },
               ],
-              optionRenderer: (op: ColumnMeta) => (
-                <OptionDescription option={op} />
-              ),
-              valueRenderer: (op: ColumnMeta) => (
-                <OptionDescription option={op} />
-              ),
+              optionRenderer: (op: ColumnMeta) => <OptionDescription option={op} />,
+              valueRenderer: (op: ColumnMeta) => <OptionDescription option={op} />,
               description: t('Settings for time series'),
             },
           },
@@ -176,10 +166,7 @@ const config: ControlPanelConfig = {
               label: t('Partition Limit'),
               isInt: true,
               default: '5',
-              description: t(
-                'The maximum number of subdivisions of each group; ' +
-                  'lower values are pruned first',
-              ),
+              description: t('The maximum number of subdivisions of each group; ' + 'lower values are pruned first'),
             },
           },
           {
@@ -190,8 +177,7 @@ const config: ControlPanelConfig = {
               isFloat: true,
               default: '0.05',
               description: t(
-                'Partitions whose height to parent height proportions are ' +
-                  'below this value are pruned',
+                'Partitions whose height to parent height proportions are ' + 'below this value are pruned',
               ),
             },
           },
@@ -216,9 +202,7 @@ const config: ControlPanelConfig = {
               label: t('Equal Date Sizes'),
               default: true,
               renderTrigger: true,
-              description: t(
-                'Check to force date partitions to have the same height',
-              ),
+              description: t('Check to force date partitions to have the same height'),
             },
           },
         ],
@@ -230,9 +214,7 @@ const config: ControlPanelConfig = {
               label: t('Rich Tooltip'),
               renderTrigger: true,
               default: true,
-              description: t(
-                'The rich tooltip shows a list of all series for that point in time',
-              ),
+              description: t('The rich tooltip shows a list of all series for that point in time'),
             },
           },
         ],
@@ -242,9 +224,7 @@ const config: ControlPanelConfig = {
       label: t('Advanced Analytics'),
       tabOverride: 'data',
       description: t(
-        'This section contains options ' +
-          'that allow for advanced analytical post processing ' +
-          'of query results',
+        'This section contains options ' + 'that allow for advanced analytical post processing ' + 'of query results',
       ),
       controlSetRows: [
         // eslint-disable-next-line react/jsx-key
@@ -256,16 +236,9 @@ const config: ControlPanelConfig = {
               type: 'SelectControl',
               label: t('Rolling Function'),
               default: 'None',
-              choices: formatSelectOptions([
-                'None',
-                'mean',
-                'sum',
-                'std',
-                'cumsum',
-              ]),
+              choices: formatSelectOptions(['None', 'mean', 'sum', 'std', 'cumsum']),
               description: t(
-                'Defines a rolling window function to apply, works along ' +
-                  'with the [Periods] text box',
+                'Defines a rolling window function to apply, works along ' + 'with the [Periods] text box',
               ),
             },
           },
@@ -278,8 +251,7 @@ const config: ControlPanelConfig = {
               label: t('Periods'),
               isInt: true,
               description: t(
-                'Defines the size of the rolling window function, ' +
-                  'relative to the time granularity selected',
+                'Defines the size of the rolling window function, ' + 'relative to the time granularity selected',
               ),
             },
           },
@@ -359,14 +331,7 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Rule'),
               default: null,
-              choices: formatSelectOptions([
-                '1T',
-                '1H',
-                '1D',
-                '7D',
-                '1M',
-                '1AS',
-              ]),
+              choices: formatSelectOptions(['1T', '1H', '1D', '7D', '1M', '1AS']),
               description: t('Pandas resample rule'),
             },
           },
@@ -377,14 +342,7 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Method'),
               default: null,
-              choices: formatSelectOptions([
-                'asfreq',
-                'bfill',
-                'ffill',
-                'median',
-                'mean',
-                'sum',
-              ]),
+              choices: formatSelectOptions(['asfreq', 'bfill', 'ffill', 'median', 'mean', 'sum']),
               description: t('Pandas resample method'),
             },
           },

@@ -26,15 +26,9 @@ import { Tooltip } from 'src/components/Tooltip';
 import TableCollection from 'src/components/dataViewCommon/TableCollection';
 import TableView from 'src/components/TableView';
 
-import {
-  defaultProps,
-  expectedDiffs,
-  expectedRows,
-  fakePluginControls,
-} from './AlteredSliceTagMocks';
+import { defaultProps, expectedDiffs, expectedRows, fakePluginControls } from './AlteredSliceTagMocks';
 
-const getTableWrapperFromModalBody = modalBody =>
-  modalBody.find(TableView).find(TableCollection);
+const getTableWrapperFromModalBody = modalBody => modalBody.find(TableView).find(TableCollection);
 
 describe('AlteredSliceTag', () => {
   let wrapper;
@@ -42,10 +36,7 @@ describe('AlteredSliceTag', () => {
   let controlsMap;
 
   beforeEach(() => {
-    getChartControlPanelRegistry().registerValue(
-      'altered_slice_tag_spec',
-      fakePluginControls,
-    );
+    getChartControlPanelRegistry().registerValue('altered_slice_tag_spec', fakePluginControls);
     props = { ...defaultProps };
     wrapper = mount(<AlteredSliceTag {...props} />);
     ({ controlsMap } = wrapper.instance().state);
@@ -98,34 +89,24 @@ describe('AlteredSliceTag', () => {
 
   describe('renderTriggerNode', () => {
     it('renders a Tooltip', () => {
-      const triggerNode = mount(
-        <div>{wrapper.instance().renderTriggerNode()}</div>,
-      );
+      const triggerNode = mount(<div>{wrapper.instance().renderTriggerNode()}</div>);
       expect(triggerNode.find(Tooltip)).toHaveLength(1);
     });
   });
 
   describe('renderModalBody', () => {
     it('renders a Table', () => {
-      const modalBody = mount(
-        <div>{wrapper.instance().renderModalBody()}</div>,
-      );
+      const modalBody = mount(<div>{wrapper.instance().renderModalBody()}</div>);
       expect(modalBody.find(TableView)).toHaveLength(1);
     });
 
     it('renders a thead', () => {
-      const modalBody = mount(
-        <div>{wrapper.instance().renderModalBody()}</div>,
-      );
-      expect(
-        getTableWrapperFromModalBody(modalBody).find('thead'),
-      ).toHaveLength(1);
+      const modalBody = mount(<div>{wrapper.instance().renderModalBody()}</div>);
+      expect(getTableWrapperFromModalBody(modalBody).find('thead')).toHaveLength(1);
     });
 
     it('renders th', () => {
-      const modalBody = mount(
-        <div>{wrapper.instance().renderModalBody()}</div>,
-      );
+      const modalBody = mount(<div>{wrapper.instance().renderModalBody()}</div>);
       const th = getTableWrapperFromModalBody(modalBody).find('th');
       expect(th).toHaveLength(3);
       ['Control', 'Before', 'After'].forEach(async (v, i) => {
@@ -134,17 +115,13 @@ describe('AlteredSliceTag', () => {
     });
 
     it('renders the correct number of Tr', () => {
-      const modalBody = mount(
-        <div>{wrapper.instance().renderModalBody()}</div>,
-      );
+      const modalBody = mount(<div>{wrapper.instance().renderModalBody()}</div>);
       const tr = getTableWrapperFromModalBody(modalBody).find('tr');
       expect(tr).toHaveLength(8);
     });
 
     it('renders the correct number of td', () => {
-      const modalBody = mount(
-        <div>{wrapper.instance().renderModalBody()}</div>,
-      );
+      const modalBody = mount(<div>{wrapper.instance().renderModalBody()}</div>);
       const td = getTableWrapperFromModalBody(modalBody).find('td');
       expect(td).toHaveLength(21);
       ['control', 'before', 'after'].forEach((v, i) => {
@@ -155,9 +132,7 @@ describe('AlteredSliceTag', () => {
 
   describe('renderRows', () => {
     it('returns an array of rows with one tr and three td', () => {
-      const modalBody = mount(
-        <div>{wrapper.instance().renderModalBody()}</div>,
-      );
+      const modalBody = mount(<div>{wrapper.instance().renderModalBody()}</div>);
       const rows = getTableWrapperFromModalBody(modalBody).find('tr');
       expect(rows).toHaveLength(8);
       const slice = mount(
@@ -172,22 +147,16 @@ describe('AlteredSliceTag', () => {
 
   describe('formatValue', () => {
     it('returns "N/A" for undefined values', () => {
-      expect(wrapper.instance().formatValue(undefined, 'b', controlsMap)).toBe(
-        'N/A',
-      );
+      expect(wrapper.instance().formatValue(undefined, 'b', controlsMap)).toBe('N/A');
     });
 
     it('returns "null" for null values', () => {
-      expect(wrapper.instance().formatValue(null, 'b', controlsMap)).toBe(
-        'null',
-      );
+      expect(wrapper.instance().formatValue(null, 'b', controlsMap)).toBe('null');
     });
 
     it('returns "Max" and "Min" for BoundsControl', () => {
       // need to pass the viz type to the wrapper
-      expect(
-        wrapper.instance().formatValue([5, 6], 'y_axis_bounds', controlsMap),
-      ).toBe('Min: 5, Max: 6');
+      expect(wrapper.instance().formatValue([5, 6], 'y_axis_bounds', controlsMap)).toBe('Min: 5, Max: 6');
     });
 
     it('returns stringified objects for CollectionControl', () => {
@@ -196,47 +165,33 @@ describe('AlteredSliceTag', () => {
         { sent: 'imental', w0ke: 5 },
       ];
       const expected = '{"1":2,"alpha":"bravo"}, {"sent":"imental","w0ke":5}';
-      expect(
-        wrapper.instance().formatValue(value, 'column_collection', controlsMap),
-      ).toBe(expected);
+      expect(wrapper.instance().formatValue(value, 'column_collection', controlsMap)).toBe(expected);
     });
 
     it('returns boolean values as string', () => {
-      expect(wrapper.instance().formatValue(true, 'b', controlsMap)).toBe(
-        'true',
-      );
-      expect(wrapper.instance().formatValue(false, 'b', controlsMap)).toBe(
-        'false',
-      );
+      expect(wrapper.instance().formatValue(true, 'b', controlsMap)).toBe('true');
+      expect(wrapper.instance().formatValue(false, 'b', controlsMap)).toBe('false');
     });
 
     it('returns Array joined by commas', () => {
       const value = [5, 6, 7, 8, 'hello', 'goodbye'];
       const expected = '5, 6, 7, 8, hello, goodbye';
-      expect(
-        wrapper.instance().formatValue(value, undefined, controlsMap),
-      ).toBe(expected);
+      expect(wrapper.instance().formatValue(value, undefined, controlsMap)).toBe(expected);
     });
 
     it('stringifies objects', () => {
       const value = { 1: 2, alpha: 'bravo' };
       const expected = '{"1":2,"alpha":"bravo"}';
-      expect(
-        wrapper.instance().formatValue(value, undefined, controlsMap),
-      ).toBe(expected);
+      expect(wrapper.instance().formatValue(value, undefined, controlsMap)).toBe(expected);
     });
 
     it('does nothing to strings and numbers', () => {
       expect(wrapper.instance().formatValue(5, undefined, controlsMap)).toBe(5);
-      expect(
-        wrapper.instance().formatValue('hello', undefined, controlsMap),
-      ).toBe('hello');
+      expect(wrapper.instance().formatValue('hello', undefined, controlsMap)).toBe('hello');
     });
 
     it('returns "[]" for empty filters', () => {
-      expect(
-        wrapper.instance().formatValue([], 'adhoc_filters', controlsMap),
-      ).toBe('[]');
+      expect(wrapper.instance().formatValue([], 'adhoc_filters', controlsMap)).toBe('[]');
     });
 
     it('correctly formats filters with array values', () => {
@@ -257,9 +212,7 @@ describe('AlteredSliceTag', () => {
         },
       ];
       const expected = 'a IN [1, g, 7, ho], b NOT IN [hu, ho, ha]';
-      expect(
-        wrapper.instance().formatValue(filters, 'adhoc_filters', controlsMap),
-      ).toBe(expected);
+      expect(wrapper.instance().formatValue(filters, 'adhoc_filters', controlsMap)).toBe(expected);
     });
 
     it('correctly formats filters with string values', () => {
@@ -280,9 +233,7 @@ describe('AlteredSliceTag', () => {
         },
       ];
       const expected = 'a == gucci, b LIKE moshi moshi';
-      expect(
-        wrapper.instance().formatValue(filters, 'adhoc_filters', controlsMap),
-      ).toBe(expected);
+      expect(wrapper.instance().formatValue(filters, 'adhoc_filters', controlsMap)).toBe(expected);
     });
   });
   describe('isEqualish', () => {
@@ -301,18 +252,12 @@ describe('AlteredSliceTag', () => {
     it('considers deeply equal objects as equal', () => {
       const inst = wrapper.instance();
       expect(inst.isEqualish('', '')).toBe(true);
-      expect(inst.isEqualish({ a: 1, b: 2, c: 3 }, { a: 1, b: 2, c: 3 })).toBe(
-        true,
-      );
+      expect(inst.isEqualish({ a: 1, b: 2, c: 3 }, { a: 1, b: 2, c: 3 })).toBe(true);
       // Out of order
-      expect(inst.isEqualish({ a: 1, b: 2, c: 3 }, { b: 2, a: 1, c: 3 })).toBe(
-        true,
-      );
+      expect(inst.isEqualish({ a: 1, b: 2, c: 3 }, { b: 2, a: 1, c: 3 })).toBe(true);
 
       // Actually  not equal
-      expect(inst.isEqualish({ a: 1, b: 2, z: 9 }, { a: 1, b: 2, c: 3 })).toBe(
-        false,
-      );
+      expect(inst.isEqualish({ a: 1, b: 2, z: 9 }, { a: 1, b: 2, c: 3 })).toBe(false);
     });
   });
 });

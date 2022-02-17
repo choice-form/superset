@@ -53,7 +53,7 @@ function DefaultPlaceholder({
  */
 export default function AsyncEsmComponent<
   P = PlaceholderProps,
-  M = React.ComponentType<P> | { default: React.ComponentType<P> },
+  M = React.ComponentType<P> | { default: React.ComponentType<P> }
 >(
   /**
    * A promise generator that returns the React component to render.
@@ -62,9 +62,7 @@ export default function AsyncEsmComponent<
   /**
    * Placeholder while still importing.
    */
-  placeholder: React.ComponentType<
-    PlaceholderProps & Partial<P>
-  > | null = DefaultPlaceholder,
+  placeholder: React.ComponentType<PlaceholderProps & Partial<P>> | null = DefaultPlaceholder,
 ) {
   // component props + placeholder props
   type FullProps = P & PlaceholderProps;
@@ -77,8 +75,7 @@ export default function AsyncEsmComponent<
   function waitForPromise() {
     if (!promise) {
       // load component on initialization
-      promise =
-        loadComponent instanceof Promise ? loadComponent : loadComponent();
+      promise = loadComponent instanceof Promise ? loadComponent : loadComponent();
     }
     if (!component) {
       promise.then(result => {
@@ -90,39 +87,36 @@ export default function AsyncEsmComponent<
   }
 
   type AsyncComponent = React.ForwardRefExoticComponent<
-    React.PropsWithoutRef<FullProps> &
-      React.RefAttributes<React.ComponentType<FullProps>>
+    React.PropsWithoutRef<FullProps> & React.RefAttributes<React.ComponentType<FullProps>>
   > & {
     preload?: typeof waitForPromise;
   };
 
-  const AsyncComponent: AsyncComponent = React.forwardRef(
-    function AsyncComponent(
-      props: FullProps,
-      ref: RefObject<React.ComponentType<FullProps>>,
-    ) {
-      const [loaded, setLoaded] = useState(component !== undefined);
-      useEffect(() => {
-        let isMounted = true;
-        if (!loaded) {
-          // update state to trigger a re-render
-          waitForPromise().then(() => {
-            if (isMounted) {
-              setLoaded(true);
-            }
-          });
-        }
-        return () => {
-          isMounted = false;
-        };
-      });
-      const Component = component || placeholder;
-      return Component ? (
-        // placeholder does not get the ref
-        <Component ref={Component === component ? ref : null} {...props} />
-      ) : null;
-    },
-  );
+  const AsyncComponent: AsyncComponent = React.forwardRef(function AsyncComponent(
+    props: FullProps,
+    ref: RefObject<React.ComponentType<FullProps>>,
+  ) {
+    const [loaded, setLoaded] = useState(component !== undefined);
+    useEffect(() => {
+      let isMounted = true;
+      if (!loaded) {
+        // update state to trigger a re-render
+        waitForPromise().then(() => {
+          if (isMounted) {
+            setLoaded(true);
+          }
+        });
+      }
+      return () => {
+        isMounted = false;
+      };
+    });
+    const Component = component || placeholder;
+    return Component ? (
+      // placeholder does not get the ref
+      <Component ref={Component === component ? ref : null} {...props} />
+    ) : null;
+  });
   // preload the async component before rendering
   AsyncComponent.preload = waitForPromise;
 

@@ -17,15 +17,7 @@
  * under the License.
  */
 
-import {
-  t,
-  SupersetClient,
-  SupersetClientResponse,
-  logging,
-  styled,
-  SupersetTheme,
-  css,
-} from 'src/core';
+import { t, SupersetClient, SupersetClientResponse, logging, styled, SupersetTheme, css } from 'src/core';
 import Chart from 'src/types/Chart';
 import rison from 'rison';
 import { getClientErrorObject } from 'src/utils/getClientErrorObject';
@@ -33,60 +25,51 @@ import { FetchDataConfig } from 'src/components/ListView';
 import SupersetText from 'src/utils/textUtils';
 import { Dashboard, Filters } from './types';
 
-const createFetchResourceMethod =
-  (method: string) =>
-  (
-    resource: string,
-    relation: string,
-    handleError: (error: Response) => void,
-    user?: { userId: string | number; firstName: string; lastName: string },
-  ) =>
-  async (filterValue = '', page: number, pageSize: number) => {
-    const resourceEndpoint = `/api/v1/${resource}/${method}/${relation}`;
-    const queryParams = rison.encode({
-      filter: filterValue,
-      page,
-      page_size: pageSize,
-    });
-    const { json = {} } = await SupersetClient.get({
-      endpoint: `${resourceEndpoint}?q=${queryParams}`,
-    });
+const createFetchResourceMethod = (method: string) => (
+  resource: string,
+  relation: string,
+  handleError: (error: Response) => void,
+  user?: { userId: string | number; firstName: string; lastName: string },
+) => async (filterValue = '', page: number, pageSize: number) => {
+  const resourceEndpoint = `/api/v1/${resource}/${method}/${relation}`;
+  const queryParams = rison.encode({
+    filter: filterValue,
+    page,
+    page_size: pageSize,
+  });
+  const { json = {} } = await SupersetClient.get({
+    endpoint: `${resourceEndpoint}?q=${queryParams}`,
+  });
 
-    let fetchedLoggedUser = false;
-    const loggedUser = user
-      ? {
-          label: `${user.firstName} ${user.lastName}`,
-          value: user.userId,
-        }
-      : undefined;
+  let fetchedLoggedUser = false;
+  const loggedUser = user
+    ? {
+        label: `${user.firstName} ${user.lastName}`,
+        value: user.userId,
+      }
+    : undefined;
 
-    const data: { label: string; value: string | number }[] = [];
-    json?.result?.forEach(
-      ({ text, value }: { text: string; value: string | number }) => {
-        if (
-          loggedUser &&
-          value === loggedUser.value &&
-          text === loggedUser.label
-        ) {
-          fetchedLoggedUser = true;
-        } else {
-          data.push({
-            label: text,
-            value,
-          });
-        }
-      },
-    );
-
-    if (loggedUser && (!filterValue || fetchedLoggedUser)) {
-      data.unshift(loggedUser);
+  const data: { label: string; value: string | number }[] = [];
+  json?.result?.forEach(({ text, value }: { text: string; value: string | number }) => {
+    if (loggedUser && value === loggedUser.value && text === loggedUser.label) {
+      fetchedLoggedUser = true;
+    } else {
+      data.push({
+        label: text,
+        value,
+      });
     }
+  });
 
-    return {
-      data,
-      totalCount: json?.count,
-    };
+  if (loggedUser && (!filterValue || fetchedLoggedUser)) {
+    data.unshift(loggedUser);
+  }
+
+  return {
+    data,
+    totalCount: json?.count,
   };
+};
 
 export const PAGE_SIZE = 5;
 const getParams = (filters?: Array<Filters>) => {
@@ -130,10 +113,7 @@ export const getEditedObjects = (userId: string | number) => {
     .catch(err => err);
 };
 
-export const getUserOwnedObjects = (
-  userId: string | number,
-  resource: string,
-) => {
+export const getUserOwnedObjects = (userId: string | number, resource: string) => {
   const filters = {
     created: [
       {
@@ -176,35 +156,20 @@ export const getRecentAcitivtyObjs = (
         res.viewed = recentsRes.json;
         return res;
       })
-      .catch(errMsg =>
-        addDangerToast(
-          t('There was an error fetching your recent activity:'),
-          errMsg,
-        ),
-      );
+      .catch(errMsg => addDangerToast(t('There was an error fetching your recent activity:'), errMsg));
   });
 
 export const createFetchRelated = createFetchResourceMethod('related');
 export const createFetchDistinct = createFetchResourceMethod('distinct');
 
-export function createErrorHandler(
-  handleErrorFunc: (
-    errMsg?: string | Record<string, string[] | string>,
-  ) => void,
-) {
+export function createErrorHandler(handleErrorFunc: (errMsg?: string | Record<string, string[] | string>) => void) {
   return async (e: SupersetClientResponse | string) => {
     const parsedError = await getClientErrorObject(e);
     // Taking the first error returned from the API
     // @ts-ignore
     const errorsArray = parsedError?.errors;
     const config = await SupersetText;
-    if (
-      errorsArray &&
-      errorsArray.length &&
-      config &&
-      config.ERRORS &&
-      errorsArray[0].error_type in config.ERRORS
-    ) {
+    if (errorsArray && errorsArray.length && config && config.ERRORS && errorsArray[0].error_type in config.ERRORS) {
       parsedError.message = config.ERRORS[errorsArray[0].error_type];
     }
     logging.error(e);
@@ -284,11 +249,7 @@ export function handleDashboardDelete(
       else refreshData();
       addSuccessToast(t('Deleted: %s', dashboardTitle));
     },
-    createErrorHandler(errMsg =>
-      addDangerToast(
-        t('There was an issue deleting %s: %s', dashboardTitle, errMsg),
-      ),
-    ),
+    createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting %s: %s', dashboardTitle, errMsg))),
   );
 }
 
@@ -349,8 +310,7 @@ const isNeedsPassword = (payload: any) =>
   payload._schema[0] === 'Must provide a password for the database';
 
 export const isAlreadyExists = (payload: any) =>
-  typeof payload === 'string' &&
-  payload.includes('already exists and `overwrite=true` was not passed');
+  typeof payload === 'string' && payload.includes('already exists and `overwrite=true` was not passed');
 
 export const getPasswordsNeeded = (errors: Record<string, any>[]) =>
   errors
@@ -372,8 +332,5 @@ export const getAlreadyExists = (errors: Record<string, any>[]) =>
 
 export const hasTerminalValidation = (errors: Record<string, any>[]) =>
   errors.some(
-    error =>
-      !Object.values(error.extra).some(
-        payload => isNeedsPassword(payload) || isAlreadyExists(payload),
-      ),
+    error => !Object.values(error.extra).some(payload => isNeedsPassword(payload) || isAlreadyExists(payload)),
   );

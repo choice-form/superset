@@ -80,8 +80,7 @@ const StyledInputContainer = styled.div`
   textarea,
   input[type='text'],
   input[type='number'] {
-    padding: ${({ theme }) => theme.gridUnit * 1.5}px
-      ${({ theme }) => theme.gridUnit * 2}px;
+    padding: ${({ theme }) => theme.gridUnit * 1.5}px ${({ theme }) => theme.gridUnit * 2}px;
     border-style: none;
     border: 1px solid ${({ theme }) => theme.colors.grayscale.light2};
     border-radius: ${({ theme }) => theme.gridUnit}px;
@@ -126,8 +125,7 @@ const ImportModelsModal: FunctionComponent<ImportModelsModalProps> = ({
 }) => {
   const [isHidden, setIsHidden] = useState<boolean>(true);
   const [passwords, setPasswords] = useState<Record<string, string>>({});
-  const [needsOverwriteConfirm, setNeedsOverwriteConfirm] =
-    useState<boolean>(false);
+  const [needsOverwriteConfirm, setNeedsOverwriteConfirm] = useState<boolean>(false);
   const [confirmedOverwrite, setConfirmedOverwrite] = useState<boolean>(false);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [importingModel, setImportingModel] = useState<boolean>(false);
@@ -178,11 +176,7 @@ const ImportModelsModal: FunctionComponent<ImportModelsModalProps> = ({
     }
 
     setImportingModel(true);
-    importResource(
-      fileList[0].originFileObj,
-      passwords,
-      confirmedOverwrite,
-    ).then(result => {
+    importResource(fileList[0].originFileObj, passwords, confirmedOverwrite).then(result => {
       if (result) {
         addSuccessToast(t('The import was successful'));
         clearModal();
@@ -230,9 +224,7 @@ const ImportModelsModal: FunctionComponent<ImportModelsModalProps> = ({
               autoComplete={`password-${fileName}`}
               type="password"
               value={passwords[fileName]}
-              onChange={event =>
-                setPasswords({ ...passwords, [fileName]: event.target.value })
-              }
+              onChange={event => setPasswords({ ...passwords, [fileName]: event.target.value })}
             />
           </StyledInputContainer>
         ))}
@@ -249,15 +241,8 @@ const ImportModelsModal: FunctionComponent<ImportModelsModalProps> = ({
       <>
         <StyledInputContainer>
           <div className="confirm-overwrite">{confirmOverwriteMessage}</div>
-          <div className="control-label">
-            {t('Type "%s" to confirm', t('OVERWRITE'))}
-          </div>
-          <input
-            data-test="overwrite-modal-input"
-            id="overwrite"
-            type="text"
-            onChange={confirmOverwrite}
-          />
+          <div className="control-label">{t('Type "%s" to confirm', t('OVERWRITE'))}</div>
+          <input data-test="overwrite-modal-input" id="overwrite" type="text" onChange={confirmOverwrite} />
         </StyledInputContainer>
       </>
     );
@@ -272,11 +257,7 @@ const ImportModelsModal: FunctionComponent<ImportModelsModalProps> = ({
     <Modal
       name="model"
       className="import-model-modal"
-      disablePrimaryButton={
-        fileList.length === 0 ||
-        (needsOverwriteConfirm && !confirmedOverwrite) ||
-        importingModel
-      }
+      disablePrimaryButton={fileList.length === 0 || (needsOverwriteConfirm && !confirmedOverwrite) || importingModel}
       onHandledPrimaryAction={onUpload}
       onHide={hide}
       primaryButtonName={needsOverwriteConfirm ? t('Overwrite') : t('Import')}

@@ -19,19 +19,13 @@
 import shortid from 'shortid';
 import { DatasourceType, JsonObject, QueryFormData } from 'src/core';
 import { ControlStateMapping, DatasourceMeta } from 'src/chartConntrols';
-import {
-  CommonBootstrapData,
-  UserWithPermissionsAndRoles,
-} from 'src/types/bootstrapTypes';
+import { CommonBootstrapData, UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';
 import getToastsFromPyFlashMessages from 'src/components/MessageToasts/getToastsFromPyFlashMessages';
 
 import { ChartState, Slice } from 'src/explore/types';
 import { getChartKey } from 'src/explore/exploreUtils';
 import { getControlsState } from 'src/explore/store';
-import {
-  getFormDataFromControls,
-  applyMapStateToPropsToControl,
-} from 'src/explore/controlUtils';
+import { getFormDataFromControls, applyMapStateToPropsToControl } from 'src/explore/controlUtils';
 
 export interface ExlorePageBootstrapData extends JsonObject {
   can_add: boolean;
@@ -48,9 +42,7 @@ export interface ExlorePageBootstrapData extends JsonObject {
   user: UserWithPermissionsAndRoles;
 }
 
-export default function getInitialState(
-  bootstrapData: ExlorePageBootstrapData,
-) {
+export default function getInitialState(bootstrapData: ExlorePageBootstrapData) {
   const { form_data: initialFormData } = bootstrapData;
   const { slice } = bootstrapData;
   const sliceName = slice ? slice.slice_name : null;
@@ -68,25 +60,17 @@ export default function getInitialState(
     isStarred: false,
     // Initial control state will skip `control.mapStateToProps`
     // because `bootstrapData.controls` is undefined.
-    controls: getControlsState(
-      bootstrapData,
-      initialFormData,
-    ) as ControlStateMapping,
+    controls: getControlsState(bootstrapData, initialFormData) as ControlStateMapping,
   };
 
   // apply initial mapStateToProps for all controls, must execute AFTER
   // bootstrapState has initialized `controls`. Order of execution is not
   // guaranteed, so controls shouldn't rely on the each other's mapped state.
   Object.entries(exploreState.controls).forEach(([key, controlState]) => {
-    exploreState.controls[key] = applyMapStateToPropsToControl(
-      controlState,
-      exploreState,
-    );
+    exploreState.controls[key] = applyMapStateToPropsToControl(controlState, exploreState);
   });
 
-  const sliceFormData = slice
-    ? getFormDataFromControls(getControlsState(bootstrapData, slice.form_data))
-    : null;
+  const sliceFormData = slice ? getFormDataFromControls(getControlsState(bootstrapData, slice.form_data)) : null;
 
   const chartKey: number = getChartKey(bootstrapData);
   const chart: ChartState = {
@@ -114,9 +98,7 @@ export default function getInitialState(
     },
     explore: exploreState,
     impressionId: shortid.generate(),
-    messageToasts: getToastsFromPyFlashMessages(
-      (bootstrapData.common || {}).flash_messages || [],
-    ),
+    messageToasts: getToastsFromPyFlashMessages((bootstrapData.common || {}).flash_messages || []),
   };
 }
 

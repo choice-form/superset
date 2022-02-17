@@ -50,17 +50,11 @@ const DatasetModal: FunctionComponent<DatasetModalProps> = ({
   onHide,
   show,
 }) => {
-  const [currentDatabase, setCurrentDatabase] = useState<
-    DatabaseObject | undefined
-  >();
+  const [currentDatabase, setCurrentDatabase] = useState<DatabaseObject | undefined>();
   const [currentSchema, setSchema] = useState<string | undefined>('');
   const [currentTableName, setTableName] = useState('');
   const [disableSave, setDisableSave] = useState(true);
-  const { createResource } = useSingleViewResource<Partial<DatasetAddObject>>(
-    'dataset',
-    t('dataset'),
-    addDangerToast,
-  );
+  const { createResource } = useSingleViewResource<Partial<DatasetAddObject>>('dataset', t('dataset'), addDangerToast);
 
   useEffect(() => {
     setDisableSave(currentDatabase === undefined || currentTableName === '');

@@ -34,11 +34,7 @@ type CrossFilterScopingModalProps = {
   onClose: () => void;
 };
 
-const CrossFilterScopingModal: FC<CrossFilterScopingModalProps> = ({
-  isOpen,
-  chartId,
-  onClose,
-}) => {
+const CrossFilterScopingModal: FC<CrossFilterScopingModalProps> = ({ isOpen, chartId, onClose }) => {
   const dispatch = useDispatch();
   const [form] = Form.useForm<CrossFilterScopingFormType>();
   const chartConfig = useSelector<any, ChartConfiguration>(

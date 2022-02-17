@@ -83,18 +83,8 @@ export function formatPieLabel({
   }
 }
 
-export default function transformProps(
-  chartProps: EchartsPieChartProps,
-): PieChartTransformedProps {
-  const {
-    ownState,
-    formData,
-    height,
-    hooks,
-    filterState,
-    queriesData,
-    width,
-  } = chartProps;
+export default function transformProps(chartProps: EchartsPieChartProps): PieChartTransformedProps {
+  const { ownState, formData, height, hooks, filterState, queriesData, width } = chartProps;
 
   console.log('props:', chartProps);
 
@@ -141,21 +131,18 @@ export default function transformProps(
       timeFormatter: getTimeFormatter(dateFormat),
     }),
   );
-  const labelMap = data.reduce(
-    (acc: Record<string, DataRecordValue[]>, datum) => {
-      const label = extractGroupbyLabel({
-        datum,
-        groupby: groupbyLabels,
-        coltypeMapping,
-        timeFormatter: getTimeFormatter(dateFormat),
-      });
-      return {
-        ...acc,
-        [label]: groupbyLabels.map(col => datum[col]),
-      };
-    },
-    {},
-  );
+  const labelMap = data.reduce((acc: Record<string, DataRecordValue[]>, datum) => {
+    const label = extractGroupbyLabel({
+      datum,
+      groupby: groupbyLabels,
+      coltypeMapping,
+      timeFormatter: getTimeFormatter(dateFormat),
+    });
+    return {
+      ...acc,
+      [label]: groupbyLabels.map(col => datum[col]),
+    };
+  }, {});
 
   const { setDataMask = () => {} } = hooks;
 
@@ -170,26 +157,21 @@ export default function transformProps(
       timeFormatter: getTimeFormatter(dateFormat),
     });
 
-    const isFiltered =
-      filterState.selectedValues && !filterState.selectedValues.includes(name);
+    const isFiltered = filterState.selectedValues && !filterState.selectedValues.includes(name);
 
     return {
       value: datum[metricLabel],
       name,
       itemStyle: {
         color: colorFn(name),
-        opacity: isFiltered
-          ? OpacityEnum.SemiTransparent
-          : OpacityEnum.NonTransparent,
+        opacity: isFiltered ? OpacityEnum.SemiTransparent : OpacityEnum.NonTransparent,
       },
     };
   });
 
   const selectedValues = (filterState.selectedValues || []).reduce(
     (acc: Record<string, number>, selectedValue: string) => {
-      const index = transformedData.findIndex(
-        ({ name }) => name === selectedValue,
-      );
+      const index = transformedData.findIndex(({ name }) => name === selectedValue);
       return {
         ...acc,
         [index]: selectedValue,

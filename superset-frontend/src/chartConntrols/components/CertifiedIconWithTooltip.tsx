@@ -31,20 +31,14 @@ const StyledDiv = styled.div`
   margin-bottom: ${({ theme }) => theme.gridUnit * 2}px;
 `;
 
-function CertifiedIconWithTooltip({
-  certifiedBy,
-  details,
-  metricName,
-}: CertifiedIconWithTooltipProps) {
+function CertifiedIconWithTooltip({ certifiedBy, details, metricName }: CertifiedIconWithTooltipProps) {
   const theme = useTheme();
   return (
     <Tooltip
       id={`${kebabCase(metricName)}-tooltip`}
       title={
         <div>
-          {certifiedBy && (
-            <StyledDiv>{t('Certified by %s', certifiedBy)}</StyledDiv>
-          )}
+          {certifiedBy && <StyledDiv>{t('Certified by %s', certifiedBy)}</StyledDiv>}
           <div>{details}</div>
         </div>
       }

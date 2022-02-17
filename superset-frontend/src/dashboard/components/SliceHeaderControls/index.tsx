@@ -43,8 +43,7 @@ const MENU_KEYS = {
 };
 
 const VerticalDotsContainer = styled.div`
-  padding: ${({ theme }) => theme.gridUnit / 4}px
-    ${({ theme }) => theme.gridUnit * 1.5}px;
+  padding: ${({ theme }) => theme.gridUnit / 4}px ${({ theme }) => theme.gridUnit * 1.5}px;
 
   .dot {
     display: block;
@@ -117,10 +116,7 @@ interface State {
   showCrossFilterScopingModal: boolean;
 }
 
-class SliceHeaderControls extends React.PureComponent<
-  SliceHeaderControlsProps,
-  State
-> {
+class SliceHeaderControls extends React.PureComponent<SliceHeaderControlsProps, State> {
   constructor(props: SliceHeaderControlsProps) {
     super(props);
     this.toggleControls = this.toggleControls.bind(this);
@@ -135,10 +131,7 @@ class SliceHeaderControls extends React.PureComponent<
 
   refreshChart() {
     if (this.props.updatedDttm) {
-      this.props.forceRefresh(
-        this.props.slice.slice_id,
-        this.props.dashboardId,
-      );
+      this.props.forceRefresh(this.props.slice.slice_id, this.props.dashboardId);
     }
   }
 
@@ -148,13 +141,7 @@ class SliceHeaderControls extends React.PureComponent<
     }));
   }
 
-  handleMenuClick({
-    key,
-    domEvent,
-  }: {
-    key: React.Key;
-    domEvent: React.MouseEvent<HTMLElement>;
-  }) {
+  handleMenuClick({ key, domEvent }: { key: React.Key; domEvent: React.MouseEvent<HTMLElement> }) {
     switch (key) {
       case MENU_KEYS.FORCE_REFRESH:
         this.refreshChart();
@@ -164,13 +151,11 @@ class SliceHeaderControls extends React.PureComponent<
         break;
       case MENU_KEYS.TOGGLE_CHART_DESCRIPTION:
         // eslint-disable-next-line no-unused-expressions
-        this.props.toggleExpandSlice &&
-          this.props.toggleExpandSlice(this.props.slice.slice_id);
+        this.props.toggleExpandSlice && this.props.toggleExpandSlice(this.props.slice.slice_id);
         break;
       case MENU_KEYS.EXPLORE_CHART:
         // eslint-disable-next-line no-unused-expressions
-        this.props.logExploreChart &&
-          this.props.logExploreChart(this.props.slice.slice_id);
+        this.props.logExploreChart && this.props.logExploreChart(this.props.slice.slice_id);
         break;
       case MENU_KEYS.EXPORT_CSV:
         // eslint-disable-next-line no-unused-expressions
@@ -181,15 +166,12 @@ class SliceHeaderControls extends React.PureComponent<
         break;
       case MENU_KEYS.EXPORT_FULL_CSV:
         // eslint-disable-next-line no-unused-expressions
-        this.props.exportFullCSV &&
-          this.props.exportFullCSV(this.props.slice.slice_id);
+        this.props.exportFullCSV && this.props.exportFullCSV(this.props.slice.slice_id);
         break;
       case MENU_KEYS.DOWNLOAD_AS_IMAGE: {
         // menu closes with a delay, we need to hide it manually,
         // so that we don't capture it on the screenshot
-        const menu = document.querySelector(
-          '.ant-dropdown:not(.ant-dropdown-hidden)',
-        ) as HTMLElement;
+        const menu = document.querySelector('.ant-dropdown:not(.ant-dropdown-hidden)') as HTMLElement;
         menu.style.visibility = 'hidden';
         downloadAsImage(
           SCREENSHOT_NODE_SELECTOR,
@@ -221,15 +203,11 @@ class SliceHeaderControls extends React.PureComponent<
     const isTable = slice.viz_type === 'table';
     const isCrossFilter = Object.entries(crossFilterItems)
       // @ts-ignore
-      .filter(([, { value }]) =>
-        value.behaviors?.includes(Behavior.INTERACTIVE_CHART),
-      )
+      .filter(([, { value }]) => value.behaviors?.includes(Behavior.INTERACTIVE_CHART))
       .find(([key]) => key === slice.viz_type);
     const canEmitCrossFilter = slice.form_data?.emit_filter;
 
-    const cachedWhen = (cachedDttm || []).map(itemCachedDttm =>
-      moment.utc(itemCachedDttm).fromNow(),
-    );
+    const cachedWhen = (cachedDttm || []).map(itemCachedDttm => moment.utc(itemCachedDttm).fromNow());
     const updatedWhen = updatedDttm ? moment.utc(updatedDttm).fromNow() : '';
     const getCachedTitle = (itemCached: boolean) => {
       if (itemCached) {
@@ -243,11 +221,7 @@ class SliceHeaderControls extends React.PureComponent<
     const refreshTooltipData = [...new Set(isCached.map(getCachedTitle) || '')];
     // If all queries have same cache time we can unit them to one
     const refreshTooltip = refreshTooltipData.map((item, index) => (
-      <div key={`tooltip-${index}`}>
-        {refreshTooltipData.length > 1
-          ? `${t('Query')} ${index + 1}: ${item}`
-          : item}
-      </div>
+      <div key={`tooltip-${index}`}>{refreshTooltipData.length > 1 ? `${t('Query')} ${index + 1}: ${item}` : item}</div>
     ));
     const resizeLabel = isFullSize ? t('Minimize chart') : t('Maximize chart');
     const menu = (
@@ -264,17 +238,13 @@ class SliceHeaderControls extends React.PureComponent<
           data-test="refresh-chart-menu-item"
         >
           {t('Force refresh')}
-          <RefreshTooltip data-test="dashboard-slice-refresh-tooltip">
-            {refreshTooltip}
-          </RefreshTooltip>
+          <RefreshTooltip data-test="dashboard-slice-refresh-tooltip">{refreshTooltip}</RefreshTooltip>
         </Menu.Item>
 
         <Menu.Divider />
 
         {slice.description && (
-          <Menu.Item key={MENU_KEYS.TOGGLE_CHART_DESCRIPTION}>
-            {t('Toggle chart description')}
-          </Menu.Item>
+          <Menu.Item key={MENU_KEYS.TOGGLE_CHART_DESCRIPTION}>{t('Toggle chart description')}</Menu.Item>
         )}
 
         {this.props.supersetCanExplore && (
@@ -288,13 +258,9 @@ class SliceHeaderControls extends React.PureComponent<
         {this.props.supersetCanExplore && (
           <Menu.Item key={MENU_KEYS.VIEW_QUERY}>
             <ModalTrigger
-              triggerNode={
-                <span data-test="view-query-menu-item">{t('View query')}</span>
-              }
+              triggerNode={<span data-test="view-query-menu-item">{t('View query')}</span>}
               modalTitle={t('View query')}
-              modalBody={
-                <ViewQueryModal latestQueryFormData={this.props.formData} />
-              }
+              modalBody={<ViewQueryModal latestQueryFormData={this.props.formData} />}
               draggable
               resizable
               responsive
@@ -320,31 +286,20 @@ class SliceHeaderControls extends React.PureComponent<
 
         <Menu.Item key={MENU_KEYS.RESIZE_LABEL}>{resizeLabel}</Menu.Item>
 
-        <Menu.Item key={MENU_KEYS.DOWNLOAD_AS_IMAGE}>
-          {t('Download as image')}
-        </Menu.Item>
+        <Menu.Item key={MENU_KEYS.DOWNLOAD_AS_IMAGE}>{t('Download as image')}</Menu.Item>
 
-        {this.props.slice.viz_type !== 'filter_box' &&
-          this.props.supersetCanCSV && (
-            <Menu.Item key={MENU_KEYS.EXPORT_CSV}>{t('Export CSV')}</Menu.Item>
-          )}
+        {this.props.slice.viz_type !== 'filter_box' && this.props.supersetCanCSV && (
+          <Menu.Item key={MENU_KEYS.EXPORT_CSV}>{t('Export CSV')}</Menu.Item>
+        )}
 
         {this.props.slice.viz_type !== 'filter_box' &&
           isFeatureEnabled(FeatureFlag.ALLOW_FULL_CSV_EXPORT) &&
           this.props.supersetCanCSV &&
-          isTable && (
-            <Menu.Item key={MENU_KEYS.EXPORT_FULL_CSV}>
-              {t('Export full CSV')}
-            </Menu.Item>
-          )}
+          isTable && <Menu.Item key={MENU_KEYS.EXPORT_FULL_CSV}>{t('Export full CSV')}</Menu.Item>}
 
-        {isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS) &&
-          isCrossFilter &&
-          canEmitCrossFilter && (
-            <Menu.Item key={MENU_KEYS.CROSS_FILTER_SCOPING}>
-              {t('Cross-filter scoping')}
-            </Menu.Item>
-          )}
+        {isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS) && isCrossFilter && canEmitCrossFilter && (
+          <Menu.Item key={MENU_KEYS.CROSS_FILTER_SCOPING}>{t('Cross-filter scoping')}</Menu.Item>
+        )}
       </Menu>
     );
 
@@ -367,15 +322,9 @@ class SliceHeaderControls extends React.PureComponent<
           overlay={menu}
           trigger={['click']}
           placement="bottomRight"
-          getPopupContainer={triggerNode =>
-            triggerNode.closest(SCREENSHOT_NODE_SELECTOR) as HTMLElement
-          }
+          getPopupContainer={triggerNode => triggerNode.closest(SCREENSHOT_NODE_SELECTOR) as HTMLElement}
         >
-          <span
-            id={`slice_${slice.slice_id}-controls`}
-            role="button"
-            aria-label="More Options"
-          >
+          <span id={`slice_${slice.slice_id}-controls`} role="button" aria-label="More Options">
             <VerticalDotsTrigger />
           </span>
         </NoAnimationDropdown>

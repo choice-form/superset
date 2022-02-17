@@ -75,11 +75,7 @@ class CopyToClipboard extends React.Component {
         this.props.addSuccessToast(t('Copied to clipboard!'));
       })
       .catch(() => {
-        this.props.addDangerToast(
-          t(
-            'Sorry, your browser does not support copying. Use Ctrl / Cmd + C!',
-          ),
-        );
+        this.props.addDangerToast(t('Sorry, your browser does not support copying. Use Ctrl / Cmd + C!'));
       })
       .finally(() => {
         this.props.onCopyEnd();
@@ -108,12 +104,7 @@ class CopyToClipboard extends React.Component {
             {this.props.text}
           </span>
         )}
-        <Tooltip
-          id="copy-to-clipboard-tooltip"
-          placement="top"
-          title={this.props.tooltipText}
-          trigger={['hover']}
-        >
+        <Tooltip id="copy-to-clipboard-tooltip" placement="top" title={this.props.tooltipText} trigger={['hover']}>
           {this.getDecoratedCopyNode()}
         </Tooltip>
       </span>

@@ -38,10 +38,7 @@ test('renders with default props', async () => {
 
 test('renders ghost button when empty', async () => {
   const ghostButtonText = 'Ghost button text';
-  render(
-    <DndSelectLabel {...defaultProps} ghostButtonText={ghostButtonText} />,
-    { useDnd: true },
-  );
+  render(<DndSelectLabel {...defaultProps} ghostButtonText={ghostButtonText} />, { useDnd: true });
   expect(await screen.findByText(ghostButtonText)).toBeInTheDocument();
 });
 

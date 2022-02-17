@@ -124,10 +124,8 @@ class ResizableContainer extends React.PureComponent {
     } = this.props;
 
     if (onResizeStop) {
-      const nextWidthMultiple =
-        widthMultiple + Math.round(delta.width / (widthStep + gutterWidth));
-      const nextHeightMultiple =
-        heightMultiple + Math.round(delta.height / heightStep);
+      const nextWidthMultiple = widthMultiple + Math.round(delta.width / (widthStep + gutterWidth));
+      const nextHeightMultiple = heightMultiple + Math.round(delta.height / heightStep);
 
       onResizeStop({
         id,
@@ -163,14 +161,10 @@ class ResizableContainer extends React.PureComponent {
     const size = {
       width: adjustableWidth
         ? (widthStep + gutterWidth) * widthMultiple - gutterWidth
-        : (staticWidthMultiple && staticWidthMultiple * widthStep) ||
-          staticWidth ||
-          undefined,
+        : (staticWidthMultiple && staticWidthMultiple * widthStep) || staticWidth || undefined,
       height: adjustableHeight
         ? heightStep * heightMultiple
-        : (staticHeightMultiple && staticHeightMultiple * heightStep) ||
-          staticHeight ||
-          undefined,
+        : (staticHeightMultiple && staticHeightMultiple * heightStep) || staticHeight || undefined,
     };
 
     let enableConfig = resizableConfig.notAdjustable;
@@ -189,31 +183,19 @@ class ResizableContainer extends React.PureComponent {
       <Resizable
         enable={enableConfig}
         grid={SNAP_TO_GRID}
-        minWidth={
-          adjustableWidth
-            ? minWidthMultiple * (widthStep + gutterWidth) - gutterWidth
-            : undefined
-        }
-        minHeight={
-          adjustableHeight ? minHeightMultiple * heightStep : undefined
-        }
+        minWidth={adjustableWidth ? minWidthMultiple * (widthStep + gutterWidth) - gutterWidth : undefined}
+        minHeight={adjustableHeight ? minHeightMultiple * heightStep : undefined}
         maxWidth={
           adjustableWidth
             ? Math.max(
                 size.width,
-                Math.min(
-                  proxyToInfinity,
-                  maxWidthMultiple * (widthStep + gutterWidth) - gutterWidth,
-                ),
+                Math.min(proxyToInfinity, maxWidthMultiple * (widthStep + gutterWidth) - gutterWidth),
               )
             : undefined
         }
         maxHeight={
           adjustableHeight
-            ? Math.max(
-                size.height,
-                Math.min(proxyToInfinity, maxHeightMultiple * heightStep),
-              )
+            ? Math.max(size.height, Math.min(proxyToInfinity, maxHeightMultiple * heightStep))
             : undefined
         }
         size={size}
@@ -221,10 +203,7 @@ class ResizableContainer extends React.PureComponent {
         onResize={this.handleResize}
         onResizeStop={this.handleResizeStop}
         handleComponent={ResizableHandle}
-        className={cx(
-          'resizable-container',
-          isResizing && 'resizable-container--resizing',
-        )}
+        className={cx('resizable-container', isResizing && 'resizable-container--resizing')}
         handleClasses={HANDLE_CLASSES}
       >
         {children}

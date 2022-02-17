@@ -19,12 +19,7 @@
 import React, { Suspense, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Provider as ReduxProvider } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useLocation,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { QueryParamProvider } from 'use-query-params';
@@ -70,10 +65,7 @@ const RootContextProviders: React.FC = ({ children }) => {
         <DndProvider backend={HTML5Backend}>
           <FlashProvider messages={common.flash_messages}>
             <DynamicPluginProvider>
-              <QueryParamProvider
-                ReactRouterRoute={Route}
-                stringifyOptions={{ encode: false }}
-              >
+              <QueryParamProvider ReactRouterRoute={Route} stringifyOptions={{ encode: false }}>
                 {children}
               </QueryParamProvider>
             </DynamicPluginProvider>

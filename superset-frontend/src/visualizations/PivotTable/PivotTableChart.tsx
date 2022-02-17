@@ -37,21 +37,13 @@ import {
 } from '@superset-ui/react-pivottable/Utilities';
 import '@superset-ui/react-pivottable/pivottable.css';
 import { isAdhocColumn } from 'src/chartConntrols';
-import {
-  FilterType,
-  MetricsLayoutEnum,
-  PivotTableProps,
-  PivotTableStylesProps,
-  SelectedFiltersType,
-} from './types';
+import { FilterType, MetricsLayoutEnum, PivotTableProps, PivotTableStylesProps, SelectedFiltersType } from './types';
 
 const Styles = styled.div<PivotTableStylesProps>`
   ${({ height, width, margin }) => `
       margin: ${margin}px;
       height: ${height - margin * 2}px;
-      width: ${
-        typeof width === 'string' ? parseInt(width, 10) : width - margin * 2
-      }px;
+      width: ${typeof width === 'string' ? parseInt(width, 10) : width - margin * 2}px;
  `}
 `;
 
@@ -77,36 +69,12 @@ const aggregatorsFactory = (formatter: NumberFormatter) => ({
   Maximum: aggregatorTemplates.max(formatter),
   First: aggregatorTemplates.first(formatter),
   Last: aggregatorTemplates.last(formatter),
-  'Sum as Fraction of Total': aggregatorTemplates.fractionOf(
-    aggregatorTemplates.sum(),
-    'total',
-    formatter,
-  ),
-  'Sum as Fraction of Rows': aggregatorTemplates.fractionOf(
-    aggregatorTemplates.sum(),
-    'row',
-    formatter,
-  ),
-  'Sum as Fraction of Columns': aggregatorTemplates.fractionOf(
-    aggregatorTemplates.sum(),
-    'col',
-    formatter,
-  ),
-  'Count as Fraction of Total': aggregatorTemplates.fractionOf(
-    aggregatorTemplates.count(),
-    'total',
-    formatter,
-  ),
-  'Count as Fraction of Rows': aggregatorTemplates.fractionOf(
-    aggregatorTemplates.count(),
-    'row',
-    formatter,
-  ),
-  'Count as Fraction of Columns': aggregatorTemplates.fractionOf(
-    aggregatorTemplates.count(),
-    'col',
-    formatter,
-  ),
+  'Sum as Fraction of Total': aggregatorTemplates.fractionOf(aggregatorTemplates.sum(), 'total', formatter),
+  'Sum as Fraction of Rows': aggregatorTemplates.fractionOf(aggregatorTemplates.sum(), 'row', formatter),
+  'Sum as Fraction of Columns': aggregatorTemplates.fractionOf(aggregatorTemplates.sum(), 'col', formatter),
+  'Count as Fraction of Total': aggregatorTemplates.fractionOf(aggregatorTemplates.count(), 'total', formatter),
+  'Count as Fraction of Rows': aggregatorTemplates.fractionOf(aggregatorTemplates.count(), 'row', formatter),
+  'Count as Fraction of Columns': aggregatorTemplates.fractionOf(aggregatorTemplates.count(), 'col', formatter),
 });
 
 /* If you change this logic, please update the corresponding Python
@@ -147,18 +115,11 @@ export default function PivotTableChart(props: PivotTableProps) {
   const hasCustomMetricFormatters = columnFormatsArray.length > 0;
   const metricFormatters =
     hasCustomMetricFormatters &&
-    Object.fromEntries(
-      columnFormatsArray.map(([metric, format]) => [
-        metric,
-        getNumberFormatter(format),
-      ]),
-    );
+    Object.fromEntries(columnFormatsArray.map(([metric, format]) => [metric, getNumberFormatter(format)]));
 
   const metricNames = useMemo(
     () =>
-      metrics.map((metric: string | AdhocMetric) =>
-        typeof metric === 'string' ? metric : (metric.label as string),
-      ),
+      metrics.map((metric: string | AdhocMetric) => (typeof metric === 'string' ? metric : (metric.label as string))),
     [metrics],
   );
 
@@ -182,9 +143,7 @@ export default function PivotTableChart(props: PivotTableProps) {
   const groupbyRows = groupbyRowsRaw.map(getColumnLabel);
   const groupbyColumns = groupbyColumnsRaw.map(getColumnLabel);
 
-  let [rows, cols] = transposePivot
-    ? [groupbyColumns, groupbyRows]
-    : [groupbyRows, groupbyColumns];
+  let [rows, cols] = transposePivot ? [groupbyColumns, groupbyRows] : [groupbyRows, groupbyColumns];
 
   if (metricsLayout === MetricsLayoutEnum.ROWS) {
     rows = combineMetric ? [...rows, METRIC_KEY] : [METRIC_KEY, ...rows];
@@ -226,12 +185,8 @@ export default function PivotTableChart(props: PivotTableProps) {
                 }),
         },
         filterState: {
-          value:
-            filters && Object.keys(filters).length
-              ? Object.values(filters)
-              : null,
-          selectedFilters:
-            filters && Object.keys(filters).length ? filters : null,
+          value: filters && Object.keys(filters).length ? Object.values(filters) : null,
+          selectedFilters: filters && Object.keys(filters).length ? filters : null,
         },
       });
     },
@@ -279,10 +234,7 @@ export default function PivotTableChart(props: PivotTableProps) {
           [key]: [val],
         };
       }
-      if (
-        Array.isArray(updatedFilters[key]) &&
-        updatedFilters[key].length === 0
-      ) {
+      if (Array.isArray(updatedFilters[key]) && updatedFilters[key].length === 0) {
         delete updatedFilters[key];
       }
       handleChange(updatedFilters);
@@ -299,11 +251,7 @@ export default function PivotTableChart(props: PivotTableProps) {
           cols={cols}
           aggregatorsFactory={aggregatorsFactory}
           defaultFormatter={defaultFormatter}
-          customFormatters={
-            hasCustomMetricFormatters
-              ? { [METRIC_KEY]: metricFormatters }
-              : undefined
-          }
+          customFormatters={hasCustomMetricFormatters ? { [METRIC_KEY]: metricFormatters } : undefined}
           aggregatorName={aggregateFunction}
           vals={['value']}
           rendererName="Table With Subtotal"

@@ -92,8 +92,7 @@ export default function reactify<Props extends object>(
     }
   }
 
-  const ReactifiedClass: React.ComponentClass<Props & ReactifyProps> =
-    ReactifiedComponent;
+  const ReactifiedClass: React.ComponentClass<Props & ReactifyProps> = ReactifiedComponent;
 
   if (renderFn.displayName) {
     ReactifiedClass.displayName = renderFn.displayName;

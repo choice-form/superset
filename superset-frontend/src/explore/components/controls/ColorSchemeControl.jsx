@@ -33,10 +33,7 @@ const propTypes = {
   value: PropTypes.string,
   clearable: PropTypes.bool,
   default: PropTypes.string,
-  choices: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.array),
-    PropTypes.func,
-  ]),
+  choices: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.array), PropTypes.func]),
   schemes: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   isLinear: PropTypes.bool,
 };
@@ -110,18 +107,14 @@ export default class ColorSchemeControl extends React.PureComponent {
     // save parsed schemes for later
     this.schemes = isFunction(schemes) ? schemes() : schemes;
 
-    const allColorOptions = (isFunction(choices) ? choices() : choices).filter(
-      o => o[0] !== 'SUPERSET_DEFAULT',
-    );
+    const allColorOptions = (isFunction(choices) ? choices() : choices).filter(o => o[0] !== 'SUPERSET_DEFAULT');
     const options = allColorOptions.map(([value]) => ({
       value,
       label: this.schemes?.[value]?.label || value,
       customLabel: this.renderOption(value),
     }));
 
-    let currentScheme =
-      this.props.value ||
-      (this.props.default !== undefined ? this.props.default : undefined);
+    let currentScheme = this.props.value || (this.props.default !== undefined ? this.props.default : undefined);
 
     if (currentScheme === 'SUPERSET_DEFAULT') {
       currentScheme = this.schemes?.SUPERSET_DEFAULT?.id;
@@ -136,9 +129,7 @@ export default class ColorSchemeControl extends React.PureComponent {
       placeholder: `Select (${options.length})`,
       value: currentScheme,
     };
-    return (
-      <Select header={<ControlHeader {...this.props} />} {...selectProps} />
-    );
+    return <Select header={<ControlHeader {...this.props} />} {...selectProps} />;
   }
 }
 

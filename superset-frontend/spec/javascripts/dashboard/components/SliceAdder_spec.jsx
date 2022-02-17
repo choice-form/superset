@@ -115,9 +115,7 @@ describe('SliceAdder', () => {
       });
       expect(wrapper.instance().setState.calledOnce).toBe(true);
 
-      const stateKeys = Object.keys(
-        wrapper.instance().setState.lastCall.args[0],
-      );
+      const stateKeys = Object.keys(wrapper.instance().setState.lastCall.args[0]);
       expect(stateKeys).toContain('filteredSlices');
     });
 
@@ -128,9 +126,7 @@ describe('SliceAdder', () => {
       });
       expect(wrapper.instance().setState.calledOnce).toBe(true);
 
-      const stateKeys = Object.keys(
-        wrapper.instance().setState.lastCall.args[0],
-      );
+      const stateKeys = Object.keys(wrapper.instance().setState.lastCall.args[0]);
       expect(stateKeys).toContain('selectedSliceIdsSet');
     });
   });

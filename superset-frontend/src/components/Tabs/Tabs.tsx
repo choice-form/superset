@@ -26,12 +26,7 @@ export interface TabsProps extends AntDTabsProps {
   allowOverflow?: boolean;
 }
 
-const StyledTabs = ({
-  animated = false,
-  fullWidth = true,
-  allowOverflow = true,
-  ...props
-}: TabsProps) => (
+const StyledTabs = ({ animated = false, fullWidth = true, allowOverflow = true, ...props }: TabsProps) => (
   <AntDTabs
     animated={animated}
     {...props}

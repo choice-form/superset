@@ -19,12 +19,7 @@
 
 /* eslint react/sort-comp: 'off' */
 import React, { ReactNode } from 'react';
-import {
-  SupersetClientInterface,
-  RequestConfig,
-  QueryFormData,
-  Datasource,
-} from '../..';
+import { SupersetClientInterface, RequestConfig, QueryFormData, Datasource } from '../..';
 import ChartClient, { SliceIdAndOrFormData } from '../clients/ChartClient';
 import { QueryData } from '../types/QueryResponse';
 
@@ -67,10 +62,7 @@ export type ChartDataProviderState = {
   error?: ProvidedProps['error'];
 };
 
-class ChartDataProvider extends React.PureComponent<
-  ChartDataProviderProps,
-  ChartDataProviderState
-> {
+class ChartDataProvider extends React.PureComponent<ChartDataProviderProps, ChartDataProviderState> {
   readonly chartClient: ChartClient;
 
   constructor(props: ChartDataProviderProps) {
@@ -96,27 +88,16 @@ class ChartDataProvider extends React.PureComponent<
   }
 
   private handleFetchData = () => {
-    const {
-      loadDatasource,
-      formDataRequestOptions,
-      datasourceRequestOptions,
-      queryRequestOptions,
-    } = this.props;
+    const { loadDatasource, formDataRequestOptions, datasourceRequestOptions, queryRequestOptions } = this.props;
 
     this.setState({ status: 'loading' }, () => {
       try {
         this.chartClient
-          .loadFormData(
-            this.extractSliceIdAndFormData(),
-            formDataRequestOptions,
-          )
+          .loadFormData(this.extractSliceIdAndFormData(), formDataRequestOptions)
           .then(formData =>
             Promise.all([
               loadDatasource
-                ? this.chartClient.loadDatasource(
-                    formData.datasource,
-                    datasourceRequestOptions,
-                  )
+                ? this.chartClient.loadDatasource(formData.datasource, datasourceRequestOptions)
                 : Promise.resolve(undefined),
               this.chartClient.loadQueryData(formData, queryRequestOptions),
             ]).then(

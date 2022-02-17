@@ -30,11 +30,7 @@ import DeleteModal from 'src/components/DeleteModal';
 import { Tooltip } from 'src/components/Tooltip';
 import ConfirmStatusChange from 'src/components/ConfirmStatusChange';
 import ActionsBar, { ActionProps } from 'src/components/ListView/ActionsBar';
-import ListView, {
-  ListViewProps,
-  Filters,
-  FilterOperator,
-} from 'src/components/ListView';
+import ListView, { ListViewProps, Filters, FilterOperator } from 'src/components/ListView';
 import CssTemplateModal from './CssTemplateModal';
 import { TemplateObject } from './types';
 
@@ -50,38 +46,22 @@ interface CssTemplatesListProps {
   };
 }
 
-function CssTemplatesList({
-  addDangerToast,
-  addSuccessToast,
-  user,
-}: CssTemplatesListProps) {
+function CssTemplatesList({ addDangerToast, addSuccessToast, user }: CssTemplatesListProps) {
   const {
-    state: {
-      loading,
-      resourceCount: templatesCount,
-      resourceCollection: templates,
-      bulkSelectEnabled,
-    },
+    state: { loading, resourceCount: templatesCount, resourceCollection: templates, bulkSelectEnabled },
     hasPerm,
     fetchData,
     refreshData,
     toggleBulkSelect,
-  } = useListViewResource<TemplateObject>(
-    'css_template',
-    t('CSS templates'),
-    addDangerToast,
-  );
-  const [cssTemplateModalOpen, setCssTemplateModalOpen] =
-    useState<boolean>(false);
-  const [currentCssTemplate, setCurrentCssTemplate] =
-    useState<TemplateObject | null>(null);
+  } = useListViewResource<TemplateObject>('css_template', t('CSS templates'), addDangerToast);
+  const [cssTemplateModalOpen, setCssTemplateModalOpen] = useState<boolean>(false);
+  const [currentCssTemplate, setCurrentCssTemplate] = useState<TemplateObject | null>(null);
 
   const canCreate = hasPerm('can_write');
   const canEdit = hasPerm('can_write');
   const canDelete = hasPerm('can_write');
 
-  const [templateCurrentlyDeleting, setTemplateCurrentlyDeleting] =
-    useState<TemplateObject | null>(null);
+  const [templateCurrentlyDeleting, setTemplateCurrentlyDeleting] = useState<TemplateObject | null>(null);
 
   const handleTemplateDelete = ({ id, template_name }: TemplateObject) => {
     SupersetClient.delete({
@@ -92,29 +72,19 @@ function CssTemplatesList({
         setTemplateCurrentlyDeleting(null);
         addSuccessToast(t('Deleted: %s', template_name));
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(
-          t('There was an issue deleting %s: %s', template_name, errMsg),
-        ),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting %s: %s', template_name, errMsg))),
     );
   };
 
   const handleBulkTemplateDelete = (templatesToDelete: TemplateObject[]) => {
     SupersetClient.delete({
-      endpoint: `/api/v1/css_template/?q=${rison.encode(
-        templatesToDelete.map(({ id }) => id),
-      )}`,
+      endpoint: `/api/v1/css_template/?q=${rison.encode(templatesToDelete.map(({ id }) => id))}`,
     }).then(
       ({ json = {} }) => {
         refreshData();
         addSuccessToast(json.message);
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(
-          t('There was an issue deleting the selected templates: %s', errMsg),
-        ),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting the selected templates: %s', errMsg))),
     );
   };
 
@@ -133,10 +103,7 @@ function CssTemplatesList({
       {
         Cell: ({
           row: {
-            original: {
-              changed_on_delta_humanized: changedOn,
-              changed_by: changedBy,
-            },
+            original: { changed_on_delta_humanized: changedOn, changed_by: changedBy },
           },
         }: any) => {
           let name = 'null';
@@ -146,11 +113,7 @@ function CssTemplatesList({
           }
 
           return (
-            <Tooltip
-              id="allow-run-async-header-tooltip"
-              title={t('Last modified by %s', name)}
-              placement="right"
-            >
+            <Tooltip id="allow-run-async-header-tooltip" title={t('Last modified by %s', name)} placement="right">
               <span>{changedOn}</span>
             </Tooltip>
           );
@@ -194,8 +157,7 @@ function CssTemplatesList({
           row: {
             original: { created_by: createdBy },
           },
-        }: any) =>
-          createdBy ? `${createdBy.first_name} ${createdBy.last_name}` : '',
+        }: any) => (createdBy ? `${createdBy.first_name} ${createdBy.last_name}` : ''),
         size: 'xl',
       },
       {
@@ -278,12 +240,7 @@ function CssTemplatesList({
         fetchSelects: createFetchRelated(
           'css_template',
           'created_by',
-          createErrorHandler(errMsg =>
-            t(
-              'An error occurred while fetching dataset datasource values: %s',
-              errMsg,
-            ),
-          ),
+          createErrorHandler(errMsg => t('An error occurred while fetching dataset datasource values: %s', errMsg)),
           user,
         ),
         paginate: true,
@@ -323,9 +280,7 @@ function CssTemplatesList({
       )}
       <ConfirmStatusChange
         title={t('Please confirm')}
-        description={t(
-          'Are you sure you want to delete the selected templates?',
-        )}
+        description={t('Are you sure you want to delete the selected templates?')}
         onConfirm={handleBulkTemplateDelete}
       >
         {confirmDelete => {

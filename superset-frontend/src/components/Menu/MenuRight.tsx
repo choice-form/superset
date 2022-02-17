@@ -43,8 +43,7 @@ export const dropdownItems = [
 ];
 
 const versionInfoStyles = (theme: SupersetTheme) => css`
-  padding: ${theme.gridUnit * 1.5}px ${theme.gridUnit * 4}px
-    ${theme.gridUnit * 4}px ${theme.gridUnit * 7}px;
+  padding: ${theme.gridUnit * 1.5}px ${theme.gridUnit * 4}px ${theme.gridUnit * 4}px ${theme.gridUnit * 7}px;
   color: ${theme.colors.grayscale.base};
   font-size: ${theme.typography.sizes.xs}px;
   white-space: nowrap;
@@ -78,39 +77,25 @@ interface RightMenuProps {
   isFrontendRoute: (path?: string) => boolean;
 }
 
-const RightMenu = ({
-  align,
-  settings,
-  navbarRight,
-  isFrontendRoute,
-}: RightMenuProps) => (
+const RightMenu = ({ align, settings, navbarRight, isFrontendRoute }: RightMenuProps) => (
   <StyledDiv align={align}>
     <Menu mode="horizontal">
       {!navbarRight.user_is_anonymous && (
         <SubMenu
           data-test="new-dropdown"
-          title={
-            <StyledI data-test="new-dropdown-icon" className="fa fa-plus" />
-          }
+          title={<StyledI data-test="new-dropdown-icon" className="fa fa-plus" />}
           icon={<Icons.TriangleDown />}
         >
           {dropdownItems.map(menu => (
             <Menu.Item key={menu.label}>
               <a href={menu.url}>
-                <i
-                  data-test={`menu-item-${menu.label}`}
-                  className={`fa ${menu.icon}`}
-                />{' '}
-                {menu.label}
+                <i data-test={`menu-item-${menu.label}`} className={`fa ${menu.icon}`} /> {menu.label}
               </a>
             </Menu.Item>
           ))}
         </SubMenu>
       )}
-      <SubMenu
-        title={t('Settings')}
-        icon={<Icons.TriangleDown iconSize="xl" />}
-      >
+      <SubMenu title={t('Settings')} icon={<Icons.TriangleDown iconSize="xl" />}>
         {settings.map((section, index) => [
           <Menu.ItemGroup key={`${section.label}`} title={section.label}>
             {section.childs?.map(child => {
@@ -149,59 +134,30 @@ const RightMenu = ({
             </Menu.Item>
           </Menu.ItemGroup>,
         ]}
-        {(navbarRight.version_string ||
-          navbarRight.version_sha ||
-          navbarRight.build_number) && [
+        {(navbarRight.version_string || navbarRight.version_sha || navbarRight.build_number) && [
           <Menu.Divider key="version-info-divider" />,
           <Menu.ItemGroup key="about-section" title={t('About')}>
             <div className="about-section">
-              {navbarRight.show_watermark && (
-                <div css={versionInfoStyles}>{t('Powered by Choiceform')}</div>
-              )}
-              {navbarRight.version_string && (
-                <div css={versionInfoStyles}>
-                  Version: {navbarRight.version_string}
-                </div>
-              )}
-              {navbarRight.version_sha && (
-                <div css={versionInfoStyles}>
-                  SHA: {navbarRight.version_sha}
-                </div>
-              )}
-              {navbarRight.build_number && (
-                <div css={versionInfoStyles}>
-                  Build: {navbarRight.build_number}
-                </div>
-              )}
+              {navbarRight.show_watermark && <div css={versionInfoStyles}>{t('Powered by Choiceform')}</div>}
+              {navbarRight.version_string && <div css={versionInfoStyles}>Version: {navbarRight.version_string}</div>}
+              {navbarRight.version_sha && <div css={versionInfoStyles}>SHA: {navbarRight.version_sha}</div>}
+              {navbarRight.build_number && <div css={versionInfoStyles}>Build: {navbarRight.build_number}</div>}
             </div>
           </Menu.ItemGroup>,
         ]}
       </SubMenu>
       {navbarRight.show_language_picker && (
-        <LanguagePicker
-          locale={navbarRight.locale}
-          languages={navbarRight.languages}
-        />
+        <LanguagePicker locale={navbarRight.locale} languages={navbarRight.languages} />
       )}
     </Menu>
     {navbarRight.documentation_url && (
-      <StyledAnchor
-        href={navbarRight.documentation_url}
-        target="_blank"
-        rel="noreferrer"
-        title={t('Documentation')}
-      >
+      <StyledAnchor href={navbarRight.documentation_url} target="_blank" rel="noreferrer" title={t('Documentation')}>
         <i className="fa fa-question" />
         &nbsp;
       </StyledAnchor>
     )}
     {navbarRight.bug_report_url && (
-      <StyledAnchor
-        href={navbarRight.bug_report_url}
-        target="_blank"
-        rel="noreferrer"
-        title={t('Report a bug')}
-      >
+      <StyledAnchor href={navbarRight.bug_report_url} target="_blank" rel="noreferrer" title={t('Report a bug')}>
         <i className="fa fa-bug" />
       </StyledAnchor>
     )}

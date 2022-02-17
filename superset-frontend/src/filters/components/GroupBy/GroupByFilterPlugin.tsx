@@ -24,16 +24,7 @@ import { FilterPluginStyle, StyledFormItem, StatusMessage } from '../common';
 import { PluginFilterGroupByProps } from './types';
 
 export default function PluginFilterGroupBy(props: PluginFilterGroupByProps) {
-  const {
-    data,
-    formData,
-    height,
-    width,
-    setDataMask,
-    setFocusedFilter,
-    unsetFocusedFilter,
-    filterState,
-  } = props;
+  const { data, formData, height, width, setDataMask, setFocusedFilter, unsetFocusedFilter, filterState } = props;
   const { defaultValue, inputRef, multiSelect } = formData;
 
   const [value, setValue] = useState<string[]>(defaultValue ?? []);
@@ -62,9 +53,7 @@ export default function PluginFilterGroupBy(props: PluginFilterGroupByProps) {
     // so we can process it like this `JSON.stringify` or start to use `Immer`
   }, [JSON.stringify(defaultValue), multiSelect]);
 
-  const groupby = formData?.groupby?.[0]?.length
-    ? formData?.groupby?.[0]
-    : null;
+  const groupby = formData?.groupby?.[0]?.length ? formData?.groupby?.[0] : null;
 
   const withData = groupby
     ? data.filter(dataItem =>
@@ -76,33 +65,24 @@ export default function PluginFilterGroupBy(props: PluginFilterGroupByProps) {
   const columns = data ? withData : [];
 
   const placeholderText =
-    columns.length === 0
-      ? t('No columns')
-      : tn('%s option', '%s options', columns.length, columns.length);
+    columns.length === 0 ? t('No columns') : tn('%s option', '%s options', columns.length, columns.length);
 
   const formItemData: FormItemProps = {};
   if (filterState.validateMessage) {
     formItemData.extra = (
-      <StatusMessage status={filterState.validateStatus}>
-        {filterState.validateMessage}
-      </StatusMessage>
+      <StatusMessage status={filterState.validateStatus}>{filterState.validateMessage}</StatusMessage>
     );
   }
-  const options = columns.map(
-    (row: { column_name: string; verbose_name: string | null }) => {
-      const { column_name: columnName, verbose_name: verboseName } = row;
-      return {
-        label: verboseName ?? columnName,
-        value: columnName,
-      };
-    },
-  );
+  const options = columns.map((row: { column_name: string; verbose_name: string | null }) => {
+    const { column_name: columnName, verbose_name: verboseName } = row;
+    return {
+      label: verboseName ?? columnName,
+      value: columnName,
+    };
+  });
   return (
     <FilterPluginStyle height={height} width={width}>
-      <StyledFormItem
-        validateStatus={filterState.validateStatus}
-        {...formItemData}
-      >
+      <StyledFormItem validateStatus={filterState.validateStatus} {...formItemData}>
         <Select
           allowClear
           value={value}

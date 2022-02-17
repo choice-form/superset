@@ -117,13 +117,7 @@ export const BadgeGallery = () => (
       <div key={size} style={{ marginBottom: 40 }}>
         <h4>{size}</h4>
         {COLORS.options.map(color => (
-          <Badge
-            count={9}
-            textColor={color}
-            size={size}
-            key={`${color}_${size}`}
-            style={{ marginRight: '15px' }}
-          />
+          <Badge count={9} textColor={color} size={size} key={`${color}_${size}`} style={{ marginRight: '15px' }} />
         ))}
       </div>
     ))}
@@ -133,12 +127,7 @@ export const BadgeGallery = () => (
 export const BadgeTextGallery = () => (
   <>
     {COLORS.options.map(color => (
-      <Badge
-        text="Hello"
-        color={color}
-        key={color}
-        style={{ marginRight: '15px' }}
-      />
+      <Badge text="Hello" color={color} key={color} style={{ marginRight: '15px' }} />
     ))}
   </>
 );

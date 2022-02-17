@@ -33,10 +33,7 @@ export default function buildQuery(formData: QueryFormData, options: any) {
         ...queryObject,
         ...(drillDown && {
           groupby: [DrillDown.getColumn(ownState.drilldown, groupBy)],
-          filters: [
-            ...(baseQueryObject.filters || []),
-            ...DrillDown.getFilters(ownState.drilldown, groupBy),
-          ],
+          filters: [...(baseQueryObject.filters || []), ...DrillDown.getFilters(ownState.drilldown, groupBy)],
         }),
       };
     }

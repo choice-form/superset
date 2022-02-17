@@ -21,9 +21,7 @@ import { ChartProps } from 'src/core';
 import { WordCloudProps, WordCloudEncoding } from '../chart/WordCloud';
 import { LegacyWordCloudFormData } from './types';
 
-function getMetricLabel(
-  metric: LegacyWordCloudFormData['metric'],
-): string | undefined {
+function getMetricLabel(metric: LegacyWordCloudFormData['metric']): string | undefined {
   if (typeof metric === 'string' || typeof metric === 'undefined') {
     return metric;
   }
@@ -36,14 +34,7 @@ function getMetricLabel(
 
 export default function transformProps(chartProps: ChartProps): WordCloudProps {
   const { width, height, formData, queriesData } = chartProps;
-  const {
-    colorScheme,
-    metric,
-    rotation,
-    series,
-    sizeFrom = 0,
-    sizeTo,
-  } = formData as LegacyWordCloudFormData;
+  const { colorScheme, metric, rotation, series, sizeFrom = 0, sizeTo } = formData as LegacyWordCloudFormData;
 
   const metricLabel = getMetricLabel(metric);
 

@@ -18,11 +18,7 @@
  */
 import React from 'react';
 import { FeatureFlag, isFeatureEnabled, t } from 'src/core';
-import {
-  ControlPanelConfig,
-  sections,
-  sharedControls,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, sections, sharedControls } from 'src/chartConntrols';
 import { DEFAULT_FORM_DATA } from './types';
 
 const requiredEntity = {
@@ -58,9 +54,7 @@ const controlPanel: ControlPanelConfig = {
             config: {
               ...requiredEntity,
               label: t('Parent'),
-              description: t(
-                'Name of the column containing the id of the parent node',
-              ),
+              description: t('Name of the column containing the id of the parent node'),
             },
           },
         ],
@@ -91,9 +85,7 @@ const controlPanel: ControlPanelConfig = {
             name: 'metric',
             config: {
               ...optionalEntity,
-              type: isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP)
-                ? 'DndMetricSelect'
-                : 'MetricsControl',
+              type: isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP) ? 'DndMetricSelect' : 'MetricsControl',
               label: t('Metric'),
               description: t('Metric for node values'),
             },
@@ -276,9 +268,7 @@ const controlPanel: ControlPanelConfig = {
                 ['move', t('Move only')],
                 [true, t('Scale and Move')],
               ],
-              description: t(
-                'Whether to enable changing graph position and scaling.',
-              ),
+              description: t('Whether to enable changing graph position and scaling.'),
             },
           },
         ],

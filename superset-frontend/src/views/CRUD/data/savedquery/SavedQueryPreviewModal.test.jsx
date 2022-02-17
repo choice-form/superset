@@ -115,9 +115,7 @@ describe('SavedQueryPreviewModal', () => {
   });
 
   it('handle previous save query', () => {
-    const button = wrapper
-      .find('[data-test="previous-saved-query"]')
-      .find(Button);
+    const button = wrapper.find('[data-test="previous-saved-query"]').find(Button);
     expect(button.props().disabled).toBe(false);
     act(() => {
       button.props().onClick(true);

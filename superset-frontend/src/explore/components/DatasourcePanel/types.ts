@@ -26,9 +26,7 @@ export interface DatasourcePanelDndItem {
   type: DndItemType;
 }
 
-export function isDatasourcePanelDndItem(
-  item: any,
-): item is DatasourcePanelDndItem {
+export function isDatasourcePanelDndItem(item: any): item is DatasourcePanelDndItem {
   return item?.value && item?.type;
 }
 

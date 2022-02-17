@@ -18,17 +18,15 @@
  */
 import { GenericDataType, JsonObject, StrictJsonValue } from 'src/core';
 import { ControlFormItemSpec } from '../../../components/ControlForm';
-import {
-  SHARED_COLUMN_CONFIG_PROPS,
-  SharedColumnConfigProp,
-} from './constants';
+import { SHARED_COLUMN_CONFIG_PROPS, SharedColumnConfigProp } from './constants';
 
 /**
  * Column formatting configs.
  */
 export type ColumnConfig = {
   [key in SharedColumnConfigProp]?: typeof SHARED_COLUMN_CONFIG_PROPS[key]['value'];
-} & Record<string, StrictJsonValue>;
+} &
+  Record<string, StrictJsonValue>;
 
 /**
  * All required info about a column to render the
@@ -45,9 +43,6 @@ export type ColumnConfigFormItem =
   | { name: SharedColumnConfigProp; override: Partial<ControlFormItemSpec> }
   | { name: string; config: ControlFormItemSpec };
 
-export type ColumnConfigFormLayout = Record<
-  GenericDataType,
-  ColumnConfigFormItem[][]
->;
+export type ColumnConfigFormLayout = Record<GenericDataType, ColumnConfigFormItem[][]>;
 
 export default {};

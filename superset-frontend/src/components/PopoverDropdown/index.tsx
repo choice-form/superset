@@ -80,9 +80,7 @@ const PopoverDropdown = (props: PopoverDropdownProps) => {
     options,
     onChange,
     renderButton = (option: OptionProps) => option.label,
-    renderOption = (option: OptionProps) => (
-      <div className={option.className}>{option.label}</div>
-    ),
+    renderOption = (option: OptionProps) => <div className={option.className}>{option.label}</div>,
   } = props;
 
   const theme = useTheme();
@@ -109,10 +107,7 @@ const PopoverDropdown = (props: PopoverDropdownProps) => {
     >
       <div role="button" css={{ display: 'flex', alignItems: 'center' }}>
         {selected && renderButton(selected)}
-        <Icons.CaretDown
-          iconColor={theme.colors.grayscale.base}
-          css={{ marginTop: theme.gridUnit * 0.5 }}
-        />
+        <Icons.CaretDown iconColor={theme.colors.grayscale.base} css={{ marginTop: theme.gridUnit * 0.5 }} />
       </div>
     </Dropdown>
   );

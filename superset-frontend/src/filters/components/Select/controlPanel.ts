@@ -88,9 +88,7 @@ const config: ControlPanelConfig = {
               label: t('Required'),
               default: enableEmptyFilter,
               renderTrigger: true,
-              description: t(
-                'User must select a value before applying the filter',
-              ),
+              description: t('User must select a value before applying the filter'),
             },
           },
         ],
@@ -105,9 +103,7 @@ const config: ControlPanelConfig = {
               affectsDataMask: true,
               renderTrigger: true,
               requiredFirst: true,
-              description: t(
-                'Select first item by default (when using this option, default value can’t be set)',
-              ),
+              description: t('Select first item by default (when using this option, default value can’t be set)'),
             },
           },
         ],

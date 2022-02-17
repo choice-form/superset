@@ -40,24 +40,12 @@ export default class CheckboxControl extends React.Component {
   }
 
   renderCheckbox() {
-    return (
-      <Checkbox
-        onChange={this.onChange.bind(this)}
-        style={checkboxStyle}
-        checked={!!this.props.value}
-      />
-    );
+    return <Checkbox onChange={this.onChange.bind(this)} style={checkboxStyle} checked={!!this.props.value} />;
   }
 
   render() {
     if (this.props.label) {
-      return (
-        <ControlHeader
-          {...this.props}
-          leftNode={this.renderCheckbox()}
-          onClick={this.onChange.bind(this)}
-        />
-      );
+      return <ControlHeader {...this.props} leftNode={this.renderCheckbox()} onClick={this.onChange.bind(this)} />;
     }
     return this.renderCheckbox();
   }

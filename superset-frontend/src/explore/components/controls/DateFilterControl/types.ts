@@ -21,22 +21,9 @@ export type SelectOptionType = {
   label: string;
 };
 
-export type FrameType =
-  | 'Common'
-  | 'Calendar'
-  | 'Custom'
-  | 'Advanced'
-  | 'No filter';
+export type FrameType = 'Common' | 'Calendar' | 'Custom' | 'Advanced' | 'No filter';
 
-export type DateTimeGrainType =
-  | 'second'
-  | 'minite'
-  | 'hour'
-  | 'day'
-  | 'week'
-  | 'month'
-  | 'quarter'
-  | 'year';
+export type DateTimeGrainType = 'second' | 'minite' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
 
 export type CustomRangeKey =
   | 'sinceMode'
@@ -70,12 +57,7 @@ export type CustomRangeDecodeType = {
   matchedFlag: boolean;
 };
 
-export type CommonRangeType =
-  | 'Last day'
-  | 'Last week'
-  | 'Last month'
-  | 'Last quarter'
-  | 'Last year';
+export type CommonRangeType = 'Last day' | 'Last week' | 'Last month' | 'Last quarter' | 'Last year';
 
 export const PreviousCalendarWeek = 'previous calendar week';
 export const PreviousCalendarMonth = 'previous calendar month';

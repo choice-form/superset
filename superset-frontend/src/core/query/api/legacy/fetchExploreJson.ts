@@ -39,10 +39,7 @@ export default async function fetchExploreJson({
     ...requestConfig,
     method,
     endpoint,
-    searchParams:
-      method === 'GET'
-        ? new URLSearchParams({ form_data: JSON.stringify(formData) })
-        : undefined,
+    searchParams: method === 'GET' ? new URLSearchParams({ form_data: JSON.stringify(formData) }) : undefined,
     postPayload: method === 'POST' ? { form_data: formData } : undefined,
   });
   return json as LegacyChartDataResponse;

@@ -98,17 +98,9 @@ const FilterSetUnit: FC<FilterSetUnitProps> = ({
           {filterSet?.name ?? filterSetName}
         </Typography.Text>
         <IconsBlock>
-          {isApplied && (
-            <CheckOutlined
-              style={{ color: supersetTheme.colors.success.base }}
-            />
-          )}
+          {isApplied && <CheckOutlined style={{ color: supersetTheme.colors.success.base }} />}
           {onDelete && (
-            <Dropdown
-              overlay={menu}
-              placement="bottomRight"
-              trigger={['click']}
-            >
+            <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
               <HeaderButton
                 onClick={e => {
                   e.stopPropagation();
@@ -124,10 +116,7 @@ const FilterSetUnit: FC<FilterSetUnitProps> = ({
           )}
         </IconsBlock>
       </TitleText>
-      <FiltersHeader
-        filterSet={filterSet}
-        dataMask={filterSet?.dataMask ?? dataMaskSelected}
-      />
+      <FiltersHeader filterSet={filterSet} dataMask={filterSet?.dataMask ?? dataMaskSelected} />
     </>
   );
 };

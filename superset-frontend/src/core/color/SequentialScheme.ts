@@ -18,12 +18,7 @@
  */
 
 import { scaleLinear } from 'd3-scale';
-import {
-  interpolateHcl,
-  interpolateNumber,
-  piecewise,
-  quantize,
-} from 'd3-interpolate';
+import { interpolateHcl, interpolateNumber, piecewise, quantize } from 'd3-interpolate';
 import ColorScheme, { ColorSchemeConfig } from './ColorScheme';
 
 export interface SequentialSchemeConfig extends ColorSchemeConfig {
@@ -55,11 +50,7 @@ export default class SequentialScheme extends ColorScheme {
 
     return modifyRange || domain.length === this.colors.length
       ? scale.domain(domain).range(this.getColors(domain.length))
-      : scale
-          .domain(
-            quantize(piecewise(interpolateNumber, domain), this.colors.length),
-          )
-          .range(this.colors);
+      : scale.domain(quantize(piecewise(interpolateNumber, domain), this.colors.length)).range(this.colors);
   }
 
   /**
@@ -70,27 +61,14 @@ export default class SequentialScheme extends ColorScheme {
    * For example [0.2, 1] will rescale the color scheme
    * such that color values in the range [0, 0.2) are excluded from the scheme.
    */
-  getColors(
-    numColors = this.colors.length,
-    extent: number[] = [0, 1],
-  ): string[] {
-    if (
-      numColors === this.colors.length &&
-      extent[0] === 0 &&
-      extent[1] === 1
-    ) {
+  getColors(numColors = this.colors.length, extent: number[] = [0, 1]): string[] {
+    if (numColors === this.colors.length && extent[0] === 0 && extent[1] === 1) {
       return this.colors;
     }
 
-    const piecewiseScale: (t: number) => string = piecewise(
-      interpolateHcl,
-      this.colors,
-    );
+    const piecewiseScale: (t: number) => string = piecewise(interpolateHcl, this.colors);
     const adjustExtent = scaleLinear().range(extent).clamp(true);
 
-    return quantize<string>(
-      t => piecewiseScale(adjustExtent(t) as number),
-      numColors,
-    );
+    return quantize<string>(t => piecewiseScale(adjustExtent(t) as number), numColors);
   }
 }

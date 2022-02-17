@@ -21,11 +21,7 @@ import React from 'react';
 import { ReactWrapper } from 'enzyme';
 import { styledMount as mount } from 'spec/helpers/theming';
 import Button from '.';
-import {
-  ButtonGallery,
-  SIZES as buttonSizes,
-  STYLES as buttonStyles,
-} from './Button.stories';
+import { ButtonGallery, SIZES as buttonSizes, STYLES as buttonStyles } from './Button.stories';
 
 describe('Button', () => {
   let wrapper: ReactWrapper;
@@ -54,8 +50,7 @@ describe('Button', () => {
     wrapper = mount(<ButtonGallery />);
 
     const permutationCount =
-      Object.values(buttonStyles.options).filter(o => o).length *
-      Object.values(buttonSizes.options).length;
+      Object.values(buttonStyles.options).filter(o => o).length * Object.values(buttonSizes.options).length;
 
     expect(wrapper.find(Button).length).toEqual(permutationCount);
   });

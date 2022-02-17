@@ -17,13 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import {
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-  within,
-} from 'spec/helpers/testing-library';
+import { render, screen, waitFor, waitForElementToBeRemoved, within } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 import { Select } from 'src/components';
 
@@ -57,12 +51,8 @@ const OPTIONS = [
 const loadOptions = async (search: string, page: number, pageSize: number) => {
   const totalCount = OPTIONS.length;
   const start = page * pageSize;
-  const deleteCount =
-    start + pageSize < totalCount ? pageSize : totalCount - start;
-  const data = OPTIONS.filter(option => option.label.match(search)).splice(
-    start,
-    deleteCount,
-  );
+  const deleteCount = start + pageSize < totalCount ? pageSize : totalCount - start;
+  const data = OPTIONS.filter(option => option.label.match(search)).splice(start, deleteCount);
   return {
     data,
     totalCount: OPTIONS.length,
@@ -78,27 +68,20 @@ const defaultProps = {
   showSearch: true,
 };
 
-const getElementByClassName = (className: string) =>
-  document.querySelector(className)! as HTMLElement;
+const getElementByClassName = (className: string) => document.querySelector(className)! as HTMLElement;
 
-const getElementsByClassName = (className: string) =>
-  document.querySelectorAll(className)! as NodeListOf<HTMLElement>;
+const getElementsByClassName = (className: string) => document.querySelectorAll(className)! as NodeListOf<HTMLElement>;
 
 const getSelect = () => screen.getByRole('combobox', { name: ARIA_LABEL });
 
 const findSelectOption = (text: string) =>
-  waitFor(() =>
-    within(getElementByClassName('.rc-virtual-list')).getByText(text),
-  );
+  waitFor(() => within(getElementByClassName('.rc-virtual-list')).getByText(text));
 
-const findAllSelectOptions = () =>
-  waitFor(() => getElementsByClassName('.ant-select-item-option-content'));
+const findAllSelectOptions = () => waitFor(() => getElementsByClassName('.ant-select-item-option-content'));
 
-const findSelectValue = () =>
-  waitFor(() => getElementByClassName('.ant-select-selection-item'));
+const findSelectValue = () => waitFor(() => getElementByClassName('.ant-select-selection-item'));
 
-const findAllSelectValues = () =>
-  waitFor(() => getElementsByClassName('.ant-select-selection-item'));
+const findAllSelectValues = () => waitFor(() => getElementsByClassName('.ant-select-selection-item'));
 
 const type = (text: string) => {
   const select = getSelect();
@@ -212,21 +195,12 @@ test('removes a new option if the user does not select it', async () => {
   await type(NEW_OPTION);
   expect(await findSelectOption(NEW_OPTION)).toBeInTheDocument();
   await type('k');
-  await waitFor(() =>
-    expect(screen.queryByText(NEW_OPTION)).not.toBeInTheDocument(),
-  );
+  await waitFor(() => expect(screen.queryByText(NEW_OPTION)).not.toBeInTheDocument());
 });
 
 test('clear all the values', async () => {
   const onClear = jest.fn();
-  render(
-    <Select
-      {...defaultProps}
-      mode="multiple"
-      value={[OPTIONS[0], OPTIONS[1]]}
-      onClear={onClear}
-    />,
-  );
+  render(<Select {...defaultProps} mode="multiple" value={[OPTIONS[0], OPTIONS[1]]} onClear={onClear} />);
   userEvent.click(screen.getByLabelText('close-circle'));
   expect(onClear).toHaveBeenCalled();
   const values = await findAllSelectValues();
@@ -360,13 +334,7 @@ test('static - sets a initial value in single mode', async () => {
 });
 
 test('static - sets a initial value in multiple mode', async () => {
-  render(
-    <Select
-      {...defaultProps}
-      mode="multiple"
-      value={[OPTIONS[0], OPTIONS[1]]}
-    />,
-  );
+  render(<Select {...defaultProps} mode="multiple" value={[OPTIONS[0], OPTIONS[1]]} />);
   const values = await findAllSelectValues();
   expect(values[0]).toHaveTextContent(OPTIONS[0].label);
   expect(values[1]).toHaveTextContent(OPTIONS[1].label);
@@ -388,12 +356,7 @@ test('async - renders the select with default props', () => {
 });
 
 test('async - opens the select without any data', async () => {
-  render(
-    <Select
-      {...defaultProps}
-      options={async () => ({ data: [], totalCount: 0 })}
-    />,
-  );
+  render(<Select {...defaultProps} options={async () => ({ data: [], totalCount: 0 })} />);
   await open();
   expect(await screen.findByText(/no data/i)).toBeInTheDocument();
 });
@@ -411,9 +374,7 @@ test('async - displays the loading indicator while searching', async () => {
   render(<Select {...defaultProps} options={loadOptions} />);
   await type('John');
   expect(screen.getByText(LOADING)).toBeInTheDocument();
-  await waitFor(() =>
-    expect(screen.queryByText(LOADING)).not.toBeInTheDocument(),
-  );
+  await waitFor(() => expect(screen.queryByText(LOADING)).not.toBeInTheDocument());
 });
 
 test('async - makes a selection in single mode', async () => {
@@ -437,9 +398,7 @@ test('async - multiple selections in multiple mode', async () => {
 
 test('async - changes the selected item in single mode', async () => {
   const onChange = jest.fn();
-  render(
-    <Select {...defaultProps} options={loadOptions} onChange={onChange} />,
-  );
+  render(<Select {...defaultProps} options={loadOptions} onChange={onChange} />);
   await open();
   const [firstOption, secondOption] = OPTIONS;
   userEvent.click(await findSelectOption(firstOption.label));
@@ -491,22 +450,13 @@ test('async - does not add a new option if the option already exists', async () 
   await open();
   await type(option);
   await waitFor(() => {
-    const array = within(
-      getElementByClassName('.rc-virtual-list'),
-    ).getAllByText(option);
+    const array = within(getElementByClassName('.rc-virtual-list')).getAllByText(option);
     expect(array.length).toBe(1);
   });
 });
 
 test('async - shows "No data" when allowNewOptions is false and a new option is entered', async () => {
-  render(
-    <Select
-      {...defaultProps}
-      options={loadOptions}
-      allowNewOptions={false}
-      showSearch
-    />,
-  );
+  render(<Select {...defaultProps} options={loadOptions} allowNewOptions={false} showSearch />);
   await open();
   await type(NEW_OPTION);
   expect(await screen.findByText(NO_DATA)).toBeInTheDocument();
@@ -525,14 +475,7 @@ test('async - sets a initial value in single mode', async () => {
 });
 
 test('async - sets a initial value in multiple mode', async () => {
-  render(
-    <Select
-      {...defaultProps}
-      mode="multiple"
-      options={loadOptions}
-      value={[OPTIONS[0], OPTIONS[1]]}
-    />,
-  );
+  render(<Select {...defaultProps} mode="multiple" options={loadOptions} value={[OPTIONS[0], OPTIONS[1]]} />);
   const values = await findAllSelectValues();
   expect(values[0]).toHaveTextContent(OPTIONS[0].label);
   expect(values[1]).toHaveTextContent(OPTIONS[1].label);

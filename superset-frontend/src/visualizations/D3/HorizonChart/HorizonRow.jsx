@@ -24,16 +24,7 @@ import PropTypes from 'prop-types';
 import { extent as d3Extent } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 
-export const DEFAULT_COLORS = [
-  '#313695',
-  '#4575b4',
-  '#74add1',
-  '#abd9e9',
-  '#fee090',
-  '#fdae61',
-  '#f46d43',
-  '#d73027',
-];
+export const DEFAULT_COLORS = ['#313695', '#4575b4', '#74add1', '#abd9e9', '#fee090', '#fdae61', '#f46d43', '#d73027'];
 
 const propTypes = {
   className: PropTypes.string,
@@ -81,22 +72,9 @@ class HorizonRow extends React.PureComponent {
 
   drawChart() {
     if (this.canvas) {
-      const {
-        data: rawData,
-        yDomain,
-        width,
-        height,
-        bands,
-        colors,
-        colorScale,
-        offsetX,
-        mode,
-      } = this.props;
+      const { data: rawData, yDomain, width, height, bands, colors, colorScale, offsetX, mode } = this.props;
 
-      const data =
-        colorScale === 'change'
-          ? rawData.map(d => ({ ...d, y: d.y - rawData[0].y }))
-          : rawData;
+      const data = colorScale === 'change' ? rawData.map(d => ({ ...d, y: d.y - rawData[0].y })) : rawData;
 
       const context = this.canvas.getContext('2d');
       context.imageSmoothingEnabled = false;
@@ -108,9 +86,7 @@ class HorizonRow extends React.PureComponent {
       const step = width / data.length;
       // the data frame currently being shown:
       const startIndex = Math.floor(Math.max(0, -(offsetX / step)));
-      const endIndex = Math.floor(
-        Math.min(data.length, startIndex + width / step),
-      );
+      const endIndex = Math.floor(Math.min(data.length, startIndex + width / step));
 
       // skip drawing if there's no data to be drawn
       if (startIndex > data.length) {
@@ -144,12 +120,7 @@ class HorizonRow extends React.PureComponent {
             continue;
           }
           if (value !== undefined) {
-            context.fillRect(
-              offsetX + i * step,
-              y(value),
-              step + 1,
-              y(0) - y(value),
-            );
+            context.fillRect(offsetX + i * step, y(value), step + 1, y(0) - y(value));
           }
         }
       }
@@ -175,12 +146,7 @@ class HorizonRow extends React.PureComponent {
             if (value >= 0) {
               continue;
             }
-            context.fillRect(
-              offsetX + ii * step,
-              y(-value),
-              step + 1,
-              y(0) - y(-value),
-            );
+            context.fillRect(offsetX + ii * step, y(-value), step + 1, y(0) - y(-value));
           }
         }
       }

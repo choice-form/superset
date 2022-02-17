@@ -114,11 +114,7 @@ describe('CssTemplatesList', () => {
   it('searches', async () => {
     const filtersWrapper = wrapper.find(Filters);
     act(() => {
-      filtersWrapper
-        .find('[name="template_name"]')
-        .first()
-        .props()
-        .onSubmit('fooo');
+      filtersWrapper.find('[name="template_name"]').first().props().onSubmit('fooo');
     });
     await waitForComponentToPaint(wrapper);
 
@@ -137,9 +133,7 @@ describe('CssTemplatesList', () => {
     });
     await waitForComponentToPaint(wrapper);
 
-    expect(
-      wrapper.find(DeleteModal).first().props().description,
-    ).toMatchInlineSnapshot(
+    expect(wrapper.find(DeleteModal).first().props().description).toMatchInlineSnapshot(
       `"This action will permanently delete the template."`,
     );
 

@@ -30,11 +30,7 @@ const metadata = new ChartMetadata({
   category: t('Evolution'),
   credits: ['http://nvd3.org'],
   description: t('Classic chart that visualizes how metrics change over time.'),
-  exampleGallery: [
-    { url: example1 },
-    { url: example2 },
-    { url: battery, caption: t('Battery level over time') },
-  ],
+  exampleGallery: [{ url: example1 }, { url: example2 }, { url: battery, caption: t('Battery level over time') }],
   name: t('Line Chart'),
   supportedAnnotationTypes: [
     ANNOTATION_TYPES.TIME_SERIES,

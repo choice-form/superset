@@ -43,10 +43,8 @@ const StyledTitleBox = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.grayscale.light4};
-  margin: ${({ theme }) => theme.gridUnit * -1}px
-    ${({ theme }) => theme.gridUnit * -4}px; // to override default antd padding
-  padding: ${({ theme }) => theme.gridUnit * 2}px
-    ${({ theme }) => theme.gridUnit * 4}px;
+  margin: ${({ theme }) => theme.gridUnit * -1}px ${({ theme }) => theme.gridUnit * -4}px; // to override default antd padding
+  padding: ${({ theme }) => theme.gridUnit * 2}px ${({ theme }) => theme.gridUnit * 4}px;
 
   & > *:last-child {
     cursor: pointer;
@@ -68,8 +66,7 @@ const IconStyles = (theme: SupersetTheme) => css`
 `;
 
 const StyledPill = styled(Pill)`
-  padding: ${({ theme }) => theme.gridUnit}px
-    ${({ theme }) => theme.gridUnit * 2}px;
+  padding: ${({ theme }) => theme.gridUnit}px ${({ theme }) => theme.gridUnit * 2}px;
   font-size: ${({ theme }) => theme.typography.sizes.s}px;
   background: ${({ theme }) => theme.colors.grayscale.light1};
 `;
@@ -104,9 +101,7 @@ const CascadePopover: React.FC<CascadePopoverProps> = ({
       const children = filter.cascadeChildren || [];
       const currentValue = dataMask?.filterState?.value;
 
-      const activeChildren = children.flatMap(
-        childFilter => getActiveChildren(childFilter) || [],
-      );
+      const activeChildren = children.flatMap(childFilter => getActiveChildren(childFilter) || []);
 
       if (activeChildren.length > 0) {
         return activeChildren;
@@ -128,20 +123,13 @@ const CascadePopover: React.FC<CascadePopoverProps> = ({
   };
 
   const allFilters = getAllFilters(filter);
-  const activeFilters = useMemo(
-    () => getActiveChildren(filter) || [filter],
-    [filter, getActiveChildren],
-  );
+  const activeFilters = useMemo(() => getActiveChildren(filter) || [filter], [filter, getActiveChildren]);
 
   useEffect(() => {
     const focusedFilterId = currentPathToChild?.[0];
     // filters not directly displayed in the Filter Bar
-    const inactiveFilters = allFilters.filter(
-      filterEl => !activeFilters.includes(filterEl),
-    );
-    const focusedInactiveFilter = inactiveFilters.some(
-      cascadeChild => cascadeChild.id === focusedFilterId,
-    );
+    const inactiveFilters = allFilters.filter(filterEl => !activeFilters.includes(filterEl));
+    const focusedInactiveFilter = inactiveFilters.some(cascadeChild => cascadeChild.id === focusedFilterId);
 
     if (focusedInactiveFilter) {
       onVisibleChange(true);
@@ -163,10 +151,7 @@ const CascadePopover: React.FC<CascadePopoverProps> = ({
   const title = (
     <StyledTitleBox>
       <StyledTitle>
-        <Icons.Edit
-          iconSize="l"
-          css={(theme: SupersetTheme) => IconStyles(theme)}
-        />
+        <Icons.Edit iconSize="l" css={(theme: SupersetTheme) => IconStyles(theme)} />
         {t('Select parent filters')} ({allFilters.length})
       </StyledTitle>
       <Icons.Close

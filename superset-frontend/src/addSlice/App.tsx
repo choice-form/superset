@@ -30,9 +30,7 @@ setupApp();
 setupPlugins();
 
 const addSliceContainer = document.getElementById('app');
-const bootstrapData = JSON.parse(
-  addSliceContainer?.getAttribute('data-bootstrap') || '{}',
-);
+const bootstrapData = JSON.parse(addSliceContainer?.getAttribute('data-bootstrap') || '{}');
 
 initFeatureFlags(bootstrapData.common.feature_flags);
 

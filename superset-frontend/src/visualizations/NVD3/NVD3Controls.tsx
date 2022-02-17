@@ -78,9 +78,7 @@ export const leftMargin: CustomControlItem = {
     choices: formatSelectOptions(['auto', 50, 75, 100, 125, 150, 200]),
     default: 'auto',
     renderTrigger: true,
-    description: t(
-      'Left margin, in pixels, allowing for more room for axis labels',
-    ),
+    description: t('Left margin, in pixels, allowing for more room for axis labels'),
   },
 };
 
@@ -112,14 +110,7 @@ export const lineInterpolation: CustomControlItem = {
     type: 'SelectControl',
     label: t('Line Style'),
     renderTrigger: true,
-    choices: formatSelectOptions([
-      'linear',
-      'basis',
-      'cardinal',
-      'monotone',
-      'step-before',
-      'step-after',
-    ]),
+    choices: formatSelectOptions(['linear', 'basis', 'cardinal', 'monotone', 'step-before', 'step-after']),
     default: 'linear',
     description: t('Line interpolation as defined by d3.js'),
   },
@@ -188,9 +179,7 @@ export const bottomMargin: CustomControlItem = {
     choices: formatSelectOptions(['auto', 50, 75, 100, 125, 150, 200]),
     default: 'auto',
     renderTrigger: true,
-    description: t(
-      'Bottom margin, in pixels, allowing for more room for axis labels',
-    ),
+    description: t('Bottom margin, in pixels, allowing for more room for axis labels'),
   },
 };
 
@@ -281,9 +270,7 @@ export const richTooltip: CustomControlItem = {
     label: t('Rich Tooltip'),
     renderTrigger: true,
     default: true,
-    description: t(
-      'The rich tooltip shows a list of all series for that point in time',
-    ),
+    description: t('The rich tooltip shows a list of all series for that point in time'),
   },
 };
 
@@ -375,9 +362,7 @@ export const timeSeriesSection: ControlPanelSectionConfig[] = [
     label: t('Advanced Analytics'),
     tabOverride: 'data',
     description: t(
-      'This section contains options ' +
-        'that allow for advanced analytical post processing ' +
-        'of query results',
+      'This section contains options ' + 'that allow for advanced analytical post processing ' + 'of query results',
     ),
     controlSetRows: [
       [<h1 className="section-header">{t('Rolling Window')}</h1>],
@@ -388,17 +373,8 @@ export const timeSeriesSection: ControlPanelSectionConfig[] = [
             type: 'SelectControl',
             label: t('Rolling Function'),
             default: 'None',
-            choices: formatSelectOptions([
-              'None',
-              'mean',
-              'sum',
-              'std',
-              'cumsum',
-            ]),
-            description: t(
-              'Defines a rolling window function to apply, works along ' +
-                'with the [Periods] text box',
-            ),
+            choices: formatSelectOptions(['None', 'mean', 'sum', 'std', 'cumsum']),
+            description: t('Defines a rolling window function to apply, works along ' + 'with the [Periods] text box'),
           },
         },
       ],
@@ -410,8 +386,7 @@ export const timeSeriesSection: ControlPanelSectionConfig[] = [
             label: t('Periods'),
             isInt: true,
             description: t(
-              'Defines the size of the rolling window function, ' +
-                'relative to the time granularity selected',
+              'Defines the size of the rolling window function, ' + 'relative to the time granularity selected',
             ),
           },
         },
@@ -505,14 +480,7 @@ export const timeSeriesSection: ControlPanelSectionConfig[] = [
             freeForm: true,
             label: t('Method'),
             default: null,
-            choices: formatSelectOptions([
-              'asfreq',
-              'bfill',
-              'ffill',
-              'median',
-              'mean',
-              'sum',
-            ]),
+            choices: formatSelectOptions(['asfreq', 'bfill', 'ffill', 'median', 'mean', 'sum']),
             description: t('Pandas resample method'),
           },
         },

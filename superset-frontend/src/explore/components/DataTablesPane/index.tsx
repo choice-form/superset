@@ -24,10 +24,7 @@ import Loading from 'src/components/Loading';
 import TableView, { EmptyWrapperType } from 'src/components/TableView';
 import { getChartDataRequest } from 'src/chart/chartAction';
 import { getClientErrorObject } from 'src/utils/getClientErrorObject';
-import {
-  getFromLocalStorage,
-  setInLocalStorage,
-} from 'src/utils/localStorageHelpers';
+import { getFromLocalStorage, setInLocalStorage } from 'src/utils/localStorageHelpers';
 import {
   CopyToClipboardButton,
   FilterInput,
@@ -133,16 +130,12 @@ export const DataTablesPane = ({
   const [columnNames, setColumnNames] = useState<string[]>([]);
   const [error, setError] = useState(NULLISH_RESULTS_STATE);
   const [filterText, setFilterText] = useState('');
-  const [activeTabKey, setActiveTabKey] = useState<string>(
-    RESULT_TYPES.results,
-  );
+  const [activeTabKey, setActiveTabKey] = useState<string>(RESULT_TYPES.results);
   const [isRequestPending, setIsRequestPending] = useState<{
     [RESULT_TYPES.results]?: boolean;
     [RESULT_TYPES.samples]?: boolean;
   }>(NULLISH_RESULTS_STATE);
-  const [panelOpen, setPanelOpen] = useState(
-    getFromLocalStorage(STORAGE_KEYS.isOpen, false),
-  );
+  const [panelOpen, setPanelOpen] = useState(getFromLocalStorage(STORAGE_KEYS.isOpen, false));
 
   const getData = useCallback(
     (resultType: string) => {
@@ -256,48 +249,25 @@ export const DataTablesPane = ({
         getData(RESULT_TYPES.results);
       }
     }
-    if (
-      panelOpen &&
-      isRequestPending[RESULT_TYPES.samples] &&
-      activeTabKey === RESULT_TYPES.samples
-    ) {
+    if (panelOpen && isRequestPending[RESULT_TYPES.samples] && activeTabKey === RESULT_TYPES.samples) {
       setIsRequestPending(prevState => ({
         ...prevState,
         [RESULT_TYPES.samples]: false,
       }));
       getData(RESULT_TYPES.samples);
     }
-  }, [
-    panelOpen,
-    isRequestPending,
-    getData,
-    activeTabKey,
-    chartStatus,
-    errorMessage,
-  ]);
+  }, [panelOpen, isRequestPending, getData, activeTabKey, chartStatus, errorMessage]);
 
   const filteredData = {
-    [RESULT_TYPES.results]: useFilteredTableData(
-      filterText,
-      data[RESULT_TYPES.results],
-    ),
-    [RESULT_TYPES.samples]: useFilteredTableData(
-      filterText,
-      data[RESULT_TYPES.samples],
-    ),
+    [RESULT_TYPES.results]: useFilteredTableData(filterText, data[RESULT_TYPES.results]),
+    [RESULT_TYPES.samples]: useFilteredTableData(filterText, data[RESULT_TYPES.samples]),
   };
 
   // this is to preserve the order of the columns, even if there are integer values,
   // while also only grabbing the first column's keys
   const columns = {
-    [RESULT_TYPES.results]: useTableColumns(
-      columnNames,
-      data[RESULT_TYPES.results],
-    ),
-    [RESULT_TYPES.samples]: useTableColumns(
-      columnNames,
-      data[RESULT_TYPES.samples],
-    ),
+    [RESULT_TYPES.results]: useTableColumns(columnNames, data[RESULT_TYPES.results]),
+    [RESULT_TYPES.samples]: useTableColumns(columnNames, data[RESULT_TYPES.samples]),
   };
 
   const renderDataTable = (type: string) => {
@@ -364,16 +334,10 @@ export const DataTablesPane = ({
                 activeKey={activeTabKey}
                 onChange={setActiveTabKey}
               >
-                <Tabs.TabPane
-                  tab={t('View results')}
-                  key={RESULT_TYPES.results}
-                >
+                <Tabs.TabPane tab={t('View results')} key={RESULT_TYPES.results}>
                   {renderDataTable(RESULT_TYPES.results)}
                 </Tabs.TabPane>
-                <Tabs.TabPane
-                  tab={t('View samples')}
-                  key={RESULT_TYPES.samples}
-                >
+                <Tabs.TabPane tab={t('View samples')} key={RESULT_TYPES.samples}>
                   {renderDataTable(RESULT_TYPES.samples)}
                 </Tabs.TabPane>
               </Tabs>

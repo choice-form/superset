@@ -54,11 +54,7 @@ dateadd(datetime("2020-03-01"), 2, day)`}</code>
     </div>
     <div>
       <h3>DATETRUNC</h3>
-      <p>
-        {t(
-          'Truncates the specified date to the accuracy specified by the date unit.',
-        )}
-      </p>
+      <p>{t('Truncates the specified date to the accuracy specified by the date unit.')}</p>
       <h4>{t('Syntax')}</h4>
       <pre>
         <code>{`datetrunc([datetime], [dateunit])

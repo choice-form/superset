@@ -19,15 +19,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { t } from 'src/core';
 import { filter } from 'lodash';
-import {
-  useListViewResource,
-  useChartEditModal,
-  useFavoriteStatus,
-} from 'src/views/CRUD/hooks';
-import {
-  setInLocalStorage,
-  getFromLocalStorage,
-} from 'src/utils/localStorageHelpers';
+import { useListViewResource, useChartEditModal, useFavoriteStatus } from 'src/views/CRUD/hooks';
+import { setInLocalStorage, getFromLocalStorage } from 'src/utils/localStorageHelpers';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { useHistory } from 'react-router-dom';
 import { TableTabTypes } from 'src/views/CRUD/types';
@@ -55,14 +48,7 @@ interface ChartTableProps {
   examples?: Array<object>;
 }
 
-function ChartTable({
-  user,
-  addDangerToast,
-  addSuccessToast,
-  mine,
-  showThumbnails,
-  examples,
-}: ChartTableProps) {
+function ChartTable({ user, addDangerToast, addSuccessToast, mine, showThumbnails, examples }: ChartTableProps) {
   const history = useHistory();
   const filterStore = getFromLocalStorage(HOMEPAGE_CHART_FILTER, null);
   const initialFilter = filterStore || TableTabTypes.EXAMPLES;
@@ -86,17 +72,11 @@ function ChartTable({
   );
 
   const chartIds = useMemo(() => charts.map(c => c.id), [charts]);
-  const [saveFavoriteStatus, favoriteStatus] = useFavoriteStatus(
-    'chart',
-    chartIds,
-    addDangerToast,
+  const [saveFavoriteStatus, favoriteStatus] = useFavoriteStatus('chart', chartIds, addDangerToast);
+  const { sliceCurrentlyEditing, openChartEditModal, handleChartUpdated, closeChartEditModal } = useChartEditModal(
+    setCharts,
+    charts,
   );
-  const {
-    sliceCurrentlyEditing,
-    openChartEditModal,
-    handleChartUpdated,
-    closeChartEditModal,
-  } = useChartEditModal(setCharts, charts);
 
   const [chartFilter, setChartFilter] = useState(initialFilter);
   const [preparingExport, setPreparingExport] = useState<boolean>(false);
@@ -188,12 +168,7 @@ function ChartTable({
   return (
     <ErrorBoundary>
       {sliceCurrentlyEditing && (
-        <PropertiesModal
-          onHide={closeChartEditModal}
-          onSave={handleChartUpdated}
-          show
-          slice={sliceCurrentlyEditing}
-        />
+        <PropertiesModal onHide={closeChartEditModal} onSave={handleChartUpdated} show slice={sliceCurrentlyEditing} />
       )}
 
       <SubMenu
@@ -218,9 +193,7 @@ function ChartTable({
             onClick: () => {
               const target =
                 chartFilter === 'Favorite'
-                  ? `/chart/list/?filters=(favorite:(label:${t(
-                      'Yes',
-                    )},value:!t))`
+                  ? `/chart/list/?filters=(favorite:(label:${t('Yes')},value:!t))`
                   : '/chart/list/';
               history.push(target);
             },

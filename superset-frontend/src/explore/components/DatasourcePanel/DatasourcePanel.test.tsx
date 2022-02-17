@@ -21,13 +21,8 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import DatasourcePanel, {
-  Props as DatasourcePanelProps,
-} from 'src/explore/components/DatasourcePanel';
-import {
-  columns,
-  metrics,
-} from 'src/explore/components/DatasourcePanel/fixtures';
+import DatasourcePanel, { Props as DatasourcePanelProps } from 'src/explore/components/DatasourcePanel';
+import { columns, metrics } from 'src/explore/components/DatasourcePanel/fixtures';
 import { DatasourceType } from 'src/core/query/types/Datasource';
 import DatasourceControl from 'src/explore/components/controls/DatasourceControl';
 
@@ -90,23 +85,15 @@ test('should display items in controls', () => {
 test('should render the metrics', () => {
   render(setup(props));
   const metricsNum = metrics.length;
-  metrics.forEach(metric =>
-    expect(screen.getByText(metric.metric_name)).toBeInTheDocument(),
-  );
-  expect(
-    screen.getByText(`Showing ${metricsNum} of ${metricsNum}`),
-  ).toBeInTheDocument();
+  metrics.forEach(metric => expect(screen.getByText(metric.metric_name)).toBeInTheDocument());
+  expect(screen.getByText(`Showing ${metricsNum} of ${metricsNum}`)).toBeInTheDocument();
 });
 
 test('should render the columns', () => {
   render(setup(props));
   const columnsNum = columns.length;
-  columns.forEach(col =>
-    expect(screen.getByText(col.column_name)).toBeInTheDocument(),
-  );
-  expect(
-    screen.getByText(`Showing ${columnsNum} of ${columnsNum}`),
-  ).toBeInTheDocument();
+  columns.forEach(col => expect(screen.getByText(col.column_name)).toBeInTheDocument());
+  expect(screen.getByText(`Showing ${columnsNum} of ${columnsNum}`)).toBeInTheDocument();
 });
 
 test('should render 0 search results', async () => {
@@ -158,7 +145,5 @@ test('should render a warning', async () => {
       },
     }),
   );
-  expect(
-    await screen.findByRole('img', { name: 'alert-solid' }),
-  ).toBeInTheDocument();
+  expect(await screen.findByRole('img', { name: 'alert-solid' })).toBeInTheDocument();
 });

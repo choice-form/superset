@@ -176,13 +176,9 @@ test('renders with empty filters', () => {
     useRedux: true,
   });
   expect(screen.getByText('Configure filter scopes')).toBeInTheDocument();
-  expect(
-    screen.getByText('There are no filters in this dashboard.'),
-  ).toBeInTheDocument();
+  expect(screen.getByText('There are no filters in this dashboard.')).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument();
-  expect(
-    screen.queryByRole('button', { name: 'Save' }),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: 'Save' })).not.toBeInTheDocument();
 });
 
 test('renders with filters values', () => {
@@ -206,15 +202,9 @@ test('collapses/expands all filters', () => {
   });
   userEvent.click(screen.getAllByRole('button', { name: COLLAPSE_ALL })[0]);
   expect(screen.getByRole('link', { name: ALL_FILTERS })).toBeInTheDocument();
-  expect(
-    screen.queryByRole('link', { name: FILTER_A }),
-  ).not.toBeInTheDocument();
-  expect(
-    screen.queryByRole('link', { name: FILTER_B }),
-  ).not.toBeInTheDocument();
-  expect(
-    screen.queryByRole('link', { name: FILTER_C }),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: FILTER_A })).not.toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: FILTER_B })).not.toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: FILTER_C })).not.toBeInTheDocument();
   userEvent.click(screen.getAllByRole('button', { name: EXPAND_ALL })[0]);
   expect(screen.getByRole('link', { name: ALL_FILTERS })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: FILTER_A })).toBeInTheDocument();
@@ -337,12 +327,9 @@ test('selects all charts', () => {
 
 test('triggers onClose', () => {
   const onCloseModal = jest.fn();
-  render(
-    <FilterScopeSelector {...createProps()} onCloseModal={onCloseModal} />,
-    {
-      useRedux: true,
-    },
-  );
+  render(<FilterScopeSelector {...createProps()} onCloseModal={onCloseModal} />, {
+    useRedux: true,
+  });
   expect(onCloseModal).toHaveBeenCalledTimes(0);
   userEvent.click(screen.getByRole('button', { name: 'Close' }));
   expect(onCloseModal).toHaveBeenCalledTimes(1);

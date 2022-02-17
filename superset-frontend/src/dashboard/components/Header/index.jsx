@@ -44,14 +44,8 @@ import PropertiesModal from 'src/dashboard/components/PropertiesModal';
 import ReportModal from 'src/components/ReportModal';
 import { chartPropShape } from 'src/dashboard/util/propShapes';
 import { UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';
-import {
-  UNDO_LIMIT,
-  SAVE_TYPE_OVERWRITE,
-  DASHBOARD_POSITION_DATA_LIMIT,
-} from 'src/dashboard/util/constants';
-import setPeriodicRunner, {
-  stopPeriodicRender,
-} from 'src/dashboard/util/setPeriodicRunner';
+import { UNDO_LIMIT, SAVE_TYPE_OVERWRITE, DASHBOARD_POSITION_DATA_LIMIT } from 'src/dashboard/util/constants';
+import setPeriodicRunner, { stopPeriodicRender } from 'src/dashboard/util/setPeriodicRunner';
 import { options as PeriodicRefreshOptions } from 'src/dashboard/components/RefreshIntervalModal';
 
 const propTypes = {
@@ -173,35 +167,20 @@ class Header extends React.PureComponent {
     this.startPeriodicRender(refreshFrequency * 1000);
     if (this.canAddReports()) {
       // this is in case there is an anonymous user.
-      this.props.fetchUISpecificReport(
-        user.userId,
-        'dashboard_id',
-        'dashboards',
-        dashboardInfo.id,
-        user.email,
-      );
+      this.props.fetchUISpecificReport(user.userId, 'dashboard_id', 'dashboards', dashboardInfo.id, user.email);
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { user } = this.props;
-    if (
-      UNDO_LIMIT - nextProps.undoLength <= 0 &&
-      !this.state.didNotifyMaxUndoHistoryToast
-    ) {
+    if (UNDO_LIMIT - nextProps.undoLength <= 0 && !this.state.didNotifyMaxUndoHistoryToast) {
       this.setState(() => ({ didNotifyMaxUndoHistoryToast: true }));
       this.props.maxUndoHistoryToast();
     }
-    if (
-      nextProps.undoLength > UNDO_LIMIT &&
-      !this.props.maxUndoHistoryExceeded
-    ) {
+    if (nextProps.undoLength > UNDO_LIMIT && !this.props.maxUndoHistoryExceeded) {
       this.props.setMaxUndoHistoryExceeded();
     }
-    if (
-      this.canAddReports() &&
-      nextProps.dashboardInfo.id !== this.props.dashboardInfo.id
-    ) {
+    if (this.canAddReports() && nextProps.dashboardInfo.id !== this.props.dashboardInfo.id) {
       // this is in case there is an anonymous user.
       this.props.fetchUISpecificReport(
         user.userId,
@@ -256,12 +235,7 @@ class Header extends React.PureComponent {
         interval: 0,
         chartCount: chartList.length,
       });
-      return this.props.onRefresh(
-        chartList,
-        true,
-        0,
-        this.props.dashboardInfo.id,
-      );
+      return this.props.onRefresh(chartList, true, 0, this.props.dashboardInfo.id);
     }
     return false;
   }
@@ -269,9 +243,7 @@ class Header extends React.PureComponent {
   startPeriodicRender(interval) {
     let intervalMessage;
     if (interval) {
-      const predefinedValue = PeriodicRefreshOptions.find(
-        option => option.value === interval / 1000,
-      );
+      const predefinedValue = PeriodicRefreshOptions.find(option => option.value === interval / 1000);
       if (predefinedValue) {
         intervalMessage = predefinedValue.label;
       } else {
@@ -292,18 +264,10 @@ class Header extends React.PureComponent {
         chartCount: affectedCharts.length,
       });
       this.props.addWarningToast(
-        t(
-          `This dashboard is currently force refreshing; the next force refresh will be in %s.`,
-          intervalMessage,
-        ),
+        t(`This dashboard is currently force refreshing; the next force refresh will be in %s.`, intervalMessage),
       );
 
-      return fetchCharts(
-        affectedCharts,
-        true,
-        interval * 0.2,
-        dashboardInfo.id,
-      );
+      return fetchCharts(affectedCharts, true, interval * 0.2, dashboardInfo.id);
     };
 
     this.refreshTimer = setPeriodicRunner({
@@ -350,8 +314,7 @@ class Header extends React.PureComponent {
       slug,
       metadata: {
         ...dashboardInfo?.metadata,
-        color_namespace:
-          dashboardInfo?.metadata?.color_namespace || colorNamespace,
+        color_namespace: dashboardInfo?.metadata?.color_namespace || colorNamespace,
         color_scheme: dashboardInfo?.metadata?.color_scheme || colorScheme,
         positions,
         refresh_frequency: refreshFrequency,
@@ -360,15 +323,9 @@ class Header extends React.PureComponent {
 
     // make sure positions data less than DB storage limitation:
     const positionJSONLength = safeStringify(positions).length;
-    const limit =
-      dashboardInfo.common.conf.SUPERSET_DASHBOARD_POSITION_DATA_LIMIT ||
-      DASHBOARD_POSITION_DATA_LIMIT;
+    const limit = dashboardInfo.common.conf.SUPERSET_DASHBOARD_POSITION_DATA_LIMIT || DASHBOARD_POSITION_DATA_LIMIT;
     if (positionJSONLength >= limit) {
-      this.props.addDangerToast(
-        t(
-          'Your dashboard is too large. Please reduce its size before saving it.',
-        ),
-      );
+      this.props.addDangerToast(t('Your dashboard is too large. Please reduce its size before saving it.'));
     } else {
       if (positionJSONLength >= limit * 0.9) {
         this.props.addWarningToast('Your dashboard is near the size limit.');
@@ -428,9 +385,7 @@ class Header extends React.PureComponent {
     }
     const roles = Object.keys(user.roles || []);
     const permissions = roles.map(key =>
-      user.roles[key].filter(
-        perms => perms[0] === 'menu_access' && perms[1] === 'Manage',
-      ),
+      user.roles[key].filter(perms => perms[0] === 'menu_access' && perms[1] === 'Manage'),
     );
     return permissions[0].length > 0;
   }
@@ -467,11 +422,8 @@ class Header extends React.PureComponent {
     const userCanShare = dashboardInfo.dash_share_perm;
     const userCanSaveAs = dashboardInfo.dash_save_perm;
     const shouldShowReport = !editMode && this.canAddReports();
-    const refreshLimit =
-      dashboardInfo.common.conf.SUPERSET_DASHBOARD_PERIODICAL_REFRESH_LIMIT;
-    const refreshWarning =
-      dashboardInfo.common.conf
-        .SUPERSET_DASHBOARD_PERIODICAL_REFRESH_WARNING_MESSAGE;
+    const refreshLimit = dashboardInfo.common.conf.SUPERSET_DASHBOARD_PERIODICAL_REFRESH_LIMIT;
+    const refreshWarning = dashboardInfo.common.conf.SUPERSET_DASHBOARD_PERIODICAL_REFRESH_WARNING_MESSAGE;
 
     const handleOnPropertiesChange = updates => {
       const { dashboardInfoChanged, dashboardTitleChanged } = this.props;
@@ -496,10 +448,7 @@ class Header extends React.PureComponent {
         <div className="dashboard-component-header header-large">
           {dashboardInfo.certified_by && (
             <>
-              <CertifiedIcon
-                certifiedBy={dashboardInfo.certified_by}
-                details={dashboardInfo.certification_details}
-              />{' '}
+              <CertifiedIcon certifiedBy={dashboardInfo.certified_by} details={dashboardInfo.certification_details} />{' '}
             </>
           )}
           <EditableTitle
@@ -528,10 +477,7 @@ class Header extends React.PureComponent {
 
         <div className="button-container">
           {userCanSaveAs && (
-            <div
-              className="button-container"
-              data-test="dashboard-edit-actions"
-            >
+            <div className="button-container" data-test="dashboard-edit-actions">
               {editMode && (
                 <>
                   <ButtonGroup className="m-r-5">
@@ -539,25 +485,17 @@ class Header extends React.PureComponent {
                       buttonSize="small"
                       onClick={onUndo}
                       disabled={undoLength < 1}
-                      buttonStyle={
-                        this.state.emphasizeUndo ? 'primary' : undefined
-                      }
+                      buttonStyle={this.state.emphasizeUndo ? 'primary' : undefined}
                       showMarginRight={false}
                     >
-                      <i
-                        title="Undo"
-                        className="undo-action fa fa-reply"
-                        data-test="undo-action"
-                      />
+                      <i title="Undo" className="undo-action fa fa-reply" data-test="undo-action" />
                       &nbsp;
                     </Button>
                     <Button
                       buttonSize="small"
                       onClick={onRedo}
                       disabled={redoLength < 1}
-                      buttonStyle={
-                        this.state.emphasizeRedo ? 'primary' : undefined
-                      }
+                      buttonStyle={this.state.emphasizeRedo ? 'primary' : undefined}
                       showMarginRight={false}
                     >
                       &nbsp;
@@ -586,12 +524,7 @@ class Header extends React.PureComponent {
               )}
             </div>
           )}
-          {editMode && (
-            <UndoRedoKeyListeners
-              onUndo={this.handleCtrlZ}
-              onRedo={this.handleCtrlY}
-            />
-          )}
+          {editMode && <UndoRedoKeyListeners onUndo={this.handleCtrlZ} onRedo={this.handleCtrlY} />}
 
           {!editMode && userCanEdit && (
             <>

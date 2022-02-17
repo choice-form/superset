@@ -31,8 +31,4 @@ export type TreeItem = {
   title: ReactNode;
 };
 
-export type BuildTreeLeafTitle = (
-  label: string,
-  hasTooltip: boolean,
-  tooltipTitle?: string,
-) => ReactNode;
+export type BuildTreeLeafTitle = (label: string, hasTooltip: boolean, tooltipTitle?: string) => ReactNode;

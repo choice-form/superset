@@ -34,8 +34,7 @@ export const StyledModal = styled(Modal)`
 `;
 
 export const StyledTopSection = styled.div`
-  padding: ${({ theme }) =>
-    `${theme.gridUnit * 3}px ${theme.gridUnit * 4}px ${theme.gridUnit * 2}px`};
+  padding: ${({ theme }) => `${theme.gridUnit * 3}px ${theme.gridUnit * 4}px ${theme.gridUnit * 2}px`};
   label {
     font-size: ${({ theme }) => theme.typography.sizes.s - 1}px;
     color: ${({ theme }) => theme.colors.grayscale.light1};
@@ -44,8 +43,7 @@ export const StyledTopSection = styled.div`
 
 export const StyledBottomSection = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.grayscale.light2};
-  padding: ${({ theme }) =>
-    `${theme.gridUnit * 4}px ${theme.gridUnit * 4}px ${theme.gridUnit * 6}px`};
+  padding: ${({ theme }) => `${theme.gridUnit * 4}px ${theme.gridUnit * 4}px ${theme.gridUnit * 6}px`};
   .ant-select {
     width: 100%;
   }
@@ -99,8 +97,7 @@ export const SectionHeaderStyle = (theme: SupersetTheme) => css`
 `;
 
 export const StyledMessageContentTitle = styled.div`
-  margin: ${({ theme }) => theme.gridUnit * 8}px 0
-    ${({ theme }) => theme.gridUnit * 4}px;
+  margin: ${({ theme }) => theme.gridUnit * 8}px 0 ${({ theme }) => theme.gridUnit * 4}px;
 `;
 
 export const StyledRadio = styled(Radio)`

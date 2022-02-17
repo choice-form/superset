@@ -81,16 +81,14 @@ test('Should open a menu', () => {
 
 test('Click on Change dataset option', async () => {
   const props = createProps();
-  SupersetClientGet.mockImplementation(
-    async ({ endpoint }: { endpoint: string }) => {
-      if (endpoint.includes('_info')) {
-        return {
-          json: { permissions: ['can_read', 'can_write'] },
-        } as any;
-      }
-      return { json: { result: [] } } as any;
-    },
-  );
+  SupersetClientGet.mockImplementation(async ({ endpoint }: { endpoint: string }) => {
+    if (endpoint.includes('_info')) {
+      return {
+        json: { permissions: ['can_read', 'can_write'] },
+      } as any;
+    }
+    return { json: { result: [] } } as any;
+  });
 
   render(<DatasourceControl {...props} />, {
     useRedux: true,
@@ -109,9 +107,7 @@ test('Click on Change dataset option', async () => {
 
 test('Click on Edit dataset', async () => {
   const props = createProps();
-  SupersetClientGet.mockImplementation(
-    async () => ({ json: { result: [] } } as any),
-  );
+  SupersetClientGet.mockImplementation(async () => ({ json: { result: [] } } as any));
   render(<DatasourceControl {...props} />, {
     useRedux: true,
   });

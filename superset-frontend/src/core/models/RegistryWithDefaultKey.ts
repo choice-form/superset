@@ -24,10 +24,7 @@ interface RegistryWithDefaultKeyConfig extends RegistryConfig {
   setFirstItemAsDefault?: boolean;
 }
 
-export default class RegistryWithDefaultKey<
-  V,
-  W extends V | Promise<V> = V | Promise<V>,
-> extends Registry<V, W> {
+export default class RegistryWithDefaultKey<V, W extends V | Promise<V> = V | Promise<V>> extends Registry<V, W> {
   initialDefaultKey?: string;
 
   defaultKey?: string;
@@ -36,8 +33,7 @@ export default class RegistryWithDefaultKey<
 
   constructor(config: RegistryWithDefaultKeyConfig = {}) {
     super(config);
-    const { initialDefaultKey = undefined, setFirstItemAsDefault = false } =
-      config;
+    const { initialDefaultKey = undefined, setFirstItemAsDefault = false } = config;
     this.initialDefaultKey = initialDefaultKey;
     this.defaultKey = initialDefaultKey;
     this.setFirstItemAsDefault = setFirstItemAsDefault;

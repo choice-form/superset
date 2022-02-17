@@ -28,9 +28,7 @@ export interface RefreshLabelProps {
 
 const RefreshLabel = ({ onClick, tooltipContent }: RefreshLabelProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const IconWithoutRef = React.forwardRef((props: IconType, ref: any) => (
-    <Icons.Refresh {...props} />
-  ));
+  const IconWithoutRef = React.forwardRef((props: IconType, ref: any) => <Icons.Refresh {...props} />);
 
   return (
     <Tooltip title={tooltipContent}>

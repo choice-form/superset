@@ -103,15 +103,12 @@ export default class ChartMetadata {
     this.description = description;
     this.show = show;
     this.canBeAnnotationTypes = canBeAnnotationTypes;
-    this.canBeAnnotationTypesLookup = canBeAnnotationTypes.reduce(
-      (prev: LookupTable, type: string) => {
-        const lookup = prev;
-        lookup[type] = true;
+    this.canBeAnnotationTypesLookup = canBeAnnotationTypes.reduce((prev: LookupTable, type: string) => {
+      const lookup = prev;
+      lookup[type] = true;
 
-        return lookup;
-      },
-      {},
-    );
+      return lookup;
+    }, {});
     this.supportedAnnotationTypes = supportedAnnotationTypes;
     this.thumbnail = thumbnail;
     this.useLegacyApi = useLegacyApi;

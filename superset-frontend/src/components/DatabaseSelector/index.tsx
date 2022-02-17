@@ -89,13 +89,7 @@ interface DatabaseSelectorProps {
   sqlLabMode?: boolean;
 }
 
-const SelectLabel = ({
-  backend,
-  databaseName,
-}: {
-  backend: string;
-  databaseName: string;
-}) => (
+const SelectLabel = ({ backend, databaseName }: { backend: string; databaseName: string }) => (
   <LabelStyle>
     <Label>{backend}</Label>
     {databaseName}
@@ -120,9 +114,7 @@ export default function DatabaseSelector({
   const [currentDb, setCurrentDb] = useState<DatabaseValue | undefined>(
     db
       ? {
-          label: (
-            <SelectLabel backend={db.backend} databaseName={db.database_name} />
-          ),
+          label: <SelectLabel backend={db.backend} databaseName={db.database_name} />,
           value: db.id,
           ...db,
         }
@@ -134,62 +126,55 @@ export default function DatabaseSelector({
   const [refresh, setRefresh] = useState(0);
 
   const loadDatabases = useMemo(
-    () =>
-      async (
-        search: string,
-        page: number,
-        pageSize: number,
-      ): Promise<{
-        data: DatabaseValue[];
-        totalCount: number;
-      }> => {
-        const queryParams = rison.encode({
-          order_columns: 'database_name',
-          order_direction: 'asc',
-          page,
-          page_size: pageSize,
-          ...(formMode || !sqlLabMode
-            ? { filters: [{ col: 'database_name', opr: 'ct', value: search }] }
-            : {
-                filters: [
-                  { col: 'database_name', opr: 'ct', value: search },
-                  {
-                    col: 'expose_in_sqllab',
-                    opr: 'eq',
-                    value: true,
-                  },
-                ],
-              }),
-        });
-        const endpoint = `/api/v1/database/?q=${queryParams}`;
-        return SupersetClient.get({ endpoint }).then(({ json }) => {
-          const { result } = json;
-          if (getDbList) {
-            getDbList(result);
-          }
-          if (result.length === 0) {
-            handleError(t("It seems you don't have access to any database"));
-          }
-          const options = result.map((row: DatabaseObject) => ({
-            label: (
-              <SelectLabel
-                backend={row.backend}
-                databaseName={row.database_name}
-              />
-            ),
-            value: row.id,
-            id: row.id,
-            database_name: row.database_name,
-            backend: row.backend,
-            allow_multi_schema_metadata_fetch:
-              row.allow_multi_schema_metadata_fetch,
-          }));
-          return {
-            data: options,
-            totalCount: options.length,
-          };
-        });
-      },
+    () => async (
+      search: string,
+      page: number,
+      pageSize: number,
+    ): Promise<{
+      data: DatabaseValue[];
+      totalCount: number;
+    }> => {
+      const queryParams = rison.encode({
+        order_columns: 'database_name',
+        order_direction: 'asc',
+        page,
+        page_size: pageSize,
+        ...(formMode || !sqlLabMode
+          ? { filters: [{ col: 'database_name', opr: 'ct', value: search }] }
+          : {
+              filters: [
+                { col: 'database_name', opr: 'ct', value: search },
+                {
+                  col: 'expose_in_sqllab',
+                  opr: 'eq',
+                  value: true,
+                },
+              ],
+            }),
+      });
+      const endpoint = `/api/v1/database/?q=${queryParams}`;
+      return SupersetClient.get({ endpoint }).then(({ json }) => {
+        const { result } = json;
+        if (getDbList) {
+          getDbList(result);
+        }
+        if (result.length === 0) {
+          handleError(t("It seems you don't have access to any database"));
+        }
+        const options = result.map((row: DatabaseObject) => ({
+          label: <SelectLabel backend={row.backend} databaseName={row.database_name} />,
+          value: row.id,
+          id: row.id,
+          database_name: row.database_name,
+          backend: row.backend,
+          allow_multi_schema_metadata_fetch: row.allow_multi_schema_metadata_fetch,
+        }));
+        return {
+          data: options,
+          totalCount: options.length,
+        };
+      });
+    },
     [formMode, getDbList, handleError, sqlLabMode],
   );
 
@@ -208,9 +193,7 @@ export default function DatabaseSelector({
               label: s,
               title: s,
             }))
-            .sort((a: { label: string }, b: { label: string }) =>
-              a.label.localeCompare(b.label),
-            );
+            .sort((a: { label: string }, b: { label: string }) => a.label.localeCompare(b.label));
           if (onSchemasLoad) {
             onSchemasLoad(options);
           }
@@ -224,10 +207,7 @@ export default function DatabaseSelector({
     }
   }, [currentDb, onSchemasLoad, refresh]);
 
-  function changeDataBase(
-    value: { label: string; value: number },
-    database: DatabaseValue,
-  ) {
+  function changeDataBase(value: { label: string; value: number }, database: DatabaseValue) {
     setCurrentDb(database);
     setCurrentSchema(undefined);
     if (onDbChange) {
@@ -274,10 +254,7 @@ export default function DatabaseSelector({
 
   function renderSchemaSelect() {
     const refreshIcon = !formMode && !readOnly && (
-      <RefreshLabel
-        onClick={() => setRefresh(refresh + 1)}
-        tooltipContent={t('Force refresh schema list')}
-      />
+      <RefreshLabel onClick={() => setRefresh(refresh + 1)} tooltipContent={t('Force refresh schema list')} />
     );
 
     return renderSelectRow(

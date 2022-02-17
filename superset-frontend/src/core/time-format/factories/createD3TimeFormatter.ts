@@ -16,12 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  utcFormat,
-  timeFormat,
-  timeFormatLocale,
-  TimeLocaleDefinition,
-} from 'd3-time-format';
+import { utcFormat, timeFormat, timeFormatLocale, TimeLocaleDefinition } from 'd3-time-format';
 import { isRequired } from '../../utils';
 import TimeFormatter from '../TimeFormatter';
 import { LOCAL_PREFIX } from '../TimeFormats';
@@ -33,13 +28,7 @@ export default function createD3TimeFormatter(config: {
   locale?: TimeLocaleDefinition;
   useLocalTime?: boolean;
 }) {
-  const {
-    description,
-    formatString = isRequired('formatString'),
-    label,
-    locale,
-    useLocalTime = false,
-  } = config;
+  const { description, formatString = isRequired('formatString'), label, locale, useLocalTime = false } = config;
 
   const id = useLocalTime ? `${LOCAL_PREFIX}${formatString}` : formatString;
   let formatFunc;
@@ -49,9 +38,7 @@ export default function createD3TimeFormatter(config: {
     formatFunc = format(formatString);
   } else {
     const localeObject = timeFormatLocale(locale);
-    formatFunc = useLocalTime
-      ? localeObject.format(formatString)
-      : localeObject.utcFormat(formatString);
+    formatFunc = useLocalTime ? localeObject.format(formatString) : localeObject.utcFormat(formatString);
   }
 
   return new TimeFormatter({

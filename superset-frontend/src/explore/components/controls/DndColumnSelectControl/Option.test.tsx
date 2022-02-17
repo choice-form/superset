@@ -29,9 +29,7 @@ test('renders with default props', () => {
   );
   expect(container).toBeInTheDocument();
   expect(screen.getByRole('img', { name: 'x-small' })).toBeInTheDocument();
-  expect(
-    screen.queryByRole('img', { name: 'caret-right' }),
-  ).not.toBeInTheDocument();
+  expect(screen.queryByRole('img', { name: 'caret-right' })).not.toBeInTheDocument();
 });
 
 test('renders with caret', () => {
@@ -50,9 +48,7 @@ test('renders with extra triangle', () => {
       Option
     </Option>,
   );
-  expect(
-    screen.getByRole('button', { name: 'Show info tooltip' }),
-  ).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Show info tooltip' })).toBeInTheDocument();
 });
 
 test('triggers onClose', () => {

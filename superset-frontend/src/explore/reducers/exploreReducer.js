@@ -20,11 +20,7 @@
 import { DYNAMIC_PLUGIN_CONTROLS_READY } from 'src/chart/chartAction';
 import { DEFAULT_TIME_RANGE } from 'src/explore/constants';
 import { getControlsState } from 'src/explore/store';
-import {
-  getControlConfig,
-  getFormDataFromControls,
-  getControlStateFromControlConfig,
-} from 'src/explore/controlUtils';
+import { getControlConfig, getFormDataFromControls, getControlStateFromControlConfig } from 'src/explore/controlUtils';
 import * as actions from 'src/explore/actions/exploreActions';
 
 export default function exploreReducer(state = {}, action) {
@@ -64,10 +60,7 @@ export default function exploreReducer(state = {}, action) {
       }
 
       const controls = { ...state.controls };
-      if (
-        action.datasource.id !== state.datasource.id ||
-        action.datasource.type !== state.datasource.type
-      ) {
+      if (action.datasource.id !== state.datasource.id || action.datasource.type !== state.datasource.type) {
         // reset time range filter to default
         newFormData.time_range = DEFAULT_TIME_RANGE;
 
@@ -125,10 +118,7 @@ export default function exploreReducer(state = {}, action) {
 
       // Use the processed control config (with overrides and everything)
       // if `controlName` does not existing in current controls,
-      const controlConfig =
-        state.controls[action.controlName] ||
-        getControlConfig(action.controlName, vizType) ||
-        {};
+      const controlConfig = state.controls[action.controlName] || getControlConfig(action.controlName, vizType) || {};
 
       // will call validators again
       const control = {
@@ -165,8 +155,7 @@ export default function exploreReducer(state = {}, action) {
       const hasErrors = errors && errors.length > 0;
 
       const currentControlsState =
-        action.controlName === 'viz_type' &&
-        action.value !== state.controls.viz_type.value
+        action.controlName === 'viz_type' && action.value !== state.controls.viz_type.value
           ? // rebuild the full control state if switching viz type
             getControlsState(
               state,

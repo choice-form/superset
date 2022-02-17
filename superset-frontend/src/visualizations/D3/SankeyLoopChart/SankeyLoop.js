@@ -20,11 +20,7 @@
 import PropTypes from 'prop-types';
 import { select } from 'd3-selection';
 import { sankeyDiagram, sankey } from 'd3-sankey-diagram';
-import {
-  getNumberFormatter,
-  NumberFormats,
-  CategoricalColorNamespace,
-} from 'src/core';
+import { getNumberFormatter, NumberFormats, CategoricalColorNamespace } from 'src/core';
 
 import './SankeyLoop.css';
 
@@ -68,10 +64,7 @@ const countFormat = getNumberFormatter();
 function computeGraph(links) {
   // this assumes source and target are string values
   const nodes = Array.from(
-    links.reduce(
-      (set, { source, target }) => set.add(source).add(target),
-      new Set(),
-    ),
+    links.reduce((set, { source, target }) => set.add(source).add(target), new Set()),
   ).map(id => ({ id, name: id }));
 
   return {
@@ -100,14 +93,8 @@ function SankeyLoop(element, props) {
   const diagram = sankeyDiagram()
     .nodeTitle(d => d.name)
     .linkTitle(
-      ({
-        source: { name: sName, value: sValue },
-        target: { name: tName },
-        value,
-      }) =>
-        `${sName} → ${tName}: ${countFormat(value)} (${percentFormat(
-          value / sValue,
-        )})`,
+      ({ source: { name: sName, value: sValue }, target: { name: tName }, value }) =>
+        `${sName} → ${tName}: ${countFormat(value)} (${percentFormat(value / sValue)})`,
     )
     .linkColor(d => color(d.source.name));
 
@@ -130,10 +117,7 @@ function SankeyLoop(element, props) {
     .attr('y', d => d.points[0].y)
     .attr('dy', 3)
     .attr('dx', 2)
-    .text(
-      d =>
-        `${countFormat(d.value)} (${percentFormat(d.value / d.source.value)})`,
-    );
+    .text(d => `${countFormat(d.value)} (${percentFormat(d.value / d.source.value)})`);
 }
 
 SankeyLoop.displayName = 'SankeyLoop';

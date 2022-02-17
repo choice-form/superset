@@ -41,18 +41,16 @@ export const InteractivePopoverDropdown = (props: Props) => {
   const { value, buttonType, optionType, ...rest } = props;
   const [currentValue, setCurrentValue] = useState(value);
 
-  const newElementHandler =
-    (type: ElementType) =>
-    ({ label, value }: OptionProps) => {
-      if (type === 'button') {
-        return (
-          <button type="button" key={value}>
-            {label}
-          </button>
-        );
-      }
-      return <span>{label}</span>;
-    };
+  const newElementHandler = (type: ElementType) => ({ label, value }: OptionProps) => {
+    if (type === 'button') {
+      return (
+        <button type="button" key={value}>
+          {label}
+        </button>
+      );
+    }
+    return <span>{label}</span>;
+  };
 
   return (
     <PopoverDropdown

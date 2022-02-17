@@ -21,19 +21,11 @@ import { useCallback, useEffect } from 'react';
 import { omit } from 'lodash';
 /* eslint camelcase: 0 */
 import URI from 'urijs';
-import {
-  buildQueryContext,
-  ensureIsArray,
-  getChartBuildQueryRegistry,
-  getChartMetadataRegistry,
-} from 'src/core';
+import { buildQueryContext, ensureIsArray, getChartBuildQueryRegistry, getChartMetadataRegistry } from 'src/core';
 import { availableDomains } from 'src/utils/hostNamesConfig';
 import { safeStringify } from 'src/utils/safeStringify';
 import { URL_PARAMS } from 'src/constants';
-import {
-  MULTI_OPERATORS,
-  OPERATOR_ENUM_TO_OPERATOR_TYPE,
-} from 'src/explore/constants';
+import { MULTI_OPERATORS, OPERATOR_ENUM_TO_OPERATOR_TYPE } from 'src/explore/constants';
 import { DashboardStandaloneMode } from 'src/dashboard/util/constants';
 
 const MAX_URL_LENGTH = 8000;
@@ -70,9 +62,7 @@ export function getAnnotationJsonUrl(slice_id, form_data, isNative, force) {
   return uri
     .pathname(`/superset/${endpoint}/${slice_id}`)
     .search({
-      form_data: safeStringify(form_data, (key, value) =>
-        value === null ? undefined : value,
-      ),
+      form_data: safeStringify(form_data, (key, value) => (value === null ? undefined : value)),
       force,
     })
     .toString();
@@ -80,11 +70,7 @@ export function getAnnotationJsonUrl(slice_id, form_data, isNative, force) {
 
 export function getURIDirectory(endpointType = 'base') {
   // Building the directory part of the URI
-  if (
-    ['full', 'json', 'csv', 'query', 'results', 'samples'].includes(
-      endpointType,
-    )
-  ) {
+  if (['full', 'json', 'csv', 'query', 'results', 'samples'].includes(endpointType)) {
     return '/explore_json/';
   }
   return '/explore/';
@@ -94,12 +80,7 @@ export function getURIDirectory(endpointType = 'base') {
  * This gets the url of the explore page, with all the form data included explicitly.
  * This includes any form data overrides from the dashboard.
  */
-export function getExploreLongUrl(
-  formData,
-  endpointType,
-  allowOverflow = true,
-  extraSearch = {},
-) {
+export function getExploreLongUrl(formData, endpointType, allowOverflow = true, extraSearch = {}) {
   if (!formData.datasource) {
     return null;
   }
@@ -138,11 +119,7 @@ export function getExploreUrlFromDashboard(formData) {
   // These are present when generating explore urls from the dashboard page.
   // This should be superseded by some sort of "exploration context" system
   // where form data and other context is referenced by id.
-  const trimmedFormData = omit(formData, [
-    'dataMask',
-    'url_params',
-    'label_colors',
-  ]);
+  const trimmedFormData = omit(formData, ['dataMask', 'url_params', 'label_colors']);
   return getExploreLongUrl(trimmedFormData, null, false);
 }
 
@@ -241,14 +218,7 @@ export const shouldUseLegacyApi = formData => {
   return vizMetadata ? vizMetadata.useLegacyApi : false;
 };
 
-export const buildV1ChartDataPayload = ({
-  formData,
-  force,
-  resultFormat,
-  resultType,
-  setDataMask,
-  ownState,
-}) => {
+export const buildV1ChartDataPayload = ({ formData, force, resultFormat, resultType, setDataMask, ownState }) => {
   const buildQuery =
     getChartBuildQueryRegistry().get(formData.viz_type) ??
     (buildQueryformData =>
@@ -301,13 +271,7 @@ export function postForm(url, payload, target = '_blank') {
   document.body.removeChild(hiddenForm);
 }
 
-export const exportChart = ({
-  formData,
-  resultFormat = 'json',
-  resultType = 'full',
-  force = false,
-  ownState = {},
-}) => {
+export const exportChart = ({ formData, resultFormat = 'json', resultType = 'full', force = false, ownState = {} }) => {
   let url;
   let payload;
   if (shouldUseLegacyApi(formData)) {
@@ -356,23 +320,17 @@ export const useDebouncedEffect = (effect, delay, deps) => {
 };
 
 export const getSimpleSQLExpression = (subject, operator, comparator) => {
-  const isMulti =
-    [...MULTI_OPERATORS]
-      .map(op => OPERATOR_ENUM_TO_OPERATOR_TYPE[op].operation)
-      .indexOf(operator) >= 0;
+  const isMulti = [...MULTI_OPERATORS].map(op => OPERATOR_ENUM_TO_OPERATOR_TYPE[op].operation).indexOf(operator) >= 0;
   let expression = subject ?? '';
   if (subject && operator) {
     expression += ` ${operator}`;
-    const firstValue =
-      isMulti && Array.isArray(comparator) ? comparator[0] : comparator;
+    const firstValue = isMulti && Array.isArray(comparator) ? comparator[0] : comparator;
     const comparatorArray = ensureIsArray(comparator);
-    const isString =
-      firstValue !== undefined && Number.isNaN(Number(firstValue));
+    const isString = firstValue !== undefined && Number.isNaN(Number(firstValue));
     const quote = isString ? "'" : '';
     const [prefix, suffix] = isMulti ? ['(', ')'] : ['', ''];
     const formattedComparators = comparatorArray.map(
-      val =>
-        `${quote}${isString ? String(val).replace("'", "''") : val}${quote}`,
+      val => `${quote}${isString ? String(val).replace("'", "''") : val}${quote}`,
     );
     if (comparatorArray.length > 0) {
       expression += ` ${prefix}${formattedComparators.join(', ')}${suffix}`;

@@ -46,23 +46,11 @@ export default function DrillDownControl(props: drillDownProps) {
   };
 
   const renderCheckbox = () => {
-    return (
-      <Checkbox
-        onChange={onChange}
-        style={checkboxStyle}
-        checked={props.value}
-      />
-    );
+    return <Checkbox onChange={onChange} style={checkboxStyle} checked={props.value} />;
   };
 
   if (props.label) {
-    return (
-      <ControlHeader
-        {...props}
-        leftNode={renderCheckbox()}
-        onClick={onChange}
-      />
-    );
+    return <ControlHeader {...props} leftNode={renderCheckbox()} onClick={onChange} />;
   }
 
   return renderCheckbox();

@@ -19,10 +19,7 @@
 /* eslint global-require: 0 */
 import $ from 'jquery';
 import { SupersetClient } from 'src/core';
-import {
-  getClientErrorObject,
-  ClientErrorObject,
-} from 'src/utils/getClientErrorObject';
+import { getClientErrorObject, ClientErrorObject } from 'src/utils/getClientErrorObject';
 import setupErrorMessages from 'src/setup/setupErrorMessages';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -35,9 +32,7 @@ declare global {
 
 function showApiMessage(resp: ClientErrorObject) {
   const template =
-    '<div class="alert"> ' +
-    '<button type="button" class="close" ' +
-    'data-dismiss="alert">\xD7</button> </div>';
+    '<div class="alert"> ' + '<button type="button" class="close" ' + 'data-dismiss="alert">\xD7</button> </div>';
   const severity = resp.severity || 'info';
   $(template)
     .addClass(`alert-${severity}`)
@@ -61,9 +56,7 @@ function toggleCheckbox(apiUrlPrefix: string, selector: string) {
 
 export default function setupApp() {
   $(document).ready(function () {
-    $(':checkbox[data-checkbox-api-prefix]').change(function (
-      this: HTMLElement,
-    ) {
+    $(':checkbox[data-checkbox-api-prefix]').change(function (this: HTMLElement) {
       const $this = $(this);
       const prefix = $this.data('checkbox-api-prefix');
       const id = $this.attr('id');
@@ -72,12 +65,7 @@ export default function setupApp() {
 
     // for language picker dropdown
     $('#language-picker a').click(function (
-      ev: JQuery.ClickEvent<
-        HTMLLinkElement,
-        null,
-        HTMLLinkElement,
-        HTMLLinkElement
-      >,
+      ev: JQuery.ClickEvent<HTMLLinkElement, null, HTMLLinkElement, HTMLLinkElement>,
     ) {
       ev.preventDefault();
       SupersetClient.get({

@@ -215,8 +215,7 @@ const FilterTabs: FC<FilterTabsProps> = ({
             setTimeout(() => {
               const element = document.getElementById('native-filters-tabs');
               if (element) {
-                const navList =
-                  element.getElementsByClassName('ant-tabs-nav-list')[0];
+                const navList = element.getElementsByClassName('ant-tabs-nav-list')[0];
                 navList.scrollTop = navList.scrollHeight;
               }
             }, 0);
@@ -236,26 +235,11 @@ const FilterTabs: FC<FilterTabsProps> = ({
       return (
         <LineEditableTabs.TabPane
           tab={
-            <FilterTabTitle
-              className={
-                removedFilters[id]
-                  ? 'removed'
-                  : showErroredFilter
-                  ? 'errored'
-                  : ''
-              }
-            >
-              <StyledFilterTitle>
-                {removedFilters[id] ? t('(Removed)') : filterName}
-              </StyledFilterTitle>
+            <FilterTabTitle className={removedFilters[id] ? 'removed' : showErroredFilter ? 'errored' : ''}>
+              <StyledFilterTitle>{removedFilters[id] ? t('(Removed)') : filterName}</StyledFilterTitle>
               {!removedFilters[id] && showErroredFilter && <StyledWarning />}
               {removedFilters[id] && (
-                <StyledSpan
-                  role="button"
-                  data-test="undo-button"
-                  tabIndex={0}
-                  onClick={() => restoreFilter(id)}
-                >
+                <StyledSpan role="button" data-test="undo-button" tabIndex={0} onClick={() => restoreFilter(id)}>
                   {t('Undo?')}
                 </StyledSpan>
               )}

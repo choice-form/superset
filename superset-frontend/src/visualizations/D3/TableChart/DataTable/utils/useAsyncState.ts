@@ -25,11 +25,7 @@ import 'regenerator-runtime/runtime';
 /**
  * Hook useState to allow always return latest initialValue
  */
-export default function useAsyncState<T, F extends (newValue: T) => unknown>(
-  initialValue: T,
-  callback: F,
-  wait = 200,
-) {
+export default function useAsyncState<T, F extends (newValue: T) => unknown>(initialValue: T, callback: F, wait = 200) {
   const [value, setValue] = useState(initialValue);
   const valueRef = useRef(initialValue);
   const onChange = useAsyncDebounce(callback, wait);

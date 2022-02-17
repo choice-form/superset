@@ -29,13 +29,7 @@ import { TableCollection, Pagination } from 'src/components/dataViewCommon';
 import CardCollection from './CardCollection';
 import FilterControls from './Filters';
 import { CardSortSelect } from './CardSortSelect';
-import {
-  FetchDataConfig,
-  Filters,
-  SortColumn,
-  CardSortSelectOption,
-  ViewModeType,
-} from './types';
+import { FetchDataConfig, Filters, SortColumn, CardSortSelectOption, ViewModeType } from './types';
 import { ListViewError, useListViewState } from './utils';
 
 const ListViewStyles = styled.div`
@@ -103,8 +97,7 @@ const BulkSelectWrapper = styled(Alert)`
   }
 
   .divider {
-    margin: ${({ theme: { gridUnit } }) =>
-      `${-gridUnit * 2}px 0 ${-gridUnit * 2}px ${gridUnit * 4}px`};
+    margin: ${({ theme: { gridUnit } }) => `${-gridUnit * 2}px 0 ${-gridUnit * 2}px ${gridUnit * 4}px`};
     width: 1px;
     height: ${({ theme }) => theme.gridUnit * 8}px;
     box-shadow: inset -1px 0px 0px #dadada;
@@ -119,14 +112,9 @@ const BulkSelectWrapper = styled(Alert)`
 `;
 
 const bulkSelectColumnConfig = {
-  Cell: ({ row }: any) => (
-    <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} id={row.id} />
-  ),
+  Cell: ({ row }: any) => <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} id={row.id} />,
   Header: ({ getToggleAllRowsSelectedProps }: any) => (
-    <IndeterminateCheckbox
-      {...getToggleAllRowsSelectedProps()}
-      id="header-toggle-all"
-    />
+    <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} id="header-toggle-all" />
   ),
   id: 'selection',
   size: 'sm',
@@ -164,13 +152,7 @@ const EmptyWrapper = styled.div`
   }
 `;
 
-const ViewModeToggle = ({
-  mode,
-  setMode,
-}: {
-  mode: 'table' | 'card';
-  setMode: (mode: 'table' | 'card') => void;
-}) => (
+const ViewModeToggle = ({ mode, setMode }: { mode: 'table' | 'card'; setMode: (mode: 'table' | 'card') => void }) => (
   <ViewModeContainer>
     <div
       role="button"
@@ -276,15 +258,10 @@ function ListView<T extends object = any>({
   });
   const filterable = Boolean(filters.length);
   if (filterable) {
-    const columnAccessors = columns.reduce(
-      (acc, col) => ({ ...acc, [col.id || col.accessor]: true }),
-      {},
-    );
+    const columnAccessors = columns.reduce((acc, col) => ({ ...acc, [col.id || col.accessor]: true }), {});
     filters.forEach(f => {
       if (!columnAccessors[f.id]) {
-        throw new ListViewError(
-          `Invalid filter config, ${f.id} is not present in columns`,
-        );
+        throw new ListViewError(`Invalid filter config, ${f.id} is not present in columns`);
       }
     });
   }
@@ -300,9 +277,7 @@ function ListView<T extends object = any>({
     <ListViewStyles>
       <div data-test={className} className={`superset-list-view ${className}`}>
         <div className="header">
-          {cardViewEnabled && (
-            <ViewModeToggle mode={viewMode} setMode={setViewMode} />
-          )}
+          {cardViewEnabled && <ViewModeToggle mode={viewMode} setMode={setViewMode} />}
           <div className="controls">
             {filterable && (
               <FilterControls
@@ -353,11 +328,7 @@ function ListView<T extends object = any>({
                           key={action.key}
                           buttonStyle={action.type}
                           cta
-                          onClick={() =>
-                            action.onSelect(
-                              selectedFlatRows.map(r => r.original),
-                            )
-                          }
+                          onClick={() => action.onSelect(selectedFlatRows.map(r => r.original))}
                         >
                           {action.name}
                         </Button>
@@ -392,10 +363,7 @@ function ListView<T extends object = any>({
           )}
           {!loading && rows.length === 0 && (
             <EmptyWrapper className={viewMode}>
-              <Empty
-                image={<EmptyImage />}
-                description={emptyState.message || t('No Data')}
-              >
+              <Empty image={<EmptyImage />} description={emptyState.message || t('No Data')}>
                 {emptyState.slot || null}
               </Empty>
             </EmptyWrapper>
@@ -413,12 +381,7 @@ function ListView<T extends object = any>({
           />
           <div className="row-count-container">
             {!loading &&
-              t(
-                '%s-%s of %s',
-                pageSize * pageIndex + (rows.length && 1),
-                pageSize * pageIndex + rows.length,
-                count,
-              )}
+              t('%s-%s of %s', pageSize * pageIndex + (rows.length && 1), pageSize * pageIndex + rows.length, count)}
           </div>
         </div>
       )}

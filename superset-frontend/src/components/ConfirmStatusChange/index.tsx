@@ -28,12 +28,7 @@ export interface ConfirmStatusChangeProps {
   children: (showConfirm: Callback) => React.ReactNode;
 }
 
-export default function ConfirmStatusChange({
-  title,
-  description,
-  onConfirm,
-  children,
-}: ConfirmStatusChangeProps) {
+export default function ConfirmStatusChange({ title, description, onConfirm, children }: ConfirmStatusChangeProps) {
   const [open, setOpen] = useState(false);
   const [currentCallbackArgs, setCurrentCallbackArgs] = useState<any[]>([]);
 
@@ -70,13 +65,7 @@ export default function ConfirmStatusChange({
   return (
     <>
       {children && children(showConfirm)}
-      <DeleteModal
-        description={description}
-        onConfirm={confirm}
-        onHide={hide}
-        open={open}
-        title={title}
-      />
+      <DeleteModal description={description} onConfirm={confirm} onHide={hide} open={open} title={title} />
     </>
   );
 }

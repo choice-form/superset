@@ -18,10 +18,7 @@
  */
 import { t, ChartMetadata, ChartPlugin } from 'src/core';
 import controlPanel from './controlPanel';
-import transformProps, {
-  BigNumberChartProps,
-  BigNumberFormData,
-} from './transformProps';
+import transformProps, { BigNumberChartProps, BigNumberFormData } from './transformProps';
 import example from './images/Big_Number_Trendline.jpg';
 import thumbnail from './images/thumbnail.png';
 
@@ -46,10 +43,7 @@ const metadata = new ChartMetadata({
   useLegacyApi: true,
 });
 
-export default class BigNumberChartPlugin extends ChartPlugin<
-  BigNumberFormData,
-  BigNumberChartProps
-> {
+export default class BigNumberChartPlugin extends ChartPlugin<BigNumberFormData, BigNumberChartProps> {
   constructor() {
     super({
       loadChart: () => import('./BigNumber'),

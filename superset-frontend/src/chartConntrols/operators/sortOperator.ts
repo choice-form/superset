@@ -21,13 +21,8 @@ import { PostProcessingSort, RollingType } from 'src/core';
 import { PostProcessingFactory } from './types';
 import { TIME_COLUMN } from './utils';
 
-export const sortOperator: PostProcessingFactory<
-  PostProcessingSort | undefined
-> = (formData, queryObject) => {
-  if (
-    queryObject.is_timeseries &&
-    Object.values(RollingType).includes(formData.rolling_type)
-  ) {
+export const sortOperator: PostProcessingFactory<PostProcessingSort | undefined> = (formData, queryObject) => {
+  if (queryObject.is_timeseries && Object.values(RollingType).includes(formData.rolling_type)) {
     return {
       operation: 'sort',
       options: {

@@ -55,13 +55,7 @@ import {
   DEFAULT_NUMBER_FORMAT,
 } from '../utils';
 import { TIME_FILTER_LABELS, TIME_COLUMN_OPTION } from '../constants';
-import {
-  Metric,
-  SharedControlConfig,
-  ColumnMeta,
-  ExtraControlProps,
-  SelectControlConfig,
-} from '../types';
+import { Metric, SharedControlConfig, ColumnMeta, ExtraControlProps, SelectControlConfig } from '../types';
 import { ColumnOption } from '../components/ColumnOption';
 
 import {
@@ -111,10 +105,8 @@ const groupByControl: SharedControlConfig<'SelectControl', ColumnMeta> = {
   valueKey: 'column_name',
   allowAll: true,
   filterOption: ({ data: opt }, text: string) =>
-    (opt.column_name &&
-      opt.column_name.toLowerCase().includes(text.toLowerCase())) ||
-    (opt.verbose_name &&
-      opt.verbose_name.toLowerCase().includes(text.toLowerCase())) ||
+    (opt.column_name && opt.column_name.toLowerCase().includes(text.toLowerCase())) ||
+    (opt.verbose_name && opt.verbose_name.toLowerCase().includes(text.toLowerCase())) ||
     false,
   promptTextCreator: (label: unknown) => label,
   mapStateToProps(state, { includeTime }) {
@@ -188,11 +180,7 @@ const metric_2: SharedControlConfig<'MetricsControl'> = {
 const linear_color_scheme: SharedControlConfig<'ColorSchemeControl'> = {
   type: 'ColorSchemeControl',
   label: t('Linear Color Scheme'),
-  choices: () =>
-    (sequentialSchemeRegistry.values() as SequentialScheme[]).map(value => [
-      value.id,
-      value.label,
-    ]),
+  choices: () => (sequentialSchemeRegistry.values() as SequentialScheme[]).map(value => [value.id, value.label]),
   default: sequentialSchemeRegistry.getDefaultKey(),
   clearable: false,
   description: '',
@@ -225,8 +213,7 @@ const druid_time_origin: SharedControlConfig<'SelectControl'> = {
   ],
   default: null,
   description: t(
-    'Defines the origin where time buckets start, ' +
-      'accepts natural dates as in `now`, `sunday` or `1970-01-01`',
+    'Defines the origin where time buckets start, ' + 'accepts natural dates as in `now`, `sunday` or `1970-01-01`',
   ),
 };
 
@@ -434,10 +421,7 @@ const y_axis_format: SharedControlConfig<'SelectControl'> = {
     const showWarning = state.controls?.comparison_type?.value === 'percentage';
     return {
       warning: showWarning
-        ? t(
-            'When `Calculation type` is set to "Percentage change", the Y ' +
-              'Axis Format is forced to `.1%`',
-          )
+        ? t('When `Calculation type` is set to "Percentage change", the Y ' + 'Axis Format is forced to `.1%`')
         : null,
       disabled: showWarning,
     };
@@ -463,8 +447,7 @@ const adhoc_filters: SharedControlConfig<'AdhocFilterControl'> = {
     columns: datasource?.columns.filter(c => c.filterable) || [],
     savedMetrics: datasource?.metrics || [],
     // current active adhoc metrics
-    selectedMetrics:
-      form_data.metrics || (form_data.metric ? [form_data.metric] : []),
+    selectedMetrics: form_data.metrics || (form_data.metric ? [form_data.metric] : []),
     datasource,
   }),
 };
@@ -482,9 +465,7 @@ const color_scheme: SharedControlConfig<'ColorSchemeControl'> = {
   }),
 };
 
-const enableExploreDnd = isFeatureEnabled(
-  FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP,
-);
+const enableExploreDnd = isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP);
 
 const sharedControls = {
   metrics: enableExploreDnd ? dnd_adhoc_metrics : metrics,

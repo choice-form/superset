@@ -27,10 +27,7 @@ import example3 from './images/Pie3.jpg';
 import example4 from './images/Pie4.jpg';
 import { EchartsPieChartProps, EchartsPieFormData } from './types';
 
-export default class EchartsPieChartPlugin extends ChartPlugin<
-  EchartsPieFormData,
-  EchartsPieChartProps
-> {
+export default class EchartsPieChartPlugin extends ChartPlugin<EchartsPieFormData, EchartsPieChartProps> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library
@@ -50,16 +47,10 @@ export default class EchartsPieChartPlugin extends ChartPlugin<
         behaviors: [Behavior.INTERACTIVE_CHART],
         category: t('Part of a Whole'),
         credits: ['https://echarts.apache.org'],
-        description:
-          t(`The classic. Great for showing how much of a company each investor gets, what demographics follow your blog, or what portion of the budget goes to the military industrial complex.
+        description: t(`The classic. Great for showing how much of a company each investor gets, what demographics follow your blog, or what portion of the budget goes to the military industrial complex.
 
         Pie charts can be difficult to interpret precisely. If clarity of relative proportion is important, consider using a bar or other chart type instead.`),
-        exampleGallery: [
-          { url: example1 },
-          { url: example2 },
-          { url: example3 },
-          { url: example4 },
-        ],
+        exampleGallery: [{ url: example1 }, { url: example2 }, { url: example3 }, { url: example4 }],
         name: t('Pie Chart'),
         tags: [
           t('Aesthetic'),

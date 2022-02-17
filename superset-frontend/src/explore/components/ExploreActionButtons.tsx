@@ -49,8 +49,7 @@ type ExploreActionButtonsProps = {
 };
 
 const ActionButton = (props: ActionButtonProps) => {
-  const { icon, text, tooltip, className, onTooltipVisibilityChange, ...rest } =
-    props;
+  const { icon, text, tooltip, className, onTooltipVisibilityChange, ...rest } = props;
   return (
     <Tooltip
       id={`${icon}-tooltip`}
@@ -79,14 +78,7 @@ const ActionButton = (props: ActionButtonProps) => {
 };
 
 const ExploreActionButtons = (props: ExploreActionButtonsProps) => {
-  const {
-    actions,
-    canDownloadCSV,
-    chartStatus,
-    latestQueryFormData,
-    slice,
-    addDangerToast,
-  } = props;
+  const { actions, canDownloadCSV, chartStatus, latestQueryFormData, slice, addDangerToast } = props;
 
   const copyTooltipText = t('Copy chart URL to clipboard');
   const [copyTooltip, setCopyTooltip] = useState(copyTooltipText);
@@ -134,11 +126,7 @@ const ExploreActionButtons = (props: ExploreActionButtonsProps) => {
   });
 
   return (
-    <div
-      className="btn-group results"
-      role="group"
-      data-test="btn-group-results"
-    >
+    <div className="btn-group results" role="group" data-test="btn-group-results">
       {latestQueryFormData && (
         <>
           <ActionButton
@@ -146,9 +134,7 @@ const ExploreActionButtons = (props: ExploreActionButtonsProps) => {
             tooltip={copyTooltip}
             onClick={doCopyLink}
             data-test="short-link-button"
-            onTooltipVisibilityChange={value =>
-              !value && setTimeout(() => setCopyTooltip(copyTooltipText), 200)
-            }
+            onTooltipVisibilityChange={value => !value && setTimeout(() => setCopyTooltip(copyTooltipText), 200)}
           />
           <ActionButton
             icon={<Icons.Email iconSize="l" />}

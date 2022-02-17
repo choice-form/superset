@@ -127,33 +127,23 @@ export type AnnotationLayer =
   | FormulaAnnotationLayer
   | TimeseriesAnnotationLayer;
 
-export function isFormulaAnnotationLayer(
-  layer: AnnotationLayer,
-): layer is FormulaAnnotationLayer {
+export function isFormulaAnnotationLayer(layer: AnnotationLayer): layer is FormulaAnnotationLayer {
   return layer.annotationType === AnnotationType.Formula;
 }
 
-export function isEventAnnotationLayer(
-  layer: AnnotationLayer,
-): layer is EventAnnotationLayer {
+export function isEventAnnotationLayer(layer: AnnotationLayer): layer is EventAnnotationLayer {
   return layer.annotationType === AnnotationType.Event;
 }
 
-export function isIntervalAnnotationLayer(
-  layer: AnnotationLayer,
-): layer is IntervalAnnotationLayer {
+export function isIntervalAnnotationLayer(layer: AnnotationLayer): layer is IntervalAnnotationLayer {
   return layer.annotationType === AnnotationType.Interval;
 }
 
-export function isTimeseriesAnnotationLayer(
-  layer: AnnotationLayer,
-): layer is TimeseriesAnnotationLayer {
+export function isTimeseriesAnnotationLayer(layer: AnnotationLayer): layer is TimeseriesAnnotationLayer {
   return layer.annotationType === AnnotationType.Timeseries;
 }
 
-export function isTableAnnotationLayer(
-  layer: AnnotationLayer,
-): layer is TableAnnotationLayer {
+export function isTableAnnotationLayer(layer: AnnotationLayer): layer is TableAnnotationLayer {
   return layer.sourceType === AnnotationSourceType.Table;
 }
 
@@ -162,23 +152,15 @@ export type RecordAnnotationResult = {
   records: DataRecord[];
 };
 
-export type TimeseriesAnnotationResult = [
-  { key: string; values: { x: string | number; y?: number }[] },
-];
+export type TimeseriesAnnotationResult = [{ key: string; values: { x: string | number; y?: number }[] }];
 
-export type AnnotationResult =
-  | RecordAnnotationResult
-  | TimeseriesAnnotationResult;
+export type AnnotationResult = RecordAnnotationResult | TimeseriesAnnotationResult;
 
-export function isTimeseriesAnnotationResult(
-  result: AnnotationResult,
-): result is TimeseriesAnnotationResult {
+export function isTimeseriesAnnotationResult(result: AnnotationResult): result is TimeseriesAnnotationResult {
   return Array.isArray(result);
 }
 
-export function isRecordAnnotationResult(
-  result: AnnotationResult,
-): result is RecordAnnotationResult {
+export function isRecordAnnotationResult(result: AnnotationResult): result is RecordAnnotationResult {
   return 'columns' in result && 'records' in result;
 }
 

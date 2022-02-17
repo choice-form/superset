@@ -34,8 +34,7 @@ const mockData = {
   end_dttm: '2019-06-11T10:25:00',
 };
 
-const FETCH_ANNOTATION_ENDPOINT =
-  'glob:*/api/v1/annotation_layer/*/annotation/*';
+const FETCH_ANNOTATION_ENDPOINT = 'glob:*/api/v1/annotation_layer/*/annotation/*';
 const ANNOTATION_PAYLOAD = { result: mockData };
 
 fetchMock.get(FETCH_ANNOTATION_ENDPOINT, ANNOTATION_PAYLOAD);
@@ -79,15 +78,11 @@ describe('AnnotationModal', () => {
 
   it('renders add header when no annotation prop is included', async () => {
     const addWrapper = await mountAndWait({});
-    expect(
-      addWrapper.find('[data-test="annotaion-modal-title"]').text(),
-    ).toEqual('Add annotation');
+    expect(addWrapper.find('[data-test="annotaion-modal-title"]').text()).toEqual('Add annotation');
   });
 
   it('renders edit header when annotation prop is included', () => {
-    expect(wrapper.find('[data-test="annotaion-modal-title"]').text()).toEqual(
-      'Edit annotation',
-    );
+    expect(wrapper.find('[data-test="annotaion-modal-title"]').text()).toEqual('Edit annotation');
   });
 
   it('renders input elements for annotation name', () => {

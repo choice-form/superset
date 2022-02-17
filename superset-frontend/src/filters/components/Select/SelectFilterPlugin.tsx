@@ -48,10 +48,7 @@ type DataMaskAction =
       filterState: { value: SelectValue; label?: string };
     };
 
-function reducer(
-  draft: DataMask & { __cache?: JsonObject },
-  action: DataMaskAction,
-) {
+function reducer(draft: DataMask & { __cache?: JsonObject }, action: DataMaskAction) {
   switch (action.type) {
     case 'ownState':
       draft.ownState = {
@@ -111,32 +108,20 @@ export default function PluginFilterSelect(props: PluginFilterSelectProps) {
 
   const updateDataMask = useCallback(
     (values: SelectValue) => {
-      const emptyFilter =
-        enableEmptyFilter && !inverseSelection && !values?.length;
+      const emptyFilter = enableEmptyFilter && !inverseSelection && !values?.length;
 
-      const suffix =
-        inverseSelection && values?.length ? ` (${t('excluded')})` : '';
+      const suffix = inverseSelection && values?.length ? ` (${t('excluded')})` : '';
 
       dispatchDataMask({
         type: 'filterState',
         __cache: filterState,
-        extraFormData: getSelectExtraFormData(
-          col,
-          values,
-          emptyFilter,
-          inverseSelection,
-        ),
+        extraFormData: getSelectExtraFormData(col, values, emptyFilter, inverseSelection),
         filterState: {
           ...filterState,
           label: values?.length
-            ? `${(values || [])
-                .map(value => labelFormatter(value, datatype))
-                .join(', ')}${suffix}`
+            ? `${(values || []).map(value => labelFormatter(value, datatype)).join(', ')}${suffix}`
             : undefined,
-          value:
-            appSection === AppSection.FILTER_CONFIG_MODAL && defaultToFirstItem
-              ? undefined
-              : values,
+          value: appSection === AppSection.FILTER_CONFIG_MODAL && defaultToFirstItem ? undefined : values,
         },
       });
     },
@@ -158,8 +143,7 @@ export default function PluginFilterSelect(props: PluginFilterSelectProps) {
     updateDataMask(filterState.value);
   }, [JSON.stringify(filterState.value)]);
 
-  const isDisabled =
-    appSection === AppSection.FILTER_CONFIG_MODAL && defaultToFirstItem;
+  const isDisabled = appSection === AppSection.FILTER_CONFIG_MODAL && defaultToFirstItem;
 
   const debouncedOwnStateFunc = useCallback(
     debounce((val: string) => {
@@ -209,9 +193,7 @@ export default function PluginFilterSelect(props: PluginFilterSelectProps) {
   useEffect(() => {
     if (defaultToFirstItem && filterState.value === undefined) {
       // initialize to first value if set to default to first item
-      const firstItem: SelectValue = data[0]
-        ? (groupby.map(col => data[0][col]) as string[])
-        : null;
+      const firstItem: SelectValue = data[0] ? (groupby.map(col => data[0][col]) as string[]) : null;
       // firstItem[0] !== undefined for a case when groupby changed but new data still not fetched
       // TODO: still need repopulate default value in config modal when column changed
       if (firstItem && firstItem[0] !== undefined) {
@@ -240,17 +222,12 @@ export default function PluginFilterSelect(props: PluginFilterSelectProps) {
     setDataMask(dataMask);
   }, [JSON.stringify(dataMask)]);
 
-  const placeholderText =
-    data.length === 0
-      ? t('No data')
-      : tn('%s option', '%s options', data.length, data.length);
+  const placeholderText = data.length === 0 ? t('No data') : tn('%s option', '%s options', data.length, data.length);
 
   const formItemData: FormItemProps = {};
   if (filterState.validateMessage) {
     formItemData.extra = (
-      <StatusMessage status={filterState.validateStatus}>
-        {filterState.validateMessage}
-      </StatusMessage>
+      <StatusMessage status={filterState.validateStatus}>{filterState.validateMessage}</StatusMessage>
     );
   }
 
@@ -268,10 +245,7 @@ export default function PluginFilterSelect(props: PluginFilterSelectProps) {
 
   return (
     <FilterPluginStyle height={height} width={width}>
-      <StyledFormItem
-        validateStatus={filterState.validateStatus}
-        {...formItemData}
-      >
+      <StyledFormItem validateStatus={filterState.validateStatus} {...formItemData}>
         <Select
           allowClear
           allowNewOptions

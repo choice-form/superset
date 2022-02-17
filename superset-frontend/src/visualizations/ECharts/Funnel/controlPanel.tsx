@@ -61,9 +61,7 @@ const config: ControlPanelConfig = {
               default: true,
               type: 'CheckboxControl',
               label: t('Sort by metric'),
-              description: t(
-                'Whether to sort results by the selected metric in descending order.',
-              ),
+              description: t('Whether to sort results by the selected metric in descending order.'),
             },
           },
         ],
@@ -90,14 +88,8 @@ const config: ControlPanelConfig = {
                 [EchartsFunnelLabelTypeType.Value, 'Value'],
                 [EchartsFunnelLabelTypeType.Percent, 'Percentage'],
                 [EchartsFunnelLabelTypeType.KeyValue, 'Category and Value'],
-                [
-                  EchartsFunnelLabelTypeType.KeyPercent,
-                  'Category and Percentage',
-                ],
-                [
-                  EchartsFunnelLabelTypeType.KeyValuePercent,
-                  'Category, Value and Percentage',
-                ],
+                [EchartsFunnelLabelTypeType.KeyPercent, 'Category and Percentage'],
+                [EchartsFunnelLabelTypeType.KeyValuePercent, 'Category, Value and Percentage'],
               ],
               description: t('What should be shown on the label?'),
             },
@@ -113,9 +105,9 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: numberFormat,
               choices: D3_FORMAT_OPTIONS,
-              description: `${t(
-                'D3 format syntax: https://github.com/d3/d3-format',
-              )} ${t('Only applies when "Label Type" is set to show values.')}`,
+              description: `${t('D3 format syntax: https://github.com/d3/d3-format')} ${t(
+                'Only applies when "Label Type" is set to show values.',
+              )}`,
             },
           },
         ],

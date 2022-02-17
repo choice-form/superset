@@ -35,25 +35,18 @@ export default function EchartsMixedTimeseries({
   formData,
   seriesBreakdown,
 }: EchartsMixedTimeseriesChartTransformedProps) {
-  const isFirstQuery = useCallback(
-    (seriesIndex: number) => seriesIndex < seriesBreakdown,
-    [seriesBreakdown],
-  );
+  const isFirstQuery = useCallback((seriesIndex: number) => seriesIndex < seriesBreakdown, [seriesBreakdown]);
 
   const handleChange = useCallback(
     (values: string[], seriesIndex: number) => {
-      const emitFilter = isFirstQuery(seriesIndex)
-        ? formData.emitFilter
-        : formData.emitFilterB;
+      const emitFilter = isFirstQuery(seriesIndex) ? formData.emitFilter : formData.emitFilterB;
       if (!emitFilter) {
         return;
       }
 
       const currentGroupBy = isFirstQuery(seriesIndex) ? groupby : groupbyB;
       const currentLabelMap = isFirstQuery(seriesIndex) ? labelMap : labelMapB;
-      const groupbyValues = values
-        .map(value => currentLabelMap[value])
-        .filter(value => !!value);
+      const groupbyValues = values.map(value => currentLabelMap[value]).filter(value => !!value);
 
       setDataMask({
         extraFormData: {

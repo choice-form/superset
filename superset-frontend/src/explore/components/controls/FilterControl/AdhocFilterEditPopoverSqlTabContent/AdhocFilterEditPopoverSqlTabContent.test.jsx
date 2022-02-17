@@ -21,10 +21,7 @@ import React from 'react';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
 
-import AdhocFilter, {
-  EXPRESSION_TYPES,
-  CLAUSES,
-} from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, { EXPRESSION_TYPES, CLAUSES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import AdhocFilterEditPopoverSqlTabContent from '.';
 
 const sqlAdhocFilter = new AdhocFilter({
@@ -56,21 +53,13 @@ describe('AdhocFilterEditPopoverSqlTabContent', () => {
     const { wrapper, onChange } = setup();
     wrapper.instance().onSqlExpressionClauseChange(CLAUSES.HAVING);
     expect(onChange.calledOnce).toBe(true);
-    expect(
-      onChange.lastCall.args[0].equals(
-        sqlAdhocFilter.duplicateWith({ clause: CLAUSES.HAVING }),
-      ),
-    ).toBe(true);
+    expect(onChange.lastCall.args[0].equals(sqlAdhocFilter.duplicateWith({ clause: CLAUSES.HAVING }))).toBe(true);
   });
 
   it('passes the new query to onChange after onSqlExpressionChange', () => {
     const { wrapper, onChange } = setup();
     wrapper.instance().onSqlExpressionChange('value < 5');
     expect(onChange.calledOnce).toBe(true);
-    expect(
-      onChange.lastCall.args[0].equals(
-        sqlAdhocFilter.duplicateWith({ sqlExpression: 'value < 5' }),
-      ),
-    ).toBe(true);
+    expect(onChange.lastCall.args[0].equals(sqlAdhocFilter.duplicateWith({ sqlExpression: 'value < 5' }))).toBe(true);
   });
 });

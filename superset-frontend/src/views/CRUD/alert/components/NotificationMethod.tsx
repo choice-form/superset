@@ -70,9 +70,7 @@ export const NotificationMethod: FunctionComponent<NotificationMethodProps> = ({
   onRemove,
 }) => {
   const { method, recipients, options } = setting || {};
-  const [recipientValue, setRecipientValue] = useState<string>(
-    recipients || '',
-  );
+  const [recipientValue, setRecipientValue] = useState<string>(recipients || '');
   const theme = useTheme();
 
   if (!setting) {
@@ -93,9 +91,7 @@ export const NotificationMethod: FunctionComponent<NotificationMethodProps> = ({
     }
   };
 
-  const onRecipientsChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
-  ) => {
+  const onRecipientsChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { target } = event;
 
     setRecipientValue(target.value);
@@ -125,23 +121,16 @@ export const NotificationMethod: FunctionComponent<NotificationMethodProps> = ({
               data-test="select-delivery-method"
               onChange={onMethodChange}
               placeholder={t('Select Delivery Method')}
-              options={(options || []).map(
-                (method: NotificationMethodOption) => ({
-                  label: method,
-                  value: method,
-                }),
-              )}
+              options={(options || []).map((method: NotificationMethodOption) => ({
+                label: method,
+                value: method,
+              }))}
               value={method}
             />
           </div>
         </StyledInputContainer>
         {method !== undefined && !!onRemove ? (
-          <span
-            role="button"
-            tabIndex={0}
-            className="delete-button"
-            onClick={() => onRemove(index)}
-          >
+          <span role="button" tabIndex={0} className="delete-button" onClick={() => onRemove(index)}>
             <Icons.Trash iconColor={theme.colors.grayscale.base} />
           </span>
         ) : null}
@@ -150,15 +139,9 @@ export const NotificationMethod: FunctionComponent<NotificationMethodProps> = ({
         <StyledInputContainer>
           <div className="control-label">{t(method)}</div>
           <div className="input-container">
-            <textarea
-              name="recipients"
-              value={recipientValue}
-              onChange={onRecipientsChange}
-            />
+            <textarea name="recipients" value={recipientValue} onChange={onRecipientsChange} />
           </div>
-          <div className="helper">
-            {t('Recipients are separated by "," or ";"')}
-          </div>
+          <div className="helper">{t('Recipients are separated by "," or ";"')}</div>
         </StyledInputContainer>
       ) : null}
     </StyledNotificationMethod>

@@ -37,8 +37,7 @@ export const ErrorTypeEnum = {
   CONNECTION_HOST_DOWN_ERROR: 'CONNECTION_HOST_DOWN_ERROR',
   CONNECTION_ACCESS_DENIED_ERROR: 'CONNECTION_ACCESS_DENIED_ERROR',
   CONNECTION_UNKNOWN_DATABASE_ERROR: 'CONNECTION_UNKNOWN_DATABASE_ERROR',
-  CONNECTION_DATABASE_PERMISSIONS_ERROR:
-    'CONNECTION_DATABASE_PERMISSIONS_ERROR',
+  CONNECTION_DATABASE_PERMISSIONS_ERROR: 'CONNECTION_DATABASE_PERMISSIONS_ERROR',
   CONNECTION_MISSING_PARAMETERS_ERRORS: 'CONNECTION_MISSING_PARAMETERS_ERRORS',
   OBJECT_DOES_NOT_EXIST_ERROR: 'OBJECT_DOES_NOT_EXIST_ERROR',
   SYNTAX_ERROR: 'SYNTAX_ERROR',
@@ -46,8 +45,7 @@ export const ErrorTypeEnum = {
   // Viz errors
   VIZ_GET_DF_ERROR: 'VIZ_GET_DF_ERROR',
   UNKNOWN_DATASOURCE_TYPE_ERROR: 'UNKNOWN_DATASOURCE_TYPE_ERROR',
-  FAILED_FETCHING_DATASOURCE_INFO_ERROR:
-    'FAILED_FETCHING_DATASOURCE_INFO_ERROR',
+  FAILED_FETCHING_DATASOURCE_INFO_ERROR: 'FAILED_FETCHING_DATASOURCE_INFO_ERROR',
 
   // Security access errors
   TABLE_SECURITY_ACCESS_ERROR: 'TABLE_SECURITY_ACCESS_ERROR',
@@ -96,12 +94,10 @@ export type SupersetError<ExtraType = Record<string, any> | null> = {
   message: string;
 };
 
-export type ErrorMessageComponentProps<ExtraType = Record<string, any> | null> =
-  {
-    error: SupersetError<ExtraType>;
-    source?: ErrorSource;
-    subtitle?: React.ReactNode;
-  };
+export type ErrorMessageComponentProps<ExtraType = Record<string, any> | null> = {
+  error: SupersetError<ExtraType>;
+  source?: ErrorSource;
+  subtitle?: React.ReactNode;
+};
 
-export type ErrorMessageComponent =
-  React.ComponentType<ErrorMessageComponentProps>;
+export type ErrorMessageComponent = React.ComponentType<ErrorMessageComponentProps>;

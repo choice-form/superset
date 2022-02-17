@@ -28,9 +28,7 @@ function getImmuneChartIdsFromTabsNotInScope({ tabs = [], tabsInScope = [] }) {
     if (tabChildren && !tabsInScope.includes(tab)) {
       tabChildren.forEach(({ value: subTab, children: subTabChildren }) => {
         if (subTabChildren && !tabsInScope.includes(subTab)) {
-          chartsNotInScope.push(
-            ...subTabChildren.filter(({ type }) => type === CHART_TYPE),
-          );
+          chartsNotInScope.push(...subTabChildren.filter(({ type }) => type === CHART_TYPE));
         }
       });
     }
@@ -52,42 +50,27 @@ function getTabChildrenScope({
   if (
     forceAggregate ||
     (!hasChartSiblings &&
-      Object.entries(tabScopes).every(
-        ([key, { scope }]) => scope && scope.length && key === scope[0],
-      ))
+      Object.entries(tabScopes).every(([key, { scope }]) => scope && scope.length && key === scope[0]))
   ) {
     // get all charts from tabChildren that is not in scope
-    const immuneChartIdsFromTabsNotInScope =
-      getImmuneChartIdsFromTabsNotInScope({
-        tabs: tabChildren,
-        tabsInScope: flatMap(tabScopes, ({ scope }) => scope),
-      });
-    const immuneChartIdsFromTabsInScope = flatMap(
-      Object.values(tabScopes),
-      ({ immune }) => immune,
-    );
-    const immuneCharts = [
-      ...new Set([
-        ...immuneChartIdsFromTabsNotInScope,
-        ...immuneChartIdsFromTabsInScope,
-      ]),
-    ];
+    const immuneChartIdsFromTabsNotInScope = getImmuneChartIdsFromTabsNotInScope({
+      tabs: tabChildren,
+      tabsInScope: flatMap(tabScopes, ({ scope }) => scope),
+    });
+    const immuneChartIdsFromTabsInScope = flatMap(Object.values(tabScopes), ({ immune }) => immune);
+    const immuneCharts = [...new Set([...immuneChartIdsFromTabsNotInScope, ...immuneChartIdsFromTabsInScope])];
     return {
       scope: [parentNodeValue],
       immune: immuneCharts,
     };
   }
 
-  const componentsInScope = Object.values(tabScopes).filter(
-    ({ scope }) => scope && scope.length,
-  );
+  const componentsInScope = Object.values(tabScopes).filter(({ scope }) => scope && scope.length);
   return {
     scope: flatMap(componentsInScope, ({ scope }) => scope),
     immune: componentsInScope.length
       ? flatMap(componentsInScope, ({ immune }) => immune)
-      : flatMap(Object.values(tabScopes), ({ immune }) => immune).concat(
-          immuneChartSiblings,
-        ),
+      : flatMap(Object.values(tabScopes), ({ immune }) => immune).concat(immuneChartSiblings),
   };
 }
 
@@ -101,9 +84,7 @@ function traverse({ currentNode = {}, filterId, checkedChartIds = [] }) {
   const tabChildren = children.filter(({ type }) => type === TAB_TYPE);
 
   const chartsImmune = chartChildren
-    .filter(
-      ({ value }) => filterId !== value && !checkedChartIds.includes(value),
-    )
+    .filter(({ value }) => filterId !== value && !checkedChartIds.includes(value))
     .map(({ value }) => value);
   const tabScopes = flow(
     keyBy(child => child.value),
@@ -118,10 +99,7 @@ function traverse({ currentNode = {}, filterId, checkedChartIds = [] }) {
 
   // if any chart type child is in scope,
   // no matter has tab children or not, current node should be scope
-  if (
-    !isEmpty(chartChildren) &&
-    chartChildren.some(({ value }) => checkedChartIds.includes(value))
-  ) {
+  if (!isEmpty(chartChildren) && chartChildren.some(({ value }) => checkedChartIds.includes(value))) {
     if (isEmpty(tabChildren)) {
       return { scope: [currentValue], immune: chartsImmune };
     }
@@ -156,11 +134,7 @@ function traverse({ currentNode = {}, filterId, checkedChartIds = [] }) {
   };
 }
 
-export default function getFilterScopeFromNodesTree({
-  filterKey,
-  nodes = [],
-  checkedChartIds = [],
-}) {
+export default function getFilterScopeFromNodesTree({ filterKey, nodes = [], checkedChartIds = [] }) {
   if (nodes.length) {
     const { chartId } = getChartIdAndColumnFromFilterKey(filterKey);
     return traverse({

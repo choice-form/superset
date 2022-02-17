@@ -53,12 +53,7 @@ const Footer: FC<FooterProps> = ({
 
   return (
     <>
-      <Button
-        key="cancel"
-        buttonStyle="secondary"
-        data-test="native-filter-modal-cancel-button"
-        onClick={onCancel}
-      >
+      <Button key="cancel" buttonStyle="secondary" data-test="native-filter-modal-cancel-button" onClick={onCancel}>
         {t('Cancel')}
       </Button>
       <Button

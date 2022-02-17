@@ -19,12 +19,7 @@
 
 import React from 'react';
 import { t } from 'src/core';
-import {
-  ColumnMeta,
-  ColumnOption,
-  ControlConfig,
-  ControlPanelSectionConfig,
-} from 'src/chartConntrols';
+import { ColumnMeta, ColumnOption, ControlConfig, ControlPanelSectionConfig } from 'src/chartConntrols';
 
 export const controlPanelSectionsChartOptions: ControlPanelSectionConfig[] = [
   {
@@ -39,8 +34,7 @@ export const controlPanelSectionsChartOptions: ControlPanelSectionConfig[] = [
             type: 'CheckboxControl',
             label: t('Use Area Proportions'),
             description: t(
-              'Check if the Rose Chart should use segment area instead of ' +
-                'segment radius for proportioning',
+              'Check if the Rose Chart should use segment area instead of ' + 'segment radius for proportioning',
             ),
             default: false,
             renderTrigger: true,
@@ -68,41 +62,39 @@ export const controlPanelSectionsChartOptions: ControlPanelSectionConfig[] = [
   },
 ];
 
-export const controlPanelSectionsChartOptionsOnlyColorScheme: ControlPanelSectionConfig[] =
-  [
-    {
-      label: t('Chart Options'),
-      expanded: true,
-      controlSetRows: [['color_scheme']],
-    },
-  ];
+export const controlPanelSectionsChartOptionsOnlyColorScheme: ControlPanelSectionConfig[] = [
+  {
+    label: t('Chart Options'),
+    expanded: true,
+    controlSetRows: [['color_scheme']],
+  },
+];
 
-export const controlPanelSectionsChartOptionsTable: ControlPanelSectionConfig[] =
-  [
-    {
-      label: t('Chart Options'),
-      expanded: true,
-      controlSetRows: [
-        [
-          'metric',
-          'metrics',
-          {
-            name: 'all_columns',
-            config: {
-              type: 'SelectControl',
-              multi: true,
-              label: t('Columns'),
-              default: [],
-              description: t('Columns to display'),
-              optionRenderer: c => <ColumnOption column={c} showType />,
-              valueKey: 'column_name',
-              mapStateToProps: stateRef => ({
-                options: stateRef.datasource ? stateRef.datasource.columns : [],
-              }),
-              freeForm: true,
-            } as ControlConfig<'SelectControl', ColumnMeta>,
-          },
-        ],
+export const controlPanelSectionsChartOptionsTable: ControlPanelSectionConfig[] = [
+  {
+    label: t('Chart Options'),
+    expanded: true,
+    controlSetRows: [
+      [
+        'metric',
+        'metrics',
+        {
+          name: 'all_columns',
+          config: {
+            type: 'SelectControl',
+            multi: true,
+            label: t('Columns'),
+            default: [],
+            description: t('Columns to display'),
+            optionRenderer: c => <ColumnOption column={c} showType />,
+            valueKey: 'column_name',
+            mapStateToProps: stateRef => ({
+              options: stateRef.datasource ? stateRef.datasource.columns : [],
+            }),
+            freeForm: true,
+          } as ControlConfig<'SelectControl', ColumnMeta>,
+        },
       ],
-    },
-  ];
+    ],
+  },
+];

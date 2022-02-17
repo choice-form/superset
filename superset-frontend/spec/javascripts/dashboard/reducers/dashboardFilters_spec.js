@@ -23,19 +23,10 @@ import {
   CHANGE_FILTER,
   UPDATE_DASHBOARD_FILTERS_SCOPE,
 } from 'src/dashboard/actions/dashboardFilters';
-import dashboardFiltersReducer, {
-  DASHBOARD_FILTER_SCOPE_GLOBAL,
-} from 'src/dashboard/reducers/dashboardFilters';
+import dashboardFiltersReducer, { DASHBOARD_FILTER_SCOPE_GLOBAL } from 'src/dashboard/reducers/dashboardFilters';
 import * as activeDashboardFilters from 'src/dashboard/util/activeDashboardFilters';
-import {
-  emptyFilters,
-  dashboardFilters,
-} from 'spec/fixtures/mockDashboardFilters';
-import {
-  sliceEntitiesForDashboard,
-  filterId,
-  column,
-} from 'spec/fixtures/mockSliceEntities';
+import { emptyFilters, dashboardFilters } from 'spec/fixtures/mockDashboardFilters';
+import { sliceEntitiesForDashboard, filterId, column } from 'spec/fixtures/mockSliceEntities';
 import { filterComponent } from 'spec/fixtures/mockDashboardLayout';
 
 describe('dashboardFilters reducer', () => {

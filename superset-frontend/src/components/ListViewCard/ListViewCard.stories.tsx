@@ -47,11 +47,7 @@ export const SupersetListViewCard = () => (
     loading={boolean('loading', false)}
     url="/dashboard/births/"
     imgURL={text('imgURL', 'https://picsum.photos/800/600')}
-    imgFallbackURL={select(
-      imgFallbackKnob.label,
-      imgFallbackKnob.options,
-      imgFallbackKnob.defaultValue,
-    )}
+    imgFallbackURL={select(imgFallbackKnob.label, imgFallbackKnob.options, imgFallbackKnob.defaultValue)}
     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
     coverLeft="Left Section"
     coverRight="Right Section"

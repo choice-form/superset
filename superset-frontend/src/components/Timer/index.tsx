@@ -34,12 +34,7 @@ const TimerLabel = styled(Label)`
   width: 91px;
 `;
 
-export default function Timer({
-  endTime,
-  isRunning,
-  startTime,
-  status = 'success',
-}: TimerProps) {
+export default function Timer({ endTime, isRunning, startTime, status = 'success' }: TimerProps) {
   const [clockStr, setClockStr] = useState('00:00:00.00');
   const timer = useRef<ReturnType<typeof setInterval>>();
 

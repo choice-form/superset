@@ -25,11 +25,7 @@ import {
   COLUMN_AUTOCOMPLETE_SCORE,
   SQL_FUNCTIONS_AUTOCOMPLETE_SCORE,
 } from 'src/SqlLab/constants';
-import {
-  Editor,
-  AceCompleterKeyword,
-  FullSQLEditor as AceEditor,
-} from 'src/components/AsyncAceEditor';
+import { Editor, AceCompleterKeyword, FullSQLEditor as AceEditor } from 'src/components/AsyncAceEditor';
 import { QueryEditor } from 'src/SqlLab/types';
 
 type HotKey = {
@@ -88,10 +84,7 @@ class AceEditorWrapper extends React.PureComponent<Props, State> {
     // Making sure no text is selected from previous mount
     this.props.actions.queryEditorSetSelectedText(this.props.queryEditor, null);
     if (this.props.queryEditor.dbId) {
-      this.props.actions.queryEditorSetFunctionNames(
-        this.props.queryEditor,
-        this.props.queryEditor.dbId,
-      );
+      this.props.actions.queryEditorSetFunctionNames(this.props.queryEditor, this.props.queryEditor.dbId);
     }
     this.setAutoCompleter(this.props);
   }
@@ -100,10 +93,7 @@ class AceEditorWrapper extends React.PureComponent<Props, State> {
     if (
       !areArraysShallowEqual(this.props.tables, nextProps.tables) ||
       !areArraysShallowEqual(this.props.schemas, nextProps.schemas) ||
-      !areArraysShallowEqual(
-        this.props.extendedTables,
-        nextProps.extendedTables,
-      )
+      !areArraysShallowEqual(this.props.extendedTables, nextProps.extendedTables)
     ) {
       this.setAutoCompleter(nextProps);
     }
@@ -139,15 +129,9 @@ class AceEditorWrapper extends React.PureComponent<Props, State> {
     editor.selection.on('changeSelection', () => {
       const selectedText = editor.getSelectedText();
       // Backspace trigger 1 character selection, ignoring
-      if (
-        selectedText !== this.state.selectedText &&
-        selectedText.length !== 1
-      ) {
+      if (selectedText !== this.state.selectedText && selectedText.length !== 1) {
         this.setState({ selectedText });
-        this.props.actions.queryEditorSetSelectedText(
-          this.props.queryEditor,
-          selectedText,
-        );
+        this.props.actions.queryEditorSetSelectedText(this.props.queryEditor, selectedText);
       }
     });
   }
@@ -201,18 +185,10 @@ class AceEditorWrapper extends React.PureComponent<Props, State> {
     const completer = {
       insertMatch: (editor: Editor, data: any) => {
         if (data.meta === 'table') {
-          this.props.actions.addTable(
-            this.props.queryEditor,
-            data.value,
-            this.props.queryEditor.schema,
-          );
+          this.props.actions.addTable(this.props.queryEditor, data.value, this.props.queryEditor.schema);
         }
         // executing https://github.com/thlorenz/brace/blob/3a00c5d59777f9d826841178e1eb36694177f5e6/ext/language_tools.js#L1448
-        editor.completer.insertMatch(
-          `${data.caption}${
-            ['function', 'schema'].includes(data.meta) ? '' : ' '
-          }`,
-        );
+        editor.completer.insertMatch(`${data.caption}${['function', 'schema'].includes(data.meta) ? '' : ' '}`);
       },
     };
 

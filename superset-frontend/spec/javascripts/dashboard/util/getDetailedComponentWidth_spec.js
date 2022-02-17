@@ -18,16 +18,11 @@
  */
 import getDetailedComponentWidth from 'src/dashboard/util/getDetailedComponentWidth';
 import * as types from 'src/dashboard/util/componentTypes';
-import {
-  GRID_COLUMN_COUNT,
-  GRID_MIN_COLUMN_COUNT,
-} from 'src/dashboard/util/constants';
+import { GRID_COLUMN_COUNT, GRID_MIN_COLUMN_COUNT } from 'src/dashboard/util/constants';
 
 describe('getDetailedComponentWidth', () => {
   it('should return an object with width, minimumWidth, and occupiedWidth', () => {
-    expect(
-      Object.keys(getDetailedComponentWidth({ id: '_', components: {} })),
-    ).toEqual(
+    expect(Object.keys(getDetailedComponentWidth({ id: '_', components: {} }))).toEqual(
       expect.arrayContaining(['minimumWidth', 'occupiedWidth', 'width']),
     );
   });

@@ -19,11 +19,7 @@
 
 import { SetDataMaskHook } from 'src/core';
 
-export const updateExternalFormData = (
-  setDataMask: SetDataMaskHook = () => {},
-  pageNumber: number,
-  pageSize: number,
-) =>
+export const updateExternalFormData = (setDataMask: SetDataMaskHook = () => {}, pageNumber: number, pageSize: number) =>
   setDataMask({
     ownState: {
       currentPage: pageNumber,

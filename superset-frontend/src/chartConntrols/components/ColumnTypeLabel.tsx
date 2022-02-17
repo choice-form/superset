@@ -46,11 +46,7 @@ export function ColumnTypeLabel({ type }: ColumnTypeLabelProps) {
   }
 
   const typeIcon =
-    stringIcon === 'time' ? (
-      <i className="fa fa-clock-o type-label" />
-    ) : (
-      <div className="type-label">{stringIcon}</div>
-    );
+    stringIcon === 'time' ? <i className="fa fa-clock-o type-label" /> : <div className="type-label">{stringIcon}</div>;
 
   return <span>{typeIcon}</span>;
 }

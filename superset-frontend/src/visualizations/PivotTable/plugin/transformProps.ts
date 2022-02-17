@@ -33,12 +33,7 @@ import { DateFormatter } from '../types';
 const { DATABASE_DATETIME } = TimeFormats;
 
 function isNumeric(key: string, data: DataRecord[] = []) {
-  return data.every(
-    record =>
-      record[key] === null ||
-      record[key] === undefined ||
-      typeof record[key] === 'number',
-  );
+  return data.every(record => record[key] === null || record[key] === undefined || typeof record[key] === 'number');
 }
 
 export default function transformProps(chartProps: ChartProps<QueryFormData>) {
@@ -106,36 +101,27 @@ export default function transformProps(chartProps: ChartProps<QueryFormData>) {
   const granularity = extractTimegrain(rawFormData);
 
   const dateFormatters = colnames
-    .filter(
-      (colname: string, index: number) =>
-        coltypes[index] === GenericDataType.TEMPORAL,
-    )
-    .reduce(
-      (
-        acc: Record<string, DateFormatter | undefined>,
-        temporalColname: string,
-      ) => {
-        let formatter: DateFormatter | undefined;
-        if (dateFormat === smartDateFormatter.id) {
-          if (granularity) {
-            // time column use formats based on granularity
-            formatter = getTimeFormatterForGranularity(granularity);
-          } else if (isNumeric(temporalColname, data)) {
-            formatter = getTimeFormatter(DATABASE_DATETIME);
-          } else {
-            // if no column-specific format, print cell as is
-            formatter = String;
-          }
-        } else if (dateFormat) {
-          formatter = getTimeFormatter(dateFormat);
+    .filter((colname: string, index: number) => coltypes[index] === GenericDataType.TEMPORAL)
+    .reduce((acc: Record<string, DateFormatter | undefined>, temporalColname: string) => {
+      let formatter: DateFormatter | undefined;
+      if (dateFormat === smartDateFormatter.id) {
+        if (granularity) {
+          // time column use formats based on granularity
+          formatter = getTimeFormatterForGranularity(granularity);
+        } else if (isNumeric(temporalColname, data)) {
+          formatter = getTimeFormatter(DATABASE_DATETIME);
+        } else {
+          // if no column-specific format, print cell as is
+          formatter = String;
         }
-        if (formatter) {
-          acc[temporalColname] = formatter;
-        }
-        return acc;
-      },
-      {},
-    );
+      } else if (dateFormat) {
+        formatter = getTimeFormatter(dateFormat);
+      }
+      if (formatter) {
+        acc[temporalColname] = formatter;
+      }
+      return acc;
+    }, {});
   const metricColorFormatters = getColorFormatters(conditionalFormatting, data);
 
   return {

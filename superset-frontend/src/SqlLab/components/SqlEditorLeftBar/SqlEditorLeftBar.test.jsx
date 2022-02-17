@@ -28,13 +28,7 @@ import thunk from 'redux-thunk';
 import SqlEditorLeftBar from 'src/SqlLab/components/SqlEditorLeftBar';
 import TableElement from 'src/SqlLab/components/TableElement';
 import { supersetTheme, ThemeProvider } from 'src/core';
-import {
-  table,
-  initialState,
-  databases,
-  defaultQueryEditor,
-  mockedActions,
-} from 'src/SqlLab/fixtures';
+import { table, initialState, databases, defaultQueryEditor, mockedActions } from 'src/SqlLab/fixtures';
 
 const mockedProps = {
   actions: mockedActions,
@@ -61,9 +55,7 @@ describe('SqlEditorLeftBar', () => {
   });
 
   it('is valid', () => {
-    expect(React.isValidElement(<SqlEditorLeftBar {...mockedProps} />)).toBe(
-      true,
-    );
+    expect(React.isValidElement(<SqlEditorLeftBar {...mockedProps} />)).toBe(true);
   });
 
   it('renders a TableElement', () => {
@@ -92,9 +84,7 @@ describe('Left Panel Expansion', () => {
     expect(schemaSelect).toBeInTheDocument();
     expect(dropdown).toBeInTheDocument();
     expect(abUser).toBeInTheDocument();
-    expect(
-      container.querySelector('.ant-collapse-content-active'),
-    ).toBeInTheDocument();
+    expect(container.querySelector('.ant-collapse-content-active')).toBeInTheDocument();
   });
 
   it('should toggle the table when the header is clicked', async () => {

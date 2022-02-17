@@ -17,7 +17,5 @@
  * under the License.
  */
 export default function isDashboardLoading(charts) {
-  return Object.values(charts).some(
-    chart => chart.chartUpdateStartTime > (chart.chartUpdateEndTime || 0),
-  );
+  return Object.values(charts).some(chart => chart.chartUpdateStartTime > (chart.chartUpdateEndTime || 0));
 }

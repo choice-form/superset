@@ -18,12 +18,7 @@
  */
 import findParentId from './findParentId';
 import { GRID_MIN_COLUMN_COUNT, GRID_COLUMN_COUNT } from './constants';
-import {
-  ROW_TYPE,
-  COLUMN_TYPE,
-  MARKDOWN_TYPE,
-  CHART_TYPE,
-} from './componentTypes';
+import { ROW_TYPE, COLUMN_TYPE, MARKDOWN_TYPE, CHART_TYPE } from './componentTypes';
 
 function getTotalChildWidth({ id, components }) {
   const component = components[id];
@@ -77,16 +72,10 @@ export default function getDetailedComponentWidth({
     (component.children || []).forEach(childId => {
       // rows don't have widths, so find the width of its children
       if (components[childId].type === ROW_TYPE) {
-        result.minimumWidth = Math.max(
-          result.minimumWidth,
-          getTotalChildWidth({ id: childId, components }),
-        );
+        result.minimumWidth = Math.max(result.minimumWidth, getTotalChildWidth({ id: childId, components }));
       }
     });
-  } else if (
-    component.type === MARKDOWN_TYPE ||
-    component.type === CHART_TYPE
-  ) {
+  } else if (component.type === MARKDOWN_TYPE || component.type === CHART_TYPE) {
     result.minimumWidth = GRID_MIN_COLUMN_COUNT;
   }
 

@@ -33,11 +33,7 @@ import MarkdownModeDropdown from 'src/dashboard/components/menu/MarkdownModeDrop
 import WithPopoverMenu from 'src/dashboard/components/menu/WithPopoverMenu';
 import { componentShape } from 'src/dashboard/util/propShapes';
 import { ROW_TYPE, COLUMN_TYPE } from 'src/dashboard/util/componentTypes';
-import {
-  GRID_MIN_COLUMN_COUNT,
-  GRID_MIN_ROW_UNITS,
-  GRID_BASE_UNIT,
-} from 'src/dashboard/util/constants';
+import { GRID_MIN_COLUMN_COUNT, GRID_MIN_ROW_UNITS, GRID_BASE_UNIT } from 'src/dashboard/util/constants';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -110,13 +106,8 @@ class Markdown extends React.PureComponent {
   }
 
   static getDerivedStateFromProps(nextProps, state) {
-    const { hasError, editorMode, markdownSource, undoLength, redoLength } =
-      state;
-    const {
-      component: nextComponent,
-      undoLength: nextUndoLength,
-      redoLength: nextRedoLength,
-    } = nextProps;
+    const { hasError, editorMode, markdownSource, undoLength, redoLength } = state;
+    const { component: nextComponent, undoLength: nextUndoLength, redoLength: nextRedoLength } = nextProps;
     // user click undo or redo ?
     if (nextUndoLength !== undoLength || nextRedoLength !== redoLength) {
       return {
@@ -127,11 +118,7 @@ class Markdown extends React.PureComponent {
         hasError: false,
       };
     }
-    if (
-      !hasError &&
-      editorMode === 'preview' &&
-      nextComponent.meta.code !== markdownSource
-    ) {
+    if (!hasError && editorMode === 'preview' && nextComponent.meta.code !== markdownSource) {
       return {
         ...state,
         markdownSource: nextComponent.meta.code,
@@ -163,11 +150,7 @@ class Markdown extends React.PureComponent {
 
   componentDidCatch() {
     if (this.state.editor && this.state.editorMode === 'preview') {
-      this.props.addDangerToast(
-        t(
-          'This markdown component has an error. Please revert your recent changes.',
-        ),
-      );
+      this.props.addDangerToast(t('This markdown component has an error. Please revert your recent changes.'));
     }
   }
 
@@ -244,9 +227,7 @@ class Markdown extends React.PureComponent {
         editorProps={{ $blockScrolling: true }}
         value={
           // this allows "select all => delete" to give an empty editor
-          typeof this.state.markdownSource === 'string'
-            ? this.state.markdownSource
-            : MARKDOWN_PLACE_HOLDER
+          typeof this.state.markdownSource === 'string' ? this.state.markdownSource : MARKDOWN_PLACE_HOLDER
         }
         readOnly={false}
         onLoad={this.setEditor}
@@ -259,13 +240,7 @@ class Markdown extends React.PureComponent {
     const { hasError } = this.state;
 
     return (
-      <SafeMarkdown
-        source={
-          hasError
-            ? MARKDOWN_ERROR_MESSAGE
-            : this.state.markdownSource || MARKDOWN_PLACE_HOLDER
-        }
-      />
+      <SafeMarkdown source={hasError ? MARKDOWN_ERROR_MESSAGE : this.state.markdownSource || MARKDOWN_PLACE_HOLDER} />
     );
   }
 
@@ -319,10 +294,7 @@ class Markdown extends React.PureComponent {
           >
             <div
               data-test="dashboard-markdown-editor"
-              className={cx(
-                'dashboard-markdown',
-                isEditing && 'dashboard-markdown--editing',
-              )}
+              className={cx('dashboard-markdown', isEditing && 'dashboard-markdown--editing')}
               id={component.id}
             >
               <ResizableContainer
@@ -348,14 +320,10 @@ class Markdown extends React.PureComponent {
                 >
                   {editMode && (
                     <HoverMenu position="top">
-                      <DeleteComponentButton
-                        onDelete={this.handleDeleteComponent}
-                      />
+                      <DeleteComponentButton onDelete={this.handleDeleteComponent} />
                     </HoverMenu>
                   )}
-                  {editMode && isEditing
-                    ? this.renderEditMode()
-                    : this.renderPreviewMode()}
+                  {editMode && isEditing ? this.renderEditMode() : this.renderPreviewMode()}
                 </div>
               </ResizableContainer>
             </div>

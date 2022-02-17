@@ -24,10 +24,7 @@ import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
 import { EchartsRadarChartProps, EchartsRadarFormData } from './types';
 
-export default class EchartsRadarChartPlugin extends ChartPlugin<
-  EchartsRadarFormData,
-  EchartsRadarChartProps
-> {
+export default class EchartsRadarChartPlugin extends ChartPlugin<EchartsRadarFormData, EchartsRadarChartProps> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library

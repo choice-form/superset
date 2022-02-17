@@ -33,12 +33,7 @@ import getChartAndLabelComponentIdFromPath from '../../util/getChartAndLabelComp
 import { componentShape } from '../../util/propShapes';
 import { COLUMN_TYPE, ROW_TYPE } from '../../util/componentTypes';
 
-import {
-  GRID_BASE_UNIT,
-  GRID_GUTTER_SIZE,
-  GRID_MIN_COLUMN_COUNT,
-  GRID_MIN_ROW_UNITS,
-} from '../../util/constants';
+import { GRID_BASE_UNIT, GRID_GUTTER_SIZE, GRID_MIN_COLUMN_COUNT, GRID_MIN_ROW_UNITS } from '../../util/constants';
 
 const CHART_MARGIN = 32;
 
@@ -103,55 +98,45 @@ function selectFocusedFilterScope(dashboardState, dashboardFilters) {
  *
  * If ChartHolder were a function component, this could be implemented as a hook instead.
  */
-const FilterFocusHighlight = React.forwardRef(
-  ({ chartId, ...otherProps }, ref) => {
-    const theme = useTheme();
+const FilterFocusHighlight = React.forwardRef(({ chartId, ...otherProps }, ref) => {
+  const theme = useTheme();
 
-    const nativeFilters = useSelector(state => state.nativeFilters);
-    const dashboardState = useSelector(state => state.dashboardState);
-    const dashboardFilters = useSelector(state => state.dashboardFilters);
-    const focusedFilterScope = selectFocusedFilterScope(
-      dashboardState,
-      dashboardFilters,
-    );
-    const focusedNativeFilterId = nativeFilters.focusedFilterId;
-    if (!(focusedFilterScope || focusedNativeFilterId))
-      return <div ref={ref} {...otherProps} />;
+  const nativeFilters = useSelector(state => state.nativeFilters);
+  const dashboardState = useSelector(state => state.dashboardState);
+  const dashboardFilters = useSelector(state => state.dashboardFilters);
+  const focusedFilterScope = selectFocusedFilterScope(dashboardState, dashboardFilters);
+  const focusedNativeFilterId = nativeFilters.focusedFilterId;
+  if (!(focusedFilterScope || focusedNativeFilterId)) return <div ref={ref} {...otherProps} />;
 
-    // we use local styles here instead of a conditionally-applied class,
-    // because adding any conditional class to this container
-    // causes performance issues in Chrome.
+  // we use local styles here instead of a conditionally-applied class,
+  // because adding any conditional class to this container
+  // causes performance issues in Chrome.
 
-    // default to the "de-emphasized" state
-    const unfocusedChartStyles = { opacity: 0.3, pointerEvents: 'none' };
-    const focusedChartStyles = {
-      borderColor: theme.colors.primary.light2,
-      opacity: 1,
-      boxShadow: `0px 0px ${theme.gridUnit * 2}px ${theme.colors.primary.base}`,
-      pointerEvents: 'auto',
-    };
+  // default to the "de-emphasized" state
+  const unfocusedChartStyles = { opacity: 0.3, pointerEvents: 'none' };
+  const focusedChartStyles = {
+    borderColor: theme.colors.primary.light2,
+    opacity: 1,
+    boxShadow: `0px 0px ${theme.gridUnit * 2}px ${theme.colors.primary.base}`,
+    pointerEvents: 'auto',
+  };
 
-    if (focusedNativeFilterId) {
-      if (
-        nativeFilters.filters[focusedNativeFilterId]?.chartsInScope?.includes(
-          chartId,
-        )
-      ) {
-        return <div ref={ref} style={focusedChartStyles} {...otherProps} />;
-      }
-    } else if (
-      chartId === focusedFilterScope.chartId ||
-      getChartIdsInFilterScope({
-        filterScope: focusedFilterScope.scope,
-      }).includes(chartId)
-    ) {
+  if (focusedNativeFilterId) {
+    if (nativeFilters.filters[focusedNativeFilterId]?.chartsInScope?.includes(chartId)) {
       return <div ref={ref} style={focusedChartStyles} {...otherProps} />;
     }
+  } else if (
+    chartId === focusedFilterScope.chartId ||
+    getChartIdsInFilterScope({
+      filterScope: focusedFilterScope.scope,
+    }).includes(chartId)
+  ) {
+    return <div ref={ref} style={focusedChartStyles} {...otherProps} />;
+  }
 
-    // inline styles are used here due to a performance issue when adding/changing a class, which causes a reflow
-    return <div ref={ref} style={unfocusedChartStyles} {...otherProps} />;
-  },
-);
+  // inline styles are used here due to a performance issue when adding/changing a class, which causes a reflow
+  return <div ref={ref} style={unfocusedChartStyles} {...otherProps} />;
+});
 
 class ChartHolder extends React.Component {
   static renderInFocusCSS(columnName) {
@@ -167,13 +152,9 @@ class ChartHolder extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     const { component, directPathToChild, directPathLastUpdated } = props;
-    const { label: columnName, chart: chartComponentId } =
-      getChartAndLabelComponentIdFromPath(directPathToChild);
+    const { label: columnName, chart: chartComponentId } = getChartAndLabelComponentIdFromPath(directPathToChild);
 
-    if (
-      directPathLastUpdated !== state.directPathLastUpdated &&
-      component.id === chartComponentId
-    ) {
+    if (directPathLastUpdated !== state.directPathLastUpdated && component.id === chartComponentId) {
       return {
         outlinedComponentId: component.id,
         outlinedColumnName: columnName,
@@ -274,9 +255,8 @@ class ChartHolder extends React.Component {
     const isFullSize = fullSizeChartId === chartId;
 
     // inherit the size of parent columns
-    const columnParentWidth = getComponentById(
-      parentComponent.parents?.find(parent => parent.startsWith(COLUMN_TYPE)),
-    )?.meta?.width;
+    const columnParentWidth = getComponentById(parentComponent.parents?.find(parent => parent.startsWith(COLUMN_TYPE)))
+      ?.meta?.width;
     let widthMultiple = component.meta.width || GRID_MIN_COLUMN_COUNT;
     if (parentComponent.type === COLUMN_TYPE) {
       widthMultiple = parentComponent.meta.width || GRID_MIN_COLUMN_COUNT;
@@ -291,14 +271,8 @@ class ChartHolder extends React.Component {
       chartWidth = window.innerWidth - CHART_MARGIN;
       chartHeight = window.innerHeight - CHART_MARGIN;
     } else {
-      chartWidth = Math.floor(
-        widthMultiple * columnWidth +
-          (widthMultiple - 1) * GRID_GUTTER_SIZE -
-          CHART_MARGIN,
-      );
-      chartHeight = Math.floor(
-        component.meta.height * GRID_BASE_UNIT - CHART_MARGIN,
-      );
+      chartWidth = Math.floor(widthMultiple * columnWidth + (widthMultiple - 1) * GRID_GUTTER_SIZE - CHART_MARGIN);
+      chartHeight = Math.floor(component.meta.height * GRID_BASE_UNIT - CHART_MARGIN);
     }
 
     return (
@@ -340,25 +314,15 @@ class ChartHolder extends React.Component {
                 isFullSize && 'full-size',
               )}
             >
-              {!editMode && (
-                <AnchorLink
-                  anchorLinkId={component.id}
-                  inFocus={!!this.state.outlinedComponentId}
-                />
-              )}
-              {!!this.state.outlinedComponentId &&
-                ChartHolder.renderInFocusCSS(this.state.outlinedColumnName)}
+              {!editMode && <AnchorLink anchorLinkId={component.id} inFocus={!!this.state.outlinedComponentId} />}
+              {!!this.state.outlinedComponentId && ChartHolder.renderInFocusCSS(this.state.outlinedColumnName)}
               <Chart
                 componentId={component.id}
                 id={component.meta.chartId}
                 dashboardId={dashboardId}
                 width={chartWidth}
                 height={chartHeight}
-                sliceName={
-                  component.meta.sliceNameOverride ||
-                  component.meta.sliceName ||
-                  ''
-                }
+                sliceName={component.meta.sliceNameOverride || component.meta.sliceName || ''}
                 updateSliceName={this.handleUpdateSliceName}
                 isComponentVisible={isComponentVisible}
                 handleToggleFullSize={this.handleToggleFullSize}
@@ -367,9 +331,7 @@ class ChartHolder extends React.Component {
               {editMode && (
                 <HoverMenu position="top">
                   <div data-test="dashboard-delete-component-button">
-                    <DeleteComponentButton
-                      onDelete={this.handleDeleteComponent}
-                    />
+                    <DeleteComponentButton onDelete={this.handleDeleteComponent} />
                   </div>
                 </HoverMenu>
               )}

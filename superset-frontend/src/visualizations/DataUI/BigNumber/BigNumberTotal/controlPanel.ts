@@ -17,12 +17,7 @@
  * under the License.
  */
 import { t } from 'src/core';
-import {
-  ControlPanelConfig,
-  D3_FORMAT_DOCS,
-  D3_TIME_FORMAT_OPTIONS,
-  sections,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, D3_FORMAT_DOCS, D3_TIME_FORMAT_OPTIONS, sections } from 'src/chartConntrols';
 import { headerFontSize, subheaderFontSize } from '../sharedControls';
 
 export default {
@@ -45,9 +40,7 @@ export default {
               type: 'TextControl',
               label: t('Subheader'),
               renderTrigger: true,
-              description: t(
-                'Description text that shows up below your Big Number',
-              ),
+              description: t('Description text that shows up below your Big Number'),
             },
           },
         ],

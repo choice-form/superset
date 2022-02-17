@@ -23,9 +23,7 @@ interface PluginFilterTimeCustomizeProps {
   defaultValue?: string | null;
 }
 
-export type PluginFilterSelectQueryFormData = QueryFormData &
-  PluginFilterStylesProps &
-  PluginFilterTimeCustomizeProps;
+export type PluginFilterSelectQueryFormData = QueryFormData & PluginFilterStylesProps & PluginFilterTimeCustomizeProps;
 
 export type PluginFilterTimeProps = PluginFilterStylesProps & {
   behaviors: Behavior[];

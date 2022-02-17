@@ -27,17 +27,13 @@ export const DASHBOARD_INFO_UPDATED = 'DASHBOARD_INFO_UPDATED';
 export function dashboardInfoChanged(newInfo: { metadata: any }) {
   const { metadata } = newInfo;
 
-  const categoricalNamespace = CategoricalColorNamespace.getNamespace(
-    metadata?.color_namespace,
-  );
+  const categoricalNamespace = CategoricalColorNamespace.getNamespace(metadata?.color_namespace);
 
   categoricalNamespace.resetColors();
 
   if (metadata?.label_colors) {
     const labelColors = metadata.label_colors;
-    const colorMap = isString(labelColors)
-      ? JSON.parse(labelColors)
-      : labelColors;
+    const colorMap = isString(labelColors) ? JSON.parse(labelColors) : labelColors;
     Object.keys(colorMap).forEach(label => {
       categoricalNamespace.setColor(label, colorMap[label]);
     });
@@ -60,41 +56,39 @@ export interface SetChartConfigFail {
   type: typeof SET_CHART_CONFIG_FAIL;
   chartConfiguration: ChartConfiguration;
 }
-export const setChartConfiguration =
-  (chartConfiguration: ChartConfiguration) =>
-  async (dispatch: Dispatch, getState: () => any) => {
+export const setChartConfiguration = (chartConfiguration: ChartConfiguration) => async (
+  dispatch: Dispatch,
+  getState: () => any,
+) => {
+  dispatch({
+    type: SET_CHART_CONFIG_BEGIN,
+    chartConfiguration,
+  });
+  const { id, metadata } = getState().dashboardInfo;
+
+  // TODO extract this out when makeApi supports url parameters
+  const updateDashboard = makeApi<Partial<DashboardInfo>, { result: DashboardInfo }>({
+    method: 'PUT',
+    endpoint: `/api/v1/dashboard/${id}`,
+  });
+
+  try {
+    const response = await updateDashboard({
+      json_metadata: JSON.stringify({
+        ...metadata,
+        chart_configuration: chartConfiguration,
+      }),
+    });
+    dispatch(
+      dashboardInfoChanged({
+        metadata: JSON.parse(response.result.json_metadata),
+      }),
+    );
     dispatch({
-      type: SET_CHART_CONFIG_BEGIN,
+      type: SET_CHART_CONFIG_COMPLETE,
       chartConfiguration,
     });
-    const { id, metadata } = getState().dashboardInfo;
-
-    // TODO extract this out when makeApi supports url parameters
-    const updateDashboard = makeApi<
-      Partial<DashboardInfo>,
-      { result: DashboardInfo }
-    >({
-      method: 'PUT',
-      endpoint: `/api/v1/dashboard/${id}`,
-    });
-
-    try {
-      const response = await updateDashboard({
-        json_metadata: JSON.stringify({
-          ...metadata,
-          chart_configuration: chartConfiguration,
-        }),
-      });
-      dispatch(
-        dashboardInfoChanged({
-          metadata: JSON.parse(response.result.json_metadata),
-        }),
-      );
-      dispatch({
-        type: SET_CHART_CONFIG_COMPLETE,
-        chartConfiguration,
-      });
-    } catch (err) {
-      dispatch({ type: SET_CHART_CONFIG_FAIL, chartConfiguration });
-    }
-  };
+  } catch (err) {
+    dispatch({ type: SET_CHART_CONFIG_FAIL, chartConfiguration });
+  }
+};

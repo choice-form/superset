@@ -17,12 +17,7 @@
  * under the License.
  */
 import { t, validateNonEmpty } from 'src/core';
-import {
-  ControlPanelConfig,
-  D3_FORMAT_OPTIONS,
-  D3_FORMAT_DOCS,
-  sections,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, D3_FORMAT_OPTIONS, D3_FORMAT_DOCS, sections } from 'src/chartConntrols';
 import { countryOptions } from './countries';
 
 const config: ControlPanelConfig = {
@@ -76,9 +71,7 @@ const config: ControlPanelConfig = {
   controlOverrides: {
     entity: {
       label: t('ISO 3166-2 Codes'),
-      description: t(
-        'Column containing ISO 3166-2 codes of region/province/department in your table.',
-      ),
+      description: t('Column containing ISO 3166-2 codes of region/province/department in your table.'),
     },
     metric: {
       label: t('Metric'),

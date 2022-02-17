@@ -106,9 +106,7 @@ describe('Select buildQuery', () => {
     });
     expect(queryContext.queries.length).toEqual(1);
     const [query] = queryContext.queries;
-    expect(query.filters).toEqual([
-      { col: 'my_col', op: 'ILIKE', val: '%abc%' },
-    ]);
+    expect(query.filters).toEqual([{ col: 'my_col', op: 'ILIKE', val: '%abc%' }]);
   });
 
   it('should add numeric search parameter to query filter', () => {

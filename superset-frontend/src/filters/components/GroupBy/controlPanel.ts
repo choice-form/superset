@@ -16,11 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  ControlPanelConfig,
-  sections,
-  sharedControls,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, sections, sharedControls } from 'src/chartConntrols';
 import { t } from 'src/core';
 import { DEFAULT_FORM_DATA } from './types';
 

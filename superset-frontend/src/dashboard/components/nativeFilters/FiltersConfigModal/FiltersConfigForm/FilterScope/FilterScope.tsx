@@ -60,17 +60,11 @@ const FilterScope: FC<FilterScopeProps> = ({
   chartId,
   initiallyExcludedCharts,
 }) => {
-  const [initialFilterScope] = useState(
-    filterScope || getDefaultScopeValue(chartId, initiallyExcludedCharts),
-  );
+  const [initialFilterScope] = useState(filterScope || getDefaultScopeValue(chartId, initiallyExcludedCharts));
   const [initialScopingType] = useState(
-    isScopingAll(initialFilterScope, chartId)
-      ? ScopingType.all
-      : ScopingType.specific,
+    isScopingAll(initialFilterScope, chartId) ? ScopingType.all : ScopingType.specific,
   );
-  const [hasScopeBeenModified, setHasScopeBeenModified] = useState(
-    !!filterScope,
-  );
+  const [hasScopeBeenModified, setHasScopeBeenModified] = useState(!!filterScope);
 
   const onUpdateFormValues = useCallback(
     (formValues: any) => {
@@ -88,25 +82,14 @@ const FilterScope: FC<FilterScopeProps> = ({
     const newScope = getDefaultScopeValue(chartId, initiallyExcludedCharts);
     updateFormValues({
       scope: newScope,
-      scoping: isScopingAll(newScope, chartId)
-        ? ScopingType.all
-        : ScopingType.specific,
+      scoping: isScopingAll(newScope, chartId) ? ScopingType.all : ScopingType.specific,
     });
-  }, [
-    chartId,
-    filterScope,
-    hasScopeBeenModified,
-    initiallyExcludedCharts,
-    updateFormValues,
-  ]);
+  }, [chartId, filterScope, hasScopeBeenModified, initiallyExcludedCharts, updateFormValues]);
   useComponentDidUpdate(updateScopes);
 
   return (
     <Wrapper>
-      <CleanFormItem
-        name={[...pathToFormValue, 'scoping']}
-        initialValue={initialScopingType}
-      >
+      <CleanFormItem name={[...pathToFormValue, 'scoping']} initialValue={initialScopingType}>
         <Radio.Group
           onChange={({ target: { value } }) => {
             if (value === ScopingType.all) {
@@ -120,9 +103,7 @@ const FilterScope: FC<FilterScopeProps> = ({
           }}
         >
           <Radio value={ScopingType.all}>{t('Apply to all panels')}</Radio>
-          <Radio value={ScopingType.specific}>
-            {t('Apply to specific panels')}
-          </Radio>
+          <Radio value={ScopingType.specific}>{t('Apply to specific panels')}</Radio>
         </Radio.Group>
       </CleanFormItem>
       <Typography.Text type="secondary">
@@ -140,11 +121,7 @@ const FilterScope: FC<FilterScopeProps> = ({
           initiallyExcludedCharts={initiallyExcludedCharts}
         />
       )}
-      <CleanFormItem
-        name={[...pathToFormValue, 'scope']}
-        hidden
-        initialValue={initialFilterScope}
-      />
+      <CleanFormItem name={[...pathToFormValue, 'scope']} hidden initialValue={initialFilterScope} />
     </Wrapper>
   );
 };

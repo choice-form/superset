@@ -43,8 +43,7 @@ function SafeMarkdown({ source }: SafeMarkdownProps) {
       allowNode={isSafeMarkup}
       astPlugins={[
         htmlParser({
-          isValidNode: (node: MarkdownAbstractSyntaxTree) =>
-            node.type !== 'script',
+          isValidNode: (node: MarkdownAbstractSyntaxTree) => node.type !== 'script',
         }),
       ]}
     />

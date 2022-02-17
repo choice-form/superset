@@ -31,13 +31,7 @@ import StyledModal from 'src/components/Modal';
 import Mousetrap from 'mousetrap';
 import Button from 'src/components/Button';
 import Timer from 'src/components/Timer';
-import {
-  Dropdown,
-  Menu as AntdMenu,
-  Menu,
-  Switch,
-  Input,
-} from 'src/common/components';
+import { Dropdown, Menu as AntdMenu, Menu, Switch, Input } from 'src/common/components';
 import Icons from 'src/components/Icons';
 import { detectOS } from 'src/utils/common';
 import {
@@ -174,24 +168,14 @@ class SqlEditor extends React.PureComponent {
     this.stopQuery = this.stopQuery.bind(this);
     this.onSqlChanged = this.onSqlChanged.bind(this);
     this.setQueryEditorSql = this.setQueryEditorSql.bind(this);
-    this.setQueryEditorSqlWithDebounce = debounce(
-      this.setQueryEditorSql.bind(this),
-      SET_QUERY_EDITOR_SQL_DEBOUNCE_MS,
-    );
+    this.setQueryEditorSqlWithDebounce = debounce(this.setQueryEditorSql.bind(this), SET_QUERY_EDITOR_SQL_DEBOUNCE_MS);
     this.queryPane = this.queryPane.bind(this);
     this.renderQueryLimit = this.renderQueryLimit.bind(this);
-    this.getAceEditorAndSouthPaneHeights =
-      this.getAceEditorAndSouthPaneHeights.bind(this);
+    this.getAceEditorAndSouthPaneHeights = this.getAceEditorAndSouthPaneHeights.bind(this);
     this.getSqlEditorHeight = this.getSqlEditorHeight.bind(this);
-    this.requestValidation = debounce(
-      this.requestValidation.bind(this),
-      VALIDATION_DEBOUNCE_MS,
-    );
+    this.requestValidation = debounce(this.requestValidation.bind(this), VALIDATION_DEBOUNCE_MS);
     this.getQueryCostEstimate = this.getQueryCostEstimate.bind(this);
-    this.handleWindowResize = throttle(
-      this.handleWindowResize.bind(this),
-      WINDOW_RESIZE_THROTTLE_MS,
-    );
+    this.handleWindowResize = throttle(this.handleWindowResize.bind(this), WINDOW_RESIZE_THROTTLE_MS);
 
     this.onBeforeUnload = this.onBeforeUnload.bind(this);
     this.renderDropdown = this.renderDropdown.bind(this);
@@ -236,11 +220,7 @@ class SqlEditor extends React.PureComponent {
     this.setState({ northPercent, southPercent });
 
     if (this.northPaneRef.current && this.northPaneRef.current.clientHeight) {
-      this.props.persistEditorHeight(
-        this.props.queryEditor,
-        northPercent,
-        southPercent,
-      );
+      this.props.persistEditorHeight(this.props.queryEditor, northPercent, southPercent);
     }
   }
 
@@ -266,9 +246,7 @@ class SqlEditor extends React.PureComponent {
 
   // One layer of abstraction for easy spying in unit tests
   getSqlEditorHeight() {
-    return this.sqlEditorRef.current
-      ? this.sqlEditorRef.current.clientHeight - SQL_EDITOR_PADDING * 2
-      : 0;
+    return this.sqlEditorRef.current ? this.sqlEditorRef.current.clientHeight - SQL_EDITOR_PADDING * 2 : 0;
   }
 
   // Return the heights for the ace editor and the south pane as an object
@@ -276,12 +254,8 @@ class SqlEditor extends React.PureComponent {
   getAceEditorAndSouthPaneHeights(height, northPercent, southPercent) {
     return {
       aceEditorHeight:
-        (height * northPercent) / 100 -
-        (SQL_EDITOR_GUTTER_HEIGHT / 2 + SQL_EDITOR_GUTTER_MARGIN) -
-        SQL_TOOLBAR_HEIGHT,
-      southPaneHeight:
-        (height * southPercent) / 100 -
-        (SQL_EDITOR_GUTTER_HEIGHT / 2 + SQL_EDITOR_GUTTER_MARGIN),
+        (height * northPercent) / 100 - (SQL_EDITOR_GUTTER_HEIGHT / 2 + SQL_EDITOR_GUTTER_MARGIN) - SQL_TOOLBAR_HEIGHT,
+      southPaneHeight: (height * southPercent) / 100 - (SQL_EDITOR_GUTTER_HEIGHT / 2 + SQL_EDITOR_GUTTER_MARGIN),
     };
   }
 
@@ -364,9 +338,7 @@ class SqlEditor extends React.PureComponent {
 
   elementStyle(dimension, elementSize, gutterSize) {
     return {
-      [dimension]: `calc(${elementSize}% - ${
-        gutterSize + SQL_EDITOR_GUTTER_MARGIN
-      }px)`,
+      [dimension]: `calc(${elementSize}% - ${gutterSize + SQL_EDITOR_GUTTER_MARGIN}px)`,
     };
   }
 
@@ -415,9 +387,7 @@ class SqlEditor extends React.PureComponent {
       tempTable: ctas ? this.state.ctas : '',
       templateParams: qe.templateParams,
       queryLimit: qe.queryLimit || this.props.defaultQueryLimit,
-      runAsync: this.props.database
-        ? this.props.database.allow_run_async
-        : false,
+      runAsync: this.props.database ? this.props.database.allow_run_async : false,
       ctas,
       ctas_method,
       updateTabState: !qe.selectedText,
@@ -427,10 +397,7 @@ class SqlEditor extends React.PureComponent {
   }
 
   stopQuery() {
-    if (
-      this.props.latestQuery &&
-      ['running', 'pending'].indexOf(this.props.latestQuery.state) >= 0
-    ) {
+    if (this.props.latestQuery && ['running', 'pending'].indexOf(this.props.latestQuery.state) >= 0) {
       this.props.postStopQuery(this.props.latestQuery);
     }
   }
@@ -451,12 +418,11 @@ class SqlEditor extends React.PureComponent {
 
   queryPane() {
     const hotkeys = this.getHotkeyConfig();
-    const { aceEditorHeight, southPaneHeight } =
-      this.getAceEditorAndSouthPaneHeights(
-        this.state.height,
-        this.state.northPercent,
-        this.state.southPercent,
-      );
+    const { aceEditorHeight, southPaneHeight } = this.getAceEditorAndSouthPaneHeights(
+      this.state.height,
+      this.state.northPercent,
+      this.state.southPercent,
+    );
     return (
       <Split
         expandToMin
@@ -553,10 +519,7 @@ class SqlEditor extends React.PureComponent {
     return (
       <AntdMenu>
         {[...new Set(LIMIT_DROPDOWN)].map(limit => (
-          <AntdMenu.Item
-            key={`${limit}`}
-            onClick={() => this.setQueryLimit(limit)}
-          >
+          <AntdMenu.Item key={`${limit}`} onClick={() => this.setQueryLimit(limit)}>
             {/* // eslint-disable-line no-use-before-define */}
             <a role="button" styling="link">
               {this.convertToNumWithSpaces(limit)}
@@ -570,8 +533,7 @@ class SqlEditor extends React.PureComponent {
   renderEditorBottomBar() {
     const { queryEditor: qe } = this.props;
 
-    const { allow_ctas: allowCTAS, allow_cvas: allowCVAS } =
-      this.props.database || {};
+    const { allow_ctas: allowCTAS, allow_cvas: allowCVAS } = this.props.database || {};
 
     const showMenu = allowCTAS || allowCVAS;
     const { theme } = this.props;
@@ -610,11 +572,7 @@ class SqlEditor extends React.PureComponent {
         <div className="leftItems">
           <span>
             <RunQueryActionButton
-              allowAsync={
-                this.props.database
-                  ? this.props.database.allow_run_async
-                  : false
-              }
+              allowAsync={this.props.database ? this.props.database.allow_run_async : false}
               queryState={this.props.latestQuery?.state}
               runQuery={this.runQuery}
               selectedText={qe.selectedText}
@@ -644,10 +602,7 @@ class SqlEditor extends React.PureComponent {
                 <a onClick={e => e.preventDefault()}>
                   <span>{t('LIMIT:')}</span>
                   <span>
-                    {this.convertToNumWithSpaces(
-                      this.props.queryEditor.queryLimit ||
-                        this.props.defaultQueryLimit,
-                    )}
+                    {this.convertToNumWithSpaces(this.props.queryEditor.queryLimit || this.props.defaultQueryLimit)}
                   </span>
                   <Icons.TriangleDown iconColor={theme.colors.grayscale.base} />
                 </a>
@@ -685,26 +640,17 @@ class SqlEditor extends React.PureComponent {
   }
 
   render() {
-    const createViewModalTitle =
-      this.state.createAs === CtasEnum.VIEW
-        ? 'CREATE VIEW AS'
-        : 'CREATE TABLE AS';
+    const createViewModalTitle = this.state.createAs === CtasEnum.VIEW ? 'CREATE VIEW AS' : 'CREATE TABLE AS';
 
     const createModalPlaceHolder =
       this.state.createAs === CtasEnum.VIEW
         ? 'Specify name to CREATE VIEW AS schema in: public'
         : 'Specify name to CREATE TABLE AS schema in: public';
 
-    const leftBarStateClass = this.props.hideLeftBar
-      ? 'schemaPane-exit-done'
-      : 'schemaPane-enter-done';
+    const leftBarStateClass = this.props.hideLeftBar ? 'schemaPane-exit-done' : 'schemaPane-enter-done';
     return (
       <div ref={this.sqlEditorRef} className="SqlEditor">
-        <CSSTransition
-          classNames="schemaPane"
-          in={!this.props.hideLeftBar}
-          timeout={300}
-        >
+        <CSSTransition classNames="schemaPane" in={!this.props.hideLeftBar} timeout={300}>
           <div className={`schemaPane ${leftBarStateClass}`}>
             <SqlEditorLeftBar
               database={this.props.database}
@@ -723,11 +669,7 @@ class SqlEditor extends React.PureComponent {
           }}
           footer={
             <>
-              <Button
-                onClick={() => this.setState({ showCreateAsModal: false })}
-              >
-                Cancel
-              </Button>
+              <Button onClick={() => this.setState({ showCreateAsModal: false })}>Cancel</Button>
               {this.state.createAs === CtasEnum.TABLE && (
                 <Button
                   buttonStyle="primary"
@@ -750,10 +692,7 @@ class SqlEditor extends React.PureComponent {
           }
         >
           <span>Name</span>
-          <Input
-            placeholder={createModalPlaceHolder}
-            onChange={this.ctasChanged.bind(this)}
-          />
+          <Input placeholder={createModalPlaceHolder} onChange={this.ctasChanged.bind(this)} />
         </StyledModal>
       </div>
     );
@@ -764,9 +703,7 @@ SqlEditor.propTypes = propTypes;
 
 function mapStateToProps(state, props) {
   const { sqlLab } = state;
-  const queryEditor = sqlLab.queryEditors.find(
-    editor => editor.id === props.queryEditorId,
-  );
+  const queryEditor = sqlLab.queryEditors.find(editor => editor.id === props.queryEditorId);
 
   return { sqlLab, ...props, queryEditor };
 }

@@ -24,10 +24,7 @@ export const arrayDiff = (a: string[], b: string[]) => [
   ...b.filter(x => !a.includes(x)),
 ];
 
-export const getAffectedOwnDataCharts = (
-  ownDataCharts: JsonObject,
-  appliedOwnDataCharts: JsonObject,
-) => {
+export const getAffectedOwnDataCharts = (ownDataCharts: JsonObject, appliedOwnDataCharts: JsonObject) => {
   const chartIds = Object.keys(ownDataCharts);
   const appliedChartIds = Object.keys(appliedOwnDataCharts);
   const affectedIds: string[] = arrayDiff(chartIds, appliedChartIds).filter(
@@ -35,9 +32,7 @@ export const getAffectedOwnDataCharts = (
   );
   const checkForUpdateIds = new Set<string>([...chartIds, ...appliedChartIds]);
   checkForUpdateIds.forEach(chartId => {
-    if (
-      !areObjectsEqual(ownDataCharts[chartId], appliedOwnDataCharts[chartId])
-    ) {
+    if (!areObjectsEqual(ownDataCharts[chartId], appliedOwnDataCharts[chartId])) {
       affectedIds.push(chartId);
     }
   });

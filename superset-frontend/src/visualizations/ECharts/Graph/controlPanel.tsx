@@ -18,11 +18,7 @@
  */
 import React from 'react';
 import { t } from 'src/core';
-import {
-  ControlPanelConfig,
-  sections,
-  sharedControls,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, sections, sharedControls } from 'src/chartConntrols';
 import { DEFAULT_FORM_DATA } from './types';
 import { legendSection } from '../controls';
 
@@ -141,14 +137,9 @@ const controlPanel: ControlPanelConfig = {
               label: t('Enable node dragging'),
               renderTrigger: true,
               default: DEFAULT_FORM_DATA.draggable,
-              description: t(
-                'Whether to enable node dragging in force layout mode.',
-              ),
+              description: t('Whether to enable node dragging in force layout mode.'),
               visibility({ form_data: { layout } }) {
-                return (
-                  layout === 'force' ||
-                  (!layout && DEFAULT_FORM_DATA.layout === 'force')
-                );
+                return layout === 'force' || (!layout && DEFAULT_FORM_DATA.layout === 'force');
               },
             },
           },
@@ -167,9 +158,7 @@ const controlPanel: ControlPanelConfig = {
                 ['move', t('Move only')],
                 [true, t('Scale and Move')],
               ],
-              description: t(
-                'Whether to enable changing graph position and scaling.',
-              ),
+              description: t('Whether to enable changing graph position and scaling.'),
             },
           },
         ],
@@ -199,9 +188,7 @@ const controlPanel: ControlPanelConfig = {
               renderTrigger: true,
               isInt: true,
               default: DEFAULT_FORM_DATA.showSymbolThreshold,
-              description: t(
-                'Minimum value for label to be displayed on graph.',
-              ),
+              description: t('Minimum value for label to be displayed on graph.'),
             },
           },
         ],
@@ -214,9 +201,7 @@ const controlPanel: ControlPanelConfig = {
               renderTrigger: true,
               isFloat: true,
               default: DEFAULT_FORM_DATA.baseNodeSize,
-              description: t(
-                'Median node size, the largest node will be 4 times larger than the smallest',
-              ),
+              description: t('Median node size, the largest node will be 4 times larger than the smallest'),
             },
           },
           {
@@ -227,9 +212,7 @@ const controlPanel: ControlPanelConfig = {
               renderTrigger: true,
               isFloat: true,
               default: DEFAULT_FORM_DATA.baseEdgeWidth,
-              description: t(
-                'Median edge width, the thickest edge will be 4 times thicker than the thinnest.',
-              ),
+              description: t('Median edge width, the thickest edge will be 4 times thicker than the thinnest.'),
             },
           },
         ],
@@ -246,10 +229,7 @@ const controlPanel: ControlPanelConfig = {
               default: DEFAULT_FORM_DATA.edgeLength,
               description: t('Edge length between nodes'),
               visibility({ form_data: { layout } }) {
-                return (
-                  layout === 'force' ||
-                  (!layout && DEFAULT_FORM_DATA.layout === 'force')
-                );
+                return layout === 'force' || (!layout && DEFAULT_FORM_DATA.layout === 'force');
               },
             },
           },
@@ -267,10 +247,7 @@ const controlPanel: ControlPanelConfig = {
               default: DEFAULT_FORM_DATA.gravity,
               description: t('Strength to pull the graph toward center'),
               visibility({ form_data: { layout } }) {
-                return (
-                  layout === 'force' ||
-                  (!layout && DEFAULT_FORM_DATA.layout === 'force')
-                );
+                return layout === 'force' || (!layout && DEFAULT_FORM_DATA.layout === 'force');
               },
             },
           },
@@ -288,10 +265,7 @@ const controlPanel: ControlPanelConfig = {
               default: DEFAULT_FORM_DATA.repulsion,
               description: t('Repulsion strength between nodes'),
               visibility({ form_data: { layout } }) {
-                return (
-                  layout === 'force' ||
-                  (!layout && DEFAULT_FORM_DATA.layout === 'force')
-                );
+                return layout === 'force' || (!layout && DEFAULT_FORM_DATA.layout === 'force');
               },
             },
           },
@@ -309,10 +283,7 @@ const controlPanel: ControlPanelConfig = {
               default: DEFAULT_FORM_DATA.friction,
               description: t('Friction between nodes'),
               visibility({ form_data: { layout } }) {
-                return (
-                  layout === 'force' ||
-                  (!layout && DEFAULT_FORM_DATA.layout === 'force')
-                );
+                return layout === 'force' || (!layout && DEFAULT_FORM_DATA.layout === 'force');
               },
             },
           },

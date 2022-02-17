@@ -18,16 +18,9 @@
  */
 import { ChartProps, getMetricLabel, DataRecordValue } from 'src/core';
 import { EChartsCoreOption, TreeSeriesOption } from 'echarts';
-import {
-  TreeSeriesCallbackDataParams,
-  TreeSeriesNodeItemOption,
-} from 'echarts/types/src/chart/tree/TreeSeries';
+import { TreeSeriesCallbackDataParams, TreeSeriesNodeItemOption } from 'echarts/types/src/chart/tree/TreeSeries';
 import { OptionName } from 'echarts/types/src/util/types';
-import {
-  EchartsTreeFormData,
-  DEFAULT_FORM_DATA as DEFAULT_GRAPH_FORM_DATA,
-  TreeDataRecord,
-} from './types';
+import { EchartsTreeFormData, DEFAULT_FORM_DATA as DEFAULT_GRAPH_FORM_DATA, TreeDataRecord } from './types';
 import { DEFAULT_TREE_SERIES_OPTION } from './constants';
 import { EchartsProps } from '../types';
 
@@ -39,14 +32,9 @@ export function formatTooltip({
   metricLabel: string;
 }): string {
   const { value, treeAncestors } = params;
-  const treePath = (treeAncestors ?? [])
-    .map(pathInfo => pathInfo?.name || '')
-    .filter(path => path !== '');
+  const treePath = (treeAncestors ?? []).map(pathInfo => pathInfo?.name || '').filter(path => path !== '');
 
-  return [
-    `<div>${treePath.join(' ▸ ')}</div>`,
-    value ? `${metricLabel}: ${value}` : '',
-  ].join('');
+  return [`<div>${treePath.join(' ▸ ')}</div>`, value ? `${metricLabel}: ${value}` : ''].join('');
 }
 
 export default function transformProps(chartProps: ChartProps): EchartsProps {

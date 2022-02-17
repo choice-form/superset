@@ -18,11 +18,7 @@
  */
 import { t } from 'src/core';
 
-import {
-  FETCH_ALL_SLICES_FAILED,
-  FETCH_ALL_SLICES_STARTED,
-  SET_ALL_SLICES,
-} from '../actions/sliceEntities';
+import { FETCH_ALL_SLICES_FAILED, FETCH_ALL_SLICES_STARTED, SET_ALL_SLICES } from '../actions/sliceEntities';
 import { HYDRATE_DASHBOARD } from '../actions/hydrate';
 
 export const initSliceEntities = {
@@ -32,10 +28,7 @@ export const initSliceEntities = {
   lastUpdated: 0,
 };
 
-export default function sliceEntitiesReducer(
-  state = initSliceEntities,
-  action,
-) {
+export default function sliceEntitiesReducer(state = initSliceEntities, action) {
   const actionHandlers = {
     [HYDRATE_DASHBOARD]() {
       return {
@@ -61,8 +54,7 @@ export default function sliceEntitiesReducer(
         ...state,
         isLoading: false,
         lastUpdated: new Date().getTime(),
-        errorMessage:
-          action.payload.error || t('Could not fetch all saved charts'),
+        errorMessage: action.payload.error || t('Could not fetch all saved charts'),
       };
     },
   };

@@ -19,11 +19,7 @@
 import { debounce } from 'lodash';
 
 class DebouncedMessageQueue {
-  constructor({
-    callback = () => {},
-    sizeThreshold = 1000,
-    delayThreshold = 1000,
-  }) {
+  constructor({ callback = () => {}, sizeThreshold = 1000, delayThreshold = 1000 }) {
     this.queue = [];
     this.sizeThreshold = sizeThreshold;
     this.delayThrehold = delayThreshold;

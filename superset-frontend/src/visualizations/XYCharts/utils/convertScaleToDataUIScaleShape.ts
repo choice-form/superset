@@ -32,13 +32,9 @@ interface DataUIScale {
   rangeRound?: number[] | string[];
 }
 
-function isCompatibleDomainOrRange(
-  array: ScaleConfig['domain'] | ScaleConfig['range'],
-): array is number[] | string[] {
+function isCompatibleDomainOrRange(array: ScaleConfig['domain'] | ScaleConfig['range']): array is number[] | string[] {
   return (
-    typeof array !== 'undefined' &&
-    array.length > 0 &&
-    (typeof array[0] === 'string' || typeof array[0] === 'number')
+    typeof array !== 'undefined' && array.length > 0 && (typeof array[0] === 'string' || typeof array[0] === 'number')
   );
 }
 
@@ -46,9 +42,7 @@ function isCompatibleDomainOrRange(
  * Convert encodeable scale object into @data-ui's scale config
  * @param scale
  */
-export default function convertScaleToDataUIScale<Output extends Value>(
-  scale: ScaleConfig<Output>,
-) {
+export default function convertScaleToDataUIScale<Output extends Value>(scale: ScaleConfig<Output>) {
   const { type, domain, range } = scale;
 
   let outputType: DataUIScaleType;

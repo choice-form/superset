@@ -33,11 +33,7 @@ import {
   updateComponents,
   handleComponentDrop,
 } from 'src/dashboard/actions/dashboardLayout';
-import {
-  setDirectPathToChild,
-  setActiveTabs,
-  setFullSizeChartId,
-} from 'src/dashboard/actions/dashboardState';
+import { setDirectPathToChild, setActiveTabs, setFullSizeChartId } from 'src/dashboard/actions/dashboardState';
 
 const propTypes = {
   id: PropTypes.string,
@@ -64,10 +60,7 @@ const defaultProps = {
   isComponentVisible: true,
 };
 
-function mapStateToProps(
-  { dashboardLayout: undoableLayout, dashboardState, dashboardInfo },
-  ownProps,
-) {
+function mapStateToProps({ dashboardLayout: undoableLayout, dashboardState, dashboardInfo }, ownProps) {
   const dashboardLayout = undoableLayout.present;
   const { id, parentId } = ownProps;
   const component = dashboardLayout[id];

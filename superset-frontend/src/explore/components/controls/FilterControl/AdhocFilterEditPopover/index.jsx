@@ -24,9 +24,7 @@ import { styled, t } from 'src/core';
 import ErrorBoundary from 'src/components/ErrorBoundary';
 import Tabs from 'src/components/Tabs';
 import adhocMetricType from 'src/explore/components/controls/MetricControl/adhocMetricType';
-import AdhocFilter, {
-  EXPRESSION_TYPES,
-} from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, { EXPRESSION_TYPES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import AdhocFilterEditPopoverSimpleTabContent from 'src/explore/components/controls/FilterControl/AdhocFilterEditPopoverSimpleTabContent';
 import AdhocFilterEditPopoverSqlTabContent from 'src/explore/components/controls/FilterControl/AdhocFilterEditPopoverSqlTabContent';
 import columnType from 'src/explore/components/controls/FilterControl/columnType';
@@ -139,14 +137,8 @@ export default class AdhocFilterEditPopover extends React.Component {
   onMouseMove(e) {
     this.props.onResize();
     this.setState({
-      width: Math.max(
-        this.dragStartWidth + (e.clientX - this.dragStartX),
-        startingWidth,
-      ),
-      height: Math.max(
-        this.dragStartHeight + (e.clientY - this.dragStartY) * 2,
-        startingHeight,
-      ),
+      width: Math.max(this.dragStartWidth + (e.clientX - this.dragStartX), startingWidth),
+      height: Math.max(this.dragStartHeight + (e.clientY - this.dragStartY) * 2, startingHeight),
     });
   }
 
@@ -181,10 +173,7 @@ export default class AdhocFilterEditPopover extends React.Component {
 
     const { adhocFilter } = this.state;
 
-    const resultSections =
-      datasource?.type === 'druid'
-        ? sections.filter(s => s !== 'CUSTOM_SQL')
-        : sections;
+    const resultSections = datasource?.type === 'druid' ? sections.filter(s => s !== 'CUSTOM_SQL') : sections;
 
     const stateIsValid = adhocFilter.isValid();
     const hasUnsavedChanges = !adhocFilter.equals(propsAdhocFilter);
@@ -236,20 +225,12 @@ export default class AdhocFilterEditPopover extends React.Component {
             onChange={this.onTabChange}
           >
             {resultSections.includes('SIMPLE') && (
-              <Tabs.TabPane
-                className="adhoc-filter-edit-tab"
-                key={EXPRESSION_TYPES.SIMPLE}
-                tab={t('Simple')}
-              >
+              <Tabs.TabPane className="adhoc-filter-edit-tab" key={EXPRESSION_TYPES.SIMPLE} tab={t('Simple')}>
                 {sectionRenders.SIMPLE}
               </Tabs.TabPane>
             )}
             {resultSections.includes('CUSTOM_SQL') && (
-              <Tabs.TabPane
-                className="adhoc-filter-edit-tab"
-                key={EXPRESSION_TYPES.SQL}
-                tab={t('Custom SQL')}
-              >
+              <Tabs.TabPane className="adhoc-filter-edit-tab" key={EXPRESSION_TYPES.SQL} tab={t('Custom SQL')}>
                 {sectionRenders.CUSTOM_SQL}
               </Tabs.TabPane>
             )}
@@ -264,9 +245,7 @@ export default class AdhocFilterEditPopover extends React.Component {
           <Button
             data-test="adhoc-filter-edit-popover-save-button"
             disabled={!stateIsValid}
-            buttonStyle={
-              hasUnsavedChanges && stateIsValid ? 'primary' : 'default'
-            }
+            buttonStyle={hasUnsavedChanges && stateIsValid ? 'primary' : 'default'}
             buttonSize="small"
             className="m-r-5"
             onClick={this.onSave}

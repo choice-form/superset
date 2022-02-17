@@ -78,9 +78,7 @@ test('collapses on click', () => {
 
   userEvent.click(screen.getAllByRole('button')[0]);
 
-  expect(screen.getByText('Content 1').parentNode).toHaveClass(
-    'ant-collapse-content-hidden',
-  );
+  expect(screen.getByText('Content 1').parentNode).toHaveClass('ant-collapse-content-hidden');
   expect(screen.queryByText('Content 2')).not.toBeInTheDocument();
 });
 
@@ -93,18 +91,13 @@ test('renders with custom properties', () => {
   });
 
   const header = document.getElementsByClassName('ant-collapse-header')[0];
-  const arrow =
-    document.getElementsByClassName('ant-collapse-arrow')[0].children[0];
+  const arrow = document.getElementsByClassName('ant-collapse-arrow')[0].children[0];
 
   const headerStyle = window.getComputedStyle(header);
   const arrowStyle = window.getComputedStyle(arrow);
 
-  expect(headerStyle.fontWeight).toBe(
-    supersetTheme.typography.weights.bold.toString(),
-  );
+  expect(headerStyle.fontWeight).toBe(supersetTheme.typography.weights.bold.toString());
   expect(headerStyle.fontSize).toBe(`${supersetTheme.gridUnit * 4}px`);
-  expect(headerStyle.color).toBe(
-    hexToRgb(supersetTheme.colors.grayscale.light4),
-  );
+  expect(headerStyle.color).toBe(hexToRgb(supersetTheme.colors.grayscale.light4));
   expect(arrowStyle.transition).toBe('transform 0.24s');
 });

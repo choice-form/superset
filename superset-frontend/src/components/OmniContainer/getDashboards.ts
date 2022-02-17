@@ -34,9 +34,7 @@ interface Dashboards extends DashboardItem {
   title: string;
 }
 
-export const getDashboards = async (
-  query: string,
-): Promise<(Dashboards | { title: string })[]> => {
+export const getDashboards = async (query: string): Promise<(Dashboards | { title: string })[]> => {
   // todo: Build a dedicated endpoint for dashboard searching
   // i.e. superset/v1/api/dashboards?q=${query}
   let response;

@@ -56,9 +56,7 @@ export const ANNOTATION_SOURCE_TYPES_METADATA = {
   },
 };
 
-export const ANNOTATION_SOURCE_TYPES = extractTypes(
-  ANNOTATION_SOURCE_TYPES_METADATA,
-);
+export const ANNOTATION_SOURCE_TYPES = extractTypes(ANNOTATION_SOURCE_TYPES_METADATA);
 
 export function requiresQuery(annotationSourceType) {
   return !!annotationSourceType;

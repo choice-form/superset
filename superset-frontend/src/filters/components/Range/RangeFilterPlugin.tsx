@@ -40,14 +40,10 @@ const Wrapper = styled.div<{ validateStatus?: 'error' | 'warning' | 'info' }>`
       margin-bottom: ${theme.gridUnit * 5}px;
 
       & .ant-slider-track {
-        background-color: ${
-          validateStatus && theme.colors[validateStatus]?.light1
-        };
+        background-color: ${validateStatus && theme.colors[validateStatus]?.light1};
       }
       & .ant-slider-handle {
-        border: ${
-          validateStatus && `2px solid ${theme.colors[validateStatus]?.light1}`
-        };
+        border: ${validateStatus && `2px solid ${theme.colors[validateStatus]?.light1}`};
         &:focus {
           box-shadow: 0 0 0 3px
             ${rgba(theme.colors[validateStatus || 'primary']?.base, 0.2)};
@@ -55,14 +51,10 @@ const Wrapper = styled.div<{ validateStatus?: 'error' | 'warning' | 'info' }>`
       }
       &:hover {
         & .ant-slider-track {
-          background-color: ${
-            validateStatus && theme.colors[validateStatus]?.base
-          };
+          background-color: ${validateStatus && theme.colors[validateStatus]?.base};
         }
         & .ant-slider-handle {
-          border: ${
-            validateStatus && `2px solid ${theme.colors[validateStatus]?.base}`
-          };
+          border: ${validateStatus && `2px solid ${theme.colors[validateStatus]?.base}`};
         }
       }
     }
@@ -70,16 +62,7 @@ const Wrapper = styled.div<{ validateStatus?: 'error' | 'warning' | 'info' }>`
 `;
 
 export default function RangeFilterPlugin(props: PluginFilterRangeProps) {
-  const {
-    data,
-    formData,
-    height,
-    width,
-    setDataMask,
-    setFocusedFilter,
-    unsetFocusedFilter,
-    filterState,
-  } = props;
+  const { data, formData, height, width, setDataMask, setFocusedFilter, unsetFocusedFilter, filterState } = props;
   const numberFormatter = getNumberFormatter(NumberFormats.SMART_NUMBER);
 
   const [row] = data;
@@ -87,14 +70,10 @@ export default function RangeFilterPlugin(props: PluginFilterRangeProps) {
   const { min, max }: { min: number; max: number } = row;
   const { groupby, defaultValue, inputRef } = formData;
   const [col = ''] = groupby || [];
-  const [value, setValue] = useState<[number, number]>(
-    defaultValue ?? [min, max],
-  );
+  const [value, setValue] = useState<[number, number]>(defaultValue ?? [min, max]);
   const [marks, setMarks] = useState<{ [key: number]: string }>({});
 
-  const getBounds = (
-    value: [number, number],
-  ): { lower: number | null; upper: number | null } => {
+  const getBounds = (value: [number, number]): { lower: number | null; upper: number | null } => {
     const [lowerRaw, upperRaw] = value;
     return {
       lower: lowerRaw > min ? lowerRaw : null,
@@ -115,10 +94,7 @@ export default function RangeFilterPlugin(props: PluginFilterRangeProps) {
     return '';
   };
 
-  const getMarks = (
-    lower: number | null,
-    upper: number | null,
-  ): { [key: number]: string } => {
+  const getMarks = (lower: number | null, upper: number | null): { [key: number]: string } => {
     const newMarks: { [key: number]: string } = {};
     if (lower !== null) {
       newMarks[lower] = numberFormatter(lower);
@@ -158,9 +134,7 @@ export default function RangeFilterPlugin(props: PluginFilterRangeProps) {
   const formItemData: FormItemProps = {};
   if (filterState.validateMessage) {
     formItemData.extra = (
-      <StatusMessage status={filterState.validateStatus}>
-        {filterState.validateMessage}
-      </StatusMessage>
+      <StatusMessage status={filterState.validateStatus}>{filterState.validateMessage}</StatusMessage>
     );
   }
   return (

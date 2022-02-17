@@ -40,20 +40,14 @@ export default function getDashboardUrl({
 
   // convert flattened { [id_column]: values } object
   // to nested filter object
-  newSearchParams.set(
-    URL_PARAMS.preselectFilters.name,
-    JSON.stringify(serializeActiveFilterValues(filters)),
-  );
+  newSearchParams.set(URL_PARAMS.preselectFilters.name, JSON.stringify(serializeActiveFilterValues(filters)));
 
   if (standalone) {
     newSearchParams.set(URL_PARAMS.standalone.name, standalone.toString());
   }
 
   if (dataMask) {
-    newSearchParams.set(
-      URL_PARAMS.nativeFilters.name,
-      rison.encode(replaceUndefinedByNull(dataMask)),
-    );
+    newSearchParams.set(URL_PARAMS.nativeFilters.name, rison.encode(replaceUndefinedByNull(dataMask)));
   }
 
   const hashSection = hash ? `#${hash}` : '';

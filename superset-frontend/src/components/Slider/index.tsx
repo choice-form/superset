@@ -17,10 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import AntDSlider, {
-  SliderSingleProps,
-  SliderRangeProps,
-} from 'antd/lib/slider';
+import AntDSlider, { SliderSingleProps, SliderRangeProps } from 'antd/lib/slider';
 
 export { SliderSingleProps, SliderRangeProps };
 

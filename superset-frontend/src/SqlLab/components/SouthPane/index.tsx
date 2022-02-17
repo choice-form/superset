@@ -28,11 +28,7 @@ import Label from 'src/components/Label';
 import { UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';
 import QueryHistory from '../QueryHistory';
 import ResultSet from '../ResultSet';
-import {
-  STATUS_OPTIONS,
-  STATE_TYPE_MAP,
-  LOCALSTORAGE_MAX_QUERY_AGE_MS,
-} from '../../constants';
+import { STATUS_OPTIONS, STATE_TYPE_MAP, LOCALSTORAGE_MAX_QUERY_AGE_MS } from '../../constants';
 
 const TAB_HEIGHT = 140;
 
@@ -127,14 +123,7 @@ export default function SouthPane({
         !latestQuery.resultsKey &&
         !latestQuery.results
       ) {
-        results = (
-          <Alert
-            type="warning"
-            message={t(
-              'No stored results found, you need to re-run your query',
-            )}
-          />
-        );
+        results = <Alert type="warning" message={t('No stored results found, you need to re-run your query')} />;
         return results;
       }
       if (Date.now() - latestQuery.startDttm <= LOCALSTORAGE_MAX_QUERY_AGE_MS) {
@@ -153,19 +142,14 @@ export default function SouthPane({
         );
       }
     } else {
-      results = (
-        <Alert type="info" message={t('Run a query to display results here')} />
-      );
+      results = <Alert type="info" message={t('Run a query to display results here')} />;
     }
     return results;
   };
 
   const renderDataPreviewTabs = () =>
     dataPreviewQueries.map(query => (
-      <Tabs.TabPane
-        tab={t('Preview: `%s`', decodeURIComponent(query.tableName))}
-        key={query.id}
-      >
+      <Tabs.TabPane tab={t('Preview: `%s`', decodeURIComponent(query.tableName))} key={query.id}>
         <ResultSet
           query={query}
           visualize={false}
@@ -195,11 +179,7 @@ export default function SouthPane({
           {renderResults()}
         </Tabs.TabPane>
         <Tabs.TabPane tab={t('Query history')} key="History">
-          <QueryHistory
-            queries={editorQueries}
-            actions={actions}
-            displayLimit={displayLimit}
-          />
+          <QueryHistory queries={editorQueries} actions={actions} displayLimit={displayLimit} />
         </Tabs.TabPane>
         {renderDataPreviewTabs()}
       </Tabs>

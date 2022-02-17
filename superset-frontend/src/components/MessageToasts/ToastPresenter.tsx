@@ -34,18 +34,14 @@ const StyledToastPresenter = styled.div`
     background: ${({ theme }) => theme.colors.grayscale.dark1};
     border-radius: ${({ theme }) => theme.borderRadius};
     box-shadow: 0 2px 4px 0
-      fade(
-        ${({ theme }) => theme.colors.grayscale.dark2},
-        ${({ theme }) => theme.opacity.mediumLight}
-      );
+      fade(${({ theme }) => theme.colors.grayscale.dark2}, ${({ theme }) => theme.opacity.mediumLight});
     color: ${({ theme }) => theme.colors.grayscale.light5};
     opacity: 0;
     position: relative;
     transform: translateY(-100%);
     white-space: pre-line;
     will-change: transform, opacity;
-    transition: transform ${({ theme }) => theme.transitionTiming}s,
-      opacity ${({ theme }) => theme.transitionTiming}s;
+    transition: transform ${({ theme }) => theme.transitionTiming}s, opacity ${({ theme }) => theme.transitionTiming}s;
 
     &:after {
       content: '';
@@ -73,10 +69,7 @@ type ToastPresenterProps = {
   removeToast: () => void;
 };
 
-export default function ToastPresenter({
-  toasts,
-  removeToast,
-}: ToastPresenterProps) {
+export default function ToastPresenter({ toasts, removeToast }: ToastPresenterProps) {
   return (
     toasts.length > 0 && (
       <StyledToastPresenter id="toast-presenter">

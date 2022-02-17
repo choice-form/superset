@@ -40,17 +40,7 @@ const schemes = [
   {
     id: 'echarts5Colors',
     label: 'ECharts v5.x Colors',
-    colors: [
-      '#5470C6',
-      '#91CC75',
-      '#FAC858',
-      '#EE6666',
-      '#73C0DE',
-      '#3BA272',
-      '#FC8452',
-      '#9A60B4',
-      '#EA7CCC',
-    ],
+    colors: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4', '#EA7CCC'],
   },
 ].map(s => new CategoricalScheme(s));
 

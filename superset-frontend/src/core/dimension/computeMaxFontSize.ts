@@ -48,9 +48,7 @@ export default function computeMaxFontSize(
   if (idealFontSize !== undefined && idealFontSize !== null) {
     size = idealFontSize;
   } else if (maxHeight === undefined || maxHeight === null) {
-    throw new Error(
-      'You must specify at least one of maxHeight or idealFontSize',
-    );
+    throw new Error('You must specify at least one of maxHeight or idealFontSize');
   } else {
     size = Math.floor(maxHeight);
   }
@@ -63,19 +61,11 @@ export default function computeMaxFontSize(
   }
 
   if (maxWidth !== undefined && maxWidth !== null) {
-    size = decreaseSizeUntil(
-      size,
-      computeDimension,
-      dim => dim.width <= maxWidth,
-    );
+    size = decreaseSizeUntil(size, computeDimension, dim => dim.width <= maxWidth);
   }
 
   if (maxHeight !== undefined && maxHeight !== null) {
-    size = decreaseSizeUntil(
-      size,
-      computeDimension,
-      dim => dim.height <= maxHeight,
-    );
+    size = decreaseSizeUntil(size, computeDimension, dim => dim.height <= maxHeight);
   }
 
   return size;

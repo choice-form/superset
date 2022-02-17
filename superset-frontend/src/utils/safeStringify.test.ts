@@ -40,9 +40,7 @@ describe('Stringify utility testing', () => {
     };
     expect(safeStringify(noncircular)).toEqual(JSON.stringify(noncircular));
     // Checking that it works with quick-deepish-copies as well.
-    expect(JSON.parse(safeStringify(noncircular))).toEqual(
-      JSON.parse(JSON.stringify(noncircular)),
-    );
+    expect(JSON.parse(safeStringify(noncircular))).toEqual(JSON.parse(JSON.stringify(noncircular)));
   });
 
   it('handles simple circular json as expected', () => {
@@ -95,9 +93,7 @@ describe('Stringify utility testing', () => {
         e: {},
       },
     };
-    expect(safeStringify(emptyObjectValues)).toEqual(
-      JSON.stringify(emptyObjectValues),
-    );
+    expect(safeStringify(emptyObjectValues)).toEqual(JSON.stringify(emptyObjectValues));
   });
 
   it('does not remove nested same keys', () => {

@@ -30,13 +30,7 @@ const baseTimeSection = {
 
 export const legacyTimeseriesTime: ControlPanelSectionConfig = {
   ...baseTimeSection,
-  controlSetRows: [
-    ['granularity'],
-    ['druid_time_origin'],
-    ['granularity_sqla'],
-    ['time_grain_sqla'],
-    ['time_range'],
-  ],
+  controlSetRows: [['granularity'], ['druid_time_origin'], ['granularity_sqla'], ['time_grain_sqla'], ['time_range']],
 };
 
 export const legacyRegularTime: ControlPanelSectionConfig = {
@@ -75,9 +69,7 @@ export const datasourceAndVizType: ControlPanelSectionConfig = {
           type: 'HiddenControl',
           label: t('URL Parameters'),
           hidden: true,
-          description: t(
-            'Extra url parameters for use in Jinja templated queries',
-          ),
+          description: t('Extra url parameters for use in Jinja templated queries'),
         },
       },
       {
@@ -86,9 +78,7 @@ export const datasourceAndVizType: ControlPanelSectionConfig = {
           type: 'HiddenControl',
           label: t('Extra Parameters'),
           hidden: true,
-          description: t(
-            'Extra parameters that any plugins can choose to set for use in Jinja templated queries',
-          ),
+          description: t('Extra parameters that any plugins can choose to set for use in Jinja templated queries'),
         },
       },
       {

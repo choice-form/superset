@@ -45,13 +45,7 @@ class TimeRangeFormatter extends ExtensibleFunction {
   }) {
     super((value: (Date | number | null | undefined)[]) => this.format(value));
 
-    const {
-      id,
-      label,
-      description = '',
-      formatFunc,
-      useLocalTime = false,
-    } = config;
+    const { id, label, description = '', formatFunc, useLocalTime = false } = config;
 
     this.id = id;
     this.label = label ?? id;

@@ -36,14 +36,7 @@ const metadata = new ChartMetadata({
     { url: employment, caption: t('Employment and education') },
   ],
   name: t('Heatmap'),
-  tags: [
-    t('Business'),
-    t('Intensity'),
-    t('Legacy'),
-    t('Density'),
-    t('Predictive'),
-    t('Single Metric'),
-  ],
+  tags: [t('Business'), t('Intensity'), t('Legacy'), t('Density'), t('Predictive'), t('Single Metric')],
   thumbnail,
   useLegacyApi: true,
 });

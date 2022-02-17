@@ -28,11 +28,7 @@ interface SetPeriodicRunnerProps {
   refreshTimer?: number;
 }
 
-export default function setPeriodicRunner({
-  interval = 0,
-  periodicRender,
-  refreshTimer,
-}: SetPeriodicRunnerProps) {
+export default function setPeriodicRunner({ interval = 0, periodicRender, refreshTimer }: SetPeriodicRunnerProps) {
   stopPeriodicRender(refreshTimer);
 
   if (interval > 0) {

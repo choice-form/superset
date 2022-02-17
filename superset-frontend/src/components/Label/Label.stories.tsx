@@ -26,15 +26,7 @@ export default {
   excludeStories: 'options',
 };
 
-export const options = [
-  'default',
-  'info',
-  'success',
-  'warning',
-  'danger',
-  'primary',
-  'secondary',
-];
+export const options = ['default', 'info', 'success', 'warning', 'danger', 'primary', 'secondary'];
 
 export const LabelGallery = () => (
   <>

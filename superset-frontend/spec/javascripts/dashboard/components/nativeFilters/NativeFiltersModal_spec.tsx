@@ -72,9 +72,7 @@ describe('FiltersConfigModal', () => {
   }
 
   it('should be a valid react element', () => {
-    expect(React.isValidElement(<FiltersConfigModal {...mockedProps} />)).toBe(
-      true,
-    );
+    expect(React.isValidElement(<FiltersConfigModal {...mockedProps} />)).toBe(true);
   });
 
   it('the form validates required fields', async () => {
@@ -123,9 +121,7 @@ describe('FiltersConfigModal', () => {
       addFilter();
       await clickCancel();
       expect(onCancel.mock.calls).toHaveLength(0);
-      expect(wrapper.find(Alert).text()).toContain(
-        'There are unsaved changes.',
-      );
+      expect(wrapper.find(Alert).text()).toContain('There are unsaved changes.');
     });
   });
 });

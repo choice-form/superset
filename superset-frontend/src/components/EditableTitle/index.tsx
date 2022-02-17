@@ -52,8 +52,7 @@ export default function EditableTitle({
   const [isEditing, setIsEditing] = useState(editing);
   const [currentTitle, setCurrentTitle] = useState(title);
   const [lastTitle, setLastTitle] = useState(title);
-  const [contentBoundingRect, setContentBoundingRect] =
-    useState<DOMRect | null>(null);
+  const [contentBoundingRect, setContentBoundingRect] = useState<DOMRect | null>(null);
   // Used so we can access the DOM element if a user clicks on this component.
 
   const contentRef = useRef<any | HTMLInputElement | HTMLTextAreaElement>();
@@ -85,9 +84,7 @@ export default function EditableTitle({
 
     // For multi-line values, save the actual rendered size of the displayed text.
     // Later, if a textarea is constructed for editing the value, we'll need this.
-    const contentBounding = contentRef.current
-      ? contentRef.current.getBoundingClientRect()
-      : null;
+    const contentBounding = contentRef.current ? contentRef.current.getBoundingClientRect() : null;
     setIsEditing(true);
     setContentBoundingRect(contentBounding);
   }
@@ -151,10 +148,7 @@ export default function EditableTitle({
 
   // Construct an inline style based on previously-saved height of the rendered label. Only
   // used in multi-line contexts.
-  const editStyle =
-    isEditing && contentBoundingRect
-      ? { height: `${contentBoundingRect.height}px` }
-      : undefined;
+  const editStyle = isEditing && contentBoundingRect ? { height: `${contentBoundingRect.height}px` } : undefined;
 
   // Create a textarea when we're editing a multi-line value, otherwise create an input (which may
   // be text or a button).
@@ -192,12 +186,7 @@ export default function EditableTitle({
     titleComponent = (
       <Tooltip
         id="title-tooltip"
-        title={
-          canEdit
-            ? t('Click to edit')
-            : noPermitTooltip ||
-              t("You don't have the rights to alter this title.")
-        }
+        title={canEdit ? t('Click to edit') : noPermitTooltip || t("You don't have the rights to alter this title.")}
       >
         {titleComponent}
       </Tooltip>

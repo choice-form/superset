@@ -25,10 +25,7 @@ import sqlKeywords from 'src/SqlLab/utils/sqlKeywords';
 
 import adhocMetricType from 'src/explore/components/controls/MetricControl/adhocMetricType';
 import columnType from 'src/explore/components/controls/FilterControl/columnType';
-import AdhocFilter, {
-  EXPRESSION_TYPES,
-  CLAUSES,
-} from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, { EXPRESSION_TYPES, CLAUSES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
 
 const propTypes = {
   adhocFilter: PropTypes.instanceOf(AdhocFilter).isRequired,
@@ -55,8 +52,7 @@ export default class AdhocFilterEditPopoverSqlTabContent extends React.Component
   constructor(props) {
     super(props);
     this.onSqlExpressionChange = this.onSqlExpressionChange.bind(this);
-    this.onSqlExpressionClauseChange =
-      this.onSqlExpressionClauseChange.bind(this);
+    this.onSqlExpressionClauseChange = this.onSqlExpressionClauseChange.bind(this);
     this.handleAceEditorRef = this.handleAceEditorRef.bind(this);
 
     this.selectProps = {
@@ -125,11 +121,7 @@ export default class AdhocFilterEditPopoverSqlTabContent extends React.Component
     return (
       <span>
         <div className="filter-edit-clause-section">
-          <StyledSelect
-            options={selectOptions}
-            {...this.selectProps}
-            {...clauseSelectProps}
-          />
+          <StyledSelect options={selectOptions} {...this.selectProps} {...clauseSelectProps} />
           <span className="filter-edit-clause-info">
             <strong>WHERE</strong> {t('Filters by columns')}
             <br />

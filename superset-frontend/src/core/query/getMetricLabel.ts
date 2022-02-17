@@ -27,9 +27,7 @@ export default function getMetricLabel(metric: QueryFormMetric): string {
     return metric.label;
   }
   if (isAdhocMetricSimple(metric)) {
-    return `${metric.aggregate}(${
-      metric.column.columnName || metric.column.column_name
-    })`;
+    return `${metric.aggregate}(${metric.column.columnName || metric.column.column_name})`;
   }
   return metric.sqlExpression;
 }

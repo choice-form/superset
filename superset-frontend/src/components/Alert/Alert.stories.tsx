@@ -41,20 +41,8 @@ export const AlertGallery = () => (
     {types.map(type => (
       <div key={type} style={{ marginBottom: 40, width: 600 }}>
         <h4>{type}</h4>
-        <Alert
-          type={type}
-          showIcon
-          closable
-          message={bigText}
-          style={{ marginBottom: 20 }}
-        />
-        <Alert
-          type={type}
-          showIcon
-          message={smallText}
-          description={bigText}
-          closable
-        />
+        <Alert type={type} showIcon closable message={bigText} style={{ marginBottom: 20 }} />
+        <Alert type={type} showIcon message={smallText} description={bigText} closable />
       </div>
     ))}
   </>

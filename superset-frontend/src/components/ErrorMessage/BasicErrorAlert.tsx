@@ -49,21 +49,13 @@ interface BasicErrorAlertProps {
   level: ErrorLevel;
 }
 
-export default function BasicErrorAlert({
-  body,
-  level = 'error',
-  title,
-}: BasicErrorAlertProps) {
+export default function BasicErrorAlert({ body, level = 'error', title }: BasicErrorAlertProps) {
   const theme = useTheme();
   const iconColor = theme.colors[level].base;
 
   return (
     <StyledContainer level={level} role="alert">
-      {level === 'error' ? (
-        <Icons.ErrorSolid iconColor={iconColor} />
-      ) : (
-        <Icons.WarningSolid iconColor={iconColor} />
-      )}
+      {level === 'error' ? <Icons.ErrorSolid iconColor={iconColor} /> : <Icons.WarningSolid iconColor={iconColor} />}
       <StyledContent>
         <StyledTitle>{title}</StyledTitle>
         <p>{body}</p>

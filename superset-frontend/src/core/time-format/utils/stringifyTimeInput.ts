@@ -17,10 +17,7 @@
  * under the License.
  */
 
-export default function stringifyTimeInput(
-  value: Date | number | undefined | null,
-  fn: (time: Date) => string,
-) {
+export default function stringifyTimeInput(value: Date | number | undefined | null, fn: (time: Date) => string) {
   if (value === null || value === undefined) {
     return `${value}`;
   }

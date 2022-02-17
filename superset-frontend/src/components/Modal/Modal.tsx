@@ -20,18 +20,10 @@ import React, { useRef, useState } from 'react';
 import { isNil } from 'lodash';
 import { styled, t } from 'src/core';
 import { css } from '@emotion/react';
-import {
-  Modal as AntdModal,
-  ModalProps as AntdModalProps,
-} from 'src/common/components';
+import { Modal as AntdModal, ModalProps as AntdModalProps } from 'src/common/components';
 import Button from 'src/components/Button';
 import { Resizable, ResizableProps } from 're-resizable';
-import Draggable, {
-  DraggableBounds,
-  DraggableData,
-  DraggableEvent,
-  DraggableProps,
-} from 'react-draggable';
+import Draggable, { DraggableBounds, DraggableData, DraggableEvent, DraggableProps } from 'react-draggable';
 
 export interface ModalProps {
   className?: string;
@@ -95,8 +87,7 @@ export const StyledModal = styled(BaseModal)<StyledModalProps>`
 
   .ant-modal-header {
     background-color: ${({ theme }) => theme.colors.grayscale.light4};
-    border-radius: ${({ theme }) => theme.borderRadius}px
-      ${({ theme }) => theme.borderRadius}px 0 0;
+    border-radius: ${({ theme }) => theme.borderRadius}px ${({ theme }) => theme.borderRadius}px 0 0;
     padding-left: ${({ theme }) => theme.gridUnit * 4}px;
     padding-right: ${({ theme }) => theme.gridUnit * 4}px;
 
@@ -126,8 +117,7 @@ export const StyledModal = styled(BaseModal)<StyledModalProps>`
     ${({ resizable, height }) => !resizable && height && `height: ${height};`}
   }
   .ant-modal-footer {
-    border-top: ${({ theme }) => theme.gridUnit / 4}px solid
-      ${({ theme }) => theme.colors.grayscale.light2};
+    border-top: ${({ theme }) => theme.gridUnit / 4}px solid ${({ theme }) => theme.colors.grayscale.light2};
     padding: ${({ theme }) => theme.gridUnit * 4}px;
 
     .btn {
@@ -212,9 +202,7 @@ const CustomModal = ({
   resizableConfig = {
     maxHeight: RESIZABLE_MAX_HEIGHT,
     maxWidth: RESIZABLE_MAX_WIDTH,
-    minHeight: hideFooter
-      ? RESIZABLE_MIN_HEIGHT
-      : RESIZABLE_MIN_HEIGHT + MODAL_FOOTER_HEIGHT,
+    minHeight: hideFooter ? RESIZABLE_MIN_HEIGHT : RESIZABLE_MIN_HEIGHT + MODAL_FOOTER_HEIGHT,
     minWidth: RESIZABLE_MIN_WIDTH,
     enable: {
       bottom: true,

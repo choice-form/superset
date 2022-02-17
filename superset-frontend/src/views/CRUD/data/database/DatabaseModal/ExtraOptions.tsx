@@ -50,18 +50,12 @@ const ExtraOptions = ({
   const createAsOpen = !!(db?.allow_ctas || db?.allow_cvas);
 
   return (
-    <Collapse
-      expandIconPosition="right"
-      accordion
-      css={(theme: SupersetTheme) => antdCollapseStyles(theme)}
-    >
+    <Collapse expandIconPosition="right" accordion css={(theme: SupersetTheme) => antdCollapseStyles(theme)}>
       <Collapse.Panel
         header={
           <div>
             <h4>SQL Lab</h4>
-            <p className="helper">
-              Adjust how this database will interact with SQL Lab.
-            </p>
+            <p className="helper">Adjust how this database will interact with SQL Lab.</p>
           </div>
         }
         key="1"
@@ -75,9 +69,7 @@ const ExtraOptions = ({
               onChange={onInputChange}
               labelText={t('Expose database in SQL Lab')}
             />
-            <InfoTooltip
-              tooltip={t('Allow this database to be queried in SQL Lab')}
-            />
+            <InfoTooltip tooltip={t('Allow this database to be queried in SQL Lab')} />
           </div>
           <StyledExpandableForm
             className={cx('expandable', {
@@ -94,9 +86,7 @@ const ExtraOptions = ({
                   onChange={onInputChange}
                   labelText={t('Allow CREATE TABLE AS')}
                 />
-                <InfoTooltip
-                  tooltip={t('Allow creation of new tables based on queries')}
-                />
+                <InfoTooltip tooltip={t('Allow creation of new tables based on queries')} />
               </div>
             </StyledInputContainer>
             <StyledInputContainer css={no_margin_bottom}>
@@ -108,13 +98,9 @@ const ExtraOptions = ({
                   onChange={onInputChange}
                   labelText={t('Allow CREATE VIEW AS')}
                 />
-                <InfoTooltip
-                  tooltip={t('Allow creation of new views based on queries')}
-                />
+                <InfoTooltip tooltip={t('Allow creation of new views based on queries')} />
               </div>
-              <StyledInputContainer
-                className={cx('expandable', { open: createAsOpen })}
-              >
+              <StyledInputContainer className={cx('expandable', { open: createAsOpen })}>
                 <div className="control-label">{t('CTAS & CVAS SCHEMA')}</div>
                 <div className="input-container">
                   <input
@@ -126,9 +112,7 @@ const ExtraOptions = ({
                   />
                 </div>
                 <div className="helper">
-                  {t(
-                    'Force all tables and views to be created in this schema when clicking CTAS or CVAS in SQL Lab.',
-                  )}
+                  {t('Force all tables and views to be created in this schema when clicking CTAS or CVAS in SQL Lab.')}
                 </div>
               </StyledInputContainer>
             </StyledInputContainer>
@@ -176,9 +160,7 @@ const ExtraOptions = ({
                   labelText={t('Enable query cost estimation')}
                 />
                 <InfoTooltip
-                  tooltip={t(
-                    'For Presto and Postgres, shows a button to compute cost before running a query.',
-                  )}
+                  tooltip={t('For Presto and Postgres, shows a button to compute cost before running a query.')}
                 />
               </div>
             </StyledInputContainer>
@@ -191,11 +173,7 @@ const ExtraOptions = ({
                   onChange={onExtraInputChange}
                   labelText={t('Allow this database to be explored')}
                 />
-                <InfoTooltip
-                  tooltip={t(
-                    'When enabled, users are able to visualize SQL Lab results in Explore.',
-                  )}
-                />
+                <InfoTooltip tooltip={t('When enabled, users are able to visualize SQL Lab results in Explore.')} />
               </div>
             </StyledInputContainer>
           </StyledExpandableForm>
@@ -205,9 +183,7 @@ const ExtraOptions = ({
         header={
           <div>
             <h4>Performance</h4>
-            <p className="helper">
-              Adjust performance settings of this database.
-            </p>
+            <p className="helper">Adjust performance settings of this database.</p>
           </div>
         }
         key="2"
@@ -237,10 +213,7 @@ const ExtraOptions = ({
             <input
               type="number"
               name="schema_cache_timeout"
-              value={
-                db?.extra_json?.metadata_cache_timeout?.schema_cache_timeout ||
-                ''
-              }
+              value={db?.extra_json?.metadata_cache_timeout?.schema_cache_timeout || ''}
               placeholder={t('Enter duration in seconds')}
               onChange={onExtraInputChange}
               data-test="schema-cache-timeout-test"
@@ -259,10 +232,7 @@ const ExtraOptions = ({
             <input
               type="number"
               name="table_cache_timeout"
-              value={
-                db?.extra_json?.metadata_cache_timeout?.table_cache_timeout ||
-                ''
-              }
+              value={db?.extra_json?.metadata_cache_timeout?.table_cache_timeout || ''}
               placeholder={t('Enter duration in seconds')}
               onChange={onExtraInputChange}
               data-test="table-cache-timeout-test"
@@ -329,9 +299,7 @@ const ExtraOptions = ({
               name="encrypted_extra"
               value={db?.encrypted_extra || ''}
               placeholder={t('Secure extra')}
-              onChange={(json: string) =>
-                onEditorChange({ json, name: 'encrypted_extra' })
-              }
+              onChange={(json: string) => onEditorChange({ json, name: 'encrypted_extra' })}
               width="100%"
               height="160px"
             />
@@ -365,25 +333,17 @@ const ExtraOptions = ({
           </div>
         </StyledInputContainer>
         <StyledInputContainer>
-          <div className="control-label">
-            {t('Schemas allowed for CSV upload')}
-          </div>
+          <div className="control-label">{t('Schemas allowed for CSV upload')}</div>
           <div className="input-container">
             <input
               type="text"
               name="schemas_allowed_for_csv_upload"
-              value={(
-                db?.extra_json?.schemas_allowed_for_csv_upload || []
-              ).join(',')}
+              value={(db?.extra_json?.schemas_allowed_for_csv_upload || []).join(',')}
               placeholder="schema1,schema2"
               onChange={onExtraInputChange}
             />
           </div>
-          <div className="helper">
-            {t(
-              'A comma-separated list of schemas that CSVs are allowed to upload to.',
-            )}
-          </div>
+          <div className="helper">{t('A comma-separated list of schemas that CSVs are allowed to upload to.')}</div>
         </StyledInputContainer>
         <StyledInputContainer css={{ no_margin_bottom }}>
           <div className="input-container">
@@ -392,9 +352,7 @@ const ExtraOptions = ({
               indeterminate={false}
               checked={!!db?.impersonate_user}
               onChange={onInputChange}
-              labelText={t(
-                'Impersonate logged in user (Presto, Trino, Drill, Hive, and GSheets)',
-              )}
+              labelText={t('Impersonate logged in user (Presto, Trino, Drill, Hive, and GSheets)')}
             />
             <InfoTooltip
               tooltip={t(
@@ -416,11 +374,7 @@ const ExtraOptions = ({
               onChange={onInputChange}
               labelText={t('Allow data upload')}
             />
-            <InfoTooltip
-              tooltip={t(
-                'If selected, please set the schemas allowed for data upload in Extra.',
-              )}
-            />
+            <InfoTooltip tooltip={t('If selected, please set the schemas allowed for data upload in Extra.')} />
           </div>
         </StyledInputContainer>
       </Collapse.Panel>
@@ -440,19 +394,13 @@ const ExtraOptions = ({
               name="metadata_params"
               value={db?.extra_json?.metadata_params || ''}
               placeholder={t('Metadata Parameters')}
-              onChange={(json: string) =>
-                onExtraEditorChange({ json, name: 'metadata_params' })
-              }
+              onChange={(json: string) => onExtraEditorChange({ json, name: 'metadata_params' })}
               width="100%"
               height="160px"
             />
           </div>
           <div className="helper">
-            <div>
-              {t(
-                'The metadata_params object gets unpacked into the sqlalchemy.MetaData call.',
-              )}
-            </div>
+            <div>{t('The metadata_params object gets unpacked into the sqlalchemy.MetaData call.')}</div>
           </div>
         </StyledInputContainer>
         <StyledInputContainer>
@@ -462,19 +410,13 @@ const ExtraOptions = ({
               name="engine_params"
               value={db?.extra_json?.engine_params || ''}
               placeholder={t('Engine Parameters')}
-              onChange={(json: string) =>
-                onExtraEditorChange({ json, name: 'engine_params' })
-              }
+              onChange={(json: string) => onExtraEditorChange({ json, name: 'engine_params' })}
               width="100%"
               height="160px"
             />
           </div>
           <div className="helper">
-            <div>
-              {t(
-                'The engine_params object gets unpacked into the sqlalchemy.create_engine call.',
-              )}
-            </div>
+            <div>{t('The engine_params object gets unpacked into the sqlalchemy.create_engine call.')}</div>
           </div>
         </StyledInputContainer>
         <StyledInputContainer>

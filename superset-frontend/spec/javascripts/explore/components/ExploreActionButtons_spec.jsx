@@ -36,15 +36,11 @@ describe('ExploreActionButtons', () => {
   };
 
   it('renders', () => {
-    expect(
-      React.isValidElement(<ExploreActionButtons {...defaultProps} />),
-    ).toBe(true);
+    expect(React.isValidElement(<ExploreActionButtons {...defaultProps} />)).toBe(true);
   });
 
   it('should render 6 children/buttons', () => {
-    const wrapper = shallow(
-      <ExploreActionButtons {...defaultProps} store={mockStore} />,
-    );
+    const wrapper = shallow(<ExploreActionButtons {...defaultProps} store={mockStore} />);
     expect(wrapper.dive().children()).toHaveLength(6);
   });
 

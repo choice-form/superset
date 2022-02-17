@@ -25,12 +25,7 @@ const config: ControlPanelConfig = {
     {
       label: t('Query'),
       expanded: true,
-      controlSetRows: [
-        ['groupby'],
-        ['metric'],
-        ['adhoc_filters'],
-        ['row_limit'],
-      ],
+      controlSetRows: [['groupby'], ['metric'], ['adhoc_filters'], ['row_limit']],
     },
     {
       label: t('Chart Options'),
@@ -64,9 +59,7 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: 'SMART_NUMBER',
               choices: D3_FORMAT_OPTIONS,
-              description: `${t(
-                'D3 format syntax: https://github.com/d3/d3-format',
-              )} ${t(
+              description: `${t('D3 format syntax: https://github.com/d3/d3-format')} ${t(
                 'Only applies when the "Label Type" is not set to a percentage.',
               )}`,
             },
@@ -94,8 +87,7 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: true,
               description: t(
-                'Whether to display the labels. Note that the label only displays when the the 5% ' +
-                  'threshold.',
+                'Whether to display the labels. Note that the label only displays when the the 5% ' + 'threshold.',
               ),
             },
           },

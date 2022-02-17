@@ -66,9 +66,7 @@ export default class SupersetClientClass {
     csrfToken = undefined,
   }: ClientConfig = {}) {
     const url = new URL(
-      host || protocol
-        ? `${protocol || 'https:'}//${host || 'localhost'}`
-        : baseUrl,
+      host || protocol ? `${protocol || 'https:'}//${host || 'localhost'}` : baseUrl,
       // baseUrl for API could also be relative, so we provide current location.href
       // as the base of baseUrl
       window.location.href,
@@ -107,27 +105,19 @@ export default class SupersetClientClass {
     return this.csrfToken !== null && this.csrfToken !== undefined;
   }
 
-  async get<T extends ParseMethod = 'json'>(
-    requestConfig: RequestConfig & { parseMethod?: T },
-  ) {
+  async get<T extends ParseMethod = 'json'>(requestConfig: RequestConfig & { parseMethod?: T }) {
     return this.request({ ...requestConfig, method: 'GET' });
   }
 
-  async delete<T extends ParseMethod = 'json'>(
-    requestConfig: RequestConfig & { parseMethod?: T },
-  ) {
+  async delete<T extends ParseMethod = 'json'>(requestConfig: RequestConfig & { parseMethod?: T }) {
     return this.request({ ...requestConfig, method: 'DELETE' });
   }
 
-  async put<T extends ParseMethod = 'json'>(
-    requestConfig: RequestConfig & { parseMethod?: T },
-  ) {
+  async put<T extends ParseMethod = 'json'>(requestConfig: RequestConfig & { parseMethod?: T }) {
     return this.request({ ...requestConfig, method: 'PUT' });
   }
 
-  async post<T extends ParseMethod = 'json'>(
-    requestConfig: RequestConfig & { parseMethod?: T },
-  ) {
+  async post<T extends ParseMethod = 'json'>(requestConfig: RequestConfig & { parseMethod?: T }) {
     return this.request({ ...requestConfig, method: 'POST' });
   }
 
@@ -210,8 +200,6 @@ export default class SupersetClientClass {
     const host = inputHost ?? this.host;
     const cleanHost = host.slice(-1) === '/' ? host.slice(0, -1) : host; // no backslash
 
-    return `${this.protocol}//${cleanHost}/${
-      endpoint[0] === '/' ? endpoint.slice(1) : endpoint
-    }`;
+    return `${this.protocol}//${cleanHost}/${endpoint[0] === '/' ? endpoint.slice(1) : endpoint}`;
   }
 }

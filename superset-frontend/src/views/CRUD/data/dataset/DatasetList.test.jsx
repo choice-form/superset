@@ -144,41 +144,31 @@ describe('DatasetList', () => {
     // None selected
     const checkedEvent = { target: { checked: true } };
     const uncheckedEvent = { target: { checked: false } };
-    expect(
-      wrapper.find('[data-test="bulk-select-copy"]').text(),
-    ).toMatchInlineSnapshot(`"0 Selected"`);
+    expect(wrapper.find('[data-test="bulk-select-copy"]').text()).toMatchInlineSnapshot(`"0 Selected"`);
 
     // Vitual Selected
     act(() => {
       wrapper.find(IndeterminateCheckbox).at(1).props().onChange(checkedEvent);
     });
     await waitForComponentToPaint(wrapper);
-    expect(
-      wrapper.find('[data-test="bulk-select-copy"]').text(),
-    ).toMatchInlineSnapshot(`"1 Selected (Virtual)"`);
+    expect(wrapper.find('[data-test="bulk-select-copy"]').text()).toMatchInlineSnapshot(`"1 Selected (Virtual)"`);
 
     // Physical Selected
     act(() => {
-      wrapper
-        .find(IndeterminateCheckbox)
-        .at(1)
-        .props()
-        .onChange(uncheckedEvent);
+      wrapper.find(IndeterminateCheckbox).at(1).props().onChange(uncheckedEvent);
       wrapper.find(IndeterminateCheckbox).at(2).props().onChange(checkedEvent);
     });
     await waitForComponentToPaint(wrapper);
-    expect(
-      wrapper.find('[data-test="bulk-select-copy"]').text(),
-    ).toMatchInlineSnapshot(`"1 Selected (Physical)"`);
+    expect(wrapper.find('[data-test="bulk-select-copy"]').text()).toMatchInlineSnapshot(`"1 Selected (Physical)"`);
 
     // All Selected
     act(() => {
       wrapper.find(IndeterminateCheckbox).at(0).props().onChange(checkedEvent);
     });
     await waitForComponentToPaint(wrapper);
-    expect(
-      wrapper.find('[data-test="bulk-select-copy"]').text(),
-    ).toMatchInlineSnapshot(`"3 Selected (2 Physical, 1 Virtual)"`);
+    expect(wrapper.find('[data-test="bulk-select-copy"]').text()).toMatchInlineSnapshot(
+      `"3 Selected (2 Physical, 1 Virtual)"`,
+    );
   });
 });
 
@@ -199,9 +189,7 @@ describe('RTL', () => {
 
   let isFeatureEnabledMock;
   beforeEach(async () => {
-    isFeatureEnabledMock = jest
-      .spyOn(featureFlags, 'isFeatureEnabled')
-      .mockImplementation(() => true);
+    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => true);
     await renderAndWait();
   });
 

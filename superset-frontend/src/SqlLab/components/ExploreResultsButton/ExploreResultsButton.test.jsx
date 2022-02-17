@@ -80,9 +80,7 @@ describe('ExploreResultsButton', () => {
   });
 
   it('renders with props', () => {
-    expect(
-      React.isValidElement(<ExploreResultsButton {...mockedProps} />),
-    ).toBe(true);
+    expect(React.isValidElement(<ExploreResultsButton {...mockedProps} />)).toBe(true);
   });
 
   it('detects bad columns', () => {
@@ -150,9 +148,7 @@ describe('ExploreResultsButton', () => {
       database,
       onClick() {},
     };
-    const longQueryWrapper = shallow(
-      <ExploreResultsButton store={store} {...props} />,
-    )
+    const longQueryWrapper = shallow(<ExploreResultsButton store={store} {...props} />)
       .dive()
       .dive();
     const inst = longQueryWrapper.instance();
@@ -176,9 +172,7 @@ describe('ExploreResultsButton', () => {
       sinon.stub(exploreUtils, 'getExploreUrl').callsFake(() => 'mockURL');
       sinon.spy(exploreUtils, 'exportChart');
       sinon.spy(exploreUtils, 'exploreChart');
-      sinon
-        .stub(wrapper.instance(), 'buildVizOptions')
-        .callsFake(() => mockOptions);
+      sinon.stub(wrapper.instance(), 'buildVizOptions').callsFake(() => mockOptions);
     });
     afterEach(() => {
       exploreUtils.getExploreUrl.restore();

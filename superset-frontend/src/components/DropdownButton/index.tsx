@@ -32,8 +32,7 @@ const StyledDropdownButton = styled.div`
       outline: none;
       text-transform: uppercase;
       &:first-of-type {
-        border-radius: ${({ theme }) =>
-          `${theme.gridUnit}px 0 0 ${theme.gridUnit}px`};
+        border-radius: ${({ theme }) => `${theme.gridUnit}px 0 0 ${theme.gridUnit}px`};
         margin: 0;
         width: 120px;
       }
@@ -44,8 +43,7 @@ const StyledDropdownButton = styled.div`
       }
       &:nth-child(2) {
         margin: 0;
-        border-radius: ${({ theme }) =>
-          `0 ${theme.gridUnit}px ${theme.gridUnit}px 0`};
+        border-radius: ${({ theme }) => `0 ${theme.gridUnit}px ${theme.gridUnit}px 0`};
         width: ${({ theme }) => theme.gridUnit * 9}px;
         &:before,
         &:hover:before {
@@ -74,12 +72,7 @@ export interface DropdownButtonProps {
   buttonsRender?: ((buttons: ReactNode[]) => ReactNode[]) | undefined;
 }
 
-export const DropdownButton = ({
-  overlay,
-  tooltip,
-  placement,
-  ...rest
-}: DropdownButtonProps) => {
+export const DropdownButton = ({ overlay, tooltip, placement, ...rest }: DropdownButtonProps) => {
   const buildButton = (
     props: {
       buttonsRender?: DropdownButtonProps['buttonsRender'];
@@ -92,11 +85,7 @@ export const DropdownButton = ({
   if (tooltip) {
     return buildButton({
       buttonsRender: ([leftButton, rightButton]) => [
-        <Tooltip
-          placement={placement}
-          id={`${kebabCase(tooltip)}-tooltip`}
-          title={tooltip}
-        >
+        <Tooltip placement={placement} id={`${kebabCase(tooltip)}-tooltip`} title={tooltip}>
           {leftButton}
         </Tooltip>,
         rightButton,

@@ -18,11 +18,7 @@
  */
 
 import shortid from 'shortid';
-import {
-  waitForChartLoad,
-  WORLD_HEALTH_CHARTS,
-  WORLD_HEALTH_DASHBOARD,
-} from './dashboard.helper';
+import { waitForChartLoad, WORLD_HEALTH_CHARTS, WORLD_HEALTH_DASHBOARD } from './dashboard.helper';
 
 function openDashboardEditProperties() {
   cy.get('.dashboard-header [aria-label=edit-alt]').click();
@@ -67,31 +63,19 @@ describe('Dashboard save action', () => {
 
     // remove treemap chart from dashboard
     cy.get('[aria-label="edit-alt"]').click({ timeout: 5000 });
-    cy.get('[data-test="dashboard-delete-component-button"]')
-      .last()
-      .trigger('mouseenter')
-      .click();
+    cy.get('[data-test="dashboard-delete-component-button"]').last().trigger('mouseenter').click();
 
-    cy.get('[data-test="grid-container"]')
-      .find('.box_plot')
-      .should('not.exist');
+    cy.get('[data-test="grid-container"]').find('.box_plot').should('not.exist');
 
     cy.intercept('PUT', '/api/v1/dashboard/**').as('putDashboardRequest');
-    cy.get('[data-test="dashboard-header"]')
-      .find('[data-test="header-save-button"]')
-      .contains('Save')
-      .click();
+    cy.get('[data-test="dashboard-header"]').find('[data-test="header-save-button"]').contains('Save').click();
 
     // go back to view mode
     cy.wait('@putDashboardRequest');
-    cy.get('[data-test="dashboard-header"]')
-      .find('[aria-label="edit-alt"]')
-      .click();
+    cy.get('[data-test="dashboard-header"]').find('[aria-label="edit-alt"]').click();
 
     // deleted boxplot should still not exist
-    cy.get('[data-test="grid-container"]')
-      .find('.box_plot', { timeout: 20000 })
-      .should('not.exist');
+    cy.get('[data-test="grid-container"]').find('.box_plot', { timeout: 20000 }).should('not.exist');
   });
 
   // TODO: Fix broken test
@@ -110,11 +94,7 @@ describe('Dashboard save action', () => {
           .click()
           .then($colorSelect => {
             // select a new color scheme
-            cy.wrap($colorSelect)
-              .find('.Select__option')
-              .first()
-              .next()
-              .click();
+            cy.wrap($colorSelect).find('.Select__option').first().next().click();
           });
 
         // remove json metadata
@@ -126,10 +106,7 @@ describe('Dashboard save action', () => {
           });
 
         // update title
-        cy.get('.ant-modal-body')
-          .contains('Title')
-          .siblings('input')
-          .type(`{selectall}{backspace}${dashboardTitle}`);
+        cy.get('.ant-modal-body').contains('Title').siblings('input').type(`{selectall}{backspace}${dashboardTitle}`);
 
         // save edit changes
         cy.get('.ant-modal-footer')
@@ -146,10 +123,7 @@ describe('Dashboard save action', () => {
             cy.contains('saved successfully').should('be.visible');
 
             // assert title has been updated
-            cy.get('.editable-title [data-test="editable-title-input"]').should(
-              'have.value',
-              dashboardTitle,
-            );
+            cy.get('.editable-title [data-test="editable-title-input"]').should('have.value', dashboardTitle);
           });
       });
   });

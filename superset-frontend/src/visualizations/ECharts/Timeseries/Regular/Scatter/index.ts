@@ -17,22 +17,12 @@
  * under the License.
  */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import {
-  t,
-  ChartMetadata,
-  ChartPlugin,
-  AnnotationType,
-  Behavior,
-} from 'src/core';
+import { t, ChartMetadata, ChartPlugin, AnnotationType, Behavior } from 'src/core';
 import buildQuery from '../../buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from '../../transformProps';
 import thumbnail from './images/thumbnail.png';
-import {
-  EchartsTimeseriesChartProps,
-  EchartsTimeseriesFormData,
-  EchartsTimeseriesSeriesType,
-} from '../../types';
+import { EchartsTimeseriesChartProps, EchartsTimeseriesFormData, EchartsTimeseriesSeriesType } from '../../types';
 import example1 from './images/Scatter1.png';
 
 const scatterTransformProps = (chartProps: EchartsTimeseriesChartProps) =>

@@ -44,35 +44,26 @@ class ExploreResultsButton extends React.PureComponent {
   constructor(props) {
     super(props);
     this.getInvalidColumns = this.getInvalidColumns.bind(this);
-    this.renderInvalidColumnMessage =
-      this.renderInvalidColumnMessage.bind(this);
+    this.renderInvalidColumnMessage = this.renderInvalidColumnMessage.bind(this);
   }
 
   getColumns() {
     const { props } = this;
-    if (
-      props.query &&
-      props.query.results &&
-      props.query.results.selected_columns
-    ) {
+    if (props.query && props.query.results && props.query.results.selected_columns) {
       return props.query.results.selected_columns;
     }
     return [];
   }
 
   getQueryDuration() {
-    return moment
-      .duration(this.props.query.endDttm - this.props.query.startDttm)
-      .asSeconds();
+    return moment.duration(this.props.query.endDttm - this.props.query.startDttm).asSeconds();
   }
 
   getInvalidColumns() {
     const re1 = /__\d+$/; // duplicate column name pattern
     const re2 = /^__timestamp/i; // reserved temporal column alias
 
-    return this.props.query.results.selected_columns
-      .map(col => col.name)
-      .filter(col => re1.test(col) || re2.test(col));
+    return this.props.query.results.selected_columns.map(col => col.name).filter(col => re1.test(col) || re2.test(col));
   }
 
   datasourceName() {
@@ -104,25 +95,13 @@ class ExploreResultsButton extends React.PureComponent {
         type="warning"
         message={
           <>
-            {t(
-              'This query took %s seconds to run, ',
-              Math.round(this.getQueryDuration()),
-            ) +
-              t(
-                'and the explore view times out at %s seconds ',
-                this.props.timeout,
-              ) +
-              t(
-                'following this flow will most likely lead to your query timing out. ',
-              ) +
-              t(
-                'We recommend your summarize your data further before following that flow. ',
-              ) +
+            {t('This query took %s seconds to run, ', Math.round(this.getQueryDuration())) +
+              t('and the explore view times out at %s seconds ', this.props.timeout) +
+              t('following this flow will most likely lead to your query timing out. ') +
+              t('We recommend your summarize your data further before following that flow. ') +
               t('If activated you can use the ')}
             <strong>CREATE TABLE AS </strong>
-            {t(
-              'feature to store a summarized data set that you can then explore.',
-            )}
+            {t('feature to store a summarized data set that you can then explore.')}
           </>
         }
       />
@@ -150,8 +129,7 @@ class ExploreResultsButton extends React.PureComponent {
   }
 
   render() {
-    const allowsSubquery =
-      this.props.database && this.props.database.allows_subquery;
+    const allowsSubquery = this.props.database && this.props.database.allows_subquery;
     return (
       <>
         <Button
@@ -160,12 +138,7 @@ class ExploreResultsButton extends React.PureComponent {
           disabled={!allowsSubquery}
           tooltip={t('Explore the result set in the data exploration view')}
         >
-          <InfoTooltipWithTrigger
-            icon="line-chart"
-            placement="top"
-            label="explore"
-          />{' '}
-          {t('Explore')}
+          <InfoTooltipWithTrigger icon="line-chart" placement="top" label="explore" /> {t('Explore')}
         </Button>
       </>
     );
@@ -187,7 +160,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ExploreResultsButton);
+export default connect(mapStateToProps, mapDispatchToProps)(ExploreResultsButton);

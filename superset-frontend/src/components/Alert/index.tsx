@@ -17,26 +17,14 @@
  * under the License.
  */
 import React, { PropsWithChildren } from 'react';
-import {
-  Alert as AntdAlert,
-  AlertProps as AntdAlertProps,
-} from 'src/common/components';
+import { Alert as AntdAlert, AlertProps as AntdAlertProps } from 'src/common/components';
 import { useTheme } from 'src/core';
 import Icons from 'src/components/Icons';
 
-export type AlertProps = PropsWithChildren<
-  AntdAlertProps & { roomBelow?: boolean }
->;
+export type AlertProps = PropsWithChildren<AntdAlertProps & { roomBelow?: boolean }>;
 
 export default function Alert(props: AlertProps) {
-  const {
-    type = 'info',
-    description,
-    showIcon = true,
-    closable = true,
-    roomBelow = false,
-    children,
-  } = props;
+  const { type = 'info', description, showIcon = true, closable = true, roomBelow = false, children } = props;
 
   const theme = useTheme();
   const { colors, typography, gridUnit } = theme;
@@ -73,9 +61,7 @@ export default function Alert(props: AlertProps) {
         '& .ant-alert-message': {
           color: baseColor.dark2,
           fontSize: typography.sizes.m,
-          fontWeight: description
-            ? typography.weights.bold
-            : typography.weights.normal,
+          fontWeight: description ? typography.weights.bold : typography.weights.normal,
         },
         '& .ant-alert-description': {
           color: baseColor.dark2,

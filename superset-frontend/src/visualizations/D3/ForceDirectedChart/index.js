@@ -25,14 +25,7 @@ const metadata = new ChartMetadata({
   credits: ['http://bl.ocks.org/d3noob/5141278'],
   description: '',
   name: t('Force-directed Graph'),
-  tags: [
-    t('Aesthetic'),
-    t('Categorical'),
-    t('Comparison'),
-    t('Description'),
-    t('Density'),
-    t('Single Metric'),
-  ],
+  tags: [t('Aesthetic'), t('Categorical'), t('Comparison'), t('Description'), t('Density'), t('Single Metric')],
   thumbnail,
   useLegacyApi: true,
 });

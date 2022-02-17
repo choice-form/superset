@@ -35,9 +35,7 @@ describe('EditableTitle', () => {
     },
   };
   let editableWrapper = shallow(<EditableTable {...mockProps} />);
-  const notEditableWrapper = shallow(
-    <EditableTable title="my title" onSaveTitle={callback} />,
-  );
+  const notEditableWrapper = shallow(<EditableTable title="my title" onSaveTitle={callback} />);
   it('is valid', () => {
     expect(React.isValidElement(<EditableTable {...mockProps} />)).toBe(true);
   });

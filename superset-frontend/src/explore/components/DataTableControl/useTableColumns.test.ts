@@ -135,9 +135,7 @@ test('use only the first record columns', () => {
 });
 
 test('useTableColumns with options', () => {
-  const hook = renderHook(() =>
-    useTableColumns(all_columns, data, { col01: { id: 'ID' } }),
-  );
+  const hook = renderHook(() => useTableColumns(all_columns, data, { col01: { id: 'ID' } }));
   expect(hook.result.current).toEqual([
     {
       Cell: expect.any(Function),

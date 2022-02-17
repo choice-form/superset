@@ -32,11 +32,7 @@ export default function transformProps(chartProps: FilterBoxChartProps) {
     width,
     height,
   } = chartProps;
-  const {
-    onAddFilter = NOOP,
-    onFilterMenuOpen = NOOP,
-    onFilterMenuClose = NOOP,
-  } = hooks;
+  const { onAddFilter = NOOP, onFilterMenuOpen = NOOP, onFilterMenuClose = NOOP } = hooks;
   const {
     sliceId,
     dateFilter,

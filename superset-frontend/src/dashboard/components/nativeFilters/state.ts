@@ -27,9 +27,7 @@ const defaultFilterConfiguration: Filter[] = [];
 
 export function useFilterConfiguration() {
   return useSelector<any, FilterConfiguration>(
-    state =>
-      state.dashboardInfo?.metadata?.native_filter_configuration ||
-      defaultFilterConfiguration,
+    state => state.dashboardInfo?.metadata?.native_filter_configuration || defaultFilterConfiguration,
   );
 }
 
@@ -50,35 +48,23 @@ export function useFilterConfigMap() {
 }
 
 export function useDashboardLayout() {
-  return useSelector<any, DashboardLayout>(
-    state => state.dashboardLayout?.present,
-  );
+  return useSelector<any, DashboardLayout>(state => state.dashboardLayout?.present);
 }
 
 export function useDashboardHasTabs() {
   const dashboardLayout = useDashboardLayout();
-  return useMemo(
-    () =>
-      Object.values(dashboardLayout).some(element => element.type === TAB_TYPE),
-    [dashboardLayout],
-  );
+  return useMemo(() => Object.values(dashboardLayout).some(element => element.type === TAB_TYPE), [dashboardLayout]);
 }
 
 function useActiveDashboardTabs() {
-  return useSelector<RootState, ActiveTabs>(
-    state => state.dashboardState?.activeTabs,
-  );
+  return useSelector<RootState, ActiveTabs>(state => state.dashboardState?.activeTabs);
 }
 
 function useSelectChartTabParents() {
   const dashboardLayout = useDashboardLayout();
   return (chartId: number) => {
-    const chartLayoutItem = Object.values(dashboardLayout).find(
-      layoutItem => layoutItem.meta?.chartId === chartId,
-    );
-    return chartLayoutItem?.parents.filter(
-      (parent: string) => dashboardLayout[parent].type === TAB_TYPE,
-    );
+    const chartLayoutItem = Object.values(dashboardLayout).find(layoutItem => layoutItem.meta?.chartId === chartId);
+    return chartLayoutItem?.parents.filter((parent: string) => dashboardLayout[parent].type === TAB_TYPE);
   };
 }
 
@@ -92,10 +78,7 @@ function useIsFilterInScope() {
   return (filter: CascadeFilter) =>
     filter.chartsInScope?.some((chartId: number) => {
       const tabParents = selectChartTabParents(chartId);
-      return (
-        tabParents?.length === 0 ||
-        tabParents?.every(tab => activeTabs.includes(tab))
-      );
+      return tabParents?.length === 0 || tabParents?.every(tab => activeTabs.includes(tab));
     });
 }
 

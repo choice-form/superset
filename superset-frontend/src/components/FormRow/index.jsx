@@ -40,14 +40,7 @@ const defaultProps = {
 export default function FormRow({ label, tooltip, control, isCheckbox }) {
   const labelAndTooltip = (
     <span>
-      {label}{' '}
-      {tooltip && (
-        <InfoTooltipWithTrigger
-          placement="top"
-          label={label}
-          tooltip={tooltip}
-        />
-      )}
+      {label} {tooltip && <InfoTooltipWithTrigger placement="top" label={label} tooltip={tooltip} />}
     </span>
   );
   if (isCheckbox) {

@@ -40,23 +40,16 @@ export type PromiseOrValueLoader<T> = () => PromiseOrValue<T>;
 export type ChartType = ComponentType<any>;
 type ValueOrModuleWithValue<T> = T | { default: T };
 
-interface ChartPluginConfig<
-  FormData extends QueryFormData = QueryFormData,
-  Props extends ChartProps = ChartProps,
-> {
+interface ChartPluginConfig<FormData extends QueryFormData = QueryFormData, Props extends ChartProps = ChartProps> {
   metadata: ChartMetadata;
   /** Use buildQuery for immediate value. For lazy-loading, use loadBuildQuery. */
   buildQuery?: BuildQueryFunction<FormData>;
   /** Use loadBuildQuery for dynamic import (lazy-loading) */
-  loadBuildQuery?: PromiseOrValueLoader<
-    ValueOrModuleWithValue<BuildQueryFunction<FormData>>
-  >;
+  loadBuildQuery?: PromiseOrValueLoader<ValueOrModuleWithValue<BuildQueryFunction<FormData>>>;
   /** Use transformProps for immediate value. For lazy-loading, use loadTransformProps.  */
   transformProps?: TransformProps<Props>;
   /** Use loadTransformProps for dynamic import (lazy-loading) */
-  loadTransformProps?: PromiseOrValueLoader<
-    ValueOrModuleWithValue<TransformProps<Props>>
-  >;
+  loadTransformProps?: PromiseOrValueLoader<ValueOrModuleWithValue<TransformProps<Props>>>;
   /** Use Chart for immediate value. For lazy-loading, use loadChart. */
   Chart?: ChartType;
   /** Use loadChart for dynamic import (lazy-loading) */
@@ -69,23 +62,19 @@ interface ChartPluginConfig<
  * Loaders of the form `() => import('foo')` may return esmodules
  * which require the value to be extracted as `module.default`
  * */
-function sanitizeLoader<T>(
-  loader: PromiseOrValueLoader<ValueOrModuleWithValue<T>>,
-): PromiseOrValueLoader<T> {
+function sanitizeLoader<T>(loader: PromiseOrValueLoader<ValueOrModuleWithValue<T>>): PromiseOrValueLoader<T> {
   return () => {
     const loaded = loader();
 
     return loaded instanceof Promise
-      ? (loaded.then(
-          module => ('default' in module && module.default) || module,
-        ) as Promise<T>)
+      ? (loaded.then(module => ('default' in module && module.default) || module) as Promise<T>)
       : (loaded as T);
   };
 }
 
 export default class ChartPlugin<
   FormData extends QueryFormData = QueryFormData,
-  Props extends ChartProps = ChartProps,
+  Props extends ChartProps = ChartProps
 > extends Plugin {
   controlPanel: ChartControlPanel;
 
@@ -115,9 +104,7 @@ export default class ChartPlugin<
       (loadBuildQuery && sanitizeLoader(loadBuildQuery)) ||
       (buildQuery && sanitizeLoader(() => buildQuery)) ||
       undefined;
-    this.loadTransformProps = sanitizeLoader(
-      loadTransformProps ?? (() => transformProps),
-    );
+    this.loadTransformProps = sanitizeLoader(loadTransformProps ?? (() => transformProps));
 
     if (loadChart) {
       this.loadChart = sanitizeLoader<ChartType>(loadChart);
@@ -133,10 +120,7 @@ export default class ChartPlugin<
     getChartMetadataRegistry().registerValue(key, this.metadata);
     getChartComponentRegistry().registerLoader(key, this.loadChart);
     getChartControlPanelRegistry().registerValue(key, this.controlPanel);
-    getChartTransformPropsRegistry().registerLoader(
-      key,
-      this.loadTransformProps,
-    );
+    getChartTransformPropsRegistry().registerLoader(key, this.loadTransformProps);
     if (this.loadBuildQuery) {
       getChartBuildQueryRegistry().registerLoader(key, this.loadBuildQuery);
     }

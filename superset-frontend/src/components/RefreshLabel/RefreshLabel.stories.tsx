@@ -23,9 +23,7 @@ export default {
   title: 'RefreshLabel',
 };
 
-export const InteractiveRefreshLabel = (args: RefreshLabelProps) => (
-  <RefreshLabel {...args} />
-);
+export const InteractiveRefreshLabel = (args: RefreshLabelProps) => <RefreshLabel {...args} />;
 
 InteractiveRefreshLabel.args = {
   tooltipContent: 'Tooltip',

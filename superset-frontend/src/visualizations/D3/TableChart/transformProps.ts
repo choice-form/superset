@@ -35,19 +35,13 @@ import { getColorFormatters } from 'src/chartConntrols';
 
 import isEqualColumns from './utils/isEqualColumns';
 import DateWithFormatter from './utils/DateWithFormatter';
-import {
-  DataColumnMeta,
-  TableChartProps,
-  TableChartTransformedProps,
-} from './types';
+import { DataColumnMeta, TableChartProps, TableChartTransformedProps } from './types';
 
 const { PERCENT_3_POINT } = NumberFormats;
 const { DATABASE_DATETIME } = TimeFormats;
 
 function isNumeric(key: string, data: DataRecord[] = []) {
-  return data.every(
-    x => x[key] === null || x[key] === undefined || typeof x[key] === 'number',
-  );
+  return data.every(x => x[key] === null || x[key] === undefined || typeof x[key] === 'number');
 }
 
 const processDataRecords = memoizeOne(function processDataRecords(
@@ -57,9 +51,7 @@ const processDataRecords = memoizeOne(function processDataRecords(
   if (!data || !data[0]) {
     return data || [];
   }
-  const timeColumns = columns.filter(
-    column => column.dataType === GenericDataType.TEMPORAL,
-  );
+  const timeColumns = columns.filter(column => column.dataType === GenericDataType.TEMPORAL);
 
   if (timeColumns.length > 0) {
     return data.map(x => {
@@ -77,9 +69,7 @@ const processDataRecords = memoizeOne(function processDataRecords(
   return data;
 });
 
-const processColumns = memoizeOne(function processColumns(
-  props: TableChartProps,
-) {
+const processColumns = memoizeOne(function processColumns(props: TableChartProps) {
   const {
     datasource: { columnFormats, verboseMap },
     rawFormData: {
@@ -162,22 +152,13 @@ const processColumns = memoizeOne(function processColumns(
         config,
       };
     });
-  return [metrics, percentMetrics, columns] as [
-    typeof metrics,
-    typeof percentMetrics,
-    typeof columns,
-  ];
-},
-isEqualColumns);
+  return [metrics, percentMetrics, columns] as [typeof metrics, typeof percentMetrics, typeof columns];
+}, isEqualColumns);
 
 /**
  * Automatically set page size based on number of cells.
  */
-const getPageSize = (
-  pageSize: number | string | null | undefined,
-  numRecords: number,
-  numColumns: number,
-) => {
+const getPageSize = (pageSize: number | string | null | undefined, numRecords: number, numColumns: number) => {
   if (typeof pageSize === 'number') {
     // NaN is also has typeof === 'number'
     return pageSize || 0;
@@ -189,9 +170,7 @@ const getPageSize = (
   return numRecords * numColumns > 5000 ? 200 : 0;
 };
 
-const transformProps = (
-  chartProps: TableChartProps,
-): TableChartTransformedProps => {
+const transformProps = (chartProps: TableChartProps): TableChartTransformedProps => {
   const {
     height,
     width,
@@ -232,12 +211,8 @@ const transformProps = (
     rowCount = baseQuery?.rowcount ?? 0;
   }
   const data = processDataRecords(baseQuery?.data, columns);
-  const totals =
-    showTotals && queryMode === QueryMode.aggregate
-      ? totalQuery?.data[0]
-      : undefined;
-  const columnColorFormatters =
-    getColorFormatters(conditionalFormatting, data) ?? [];
+  const totals = showTotals && queryMode === QueryMode.aggregate ? totalQuery?.data[0] : undefined;
+  const columnColorFormatters = getColorFormatters(conditionalFormatting, data) ?? [];
 
   return {
     height,
@@ -257,9 +232,7 @@ const transformProps = (
     sortDesc,
     includeSearch,
     rowCount,
-    pageSize: serverPagination
-      ? serverPageLength
-      : getPageSize(pageLength, data.length, columns.length),
+    pageSize: serverPagination ? serverPageLength : getPageSize(pageLength, data.length, columns.length),
     filters: filterState.filters,
     emitFilter,
     onChangeFilter,

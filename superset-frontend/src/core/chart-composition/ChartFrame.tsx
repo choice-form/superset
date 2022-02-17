@@ -28,13 +28,7 @@ type Props = {
   contentWidth?: number;
   contentHeight?: number;
   height: number;
-  renderContent: ({
-    height,
-    width,
-  }: {
-    height: number;
-    width: number;
-  }) => React.ReactNode;
+  renderContent: ({ height, width }: { height: number; width: number }) => React.ReactNode;
   width: number;
 };
 
@@ -44,8 +38,7 @@ export default class ChartFrame extends PureComponent<Props, {}> {
   };
 
   render() {
-    const { contentWidth, contentHeight, width, height, renderContent } =
-      this.props;
+    const { contentWidth, contentHeight, width, height, renderContent } = this.props;
 
     const overflowX = checkNumber(contentWidth) && contentWidth > width;
     const overflowY = checkNumber(contentHeight) && contentHeight > height;

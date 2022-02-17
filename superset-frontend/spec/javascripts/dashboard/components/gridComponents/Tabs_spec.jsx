@@ -99,9 +99,7 @@ describe('Tabs', () => {
 
   it('should render a tab pane for each child', () => {
     const wrapper = setup();
-    expect(wrapper.find(LineEditableTabs.TabPane)).toHaveLength(
-      props.component.children.length,
-    );
+    expect(wrapper.find(LineEditableTabs.TabPane)).toHaveLength(props.component.children.length);
   });
 
   it('should render editable tabs in editMode', () => {
@@ -113,18 +111,13 @@ describe('Tabs', () => {
   it('should render a DashboardComponent for each child', () => {
     // note: this does not test Tab content
     const wrapper = setup({ renderTabContent: false });
-    expect(wrapper.find(DashboardComponent)).toHaveLength(
-      props.component.children.length,
-    );
+    expect(wrapper.find(DashboardComponent)).toHaveLength(props.component.children.length);
   });
 
   it('should call createComponent if the (+) tab is clicked', () => {
     const createComponent = sinon.spy();
     const wrapper = setup({ editMode: true, createComponent });
-    wrapper
-      .find('[data-test="dashboard-component-tabs"] .ant-tabs-nav-add')
-      .last()
-      .simulate('click');
+    wrapper.find('[data-test="dashboard-component-tabs"] .ant-tabs-nav-add').last().simulate('click');
 
     expect(createComponent.callCount).toBe(1);
   });
@@ -144,9 +137,7 @@ describe('Tabs', () => {
     const onChangeTab = sinon.spy();
     const wrapper = setup({ editMode: true, onChangeTab });
     wrapper
-      .find(
-        '[data-test="dashboard-component-tabs"] .ant-tabs-tab [role="button"]',
-      )
+      .find('[data-test="dashboard-component-tabs"] .ant-tabs-tab [role="button"]')
       .at(1) // will not call if it is already selected
       .simulate('click');
 
@@ -183,8 +174,7 @@ describe('Tabs', () => {
     expect(wrapper.state('tabIndex')).toBe(0);
 
     // display child in directPathToChild list
-    const directPathToChild =
-      dashboardLayoutWithTabs.present.ROW_ID2.parents.slice();
+    const directPathToChild = dashboardLayoutWithTabs.present.ROW_ID2.parents.slice();
     const directLinkProps = {
       ...props,
       directPathToChild,

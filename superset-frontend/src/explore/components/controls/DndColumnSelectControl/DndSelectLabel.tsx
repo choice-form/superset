@@ -20,15 +20,8 @@ import React, { ReactNode } from 'react';
 import { useDrop } from 'react-dnd';
 import { t, useTheme } from 'src/core';
 import ControlHeader from 'src/explore/components/ControlHeader';
-import {
-  AddControlLabel,
-  DndLabelsContainer,
-  HeaderContainer,
-} from 'src/explore/components/controls/OptionControls';
-import {
-  DatasourcePanelDndItem,
-  DndItemValue,
-} from 'src/explore/components/DatasourcePanel/types';
+import { AddControlLabel, DndLabelsContainer, HeaderContainer } from 'src/explore/components/controls/OptionControls';
+import { DatasourcePanelDndItem, DndItemValue } from 'src/explore/components/DatasourcePanel/types';
 import Icons from 'src/components/Icons';
 import { DndItemType } from '../../DndItemType';
 
@@ -45,11 +38,7 @@ export type DndSelectLabelProps = {
   onClickGhostButton?: () => void;
 };
 
-export default function DndSelectLabel({
-  displayGhostButton = true,
-  accept,
-  ...props
-}: DndSelectLabelProps) {
+export default function DndSelectLabel({ displayGhostButton = true, accept, ...props }: DndSelectLabelProps) {
   const theme = useTheme();
 
   const [{ isOver, canDrop }, datasourcePanelDrop] = useDrop({
@@ -60,8 +49,7 @@ export default function DndSelectLabel({
       props.onDropValue?.(item.value);
     },
 
-    canDrop: (item: DatasourcePanelDndItem) =>
-      props.canDrop(item) && (props.canDropValue?.(item.value) ?? true),
+    canDrop: (item: DatasourcePanelDndItem) => props.canDrop(item) && (props.canDropValue?.(item.value) ?? true),
 
     collect: monitor => ({
       isOver: monitor.isOver(),
@@ -72,10 +60,7 @@ export default function DndSelectLabel({
 
   function renderGhostButton() {
     return (
-      <AddControlLabel
-        cancelHover={!props.onClickGhostButton}
-        onClick={props.onClickGhostButton}
-      >
+      <AddControlLabel cancelHover={!props.onClickGhostButton} onClick={props.onClickGhostButton}>
         <Icons.PlusSmall iconColor={theme.colors.grayscale.light1} />
         {t(props.ghostButtonText || 'Drop columns here')}
       </AddControlLabel>

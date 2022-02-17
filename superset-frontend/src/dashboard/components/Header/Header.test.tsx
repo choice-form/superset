@@ -253,9 +253,7 @@ test('should render the unselected fave icon', () => {
   const mockedProps = createProps();
   setup(mockedProps);
   expect(mockedProps.fetchFaveStar).toHaveBeenCalled();
-  expect(
-    screen.getByRole('img', { name: 'favorite-unselected' }),
-  ).toBeInTheDocument();
+  expect(screen.getByRole('img', { name: 'favorite-unselected' })).toBeInTheDocument();
 });
 
 test('should render the selected fave icon', () => {
@@ -265,9 +263,7 @@ test('should render the selected fave icon', () => {
     isStarred: true,
   };
   setup(favedProps);
-  expect(
-    screen.getByRole('img', { name: 'favorite-selected' }),
-  ).toBeInTheDocument();
+  expect(screen.getByRole('img', { name: 'favorite-selected' })).toBeInTheDocument();
 });
 
 test('should NOT render the fave icon on anonymous user', () => {
@@ -277,12 +273,8 @@ test('should NOT render the fave icon on anonymous user', () => {
     user: undefined,
   };
   setup(anonymousUserProps);
-  expect(() =>
-    screen.getByRole('img', { name: 'favorite-unselected' }),
-  ).toThrowError('Unable to find');
-  expect(() =>
-    screen.getByRole('img', { name: 'favorite-selected' }),
-  ).toThrowError('Unable to find');
+  expect(() => screen.getByRole('img', { name: 'favorite-unselected' })).toThrowError('Unable to find');
+  expect(() => screen.getByRole('img', { name: 'favorite-selected' })).toThrowError('Unable to find');
 });
 
 test('should fave', async () => {
@@ -329,9 +321,7 @@ describe('Email Report Modal', () => {
   let dispatch: any;
 
   beforeEach(async () => {
-    isFeatureEnabledMock = jest
-      .spyOn(featureFlags, 'isFeatureEnabled')
-      .mockImplementation(() => true);
+    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => true);
     dispatch = sinon.spy();
   });
 
@@ -467,9 +457,7 @@ describe('Email Report Modal', () => {
   it('Should render report header', async () => {
     const mockedProps = createProps();
     setup(mockedProps);
-    expect(
-      screen.getByRole('button', { name: 'Schedule email report' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Schedule email report' })).toBeInTheDocument();
   });
 
   it('Should not render report header even with menu access for anonymous user', async () => {
@@ -486,8 +474,6 @@ describe('Email Report Modal', () => {
       },
     };
     setup(anonymousUserProps);
-    expect(
-      screen.queryByRole('button', { name: 'Schedule email report' }),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Schedule email report' })).not.toBeInTheDocument();
   });
 });

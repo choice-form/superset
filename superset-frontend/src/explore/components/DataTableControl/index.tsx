@@ -21,16 +21,9 @@ import { styled, t } from 'src/core';
 import { Column } from 'react-table';
 import debounce from 'lodash/debounce';
 import { Input } from 'src/common/components';
-import {
-  BOOL_FALSE_DISPLAY,
-  BOOL_TRUE_DISPLAY,
-  SLOW_DEBOUNCE,
-} from 'src/constants';
+import { BOOL_FALSE_DISPLAY, BOOL_TRUE_DISPLAY, SLOW_DEBOUNCE } from 'src/constants';
 import Button from 'src/components/Button';
-import {
-  applyFormattingToTabularData,
-  prepareCopyToClipboardTabularData,
-} from 'src/utils/common';
+import { applyFormattingToTabularData, prepareCopyToClipboardTabularData } from 'src/utils/common';
 import CopyToClipboard from 'src/components/CopyToClipboard';
 import RowCountLabel from 'src/explore/components/RowCountLabel';
 
@@ -53,27 +46,15 @@ const CopyNode = (
   </CopyButton>
 );
 
-export const CopyToClipboardButton = ({
-  data,
-  columns,
-}: {
-  data?: Record<string, any>;
-  columns?: string[];
-}) => (
+export const CopyToClipboardButton = ({ data, columns }: { data?: Record<string, any>; columns?: string[] }) => (
   <CopyToClipboard
-    text={
-      data && columns ? prepareCopyToClipboardTabularData(data, columns) : ''
-    }
+    text={data && columns ? prepareCopyToClipboardTabularData(data, columns) : ''}
     wrapped={false}
     copyNode={CopyNode}
   />
 );
 
-export const FilterInput = ({
-  onChangeHandler,
-}: {
-  onChangeHandler(filterText: string): void;
-}) => {
+export const FilterInput = ({ onChangeHandler }: { onChangeHandler(filterText: string): void }) => {
   const debouncedChangeHandler = debounce(onChangeHandler, SLOW_DEBOUNCE);
   return (
     <Input
@@ -86,33 +67,18 @@ export const FilterInput = ({
   );
 };
 
-export const RowCount = ({
-  data,
-  loading,
-}: {
-  data?: Record<string, any>[];
-  loading: boolean;
-}) => (
-  <RowCountLabel
-    rowcount={data?.length ?? 0}
-    loading={loading}
-    suffix={t('rows retrieved')}
-  />
+export const RowCount = ({ data, loading }: { data?: Record<string, any>[]; loading: boolean }) => (
+  <RowCountLabel rowcount={data?.length ?? 0} loading={loading} suffix={t('rows retrieved')} />
 );
 
-export const useFilteredTableData = (
-  filterText: string,
-  data?: Record<string, any>[],
-) =>
+export const useFilteredTableData = (filterText: string, data?: Record<string, any>[]) =>
   useMemo(() => {
     if (!data?.length) {
       return [];
     }
     const formattedData = applyFormattingToTabularData(data);
     return formattedData.filter((row: Record<string, any>) =>
-      Object.values(row).some(value =>
-        value?.toString().toLowerCase().includes(filterText.toLowerCase()),
-      ),
+      Object.values(row).some(value => value?.toString().toLowerCase().includes(filterText.toLowerCase())),
     );
   }, [data, filterText]);
 

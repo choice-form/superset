@@ -114,8 +114,7 @@ class DatasourceControl extends React.PureComponent {
       showChangeDatasourceModal: false,
     };
     this.onDatasourceSave = this.onDatasourceSave.bind(this);
-    this.toggleChangeDatasourceModal =
-      this.toggleChangeDatasourceModal.bind(this);
+    this.toggleChangeDatasourceModal = this.toggleChangeDatasourceModal.bind(this);
     this.toggleEditDatasourceModal = this.toggleEditDatasourceModal.bind(this);
     this.toggleShowDatasource = this.toggleShowDatasource.bind(this);
     this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
@@ -126,15 +125,9 @@ class DatasourceControl extends React.PureComponent {
     const timeCol = this.props.form_data?.granularity_sqla;
     const { columns } = this.props.datasource;
     const firstDttmCol = columns.find(column => column.is_dttm);
-    if (
-      datasource.type === 'table' &&
-      !columns.find(({ column_name }) => column_name === timeCol)?.is_dttm
-    ) {
+    if (datasource.type === 'table' && !columns.find(({ column_name }) => column_name === timeCol)?.is_dttm) {
       // set `granularity_sqla` to first datatime column name or null
-      this.props.actions.setControlValue(
-        'granularity_sqla',
-        firstDttmCol ? firstDttmCol.column_name : null,
-      );
+      this.props.actions.setControlValue('granularity_sqla', firstDttmCol ? firstDttmCol.column_name : null);
     }
     if (this.props.onDatasourceSave) {
       this.props.onDatasourceSave(datasource);
@@ -191,9 +184,7 @@ class DatasourceControl extends React.PureComponent {
           </Menu.Item>
         )}
         <Menu.Item key={CHANGE_DATASET}>{t('Change dataset')}</Menu.Item>
-        {isSqlSupported && (
-          <Menu.Item key={VIEW_IN_SQL_LAB}>{t('View in SQL Lab')}</Menu.Item>
-        )}
+        {isSqlSupported && <Menu.Item key={VIEW_IN_SQL_LAB}>{t('View in SQL Lab')}</Menu.Item>}
       </Menu>
     );
 
@@ -225,19 +216,10 @@ class DatasourceControl extends React.PureComponent {
               <Icons.AlertSolid iconColor={supersetTheme.colors.warning.base} />
             </Tooltip>
           )}
-          {extra?.warning_markdown && (
-            <WarningIconWithTooltip warningMarkdown={extra.warning_markdown} />
-          )}
-          <Dropdown
-            overlay={datasourceMenu}
-            trigger={['click']}
-            data-test="datasource-menu"
-          >
+          {extra?.warning_markdown && <WarningIconWithTooltip warningMarkdown={extra.warning_markdown} />}
+          <Dropdown overlay={datasourceMenu} trigger={['click']} data-test="datasource-menu">
             <Tooltip title={t('More dataset related options')}>
-              <Icons.MoreVert
-                className="datasource-modal-trigger"
-                data-test="datasource-menu-trigger"
-              />
+              <Icons.MoreVert className="datasource-modal-trigger" data-test="datasource-menu-trigger" />
             </Tooltip>
           </Dropdown>
         </div>
@@ -250,18 +232,9 @@ class DatasourceControl extends React.PureComponent {
               source="explore"
               subtitle={
                 <>
+                  <p>{t('The dataset linked to this chart may have been deleted.')}</p>
                   <p>
-                    {t(
-                      'The dataset linked to this chart may have been deleted.',
-                    )}
-                  </p>
-                  <p>
-                    <Button
-                      buttonStyle="primary"
-                      onClick={() =>
-                        this.handleMenuItemClick({ key: CHANGE_DATASET })
-                      }
-                    >
+                    <Button buttonStyle="primary" onClick={() => this.handleMenuItemClick({ key: CHANGE_DATASET })}>
                       {t('Change dataset')}
                     </Button>
                   </p>

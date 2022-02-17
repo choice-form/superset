@@ -69,16 +69,11 @@ const fakePluginControls = {
 
 describe('getControlsForVizType', () => {
   beforeEach(() => {
-    getChartControlPanelRegistry().registerValue(
-      'chart_controls_inventory_fake',
-      fakePluginControls,
-    );
+    getChartControlPanelRegistry().registerValue('chart_controls_inventory_fake', fakePluginControls);
   });
 
   it('returns a map of the controls', () => {
-    expect(
-      JSON.stringify(getControlsForVizType('chart_controls_inventory_fake')),
-    ).toEqual(
+    expect(JSON.stringify(getControlsForVizType('chart_controls_inventory_fake'))).toEqual(
       JSON.stringify({
         y_axis_bounds: {
           type: 'BoundsControl',

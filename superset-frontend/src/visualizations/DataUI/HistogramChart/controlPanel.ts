@@ -44,9 +44,7 @@ const dndAllColumns = {
   validators: [validateNonEmpty],
 };
 
-const columnsConfig = isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP)
-  ? dndAllColumns
-  : allColumns;
+const columnsConfig = isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP) ? dndAllColumns : allColumns;
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -80,16 +78,7 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('No of Bins'),
               default: 5,
-              choices: formatSelectOptions([
-                '10',
-                '25',
-                '50',
-                '75',
-                '100',
-                '150',
-                '200',
-                '250',
-              ]),
+              choices: formatSelectOptions(['10', '25', '50', '75', '100', '150', '200', '250']),
               description: t('Select the number of bins for the histogram'),
             },
           },

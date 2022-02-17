@@ -47,12 +47,7 @@ const RequiredLabel = styled.label`
   }
 `;
 
-export default function FormLabel({
-  children,
-  htmlFor,
-  required = false,
-  className,
-}: FormLabelProps) {
+export default function FormLabel({ children, htmlFor, required = false, className }: FormLabelProps) {
   const StyledLabel = required ? RequiredLabel : Label;
   return (
     <StyledLabel htmlFor={htmlFor} className={className}>

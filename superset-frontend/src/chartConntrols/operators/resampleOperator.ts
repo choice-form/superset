@@ -21,9 +21,7 @@ import { PostProcessingResample } from 'src/core';
 import { PostProcessingFactory } from './types';
 import { TIME_COLUMN } from './utils';
 
-export const resampleOperator: PostProcessingFactory<
-  PostProcessingResample | undefined
-> = (formData, queryObject) => {
+export const resampleOperator: PostProcessingFactory<PostProcessingResample | undefined> = (formData, queryObject) => {
   const resampleZeroFill = formData.resample_method === 'zerofill';
   const resampleMethod = resampleZeroFill ? 'asfreq' : formData.resample_method;
   const resampleRule = formData.resample_rule;

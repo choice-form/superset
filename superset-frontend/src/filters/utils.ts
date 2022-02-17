@@ -54,11 +54,7 @@ export const getSelectExtraFormData = (
   return extra;
 };
 
-export const getRangeExtraFormData = (
-  col: string,
-  lower?: number | null,
-  upper?: number | null,
-) => {
+export const getRangeExtraFormData = (col: string, lower?: number | null, upper?: number | null) => {
   const filters: QueryObjectFilterClause[] = [];
   if (lower !== undefined && lower !== null) {
     filters.push({ col, op: '>=', val: lower });
@@ -94,9 +90,7 @@ export function getDataRecordFormatter({
     }
     if (dtype === GenericDataType.BOOLEAN) {
       try {
-        return JSON.parse(String(value).toLowerCase())
-          ? TRUE_STRING
-          : FALSE_STRING;
+        return JSON.parse(String(value).toLowerCase()) ? TRUE_STRING : FALSE_STRING;
       } catch {
         return FALSE_STRING;
       }
@@ -107,11 +101,7 @@ export function getDataRecordFormatter({
     if (timeFormatter && dtype === GenericDataType.TEMPORAL) {
       return timeFormatter(value);
     }
-    if (
-      numberFormatter &&
-      typeof value === 'number' &&
-      dtype === GenericDataType.NUMERIC
-    ) {
+    if (numberFormatter && typeof value === 'number' && dtype === GenericDataType.NUMERIC) {
       return numberFormatter(value);
     }
     return String(value);

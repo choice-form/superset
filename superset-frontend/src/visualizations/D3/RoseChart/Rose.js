@@ -22,11 +22,7 @@
 import d3 from 'd3';
 import PropTypes from 'prop-types';
 import nv from 'nvd3';
-import {
-  getTimeFormatter,
-  getNumberFormatter,
-  CategoricalColorNamespace,
-} from 'src/core';
+import { getTimeFormatter, getNumberFormatter, CategoricalColorNamespace } from 'src/core';
 import './Rose.css';
 
 const propTypes = {
@@ -67,16 +63,7 @@ function sortValues(a, b) {
 }
 
 function Rose(element, props) {
-  const {
-    data,
-    width,
-    height,
-    colorScheme,
-    dateTimeFormat,
-    numberFormat,
-    useRichTooltip,
-    useAreaProportions,
-  } = props;
+  const { data, width, height, colorScheme, dateTimeFormat, numberFormat, useRichTooltip, useAreaProportions } = props;
 
   const div = d3.select(element);
   div.classed('superset-legacy-chart-rose', true);
@@ -146,23 +133,12 @@ function Rose(element, props) {
   const gro = 8; // mouseover radius growth in pixels
   const mini = 0.075;
 
-  const centerTranslate = `translate(${width / 2},${
-    roseHeight / 2 + margin.top
-  })`;
-  const roseWrap = g
-    .append('g')
-    .attr('transform', centerTranslate)
-    .attr('class', 'roseWrap');
+  const centerTranslate = `translate(${width / 2},${roseHeight / 2 + margin.top})`;
+  const roseWrap = g.append('g').attr('transform', centerTranslate).attr('class', 'roseWrap');
 
-  const labelsWrap = g
-    .append('g')
-    .attr('transform', centerTranslate)
-    .attr('class', 'labelsWrap');
+  const labelsWrap = g.append('g').attr('transform', centerTranslate).attr('class', 'labelsWrap');
 
-  const groupLabelsWrap = g
-    .append('g')
-    .attr('transform', centerTranslate)
-    .attr('class', 'groupLabelsWrap');
+  const groupLabelsWrap = g.append('g').attr('transform', centerTranslate).attr('class', 'groupLabelsWrap');
 
   // Compute inner and outer angles for each data point
   function computeArcStates(adatum) {
@@ -171,10 +147,7 @@ function Rose(element, props) {
     let grain = 0;
     const sums = [];
     for (const t of times) {
-      const sum = datum[t].reduce(
-        (a, v, i) => a + (state.disabled[i] ? 0 : v.value),
-        0,
-      );
+      const sum = datum[t].reduce((a, v, i) => a + (state.disabled[i] ? 0 : v.value), 0);
       maxSum = sum > maxSum ? sum : maxSum;
       sums[grain] = sum;
       grain += 1;
@@ -191,9 +164,7 @@ function Rose(element, props) {
     const P = maxRadius / maxSum;
     const Q = P * maxRadius;
     const computeOuterRadius = (value, innerRadius) =>
-      useAreaProportions
-        ? Math.sqrt(Q * value + innerRadius * innerRadius)
-        : P * value + innerRadius;
+      useAreaProportions ? Math.sqrt(Q * value + innerRadius * innerRadius) : P * value + innerRadius;
 
     const arcSt = {
       data: [],
@@ -325,10 +296,7 @@ function Rose(element, props) {
       return segmentsInTimeCache[arcId];
     }
     const timeIndex = Math.floor(arcId / numGroups);
-    segmentsInTimeCache[arcId] = [
-      timeIndex * numGroups,
-      (timeIndex + 1) * numGroups - 1,
-    ];
+    segmentsInTimeCache[arcId] = [timeIndex * numGroups, (timeIndex + 1) * numGroups - 1];
 
     return segmentsInTimeCache[arcId];
   }
@@ -390,12 +358,7 @@ function Rose(element, props) {
     const $this = d3.select(this);
     $this.classed('hover', true);
     if (clickId < 0 && !inTransition) {
-      $this
-        .select('path')
-        .interrupt()
-        .transition()
-        .duration(180)
-        .attrTween('d', arcTween(arcSt.extend[i]));
+      $this.select('path').interrupt().transition().duration(180).attrTween('d', arcTween(arcSt.extend[i]));
       const edge = getSegmentsToEdge(i);
       arcs
         .filter(d => edge[0] <= d.arcId && d.arcId <= edge[1])
@@ -406,12 +369,7 @@ function Rose(element, props) {
     } else if (!inTransition) {
       const segments = getSegmentsInTime(clickId);
       if (segments[0] <= b.arcId && b.arcId <= segments[1]) {
-        $this
-          .select('path')
-          .interrupt()
-          .transition()
-          .duration(180)
-          .attrTween('d', arcTween(arcSt.pieOver[i]));
+        $this.select('path').interrupt().transition().duration(180).attrTween('d', arcTween(arcSt.pieOver[i]));
       }
     }
   }
@@ -421,12 +379,7 @@ function Rose(element, props) {
     const $this = d3.select(this);
     $this.classed('hover', false);
     if (clickId < 0 && !inTransition) {
-      $this
-        .select('path')
-        .interrupt()
-        .transition()
-        .duration(180)
-        .attrTween('d', arcTween(arcSt.data[i]));
+      $this.select('path').interrupt().transition().duration(180).attrTween('d', arcTween(arcSt.data[i]));
       const edge = getSegmentsToEdge(i);
       arcs
         .filter(d => edge[0] <= d.arcId && d.arcId <= edge[1])
@@ -437,12 +390,7 @@ function Rose(element, props) {
     } else if (!inTransition) {
       const segments = getSegmentsInTime(clickId);
       if (segments[0] <= b.arcId && b.arcId <= segments[1]) {
-        $this
-          .select('path')
-          .interrupt()
-          .transition()
-          .duration(180)
-          .attrTween('d', arcTween(arcSt.pie[i]));
+        $this.select('path').interrupt().transition().duration(180).attrTween('d', arcTween(arcSt.pie[i]));
       }
     }
   }
@@ -492,15 +440,9 @@ function Rose(element, props) {
           })(d),
         )
         .style('opacity', d =>
-          state.disabled[d.arcId] ||
-          arcSt.pie[segments[0] + d.arcId].percent < labelThreshold
-            ? 0
-            : 1,
+          state.disabled[d.arcId] || arcSt.pie[segments[0] + d.arcId].percent < labelThreshold ? 0 : 1,
         );
-      ae.classed(
-        'clickable',
-        d => segments[0] > d.arcId || d.arcId > segments[1],
-      );
+      ae.classed('clickable', d => segments[0] > d.arcId || d.arcId > segments[1]);
       arcs
         .filter(d => segments[0] <= d.arcId && d.arcId <= segments[1])
         .interrupt()
@@ -527,9 +469,7 @@ function Rose(element, props) {
         .transition()
         .delay(delay)
         .duration(delay)
-        .attrTween('transform', d =>
-          translateTween(arcSt.labels[d.arcId / numGroups])(d),
-        )
+        .attrTween('transform', d => translateTween(arcSt.labels[d.arcId / numGroups])(d))
         .style('opacity', 1);
       groupLabels
         .interrupt()
@@ -620,10 +560,7 @@ function Rose(element, props) {
           })(d),
         )
         .style('opacity', d =>
-          state.disabled[d.arcId] ||
-          arcSt.pie[segments[0] + d.arcId].percent < labelThreshold
-            ? 0
-            : 1,
+          state.disabled[d.arcId] || arcSt.pie[segments[0] + d.arcId].percent < labelThreshold ? 0 : 1,
         );
     }
   }

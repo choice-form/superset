@@ -19,10 +19,7 @@
 
 import Encoder from 'encodable/lib/encoders/Encoder';
 import createEncoderFactory from 'encodable/lib/encoders/createEncoderFactory';
-import {
-  DeriveEncoding,
-  DeriveChannelOutputs,
-} from 'encodable/lib/types/Encoding';
+import { DeriveEncoding, DeriveChannelOutputs } from 'encodable/lib/types/Encoding';
 
 export type LineEncodingConfig = {
   x: ['X', number];

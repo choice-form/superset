@@ -26,12 +26,7 @@ export interface Params extends BaseParams {
   overrideFormData?: Partial<QueryFormData>;
 }
 
-export default function getFormData({
-  client = SupersetClient,
-  sliceId,
-  overrideFormData,
-  requestConfig,
-}: Params) {
+export default function getFormData({ client = SupersetClient, sliceId, overrideFormData, requestConfig }: Params) {
   const promise = client
     .get({
       endpoint: `/api/v1/form_data/?slice_id=${sliceId}`,
@@ -39,7 +34,5 @@ export default function getFormData({
     })
     .then(({ json }) => json as QueryFormData);
 
-  return overrideFormData
-    ? promise.then(formData => ({ ...formData, ...overrideFormData }))
-    : promise;
+  return overrideFormData ? promise.then(formData => ({ ...formData, ...overrideFormData })) : promise;
 }

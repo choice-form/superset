@@ -50,15 +50,8 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Whisker/outlier options'),
               default: 'Tukey',
-              description: t(
-                'Determines how whiskers and outliers are calculated.',
-              ),
-              choices: formatSelectOptions([
-                'Tukey',
-                'Min/max (no outliers)',
-                '2/98 percentiles',
-                '9/91 percentiles',
-              ]),
+              description: t('Determines how whiskers and outliers are calculated.'),
+              choices: formatSelectOptions(['Tukey', 'Min/max (no outliers)', '2/98 percentiles', '9/91 percentiles']),
             },
           },
         ],
@@ -76,13 +69,7 @@ const config: ControlPanelConfig = {
             config: {
               type: 'SelectControl',
               label: t('X Tick Layout'),
-              choices: formatSelectOptions([
-                'auto',
-                'flat',
-                '45°',
-                '90°',
-                'staggered',
-              ]),
+              choices: formatSelectOptions(['auto', 'flat', '45°', '90°', 'staggered']),
               default: 'auto',
               clearable: false,
               renderTrigger: true,
@@ -100,9 +87,9 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: 'SMART_NUMBER',
               choices: D3_FORMAT_OPTIONS,
-              description: `${t(
-                'D3 format syntax: https://github.com/d3/d3-format',
-              )} ${t('Only applies when "Label Type" is set to show values.')}`,
+              description: `${t('D3 format syntax: https://github.com/d3/d3-format')} ${t(
+                'Only applies when "Label Type" is set to show values.',
+              )}`,
             },
           },
         ],
@@ -131,9 +118,7 @@ const config: ControlPanelConfig = {
     columns: {
       label: t('Distribute across'),
       multi: true,
-      description: t(
-        'Columns to calculate distribution across. Defaults to temporal column if left empty.',
-      ),
+      description: t('Columns to calculate distribution across. Defaults to temporal column if left empty.'),
     },
   },
 };

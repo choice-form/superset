@@ -39,19 +39,12 @@ function DefaultSearchInput({ count, value, onChange }: SearchInputProps) {
   return (
     <span className="dt-global-filter">
       Search{' '}
-      <input
-        className="form-control input-sm"
-        placeholder={`${count} records...`}
-        value={value}
-        onChange={onChange}
-      />
+      <input className="form-control input-sm" placeholder={`${count} records...`} value={value} onChange={onChange} />
     </span>
   );
 }
 
-export default (React.memo as <T>(fn: T) => T)(function GlobalFilter<
-  D extends object,
->({
+export default (React.memo as <T>(fn: T) => T)(function GlobalFilter<D extends object>({
   preGlobalFilteredRows,
   filterValue = '',
   searchInput,

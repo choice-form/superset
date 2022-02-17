@@ -16,12 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  DASHBOARD_ROOT_ID,
-  DASHBOARD_GRID_ID,
-  NEW_COMPONENTS_SOURCE_ID,
-  DASHBOARD_HEADER_ID,
-} from '../util/constants';
+import { DASHBOARD_ROOT_ID, DASHBOARD_GRID_ID, NEW_COMPONENTS_SOURCE_ID, DASHBOARD_HEADER_ID } from '../util/constants';
 import componentIsResizable from '../util/componentIsResizable';
 import findParentId from '../util/findParentId';
 import getComponentWidthFromDrop from '../util/getComponentWidthFromDrop';
@@ -194,9 +189,7 @@ const actionHandlers = {
       const draggingTab = state[draggingTabId];
 
       // move all children except the one that is dragging
-      const childrenToMove = [...topLevelComponent.children].filter(
-        id => id !== dragging.id,
-      );
+      const childrenToMove = [...topLevelComponent.children].filter(id => id !== dragging.id);
 
       return {
         ...state,
@@ -218,12 +211,8 @@ const actionHandlers = {
     // create new component
     const newEntities = newEntitiesFromDrop({ dropResult, layout: state });
     const newEntitiesArray = Object.values(newEntities);
-    const tabComponent = newEntitiesArray.find(
-      component => component.type === TAB_TYPE,
-    );
-    const tabsComponent = newEntitiesArray.find(
-      component => component.type === TABS_TYPE,
-    );
+    const tabComponent = newEntitiesArray.find(component => component.type === TAB_TYPE);
+    const tabsComponent = newEntitiesArray.find(component => component.type === TABS_TYPE);
 
     tabComponent.children = [...topLevelComponent.children];
     newEntities[topLevelId] = { ...topLevelComponent, children: [] };

@@ -25,15 +25,7 @@ declare module '@data-ui/theme' {
     letterSpacing: number;
     fill: string;
     stroke: string;
-    textAnchor?:
-      | '-moz-initial'
-      | 'inherit'
-      | 'initial'
-      | 'revert'
-      | 'unset'
-      | 'end'
-      | 'start'
-      | 'middle';
+    textAnchor?: '-moz-initial' | 'inherit' | 'initial' | 'revert' | 'unset' | 'end' | 'start' | 'middle';
     pointerEvents?:
       | '-moz-initial'
       | 'inherit'

@@ -69,9 +69,7 @@ const propTypes = {
 };
 
 const BLANK = {};
-const NONEXISTENT_DATASET = t(
-  'The dataset associated with this chart no longer exists',
-);
+const NONEXISTENT_DATASET = t('The dataset associated with this chart no longer exists');
 
 const defaultProps = {
   addFilter: () => BLANK,
@@ -108,8 +106,7 @@ const RefreshOverlayWrapper = styled.div`
 class Chart extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.handleRenderContainerFailure =
-      this.handleRenderContainerFailure.bind(this);
+    this.handleRenderContainerFailure = this.handleRenderContainerFailure.bind(this);
   }
 
   componentDidMount() {
@@ -165,11 +162,7 @@ class Chart extends React.PureComponent {
   handleRenderContainerFailure(error, info) {
     const { actions, chartId } = this.props;
     logging.warn(error);
-    actions.chartRenderingFailed(
-      error.toString(),
-      chartId,
-      info ? info.componentStack : null,
-    );
+    actions.chartRenderingFailed(error.toString(), chartId, info ? info.componentStack : null);
 
     actions.logEvent(LOG_ACTIONS_RENDER_CHART, {
       slice_id: chartId,
@@ -182,31 +175,15 @@ class Chart extends React.PureComponent {
   }
 
   renderErrorMessage(queryResponse) {
-    const {
-      chartId,
-      chartAlert,
-      chartStackTrace,
-      datasource,
-      dashboardId,
-      height,
-    } = this.props;
+    const { chartId, chartAlert, chartStackTrace, datasource, dashboardId, height } = this.props;
 
     const error = queryResponse?.errors?.[0];
     const message = chartAlert || queryResponse?.message;
 
     // if datasource is still loading, don't render JS errors
-    if (
-      chartAlert !== undefined &&
-      chartAlert !== NONEXISTENT_DATASET &&
-      datasource === PLACEHOLDER_DATASOURCE
-    ) {
+    if (chartAlert !== undefined && chartAlert !== NONEXISTENT_DATASET && datasource === PLACEHOLDER_DATASOURCE) {
       return (
-        <Styles
-          data-ui-anchor="chart"
-          className="chart-container"
-          data-test="chart-container"
-          height={height}
-        >
+        <Styles data-ui-anchor="chart" className="chart-container" data-test="chart-container" height={height}>
           <Loading />
         </Styles>
       );
@@ -244,30 +221,13 @@ class Chart extends React.PureComponent {
     }
 
     if (errorMessage) {
-      return (
-        <Alert
-          data-test="alert-warning"
-          message={errorMessage}
-          type="warning"
-        />
-      );
+      return <Alert data-test="alert-warning" message={errorMessage} type="warning" />;
     }
 
     return (
-      <ErrorBoundary
-        onError={this.handleRenderContainerFailure}
-        showMessage={false}
-      >
-        <Styles
-          data-ui-anchor="chart"
-          className="chart-container"
-          data-test="chart-container"
-          height={height}
-        >
-          <div
-            className={`slice_container ${isFaded ? ' faded' : ''}`}
-            data-test="slice-container"
-          >
+      <ErrorBoundary onError={this.handleRenderContainerFailure} showMessage={false}>
+        <Styles data-ui-anchor="chart" className="chart-container" data-test="chart-container" height={height}>
+          <div className={`slice_container ${isFaded ? ' faded' : ''}`} data-test="slice-container">
             <ChartRenderer {...this.props} data-test={this.props.vizType} />
           </div>
 

@@ -17,14 +17,7 @@
  * under the License.
  */
 
-import {
-  Registry,
-  makeSingleton,
-  OverwritePolicy,
-  QueryContext,
-  SetDataMaskHook,
-  JsonObject,
-} from '../..';
+import { Registry, makeSingleton, OverwritePolicy, QueryContext, SetDataMaskHook, JsonObject } from '../..';
 
 // Ideally this would be <T extends QueryFormData>
 export type BuildQuery<T = any> = (

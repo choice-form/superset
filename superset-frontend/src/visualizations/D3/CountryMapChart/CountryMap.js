@@ -42,14 +42,7 @@ const propTypes = {
 const maps = {};
 
 function CountryMap(element, props) {
-  const {
-    data,
-    width,
-    height,
-    country,
-    linearColorScheme,
-    numberFormat,
-  } = props;
+  const { data, width, height, country, linearColorScheme, numberFormat } = props;
 
   const container = element;
   const format = getNumberFormatter(numberFormat);
@@ -73,11 +66,7 @@ function CountryMap(element, props) {
     .attr('width', width)
     .attr('height', height)
     .attr('preserveAspectRatio', 'xMidYMid meet');
-  const backgroundRect = svg
-    .append('rect')
-    .attr('class', 'background')
-    .attr('width', width)
-    .attr('height', height);
+  const backgroundRect = svg.append('rect').attr('class', 'background').attr('width', width).attr('height', height);
   const g = svg.append('g');
   const mapLayer = g.append('g').classed('map-layer', true);
   const textLayer = g
@@ -85,10 +74,7 @@ function CountryMap(element, props) {
     .classed('text-layer', true)
     .attr('transform', `translate(${width / 2}, 45)`);
   const bigText = textLayer.append('text').classed('big-text', true);
-  const resultText = textLayer
-    .append('text')
-    .classed('result-text', true)
-    .attr('dy', '1em');
+  const resultText = textLayer.append('text').classed('result-text', true).attr('dy', '1em');
 
   let centered;
 
@@ -114,16 +100,10 @@ function CountryMap(element, props) {
 
     g.transition()
       .duration(750)
-      .attr(
-        'transform',
-        `translate(${halfWidth},${halfHeight})scale(${k})translate(${-x},${-y})`,
-      );
+      .attr('transform', `translate(${halfWidth},${halfHeight})scale(${k})translate(${-x},${-y})`);
     textLayer
       .style('opacity', 0)
-      .attr(
-        'transform',
-        `translate(0,0)translate(${x},${hasCenter ? y - 5 : 45})`,
-      )
+      .attr('transform', `translate(0,0)translate(${x},${hasCenter ? y - 5 : 45})`)
       .transition()
       .duration(750)
       .style('opacity', 1);
@@ -139,9 +119,7 @@ function CountryMap(element, props) {
 
   backgroundRect.on('click', clicked);
 
-  const selectAndDisplayNameOfRegion = function selectAndDisplayNameOfRegion(
-    feature,
-  ) {
+  const selectAndDisplayNameOfRegion = function selectAndDisplayNameOfRegion(feature) {
     let name = '';
     if (feature && feature.properties) {
       if (feature.properties.ID_2) {
@@ -167,9 +145,7 @@ function CountryMap(element, props) {
     }
     d3.select(this).style('fill', c);
     selectAndDisplayNameOfRegion(d);
-    const result = data.filter(
-      region => region.country_id === d.properties.ISO,
-    );
+    const result = data.filter(region => region.country_id === d.properties.ISO);
     updateMetrics(result);
   };
 
@@ -226,11 +202,8 @@ function CountryMap(element, props) {
     const url = countries[country];
     d3.json(url, (error, mapData) => {
       if (error) {
-        const countryName =
-          countryOptions.find(x => x[0] === country)?.[1] || country;
-        d3.select(element).html(
-          `<div class="alert alert-danger">Could not load map data for ${countryName}</div>`,
-        );
+        const countryName = countryOptions.find(x => x[0] === country)?.[1] || country;
+        d3.select(element).html(`<div class="alert alert-danger">Could not load map data for ${countryName}</div>`);
       } else {
         maps[country] = mapData;
         drawMap(mapData);

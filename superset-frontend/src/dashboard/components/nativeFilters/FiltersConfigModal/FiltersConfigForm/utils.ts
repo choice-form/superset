@@ -29,12 +29,7 @@ export const FILTER_SUPPORTED_TYPES = {
   filter_time: [GenericDataType.TEMPORAL],
   filter_timegrain: [GenericDataType.TEMPORAL],
   filter_timecolumn: [GenericDataType.TEMPORAL],
-  filter_select: [
-    GenericDataType.BOOLEAN,
-    GenericDataType.STRING,
-    GenericDataType.NUMERIC,
-    GenericDataType.TEMPORAL,
-  ],
+  filter_select: [GenericDataType.BOOLEAN, GenericDataType.STRING, GenericDataType.NUMERIC, GenericDataType.TEMPORAL],
   filter_range: [GenericDataType.NUMERIC],
 };
 
@@ -43,11 +38,7 @@ export const useForceUpdate = () => {
   return React.useCallback(() => updateState({}), []);
 };
 
-export const setNativeFilterFieldValues = (
-  form: FormInstance,
-  filterId: string,
-  values: object,
-) => {
+export const setNativeFilterFieldValues = (form: FormInstance, filterId: string, values: object) => {
   const formFilters = form.getFieldValue(FILTERS_FIELD_NAME) || {};
   form.setFields([
     {
@@ -63,14 +54,9 @@ export const setNativeFilterFieldValues = (
   ]);
 };
 
-export const getControlItems = (
-  controlConfig: { [key: string]: any } = {},
-): CustomControlItem[] =>
+export const getControlItems = (controlConfig: { [key: string]: any } = {}): CustomControlItem[] =>
   (flatMapDeep(controlConfig.controlPanelSections)?.reduce(
-    (acc: any, { controlSetRows = [] }: any) => [
-      ...acc,
-      ...flatMapDeep(controlSetRows),
-    ],
+    (acc: any, { controlSetRows = [] }: any) => [...acc, ...flatMapDeep(controlSetRows)],
     [],
   ) as CustomControlItem[]) ?? [];
 
@@ -79,22 +65,16 @@ type DatasetSelectValue = {
   label: string;
 };
 
-export const datasetToSelectOption = (
-  item: DatasourceMeta & { table_name: string },
-): DatasetSelectValue => ({
+export const datasetToSelectOption = (item: DatasourceMeta & { table_name: string }): DatasetSelectValue => ({
   value: item.id,
   label: item.table_name,
 });
 
 // TODO: add column_types field to DatasourceMeta
 // We return true if column_types is undefined or empty as a precaution against backend failing to return column_types
-export const hasTemporalColumns = (
-  dataset: DatasourceMeta & { column_types: GenericDataType[] },
-) => {
+export const hasTemporalColumns = (dataset: DatasourceMeta & { column_types: GenericDataType[] }) => {
   const columnTypes = ensureIsArray(dataset?.column_types);
-  return (
-    columnTypes.length === 0 || columnTypes.includes(GenericDataType.TEMPORAL)
-  );
+  return columnTypes.length === 0 || columnTypes.includes(GenericDataType.TEMPORAL);
 };
 
 export const doesColumnMatchFilterType = (filterType: string, column: Column) =>
@@ -102,10 +82,7 @@ export const doesColumnMatchFilterType = (filterType: string, column: Column) =>
   !(filterType in FILTER_SUPPORTED_TYPES) ||
   FILTER_SUPPORTED_TYPES[filterType]?.includes(column.type_generic);
 
-export const mostUsedDataset = (
-  datasets: DatasourcesState,
-  charts: ChartsState,
-) => {
+export const mostUsedDataset = (datasets: DatasourcesState, charts: ChartsState) => {
   const map = new Map<string, number>();
   let mostUsedDataset = '';
   let maxCount = 0;

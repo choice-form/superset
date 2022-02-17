@@ -78,11 +78,7 @@ export function getNamespace(name: string = DEFAULT_NAMESPACE) {
   return newInstance;
 }
 
-export function getColor(
-  value?: string,
-  schemeId?: string,
-  namespace?: string,
-) {
+export function getColor(value?: string, schemeId?: string, namespace?: string) {
   return getNamespace(namespace).getScale(schemeId).getColor(value);
 }
 

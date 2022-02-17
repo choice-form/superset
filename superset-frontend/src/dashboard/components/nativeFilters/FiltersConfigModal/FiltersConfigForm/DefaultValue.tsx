@@ -46,8 +46,7 @@ const DefaultValue: FC<DefaultValueProps> = ({
   const queriesData = formFilter?.defaultValueQueriesData;
   const loading = hasDataset && queriesData === null;
   const value = formFilter.defaultDataMask?.filterState.value;
-  const isMissingRequiredValue =
-    hasDefaultValue && (value === null || value === undefined);
+  const isMissingRequiredValue = hasDefaultValue && (value === null || value === undefined);
   return loading ? (
     <Loading position="inline-centered" />
   ) : (
@@ -58,9 +57,7 @@ const DefaultValue: FC<DefaultValueProps> = ({
       behaviors={[Behavior.NATIVE_FILTER]}
       formData={formData}
       // For charts that don't have datasource we need workaround for empty placeholder
-      queriesData={
-        hasDataset ? formFilter?.defaultValueQueriesData : [{ data: [{}] }]
-      }
+      queriesData={hasDataset ? formFilter?.defaultValueQueriesData : [{ data: [{}] }]}
       chartType={formFilter?.filterType}
       hooks={{ setDataMask }}
       enableNoResults={enableNoResults}

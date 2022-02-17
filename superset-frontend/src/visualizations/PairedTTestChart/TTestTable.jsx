@@ -132,16 +132,9 @@ class TTestTable extends React.Component {
         diffSqSum += diff * diff;
       }
     });
-    const tvalue = -Math.abs(
-      diffSum *
-        Math.sqrt(
-          (finiteCount - 1) / (finiteCount * diffSqSum - diffSum * diffSum),
-        ),
-    );
+    const tvalue = -Math.abs(diffSum * Math.sqrt((finiteCount - 1) / (finiteCount * diffSqSum - diffSum * diffSum)));
     try {
-      return (2 * new dist.Studentt(finiteCount - 1).cdf(tvalue)).toFixed(
-        pValPrec,
-      ); // two-sided test
+      return (2 * new dist.Studentt(finiteCount - 1).cdf(tvalue)).toFixed(pValPrec); // two-sided test
     } catch (error) {
       return NaN;
     }
@@ -204,22 +197,8 @@ class TTestTable extends React.Component {
         group,
         j, // group names
       ) => <Td key={j} column={group} data={entry.group[j]} />);
-      values.push(
-        <Td
-          key={numGroups + 1}
-          className={this.getPValueStatus(i)}
-          column="pValue"
-          data={pValues[i]}
-        />,
-      );
-      values.push(
-        <Td
-          key={numGroups + 2}
-          className={this.getLiftStatus(i)}
-          column="liftValue"
-          data={liftValues[i]}
-        />,
-      );
+      values.push(<Td key={numGroups + 1} className={this.getPValueStatus(i)} column="pValue" data={pValues[i]} />);
+      values.push(<Td key={numGroups + 2} className={this.getLiftStatus(i)} column="liftValue" data={liftValues[i]} />);
       values.push(
         <Td
           key={numGroups + 3}
@@ -230,11 +209,7 @@ class TTestTable extends React.Component {
       );
 
       return (
-        <Tr
-          key={i}
-          className={i === control ? 'control' : ''}
-          onClick={this.computeTTest.bind(this, i)}
-        >
+        <Tr key={i} className={i === control ? 'control' : ''} onClick={this.computeTTest.bind(this, i)}>
           {values}
         </Tr>
       );

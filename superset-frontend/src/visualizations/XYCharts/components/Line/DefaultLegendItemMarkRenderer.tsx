@@ -26,9 +26,7 @@ const MARK_HEIGHT = 8;
 
 const MARK_STYLE: CSSProperties = { display: 'inline-block' };
 
-export default function DefaultLegendItemMarkRenderer({
-  item,
-}: LegendItemMarkRendererProps<LineEncodingConfig>) {
+export default function DefaultLegendItemMarkRenderer({ item }: LegendItemMarkRendererProps<LineEncodingConfig>) {
   return (
     <svg width={MARK_WIDTH} height={MARK_HEIGHT} style={MARK_STYLE}>
       <line

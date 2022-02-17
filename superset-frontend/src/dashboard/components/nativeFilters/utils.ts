@@ -91,16 +91,10 @@ export const getFormData = ({
   };
 };
 
-export function mergeExtraFormData(
-  originalExtra: ExtraFormData = {},
-  newExtra: ExtraFormData = {},
-): ExtraFormData {
+export function mergeExtraFormData(originalExtra: ExtraFormData = {}, newExtra: ExtraFormData = {}): ExtraFormData {
   const mergedExtra: ExtraFormData = {};
   EXTRA_FORM_DATA_APPEND_KEYS.forEach((key: string) => {
-    const mergedValues = [
-      ...(originalExtra[key] || []),
-      ...(newExtra[key] || []),
-    ];
+    const mergedValues = [...(originalExtra[key] || []), ...(newExtra[key] || [])];
     if (mergedValues.length) {
       mergedExtra[key] = mergedValues;
     }
@@ -120,9 +114,7 @@ export function mergeExtraFormData(
 
 export function isCrossFilter(vizType: string) {
   // @ts-ignore need export from superset-ui `ItemWithValue`
-  return getChartMetadataRegistry().items[vizType]?.value.behaviors?.includes(
-    Behavior.INTERACTIVE_CHART,
-  );
+  return getChartMetadataRegistry().items[vizType]?.value.behaviors?.includes(Behavior.INTERACTIVE_CHART);
 }
 
 export function getExtraFormData(
@@ -132,10 +124,7 @@ export function getExtraFormData(
 ): ExtraFormData {
   let extraFormData: ExtraFormData = {};
   filterIdsAppliedOnChart.forEach(key => {
-    extraFormData = mergeExtraFormData(
-      extraFormData,
-      dataMask[key]?.extraFormData ?? {},
-    );
+    extraFormData = mergeExtraFormData(extraFormData, dataMask[key]?.extraFormData ?? {});
   });
   return extraFormData;
 }
@@ -149,10 +138,8 @@ export function nativeFilterGate(behaviors: Behavior[]): boolean {
   );
 }
 
-const isComponentATab = (
-  dashboardLayout: DashboardLayout,
-  componentId: string,
-) => dashboardLayout[componentId].type === TAB_TYPE;
+const isComponentATab = (dashboardLayout: DashboardLayout, componentId: string) =>
+  dashboardLayout[componentId].type === TAB_TYPE;
 
 const findTabsWithChartsInScopeHelper = (
   dashboardLayout: DashboardLayout,
@@ -169,8 +156,7 @@ const findTabsWithChartsInScopeHelper = (
   }
   if (
     dashboardLayout[componentId].children.length === 0 ||
-    (isComponentATab(dashboardLayout, componentId) &&
-      tabsToHighlight.has(componentId))
+    (isComponentATab(dashboardLayout, componentId) && tabsToHighlight.has(componentId))
   ) {
     return;
   }
@@ -185,35 +171,20 @@ const findTabsWithChartsInScopeHelper = (
   );
 };
 
-export const findTabsWithChartsInScope = (
-  dashboardLayout: DashboardLayout,
-  chartsInScope: number[],
-) => {
+export const findTabsWithChartsInScope = (dashboardLayout: DashboardLayout, chartsInScope: number[]) => {
   const dashboardRoot = dashboardLayout[DASHBOARD_ROOT_ID];
   const rootChildId = dashboardRoot.children[0];
   const hasTopLevelTabs = rootChildId !== DASHBOARD_GRID_ID;
   const tabsInScope = new Set<string>();
   if (hasTopLevelTabs) {
     dashboardLayout[rootChildId].children?.forEach(tabId =>
-      findTabsWithChartsInScopeHelper(
-        dashboardLayout,
-        chartsInScope,
-        tabId,
-        [tabId],
-        tabsInScope,
-      ),
+      findTabsWithChartsInScopeHelper(dashboardLayout, chartsInScope, tabId, [tabId], tabsInScope),
     );
   } else {
     Object.values(dashboardLayout)
       .filter(element => element.type === TAB_TYPE)
       .forEach(element =>
-        findTabsWithChartsInScopeHelper(
-          dashboardLayout,
-          chartsInScope,
-          element.id,
-          [element.id],
-          tabsInScope,
-        ),
+        findTabsWithChartsInScopeHelper(dashboardLayout, chartsInScope, element.id, [element.id], tabsInScope),
       );
   }
   return tabsInScope;

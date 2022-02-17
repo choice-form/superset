@@ -27,12 +27,7 @@ export interface EventFlowProps {
   initialMinEventCount: number;
 }
 
-export default function EventFlow({
-  data,
-  initialMinEventCount,
-  height = 400,
-  width = 400,
-}: EventFlowProps) {
+export default function EventFlow({ data, initialMinEventCount, height = 400, width = 400 }: EventFlowProps) {
   if (data) {
     return (
       <EventFlowApp

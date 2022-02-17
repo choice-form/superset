@@ -36,10 +36,7 @@ import {
   customTimeRangeEncode,
   dttmToMoment,
 } from 'src/explore/components/controls/DateFilterControl/utils';
-import {
-  CustomRangeKey,
-  FrameComponentProps,
-} from 'src/explore/components/controls/DateFilterControl/types';
+import { CustomRangeKey, FrameComponentProps } from 'src/explore/components/controls/DateFilterControl/types';
 
 export function CustomFrame(props: FrameComponentProps) {
   const { customRange, matchedFlag } = customTimeRangeDecode(props.value);
@@ -68,10 +65,7 @@ export function CustomFrame(props: FrameComponentProps) {
     );
   }
 
-  function onGrainValue(
-    control: 'sinceGrainValue' | 'untilGrainValue',
-    value: string | number,
-  ) {
+  function onGrainValue(control: 'sinceGrainValue' | 'untilGrainValue', value: string | number) {
     // only positive values in grainValue controls
     if (isInteger(value) && value > 0) {
       props.onChange(
@@ -111,10 +105,7 @@ export function CustomFrame(props: FrameComponentProps) {
         <Col span={12}>
           <div className="control-label">
             {t('START (INCLUSIVE)')}{' '}
-            <InfoTooltipWithTrigger
-              tooltip={t('Start date included in time range')}
-              placement="right"
-            />
+            <InfoTooltipWithTrigger tooltip={t('Start date included in time range')} placement="right" />
           </div>
           <Select
             ariaLabel={t('START (INCLUSIVE)')}
@@ -127,9 +118,7 @@ export function CustomFrame(props: FrameComponentProps) {
               <DatePicker
                 showTime
                 defaultValue={dttmToMoment(sinceDatetime)}
-                onChange={(datetime: Moment) =>
-                  onChange('sinceDatetime', datetime.format(MOMENT_FORMAT))
-                }
+                onChange={(datetime: Moment) => onChange('sinceDatetime', datetime.format(MOMENT_FORMAT))}
                 allowClear={false}
               />
             </Row>
@@ -143,9 +132,7 @@ export function CustomFrame(props: FrameComponentProps) {
                   value={Math.abs(sinceGrainValue)}
                   min={1}
                   defaultValue={1}
-                  onChange={value =>
-                    onGrainValue('sinceGrainValue', value || 1)
-                  }
+                  onChange={value => onGrainValue('sinceGrainValue', value || 1)}
                   onStep={value => onGrainValue('sinceGrainValue', value || 1)}
                 />
               </Col>
@@ -163,10 +150,7 @@ export function CustomFrame(props: FrameComponentProps) {
         <Col span={12}>
           <div className="control-label">
             {t('END (EXCLUSIVE)')}{' '}
-            <InfoTooltipWithTrigger
-              tooltip={t('End date excluded from time range')}
-              placement="right"
-            />
+            <InfoTooltipWithTrigger tooltip={t('End date excluded from time range')} placement="right" />
           </div>
           <Select
             ariaLabel={t('END (EXCLUSIVE)')}
@@ -179,9 +163,7 @@ export function CustomFrame(props: FrameComponentProps) {
               <DatePicker
                 showTime
                 defaultValue={dttmToMoment(untilDatetime)}
-                onChange={(datetime: Moment) =>
-                  onChange('untilDatetime', datetime.format(MOMENT_FORMAT))
-                }
+                onChange={(datetime: Moment) => onChange('untilDatetime', datetime.format(MOMENT_FORMAT))}
                 allowClear={false}
               />
             </Row>
@@ -194,9 +176,7 @@ export function CustomFrame(props: FrameComponentProps) {
                   value={untilGrainValue}
                   min={1}
                   defaultValue={1}
-                  onChange={value =>
-                    onGrainValue('untilGrainValue', value || 1)
-                  }
+                  onChange={value => onGrainValue('untilGrainValue', value || 1)}
                   onStep={value => onGrainValue('untilGrainValue', value || 1)}
                 />
               </Col>
@@ -217,11 +197,7 @@ export function CustomFrame(props: FrameComponentProps) {
           <div className="control-label">{t('Anchor to')}</div>
           <Row align="middle">
             <Col>
-              <Radio.Group
-                onChange={onAnchorMode}
-                defaultValue="now"
-                value={anchorMode}
-              >
+              <Radio.Group onChange={onAnchorMode} defaultValue="now" value={anchorMode}>
                 <Radio key="now" value="now">
                   {t('NOW')}
                 </Radio>
@@ -235,9 +211,7 @@ export function CustomFrame(props: FrameComponentProps) {
                 <DatePicker
                   showTime
                   defaultValue={dttmToMoment(anchorValue)}
-                  onChange={(datetime: Moment) =>
-                    onChange('anchorValue', datetime.format(MOMENT_FORMAT))
-                  }
+                  onChange={(datetime: Moment) => onChange('anchorValue', datetime.format(MOMENT_FORMAT))}
                   allowClear={false}
                   className="control-anchor-to-datetime"
                 />

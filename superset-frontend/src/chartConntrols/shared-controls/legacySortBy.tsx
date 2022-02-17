@@ -28,9 +28,7 @@ export const legacySortBy: ControlSetRow[] = [
         type: 'CheckboxControl',
         label: t('Sort descending'),
         default: true,
-        description: t(
-          'Whether to sort descending or ascending. Takes effect only when "Sort by" is set',
-        ),
+        description: t('Whether to sort descending or ascending. Takes effect only when "Sort by" is set'),
       },
     },
   ],

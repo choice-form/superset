@@ -73,12 +73,7 @@ export function MetricOption({
         />
       )}
       {showTooltip ? (
-        <Tooltip
-          id="metric-name-tooltip"
-          title={verbose}
-          trigger={['hover']}
-          placement="top"
-        >
+        <Tooltip id="metric-name-tooltip" title={verbose} trigger={['hover']} placement="top">
           <span className="option-label metric-option-label" ref={labelRef}>
             {link}
           </span>

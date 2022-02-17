@@ -33,10 +33,7 @@ const HeaderButton = styled(Button)`
   padding: 0;
 `;
 
-export const FilterConfigurationLink: React.FC<FCBProps> = ({
-  createNewOnOpen,
-  children,
-}) => {
+export const FilterConfigurationLink: React.FC<FCBProps> = ({ createNewOnOpen, children }) => {
   const dispatch = useDispatch();
   const [isOpen, setOpen] = useState(false);
 
@@ -60,12 +57,7 @@ export const FilterConfigurationLink: React.FC<FCBProps> = ({
       >
         {children}
       </HeaderButton>
-      <FiltersConfigModal
-        isOpen={isOpen}
-        onSave={submit}
-        onCancel={close}
-        createNewOnOpen={createNewOnOpen}
-      />
+      <FiltersConfigModal isOpen={isOpen} onSave={submit} onCancel={close} createNewOnOpen={createNewOnOpen} />
     </>
   );
 };

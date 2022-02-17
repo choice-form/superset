@@ -39,19 +39,10 @@ type Options = Omit<RenderOptions, 'queries'> & {
 };
 
 function createWrapper(options?: Options) {
-  const {
-    useDnd,
-    useRedux,
-    useQueryParams,
-    useRouter,
-    initialState,
-    reducers,
-  } = options || {};
+  const { useDnd, useRedux, useQueryParams, useRouter, initialState, reducers } = options || {};
 
   return ({ children }: { children?: ReactNode }) => {
-    let result = (
-      <ThemeProvider theme={supersetTheme}>{children}</ThemeProvider>
-    );
+    let result = <ThemeProvider theme={supersetTheme}>{children}</ThemeProvider>;
 
     if (useDnd) {
       result = <DndProvider backend={HTML5Backend}>{result}</DndProvider>;

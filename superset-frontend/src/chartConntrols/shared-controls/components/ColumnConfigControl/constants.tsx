@@ -21,12 +21,7 @@ import { GenericDataType, t, validateNumber } from 'src/core';
 import { FaAlignLeft } from '@react-icons/all-files/fa/FaAlignLeft';
 import { FaAlignRight } from '@react-icons/all-files/fa/FaAlignRight';
 import { FaAlignCenter } from '@react-icons/all-files/fa/FaAlignCenter';
-import {
-  D3_FORMAT_DOCS,
-  D3_FORMAT_OPTIONS,
-  D3_TIME_FORMAT_DOCS,
-  D3_TIME_FORMAT_OPTIONS,
-} from '../../../utils';
+import { D3_FORMAT_DOCS, D3_FORMAT_OPTIONS, D3_TIME_FORMAT_DOCS, D3_TIME_FORMAT_OPTIONS } from '../../../utils';
 import { ControlFormItemSpec } from '../../../components/ControlForm';
 import { ColumnConfigFormLayout } from './types';
 
@@ -45,9 +40,7 @@ export type SharedColumnConfigProp =
 const emitTarget: ControlFormItemSpec<'Input'> = {
   controlType: 'Input',
   label: t('Emit Target'),
-  description: t(
-    'If you wish to specify a different target column than the original column, it can be entered here',
-  ),
+  description: t('If you wish to specify a different target column than the original column, it can be entered here'),
   defaultValue: '',
   debounceDelay: 500,
   validators: undefined,
@@ -125,9 +118,7 @@ const showCellBars: ControlFormItemSpec<'Checkbox'> = {
 const alignPositiveNegative: ControlFormItemSpec<'Checkbox'> = {
   controlType: 'Checkbox',
   label: t('Align +/-'),
-  description: t(
-    'Whether to align positive and negative values in cell bar chart at 0',
-  ),
+  description: t('Whether to align positive and negative values in cell bar chart at 0'),
   defaultValue: false,
   debounceDelay: 200,
 };
@@ -135,9 +126,7 @@ const alignPositiveNegative: ControlFormItemSpec<'Checkbox'> = {
 const colorPositiveNegative: ControlFormItemSpec<'Checkbox'> = {
   controlType: 'Checkbox',
   label: t('Color +/-'),
-  description: t(
-    'Whether to colorize numeric values by if they are positive or negative',
-  ),
+  description: t('Whether to colorize numeric values by if they are positive or negative'),
   defaultValue: false,
   debounceDelay: 200,
 };
@@ -170,33 +159,17 @@ export type SharedColumnConfig = {
 };
 
 export const DEFAULT_CONFIG_FORM_LAYOUT: ColumnConfigFormLayout = {
-  [GenericDataType.STRING]: [
-    [
-      'columnWidth',
-      { name: 'horizontalAlign', override: { defaultValue: 'left' } },
-    ],
-  ],
+  [GenericDataType.STRING]: [['columnWidth', { name: 'horizontalAlign', override: { defaultValue: 'left' } }]],
   [GenericDataType.NUMERIC]: [
-    [
-      'columnWidth',
-      { name: 'horizontalAlign', override: { defaultValue: 'right' } },
-    ],
+    ['columnWidth', { name: 'horizontalAlign', override: { defaultValue: 'right' } }],
     ['d3NumberFormat'],
     ['d3SmallNumberFormat'],
     ['alignPositiveNegative', 'colorPositiveNegative'],
     ['showCellBars'],
   ],
   [GenericDataType.TEMPORAL]: [
-    [
-      'columnWidth',
-      { name: 'horizontalAlign', override: { defaultValue: 'left' } },
-    ],
+    ['columnWidth', { name: 'horizontalAlign', override: { defaultValue: 'left' } }],
     ['d3TimeFormat'],
   ],
-  [GenericDataType.BOOLEAN]: [
-    [
-      'columnWidth',
-      { name: 'horizontalAlign', override: { defaultValue: 'left' } },
-    ],
-  ],
+  [GenericDataType.BOOLEAN]: [['columnWidth', { name: 'horizontalAlign', override: { defaultValue: 'left' } }]],
 };

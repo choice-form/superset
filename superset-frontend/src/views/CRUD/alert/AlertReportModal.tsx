@@ -16,13 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, {
-  FunctionComponent,
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-} from 'react';
+import React, { FunctionComponent, useState, useEffect, useMemo, useCallback } from 'react';
 import { styled, t, SupersetClient, css, SupersetTheme } from 'src/core';
 import rison from 'rison';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
@@ -52,12 +46,7 @@ import { AlertReportCronScheduler } from './components/AlertReportCronScheduler'
 import { NotificationMethod } from './components/NotificationMethod';
 
 const TIMEOUT_MIN = 1;
-const TEXT_BASED_VISUALIZATION_TYPES = [
-  'pivot_table',
-  'pivot_table_v2',
-  'table',
-  'paired_ttest',
-];
+const TEXT_BASED_VISUALIZATION_TYPES = ['pivot_table', 'pivot_table_v2', 'table', 'paired_ttest'];
 
 type SelectValue = {
   value: string;
@@ -220,8 +209,7 @@ const StyledSectionContainer = styled.div`
 const StyledSectionTitle = styled.div`
   display: flex;
   align-items: center;
-  margin: ${({ theme }) => theme.gridUnit * 2}px auto
-    ${({ theme }) => theme.gridUnit * 4}px auto;
+  margin: ${({ theme }) => theme.gridUnit * 2}px auto ${({ theme }) => theme.gridUnit * 4}px auto;
 
   h4 {
     margin: 0;
@@ -301,8 +289,7 @@ export const StyledInputContainer = styled.div`
   textarea,
   input[type='text'],
   input[type='number'] {
-    padding: ${({ theme }) => theme.gridUnit}px
-      ${({ theme }) => theme.gridUnit * 2}px;
+    padding: ${({ theme }) => theme.gridUnit}px ${({ theme }) => theme.gridUnit * 2}px;
     border-style: none;
     border: 1px solid ${({ theme }) => theme.colors.grayscale.light2};
     border-radius: ${({ theme }) => theme.gridUnit}px;
@@ -352,10 +339,7 @@ interface NotificationMethodAddProps {
   onClick: () => void;
 }
 
-const NotificationMethodAdd: FunctionComponent<NotificationMethodAddProps> = ({
-  status = 'active',
-  onClick,
-}) => {
+const NotificationMethodAdd: FunctionComponent<NotificationMethodAddProps> = ({ status = 'active', onClick }) => {
   if (status === 'hidden') {
     return null;
   }
@@ -368,10 +352,7 @@ const NotificationMethodAdd: FunctionComponent<NotificationMethodAddProps> = ({
 
   return (
     <StyledNotificationAddButton className={status} onClick={checkStatus}>
-      <i className="fa fa-plus" />{' '}
-      {status === 'active'
-        ? t('Add notification method')
-        : t('Add delivery method')}
+      <i className="fa fa-plus" /> {status === 'active' ? t('Add notification method') : t('Add delivery method')}
     </StyledNotificationAddButton>
   );
 };
@@ -395,13 +376,10 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
     conf?.ALERT_REPORTS_NOTIFICATION_METHODS || DEFAULT_NOTIFICATION_METHODS;
 
   const [disableSave, setDisableSave] = useState<boolean>(true);
-  const [currentAlert, setCurrentAlert] =
-    useState<Partial<AlertObject> | null>();
+  const [currentAlert, setCurrentAlert] = useState<Partial<AlertObject> | null>();
   const [isHidden, setIsHidden] = useState<boolean>(true);
   const [contentType, setContentType] = useState<string>('dashboard');
-  const [reportFormat, setReportFormat] = useState<string>(
-    DEFAULT_NOTIFICATION_FORMAT,
-  );
+  const [reportFormat, setReportFormat] = useState<string>(DEFAULT_NOTIFICATION_FORMAT);
 
   // Dropdown options
   const [conditionNotNull, setConditionNotNull] = useState<boolean>(false);
@@ -414,14 +392,10 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
 
   const isEditMode = alert !== null;
   const formatOptionEnabled =
-    contentType === 'chart' &&
-    (isFeatureEnabled(FeatureFlag.ALERTS_ATTACH_REPORTS) || isReport);
+    contentType === 'chart' && (isFeatureEnabled(FeatureFlag.ALERTS_ATTACH_REPORTS) || isReport);
 
-  const [notificationAddState, setNotificationAddState] =
-    useState<NotificationAddStatus>('active');
-  const [notificationSettings, setNotificationSettings] = useState<
-    NotificationSetting[]
-  >([]);
+  const [notificationAddState, setNotificationAddState] = useState<NotificationAddStatus>('active');
+  const [notificationSettings, setNotificationSettings] = useState<NotificationSetting[]>([]);
 
   const onNotificationAdd = () => {
     const settings: NotificationSetting[] = notificationSettings.slice();
@@ -432,17 +406,10 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
     });
 
     setNotificationSettings(settings);
-    setNotificationAddState(
-      settings.length === allowedNotificationMethods.length
-        ? 'hidden'
-        : 'disabled',
-    );
+    setNotificationAddState(settings.length === allowedNotificationMethods.length ? 'hidden' : 'disabled');
   };
 
-  const updateNotificationSetting = (
-    index: number,
-    setting: NotificationSetting,
-  ) => {
+  const updateNotificationSetting = (index: number, setting: NotificationSetting) => {
     const settings = notificationSettings.slice();
 
     settings[index] = setting;
@@ -499,21 +466,14 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
       ...currentAlert,
       type: isReport ? 'Report' : 'Alert',
       validator_type: conditionNotNull ? 'not null' : 'operator',
-      validator_config_json: conditionNotNull
-        ? {}
-        : currentAlert?.validator_config_json,
+      validator_config_json: conditionNotNull ? {} : currentAlert?.validator_config_json,
       chart: contentType === 'chart' ? currentAlert?.chart?.value : null,
-      dashboard:
-        contentType === 'dashboard' ? currentAlert?.dashboard?.value : null,
+      dashboard: contentType === 'dashboard' ? currentAlert?.dashboard?.value : null,
       database: currentAlert?.database?.value,
-      owners: (currentAlert?.owners || []).map(
-        owner => (owner as MetaObject).value,
-      ),
+      owners: (currentAlert?.owners || []).map(owner => (owner as MetaObject).value),
       recipients,
       report_format:
-        contentType === 'dashboard'
-          ? DEFAULT_NOTIFICATION_FORMAT
-          : reportFormat || DEFAULT_NOTIFICATION_FORMAT,
+        contentType === 'dashboard' ? DEFAULT_NOTIFICATION_FORMAT : reportFormat || DEFAULT_NOTIFICATION_FORMAT,
     };
 
     if (data.recipients && !data.recipients.length) {
@@ -564,25 +524,22 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
 
   // Fetch data to populate form dropdowns
   const loadOwnerOptions = useMemo(
-    () =>
-      (input = '', page: number, pageSize: number) => {
-        const query = rison.encode({
-          filter: input,
-          page,
-          page_size: pageSize,
-        });
-        return SupersetClient.get({
-          endpoint: `/api/v1/report/related/owners?q=${query}`,
-        }).then(response => ({
-          data: response.json.result.map(
-            (item: { value: number; text: string }) => ({
-              value: item.value,
-              label: item.text,
-            }),
-          ),
-          totalCount: response.json.count,
-        }));
-      },
+    () => (input = '', page: number, pageSize: number) => {
+      const query = rison.encode({
+        filter: input,
+        page,
+        page_size: pageSize,
+      });
+      return SupersetClient.get({
+        endpoint: `/api/v1/report/related/owners?q=${query}`,
+      }).then(response => ({
+        data: response.json.result.map((item: { value: number; text: string }) => ({
+          value: item.value,
+          label: item.text,
+        })),
+        totalCount: response.json.count,
+      }));
+    },
     [],
   );
 
@@ -617,31 +574,27 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
   };
 
   const loadSourceOptions = useMemo(
-    () =>
-      (input = '', page: number, pageSize: number) => {
-        const query = rison.encode({
-          filter: input,
-          page,
-          page_size: pageSize,
-        });
-        return SupersetClient.get({
-          endpoint: `/api/v1/report/related/database?q=${query}`,
-        }).then(response => {
-          const list = response.json.result.map(
-            (item: { value: number; text: string }) => ({
-              value: item.value,
-              label: item.text,
-            }),
-          );
-          setSourceOptions(list);
-          return { data: list, totalCount: response.json.count };
-        });
-      },
+    () => (input = '', page: number, pageSize: number) => {
+      const query = rison.encode({
+        filter: input,
+        page,
+        page_size: pageSize,
+      });
+      return SupersetClient.get({
+        endpoint: `/api/v1/report/related/database?q=${query}`,
+      }).then(response => {
+        const list = response.json.result.map((item: { value: number; text: string }) => ({
+          value: item.value,
+          label: item.text,
+        }));
+        setSourceOptions(list);
+        return { data: list, totalCount: response.json.count };
+      });
+    },
     [],
   );
 
-  const databaseLabel =
-    currentAlert && currentAlert.database && !currentAlert.database.label;
+  const databaseLabel = currentAlert && currentAlert.database && !currentAlert.database.label;
   useEffect(() => {
     // Find source if current alert has one set
     if (databaseLabel) {
@@ -650,26 +603,23 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
   }, [databaseLabel, getSourceData]);
 
   const loadDashboardOptions = useMemo(
-    () =>
-      (input = '', page: number, pageSize: number) => {
-        const query = rison.encode({
-          filter: input,
-          page,
-          page_size: pageSize,
-        });
-        return SupersetClient.get({
-          endpoint: `/api/v1/report/related/dashboard?q=${query}`,
-        }).then(response => {
-          const list = response.json.result.map(
-            (item: { value: number; text: string }) => ({
-              value: item.value,
-              label: item.text,
-            }),
-          );
-          setDashboardOptions(list);
-          return { data: list, totalCount: response.json.count };
-        });
-      },
+    () => (input = '', page: number, pageSize: number) => {
+      const query = rison.encode({
+        filter: input,
+        page,
+        page_size: pageSize,
+      });
+      return SupersetClient.get({
+        endpoint: `/api/v1/report/related/dashboard?q=${query}`,
+      }).then(response => {
+        const list = response.json.result.map((item: { value: number; text: string }) => ({
+          value: item.value,
+          label: item.text,
+        }));
+        setDashboardOptions(list);
+        return { data: list, totalCount: response.json.count };
+      });
+    },
     [],
   );
 
@@ -714,8 +664,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
     [chartOptions, currentAlert?.chart],
   );
 
-  const noChartLabel =
-    currentAlert && currentAlert.chart && !currentAlert.chart.label;
+  const noChartLabel = currentAlert && currentAlert.chart && !currentAlert.chart.label;
   useEffect(() => {
     // Find source if current alert has one set
     if (noChartLabel) {
@@ -724,27 +673,24 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
   }, [getChartData, noChartLabel]);
 
   const loadChartOptions = useMemo(
-    () =>
-      (input = '', page: number, pageSize: number) => {
-        const query = rison.encode({
-          filter: input,
-          page,
-          page_size: pageSize,
-        });
-        return SupersetClient.get({
-          endpoint: `/api/v1/report/related/chart?q=${query}`,
-        }).then(response => {
-          const list = response.json.result.map(
-            (item: { value: number; text: string }) => ({
-              value: item.value,
-              label: item.text,
-            }),
-          );
+    () => (input = '', page: number, pageSize: number) => {
+      const query = rison.encode({
+        filter: input,
+        page,
+        page_size: pageSize,
+      });
+      return SupersetClient.get({
+        endpoint: `/api/v1/report/related/chart?q=${query}`,
+      }).then(response => {
+        const list = response.json.result.map((item: { value: number; text: string }) => ({
+          value: item.value,
+          label: item.text,
+        }));
 
-          setChartOptions(list);
-          return { data: list, totalCount: response.json.count };
-        });
-      },
+        setChartOptions(list);
+        return { data: list, totalCount: response.json.count };
+      });
+    },
     [],
   );
 
@@ -754,17 +700,13 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
     }).then(response => setChartVizType(response.json.result.viz_type));
 
   // Handle input/textarea updates
-  const onTextChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-  ) => {
+  const onTextChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const { target } = event;
 
     updateAlertState(target.name, target.value);
   };
 
-  const onTimeoutVerifyChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-  ) => {
+  const onTimeoutVerifyChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const { target } = event;
     const value = +target.value;
 
@@ -772,10 +714,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
     if (value === 0) {
       updateAlertState(target.name, null);
     } else {
-      updateAlertState(
-        target.name,
-        value ? Math.max(value, TIMEOUT_MIN) : value,
-      );
+      updateAlertState(target.name, value ? Math.max(value, TIMEOUT_MIN) : value);
     }
   };
 
@@ -811,9 +750,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
 
     const config = {
       op,
-      threshold: currentAlert
-        ? currentAlert.validator_config_json?.threshold
-        : undefined,
+      threshold: currentAlert ? currentAlert.validator_config_json?.threshold : undefined,
     };
 
     updateAlertState('validator_config_json', config);
@@ -884,8 +821,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
         !!currentAlert.database &&
         currentAlert.sql?.length &&
         (conditionNotNull || !!currentAlert.validator_config_json?.op) &&
-        (conditionNotNull ||
-          currentAlert.validator_config_json?.threshold !== undefined)
+        (conditionNotNull || currentAlert.validator_config_json?.threshold !== undefined)
       ) {
         setDisableSave(false);
       } else {
@@ -898,18 +834,12 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
 
   // Initialize
   useEffect(() => {
-    if (
-      isEditMode &&
-      (!currentAlert?.id || alert?.id !== currentAlert.id || (isHidden && show))
-    ) {
+    if (isEditMode && (!currentAlert?.id || alert?.id !== currentAlert.id || (isHidden && show))) {
       if (alert && alert.id !== null && !loading && !fetchError) {
         const id = alert.id || 0;
         fetchResource(id);
       }
-    } else if (
-      !isEditMode &&
-      (!currentAlert || currentAlert.id || (isHidden && show))
-    ) {
+    } else if (!isEditMode && (!currentAlert || currentAlert.id || (isHidden && show))) {
       setCurrentAlert({ ...DEFAULT_ALERT });
       setNotificationSettings([]);
       setNotificationAddState('active');
@@ -921,9 +851,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
       // Add notification settings
       const settings = (resource.recipients || []).map(setting => {
         const config =
-          typeof setting.recipient_config_json === 'string'
-            ? JSON.parse(setting.recipient_config_json)
-            : {};
+          typeof setting.recipient_config_json === 'string' ? JSON.parse(setting.recipient_config_json) : {};
         return {
           method: setting.type,
           // @ts-ignore: Type not assignable
@@ -933,16 +861,10 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
       });
 
       setNotificationSettings(settings);
-      setNotificationAddState(
-        settings.length === allowedNotificationMethods.length
-          ? 'hidden'
-          : 'active',
-      );
+      setNotificationAddState(settings.length === allowedNotificationMethods.length ? 'hidden' : 'active');
       setContentType(resource.chart ? 'chart' : 'dashboard');
       setReportFormat(
-        resource.chart
-          ? resource.report_format || DEFAULT_NOTIFICATION_FORMAT
-          : DEFAULT_NOTIFICATION_FORMAT,
+        resource.chart ? resource.report_format || DEFAULT_NOTIFICATION_FORMAT : DEFAULT_NOTIFICATION_FORMAT,
       );
       const validatorConfig =
         typeof resource.validator_config_json === 'string'
@@ -1027,14 +949,8 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
       maxWidth="1450px"
       title={
         <h4 data-test="alert-report-modal-title">
-          {isEditMode ? (
-            <Icons.EditAlt css={StyledIcon} />
-          ) : (
-            <Icons.PlusLarge css={StyledIcon} />
-          )}
-          {isEditMode
-            ? t(`Edit ${isReport ? 'Report' : 'Alert'}`)
-            : t(`Add ${isReport ? 'Report' : 'Alert'}`)}
+          {isEditMode ? <Icons.EditAlt css={StyledIcon} /> : <Icons.PlusLarge css={StyledIcon} />}
+          {isEditMode ? t(`Edit ${isReport ? 'Report' : 'Alert'}`) : t(`Add ${isReport ? 'Report' : 'Alert'}`)}
         </h4>
       }
     >
@@ -1090,10 +1006,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
             </div>
           </StyledInputContainer>
           <StyledSwitchContainer>
-            <Switch
-              onChange={onActiveSwitch}
-              checked={currentAlert ? currentAlert.active : true}
-            />
+            <Switch onChange={onActiveSwitch} checked={currentAlert ? currentAlert.active : true} />
             <div className="switch-label">Active</div>
           </StyledSwitchContainer>
         </div>
@@ -1113,8 +1026,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                     ariaLabel={t('Database')}
                     name="source"
                     value={
-                      currentAlert?.database?.label &&
-                      currentAlert?.database?.value
+                      currentAlert?.database?.label && currentAlert?.database?.value
                         ? {
                             value: currentAlert.database.value,
                             label: currentAlert.database.label,
@@ -1154,9 +1066,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                       ariaLabel={t('Condition')}
                       onChange={onConditionChange}
                       placeholder="Condition"
-                      value={
-                        currentAlert?.validator_config_json?.op || undefined
-                      }
+                      value={currentAlert?.validator_config_json?.op || undefined}
                       options={CONDITIONS}
                     />
                   </div>
@@ -1174,8 +1084,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                       value={
                         currentAlert &&
                         currentAlert.validator_config_json &&
-                        currentAlert.validator_config_json.threshold !==
-                          undefined
+                        currentAlert.validator_config_json.threshold !== undefined
                           ? currentAlert.validator_config_json.threshold
                           : ''
                       }
@@ -1189,11 +1098,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
           )}
           <div className="column schedule">
             <StyledSectionTitle>
-              <h4>
-                {isReport
-                  ? t('Report schedule')
-                  : t('Alert condition schedule')}
-              </h4>
+              <h4>{isReport ? t('Report schedule') : t('Alert condition schedule')}</h4>
               <span className="required">*</span>
             </StyledSectionTitle>
             <AlertReportCronScheduler
@@ -1201,14 +1106,8 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
               onChange={newVal => updateAlertState('crontab', newVal)}
             />
             <div className="control-label">{t('Timezone')}</div>
-            <div
-              className="input-container"
-              css={(theme: SupersetTheme) => timezoneHeaderStyle(theme)}
-            >
-              <TimezoneSelector
-                onTimezoneChange={onTimezoneChange}
-                timezone={currentAlert?.timezone}
-              />
+            <div className="input-container" css={(theme: SupersetTheme) => timezoneHeaderStyle(theme)}>
+              <TimezoneSelector onTimezoneChange={onTimezoneChange} timezone={currentAlert?.timezone} />
             </div>
             <StyledSectionTitle>
               <h4>{t('Schedule settings')}</h4>
@@ -1307,10 +1206,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
             />
             {formatOptionEnabled && (
               <div className="inline-container">
-                <StyledRadioGroup
-                  onChange={onFormatChange}
-                  value={reportFormat}
-                >
+                <StyledRadioGroup onChange={onFormatChange} value={reportFormat}>
                   <StyledRadio value="PNG">{t('Send as PNG')}</StyledRadio>
                   <StyledRadio value="CSV">{t('Send as CSV')}</StyledRadio>
                   {TEXT_BASED_VISUALIZATION_TYPES.includes(chartVizType) && (

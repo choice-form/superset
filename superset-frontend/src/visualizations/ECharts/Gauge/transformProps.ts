@@ -38,12 +38,7 @@ import {
   GaugeChartTransformedProps,
   EchartsGaugeChartProps,
 } from './types';
-import {
-  DEFAULT_GAUGE_SERIES_OPTION,
-  INTERVAL_GAUGE_SERIES_OPTION,
-  OFFSETS,
-  FONT_SIZE_MULTIPLIERS,
-} from './constants';
+import { DEFAULT_GAUGE_SERIES_OPTION, INTERVAL_GAUGE_SERIES_OPTION, OFFSETS, FONT_SIZE_MULTIPLIERS } from './constants';
 
 const setIntervalBoundsAndColors = (
   intervals: string,
@@ -61,12 +56,8 @@ const setIntervalBoundsAndColors = (
     intervalColorIndicesArray = [] as number[];
   }
 
-  const intervalBounds = intervalBoundsNonNormalized.map(
-    bound => bound / normalizer,
-  );
-  const intervalColors = intervalColorIndicesArray.map(
-    ind => colorFn.colors[(ind - 1) % colorFn.colors.length],
-  );
+  const intervalBounds = intervalBoundsNonNormalized.map(bound => bound / normalizer);
+  const intervalColors = intervalColorIndicesArray.map(ind => colorFn.colors[(ind - 1) % colorFn.colors.length]);
 
   return intervalBounds.map((val, idx) => {
     const color = intervalColors[idx];
@@ -74,23 +65,11 @@ const setIntervalBoundsAndColors = (
   });
 };
 
-const calculateAxisLineWidth = (
-  data: DataRecord[],
-  fontSize: number,
-  overlap: boolean,
-): number => (overlap ? fontSize : data.length * fontSize);
+const calculateAxisLineWidth = (data: DataRecord[], fontSize: number, overlap: boolean): number =>
+  overlap ? fontSize : data.length * fontSize;
 
-export default function transformProps(
-  chartProps: EchartsGaugeChartProps,
-): GaugeChartTransformedProps {
-  const {
-    width,
-    height,
-    formData,
-    queriesData,
-    hooks,
-    filterState,
-  } = chartProps;
+export default function transformProps(chartProps: EchartsGaugeChartProps): GaugeChartTransformedProps {
+  const { width, height, formData, queriesData, hooks, filterState } = chartProps;
   const {
     groupby,
     metric,
@@ -120,81 +99,54 @@ export default function transformProps(
   const normalizer = maxVal;
   const axisLineWidth = calculateAxisLineWidth(data, fontSize, overlap);
   const axisLabels = range(minVal, maxVal, (maxVal - minVal) / splitNumber);
-  const axisLabelLength = Math.max(
-    ...axisLabels.map(label => numberFormatter(label).length).concat([1]),
-  );
+  const axisLabelLength = Math.max(...axisLabels.map(label => numberFormatter(label).length).concat([1]));
   const groupbyLabels = groupby.map(getColumnLabel);
-  const formatValue = (value: number) =>
-    valueFormatter.replace('{value}', numberFormatter(value));
+  const formatValue = (value: number) => valueFormatter.replace('{value}', numberFormatter(value));
   const axisTickLength = FONT_SIZE_MULTIPLIERS.axisTickLength * fontSize;
   const splitLineLength = FONT_SIZE_MULTIPLIERS.splitLineLength * fontSize;
-  const titleOffsetFromTitle =
-    FONT_SIZE_MULTIPLIERS.titleOffsetFromTitle * fontSize;
-  const detailOffsetFromTitle =
-    FONT_SIZE_MULTIPLIERS.detailOffsetFromTitle * fontSize;
-  const intervalBoundsAndColors = setIntervalBoundsAndColors(
-    intervals,
-    intervalColorIndices,
-    colorFn,
-    normalizer,
-  );
+  const titleOffsetFromTitle = FONT_SIZE_MULTIPLIERS.titleOffsetFromTitle * fontSize;
+  const detailOffsetFromTitle = FONT_SIZE_MULTIPLIERS.detailOffsetFromTitle * fontSize;
+  const intervalBoundsAndColors = setIntervalBoundsAndColors(intervals, intervalColorIndices, colorFn, normalizer);
   const columnsLabelMap = new Map<string, DataRecordValue[]>();
 
-  const transformedData: GaugeDataItemOption[] = data.map(
-    (data_point, index) => {
-      const name = groupbyLabels
-        .map(column => `${column}: ${data_point[column]}`)
-        .join(', ');
-      columnsLabelMap.set(
-        name,
-        groupbyLabels.map(col => data_point[col]),
-      );
-      let item: GaugeDataItemOption = {
-        value: data_point[getMetricLabel(metric as QueryFormMetric)] as number,
-        name,
+  const transformedData: GaugeDataItemOption[] = data.map((data_point, index) => {
+    const name = groupbyLabels.map(column => `${column}: ${data_point[column]}`).join(', ');
+    columnsLabelMap.set(
+      name,
+      groupbyLabels.map(col => data_point[col]),
+    );
+    let item: GaugeDataItemOption = {
+      value: data_point[getMetricLabel(metric as QueryFormMetric)] as number,
+      name,
+      itemStyle: {
+        color: colorFn(index),
+      },
+      title: {
+        offsetCenter: ['0%', `${index * titleOffsetFromTitle + OFFSETS.titleFromCenter}%`],
+        fontSize,
+      },
+      detail: {
+        offsetCenter: ['0%', `${index * titleOffsetFromTitle + OFFSETS.titleFromCenter + detailOffsetFromTitle}%`],
+        fontSize: FONT_SIZE_MULTIPLIERS.detailFontSize * fontSize,
+      },
+    };
+    if (filterState.selectedValues && !filterState.selectedValues.includes(name)) {
+      item = {
+        ...item,
         itemStyle: {
           color: colorFn(index),
-        },
-        title: {
-          offsetCenter: [
-            '0%',
-            `${index * titleOffsetFromTitle + OFFSETS.titleFromCenter}%`,
-          ],
-          fontSize,
+          opacity: OpacityEnum.SemiTransparent,
         },
         detail: {
-          offsetCenter: [
-            '0%',
-            `${
-              index * titleOffsetFromTitle +
-              OFFSETS.titleFromCenter +
-              detailOffsetFromTitle
-            }%`,
-          ],
-          fontSize: FONT_SIZE_MULTIPLIERS.detailFontSize * fontSize,
+          show: false,
+        },
+        title: {
+          show: false,
         },
       };
-      if (
-        filterState.selectedValues &&
-        !filterState.selectedValues.includes(name)
-      ) {
-        item = {
-          ...item,
-          itemStyle: {
-            color: colorFn(index),
-            opacity: OpacityEnum.SemiTransparent,
-          },
-          detail: {
-            show: false,
-          },
-          title: {
-            show: false,
-          },
-        };
-      }
-      return item;
-    },
-  );
+    }
+    return item;
+  });
 
   const { setDataMask = () => {} } = hooks;
 
@@ -223,10 +175,7 @@ export default function transformProps(
   const axisLabel = {
     distance:
       axisLineWidth -
-      FONT_SIZE_MULTIPLIERS.axisLabelDistance *
-        fontSize *
-        FONT_SIZE_MULTIPLIERS.axisLabelLength *
-        axisLabelLength -
+      FONT_SIZE_MULTIPLIERS.axisLabelDistance * fontSize * FONT_SIZE_MULTIPLIERS.axisLabelLength * axisLabelLength -
       (showSplitLine ? splitLineLength : 0) -
       (showAxisTick ? axisTickLength : 0) -
       OFFSETS.ticksFromLine,
@@ -238,8 +187,7 @@ export default function transformProps(
     show: showAxisTick,
     distance: -axisLineWidth - axisTickLength - OFFSETS.ticksFromLine,
     length: axisTickLength,
-    lineStyle: DEFAULT_GAUGE_SERIES_OPTION.axisTick
-      ?.lineStyle as AxisTickLineStyle,
+    lineStyle: DEFAULT_GAUGE_SERIES_OPTION.axisTick?.lineStyle as AxisTickLineStyle,
   };
   const detail = {
     valueAnimation: animation,
@@ -249,10 +197,8 @@ export default function transformProps(
   let pointer;
 
   if (intervalBoundsAndColors.length) {
-    splitLine.lineStyle.color =
-      INTERVAL_GAUGE_SERIES_OPTION.splitLine?.lineStyle?.color;
-    axisTick.lineStyle.color = INTERVAL_GAUGE_SERIES_OPTION?.axisTick?.lineStyle
-      ?.color as string;
+    splitLine.lineStyle.color = INTERVAL_GAUGE_SERIES_OPTION.splitLine?.lineStyle?.color;
+    axisTick.lineStyle.color = INTERVAL_GAUGE_SERIES_OPTION?.axisTick?.lineStyle?.color as string;
     axisLabel.color = INTERVAL_GAUGE_SERIES_OPTION.axisLabel?.color;
     axisLine.lineStyle.color = intervalBoundsAndColors;
     pointer = {

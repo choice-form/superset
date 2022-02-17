@@ -57,11 +57,7 @@ export type ControlFormProps = {
 /**
  * Light weight form for control panel.
  */
-export default function ControlForm({
-  onChange,
-  value,
-  children,
-}: ControlFormProps) {
+export default function ControlForm({ onChange, value, children }: ControlFormProps) {
   const theme = useTheme();
   const debouncedOnChange = useMemo(
     () =>
@@ -74,17 +70,10 @@ export default function ControlForm({
 
   const updatedChildren = React.Children.map(children, row => {
     if ('children' in row.props) {
-      const defaultWidth = Array.isArray(row.props.children)
-        ? `${100 / row.props.children.length}%`
-        : undefined;
+      const defaultWidth = Array.isArray(row.props.children) ? `${100 / row.props.children.length}%` : undefined;
       return React.cloneElement(row, {
         children: React.Children.map(row.props.children, item => {
-          const {
-            name,
-            width,
-            debounceDelay = FAST_DEBOUNCE,
-            onChange: onItemValueChange,
-          } = item.props;
+          const { name, width, debounceDelay = FAST_DEBOUNCE, onChange: onItemValueChange } = item.props;
           return React.cloneElement(item, {
             width: width || defaultWidth,
             value: value?.[name],
@@ -98,10 +87,7 @@ export default function ControlForm({
               }
               // propagate to the form
               if (!(debounceDelay in debouncedOnChange)) {
-                debouncedOnChange[debounceDelay] = debounce(
-                  onChange,
-                  debounceDelay,
-                );
+                debouncedOnChange[debounceDelay] = debounce(onChange, debounceDelay);
               }
               debouncedOnChange[debounceDelay]({
                 ...value,

@@ -75,25 +75,14 @@ function BooleanDisplay({ value }: { value: Boolean }) {
 
 function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
   const {
-    state: {
-      loading,
-      resourceCount: databaseCount,
-      resourceCollection: databases,
-    },
+    state: { loading, resourceCount: databaseCount, resourceCollection: databases },
     hasPerm,
     fetchData,
     refreshData,
-  } = useListViewResource<DatabaseObject>(
-    'database',
-    t('database'),
-    addDangerToast,
-  );
+  } = useListViewResource<DatabaseObject>('database', t('database'), addDangerToast);
   const [databaseModalOpen, setDatabaseModalOpen] = useState<boolean>(false);
-  const [databaseCurrentlyDeleting, setDatabaseCurrentlyDeleting] =
-    useState<DatabaseDeleteObject | null>(null);
-  const [currentDatabase, setCurrentDatabase] = useState<DatabaseObject | null>(
-    null,
-  );
+  const [databaseCurrentlyDeleting, setDatabaseCurrentlyDeleting] = useState<DatabaseDeleteObject | null>(null);
+  const [currentDatabase, setCurrentDatabase] = useState<DatabaseObject | null>(null);
   const [importingDatabase, showImportModal] = useState<boolean>(false);
   const [passwordFields, setPasswordFields] = useState<string[]>([]);
   const [preparingExport, setPreparingExport] = useState<boolean>(false);
@@ -122,14 +111,7 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
           dashboard_count: json.dashboards.count,
         });
       })
-      .catch(
-        createErrorHandler(errMsg =>
-          t(
-            'An error occurred while fetching database related data: %s',
-            errMsg,
-          ),
-        ),
-      );
+      .catch(createErrorHandler(errMsg => t('An error occurred while fetching database related data: %s', errMsg)));
 
   function handleDatabaseDelete({ id, database_name: dbName }: DatabaseObject) {
     SupersetClient.delete({
@@ -142,9 +124,7 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
         // Close delete modal
         setDatabaseCurrentlyDeleting(null);
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(t('There was an issue deleting %s: %s', dbName, errMsg)),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting %s: %s', dbName, errMsg))),
     );
   }
 
@@ -160,8 +140,7 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
   const canCreate = hasPerm('can_write');
   const canEdit = hasPerm('can_write');
   const canDelete = hasPerm('can_write');
-  const canExport =
-    hasPerm('can_read') && isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT);
+  const canExport = hasPerm('can_read') && isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT);
 
   const menuData: SubMenuProps = {
     activeChild: 'Databases',
@@ -188,11 +167,7 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
     if (isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT)) {
       menuData.buttons.push({
         name: (
-          <Tooltip
-            id="import-tooltip"
-            title={t('Import databases')}
-            placement="bottomRight"
-          >
+          <Tooltip id="import-tooltip" title={t('Import databases')} placement="bottomRight">
             <Icons.Import data-test="import-button" />
           </Tooltip>
         ),
@@ -229,11 +204,7 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
       {
         accessor: 'allow_run_async',
         Header: (
-          <Tooltip
-            id="allow-run-async-header-tooltip"
-            title={t('Asynchronous query execution')}
-            placement="top"
-          >
+          <Tooltip id="allow-run-async-header-tooltip" title={t('Asynchronous query execution')} placement="top">
             <span>{t('AQE')}</span>
           </Tooltip>
         ),
@@ -249,11 +220,7 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
       {
         accessor: 'allow_dml',
         Header: (
-          <Tooltip
-            id="allow-dml-header-tooltip"
-            title={t('Allow data manipulation language')}
-            placement="top"
-          >
+          <Tooltip id="allow-dml-header-tooltip" title={t('Allow data manipulation language')} placement="top">
             <span>{t('DML')}</span>
           </Tooltip>
         ),
@@ -292,8 +259,7 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
           row: {
             original: { created_by: createdBy },
           },
-        }: any) =>
-          createdBy ? `${createdBy.first_name} ${createdBy.last_name}` : '',
+        }: any) => (createdBy ? `${createdBy.first_name} ${createdBy.last_name}` : ''),
         size: 'xl',
       },
       {
@@ -308,8 +274,7 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
       },
       {
         Cell: ({ row: { original } }: any) => {
-          const handleEdit = () =>
-            handleDatabaseEditModal({ database: original, modalOpen: true });
+          const handleEdit = () => handleDatabaseEditModal({ database: original, modalOpen: true });
           const handleDelete = () => openDatabaseDeleteModal(original);
           const handleExport = () => handleDatabaseExport(original);
           if (!canEdit && !canDelete && !canExport) {
@@ -325,37 +290,20 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
                   data-test="database-delete"
                   onClick={handleDelete}
                 >
-                  <Tooltip
-                    id="delete-action-tooltip"
-                    title={t('Delete database')}
-                    placement="bottom"
-                  >
+                  <Tooltip id="delete-action-tooltip" title={t('Delete database')} placement="bottom">
                     <Icons.Trash />
                   </Tooltip>
                 </span>
               )}
               {canExport && (
-                <Tooltip
-                  id="export-action-tooltip"
-                  title={t('Export')}
-                  placement="bottom"
-                >
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    className="action-button"
-                    onClick={handleExport}
-                  >
+                <Tooltip id="export-action-tooltip" title={t('Export')} placement="bottom">
+                  <span role="button" tabIndex={0} className="action-button" onClick={handleExport}>
                     <Icons.Share />
                   </span>
                 </Tooltip>
               )}
               {canEdit && (
-                <Tooltip
-                  id="edit-action-tooltip"
-                  title={t('Edit')}
-                  placement="bottom"
-                >
+                <Tooltip id="edit-action-tooltip" title={t('Edit')} placement="bottom">
                   <span
                     role="button"
                     data-test="database-edit"
@@ -394,11 +342,7 @@ function DatabaseList({ addDangerToast, addSuccessToast }: DatabaseListProps) {
       },
       {
         Header: (
-          <Tooltip
-            id="allow-run-async-filter-header-tooltip"
-            title={t('Asynchronous query execution')}
-            placement="top"
-          >
+          <Tooltip id="allow-run-async-filter-header-tooltip" title={t('Asynchronous query execution')} placement="top">
             <span>{t('AQE')}</span>
           </Tooltip>
         ),

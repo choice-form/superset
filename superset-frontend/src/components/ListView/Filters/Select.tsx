@@ -31,20 +31,11 @@ interface SelectFilterProps extends BaseFilter {
   selects: Filter['selects'];
 }
 
-function SelectFilter({
-  Header,
-  name,
-  fetchSelects,
-  initialValue,
-  onSelect,
-  selects = [],
-}: SelectFilterProps) {
+function SelectFilter({ Header, name, fetchSelects, initialValue, onSelect, selects = [] }: SelectFilterProps) {
   const [selectedOption, setSelectedOption] = useState(initialValue);
 
   const onChange = (selected: SelectOption) => {
-    onSelect(
-      selected ? { label: selected.label, value: selected.value } : undefined,
-    );
+    onSelect(selected ? { label: selected.label, value: selected.value } : undefined);
     setSelectedOption(selected);
   };
 

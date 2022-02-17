@@ -22,34 +22,21 @@ import createSmartNumberFormatter from './factories/createSmartNumberFormatter';
 import NumberFormats from './NumberFormats';
 import NumberFormatter from './NumberFormatter';
 
-export default class NumberFormatterRegistry extends RegistryWithDefaultKey<
-  NumberFormatter,
-  NumberFormatter
-> {
+export default class NumberFormatterRegistry extends RegistryWithDefaultKey<NumberFormatter, NumberFormatter> {
   constructor() {
     super({
       name: 'NumberFormatter',
       overwritePolicy: OverwritePolicy.WARN,
     });
 
-    this.registerValue(
-      NumberFormats.SMART_NUMBER,
-      createSmartNumberFormatter(),
-    );
-    this.registerValue(
-      NumberFormats.SMART_NUMBER_SIGNED,
-      createSmartNumberFormatter({ signed: true }),
-    );
+    this.registerValue(NumberFormats.SMART_NUMBER, createSmartNumberFormatter());
+    this.registerValue(NumberFormats.SMART_NUMBER_SIGNED, createSmartNumberFormatter({ signed: true }));
     this.setDefaultKey(NumberFormats.SMART_NUMBER);
   }
 
   get(formatterId?: string) {
     const targetFormat = `${
-      formatterId === null ||
-      typeof formatterId === 'undefined' ||
-      formatterId === ''
-        ? this.defaultKey
-        : formatterId
+      formatterId === null || typeof formatterId === 'undefined' || formatterId === '' ? this.defaultKey : formatterId
     }`.trim();
 
     if (this.has(targetFormat)) {
@@ -65,10 +52,7 @@ export default class NumberFormatterRegistry extends RegistryWithDefaultKey<
     return formatter;
   }
 
-  format(
-    formatterId: string | undefined,
-    value: number | null | undefined,
-  ): string {
+  format(formatterId: string | undefined, value: number | null | undefined): string {
     return this.get(formatterId)(value);
   }
 }

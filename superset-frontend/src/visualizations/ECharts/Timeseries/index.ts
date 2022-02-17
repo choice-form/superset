@@ -17,21 +17,12 @@
  * under the License.
  */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import {
-  t,
-  ChartMetadata,
-  ChartPlugin,
-  AnnotationType,
-  Behavior,
-} from 'src/core';
+import { t, ChartMetadata, ChartPlugin, AnnotationType, Behavior } from 'src/core';
 import buildQuery from './buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
-import {
-  EchartsTimeseriesChartProps,
-  EchartsTimeseriesFormData,
-} from './types';
+import { EchartsTimeseriesChartProps, EchartsTimeseriesFormData } from './types';
 import example from './images/Time-series_Chart.jpg';
 
 export default class EchartsTimeseriesChartPlugin extends ChartPlugin<
@@ -68,14 +59,7 @@ export default class EchartsTimeseriesChartPlugin extends ChartPlugin<
           AnnotationType.Timeseries,
         ],
         name: t('Time-series Chart'),
-        tags: [
-          t('Advanced-Analytics'),
-          t('Aesthetic'),
-          t('Line'),
-          t('Predictive'),
-          t('Time'),
-          t('Transformable'),
-        ],
+        tags: [t('Advanced-Analytics'), t('Aesthetic'), t('Line'), t('Predictive'), t('Time'), t('Transformable')],
         thumbnail,
       }),
       transformProps,

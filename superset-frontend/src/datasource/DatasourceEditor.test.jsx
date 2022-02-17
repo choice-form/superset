@@ -143,24 +143,18 @@ describe('DatasourceEditor', () => {
         }),
       ]),
     );
-    expect(inst.state.databaseColumns).not.toEqual(
-      expect.arrayContaining([expect.objectContaining({ name: 'name' })]),
-    );
+    expect(inst.state.databaseColumns).not.toEqual(expect.arrayContaining([expect.objectContaining({ name: 'name' })]));
   });
 
   it('renders isSqla fields', () => {
     wrapper.setState({ activeTabKey: 4 });
     expect(wrapper.state('isSqla')).toBe(true);
-    expect(
-      wrapper.find(Field).find({ fieldKey: 'fetch_values_predicate' }).exists(),
-    ).toBe(true);
+    expect(wrapper.find(Field).find({ fieldKey: 'fetch_values_predicate' }).exists()).toBe(true);
   });
 
   describe('enable edit Source tab', () => {
     beforeAll(() => {
-      isFeatureEnabledMock = jest
-        .spyOn(featureFlags, 'isFeatureEnabled')
-        .mockImplementation(() => false);
+      isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => false);
       wrapper = shallow(el, { context: { store } }).dive();
     });
 
@@ -199,9 +193,7 @@ describe('DatasourceEditor', () => {
 
   it('disable edit Source tab', () => {
     // when edit is disabled, show readOnly controls and no padlock
-    isFeatureEnabledMock = jest
-      .spyOn(featureFlags, 'isFeatureEnabled')
-      .mockImplementation(() => true);
+    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => true);
     wrapper = shallow(el, { context: { store } }).dive();
     wrapper.setState({ activeTabKey: 0 });
 
@@ -223,13 +215,9 @@ describe('DatasourceEditor RTL', () => {
     userEvent.click(metricButton);
     const expandToggle = await screen.findAllByLabelText(/toggle expand/i);
     userEvent.click(expandToggle[0]);
-    const certificationDetails = await screen.findByPlaceholderText(
-      /certification details/i,
-    );
+    const certificationDetails = await screen.findByPlaceholderText(/certification details/i);
     expect(certificationDetails.value).toEqual('foo');
-    const warningMarkdown = await await screen.findByPlaceholderText(
-      /certified by/i,
-    );
+    const warningMarkdown = await await screen.findByPlaceholderText(/certified by/i);
     expect(warningMarkdown.value).toEqual('someone');
   });
   it('properly updates the metric information', async () => {
@@ -242,9 +230,7 @@ describe('DatasourceEditor RTL', () => {
     userEvent.click(expandToggle[1]);
     const certifiedBy = await screen.findByPlaceholderText(/certified by/i);
     userEvent.type(certifiedBy, 'I am typing a new name');
-    const certificationDetails = await screen.findByPlaceholderText(
-      /certification details/i,
-    );
+    const certificationDetails = await screen.findByPlaceholderText(/certification details/i);
     expect(certifiedBy.value).toEqual('I am typing a new name');
     userEvent.type(certificationDetails, 'I am typing something new');
     expect(certificationDetails.value).toEqual('I am typing something new');

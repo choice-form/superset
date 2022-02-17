@@ -17,11 +17,7 @@
  * under the License.
  */
 import React, { CSSProperties, useCallback, useMemo } from 'react';
-import {
-  ColumnInstance,
-  ColumnWithLooseAccessor,
-  DefaultSortTypes,
-} from 'react-table';
+import { ColumnInstance, ColumnWithLooseAccessor, DefaultSortTypes } from 'react-table';
 import { extent as d3Extent, max as d3Max } from 'd3-array';
 import { FaSort } from '@react-icons/all-files/fa/FaSort';
 import { FaSortDown as FaSortDesc } from '@react-icons/all-files/fa/FaSortDown';
@@ -38,12 +34,7 @@ import {
 } from 'src/core';
 
 import { DataColumnMeta, TableChartTransformedProps } from './types';
-import DataTable, {
-  DataTableProps,
-  SearchInputProps,
-  SelectPageSizeRendererProps,
-  SizeOption,
-} from './DataTable';
+import DataTable, { DataTableProps, SearchInputProps, SelectPageSizeRendererProps, SizeOption } from './DataTable';
 
 import Styles from './Styles';
 import { formatColumnValue } from './utils/formatValue';
@@ -93,9 +84,7 @@ function cellBar({
   const posExtent = Math.abs(Math.max(maxValue, 0));
   const negExtent = Math.abs(Math.min(minValue, 0));
   const tot = posExtent + negExtent;
-  const perc1 = Math.round(
-    (Math.min(negExtent + value, negExtent) / tot) * 100,
-  );
+  const perc1 = Math.round((Math.min(negExtent + value, negExtent) / tot) * 100);
   const perc2 = Math.round((Math.abs(value) / tot) * 100);
   // The 0.01 to 0.001 is a workaround for what appears to be a
   // CSS rendering bug on flat, transparent colors
@@ -129,11 +118,7 @@ function SearchInput({ count, value, onChange }: SearchInputProps) {
   );
 }
 
-function SelectPageSize({
-  options,
-  current,
-  onChange,
-}: SelectPageSizeRendererProps) {
+function SelectPageSize({ options, current, onChange }: SelectPageSizeRendererProps) {
   return (
     <span className="dt-select-page-size form-inline">
       {t('page_size.show')}{' '}
@@ -146,9 +131,7 @@ function SelectPageSize({
         }}
       >
         {options.map(option => {
-          const [size, text] = Array.isArray(option)
-            ? option
-            : [option, option];
+          const [size, text] = Array.isArray(option) ? option : [option, option];
           return (
             <option key={size} value={size}>
               {text}
@@ -189,10 +172,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
     sticky = true, // whether to use sticky header
     columnColorFormatters,
   } = props;
-  const timestampFormatter = useCallback(
-    value => getTimeFormatterForGranularity(timeGrain)(value),
-    [timeGrain],
-  );
+  const timestampFormatter = useCallback(value => getTimeFormatterForGranularity(timeGrain)(value), [timeGrain]);
 
   const handleChange = useCallback(
     (filters: { [x: string]: DataRecordValue[] }) => {
@@ -207,9 +187,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
         const isTimestamp = col === DTTM_ALIAS;
         const filterValues = ensureIsArray(filters?.[col]);
         if (filterValues.length) {
-          const valueLabels = filterValues.map(value =>
-            isTimestamp ? timestampFormatter(value) : value,
-          );
+          const valueLabels = filterValues.map(value => (isTimestamp ? timestampFormatter(value) : value));
           labelElements.push(`${valueLabels.join(', ')}`);
         }
       });
@@ -228,9 +206,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
                   return {
                     col,
                     op: 'IN',
-                    val: val.map(el =>
-                      el instanceof Date ? el.getTime() : el!,
-                    ),
+                    val: val.map(el => (el instanceof Date ? el.getTime() : el!)),
                     grain: col === DTTM_ALIAS ? timeGrain : undefined,
                   };
                 }),
@@ -257,9 +233,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
     function getValueRange(key: string, alignPositiveNegative: boolean) {
       if (typeof data?.[0]?.[key] === 'number') {
         const nums = data.map(row => row[key]) as number[];
-        return (alignPositiveNegative
-          ? [0, d3Max(nums.map(Math.abs))]
-          : d3Extent(nums)) as ValueRange;
+        return (alignPositiveNegative ? [0, d3Max(nums.map(Math.abs))] : d3Extent(nums)) as ValueRange;
       }
       return null;
     },
@@ -289,10 +263,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
           [target]: [val],
         };
       }
-      if (
-        Array.isArray(updatedFilters[target]) &&
-        updatedFilters[target].length === 0
-      ) {
+      if (Array.isArray(updatedFilters[target]) && updatedFilters[target].length === 0) {
         delete updatedFilters[target];
       }
       handleChange(updatedFilters);
@@ -302,11 +273,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
 
   const getSharedStyle = (column: DataColumnMeta): CSSProperties => {
     const { isNumeric, config = {} } = column;
-    const textAlign = config.horizontalAlign
-      ? config.horizontalAlign
-      : isNumeric
-      ? 'right'
-      : 'left';
+    const textAlign = config.horizontalAlign ? config.horizontalAlign : isNumeric ? 'right' : 'left';
     return {
       textAlign,
     };
@@ -316,32 +283,22 @@ export default function TableChart<D extends DataRecord = DataRecord>(
     (column: DataColumnMeta, i: number): ColumnWithLooseAccessor<D> => {
       const { key, label, isNumeric, dataType, isMetric, config = {} } = column;
       const isFilter = !isNumeric && emitFilter;
-      const columnWidth = Number.isNaN(Number(config.columnWidth))
-        ? config.columnWidth
-        : Number(config.columnWidth);
+      const columnWidth = Number.isNaN(Number(config.columnWidth)) ? config.columnWidth : Number(config.columnWidth);
 
       // inline style for both th and td cell
       const sharedStyle: CSSProperties = getSharedStyle(column);
 
       const alignPositiveNegative =
-        config.alignPositiveNegative === undefined
-          ? defaultAlignPN
-          : config.alignPositiveNegative;
+        config.alignPositiveNegative === undefined ? defaultAlignPN : config.alignPositiveNegative;
       const colorPositiveNegative =
-        config.colorPositiveNegative === undefined
-          ? defaultColorPN
-          : config.colorPositiveNegative;
+        config.colorPositiveNegative === undefined ? defaultColorPN : config.colorPositiveNegative;
 
       const hasColumnColorFormatters =
-        isNumeric &&
-        Array.isArray(columnColorFormatters) &&
-        columnColorFormatters.length > 0;
+        isNumeric && Array.isArray(columnColorFormatters) && columnColorFormatters.length > 0;
 
       const valueRange =
         !hasColumnColorFormatters &&
-        (config.showCellBars === undefined
-          ? showCellBars
-          : config.showCellBars) &&
+        (config.showCellBars === undefined ? showCellBars : config.showCellBars) &&
         (isMetric || isRawRecords) &&
         getValueRange(key, alignPositiveNegative);
 
@@ -365,9 +322,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
             columnColorFormatters!
               .filter(formatter => formatter.column === column.key)
               .forEach(formatter => {
-                const formatterResult = formatter.getColorFromValue(
-                  value as number,
-                );
+                const formatterResult = formatter.getColorFromValue(value as number);
                 if (formatterResult) {
                   backgroundColor = formatterResult;
                 }
@@ -377,10 +332,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
           const cellProps = {
             // show raw number in title in case of numeric values
             title: typeof value === 'number' ? String(value) : undefined,
-            onClick:
-              emitFilter && !valueRange
-                ? () => toggleFilter(key, value)
-                : undefined,
+            onClick: emitFilter && !valueRange ? () => toggleFilter(key, value) : undefined,
             className: [
               className,
               value == null ? 'dt-is-null' : '',
@@ -460,15 +412,9 @@ export default function TableChart<D extends DataRecord = DataRecord>(
     ],
   );
 
-  const columns = useMemo(() => columnsMeta.map(getColumnConfigs), [
-    columnsMeta,
-    getColumnConfigs,
-  ]);
+  const columns = useMemo(() => columnsMeta.map(getColumnConfigs), [columnsMeta, getColumnConfigs]);
 
-  const handleServerPaginationChange = (
-    pageNumber: number,
-    pageSize: number,
-  ) => {
+  const handleServerPaginationChange = (pageNumber: number, pageSize: number) => {
     updateExternalFormData(setDataMask, pageNumber, pageSize);
   };
 
@@ -488,9 +434,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
         onServerPaginationChange={handleServerPaginationChange}
         // 9 page items in > 340px works well even for 100+ pages
         maxPageItemCount={width > 340 ? 9 : 7}
-        noResults={(filter: string) =>
-          t(filter ? 'No matching records found' : 'No records found')
-        }
+        noResults={(filter: string) => t(filter ? 'No matching records found' : 'No records found')}
         searchInput={includeSearch && SearchInput}
         selectPageSize={pageSize !== null && SelectPageSize}
         // not in use in Superset, but needed for unit tests

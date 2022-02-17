@@ -42,9 +42,7 @@ describe('TabbedSqlEditors', () => {
 
   const tabHistory = ['dfsadfs', 'newEditorId'];
 
-  const tables = [
-    { ...table, dataPreviewQueryId: 'B1-VQU1zW', queryEditorId: 'newEditorId' },
-  ];
+  const tables = [{ ...table, dataPreviewQueryId: 'B1-VQU1zW', queryEditorId: 'newEditorId' }];
 
   const queryEditors = [
     {
@@ -99,9 +97,7 @@ describe('TabbedSqlEditors', () => {
 
   let wrapper;
   it('is valid', () => {
-    expect(React.isValidElement(<TabbedSqlEditors {...mockedProps} />)).toBe(
-      true,
-    );
+    expect(React.isValidElement(<TabbedSqlEditors {...mockedProps} />)).toBe(true);
   });
   describe('componentDidMount', () => {
     let uriStub;
@@ -135,12 +131,8 @@ describe('TabbedSqlEditors', () => {
       wrapper.setProps({ queryEditors, queries, tabHistory, tables });
     });
     it('should update queriesArray and dataPreviewQueries', () => {
-      expect(wrapper.state().queriesArray.slice(-1)[0]).toBe(
-        queries['B1-VQU1zW'],
-      );
-      expect(wrapper.state().dataPreviewQueries.slice(-1)[0]).toEqual(
-        queries['B1-VQU1zW'],
-      );
+      expect(wrapper.state().queriesArray.slice(-1)[0]).toBe(queries['B1-VQU1zW']);
+      expect(wrapper.state().dataPreviewQueries.slice(-1)[0]).toEqual(queries['B1-VQU1zW']);
     });
   });
   it('should rename Tab', () => {
@@ -149,9 +141,7 @@ describe('TabbedSqlEditors', () => {
     sinon.stub(wrapper.instance().props.actions, 'queryEditorSetTitle');
 
     wrapper.instance().renameTab(queryEditors[0]);
-    expect(
-      wrapper.instance().props.actions.queryEditorSetTitle.getCall(0).args[1],
-    ).toBe('new title');
+    expect(wrapper.instance().props.actions.queryEditorSetTitle.getCall(0).args[1]).toBe('new title');
 
     delete global.prompt;
   });
@@ -160,27 +150,21 @@ describe('TabbedSqlEditors', () => {
     sinon.stub(wrapper.instance().props.actions, 'removeQueryEditor');
 
     wrapper.instance().removeQueryEditor(queryEditors[0]);
-    expect(
-      wrapper.instance().props.actions.removeQueryEditor.getCall(0).args[0],
-    ).toBe(queryEditors[0]);
+    expect(wrapper.instance().props.actions.removeQueryEditor.getCall(0).args[0]).toBe(queryEditors[0]);
   });
   it('should add new query editor', () => {
     wrapper = getWrapper();
     sinon.stub(wrapper.instance().props.actions, 'addQueryEditor');
 
     wrapper.instance().newQueryEditor();
-    expect(
-      wrapper.instance().props.actions.addQueryEditor.getCall(0).args[0].title,
-    ).toContain('Untitled Query');
+    expect(wrapper.instance().props.actions.addQueryEditor.getCall(0).args[0].title).toContain('Untitled Query');
   });
   it('should duplicate query editor', () => {
     wrapper = getWrapper();
     sinon.stub(wrapper.instance().props.actions, 'cloneQueryToNewTab');
 
     wrapper.instance().duplicateQueryEditor(queryEditors[0]);
-    expect(
-      wrapper.instance().props.actions.cloneQueryToNewTab.getCall(0).args[0],
-    ).toBe(queryEditors[0]);
+    expect(wrapper.instance().props.actions.cloneQueryToNewTab.getCall(0).args[0]).toBe(queryEditors[0]);
   });
   it('should handle select', () => {
     const mockEvent = {
@@ -193,9 +177,7 @@ describe('TabbedSqlEditors', () => {
 
     // cannot switch to current tab, switchQueryEditor never gets called
     wrapper.instance().handleSelect('dfsadfs', mockEvent);
-    expect(
-      wrapper.instance().props.actions.switchQueryEditor.callCount,
-    ).toEqual(0);
+    expect(wrapper.instance().props.actions.switchQueryEditor.callCount).toEqual(0);
   });
   it('should handle add tab', () => {
     wrapper = getWrapper();
@@ -210,9 +192,7 @@ describe('TabbedSqlEditors', () => {
     wrapper.setState({ hideLeftBar: true });
 
     const firstTab = wrapper.find(EditableTabs.TabPane).first();
-    expect(firstTab.props()['data-key']).toContain(
-      initialState.sqlLab.queryEditors[0].id,
-    );
+    expect(firstTab.props()['data-key']).toContain(initialState.sqlLab.queryEditors[0].id);
     expect(firstTab.find(SqlEditor)).toHaveLength(1);
   });
   it('should disable new tab when offline', () => {

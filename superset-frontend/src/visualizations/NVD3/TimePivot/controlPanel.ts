@@ -17,11 +17,7 @@
  * under the License.
  */
 import { t } from 'src/core';
-import {
-  ControlPanelConfig,
-  D3_FORMAT_OPTIONS,
-  sections,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, D3_FORMAT_OPTIONS, sections } from 'src/chartConntrols';
 import {
   lineInterpolation,
   showLegend,
@@ -68,9 +64,7 @@ const config: ControlPanelConfig = {
             Click on the info bubble for more details on accepted "freq" expressions.`,
               ),
               tooltipOnClick: () => {
-                window.open(
-                  'https://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset-aliases',
-                );
+                window.open('https://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset-aliases');
               },
             },
           },
@@ -80,11 +74,7 @@ const config: ControlPanelConfig = {
     {
       label: t('Chart Options'),
       expanded: true,
-      controlSetRows: [
-        [showLegend],
-        [lineInterpolation],
-        ['color_picker', null],
-      ],
+      controlSetRows: [[showLegend], [lineInterpolation], ['color_picker', null]],
     },
     {
       label: t('X Axis'),
@@ -108,14 +98,7 @@ const config: ControlPanelConfig = {
     {
       label: t('Y Axis'),
       expanded: true,
-      controlSetRows: [
-        [yAxisLabel],
-        [leftMargin],
-        [yAxisShowMinmax],
-        [yLogScale],
-        ['y_axis_format'],
-        [yAxisBounds],
-      ],
+      controlSetRows: [[yAxisLabel], [leftMargin], [yAxisShowMinmax], [yLogScale], ['y_axis_format'], [yAxisBounds]],
     },
   ],
   controlOverrides: {

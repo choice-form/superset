@@ -21,17 +21,9 @@ import PropTypes from 'prop-types';
 import { List } from 'src/common/components';
 import shortid from 'shortid';
 import { t, withTheme } from 'src/core';
-import {
-  SortableContainer,
-  SortableHandle,
-  SortableElement,
-  arrayMove,
-} from 'react-sortable-hoc';
+import { SortableContainer, SortableHandle, SortableElement, arrayMove } from 'react-sortable-hoc';
 import Icons from 'src/components/Icons';
-import {
-  HeaderContainer,
-  AddIconButton,
-} from 'src/explore/components/controls/OptionControls';
+import { HeaderContainer, AddIconButton } from 'src/explore/components/controls/OptionControls';
 import { InfoTooltipWithTrigger } from 'src/chartConntrols';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import CustomListItem from 'src/explore/components/controls/CustomListItem';
@@ -65,12 +57,7 @@ const defaultProps = {
 const SortableListItem = SortableElement(CustomListItem);
 const SortableList = SortableContainer(List);
 const SortableDragger = SortableHandle(() => (
-  <i
-    role="img"
-    aria-label="drag"
-    className="fa fa-bars text-primary"
-    style={{ cursor: 'ns-resize' }}
-  />
+  <i role="img" aria-label="drag" className="fa fa-bars text-primary" style={{ cursor: 'ns-resize' }} />
 ));
 
 class CollectionControl extends React.Component {
@@ -130,11 +117,7 @@ class CollectionControl extends React.Component {
                   marginRight: theme.gridUnit * 2,
                 })}
               >
-                <Control
-                  {...commonProps}
-                  {...o}
-                  onChange={this.onChange.bind(this, i)}
-                />
+                <Control {...commonProps} {...o} onChange={this.onChange.bind(this, i)} />
               </div>
               <InfoTooltipWithTrigger
                 icon="times"
@@ -157,10 +140,7 @@ class CollectionControl extends React.Component {
         <HeaderContainer>
           <ControlHeader {...this.props} />
           <AddIconButton onClick={this.onAdd}>
-            <Icons.PlusLarge
-              iconSize="s"
-              iconColor={theme.colors.grayscale.light5}
-            />
+            <Icons.PlusLarge iconSize="s" iconColor={theme.colors.grayscale.light5} />
           </AddIconButton>
         </HeaderContainer>
         {this.renderList()}

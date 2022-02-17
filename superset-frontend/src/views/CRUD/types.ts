@@ -91,14 +91,7 @@ export interface QueryObject {
   sql: string;
   executed_sql: string | null;
   sql_tables?: { catalog?: string; schema: string; table: string }[];
-  status:
-    | 'success'
-    | 'failed'
-    | 'stopped'
-    | 'running'
-    | 'timed_out'
-    | 'scheduled'
-    | 'pending';
+  status: 'success' | 'failed' | 'stopped' | 'running' | 'timed_out' | 'scheduled' | 'pending';
   tab_name: string;
   user: {
     first_name: string;
@@ -133,12 +126,6 @@ export enum QueryObjectColumns {
   tracking_url = 'tracking_url',
 }
 
-export type ImportResourceName =
-  | 'chart'
-  | 'dashboard'
-  | 'database'
-  | 'dataset'
-  | 'saved_query';
+export type ImportResourceName = 'chart' | 'dashboard' | 'database' | 'dataset' | 'saved_query';
 
-export type DatabaseObject = Partial<Database> &
-  Pick<Database, 'sqlalchemy_uri'>;
+export type DatabaseObject = Partial<Database> & Pick<Database, 'sqlalchemy_uri'>;

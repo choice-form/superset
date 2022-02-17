@@ -22,10 +22,7 @@ import { DragLayer } from 'react-dnd';
 
 import AddSliceCard from '../AddSliceCard';
 import { slicePropShape } from '../../util/propShapes';
-import {
-  NEW_COMPONENT_SOURCE_TYPE,
-  CHART_TYPE,
-} from '../../util/componentTypes';
+import { NEW_COMPONENT_SOURCE_TYPE, CHART_TYPE } from '../../util/componentTypes';
 
 const staticCardStyles = {
   position: 'fixed',
@@ -60,10 +57,7 @@ function AddSliceDragPreview({ dragItem, slices, isDragging, currentOffset }) {
   const slice = slices[dragItem.index];
 
   // make sure it's a new component and a chart
-  const shouldRender =
-    slice &&
-    dragItem.parentType === NEW_COMPONENT_SOURCE_TYPE &&
-    dragItem.type === CHART_TYPE;
+  const shouldRender = slice && dragItem.parentType === NEW_COMPONENT_SOURCE_TYPE && dragItem.type === CHART_TYPE;
 
   return !shouldRender ? null : (
     <AddSliceCard

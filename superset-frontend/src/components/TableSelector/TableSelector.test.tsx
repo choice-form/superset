@@ -76,12 +76,8 @@ test('renders table options', async () => {
     name: 'Select table or type table name',
   });
   userEvent.click(tableSelect);
-  expect(
-    await screen.findByRole('option', { name: 'table_a' }),
-  ).toBeInTheDocument();
-  expect(
-    await screen.findByRole('option', { name: 'table_b' }),
-  ).toBeInTheDocument();
+  expect(await screen.findByRole('option', { name: 'table_a' })).toBeInTheDocument();
+  expect(await screen.findByRole('option', { name: 'table_b' })).toBeInTheDocument();
 });
 
 test('renders disabled without schema', async () => {

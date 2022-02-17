@@ -41,17 +41,11 @@ export function getTimeRangeFormatter(formatId?: string) {
   });
 }
 
-export function formatTimeRange(
-  formatId: string | undefined,
-  range: (Date | null | undefined)[],
-) {
+export function formatTimeRange(formatId: string | undefined, range: (Date | null | undefined)[]) {
   return getTimeRangeFormatter(formatId)(range);
 }
 
-export function getTimeFormatter(
-  formatId?: string,
-  granularity?: TimeGranularity,
-) {
+export function getTimeFormatter(formatId?: string, granularity?: TimeGranularity) {
   if (granularity) {
     const formatString = formatId || TimeFormatsForGranularity[granularity];
     const timeRangeFormatter = getTimeRangeFormatter(formatString);
@@ -59,13 +53,7 @@ export function getTimeFormatter(
     return new TimeFormatter({
       id: [formatString, granularity].join('/'),
       formatFunc: (value: Date) =>
-        timeRangeFormatter.format(
-          createTimeRangeFromGranularity(
-            value,
-            granularity,
-            timeRangeFormatter.useLocalTime,
-          ),
-        ),
+        timeRangeFormatter.format(createTimeRangeFromGranularity(value, granularity, timeRangeFormatter.useLocalTime)),
       useLocalTime: timeRangeFormatter.useLocalTime,
     });
   }

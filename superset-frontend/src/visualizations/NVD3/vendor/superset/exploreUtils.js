@@ -32,12 +32,7 @@ export function getURIDirectory(formData, endpointType = 'base') {
   return directory;
 }
 
-export function getExploreLongUrl(
-  formData,
-  endpointType,
-  allowOverflow = true,
-  extraSearch = {},
-) {
+export function getExploreLongUrl(formData, endpointType, allowOverflow = true, extraSearch = {}) {
   if (!formData.datasource) {
     return null;
   }

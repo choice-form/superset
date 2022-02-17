@@ -16,10 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-export default function updateComponentParentsList({
-  currentComponent,
-  layout = {},
-}) {
+export default function updateComponentParentsList({ currentComponent, layout = {} }) {
   if (currentComponent && layout[currentComponent.id]) {
     const parentsList = (currentComponent.parents || []).slice();
     parentsList.push(currentComponent.id);

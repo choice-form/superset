@@ -25,10 +25,7 @@ import CssEditor from '.';
 
 jest.mock('src/components/AsyncAceEditor', () => ({
   CssEditor: ({ value, onChange }: IAceEditorProps) => (
-    <textarea
-      defaultValue={value}
-      onChange={value => onChange?.(value.target.value)}
-    />
+    <textarea defaultValue={value} onChange={value => onChange?.(value.target.value)} />
   ),
 }));
 
@@ -57,9 +54,7 @@ test('renders with templates', async () => {
   userEvent.click(screen.getByRole('button', { name: 'Click' }));
   userEvent.hover(screen.getByText('Load a CSS template'));
   await waitFor(() => {
-    templates.forEach(template =>
-      expect(screen.getByText(template.label)).toBeInTheDocument(),
-    );
+    templates.forEach(template => expect(screen.getByText(template.label)).toBeInTheDocument());
   });
 });
 
@@ -67,13 +62,7 @@ test('triggers onChange when using the editor', () => {
   const onChange = jest.fn();
   const initialCss = 'margin: 10px;';
   const additionalCss = 'color: red;';
-  render(
-    <CssEditor
-      triggerNode={<>Click</>}
-      initialCss={initialCss}
-      onChange={onChange}
-    />,
-  );
+  render(<CssEditor triggerNode={<>Click</>} initialCss={initialCss} onChange={onChange} />);
   userEvent.click(screen.getByRole('button', { name: 'Click' }));
   expect(onChange).not.toHaveBeenCalled();
   userEvent.type(screen.getByText(initialCss), additionalCss);
@@ -82,13 +71,7 @@ test('triggers onChange when using the editor', () => {
 
 test('triggers onChange when selecting a template', async () => {
   const onChange = jest.fn();
-  render(
-    <CssEditor
-      triggerNode={<>Click</>}
-      templates={templates}
-      onChange={onChange}
-    />,
-  );
+  render(<CssEditor triggerNode={<>Click</>} templates={templates} onChange={onChange} />);
   userEvent.click(screen.getByRole('button', { name: 'Click' }));
   userEvent.click(screen.getByText('Load a CSS template'));
   expect(onChange).not.toHaveBeenCalled();

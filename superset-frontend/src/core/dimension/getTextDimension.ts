@@ -29,10 +29,7 @@ export interface GetTextDimensionInput {
   text: string;
 }
 
-export default function getTextDimension(
-  input: GetTextDimensionInput,
-  defaultDimension?: Dimension,
-): Dimension {
+export default function getTextDimension(input: GetTextDimensionInput, defaultDimension?: Dimension): Dimension {
   const { text, className, style, container } = input;
 
   // Empty string

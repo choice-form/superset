@@ -90,8 +90,7 @@ class ControlHeader extends React.Component {
     if (!this.props.label) {
       return null;
     }
-    const labelClass =
-      this.props.validationErrors.length > 0 ? 'text-danger' : '';
+    const labelClass = this.props.validationErrors.length > 0 ? 'text-danger' : '';
 
     const { theme } = this.props;
 
@@ -116,52 +115,29 @@ class ControlHeader extends React.Component {
             </span>{' '}
             {this.props.warning && (
               <span>
-                <Tooltip
-                  id="error-tooltip"
-                  placement="top"
-                  title={this.props.warning}
-                >
-                  <Icons.AlertSolid
-                    iconColor={theme.colors.alert.base}
-                    iconSize="s"
-                  />
+                <Tooltip id="error-tooltip" placement="top" title={this.props.warning}>
+                  <Icons.AlertSolid iconColor={theme.colors.alert.base} iconSize="s" />
                 </Tooltip>{' '}
               </span>
             )}
             {this.props.danger && (
               <span>
-                <Tooltip
-                  id="error-tooltip"
-                  placement="top"
-                  title={this.props.danger}
-                >
-                  <Icons.ErrorSolid
-                    iconColor={theme.colors.error.base}
-                    iconSize="s"
-                  />
+                <Tooltip id="error-tooltip" placement="top" title={this.props.danger}>
+                  <Icons.ErrorSolid iconColor={theme.colors.error.base} iconSize="s" />
                 </Tooltip>{' '}
               </span>
             )}
             {this.props.validationErrors.length > 0 && (
               <span>
-                <Tooltip
-                  id="error-tooltip"
-                  placement="top"
-                  title={this.props.validationErrors.join(' ')}
-                >
-                  <Icons.ErrorSolid
-                    iconColor={theme.colors.error.base}
-                    iconSize="s"
-                  />
+                <Tooltip id="error-tooltip" placement="top" title={this.props.validationErrors.join(' ')}>
+                  <Icons.ErrorSolid iconColor={theme.colors.error.base} iconSize="s" />
                 </Tooltip>{' '}
               </span>
             )}
             {this.renderOptionalIcons()}
           </FormLabel>
         </div>
-        {this.props.rightNode && (
-          <div className="pull-right">{this.props.rightNode}</div>
-        )}
+        {this.props.rightNode && <div className="pull-right">{this.props.rightNode}</div>}
         <div className="clearfix" />
       </div>
     );

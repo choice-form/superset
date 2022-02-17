@@ -62,19 +62,9 @@ const config: ControlPanelConfig = {
               type: 'SelectControl',
               label: t('Aggregation function'),
               clearable: false,
-              choices: formatSelectOptions([
-                'sum',
-                'mean',
-                'min',
-                'max',
-                'std',
-                'var',
-              ]),
+              choices: formatSelectOptions(['sum', 'mean', 'min', 'max', 'std', 'var']),
               default: 'sum',
-              description: t(
-                'Aggregate function to apply when pivoting and ' +
-                  'computing the total rows and columns',
-              ),
+              description: t('Aggregate function to apply when pivoting and ' + 'computing the total rows and columns'),
             },
           },
           null,

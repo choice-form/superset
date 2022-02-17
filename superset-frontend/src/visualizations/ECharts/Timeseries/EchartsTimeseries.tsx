@@ -20,10 +20,7 @@ import React, { useCallback, useRef } from 'react';
 import { ViewRootGroup } from 'echarts/types/src/util/types';
 import GlobalModel from 'echarts/types/src/model/Global';
 import ComponentModel from 'echarts/types/src/model/Component';
-import {
-  EchartsHandler,
-  EventHandlers,
-} from 'src/visualizations/ECharts/types';
+import { EchartsHandler, EventHandlers } from 'src/visualizations/ECharts/types';
 import Echart from 'src/visualizations/ECharts/Echart';
 import { TimeseriesChartTransformedProps } from './types';
 import { currentSeries } from '../utils/series';
@@ -153,10 +150,7 @@ export default function EchartsTimeseries({
     legendselectchanged: payload => {
       const currentTime = Date.now();
       // TIMER_DURATION is the interval between two legendselectchanged event
-      if (
-        currentTime - lastTimeRef.current < TIMER_DURATION &&
-        lastSelectedLegend.current === payload.name
-      ) {
+      if (currentTime - lastTimeRef.current < TIMER_DURATION && lastSelectedLegend.current === payload.name) {
         // execute dbclick
         handleDoubleClickChange(payload.name);
       } else {

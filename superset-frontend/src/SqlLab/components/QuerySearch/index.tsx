@@ -22,12 +22,7 @@ import Select from 'src/components/Select';
 import { styled, t, SupersetClient } from 'src/core';
 import { debounce } from 'lodash';
 import Loading from 'src/components/Loading';
-import {
-  now,
-  epochTimeXHoursAgo,
-  epochTimeXDaysAgo,
-  epochTimeXYearsAgo,
-} from 'src/modules/dates';
+import { now, epochTimeXHoursAgo, epochTimeXDaysAgo, epochTimeXYearsAgo } from 'src/modules/dates';
 import AsyncSelect from 'src/components/AsyncSelect';
 import { Query } from 'src/SqlLab/types';
 import { STATUS_OPTIONS, TIME_OPTIONS } from 'src/SqlLab/constants';
@@ -64,8 +59,7 @@ const TableStyles = styled.div`
   }
 
   .table > thead > tr > th {
-    border-bottom: ${({ theme }) => theme.gridUnit / 2}px solid
-      ${({ theme }) => theme.colors.grayscale.light2};
+    border-bottom: ${({ theme }) => theme.gridUnit / 2}px solid ${({ theme }) => theme.colors.grayscale.light2};
     background: ${({ theme }) => theme.colors.grayscale.light4};
   }
 `;
@@ -176,9 +170,7 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
     }));
     actions.setDatabases(result);
     if (result.length === 0) {
-      actions.addDangerToast(
-        t("It seems you don't have access to any database"),
-      );
+      actions.addDangerToast(t("It seems you don't have access to any database"));
     }
     return options;
   };
@@ -221,7 +213,7 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
               value: xt,
               label: xt,
             }))}
-            value={from as unknown as undefined}
+            value={(from as unknown) as undefined}
             autosize={false}
             onChange={(selected: any) => setFrom(selected?.value)}
           />
@@ -230,7 +222,7 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
             name="select-to"
             placeholder={t('[To]-')}
             options={TIME_OPTIONS.map(xt => ({ value: xt, label: xt }))}
-            value={to as unknown as undefined}
+            value={(to as unknown) as undefined}
             autosize={false}
             onChange={(selected: any) => setTo(selected?.value)}
           />
@@ -242,17 +234,13 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
               value: s,
               label: s,
             }))}
-            value={status as unknown as undefined}
+            value={(status as unknown) as undefined}
             isLoading={false}
             autosize={false}
             onChange={(selected: any) => setStatus(selected?.value)}
           />
 
-          <Button
-            buttonSize="small"
-            buttonStyle="success"
-            onClick={refreshQueries}
-          >
+          <Button buttonSize="small" buttonStyle="success" onClick={refreshQueries}>
             {t('Search')}
           </Button>
         </div>
@@ -263,16 +251,7 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
         ) : (
           <TableStyles>
             <QueryTable
-              columns={[
-                'state',
-                'db',
-                'user',
-                'time',
-                'progress',
-                'rows',
-                'sql',
-                'querylink',
-              ]}
+              columns={['state', 'db', 'user', 'time', 'progress', 'rows', 'sql', 'querylink']}
               onUserClicked={onUserClicked}
               onDbClicked={onDbClicked}
               queries={queriesArray}

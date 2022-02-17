@@ -39,8 +39,7 @@ const defaultProps = {
  * wrapped in act(). This sufficiently act-ifies whatever side effects are going
  * on and prevents those warnings.
  */
-const waitForEffects = () =>
-  act(() => new Promise(resolve => setTimeout(resolve, 0)));
+const waitForEffects = () => act(() => new Promise(resolve => setTimeout(resolve, 0)));
 
 describe('VizTypeControl', () => {
   const registry = getChartMetadataRegistry();

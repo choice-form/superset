@@ -18,10 +18,7 @@
  */
 import { debounce } from 'lodash';
 import { Dispatch } from 'react';
-import {
-  setFocusedNativeFilter,
-  unsetFocusedNativeFilter,
-} from 'src/dashboard/actions/nativeFilters';
+import { setFocusedNativeFilter, unsetFocusedNativeFilter } from 'src/dashboard/actions/nativeFilters';
 import { Filter } from '../../types';
 import { CascadeFilter } from '../CascadeFilters/types';
 import { mapParentFiltersToChildren } from '../utils';
@@ -38,18 +35,13 @@ export function buildCascadeFiltersTree(filters: Filter[]): CascadeFilter[] {
     };
   };
 
-  return filters
-    .filter(filter => !filter.cascadeParentIds?.length)
-    .map(getCascadeFilter);
+  return filters.filter(filter => !filter.cascadeParentIds?.length).map(getCascadeFilter);
 }
 
-export const dispatchFocusAction = debounce(
-  (dispatch: Dispatch<any>, id?: string) => {
-    if (id) {
-      dispatch(setFocusedNativeFilter(id));
-    } else {
-      dispatch(unsetFocusedNativeFilter());
-    }
-  },
-  300,
-);
+export const dispatchFocusAction = debounce((dispatch: Dispatch<any>, id?: string) => {
+  if (id) {
+    dispatch(setFocusedNativeFilter(id));
+  } else {
+    dispatch(unsetFocusedNativeFilter());
+  }
+}, 300);

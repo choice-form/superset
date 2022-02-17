@@ -87,14 +87,10 @@ describe('TableElement', () => {
         },
       },
     );
-    expect(wrapper.find('[data-test="fade"]').first().props().hovered).toBe(
-      false,
-    );
+    expect(wrapper.find('[data-test="fade"]').first().props().hovered).toBe(false);
     wrapper.find('.header-container').hostNodes().simulate('mouseEnter');
     await waitForComponentToPaint(wrapper, 300);
-    expect(wrapper.find('[data-test="fade"]').first().props().hovered).toBe(
-      true,
-    );
+    expect(wrapper.find('[data-test="fade"]').first().props().hovered).toBe(true);
   });
   it('sorts columns', () => {
     const wrapper = mount(
@@ -110,25 +106,15 @@ describe('TableElement', () => {
         },
       },
     );
-    expect(
-      wrapper.find(IconTooltip).at(1).hasClass('fa-sort-alpha-asc'),
-    ).toEqual(true);
-    expect(
-      wrapper.find(IconTooltip).at(1).hasClass('fa-sort-numeric-asc'),
-    ).toEqual(false);
+    expect(wrapper.find(IconTooltip).at(1).hasClass('fa-sort-alpha-asc')).toEqual(true);
+    expect(wrapper.find(IconTooltip).at(1).hasClass('fa-sort-numeric-asc')).toEqual(false);
     wrapper.find('.header-container').hostNodes().simulate('click');
     expect(wrapper.find(ColumnElement).first().props().column.name).toBe('id');
     wrapper.find('.header-container').simulate('mouseEnter');
     wrapper.find('.sort-cols').hostNodes().simulate('click');
-    expect(
-      wrapper.find(IconTooltip).at(1).hasClass('fa-sort-numeric-asc'),
-    ).toEqual(true);
-    expect(
-      wrapper.find(IconTooltip).at(1).hasClass('fa-sort-alpha-asc'),
-    ).toEqual(false);
-    expect(wrapper.find(ColumnElement).first().props().column.name).toBe(
-      'active',
-    );
+    expect(wrapper.find(IconTooltip).at(1).hasClass('fa-sort-numeric-asc')).toEqual(true);
+    expect(wrapper.find(IconTooltip).at(1).hasClass('fa-sort-alpha-asc')).toEqual(false);
+    expect(wrapper.find(ColumnElement).first().props().column.name).toBe('active');
   });
   it('removes the table', () => {
     const wrapper = mount(

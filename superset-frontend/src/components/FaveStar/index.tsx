@@ -37,13 +37,7 @@ const StyledLink = styled.a`
   padding: 0 0 0 0.5em;
 `;
 
-const FaveStar = ({
-  itemId,
-  isStarred,
-  showTooltip,
-  saveFaveStar,
-  fetchFaveStar,
-}: FaveStarProps) => {
+const FaveStar = ({ itemId, isStarred, showTooltip, saveFaveStar, fetchFaveStar }: FaveStarProps) => {
   useComponentDidMount(() => {
     if (fetchFaveStar) {
       fetchFaveStar(itemId);
@@ -59,27 +53,14 @@ const FaveStar = ({
   );
 
   const content = (
-    <StyledLink
-      href="#"
-      onClick={onClick}
-      className="fave-unfave-icon"
-      data-test="fave-unfave-icon"
-      role="button"
-    >
-      {isStarred ? (
-        <Icons.FavoriteSelected iconSize="xxl" />
-      ) : (
-        <Icons.FavoriteUnselected iconSize="xxl" />
-      )}
+    <StyledLink href="#" onClick={onClick} className="fave-unfave-icon" data-test="fave-unfave-icon" role="button">
+      {isStarred ? <Icons.FavoriteSelected iconSize="xxl" /> : <Icons.FavoriteUnselected iconSize="xxl" />}
     </StyledLink>
   );
 
   if (showTooltip) {
     return (
-      <Tooltip
-        id="fave-unfave-tooltip"
-        title={t('Click to favorite/unfavorite')}
-      >
+      <Tooltip id="fave-unfave-tooltip" title={t('Click to favorite/unfavorite')}>
         {content}
       </Tooltip>
     );

@@ -19,9 +19,7 @@
 
 export type TimeFormatFunction = (value: Date) => string;
 
-export type TimeRangeFormatFunction = (
-  values: (Date | number | undefined | null)[],
-) => string;
+export type TimeRangeFormatFunction = (values: (Date | number | undefined | null)[]) => string;
 
 /**
  * search for `builtin_time_grains` in incubator-superset/superset/db_engine_specs/base.py

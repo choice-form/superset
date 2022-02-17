@@ -22,20 +22,14 @@ import { Tooltip } from 'src/components/Tooltip';
 import Icons from 'src/components/Icons';
 import { AlertState } from '../types';
 
-function getStatusColor(
-  status: string,
-  isReportEnabled: boolean,
-  theme: typeof supersetTheme,
-) {
+function getStatusColor(status: string, isReportEnabled: boolean, theme: typeof supersetTheme) {
   switch (status) {
     case AlertState.working:
       return theme.colors.primary.base;
     case AlertState.error:
       return theme.colors.error.base;
     case AlertState.success:
-      return isReportEnabled
-        ? theme.colors.success.base
-        : theme.colors.alert.base;
+      return isReportEnabled ? theme.colors.success.base : theme.colors.alert.base;
     case AlertState.noop:
       return theme.colors.success.base;
     case AlertState.grace:
@@ -60,26 +54,18 @@ export default function AlertStatusIcon({
   };
   switch (state) {
     case AlertState.success:
-      lastStateConfig.icon = isReportEnabled
-        ? Icons.Check
-        : Icons.AlertSolidSmall;
-      lastStateConfig.label = isReportEnabled
-        ? t('Report sent')
-        : t('Alert triggered, notification sent');
+      lastStateConfig.icon = isReportEnabled ? Icons.Check : Icons.AlertSolidSmall;
+      lastStateConfig.label = isReportEnabled ? t('Report sent') : t('Alert triggered, notification sent');
       lastStateConfig.status = AlertState.success;
       break;
     case AlertState.working:
       lastStateConfig.icon = Icons.Running;
-      lastStateConfig.label = isReportEnabled
-        ? t('Report sending')
-        : t('Alert running');
+      lastStateConfig.label = isReportEnabled ? t('Report sending') : t('Alert running');
       lastStateConfig.status = AlertState.working;
       break;
     case AlertState.error:
       lastStateConfig.icon = Icons.XSmall;
-      lastStateConfig.label = isReportEnabled
-        ? t('Report failed')
-        : t('Alert failed');
+      lastStateConfig.label = isReportEnabled ? t('Report failed') : t('Alert failed');
       lastStateConfig.status = AlertState.error;
       break;
     case AlertState.noop:
@@ -100,13 +86,7 @@ export default function AlertStatusIcon({
   const Icon = lastStateConfig.icon;
   return (
     <Tooltip title={lastStateConfig.label} placement="bottomLeft">
-      <Icon
-        iconColor={getStatusColor(
-          lastStateConfig.status,
-          isReportEnabled,
-          theme,
-        )}
-      />
+      <Icon iconColor={getStatusColor(lastStateConfig.status, isReportEnabled, theme)} />
     </Tooltip>
   );
 }

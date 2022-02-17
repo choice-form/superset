@@ -21,14 +21,7 @@
  * TS declarations for selectors with up to 12 arguments. */
 // @ts-nocheck
 import { createSelector } from 'reselect';
-import {
-  AppSection,
-  Behavior,
-  convertKeysToCamelCase,
-  Datasource,
-  FilterState,
-  JsonObject,
-} from '../..';
+import { AppSection, Behavior, convertKeysToCamelCase, Datasource, FilterState, JsonObject } from '../..';
 import { HandlerFunction, PlainObject, SetDataMaskHook } from '../types/Base';
 import { QueryData, DataRecordFilters } from '..';
 

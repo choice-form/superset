@@ -41,11 +41,7 @@ type FilterControlsProps = {
   onFilterSelectionChange: (filter: Filter, dataMask: DataMask) => void;
 };
 
-const FilterControls: FC<FilterControlsProps> = ({
-  directPathToChild,
-  dataMaskSelected,
-  onFilterSelectionChange,
-}) => {
+const FilterControls: FC<FilterControlsProps> = ({ directPathToChild, dataMaskSelected, onFilterSelectionChange }) => {
   const [visiblePopoverId, setVisiblePopoverId] = useState<string | null>(null);
   const filters = useFilters();
   const filterValues = Object.values<Filter>(filters);
@@ -67,8 +63,7 @@ const FilterControls: FC<FilterControlsProps> = ({
   }, [JSON.stringify(filterValues), dataMaskSelected]);
   const cascadeFilterIds = new Set(cascadeFilters.map(item => item.id));
 
-  const [filtersInScope, filtersOutOfScope] =
-    useSelectFiltersInScope(cascadeFilters);
+  const [filtersInScope, filtersOutOfScope] = useSelectFiltersInScope(cascadeFilters);
   const dashboardHasTabs = useDashboardHasTabs();
   const showCollapsePanel = dashboardHasTabs && cascadeFilters.length > 0;
 
@@ -83,9 +78,7 @@ const FilterControls: FC<FilterControlsProps> = ({
               key={cascadeFilters[index].id}
               dataMaskSelected={dataMaskSelected}
               visible={visiblePopoverId === cascadeFilters[index].id}
-              onVisibleChange={visible =>
-                setVisiblePopoverId(visible ? cascadeFilters[index].id : null)
-              }
+              onVisibleChange={visible => setVisiblePopoverId(visible ? cascadeFilters[index].id : null)}
               filter={cascadeFilters[index]}
               onFilterSelectionChange={onFilterSelectionChange}
               directPathToChild={directPathToChild}
@@ -105,9 +98,7 @@ const FilterControls: FC<FilterControlsProps> = ({
           collapsible={filtersOutOfScope.length === 0 ? 'disabled' : undefined}
           css={theme => css`
             &.ant-collapse {
-              margin-top: ${filtersInScope.length > 0
-                ? theme.gridUnit * 6
-                : 0}px;
+              margin-top: ${filtersInScope.length > 0 ? theme.gridUnit * 6 : 0}px;
               & > .ant-collapse-item {
                 & > .ant-collapse-header {
                   padding-left: 0;
@@ -125,12 +116,7 @@ const FilterControls: FC<FilterControlsProps> = ({
             }
           `}
         >
-          <Collapse.Panel
-            header={`${t('Filters out of scope')} (${
-              filtersOutOfScope.length
-            })`}
-            key="1"
-          >
+          <Collapse.Panel header={`${t('Filters out of scope')} (${filtersOutOfScope.length})`} key="1">
             {filtersOutOfScope.map(filter => {
               const index = cascadeFilters.findIndex(f => f.id === filter.id);
               return <portals.OutPortal node={portalNodes[index]} inView />;

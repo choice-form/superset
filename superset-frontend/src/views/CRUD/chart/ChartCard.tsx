@@ -65,8 +65,7 @@ export default function ChartCard({
 }: ChartCardProps) {
   const canEdit = hasPerm('can_write');
   const canDelete = hasPerm('can_write');
-  const canExport =
-    hasPerm('can_read') && isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT);
+  const canExport = hasPerm('can_read') && isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT);
   const theme = useTheme();
 
   const menu = (
@@ -77,19 +76,11 @@ export default function ChartCard({
             title={t('Please confirm')}
             description={
               <>
-                {t('Are you sure you want to delete')} <b>{chart.slice_name}</b>
-                ?
+                {t('Are you sure you want to delete')} <b>{chart.slice_name}</b>?
               </>
             }
             onConfirm={() =>
-              handleChartDelete(
-                chart,
-                addSuccessToast,
-                addDangerToast,
-                refreshData,
-                chartFilter,
-                userId,
-              )
+              handleChartDelete(chart, addSuccessToast, addDangerToast, refreshData, chartFilter, userId)
             }
           >
             {confirmDelete => (
@@ -108,23 +99,14 @@ export default function ChartCard({
       )}
       {canExport && (
         <Menu.Item>
-          <div
-            role="button"
-            tabIndex={0}
-            onClick={() => handleBulkChartExport([chart])}
-          >
+          <div role="button" tabIndex={0} onClick={() => handleBulkChartExport([chart])}>
             <Icons.Share iconSize="l" /> {t('Export')}
           </div>
         </Menu.Item>
       )}
       {canEdit && (
         <Menu.Item>
-          <div
-            data-test="chart-list-edit-option"
-            role="button"
-            tabIndex={0}
-            onClick={() => openChartEditModal(chart)}
-          >
+          <div data-test="chart-list-edit-option" role="button" tabIndex={0} onClick={() => openChartEditModal(chart)}>
             <Icons.EditAlt iconSize="l" /> {t('Edit')}
           </div>
         </Menu.Item>
@@ -144,19 +126,13 @@ export default function ChartCard({
         title={chart.slice_name}
         certifiedBy={chart.certified_by}
         certificationDetails={chart.certification_details}
-        cover={
-          !isFeatureEnabled(FeatureFlag.THUMBNAILS) || !showThumbnails ? (
-            <></>
-          ) : null
-        }
+        cover={!isFeatureEnabled(FeatureFlag.THUMBNAILS) || !showThumbnails ? <></> : null}
         url={bulkSelectEnabled ? undefined : chart.url}
         imgURL={chart.thumbnail_url || ''}
         imgFallbackURL="/static/assets/images/chart-card-fallback.svg"
         description={t('Modified %s', chart.changed_on_delta_humanized)}
         coverLeft={<FacePile users={chart.owners || []} />}
-        coverRight={
-          <Label type="secondary">{chart.datasource_name_text}</Label>
-        }
+        coverRight={<Label type="secondary">{chart.datasource_name_text}</Label>}
         actions={
           <ListViewCard.Actions
             onClick={e => {
@@ -164,11 +140,7 @@ export default function ChartCard({
               e.preventDefault();
             }}
           >
-            <FaveStar
-              itemId={chart.id}
-              saveFaveStar={saveFavoriteStatus}
-              isStarred={favoriteStatus}
-            />
+            <FaveStar itemId={chart.id} saveFaveStar={saveFavoriteStatus} isStarred={favoriteStatus} />
             <Dropdown overlay={menu}>
               <Icons.MoreVert iconColor={theme.colors.grayscale.base} />
             </Dropdown>

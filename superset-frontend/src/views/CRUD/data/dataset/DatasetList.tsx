@@ -17,34 +17,18 @@
  * under the License.
  */
 import { SupersetClient, t, styled } from 'src/core';
-import React, {
-  FunctionComponent,
-  useState,
-  useMemo,
-  useCallback,
-} from 'react';
+import React, { FunctionComponent, useState, useMemo, useCallback } from 'react';
 import rison from 'rison';
-import {
-  createFetchRelated,
-  createFetchDistinct,
-  createErrorHandler,
-} from 'src/views/CRUD/utils';
+import { createFetchRelated, createFetchDistinct, createErrorHandler } from 'src/views/CRUD/utils';
 import { ColumnObject } from 'src/views/CRUD/data/dataset/types';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import ConfirmStatusChange from 'src/components/ConfirmStatusChange';
 import DatasourceModal from 'src/datasource/DatasourceModal';
 import DeleteModal from 'src/components/DeleteModal';
 import handleResourceExport from 'src/utils/export';
-import ListView, {
-  ListViewProps,
-  Filters,
-  FilterOperator,
-} from 'src/components/ListView';
+import ListView, { ListViewProps, Filters, FilterOperator } from 'src/components/ListView';
 import Loading from 'src/components/Loading';
-import SubMenu, {
-  SubMenuProps,
-  ButtonProps,
-} from 'src/components/Menu/SubMenu';
+import SubMenu, { SubMenuProps, ButtonProps } from 'src/components/Menu/SubMenu';
 import { commonMenuData } from 'src/views/CRUD/data/common';
 import Owner from 'src/types/Owner';
 import withToasts from 'src/components/MessageToasts/withToasts';
@@ -57,12 +41,7 @@ import ImportModelsModal from 'src/components/ImportModal/index';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import WarningIconWithTooltip from 'src/components/WarningIconWithTooltip';
 import AddDatasetModal from './AddDatasetModal';
-import {
-  PAGE_SIZE,
-  SORT_BY,
-  PASSWORDS_NEEDED_MESSAGE,
-  CONFIRM_OVERWRITE_MESSAGE,
-} from './constants';
+import { PAGE_SIZE, SORT_BY, PASSWORDS_NEEDED_MESSAGE, CONFIRM_OVERWRITE_MESSAGE } from './constants';
 
 const FlexRowContainer = styled.div`
   align-items: center;
@@ -104,33 +83,22 @@ interface DatasetListProps {
   };
 }
 
-const DatasetList: FunctionComponent<DatasetListProps> = ({
-  addDangerToast,
-  addSuccessToast,
-  user,
-}) => {
+const DatasetList: FunctionComponent<DatasetListProps> = ({ addDangerToast, addSuccessToast, user }) => {
   const {
-    state: {
-      loading,
-      resourceCount: datasetCount,
-      resourceCollection: datasets,
-      bulkSelectEnabled,
-    },
+    state: { loading, resourceCount: datasetCount, resourceCollection: datasets, bulkSelectEnabled },
     hasPerm,
     fetchData,
     toggleBulkSelect,
     refreshData,
   } = useListViewResource<Dataset>('dataset', t('dataset'), addDangerToast);
 
-  const [datasetAddModalOpen, setDatasetAddModalOpen] =
-    useState<boolean>(false);
+  const [datasetAddModalOpen, setDatasetAddModalOpen] = useState<boolean>(false);
 
   const [datasetCurrentlyDeleting, setDatasetCurrentlyDeleting] = useState<
     (Dataset & { chart_count: number; dashboard_count: number }) | null
   >(null);
 
-  const [datasetCurrentlyEditing, setDatasetCurrentlyEditing] =
-    useState<Dataset | null>(null);
+  const [datasetCurrentlyEditing, setDatasetCurrentlyEditing] = useState<Dataset | null>(null);
 
   const [importingDataset, showImportModal] = useState<boolean>(false);
   const [passwordFields, setPasswordFields] = useState<string[]>([]);
@@ -162,27 +130,21 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
         endpoint: `/api/v1/dataset/${id}`,
       })
         .then(({ json = {} }) => {
-          const addCertificationFields = json.result.columns.map(
-            (column: ColumnObject) => {
-              const {
-                certification: { details = '', certified_by = '' } = {},
-              } = JSON.parse(column.extra || '{}') || {};
-              return {
-                ...column,
-                certification_details: details || '',
-                certified_by: certified_by || '',
-                is_certified: details || certified_by,
-              };
-            },
-          );
+          const addCertificationFields = json.result.columns.map((column: ColumnObject) => {
+            const { certification: { details = '', certified_by = '' } = {} } = JSON.parse(column.extra || '{}') || {};
+            return {
+              ...column,
+              certification_details: details || '',
+              certified_by: certified_by || '',
+              is_certified: details || certified_by,
+            };
+          });
           // eslint-disable-next-line no-param-reassign
           json.result.columns = [...addCertificationFields];
           setDatasetCurrentlyEditing(json.result);
         })
         .catch(() => {
-          addDangerToast(
-            t('An error occurred while fetching dataset related data'),
-          );
+          addDangerToast(t('An error occurred while fetching dataset related data'));
         });
     },
     [addDangerToast],
@@ -199,14 +161,7 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
           dashboard_count: json.dashboards.count,
         });
       })
-      .catch(
-        createErrorHandler(errMsg =>
-          t(
-            'An error occurred while fetching dataset related data: %s',
-            errMsg,
-          ),
-        ),
-      );
+      .catch(createErrorHandler(errMsg => t('An error occurred while fetching dataset related data: %s', errMsg)));
 
   const columns = useMemo(
     () => [
@@ -218,10 +173,7 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
         }: any) => {
           if (kind === 'physical') {
             return (
-              <Tooltip
-                id="physical-dataset-tooltip"
-                title={t('Physical dataset')}
-              >
+              <Tooltip id="physical-dataset-tooltip" title={t('Physical dataset')}>
                 <Icons.DatasetPhysical />
               </Tooltip>
             );
@@ -240,12 +192,7 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
       {
         Cell: ({
           row: {
-            original: {
-              extra,
-              table_name: datasetTitle,
-              description,
-              explore_url: exploreURL,
-            },
+            original: { extra, table_name: datasetTitle, description, explore_url: exploreURL },
           },
         }: any) => {
           const titleLink = <a href={exploreURL}>{datasetTitle}</a>;
@@ -261,15 +208,10 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
                   />
                 )}
                 {parsedExtra?.warning_markdown && (
-                  <WarningIconWithTooltip
-                    warningMarkdown={parsedExtra.warning_markdown}
-                    size="l"
-                  />
+                  <WarningIconWithTooltip warningMarkdown={parsedExtra.warning_markdown} size="l" />
                 )}
                 {titleLink}
-                {description && (
-                  <InfoTooltip tooltip={description} viewBox="0 -1 24 24" />
-                )}
+                {description && <InfoTooltip tooltip={description} viewBox="0 -1 24 24" />}
               </FlexRowContainer>
             );
           } catch {
@@ -352,49 +294,22 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
           return (
             <Actions className="actions">
               {canDelete && (
-                <Tooltip
-                  id="delete-action-tooltip"
-                  title={t('Delete')}
-                  placement="bottom"
-                >
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    className="action-button"
-                    onClick={handleDelete}
-                  >
+                <Tooltip id="delete-action-tooltip" title={t('Delete')} placement="bottom">
+                  <span role="button" tabIndex={0} className="action-button" onClick={handleDelete}>
                     <Icons.Trash />
                   </span>
                 </Tooltip>
               )}
               {canExport && (
-                <Tooltip
-                  id="export-action-tooltip"
-                  title={t('Export')}
-                  placement="bottom"
-                >
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    className="action-button"
-                    onClick={handleExport}
-                  >
+                <Tooltip id="export-action-tooltip" title={t('Export')} placement="bottom">
+                  <span role="button" tabIndex={0} className="action-button" onClick={handleExport}>
                     <Icons.Share />
                   </span>
                 </Tooltip>
               )}
               {canEdit && (
-                <Tooltip
-                  id="edit-action-tooltip"
-                  title={t('Edit')}
-                  placement="bottom"
-                >
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    className="action-button"
-                    onClick={handleEdit}
-                  >
+                <Tooltip id="edit-action-tooltip" title={t('Edit')} placement="bottom">
+                  <span role="button" tabIndex={0} className="action-button" onClick={handleEdit}>
                     <Icons.EditAlt />
                   </span>
                 </Tooltip>
@@ -422,12 +337,7 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
         fetchSelects: createFetchRelated(
           'dataset',
           'owners',
-          createErrorHandler(errMsg =>
-            t(
-              'An error occurred while fetching dataset owner values: %s',
-              errMsg,
-            ),
-          ),
+          createErrorHandler(errMsg => t('An error occurred while fetching dataset owner values: %s', errMsg)),
           user,
         ),
         paginate: true,
@@ -441,9 +351,7 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
         fetchSelects: createFetchRelated(
           'dataset',
           'database',
-          createErrorHandler(errMsg =>
-            t('An error occurred while fetching datasets: %s', errMsg),
-          ),
+          createErrorHandler(errMsg => t('An error occurred while fetching datasets: %s', errMsg)),
         ),
         paginate: true,
       },
@@ -456,9 +364,7 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
         fetchSelects: createFetchDistinct(
           'dataset',
           'schema',
-          createErrorHandler(errMsg =>
-            t('An error occurred while fetching schema values: %s', errMsg),
-          ),
+          createErrorHandler(errMsg => t('An error occurred while fetching schema values: %s', errMsg)),
         ),
         paginate: true,
       },
@@ -512,11 +418,7 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
     if (isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT)) {
       buttonArr.push({
         name: (
-          <Tooltip
-            id="import-tooltip"
-            title={t('Import datasets')}
-            placement="bottomRight"
-          >
+          <Tooltip id="import-tooltip" title={t('Import datasets')} placement="bottomRight">
             <Icons.Import data-test="import-button" />
           </Tooltip>
         ),
@@ -545,29 +447,19 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
         setDatasetCurrentlyDeleting(null);
         addSuccessToast(t('Deleted: %s', tableName));
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(
-          t('There was an issue deleting %s: %s', tableName, errMsg),
-        ),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting %s: %s', tableName, errMsg))),
     );
   };
 
   const handleBulkDatasetDelete = (datasetsToDelete: Dataset[]) => {
     SupersetClient.delete({
-      endpoint: `/api/v1/dataset/?q=${rison.encode(
-        datasetsToDelete.map(({ id }) => id),
-      )}`,
+      endpoint: `/api/v1/dataset/?q=${rison.encode(datasetsToDelete.map(({ id }) => id))}`,
     }).then(
       ({ json = {} }) => {
         refreshData();
         addSuccessToast(json.message);
       },
-      createErrorHandler(errMsg =>
-        addDangerToast(
-          t('There was an issue deleting the selected datasets: %s', errMsg),
-        ),
-      ),
+      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting the selected datasets: %s', errMsg))),
     );
   };
 
@@ -615,9 +507,7 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
       )}
       <ConfirmStatusChange
         title={t('Please confirm')}
-        description={t(
-          'Are you sure you want to delete the selected datasets?',
-        )}
+        description={t('Are you sure you want to delete the selected datasets?')}
         onConfirm={handleBulkDatasetDelete}
       >
         {confirmDelete => {
@@ -668,26 +558,13 @@ const DatasetList: FunctionComponent<DatasetListProps> = ({
                   return t('0 Selected');
                 }
                 if (virtualCount && !physicalCount) {
-                  return t(
-                    '%s Selected (Virtual)',
-                    selected.length,
-                    virtualCount,
-                  );
+                  return t('%s Selected (Virtual)', selected.length, virtualCount);
                 }
                 if (physicalCount && !virtualCount) {
-                  return t(
-                    '%s Selected (Physical)',
-                    selected.length,
-                    physicalCount,
-                  );
+                  return t('%s Selected (Physical)', selected.length, physicalCount);
                 }
 
-                return t(
-                  '%s Selected (%s Physical, %s Virtual)',
-                  selected.length,
-                  physicalCount,
-                  virtualCount,
-                );
+                return t('%s Selected (%s Physical, %s Virtual)', selected.length, physicalCount, virtualCount);
               }}
             />
           );

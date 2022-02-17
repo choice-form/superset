@@ -39,15 +39,7 @@ const firstNames = [
   'Michael',
   'Linda',
 ];
-const lastNames = [
-  'Smith',
-  'Johnson',
-  'Williams',
-  'Saeed',
-  'Jones',
-  'Brown',
-  'Tzu',
-];
+const lastNames = ['Smith', 'Johnson', 'Williams', 'Saeed', 'Jones', 'Brown', 'Tzu'];
 
 const users = [...new Array(10)].map((_, i) => ({
   first_name: firstNames[Math.floor(Math.random() * firstNames.length)],
@@ -55,6 +47,4 @@ const users = [...new Array(10)].map((_, i) => ({
   id: i,
 }));
 
-export const SupersetFacePile = () => (
-  <FacePile users={users} maxCount={number('maxCount', 4)} />
-);
+export const SupersetFacePile = () => <FacePile users={users} maxCount={number('maxCount', 4)} />;

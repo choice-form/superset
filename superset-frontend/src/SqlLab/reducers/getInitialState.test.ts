@@ -46,9 +46,6 @@ describe('getInitialState', () => {
     expect(getInitialState(apiData).sqlLab.user.userId).toEqual(1);
   });
   it('should return undefined instead of null for templateParams', () => {
-    expect(
-      getInitialState(apiDataWithTabState).sqlLab.queryEditors[0]
-        .templateParams,
-    ).toBeUndefined();
+    expect(getInitialState(apiDataWithTabState).sqlLab.queryEditors[0].templateParams).toBeUndefined();
   });
 });

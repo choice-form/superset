@@ -19,11 +19,7 @@
 /* eslint-disable react/sort-prop-types */
 import dt from 'datatables.net-bs';
 import PropTypes from 'prop-types';
-import {
-  getTimeFormatter,
-  getTimeFormatterForGranularity,
-  smartDateFormatter,
-} from 'src/core';
+import { getTimeFormatter, getTimeFormatterForGranularity, smartDateFormatter } from 'src/core';
 import { formatCellValue, formatDateCellValue } from './utils/formatCells';
 import fixTableHeight from './utils/fixTableHeight';
 import 'datatables.net-bs/css/dataTables.bootstrap.css';
@@ -37,12 +33,7 @@ const propTypes = {
   data: PropTypes.shape({
     // TODO: replace this with raw data in SIP-6
     html: PropTypes.string,
-    columns: PropTypes.arrayOf(
-      PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-      ]),
-    ),
+    columns: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])),
   }),
   height: PropTypes.number,
   columnFormats: PropTypes.objectOf(PropTypes.string),
@@ -51,21 +42,10 @@ const propTypes = {
   verboseMap: PropTypes.objectOf(PropTypes.string),
 };
 
-const hasOnlyTextChild = node =>
-  node.childNodes.length === 1 &&
-  node.childNodes[0].nodeType === Node.TEXT_NODE;
+const hasOnlyTextChild = node => node.childNodes.length === 1 && node.childNodes[0].nodeType === Node.TEXT_NODE;
 
 function PivotTable(element, props) {
-  const {
-    columnFormats,
-    data,
-    dateFormat,
-    granularity,
-    height,
-    numberFormat,
-    numGroups,
-    verboseMap,
-  } = props;
+  const { columnFormats, data, dateFormat, granularity, height, numberFormat, numGroups, verboseMap } = props;
 
   const { html, columns } = data;
   const container = element;
@@ -88,12 +68,7 @@ function PivotTable(element, props) {
 
   $container.find('th').each(function formatTh() {
     if (hasOnlyTextChild(this)) {
-      const cellValue = formatDateCellValue(
-        $(this).text(),
-        verboseMap,
-        dateRegex,
-        dateFormatter,
-      );
+      const cellValue = formatDateCellValue($(this).text(), verboseMap, dateRegex, dateFormatter);
       $(this).text(cellValue);
     }
   });

@@ -134,9 +134,9 @@ describe('AnnotationLayersList', () => {
     });
     await waitForComponentToPaint(wrapper);
 
-    expect(
-      wrapper.find(DeleteModal).first().props().description,
-    ).toMatchInlineSnapshot(`"This action will permanently delete the layer."`);
+    expect(wrapper.find(DeleteModal).first().props().description).toMatchInlineSnapshot(
+      `"This action will permanently delete the layer."`,
+    );
 
     act(() => {
       wrapper

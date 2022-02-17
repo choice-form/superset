@@ -43,10 +43,8 @@ const store = mockStore({});
 
 const dashboardsInfoEndpoint = 'glob:*/api/v1/dashboard/_info*';
 const dashboardOwnersEndpoint = 'glob:*/api/v1/dashboard/related/owners*';
-const dashboardCreatedByEndpoint =
-  'glob:*/api/v1/dashboard/related/created_by*';
-const dashboardFavoriteStatusEndpoint =
-  'glob:*/api/v1/dashboard/favorite_status*';
+const dashboardCreatedByEndpoint = 'glob:*/api/v1/dashboard/related/created_by*';
+const dashboardFavoriteStatusEndpoint = 'glob:*/api/v1/dashboard/favorite_status*';
 const dashboardsEndpoint = 'glob:*/api/v1/dashboard/?*';
 const dashboardEndpoint = 'glob:*/api/v1/dashboard/*';
 
@@ -162,19 +160,13 @@ describe('DashboardList', () => {
   });
 
   it('delete', async () => {
-    wrapper
-      .find('[data-test="dashboard-list-trash-icon"]')
-      .first()
-      .simulate('click');
+    wrapper.find('[data-test="dashboard-list-trash-icon"]').first().simulate('click');
     await waitForComponentToPaint(wrapper);
     expect(wrapper.find(ConfirmStatusChange)).toExist();
   });
 
   it('card view delete', async () => {
-    wrapper
-      .find('[data-test="dashboard-list-trash-icon"]')
-      .last()
-      .simulate('click');
+    wrapper.find('[data-test="dashboard-list-trash-icon"]').last().simulate('click');
     await waitForComponentToPaint(wrapper);
     expect(wrapper.find(ConfirmStatusChange)).toExist();
   });
@@ -199,9 +191,7 @@ describe('RTL', () => {
 
   let isFeatureEnabledMock;
   beforeEach(async () => {
-    isFeatureEnabledMock = jest
-      .spyOn(featureFlags, 'isFeatureEnabled')
-      .mockImplementation(() => true);
+    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => true);
     await renderAndWait();
   });
 

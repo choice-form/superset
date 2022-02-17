@@ -108,7 +108,5 @@ test('Should the loading bar be visible during loading', () => {
   render(<TableCollection {...defaultProps} loading />);
 
   expect(screen.getAllByRole('progressbar')).toHaveLength(6);
-  screen
-    .getAllByRole('progressbar')
-    .forEach(progressbar => expect(progressbar).toBeVisible());
+  screen.getAllByRole('progressbar').forEach(progressbar => expect(progressbar).toBeVisible());
 });

@@ -27,16 +27,7 @@ const xss = new FilterXSS({
     div: ['style', 'class'],
     a: ['style', 'class', 'href', 'title', 'target'],
     img: ['style', 'class', 'src', 'alt', 'title', 'width', 'height'],
-    video: [
-      'autoplay',
-      'controls',
-      'loop',
-      'preload',
-      'src',
-      'height',
-      'width',
-      'muted',
-    ],
+    video: ['autoplay', 'controls', 'loop', 'preload', 'src', 'height', 'width', 'muted'],
   },
   stripIgnoreTag: true,
   css: false,
@@ -49,10 +40,7 @@ function isProbablyHTML(text: string) {
 /**
  * Format text for cell value.
  */
-function formatValue(
-  formatter: DataColumnMeta['formatter'],
-  value: DataRecordValue,
-): [boolean, string] {
+function formatValue(formatter: DataColumnMeta['formatter'], value: DataRecordValue): [boolean, string] {
   // render undefined as empty string
   if (value === undefined) {
     return [false, ''];
@@ -71,20 +59,13 @@ function formatValue(
   return [false, value.toString()];
 }
 
-export function formatColumnValue(
-  column: DataColumnMeta,
-  value: DataRecordValue,
-) {
+export function formatColumnValue(column: DataColumnMeta, value: DataRecordValue) {
   const { dataType, formatter, config = {} } = column;
   const isNumber = dataType === GenericDataType.NUMERIC;
   const smallNumberFormatter =
-    config.d3SmallNumberFormat === undefined
-      ? formatter
-      : getNumberFormatter(config.d3SmallNumberFormat);
+    config.d3SmallNumberFormat === undefined ? formatter : getNumberFormatter(config.d3SmallNumberFormat);
   return formatValue(
-    isNumber && typeof value === 'number' && Math.abs(value) < 1
-      ? smallNumberFormatter
-      : formatter,
+    isNumber && typeof value === 'number' && Math.abs(value) < 1 ? smallNumberFormatter : formatter,
     value,
   );
 }

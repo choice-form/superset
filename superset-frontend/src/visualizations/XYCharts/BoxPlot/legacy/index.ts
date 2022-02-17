@@ -21,10 +21,7 @@ import createMetadata from '../createMetadata';
 import transformProps, { LegacyBoxPlotChartProps } from './transformProps';
 import controlPanel from '../controlPanel';
 
-export default class BoxPlotChartPlugin extends ChartPlugin<
-  QueryFormData,
-  LegacyBoxPlotChartProps
-> {
+export default class BoxPlotChartPlugin extends ChartPlugin<QueryFormData, LegacyBoxPlotChartProps> {
   constructor() {
     super({
       loadChart: () => import('../../components/BoxPlot/BoxPlot'),

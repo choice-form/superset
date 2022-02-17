@@ -136,10 +136,7 @@ describe('ImportModelsModal', () => {
 
   it('should render password fields when needed for import', () => {
     const wrapperWithPasswords = mount(
-      <ImportModelsModal
-        {...requiredProps}
-        passwordFields={['databases/examples.yaml']}
-      />,
+      <ImportModelsModal {...requiredProps} passwordFields={['databases/examples.yaml']} />,
       {
         context: { store },
       },

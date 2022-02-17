@@ -25,26 +25,20 @@ import {
   PostProcessingCum,
   ComparisionType,
 } from 'src/core';
-import {
-  getMetricOffsetsMap,
-  isValidTimeCompare,
-  TIME_COMPARISON_SEPARATOR,
-} from './utils';
+import { getMetricOffsetsMap, isValidTimeCompare, TIME_COMPARISON_SEPARATOR } from './utils';
 import { PostProcessingFactory } from './types';
 
-export const rollingWindowOperator: PostProcessingFactory<
-  PostProcessingRolling | PostProcessingCum | undefined
-> = (formData, queryObject) => {
+export const rollingWindowOperator: PostProcessingFactory<PostProcessingRolling | PostProcessingCum | undefined> = (
+  formData,
+  queryObject,
+) => {
   let columns: (string | undefined)[];
   if (isValidTimeCompare(formData, queryObject)) {
     const metricsMap = getMetricOffsetsMap(formData, queryObject);
     const comparisonType = formData.comparison_type;
     if (comparisonType === ComparisionType.Values) {
       // time compare type: actual values
-      columns = [
-        ...Array.from(metricsMap.values()),
-        ...Array.from(metricsMap.keys()),
-      ];
+      columns = [...Array.from(metricsMap.values()), ...Array.from(metricsMap.keys())];
     } else {
       // time compare type: difference / percentage / ratio
       columns = Array.from(metricsMap.entries()).map(([offset, metric]) =>
@@ -72,11 +66,7 @@ export const rollingWindowOperator: PostProcessingFactory<
     };
   }
 
-  if (
-    [RollingType.Sum, RollingType.Mean, RollingType.Std].includes(
-      formData.rolling_type,
-    )
-  ) {
+  if ([RollingType.Sum, RollingType.Mean, RollingType.Std].includes(formData.rolling_type)) {
     return {
       operation: 'rolling',
       options: {

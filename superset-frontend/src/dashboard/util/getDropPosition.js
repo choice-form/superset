@@ -39,13 +39,7 @@ export function clearDropCache() {
 }
 
 export default function getDropPosition(monitor, Component) {
-  const {
-    depth: componentDepth,
-    parentComponent,
-    component,
-    orientation,
-    isDraggingOverShallow,
-  } = Component.props;
+  const { depth: componentDepth, parentComponent, component, orientation, isDraggingOverShallow } = Component.props;
 
   const draggingItem = monitor.getItem();
 
@@ -55,11 +49,7 @@ export default function getDropPosition(monitor, Component) {
   }
 
   // TODO need a better solution to prevent nested tabs
-  if (
-    draggingItem.type === TABS_TYPE &&
-    component.type === TAB_TYPE &&
-    componentDepth === 2
-  ) {
+  if (draggingItem.type === TABS_TYPE && component.type === TAB_TYPE && componentDepth === 2) {
     return null;
   }
 
@@ -70,9 +60,7 @@ export default function getDropPosition(monitor, Component) {
   });
 
   const parentType = parentComponent && parentComponent.type;
-  const parentDepth = // see isValidChild.js for why tabs don't increment child depth
-    componentDepth +
-    (parentType === TAB_TYPE || parentType === TABS_TYPE ? 0 : -1);
+  const parentDepth = componentDepth + (parentType === TAB_TYPE || parentType === TABS_TYPE ? 0 : -1); // see isValidChild.js for why tabs don't increment child depth
 
   const validSibling = isValidChild({
     parentType,
@@ -85,10 +73,8 @@ export default function getDropPosition(monitor, Component) {
   }
 
   const hasChildren = (component.children || []).length > 0;
-  const childDropOrientation =
-    orientation === 'row' ? 'vertical' : 'horizontal';
-  const siblingDropOrientation =
-    orientation === 'row' ? 'horizontal' : 'vertical';
+  const childDropOrientation = orientation === 'row' ? 'vertical' : 'horizontal';
+  const siblingDropOrientation = orientation === 'row' ? 'horizontal' : 'vertical';
 
   if (isDraggingOverShallow && validChild && !validSibling) {
     // easiest case, insert as child
@@ -99,8 +85,7 @@ export default function getDropPosition(monitor, Component) {
   }
 
   const refBoundingRect = Component.ref.getBoundingClientRect();
-  const clientOffset =
-    monitor.getClientOffset() || CACHED_CLIENT_OFFSET[component.id];
+  const clientOffset = monitor.getClientOffset() || CACHED_CLIENT_OFFSET[component.id];
 
   if (!clientOffset || !refBoundingRect) {
     return null;
@@ -124,9 +109,7 @@ export default function getDropPosition(monitor, Component) {
   // mouse to the edge of a non-shallow target
   if (
     !isDraggingOverShallow &&
-    [deltaTop, deltaBottom, deltaLeft, deltaRight].every(
-      delta => delta > NON_SHALLOW_DROP_THRESHOLD,
-    )
+    [deltaTop, deltaBottom, deltaLeft, deltaRight].every(delta => delta > NON_SHALLOW_DROP_THRESHOLD)
   ) {
     return null;
   }
@@ -134,13 +117,10 @@ export default function getDropPosition(monitor, Component) {
   // Drop based on mouse position relative to component center
   if (validSibling && !validChild) {
     if (siblingDropOrientation === 'vertical') {
-      const refMiddleX =
-        refBoundingRect.left +
-        (refBoundingRect.right - refBoundingRect.left) / 2;
+      const refMiddleX = refBoundingRect.left + (refBoundingRect.right - refBoundingRect.left) / 2;
       return clientOffset.x < refMiddleX ? DROP_LEFT : DROP_RIGHT;
     }
-    const refMiddleY =
-      refBoundingRect.top + (refBoundingRect.bottom - refBoundingRect.top) / 2;
+    const refMiddleY = refBoundingRect.top + (refBoundingRect.bottom - refBoundingRect.top) / 2;
     return clientOffset.y < refMiddleY ? DROP_TOP : DROP_BOTTOM;
   }
 

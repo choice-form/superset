@@ -44,15 +44,7 @@ const propTypes = {
 const formatter = getNumberFormatter();
 
 function WorldMap(element, props) {
-  const {
-    data,
-    width,
-    height,
-    maxBubbleSize,
-    showBubbles,
-    linearColorScheme,
-    color,
-  } = props;
+  const { data, width, height, maxBubbleSize, showBubbles, linearColorScheme, color } = props;
   const div = d3.select(element);
   div.classed('superset-legacy-chart-world-map', true);
   div.selectAll('*').remove();
@@ -61,10 +53,7 @@ function WorldMap(element, props) {
   const filteredData = data.filter(d => d.country && d.country !== 'XXX');
 
   const extRadius = d3.extent(filteredData, d => Math.sqrt(d.m2));
-  const radiusScale = d3.scale
-    .linear()
-    .domain([extRadius[0], extRadius[1]])
-    .range([1, maxBubbleSize]);
+  const radiusScale = d3.scale.linear().domain([extRadius[0], extRadius[1]]).range([1, maxBubbleSize]);
 
   const colorScale = getSequentialSchemeRegistry()
     .get(linearColorScheme)
@@ -97,10 +86,7 @@ function WorldMap(element, props) {
       highlightBorderColor: '#feffff',
       highlightFillColor: color,
       highlightBorderWidth: 1,
-      popupTemplate: (geo, d) =>
-        `<div class="hoverinfo"><strong>${d.name}</strong><br>${formatter(
-          d.m1,
-        )}</div>`,
+      popupTemplate: (geo, d) => `<div class="hoverinfo"><strong>${d.name}</strong><br>${formatter(d.m1)}</div>`,
     },
     bubblesConfig: {
       borderWidth: 1,
@@ -108,10 +94,7 @@ function WorldMap(element, props) {
       borderColor: color,
       popupOnHover: true,
       radius: null,
-      popupTemplate: (geo, d) =>
-        `<div class="hoverinfo"><strong>${d.name}</strong><br>${formatter(
-          d.m2,
-        )}</div>`,
+      popupTemplate: (geo, d) => `<div class="hoverinfo"><strong>${d.name}</strong><br>${formatter(d.m2)}</div>`,
       fillOpacity: 0.5,
       animate: true,
       highlightOnHover: true,
@@ -129,10 +112,7 @@ function WorldMap(element, props) {
 
   if (showBubbles) {
     map.bubbles(processedData);
-    div
-      .selectAll('circle.datamaps-bubble')
-      .style('fill', color)
-      .style('stroke', color);
+    div.selectAll('circle.datamaps-bubble').style('fill', color).style('stroke', color);
   }
 }
 

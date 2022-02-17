@@ -16,10 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  WORLD_HEALTH_DASHBOARD,
-  CHECK_DASHBOARD_FAVORITE_ENDPOINT,
-} from './dashboard.helper';
+import { WORLD_HEALTH_DASHBOARD, CHECK_DASHBOARD_FAVORITE_ENDPOINT } from './dashboard.helper';
 
 describe('Dashboard add to favorite', () => {
   let isFavoriteDashboard = false;
@@ -37,9 +34,7 @@ describe('Dashboard add to favorite', () => {
 
   it('should allow favor/unfavor', () => {
     if (!isFavoriteDashboard) {
-      cy.get('[data-test="fave-unfave-icon"]')
-        .find('span')
-        .should('have.attr', 'aria-label', 'favorite-unselected');
+      cy.get('[data-test="fave-unfave-icon"]').find('span').should('have.attr', 'aria-label', 'favorite-unselected');
       cy.get('[data-test="fave-unfave-icon"]').trigger('click');
       cy.get('[data-test="fave-unfave-icon"]')
         .find('span')

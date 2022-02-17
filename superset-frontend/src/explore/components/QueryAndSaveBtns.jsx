@@ -39,15 +39,7 @@ const defaultProps = {
   onSave: () => {},
 };
 
-export default function QueryAndSaveBtns({
-  canAdd,
-  onQuery,
-  onSave,
-  onStop,
-  loading,
-  chartIsStale,
-  errorMessage,
-}) {
+export default function QueryAndSaveBtns({ canAdd, onQuery, onSave, onStop, loading, chartIsStale, errorMessage }) {
   let qryButtonStyle = 'tertiary';
   if (errorMessage) {
     qryButtonStyle = 'danger';
@@ -57,12 +49,7 @@ export default function QueryAndSaveBtns({
 
   const saveButtonDisabled = errorMessage ? true : loading;
   const qryOrStopButton = loading ? (
-    <Button
-      onClick={onStop}
-      buttonStyle="warning"
-      buttonSize="small"
-      disabled={!canAdd}
-    >
+    <Button onClick={onStop} buttonStyle="warning" buttonSize="small" disabled={!canAdd}>
       <i className="fa fa-stop-circle-o" /> {t('Stop')}
     </Button>
   ) : (
@@ -115,11 +102,7 @@ export default function QueryAndSaveBtns({
       {errorMessage && (
         <span className="errMsg">
           {' '}
-          <Tooltip
-            id="query-error-tooltip"
-            placement="right"
-            title={errorMessage}
-          >
+          <Tooltip id="query-error-tooltip" placement="right" title={errorMessage}>
             <i className="fa fa-exclamation-circle text-danger fa-lg" />
           </Tooltip>
         </span>

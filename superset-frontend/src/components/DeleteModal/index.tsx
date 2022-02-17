@@ -44,13 +44,7 @@ interface DeleteModalProps {
   title: React.ReactNode;
 }
 
-export default function DeleteModal({
-  description,
-  onConfirm,
-  onHide,
-  open,
-  title,
-}: DeleteModalProps) {
+export default function DeleteModal({ description, onConfirm, onHide, open, title }: DeleteModalProps) {
   const [disableChange, setDisableChange] = useState(true);
   const [confirmation, setConfirmation] = useState<string>('');
 
@@ -88,9 +82,7 @@ export default function DeleteModal({
     >
       <DescriptionContainer>{description}</DescriptionContainer>
       <StyledDiv>
-        <FormLabel htmlFor="delete">
-          {t('Type "%s" to confirm', t('DELETE'))}
-        </FormLabel>
+        <FormLabel htmlFor="delete">{t('Type "%s" to confirm', t('DELETE'))}</FormLabel>
         <Input
           data-test="delete-modal-input"
           type="text"

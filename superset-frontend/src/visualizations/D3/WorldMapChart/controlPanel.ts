@@ -17,11 +17,7 @@
  * under the License.
  */
 import { t } from 'src/core';
-import {
-  ControlPanelConfig,
-  formatSelectOptions,
-  sections,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, formatSelectOptions, sections } from 'src/chartConntrols';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -45,8 +41,7 @@ const config: ControlPanelConfig = {
                 ['cca3', 'code ISO 3166-1 alpha-3 (cca3)'],
               ],
               description: t(
-                'The country code standard that Superset should expect ' +
-                  'to find in the [country] column',
+                'The country code standard that Superset should expect ' + 'to find in the [country] column',
               ),
             },
           },
@@ -60,9 +55,7 @@ const config: ControlPanelConfig = {
             config: {
               type: 'CheckboxControl',
               label: t('Sort by metric'),
-              description: t(
-                'Whether to sort results by the selected metric in descending order.',
-              ),
+              description: t('Whether to sort results by the selected metric in descending order.'),
             },
           },
         ],
@@ -93,15 +86,7 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Max Bubble Size'),
               default: '25',
-              choices: formatSelectOptions([
-                '5',
-                '10',
-                '15',
-                '25',
-                '50',
-                '75',
-                '100',
-              ]),
+              choices: formatSelectOptions(['5', '10', '15', '25', '50', '75', '100']),
             },
           },
         ],

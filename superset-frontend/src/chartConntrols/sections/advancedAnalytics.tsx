@@ -25,9 +25,7 @@ export const advancedAnalyticsControls: ControlPanelSectionConfig = {
   label: t('Advanced analytics'),
   tabOverride: 'data',
   description: t(
-    'This section contains options ' +
-      'that allow for advanced analytical post processing ' +
-      'of query results',
+    'This section contains options ' + 'that allow for advanced analytical post processing ' + 'of query results',
   ),
   controlSetRows: [
     [<h1 className="section-header">{t('Rolling window')}</h1>],
@@ -38,13 +36,8 @@ export const advancedAnalyticsControls: ControlPanelSectionConfig = {
           type: 'SelectControl',
           label: t('Rolling function'),
           default: null,
-          choices: [[null, t('None')]].concat(
-            formatSelectOptions(Object.values(RollingType)),
-          ),
-          description: t(
-            'Defines a rolling window function to apply, works along ' +
-              'with the [Periods] text box',
-          ),
+          choices: [[null, t('None')]].concat(formatSelectOptions(Object.values(RollingType))),
+          description: t('Defines a rolling window function to apply, works along ' + 'with the [Periods] text box'),
         },
       },
     ],
@@ -56,12 +49,10 @@ export const advancedAnalyticsControls: ControlPanelSectionConfig = {
           label: t('Periods'),
           isInt: true,
           description: t(
-            'Defines the size of the rolling window function, ' +
-              'relative to the time granularity selected',
+            'Defines the size of the rolling window function, ' + 'relative to the time granularity selected',
           ),
           visibility: ({ controls }) =>
-            Boolean(controls?.rolling_type?.value) &&
-            controls.rolling_type.value !== RollingType.Cumsum,
+            Boolean(controls?.rolling_type?.value) && controls.rolling_type.value !== RollingType.Cumsum,
         },
       },
     ],
@@ -80,8 +71,7 @@ export const advancedAnalyticsControls: ControlPanelSectionConfig = {
               'taking place over the first 7 periods',
           ),
           visibility: ({ controls }) =>
-            Boolean(controls?.rolling_type?.value) &&
-            controls.rolling_type.value !== RollingType.Cumsum,
+            Boolean(controls?.rolling_type?.value) && controls.rolling_type.value !== RollingType.Cumsum,
         },
       },
     ],

@@ -19,10 +19,7 @@
 import React from 'react';
 import { render, screen } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import AdhocFilter, {
-  EXPRESSION_TYPES,
-  CLAUSES,
-} from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, { EXPRESSION_TYPES, CLAUSES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import AdhocFilterPopoverTrigger from '.';
 
 const simpleAdhocFilter = new AdhocFilter({
@@ -41,20 +38,12 @@ const mockedProps = {
 };
 
 test('should render', () => {
-  const { container } = render(
-    <AdhocFilterPopoverTrigger {...mockedProps}>
-      Click
-    </AdhocFilterPopoverTrigger>,
-  );
+  const { container } = render(<AdhocFilterPopoverTrigger {...mockedProps}>Click</AdhocFilterPopoverTrigger>);
   expect(container).toBeInTheDocument();
 });
 
 test('should render the Popover on click when uncontrolled', () => {
-  render(
-    <AdhocFilterPopoverTrigger {...mockedProps}>
-      Click
-    </AdhocFilterPopoverTrigger>,
-  );
+  render(<AdhocFilterPopoverTrigger {...mockedProps}>Click</AdhocFilterPopoverTrigger>);
   expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
   userEvent.click(screen.getByText('Click'));
   expect(screen.getByRole('tooltip')).toBeInTheDocument();
@@ -68,11 +57,7 @@ test('should be visible when controlled', async () => {
     togglePopover: jest.fn(),
     closePopover: jest.fn(),
   };
-  render(
-    <AdhocFilterPopoverTrigger {...controlledProps}>
-      Click
-    </AdhocFilterPopoverTrigger>,
-  );
+  render(<AdhocFilterPopoverTrigger {...controlledProps}>Click</AdhocFilterPopoverTrigger>);
   expect(screen.getByRole('tooltip')).toBeInTheDocument();
 });
 
@@ -84,10 +69,6 @@ test('should NOT be visible when controlled', () => {
     togglePopover: jest.fn(),
     closePopover: jest.fn(),
   };
-  render(
-    <AdhocFilterPopoverTrigger {...controlledProps}>
-      Click
-    </AdhocFilterPopoverTrigger>,
-  );
+  render(<AdhocFilterPopoverTrigger {...controlledProps}>Click</AdhocFilterPopoverTrigger>);
   expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 });

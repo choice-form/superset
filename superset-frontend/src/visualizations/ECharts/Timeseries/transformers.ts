@@ -44,20 +44,11 @@ import {
   SeriesLineLabelOption,
   ZRLineType,
 } from 'echarts/types/src/util/types';
-import {
-  MarkArea1DDataItemOption,
-  MarkArea2DDataItemOption,
-} from 'echarts/types/src/component/marker/MarkAreaModel';
+import { MarkArea1DDataItemOption, MarkArea2DDataItemOption } from 'echarts/types/src/component/marker/MarkAreaModel';
 import { MarkLine1DDataItemOption } from 'echarts/types/src/component/marker/MarkLineModel';
 
-import {
-  ForecastSeriesEnum,
-  LegendOrientation,
-} from 'src/visualizations/ECharts/types';
-import {
-  OpacityEnum,
-  TIMESERIES_CONSTANTS,
-} from 'src/visualizations/ECharts/constants';
+import { ForecastSeriesEnum, LegendOrientation } from 'src/visualizations/ECharts/types';
+import { OpacityEnum, TIMESERIES_CONSTANTS } from 'src/visualizations/ECharts/constants';
 import { extractForecastSeriesContext } from '../utils/prophet';
 import { EchartsTimeseriesSeriesType } from './types';
 
@@ -118,11 +109,8 @@ export function transformSeries(
   const isConfidenceBand =
     forecastSeries.type === ForecastSeriesEnum.ForecastLower ||
     forecastSeries.type === ForecastSeriesEnum.ForecastUpper;
-  const isFiltered =
-    filterState?.selectedValues && !filterState?.selectedValues.includes(name);
-  const opacity = isFiltered
-    ? OpacityEnum.SemiTransparent
-    : OpacityEnum.NonTransparent;
+  const isFiltered = filterState?.selectedValues && !filterState?.selectedValues.includes(name);
+  const opacity = isFiltered ? OpacityEnum.SemiTransparent : OpacityEnum.NonTransparent;
 
   // don't create a series if doing a stack or area chart and the result
   // is a confidence band
@@ -141,10 +129,7 @@ export function transformSeries(
     stackId = forecastSeries.type;
   }
   let plotType;
-  if (
-    !isConfidenceBand &&
-    (seriesType === 'scatter' || (hasForecast && isObservation))
-  ) {
+  if (!isConfidenceBand && (seriesType === 'scatter' || (hasForecast && isObservation))) {
     plotType = 'scatter';
   } else if (isConfidenceBand) {
     plotType = 'line';
@@ -178,9 +163,7 @@ export function transformSeries(
       showSymbol = true;
     }
   }
-  const lineStyle = isConfidenceBand
-    ? { opacity: OpacityEnum.Transparent }
-    : { opacity };
+  const lineStyle = isConfidenceBand ? { opacity: OpacityEnum.Transparent } : { opacity };
   return {
     ...series,
     yAxisIndex,
@@ -191,9 +174,7 @@ export function transformSeries(
     smooth: seriesType === 'smooth',
     triggerLineEvent: true,
     // @ts-ignore
-    step: ['start', 'middle', 'end'].includes(seriesType as string)
-      ? seriesType
-      : undefined,
+    step: ['start', 'middle', 'end'].includes(seriesType as string) ? seriesType : undefined,
     stack: stackId,
     lineStyle,
     areaStyle:
@@ -265,10 +246,7 @@ export function transformIntervalAnnotation(
     const { name, color, opacity, showLabel } = layer;
     const { descriptions, intervalEnd, time, title } = annotation;
     const label = formatAnnotationLabel(name, title, descriptions);
-    const intervalData: (
-      | MarkArea1DDataItemOption
-      | MarkArea2DDataItemOption
-    )[] = [
+    const intervalData: (MarkArea1DDataItemOption | MarkArea2DDataItemOption)[] = [
       [
         {
           name: label,
@@ -442,9 +420,7 @@ export function getPadding(
   right: number;
   top: number;
 } {
-  const yAxisOffset = addYAxisTitleOffset
-    ? TIMESERIES_CONSTANTS.yAxisLabelTopOffset
-    : 0;
+  const yAxisOffset = addYAxisTitleOffset ? TIMESERIES_CONSTANTS.yAxisLabelTopOffset : 0;
   const xAxisOffset = addXAxisTitleOffset ? xAxisTitleMargin || 0 : 0;
   return getChartPadding(showLegend, legendOrientation, margin, {
     top:
@@ -458,16 +434,11 @@ export function getPadding(
       yAxisTitlePosition === 'Left'
         ? TIMESERIES_CONSTANTS.gridOffsetLeft + (yAxisTitleMargin || 0)
         : TIMESERIES_CONSTANTS.gridOffsetLeft,
-    right:
-      showLegend && legendOrientation === LegendOrientation.Right
-        ? 0
-        : TIMESERIES_CONSTANTS.gridOffsetRight,
+    right: showLegend && legendOrientation === LegendOrientation.Right ? 0 : TIMESERIES_CONSTANTS.gridOffsetRight,
   });
 }
 
-export function getTooltipTimeFormatter(
-  format?: string,
-): TimeFormatter | StringConstructor {
+export function getTooltipTimeFormatter(format?: string): TimeFormatter | StringConstructor {
   if (format === smartDateFormatter.id) {
     return smartDateDetailedFormatter;
   }
@@ -477,9 +448,7 @@ export function getTooltipTimeFormatter(
   return String;
 }
 
-export function getXAxisFormatter(
-  format?: string,
-): TimeFormatter | StringConstructor | undefined {
+export function getXAxisFormatter(format?: string): TimeFormatter | StringConstructor | undefined {
   if (format === smartDateFormatter.id || !format) {
     return undefined;
   }

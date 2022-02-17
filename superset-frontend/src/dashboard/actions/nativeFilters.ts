@@ -21,18 +21,10 @@ import { makeApi } from 'src/core';
 import { Dispatch } from 'redux';
 import { FilterConfiguration } from 'src/dashboard/components/nativeFilters/types';
 import { DataMaskType, DataMaskStateWithId } from 'src/dataMask/types';
-import {
-  SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL,
-  setDataMaskForFilterConfigComplete,
-} from 'src/dataMask/actions';
+import { SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL, setDataMaskForFilterConfigComplete } from 'src/dataMask/actions';
 import { HYDRATE_DASHBOARD } from './hydrate';
 import { dashboardInfoChanged } from './dashboardInfo';
-import {
-  DashboardInfo,
-  Filters,
-  FilterSet,
-  FilterSets,
-} from '../reducers/types';
+import { DashboardInfo, Filters, FilterSet, FilterSets } from '../reducers/types';
 
 export const SET_FILTER_CONFIG_BEGIN = 'SET_FILTER_CONFIG_BEGIN';
 export interface SetFilterConfigBegin {
@@ -59,8 +51,7 @@ export interface SetFilterSetsConfigBegin {
   type: typeof SET_FILTER_SETS_CONFIG_BEGIN;
   filterSetsConfig: FilterSet[];
 }
-export const SET_FILTER_SETS_CONFIG_COMPLETE =
-  'SET_FILTER_SETS_CONFIG_COMPLETE';
+export const SET_FILTER_SETS_CONFIG_COMPLETE = 'SET_FILTER_SETS_CONFIG_COMPLETE';
 export interface SetFilterSetsConfigComplete {
   type: typeof SET_FILTER_SETS_CONFIG_COMPLETE;
   filterSetsConfig: FilterSet[];
@@ -71,103 +62,94 @@ export interface SetFilterSetsConfigFail {
   filterSetsConfig: FilterSet[];
 }
 
-export const setFilterConfiguration =
-  (filterConfig: FilterConfiguration) =>
-  async (dispatch: Dispatch, getState: () => any) => {
-    dispatch({
-      type: SET_FILTER_CONFIG_BEGIN,
-      filterConfig,
-    });
-    const { id, metadata } = getState().dashboardInfo;
-    const oldFilters = getState().nativeFilters?.filters;
+export const setFilterConfiguration = (filterConfig: FilterConfiguration) => async (
+  dispatch: Dispatch,
+  getState: () => any,
+) => {
+  dispatch({
+    type: SET_FILTER_CONFIG_BEGIN,
+    filterConfig,
+  });
+  const { id, metadata } = getState().dashboardInfo;
+  const oldFilters = getState().nativeFilters?.filters;
 
-    // TODO extract this out when makeApi supports url parameters
-    const updateDashboard = makeApi<
-      Partial<DashboardInfo>,
-      { result: DashboardInfo }
-    >({
-      method: 'PUT',
-      endpoint: `/api/v1/dashboard/${id}`,
-    });
+  // TODO extract this out when makeApi supports url parameters
+  const updateDashboard = makeApi<Partial<DashboardInfo>, { result: DashboardInfo }>({
+    method: 'PUT',
+    endpoint: `/api/v1/dashboard/${id}`,
+  });
 
-    const mergedFilterConfig = filterConfig.map(filter => {
-      const oldFilter = oldFilters[filter.id];
-      if (!oldFilter) {
-        return filter;
-      }
-      return { ...oldFilter, ...filter };
-    });
-
-    try {
-      const response = await updateDashboard({
-        json_metadata: JSON.stringify({
-          ...metadata,
-          native_filter_configuration: mergedFilterConfig,
-        }),
-      });
-      dispatch(
-        dashboardInfoChanged({
-          metadata: JSON.parse(response.result.json_metadata),
-        }),
-      );
-      dispatch({
-        type: SET_FILTER_CONFIG_COMPLETE,
-        filterConfig: mergedFilterConfig,
-      });
-      dispatch(
-        setDataMaskForFilterConfigComplete(mergedFilterConfig, oldFilters),
-      );
-    } catch (err) {
-      dispatch({
-        type: SET_FILTER_CONFIG_FAIL,
-        filterConfig: mergedFilterConfig,
-      });
-      dispatch({
-        type: SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL,
-        filterConfig: mergedFilterConfig,
-      });
+  const mergedFilterConfig = filterConfig.map(filter => {
+    const oldFilter = oldFilters[filter.id];
+    if (!oldFilter) {
+      return filter;
     }
-  };
+    return { ...oldFilter, ...filter };
+  });
 
-export const setInScopeStatusOfFilters =
-  (
-    filterScopes: {
-      filterId: string;
-      chartsInScope: number[];
-      tabsInScope: string[];
-    }[],
-  ) =>
-  async (dispatch: Dispatch, getState: () => any) => {
-    const filters = getState().nativeFilters?.filters;
-    const filtersWithScopes = filterScopes.map(scope => ({
-      ...filters[scope.filterId],
-      chartsInScope: scope.chartsInScope,
-      tabsInScope: scope.tabsInScope,
-    }));
-    dispatch({
-      type: SET_IN_SCOPE_STATUS_OF_FILTERS,
-      filterConfig: filtersWithScopes,
+  try {
+    const response = await updateDashboard({
+      json_metadata: JSON.stringify({
+        ...metadata,
+        native_filter_configuration: mergedFilterConfig,
+      }),
     });
-    // need to update native_filter_configuration in the dashboard metadata
-    const { metadata } = getState().dashboardInfo;
-    const filterConfig: FilterConfiguration =
-      metadata.native_filter_configuration;
-    const mergedFilterConfig = filterConfig.map(filter => {
-      const filterWithScope = filtersWithScopes.find(
-        scope => scope.id === filter.id,
-      );
-      if (!filterWithScope) {
-        return filter;
-      }
-      return { ...filterWithScope, ...filter };
-    });
-    metadata.native_filter_configuration = mergedFilterConfig;
     dispatch(
       dashboardInfoChanged({
-        metadata,
+        metadata: JSON.parse(response.result.json_metadata),
       }),
     );
-  };
+    dispatch({
+      type: SET_FILTER_CONFIG_COMPLETE,
+      filterConfig: mergedFilterConfig,
+    });
+    dispatch(setDataMaskForFilterConfigComplete(mergedFilterConfig, oldFilters));
+  } catch (err) {
+    dispatch({
+      type: SET_FILTER_CONFIG_FAIL,
+      filterConfig: mergedFilterConfig,
+    });
+    dispatch({
+      type: SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL,
+      filterConfig: mergedFilterConfig,
+    });
+  }
+};
+
+export const setInScopeStatusOfFilters = (
+  filterScopes: {
+    filterId: string;
+    chartsInScope: number[];
+    tabsInScope: string[];
+  }[],
+) => async (dispatch: Dispatch, getState: () => any) => {
+  const filters = getState().nativeFilters?.filters;
+  const filtersWithScopes = filterScopes.map(scope => ({
+    ...filters[scope.filterId],
+    chartsInScope: scope.chartsInScope,
+    tabsInScope: scope.tabsInScope,
+  }));
+  dispatch({
+    type: SET_IN_SCOPE_STATUS_OF_FILTERS,
+    filterConfig: filtersWithScopes,
+  });
+  // need to update native_filter_configuration in the dashboard metadata
+  const { metadata } = getState().dashboardInfo;
+  const filterConfig: FilterConfiguration = metadata.native_filter_configuration;
+  const mergedFilterConfig = filterConfig.map(filter => {
+    const filterWithScope = filtersWithScopes.find(scope => scope.id === filter.id);
+    if (!filterWithScope) {
+      return filter;
+    }
+    return { ...filterWithScope, ...filter };
+  });
+  metadata.native_filter_configuration = mergedFilterConfig;
+  dispatch(
+    dashboardInfoChanged({
+      metadata,
+    }),
+  );
+};
 
 type BootstrapData = {
   nativeFilters: {
@@ -182,45 +164,43 @@ export interface SetBootstrapData {
   data: BootstrapData;
 }
 
-export const setFilterSetsConfiguration =
-  (filterSetsConfig: FilterSet[]) =>
-  async (dispatch: Dispatch, getState: () => any) => {
+export const setFilterSetsConfiguration = (filterSetsConfig: FilterSet[]) => async (
+  dispatch: Dispatch,
+  getState: () => any,
+) => {
+  dispatch({
+    type: SET_FILTER_SETS_CONFIG_BEGIN,
+    filterSetsConfig,
+  });
+  const { id, metadata } = getState().dashboardInfo;
+
+  // TODO extract this out when makeApi supports url parameters
+  const updateDashboard = makeApi<Partial<DashboardInfo>, { result: DashboardInfo }>({
+    method: 'PUT',
+    endpoint: `/api/v1/dashboard/${id}`,
+  });
+
+  try {
+    const response = await updateDashboard({
+      json_metadata: JSON.stringify({
+        ...metadata,
+        filter_sets_configuration: filterSetsConfig,
+      }),
+    });
+    const newMetadata = JSON.parse(response.result.json_metadata);
+    dispatch(
+      dashboardInfoChanged({
+        metadata: newMetadata,
+      }),
+    );
     dispatch({
-      type: SET_FILTER_SETS_CONFIG_BEGIN,
-      filterSetsConfig,
+      type: SET_FILTER_SETS_CONFIG_COMPLETE,
+      filterSetsConfig: newMetadata?.filter_sets_configuration,
     });
-    const { id, metadata } = getState().dashboardInfo;
-
-    // TODO extract this out when makeApi supports url parameters
-    const updateDashboard = makeApi<
-      Partial<DashboardInfo>,
-      { result: DashboardInfo }
-    >({
-      method: 'PUT',
-      endpoint: `/api/v1/dashboard/${id}`,
-    });
-
-    try {
-      const response = await updateDashboard({
-        json_metadata: JSON.stringify({
-          ...metadata,
-          filter_sets_configuration: filterSetsConfig,
-        }),
-      });
-      const newMetadata = JSON.parse(response.result.json_metadata);
-      dispatch(
-        dashboardInfoChanged({
-          metadata: newMetadata,
-        }),
-      );
-      dispatch({
-        type: SET_FILTER_SETS_CONFIG_COMPLETE,
-        filterSetsConfig: newMetadata?.filter_sets_configuration,
-      });
-    } catch (err) {
-      dispatch({ type: SET_FILTER_SETS_CONFIG_FAIL, filterSetsConfig });
-    }
-  };
+  } catch (err) {
+    dispatch({ type: SET_FILTER_SETS_CONFIG_FAIL, filterSetsConfig });
+  }
+};
 
 export const SAVE_FILTER_SETS = 'SAVE_FILTER_SETS';
 export interface SaveFilterSets {

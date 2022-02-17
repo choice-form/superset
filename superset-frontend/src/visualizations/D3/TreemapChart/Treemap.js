@@ -19,11 +19,7 @@
 /* eslint-disable no-param-reassign, func-names */
 /* eslint-disable react/sort-prop-types */
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
-import {
-  treemap as d3Treemap,
-  hierarchy as d3Hierarchy,
-  treemapSquarify,
-} from 'd3-hierarchy';
+import { treemap as d3Treemap, hierarchy as d3Hierarchy, treemapSquarify } from 'd3-hierarchy';
 import PropTypes from 'prop-types';
 import { getNumberFormatter, CategoricalColorNamespace } from 'src/core';
 import './Treemap.css';
@@ -40,12 +36,7 @@ const leafType = PropTypes.shape({
 
 const parentShape = {
   name: PropTypes.string,
-  children: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.shape(lazyFunction(() => parentShape)),
-      leafType,
-    ]),
-  ),
+  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.shape(lazyFunction(() => parentShape)), leafType])),
 };
 
 const nodeType = PropTypes.oneOfType([PropTypes.shape(parentShape), leafType]);
@@ -77,14 +68,7 @@ function hovered(hover) {
 
 /* Modified from https://bl.ocks.org/mbostock/911ad09bdead40ec0061 */
 function Treemap(element, props) {
-  const {
-    data: rawData,
-    width,
-    height,
-    numberFormat,
-    colorScheme,
-    treemapRatio,
-  } = props;
+  const { data: rawData, width, height, numberFormat, colorScheme, treemapRatio } = props;
   const div = d3Select(element);
   div.classed('superset-legacy-chart-treemap', true);
 
@@ -111,11 +95,7 @@ function Treemap(element, props) {
         .sort((a, b) => b.height - a.height || b.value - a.value),
     );
 
-    const svg = div
-      .append('svg')
-      .attr('class', 'treemap')
-      .attr('width', width)
-      .attr('height', height);
+    const svg = div.append('svg').attr('class', 'treemap').attr('width', width).attr('height', height);
 
     const cell = svg
       .selectAll('.node')
@@ -143,9 +123,7 @@ function Treemap(element, props) {
       .append('use')
       .attr('xlink:href', d => `#rect-${d.data.name}`);
 
-    const label = cell
-      .append('text')
-      .attr('clip-path', d => `url(#clip-${d.data.name})`);
+    const label = cell.append('text').attr('clip-path', d => `url(#clip-${d.data.name})`);
 
     label
       .filter(d => d.children)

@@ -16,24 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, {
-  ChangeEventHandler,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { ChangeEventHandler, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import cx from 'classnames';
-import {
-  t,
-  styled,
-  css,
-  ChartMetadata,
-  SupersetTheme,
-  useTheme,
-} from 'src/core';
+import { t, styled, css, ChartMetadata, SupersetTheme, useTheme } from 'src/core';
 import { Collapse, Input } from 'src/common/components';
 import Label from 'src/components/Label';
 import { usePluginContext } from 'src/components/DynamicPlugins';
@@ -129,9 +115,7 @@ const VizPickerLayout = styled.div<{ isSelectedVizMetadata: boolean }>`
   ${({ isSelectedVizMetadata }) => `
     display: grid;
     grid-template-rows: ${
-      isSelectedVizMetadata
-        ? `auto minmax(100px, 1fr) minmax(200px, 35%)`
-        : 'auto minmax(100px, 1fr)'
+      isSelectedVizMetadata ? `auto minmax(100px, 1fr) minmax(200px, 35%)` : 'auto minmax(100px, 1fr)'
     };
     // em is used here because the sidebar should be sized to fit the longest standard tag
     grid-template-columns: minmax(14em, auto) 5fr;
@@ -247,10 +231,7 @@ const SelectorLabel = styled.button`
 const IconsPane = styled.div`
   overflow: auto;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    ${({ theme }) => theme.gridUnit * THUMBNAIL_GRID_UNITS}px
-  );
+  grid-template-columns: repeat(auto-fill, ${({ theme }) => theme.gridUnit * THUMBNAIL_GRID_UNITS}px);
   grid-auto-rows: max-content;
   justify-content: space-evenly;
   grid-gap: ${({ theme }) => theme.gridUnit * 2}px;
@@ -345,11 +326,7 @@ interface ThumbnailProps {
   setSelectedViz: (viz: string) => void;
 }
 
-const Thumbnail: React.FC<ThumbnailProps> = ({
-  entry,
-  selectedViz,
-  setSelectedViz,
-}) => {
+const Thumbnail: React.FC<ThumbnailProps> = ({ entry, selectedViz, setSelectedViz }) => {
   const theme = useTheme();
   const { key, value: type } = entry;
   const isSelected = selectedViz === entry.key;
@@ -371,10 +348,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
         className={`viztype-selector ${isSelected ? 'selected' : ''}`}
         src={type.thumbnail}
       />
-      <div
-        className="viztype-label"
-        data-test={`${VIZ_TYPE_CONTROL_TEST_ID}__viztype-label`}
-      >
+      <div className="viztype-label" data-test={`${VIZ_TYPE_CONTROL_TEST_ID}__viztype-label`}>
         {type.name}
       </div>
     </div>
@@ -388,10 +362,7 @@ interface ThumbnailGalleryProps {
 }
 
 /** A list of viz thumbnails, used within the viz picker modal */
-const ThumbnailGallery: React.FC<ThumbnailGalleryProps> = ({
-  vizEntries,
-  ...props
-}) => (
+const ThumbnailGallery: React.FC<ThumbnailGalleryProps> = ({ vizEntries, ...props }) => (
   <IconsPane data-test={`${VIZ_TYPE_CONTROL_TEST_ID}__viz-row`}>
     {vizEntries.map(entry => (
       <Thumbnail key={entry.key} {...props} entry={entry} />
@@ -450,17 +421,12 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
   const [isSearchFocused, setIsSearchFocused] = useState(true);
   const isActivelySearching = isSearchFocused && !!searchInputValue;
 
-  const selectedVizMetadata: ChartMetadata | null = selectedViz
-    ? mountedPluginMetadata[selectedViz]
-    : null;
+  const selectedVizMetadata: ChartMetadata | null = selectedViz ? mountedPluginMetadata[selectedViz] : null;
 
   const chartMetadata: VizEntry[] = useMemo(() => {
     const result = Object.entries(mountedPluginMetadata)
       .map(([key, value]) => ({ key, value }))
-      .filter(
-        ({ value }) =>
-          nativeFilterGate(value.behaviors || []) && !value.deprecated,
-      );
+      .filter(({ value }) => nativeFilterGate(value.behaviors || []) && !value.deprecated);
     result.sort((a, b) => vizSortFactor(a) - vizSortFactor(b));
     return result;
   }, [mountedPluginMetadata]);
@@ -514,19 +480,14 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
     [chartsByTags],
   );
 
-  const sortedMetadata = useMemo(
-    () => chartMetadata.sort((a, b) => a.key.localeCompare(b.key)),
-    [chartMetadata],
-  );
+  const sortedMetadata = useMemo(() => chartMetadata.sort((a, b) => a.key.localeCompare(b.key)), [chartMetadata]);
 
   const [activeSelector, setActiveSelector] = useState<string>(
     () => selectedVizMetadata?.category || RECOMMENDED_TAGS[0],
   );
 
   const [activeSection, setActiveSection] = useState<string>(() =>
-    selectedVizMetadata?.category
-      ? SECTIONS.CATEGORY
-      : SECTIONS.RECOMMENDED_TAGS,
+    selectedVizMetadata?.category ? SECTIONS.CATEGORY : SECTIONS.RECOMMENDED_TAGS,
   );
 
   // get a fuse instance for fuzzy search
@@ -575,20 +536,12 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
       setActiveSelector(selector);
       setActiveSection(sectionId);
       // clear the selected viz if it is not present in the new category or tags
-      const isSelectedVizCompatible =
-        selectedVizMetadata &&
-        doesVizMatchSelector(selectedVizMetadata, selector);
+      const isSelectedVizCompatible = selectedVizMetadata && doesVizMatchSelector(selectedVizMetadata, selector);
       if (selector !== activeSelector && !isSelectedVizCompatible) {
         onChange(null);
       }
     },
-    [
-      stopSearching,
-      isSearchFocused,
-      activeSelector,
-      selectedVizMetadata,
-      onChange,
-    ],
+    [stopSearching, isSearchFocused, activeSelector, selectedVizMetadata, onChange],
   );
 
   const sectionMap = useMemo(
@@ -616,21 +569,14 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
     if (isActivelySearching) {
       return searchResults;
     }
-    if (
-      activeSelector === ALL_CHARTS &&
-      activeSection === SECTIONS.ALL_CHARTS
-    ) {
+    if (activeSelector === ALL_CHARTS && activeSection === SECTIONS.ALL_CHARTS) {
       return sortedMetadata;
     }
-    if (
-      activeSection === SECTIONS.CATEGORY &&
-      chartsByCategory[activeSelector]
-    ) {
+    if (activeSection === SECTIONS.CATEGORY && chartsByCategory[activeSelector]) {
       return chartsByCategory[activeSelector];
     }
     if (
-      (activeSection === SECTIONS.TAGS ||
-        activeSection === SECTIONS.RECOMMENDED_TAGS) &&
+      (activeSection === SECTIONS.TAGS || activeSection === SECTIONS.RECOMMENDED_TAGS) &&
       chartsByTags[activeSelector]
     ) {
       return chartsByTags[activeSelector];
@@ -639,10 +585,7 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
   };
 
   return (
-    <VizPickerLayout
-      className={className}
-      isSelectedVizMetadata={Boolean(selectedVizMetadata)}
-    >
+    <VizPickerLayout className={className} isSelectedVizMetadata={Boolean(selectedVizMetadata)}>
       <LeftPane>
         <Selector
           css={({ gridUnit }) =>
@@ -655,37 +598,22 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
           sectionId={SECTIONS.ALL_CHARTS}
           selector={ALL_CHARTS}
           icon={<Icons.Ballot />}
-          isSelected={
-            !isActivelySearching &&
-            ALL_CHARTS === activeSelector &&
-            SECTIONS.ALL_CHARTS === activeSection
-          }
+          isSelected={!isActivelySearching && ALL_CHARTS === activeSelector && SECTIONS.ALL_CHARTS === activeSection}
           onClick={clickSelector}
         />
-        <Collapse
-          expandIconPosition="right"
-          ghost
-          defaultActiveKey={Object.keys(sectionMap)}
-        >
+        <Collapse expandIconPosition="right" ghost defaultActiveKey={Object.keys(sectionMap)}>
           {Object.keys(sectionMap).map(sectionId => {
             const section = sectionMap[sectionId];
 
             return (
-              <Collapse.Panel
-                header={<span className="header">{section.title}</span>}
-                key={sectionId}
-              >
+              <Collapse.Panel header={<span className="header">{section.title}</span>} key={sectionId}>
                 {section.selectors.map((selector: string) => (
                   <Selector
                     key={selector}
                     selector={selector}
                     sectionId={sectionId}
                     icon={section.icon}
-                    isSelected={
-                      !isActivelySearching &&
-                      selector === activeSelector &&
-                      sectionId === activeSection
-                    }
+                    isSelected={!isActivelySearching && selector === activeSelector && sectionId === activeSection}
                     onClick={clickSelector}
                   />
                 ))}
@@ -711,29 +639,18 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
           }
           suffix={
             <InputIconAlignment>
-              {searchInputValue && (
-                <Icons.XLarge iconSize="m" onClick={stopSearching} />
-              )}
+              {searchInputValue && <Icons.XLarge iconSize="m" onClick={stopSearching} />}
             </InputIconAlignment>
           }
         />
       </SearchWrapper>
 
       <RightPane>
-        <ThumbnailGallery
-          vizEntries={getVizEntriesToDisplay()}
-          selectedViz={selectedViz}
-          setSelectedViz={onChange}
-        />
+        <ThumbnailGallery vizEntries={getVizEntriesToDisplay()} selectedViz={selectedViz} setSelectedViz={onChange} />
       </RightPane>
 
       {selectedVizMetadata ? (
-        <div
-          css={(theme: SupersetTheme) => [
-            DetailsPane(theme),
-            DetailsPopulated(theme),
-          ]}
-        >
+        <div css={(theme: SupersetTheme) => [DetailsPane(theme), DetailsPopulated(theme)]}>
           <>
             <SectionTitle
               css={css`
@@ -747,10 +664,7 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
                 <Label key={tag}>{tag}</Label>
               ))}
             </TagsWrapper>
-            <Description>
-              {selectedVizMetadata?.description ||
-                t('No description available.')}
-            </Description>
+            <Description>{selectedVizMetadata?.description || t('No description available.')}</Description>
             <SectionTitle
               css={css`
                 grid-area: examples-header;
@@ -760,11 +674,7 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
             </SectionTitle>
             <Examples>
               {(selectedVizMetadata?.exampleGallery || []).map(example => (
-                <img
-                  src={example.url}
-                  alt={example.caption}
-                  title={example.caption}
-                />
+                <img src={example.url} alt={example.caption} title={example.caption} />
               ))}
             </Examples>
           </>

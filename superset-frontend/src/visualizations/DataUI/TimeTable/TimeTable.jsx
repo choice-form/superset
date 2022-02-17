@@ -94,15 +94,7 @@ const TimeTableStyles = styled.div`
   }
 `;
 
-const TimeTable = ({
-  className,
-  height,
-  data,
-  columnConfigs,
-  rowType,
-  rows,
-  url,
-}) => {
+const TimeTable = ({ className, height, data, columnConfigs, rowType, rows, url }) => {
   const memoizedColumns = useMemo(
     () => [
       { accessor: 'metric', Header: 'Metric' },
@@ -115,11 +107,7 @@ const TimeTable = ({
           <>
             {columnConfig.label}{' '}
             {columnConfig.tooltip && (
-              <InfoTooltipWithTrigger
-                tooltip={columnConfig.tooltip}
-                label={`tt-col-${i}`}
-                placement="top"
-              />
+              <InfoTooltipWithTrigger tooltip={columnConfig.tooltip} label={`tt-col-${i}`} placement="top" />
             )}
           </>
         ),
@@ -164,12 +152,7 @@ const TimeTable = ({
           renderTooltip={({ index }) => (
             <div>
               <strong>{formatNumber(column.d3format, sparkData[index])}</strong>
-              <div>
-                {formatTime(
-                  column.dateFormat,
-                  moment.utc(entries[index].time).toDate(),
-                )}
-              </div>
+              <div>{formatTime(column.dateFormat, moment.utc(entries[index].time).toDate())}</div>
             </div>
           )}
         />
@@ -210,8 +193,7 @@ const TimeTable = ({
         if (reversedEntries.length > 0) {
           const stats = reversedEntries.slice(undefined, column.timeLag).reduce(
             function ({ count, sum }, entry) {
-              return entry[valueField] !== undefined &&
-                entry[valueField] !== null
+              return entry[valueField] !== undefined && entry[valueField] !== null
                 ? { count: count + 1, sum: sum + entry[valueField] }
                 : { count, sum };
             },
@@ -261,14 +243,7 @@ const TimeTable = ({
         return column.label;
       }
 
-      return (
-        <MetricOption
-          metric={row}
-          url={fullUrl}
-          showFormula={false}
-          openInNewWindow
-        />
-      );
+      return <MetricOption metric={row} url={fullUrl} showFormula={false} openInNewWindow />;
     };
 
     const entries = Object.keys(data)
@@ -282,20 +257,12 @@ const TimeTable = ({
         if (columnConfig.colType === 'spark') {
           return {
             ...acc,
-            [columnConfig.key]: renderSparklineCell(
-              valueField,
-              columnConfig,
-              entries,
-            ),
+            [columnConfig.key]: renderSparklineCell(valueField, columnConfig, entries),
           };
         }
         return {
           ...acc,
-          [columnConfig.key]: renderValueCell(
-            valueField,
-            columnConfig,
-            reversedEntries,
-          ),
+          [columnConfig.key]: renderValueCell(valueField, columnConfig, reversedEntries),
         };
       }, {});
       return { ...row, ...cellValues, metric: renderLeftCell(row) };

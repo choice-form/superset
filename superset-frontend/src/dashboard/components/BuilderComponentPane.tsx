@@ -55,10 +55,7 @@ const BuilderComponentPane: React.FC<BCPProps> = ({ topOffset = 0 }) => (
         <StickyContainer>
           <Sticky topOffset={-topOffset} bottomOffset={Infinity}>
             {({ style, isSticky }: { style: any; isSticky: boolean }) => (
-              <div
-                className="viewport"
-                style={isSticky ? { ...style, top: topOffset } : null}
-              >
+              <div className="viewport" style={isSticky ? { ...style, top: topOffset } : null}>
                 <BuilderComponentPaneTabs
                   id="tabs"
                   className="tabs-components"
@@ -72,14 +69,8 @@ const BuilderComponentPane: React.FC<BCPProps> = ({ topOffset = 0 }) => (
                     <NewMarkdown />
                     <NewDivider />
                   </Tabs.TabPane>
-                  <Tabs.TabPane
-                    key={2}
-                    tab={t('Charts')}
-                    className="tab-charts"
-                  >
-                    <SliceAdder
-                      height={height + (isSticky ? SUPERSET_HEADER_HEIGHT : 0)}
-                    />
+                  <Tabs.TabPane key={2} tab={t('Charts')} className="tab-charts">
+                    <SliceAdder height={height + (isSticky ? SUPERSET_HEADER_HEIGHT : 0)} />
                   </Tabs.TabPane>
                 </BuilderComponentPaneTabs>
               </div>

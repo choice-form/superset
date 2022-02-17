@@ -33,11 +33,7 @@ import AsyncCreatable from 'react-select/async-creatable';
 import { withAsyncPaginate } from 'react-select-async-paginate';
 
 import { SelectComponents } from 'react-select/src/components';
-import {
-  SortableContainer,
-  SortableElement,
-  SortableContainerProps,
-} from 'react-sortable-hoc';
+import { SortableContainer, SortableElement, SortableContainerProps } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { Props as SelectProps } from 'react-select/src/Select';
 import { useTheme } from 'src/core';
@@ -71,7 +67,7 @@ type AnyReactSelect<OptionType extends OptionTypeBase> =
 
 export type SupersetStyledSelectProps<
   OptionType extends OptionTypeBase,
-  T extends WindowedSelectProps<OptionType> = WindowedSelectProps<OptionType>,
+  T extends WindowedSelectProps<OptionType> = WindowedSelectProps<OptionType>
 > = T & {
   // additional props for easier usage or backward compatibility
   labelKey?: string;
@@ -82,9 +78,7 @@ export type SupersetStyledSelectProps<
   sortable?: boolean;
   ignoreAccents?: boolean;
   creatable?: boolean;
-  selectRef?:
-    | React.RefCallback<AnyReactSelect<OptionType>>
-    | MutableRefObject<AnyReactSelect<OptionType>>;
+  selectRef?: React.RefCallback<AnyReactSelect<OptionType>> | MutableRefObject<AnyReactSelect<OptionType>>;
   getInputValue?: (selectBalue: ValueType<OptionType>) => string | undefined;
   optionRenderer?: (option: OptionType) => React.ReactNode;
   valueRenderer?: (option: OptionType) => React.ReactNode;
@@ -101,9 +95,7 @@ function styled<
   OptionType extends OptionTypeBase,
   SelectComponentType extends
     | WindowedSelectComponentType<OptionType>
-    | ComponentType<
-        SelectProps<OptionType>
-      > = WindowedSelectComponentType<OptionType>,
+    | ComponentType<SelectProps<OptionType>> = WindowedSelectComponentType<OptionType>
 >(SelectComponent: SelectComponentType) {
   type SelectProps = SupersetStyledSelectProps<OptionType>;
   type Components = SelectComponents<OptionType>;
@@ -113,8 +105,7 @@ function styled<
   });
 
   // default components for the given OptionType
-  const supersetDefaultComponents: SelectComponentsConfig<OptionType> =
-    DEFAULT_COMPONENTS;
+  const supersetDefaultComponents: SelectComponentsConfig<OptionType> = DEFAULT_COMPONENTS;
 
   const getSortableMultiValue = (MultiValue: Components['MultiValue']) =>
     SortableElement((props: MultiValueProps<OptionType>) => {
@@ -163,18 +154,11 @@ function styled<
       filterOption,
       ignoreAccents = false, // default is `true`, but it is slow
 
-      getOptionValue = option =>
-        typeof option === 'string' ? option : option[valueKey],
+      getOptionValue = option => (typeof option === 'string' ? option : option[valueKey]),
 
-      getOptionLabel = option =>
-        typeof option === 'string'
-          ? option
-          : option[labelKey] || option[valueKey],
+      getOptionLabel = option => (typeof option === 'string' ? option : option[labelKey] || option[valueKey]),
 
-      formatOptionLabel = (
-        option: OptionType,
-        { context }: FormatOptionLabelMeta<OptionType>,
-      ) => {
+      formatOptionLabel = (option: OptionType, { context }: FormatOptionLabelMeta<OptionType>) => {
         if (context === 'value') {
           return valueRenderer ? valueRenderer(option) : getOptionLabel(option);
         }
@@ -192,19 +176,14 @@ function styled<
     const isClearable = isClearable_ === undefined ? clearable : isClearable_;
 
     // Sort is only applied when there are multiple selected values
-    const shouldAllowSort =
-      isMulti && sortable && Array.isArray(value) && value.length > 1;
+    const shouldAllowSort = isMulti && sortable && Array.isArray(value) && value.length > 1;
 
-    const MaybeSortableSelect = shouldAllowSort
-      ? SortableSelectComponent
-      : SelectComponent;
+    const MaybeSortableSelect = shouldAllowSort ? SortableSelectComponent : SelectComponent;
     const components = { ...supersetDefaultComponents, ...components_ };
 
     // Make multi-select sortable as per https://react-select.netlify.app/advanced
     if (shouldAllowSort) {
-      components.MultiValue = getSortableMultiValue(
-        components.MultiValue || defaultComponents.MultiValue,
-      );
+      components.MultiValue = getSortableMultiValue(components.MultiValue || defaultComponents.MultiValue);
 
       const sortableContainerProps: Partial<SortableContainerProps> = {
         getHelperDimensions: ({ node }) => node.getBoundingClientRect(),
@@ -221,8 +200,7 @@ function styled<
     }
 
     // When values are rendered as labels, adjust valueContainer padding
-    const valueRenderedAsLabel =
-      valueRenderedAsLabel_ === undefined ? isMulti : valueRenderedAsLabel_;
+    const valueRenderedAsLabel = valueRenderedAsLabel_ === undefined ? isMulti : valueRenderedAsLabel_;
     if (valueRenderedAsLabel && !stylesConfig.valueContainer) {
       Object.assign(stylesConfig, VALUE_LABELED_STYLES);
     }
@@ -232,9 +210,7 @@ function styled<
       const Input =
         (components.Input as SelectComponentsType['Input']) ||
         (defaultComponents.Input as SelectComponentsType['Input']);
-      components.Input = (props: InputProps) => (
-        <Input {...props} onPaste={onPaste} />
-      );
+      components.Input = (props: InputProps) => <Input {...props} onPaste={onPaste} />;
     }
     // for CreaTable
     if (SelectComponent === WindowedCreatableSelect) {
@@ -251,14 +227,9 @@ function styled<
       Object.assign(restProps, {
         closeMenuOnScroll: (e: Event) => {
           // ensure menu is open
-          const menuIsOpen = (stateManager as BasicSelect<OptionType>)?.state
-            ?.menuIsOpen;
+          const menuIsOpen = (stateManager as BasicSelect<OptionType>)?.state?.menuIsOpen;
           const target = e.target as HTMLElement;
-          return (
-            menuIsOpen &&
-            target &&
-            !target.classList?.contains('Select__menu-list')
-          );
+          return menuIsOpen && target && !target.classList?.contains('Select__menu-list');
         },
         menuPosition: 'fixed',
       });
@@ -295,16 +266,12 @@ function styled<
         maxMenuHeight={maxMenuHeight}
         filterOption={
           // filterOption may be NULL
-          filterOption !== undefined
-            ? filterOption
-            : createFilter({ ignoreAccents })
+          filterOption !== undefined ? filterOption : createFilter({ ignoreAccents })
         }
         styles={{ ...DEFAULT_STYLES, ...stylesConfig } as SelectProps['styles']}
         // merge default theme from `react-select`, default theme for Superset,
         // and the theme from props.
-        theme={reactSelectTheme =>
-          merge(reactSelectTheme, defaultTheme(theme), themeConfig)
-        }
+        theme={reactSelectTheme => merge(reactSelectTheme, defaultTheme(theme), themeConfig)}
         formatOptionLabel={formatOptionLabel}
         getOptionLabel={getOptionLabel}
         getOptionValue={getOptionValue}
@@ -323,8 +290,6 @@ export const AsyncSelect = styled(WindowedAsyncSelect);
 export const CreatableSelect = styled(WindowedCreatableSelect);
 export const AsyncCreatableSelect = styled(WindowedAsyncCreatableSelect);
 export const PaginatedSelect = withAsyncPaginate(
-  styled<OptionTypeBase, ComponentType<SelectProps<OptionTypeBase>>>(
-    BasicSelect,
-  ),
+  styled<OptionTypeBase, ComponentType<SelectProps<OptionTypeBase>>>(BasicSelect),
 );
 export default Select;

@@ -60,12 +60,11 @@ export default function updateTextNode(
 
   // Apply new style
   // Note: the font field will auto-populate other font fields when applicable.
-  STYLE_FIELDS.filter(
-    (field: keyof TextStyle) =>
-      typeof style[field] !== 'undefined' && style[field] !== null,
-  ).forEach((field: keyof TextStyle) => {
-    textNode.style[field] = `${style[field]}`;
-  });
+  STYLE_FIELDS.filter((field: keyof TextStyle) => typeof style[field] !== 'undefined' && style[field] !== null).forEach(
+    (field: keyof TextStyle) => {
+      textNode.style[field] = `${style[field]}`;
+    },
+  );
 
   return textNode;
 }

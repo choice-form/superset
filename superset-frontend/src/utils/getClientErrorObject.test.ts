@@ -37,11 +37,9 @@ describe('getClientErrorObject()', () => {
     const jsonError = { something: 'something', error: 'Error message' };
     const jsonErrorString = JSON.stringify(jsonError);
 
-    return getClientErrorObject(new Response(jsonErrorString)).then(
-      errorObj => {
-        expect(errorObj).toMatchObject(jsonError);
-      },
-    );
+    return getClientErrorObject(new Response(jsonErrorString)).then(errorObj => {
+      expect(errorObj).toMatchObject(jsonError);
+    });
   });
 
   it('Handles backwards compatibility between old error messages and the new SIP-40 errors format', () => {
@@ -57,12 +55,10 @@ describe('getClientErrorObject()', () => {
     };
     const jsonErrorString = JSON.stringify(jsonError);
 
-    return getClientErrorObject(new Response(jsonErrorString)).then(
-      errorObj => {
-        expect(errorObj.error).toEqual(jsonError.errors[0].message);
-        expect(errorObj.link).toEqual(jsonError.errors[0].extra.link);
-      },
-    );
+    return getClientErrorObject(new Response(jsonErrorString)).then(errorObj => {
+      expect(errorObj.error).toEqual(jsonError.errors[0].message);
+      expect(errorObj.link).toEqual(jsonError.errors[0].extra.link);
+    });
   });
 
   it('Handles Response that can be parsed as text', () => {

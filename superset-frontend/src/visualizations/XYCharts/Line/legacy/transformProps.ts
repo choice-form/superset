@@ -30,13 +30,7 @@ interface DataRow {
 
 export default function transformProps(chartProps: ChartProps) {
   const { width, height, formData, queriesData } = chartProps;
-  const {
-    colorScheme,
-    xAxisLabel,
-    xAxisFormat,
-    yAxisLabel,
-    yAxisFormat,
-  } = formData;
+  const { colorScheme, xAxisLabel, xAxisFormat, yAxisLabel, yAxisFormat } = formData;
   const data = queriesData[0].data as DataRow[];
 
   return {

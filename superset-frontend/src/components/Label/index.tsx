@@ -22,14 +22,7 @@ import { useTheme } from 'src/core';
 
 export type OnClickHandler = React.MouseEventHandler<HTMLElement>;
 
-export type Type =
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'info'
-  | 'default'
-  | 'primary'
-  | 'secondary';
+export type Type = 'success' | 'warning' | 'danger' | 'info' | 'default' | 'primary' | 'secondary';
 
 export interface LabelProps extends React.HTMLAttributes<HTMLSpanElement> {
   key?: string;
@@ -45,8 +38,7 @@ export default function Label(props: LabelProps) {
   const theme = useTheme();
   const { colors, transitionTiming } = theme;
   const { type, onClick, children, ...rest } = props;
-  const { primary, secondary, grayscale, success, warning, error, info } =
-    colors;
+  const { primary, secondary, grayscale, success, warning, error, info } = colors;
 
   let backgroundColor = grayscale.light3;
   let backgroundColorHover = onClick ? primary.light2 : grayscale.light3;

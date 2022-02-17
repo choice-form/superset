@@ -27,9 +27,7 @@ export default function setupPlugins() {
   new MainPreset().register();
 
   // TODO: Remove these shims once the control panel configs are moved into the plugin package.
-  getChartControlPanelRegistry()
-    .registerValue('separator', Separator)
-    .registerValue('time_table', TimeTable);
+  getChartControlPanelRegistry().registerValue('separator', Separator).registerValue('time_table', TimeTable);
 
   setupPluginsExtra();
 }

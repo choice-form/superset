@@ -53,9 +53,7 @@ describe('Datasource control', () => {
     });
     // create new metric
     cy.get('[data-test="crud-add-table-item"]', { timeout: 10000 }).click();
-    cy.get('[data-test="table-content-rows"]')
-      .find('input[value="<new metric>"]')
-      .click();
+    cy.get('[data-test="table-content-rows"]').find('input[value="<new metric>"]').click();
     cy.get('[data-test="table-content-rows"]')
       .find('input[value="<new metric>"]')
       .focus()
@@ -64,27 +62,17 @@ describe('Datasource control', () => {
     cy.get('[data-test="datasource-modal-save"]').click();
     cy.get('.ant-modal-confirm-btns button').contains('OK').click();
     // select new metric
-    cy.get('[data-test=metrics]')
-      .find('.Select__control input')
-      .focus()
-      .type(newMetricName, { force: true });
+    cy.get('[data-test=metrics]').find('.Select__control input').focus().type(newMetricName, { force: true });
     // delete metric
     cy.get('[data-test="datasource-menu-trigger"]').click();
     cy.get('[data-test="edit-dataset"]').click();
     cy.get('.ant-modal-content').within(() => {
-      cy.get('[data-test="collection-tab-Metrics"]')
-        .contains('Metrics')
-        .click();
+      cy.get('[data-test="collection-tab-Metrics"]').contains('Metrics').click();
     });
-    cy.get(`input[value="${newMetricName}"]`)
-      .closest('tr')
-      .find('.fa-trash')
-      .click();
+    cy.get(`input[value="${newMetricName}"]`).closest('tr').find('.fa-trash').click();
     cy.get('[data-test="datasource-modal-save"]').click();
     cy.get('.ant-modal-confirm-btns button').contains('OK').click();
-    cy.get('.Select__multi-value__label')
-      .contains(newMetricName)
-      .should('not.exist');
+    cy.get('.Select__multi-value__label').contains(newMetricName).should('not.exist');
   });
 });
 
@@ -198,9 +186,7 @@ describe('Time range filter', () => {
       .click()
       .then(() => {
         cy.get('[data-test=custom-frame]').then(() => {
-          cy.get('.ant-input-number-input-wrap > input')
-            .invoke('attr', 'value')
-            .should('eq', '7');
+          cy.get('.ant-input-number-input-wrap > input').invoke('attr', 'value').should('eq', '7');
         });
         cy.get('[data-test=cancel-button]').click();
       });

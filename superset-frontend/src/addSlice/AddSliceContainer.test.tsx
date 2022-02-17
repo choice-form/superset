@@ -20,10 +20,7 @@ import React from 'react';
 import { ReactWrapper } from 'enzyme';
 import Button from 'src/components/Button';
 import { Select } from 'src/components';
-import AddSliceContainer, {
-  AddSliceContainerProps,
-  AddSliceContainerState,
-} from 'src/addSlice/AddSliceContainer';
+import AddSliceContainer, { AddSliceContainerProps, AddSliceContainerState } from 'src/addSlice/AddSliceContainer';
 import VizTypeGallery from 'src/explore/components/controls/VizTypeControl/VizTypeGallery';
 import { styledMount as mount } from 'spec/helpers/theming';
 import { act } from 'spec/helpers/testing-library';
@@ -34,11 +31,7 @@ const datasource = {
 };
 
 describe('AddSliceContainer', () => {
-  let wrapper: ReactWrapper<
-    AddSliceContainerProps,
-    AddSliceContainerState,
-    AddSliceContainer
-  >;
+  let wrapper: ReactWrapper<AddSliceContainerProps, AddSliceContainerState, AddSliceContainer>;
 
   beforeEach(async () => {
     wrapper = mount(<AddSliceContainer />) as ReactWrapper<
@@ -60,9 +53,7 @@ describe('AddSliceContainer', () => {
   });
 
   it('renders a disabled button if no datasource is selected', () => {
-    expect(
-      wrapper.find(Button).find({ disabled: true }).hostNodes(),
-    ).toHaveLength(1);
+    expect(wrapper.find(Button).find({ disabled: true }).hostNodes()).toHaveLength(1);
   });
 
   it('renders an enabled button if datasource and viz type is selected', () => {
@@ -70,9 +61,7 @@ describe('AddSliceContainer', () => {
       datasource,
       visType: 'table',
     });
-    expect(
-      wrapper.find(Button).find({ disabled: true }).hostNodes(),
-    ).toHaveLength(0);
+    expect(wrapper.find(Button).find({ disabled: true }).hostNodes()).toHaveLength(0);
   });
 
   it('formats explore url', () => {
@@ -80,8 +69,7 @@ describe('AddSliceContainer', () => {
       datasource,
       visType: 'table',
     });
-    const formattedUrl =
-      '/explore/?form_data=%7B%22viz_type%22%3A%22table%22%2C%22datasource%22%3A%221%22%7D';
+    const formattedUrl = '/explore/?form_data=%7B%22viz_type%22%3A%22table%22%2C%22datasource%22%3A%221%22%7D';
     expect(wrapper.instance().exploreUrl()).toBe(formattedUrl);
   });
 });

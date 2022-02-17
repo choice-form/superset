@@ -21,11 +21,7 @@ import { compose } from 'redux';
 import persistState, { StorageAdapter } from 'redux-localstorage';
 import { isEqual, omitBy, isUndefined } from 'lodash';
 
-export function addToObject(
-  state: Record<string, any>,
-  arrKey: string,
-  obj: Record<string, any>,
-) {
+export function addToObject(state: Record<string, any>, arrKey: string, obj: Record<string, any>) {
   const newObject = { ...state[arrKey] };
   const copiedObject = { ...obj };
 
@@ -67,12 +63,7 @@ export function alterInArr(
   return { ...state, [arrKey]: newArr };
 }
 
-export function removeFromArr(
-  state: Record<string, any>,
-  arrKey: string,
-  obj: Record<string, any>,
-  idKey = 'id',
-) {
+export function removeFromArr(state: Record<string, any>, arrKey: string, obj: Record<string, any>, idKey = 'id') {
   const newArr: unknown[] = [];
   state[arrKey].forEach((arrItem: Record<string, any>) => {
     if (!(obj[idKey] === arrItem[idKey])) {
@@ -92,12 +83,7 @@ export function getFromArr(arr: Record<string, any>[], id: string) {
   return obj;
 }
 
-export function addToArr(
-  state: Record<string, any>,
-  arrKey: string,
-  obj: Record<string, any>,
-  prepend = false,
-) {
+export function addToArr(state: Record<string, any>, arrKey: string, obj: Record<string, any>, prepend = false) {
   const newObj = { ...obj };
   if (!newObj.id) {
     newObj.id = shortid.generate();
@@ -111,12 +97,7 @@ export function addToArr(
   return { ...state, ...newState };
 }
 
-export function extendArr(
-  state: Record<string, any>,
-  arrKey: string,
-  arr: Record<string, any>[],
-  prepend = false,
-) {
+export function extendArr(state: Record<string, any>, arrKey: string, arr: Record<string, any>[], prepend = false) {
   const newArr = [...arr];
   newArr.forEach(el => {
     if (!el.id) {
@@ -133,10 +114,7 @@ export function extendArr(
   return { ...state, ...newState };
 }
 
-export function initEnhancer(
-  persist = true,
-  persistConfig: { paths?: StorageAdapter<unknown>; config?: string } = {},
-) {
+export function initEnhancer(persist = true, persistConfig: { paths?: StorageAdapter<unknown>; config?: string } = {}) {
   const { paths, config } = persistConfig;
   const composeEnhancers =
     process.env.WEBPACK_MODE === 'development'
@@ -149,9 +127,7 @@ export function initEnhancer(
         : compose
       : compose;
 
-  return persist
-    ? composeEnhancers(persistState(paths, config))
-    : composeEnhancers();
+  return persist ? composeEnhancers(persistState(paths, config)) : composeEnhancers();
 }
 
 export function areArraysShallowEqual(arr1: unknown[], arr2: unknown[]) {
@@ -174,11 +150,7 @@ export function areArraysShallowEqual(arr1: unknown[], arr2: unknown[]) {
   return true;
 }
 
-export function areObjectsEqual(
-  obj1: any,
-  obj2: any,
-  opts = { ignoreUndefined: false },
-) {
+export function areObjectsEqual(obj1: any, obj2: any, opts = { ignoreUndefined: false }) {
   let comp1 = obj1;
   let comp2 = obj2;
   if (opts.ignoreUndefined) {

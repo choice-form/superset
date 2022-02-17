@@ -16,12 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  ChartDataResponseResult,
-  ChartProps,
-  QueryFormColumn,
-  QueryFormData,
-} from 'src/core';
+import { ChartDataResponseResult, ChartProps, QueryFormColumn, QueryFormData } from 'src/core';
 import { DEFAULT_LEGEND_FORM_DATA, EChartTransformedProps } from '../types';
 
 export type AxisTickLineStyle = {

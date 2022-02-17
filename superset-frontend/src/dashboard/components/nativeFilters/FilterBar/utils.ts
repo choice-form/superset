@@ -27,7 +27,9 @@ export enum TabIds {
   FilterSets = 'filterSets',
 }
 
-export function mapParentFiltersToChildren(filters: Filter[]): {
+export function mapParentFiltersToChildren(
+  filters: Filter[],
+): {
   [id: string]: Filter[];
 } {
   const cascadeChildren = {};
@@ -44,21 +46,12 @@ export function mapParentFiltersToChildren(filters: Filter[]): {
 }
 
 export const getOnlyExtraFormData = (data: DataMaskStateWithId) =>
-  Object.values(data).reduce(
-    (prev, next) => ({ ...prev, [next.id]: next.extraFormData }),
-    {},
-  );
+  Object.values(data).reduce((prev, next) => ({ ...prev, [next.id]: next.extraFormData }), {});
 
-export const checkIsMissingRequiredValue = (
-  filter: Filter,
-  filterState?: FilterState,
-) => {
+export const checkIsMissingRequiredValue = (filter: Filter, filterState?: FilterState) => {
   const value = filterState?.value;
   // TODO: this property should be unhardcoded
-  return (
-    filter.controlValues?.enableEmptyFilter &&
-    (value === null || value === undefined)
-  );
+  return filter.controlValues?.enableEmptyFilter && (value === null || value === undefined);
 };
 
 export const checkIsApplyDisabled = (
@@ -70,17 +63,10 @@ export const checkIsApplyDisabled = (
   const dataAppliedValues = Object.values(dataMaskApplied);
 
   return (
-    areObjectsEqual(
-      getOnlyExtraFormData(dataMaskSelected),
-      getOnlyExtraFormData(dataMaskApplied),
-      { ignoreUndefined: true },
-    ) ||
+    areObjectsEqual(getOnlyExtraFormData(dataMaskSelected), getOnlyExtraFormData(dataMaskApplied), {
+      ignoreUndefined: true,
+    }) ||
     dataSelectedValues.length !== dataAppliedValues.length ||
-    filters.some(filter =>
-      checkIsMissingRequiredValue(
-        filter,
-        dataMaskSelected?.[filter?.id]?.filterState,
-      ),
-    )
+    filters.some(filter => checkIsMissingRequiredValue(filter, dataMaskSelected?.[filter?.id]?.filterState))
   );
 };

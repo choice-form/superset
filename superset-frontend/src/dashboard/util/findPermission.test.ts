@@ -23,13 +23,9 @@ import findPermission, { canUserEditDashboard } from './findPermission';
 
 describe('findPermission', () => {
   it('findPermission for single role', () => {
-    expect(findPermission('abc', 'def', { role: [['abc', 'def']] })).toEqual(
-      true,
-    );
+    expect(findPermission('abc', 'def', { role: [['abc', 'def']] })).toEqual(true);
 
-    expect(findPermission('abc', 'def', { role: [['abc', 'de']] })).toEqual(
-      false,
-    );
+    expect(findPermission('abc', 'def', { role: [['abc', 'de']] })).toEqual(false);
 
     expect(findPermission('abc', 'def', { role: [] })).toEqual(false);
   });
@@ -59,9 +55,7 @@ describe('findPermission', () => {
       }),
     ).toEqual(false);
 
-    expect(findPermission('abc', 'def', { role1: [], role2: [] })).toEqual(
-      false,
-    );
+    expect(findPermission('abc', 'def', { role1: [], role2: [] })).toEqual(false);
   });
 
   it('handles nonexistent roles', () => {
@@ -135,9 +129,7 @@ describe('canUserEditDashboard', () => {
   it('rejects missing roles', () => {
     // in redux, when there is no user, the user is actually set to an empty object,
     // so we need to handle missing roles as well as a missing user.s
-    expect(
-      canUserEditDashboard(dashboard, {} as UserWithPermissionsAndRoles),
-    ).toEqual(false);
+    expect(canUserEditDashboard(dashboard, {} as UserWithPermissionsAndRoles)).toEqual(false);
   });
   it('rejects "admins" if the admin role does not have edit rights for some reason', () => {
     expect(

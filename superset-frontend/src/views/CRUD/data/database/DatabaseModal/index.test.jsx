@@ -19,13 +19,7 @@
 import React from 'react';
 import fetchMock from 'fetch-mock';
 import userEvent from '@testing-library/user-event';
-import {
-  render,
-  screen,
-  within,
-  cleanup,
-  act,
-} from 'spec/helpers/testing-library';
+import { render, screen, within, cleanup, act } from 'spec/helpers/testing-library';
 /* -- These imports are used for the mock functions that currently don't work
 import {
   testDatabaseConnection,
@@ -103,8 +97,7 @@ fetchMock.mock(AVAILABLE_DB_ENDPOINT, {
         type: 'object',
       },
       preferred: true,
-      sqlalchemy_uri_placeholder:
-        'postgresql://user:password@host:port/dbname[?key=value&key=value...]',
+      sqlalchemy_uri_placeholder: 'postgresql://user:password@host:port/dbname[?key=value&key=value...]',
     },
     {
       available_drivers: ['rest'],
@@ -158,8 +151,7 @@ fetchMock.mock(AVAILABLE_DB_ENDPOINT, {
         type: 'object',
       },
       preferred: true,
-      sqlalchemy_uri_placeholder:
-        'mysql://user:password@host:port/dbname[?key=value&key=value...]',
+      sqlalchemy_uri_placeholder: 'mysql://user:password@host:port/dbname[?key=value&key=value...]',
     },
     {
       available_drivers: ['pysqlite'],
@@ -234,27 +226,19 @@ describe('DatabaseModal', () => {
       const preferredDbButtonPostgreSQL = screen.getByRole('button', {
         name: /postgresql/i,
       });
-      const preferredDbTextPostgreSQL = within(
-        preferredDbButtonPostgreSQL,
-      ).getByText(/postgresql/i);
+      const preferredDbTextPostgreSQL = within(preferredDbButtonPostgreSQL).getByText(/postgresql/i);
       const preferredDbButtonPresto = screen.getByRole('button', {
         name: /presto/i,
       });
-      const preferredDbTextPresto = within(preferredDbButtonPresto).getByText(
-        /presto/i,
-      );
+      const preferredDbTextPresto = within(preferredDbButtonPresto).getByText(/presto/i);
       const preferredDbButtonMySQL = screen.getByRole('button', {
         name: /mysql/i,
       });
-      const preferredDbTextMySQL = within(preferredDbButtonMySQL).getByText(
-        /mysql/i,
-      );
+      const preferredDbTextMySQL = within(preferredDbButtonMySQL).getByText(/mysql/i);
       const preferredDbButtonSQLite = screen.getByRole('button', {
         name: /sqlite/i,
       });
-      const preferredDbTextSQLite = within(preferredDbButtonSQLite).getByText(
-        /sqlite/i,
-      );
+      const preferredDbTextSQLite = within(preferredDbButtonSQLite).getByText(/sqlite/i);
       // All dbs render with this icon in this testing environment,
       // The Icon count should equal the count of databases rendered
       const preferredDbIcon = screen.getAllByRole('img', {
@@ -333,9 +317,7 @@ describe('DatabaseModal', () => {
       // <ModalHeader> - Connection header
       const basicHelper = screen.getByText(/step 2 of 2/i);
       const basicHeaderTitle = screen.getByText(/enter primary credentials/i);
-      const basicHeaderSubtitle = screen.getByText(
-        /need help\? learn how to connect your database \./i,
-      );
+      const basicHeaderSubtitle = screen.getByText(/need help\? learn how to connect your database \./i);
       const basicHeaderLink = within(basicHeaderSubtitle).getByRole('link', {
         name: /here/i,
       });
@@ -345,22 +327,16 @@ describe('DatabaseModal', () => {
       // <StyledBasicTab> - Basic tab's content
       const displayNameLabel = screen.getByText(/display name*/i);
       const displayNameInput = screen.getByTestId('database-name-input');
-      const displayNameHelper = screen.getByText(
-        /pick a name to help you identify this database\./i,
-      );
+      const displayNameHelper = screen.getByText(/pick a name to help you identify this database\./i);
       const SQLURILabel = screen.getByText(/sqlalchemy uri*/i);
       const SQLURIInput = screen.getByTestId('sqlalchemy-uri-input');
-      const SQLURIHelper = screen.getByText(
-        /refer to the for more information on how to structure your uri\./i,
-      );
+      const SQLURIHelper = screen.getByText(/refer to the for more information on how to structure your uri\./i);
       const testConnectionButton = screen.getByRole('button', {
         name: /test connection/i,
       });
       // <Alert> - Basic tab's alert
       const alertIcon = screen.getByRole('img', { name: /info icon/i });
-      const alertMessage = screen.getByText(
-        /additional fields may be required/i,
-      );
+      const alertMessage = screen.getByText(/additional fields may be required/i);
       const alertDescription = screen.getByText(
         /select databases require additional fields to be completed in the advanced tab to successfully connect the database\. learn what requirements your databases has \./i,
       );
@@ -420,9 +396,7 @@ describe('DatabaseModal', () => {
       // <ModalHeader> - Connection header
       const basicHelper = screen.getByText(/step 2 of 2/i);
       const basicHeaderTitle = screen.getByText(/enter primary credentials/i);
-      const basicHeaderSubtitle = screen.getByText(
-        /need help\? learn how to connect your database \./i,
-      );
+      const basicHeaderSubtitle = screen.getByText(/need help\? learn how to connect your database \./i);
       const basicHeaderLink = within(basicHeaderSubtitle).getByRole('link', {
         name: /here/i,
       });
@@ -525,9 +499,7 @@ describe('DatabaseModal', () => {
       // <ModalHeader> - Connection header
       const basicHelper = screen.getByText(/step 2 of 2/i);
       const basicHeaderTitle = screen.getByText(/enter primary credentials/i);
-      const basicHeaderSubtitle = screen.getByText(
-        /need help\? learn how to connect your database \./i,
-      );
+      const basicHeaderSubtitle = screen.getByText(/need help\? learn how to connect your database \./i);
       const basicHeaderLink = within(basicHeaderSubtitle).getByRole('link', {
         name: /here/i,
       });
@@ -550,9 +522,7 @@ describe('DatabaseModal', () => {
       });
       // This is both the checkbox and it's respective SVG
       // const exposeInSQLLabCheckboxSVG = checkboxOffSVGs[0].parentElement;
-      const exposeInSQLLabText = screen.getByText(
-        /expose database in sql lab/i,
-      );
+      const exposeInSQLLabText = screen.getByText(/expose database in sql lab/i);
       const allowCTASCheckbox = screen.getByRole('checkbox', {
         name: /allow create table as/i,
       });
@@ -563,9 +533,7 @@ describe('DatabaseModal', () => {
       const allowCVASText = screen.getByText(/allow create table as/i);
       const CTASCVASLabelText = screen.getByText(/ctas & cvas schema/i);
       // This grabs the whole input by placeholder text
-      const CTASCVASInput = screen.getByPlaceholderText(
-        /create or select schema\.\.\./i,
-      );
+      const CTASCVASInput = screen.getByPlaceholderText(/create or select schema\.\.\./i);
       const CTASCVASHelperText = screen.getByText(
         /force all tables and views to be created in this schema when clicking ctas or cvas in sql lab\./i,
       );
@@ -576,21 +544,15 @@ describe('DatabaseModal', () => {
       const allowMultiSchemaMDFetchCheckbox = screen.getByRole('checkbox', {
         name: /allow multi schema metadata fetch/i,
       });
-      const allowMultiSchemaMDFetchText = screen.getByText(
-        /allow multi schema metadata fetch/i,
-      );
+      const allowMultiSchemaMDFetchText = screen.getByText(/allow multi schema metadata fetch/i);
       const enableQueryCostEstimationCheckbox = screen.getByRole('checkbox', {
         name: /enable query cost estimation/i,
       });
-      const enableQueryCostEstimationText = screen.getByText(
-        /enable query cost estimation/i,
-      );
+      const enableQueryCostEstimationText = screen.getByText(/enable query cost estimation/i);
       const allowDbExplorationCheckbox = screen.getByRole('checkbox', {
         name: /allow this database to be explored/i,
       });
-      const allowDbExplorationText = screen.getByText(
-        /allow this database to be explored/i,
-      );
+      const allowDbExplorationText = screen.getByText(/allow this database to be explored/i);
 
       // ---------- Assertions ----------
       const visibleComponents = [
@@ -675,9 +637,7 @@ describe('DatabaseModal', () => {
       // <ModalHeader> - Connection header
       const basicHelper = screen.getByText(/step 2 of 2/i);
       const basicHeaderTitle = screen.getByText(/enter primary credentials/i);
-      const basicHeaderSubtitle = screen.getByText(
-        /need help\? learn how to connect your database \./i,
-      );
+      const basicHeaderSubtitle = screen.getByText(/need help\? learn how to connect your database \./i);
       const basicHeaderLink = within(basicHeaderSubtitle).getByRole('link', {
         name: /here/i,
       });
@@ -737,9 +697,7 @@ describe('DatabaseModal', () => {
       // <ModalHeader> - Connection header
       const basicHelper = screen.getByText(/step 2 of 2/i);
       const basicHeaderTitle = screen.getByText(/enter primary credentials/i);
-      const basicHeaderSubtitle = screen.getByText(
-        /need help\? learn how to connect your database \./i,
-      );
+      const basicHeaderSubtitle = screen.getByText(/need help\? learn how to connect your database \./i);
       const basicHeaderLink = within(basicHeaderSubtitle).getByRole('link', {
         name: /here/i,
       });
@@ -803,9 +761,7 @@ describe('DatabaseModal', () => {
       // <ModalHeader> - Connection header
       const basicHelper = screen.getByText(/step 2 of 2/i);
       const basicHeaderTitle = screen.getByText(/enter primary credentials/i);
-      const basicHeaderSubtitle = screen.getByText(
-        /need help\? learn how to connect your database \./i,
-      );
+      const basicHeaderSubtitle = screen.getByText(/need help\? learn how to connect your database \./i);
       const basicHeaderLink = within(basicHeaderSubtitle).getByRole('link', {
         name: /here/i,
       });
@@ -930,9 +886,7 @@ describe('DatabaseModal', () => {
           userEvent.type(dbNametextBox, 'Different text');
           expect(dbNametextBox).toHaveValue('SQLiteDifferent text');
 
-          const sqlAlchemyURItextBox = screen.getByTestId(
-            'sqlalchemy-uri-input',
-          );
+          const sqlAlchemyURItextBox = screen.getByTestId('sqlalchemy-uri-input');
           expect(sqlAlchemyURItextBox).toHaveValue('');
 
           userEvent.type(sqlAlchemyURItextBox, 'Different text');

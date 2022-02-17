@@ -44,9 +44,7 @@ describe('Timer', () => {
     expect(node).toHaveTextContent('00:00:00.00');
     // should start running
     await waitFor(() => {
-      expect(parseTime(screen.getByRole('timer')?.textContent)).toBeGreaterThan(
-        0.2,
-      );
+      expect(parseTime(screen.getByRole('timer')?.textContent)).toBeGreaterThan(0.2);
     });
     text = node.textContent || '';
 

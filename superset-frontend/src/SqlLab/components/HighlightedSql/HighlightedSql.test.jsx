@@ -25,8 +25,7 @@ import ModalTrigger from 'src/components/ModalTrigger';
 import { supersetTheme, ThemeProvider } from 'src/core';
 
 describe('HighlightedSql', () => {
-  const sql =
-    "SELECT * FROM test WHERE something='fkldasjfklajdslfkjadlskfjkldasjfkladsjfkdjsa'";
+  const sql = "SELECT * FROM test WHERE something='fkldasjfklajdslfkjadlskfjkldasjfkladsjfkdjsa'";
   it('renders with props', () => {
     expect(React.isValidElement(<HighlightedSql sql={sql} />)).toBe(true);
   });
@@ -39,20 +38,12 @@ describe('HighlightedSql', () => {
     expect(wrapper.find(ModalTrigger)).toExist();
   });
   it('renders two SyntaxHighlighter in modal', () => {
-    const wrapper = mount(
-      <HighlightedSql
-        sql={sql}
-        rawSql="SELECT * FORM foo"
-        shrink
-        maxWidth={5}
-      />,
-      {
-        wrappingComponent: ThemeProvider,
-        wrappingComponentProps: {
-          theme: supersetTheme,
-        },
+    const wrapper = mount(<HighlightedSql sql={sql} rawSql="SELECT * FORM foo" shrink maxWidth={5} />, {
+      wrappingComponent: ThemeProvider,
+      wrappingComponentProps: {
+        theme: supersetTheme,
       },
-    );
+    });
     const pre = wrapper.find('pre');
     expect(pre).toHaveLength(1);
     pre.simulate('click');

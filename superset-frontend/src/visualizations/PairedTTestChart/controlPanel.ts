@@ -71,9 +71,7 @@ const config: ControlPanelConfig = {
               type: 'TextControl',
               label: t('Significance Level'),
               default: 0.05,
-              description: t(
-                'Threshold alpha level for determining significance',
-              ),
+              description: t('Threshold alpha level for determining significance'),
             },
           },
         ],
@@ -84,9 +82,7 @@ const config: ControlPanelConfig = {
               type: 'TextControl',
               label: t('p-value precision'),
               default: 6,
-              description: t(
-                'Number of decimal places with which to display p-values',
-              ),
+              description: t('Number of decimal places with which to display p-values'),
             },
           },
         ],
@@ -97,9 +93,7 @@ const config: ControlPanelConfig = {
               type: 'TextControl',
               label: t('Lift percent precision'),
               default: 4,
-              description: t(
-                'Number of decimal places with which to display lift values',
-              ),
+              description: t('Number of decimal places with which to display lift values'),
             },
           },
         ],

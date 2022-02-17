@@ -77,9 +77,7 @@ const FiltersHeader: FC<FiltersHeaderProps> = ({ dataMask, filterSet }) => {
 
   const getFiltersHeader = () => (
     <FilterHeader>
-      <Typography.Text type="secondary">
-        {t('Filters (%d)', resultFilters.length)}
-      </Typography.Text>
+      <Typography.Text type="secondary">{t('Filters (%d)', resultFilters.length)}</Typography.Text>
     </FilterHeader>
   );
 
@@ -94,12 +92,8 @@ const FiltersHeader: FC<FiltersHeaderProps> = ({ dataMask, filterSet }) => {
     return (
       <Tooltip
         title={
-          (removedFilter &&
-            t(
-              "This filter doesn't exist in dashboard. It will not be applied.",
-            )) ||
-          (changedFilter &&
-            t('Filter metadata changed in dashboard. It will not be applied.'))
+          (removedFilter && t("This filter doesn't exist in dashboard. It will not be applied.")) ||
+          (changedFilter && t('Filter metadata changed in dashboard. It will not be applied.'))
         }
         placement="bottomLeft"
         key={id}

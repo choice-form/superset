@@ -19,33 +19,18 @@
 
 import React, { PureComponent } from 'react';
 import { kebabCase, groupBy, flatMap, uniqueId, values } from 'lodash';
-import {
-  AreaSeries,
-  LinearGradient,
-  LineSeries,
-  XYChart,
-  CrossHair,
-  WithTooltip,
-} from '@data-ui/xy-chart';
+import { AreaSeries, LinearGradient, LineSeries, XYChart, CrossHair, WithTooltip } from '@data-ui/xy-chart';
 import { chartTheme } from '@data-ui/theme';
 import { WithLegend, Margin, Dimension } from 'src/core';
 import { createSelector } from 'reselect';
 import { Dataset, PlainObject } from 'encodable';
 import DefaultTooltipRenderer from './DefaultTooltipRenderer';
-import createMarginSelector, {
-  DEFAULT_MARGIN,
-} from '../../utils/createMarginSelector';
+import createMarginSelector, { DEFAULT_MARGIN } from '../../utils/createMarginSelector';
 import convertScaleToDataUIScale from '../../utils/convertScaleToDataUIScaleShape';
 import createXYChartLayoutWithTheme from '../../utils/createXYChartLayoutWithTheme';
 import createRenderLegend from '../legend/createRenderLegend';
 import { LegendHooks } from '../legend/types';
-import {
-  lineEncoderFactory,
-  LineEncoder,
-  LineEncoding,
-  LineEncodingConfig,
-  LineChannelOutputs,
-} from './Encoder';
+import { lineEncoderFactory, LineEncoder, LineEncoding, LineEncodingConfig, LineChannelOutputs } from './Encoder';
 import DefaultLegendItemMarkRenderer from './DefaultLegendItemMarkRenderer';
 
 export interface TooltipProps {
@@ -115,9 +100,7 @@ export default class LineChart extends PureComponent<Props> {
       const { channels } = encoder;
       const fieldNames = encoder.getGroupBys();
 
-      const groups = groupBy(data, row =>
-        fieldNames.map(f => `${f}=${row[f]}`).join(','),
-      );
+      const groups = groupBy(data, row => fieldNames.map(f => `${f}=${row[f]}`).join(','));
 
       const allSeries = values(groups).map(seriesData => {
         const firstDatum = seriesData[0];
@@ -166,12 +149,7 @@ export default class LineChart extends PureComponent<Props> {
           const gradientId = uniqueId(kebabCase(`gradient-${series.key}`));
 
           return [
-            <LinearGradient
-              key={`${series.key}-gradient`}
-              id={gradientId}
-              from={series.stroke}
-              to="#fff"
-            />,
+            <LinearGradient key={`${series.key}-gradient`} id={gradientId} from={series.stroke} to="#fff" />,
             <AreaSeries
               key={`${series.key}-fill`}
               seriesKey={series.key}
@@ -232,15 +210,7 @@ export default class LineChart extends PureComponent<Props> {
           series: {
             [key: string]: SeriesValue;
           };
-        }) => (
-          <TooltipRenderer
-            encoder={encoder}
-            allSeries={allSeries}
-            datum={datum}
-            series={series}
-            theme={theme}
-          />
-        )}
+        }) => <TooltipRenderer encoder={encoder} allSeries={allSeries} datum={datum} series={series} theme={theme} />}
       >
         {({
           onMouseLeave,
@@ -263,13 +233,9 @@ export default class LineChart extends PureComponent<Props> {
             theme={theme}
             tooltipData={tooltipData}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            xScale={convertScaleToDataUIScale(
-              channels.x.definition.scale as any,
-            )}
+            xScale={convertScaleToDataUIScale(channels.x.definition.scale as any)}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            yScale={convertScaleToDataUIScale(
-              channels.y.definition.scale as any,
-            )}
+            yScale={convertScaleToDataUIScale(channels.y.definition.scale as any)}
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
           >
@@ -282,15 +248,9 @@ export default class LineChart extends PureComponent<Props> {
               showMultipleCircles
               strokeDasharray=""
               showHorizontalLine={false}
-              circleFill={(d: SeriesValue) =>
-                d.y === tooltipData.datum.y ? d.parent.stroke : '#fff'
-              }
-              circleSize={(d: SeriesValue) =>
-                d.y === tooltipData.datum.y ? 6 : 4
-              }
-              circleStroke={(d: SeriesValue) =>
-                d.y === tooltipData.datum.y ? '#fff' : d.parent.stroke
-              }
+              circleFill={(d: SeriesValue) => (d.y === tooltipData.datum.y ? d.parent.stroke : '#fff')}
+              circleSize={(d: SeriesValue) => (d.y === tooltipData.datum.y ? 6 : 4)}
+              circleStroke={(d: SeriesValue) => (d.y === tooltipData.datum.y ? '#fff' : d.parent.stroke)}
               circleStyles={CIRCLE_STYLE}
               stroke="#ccc"
             />
@@ -309,11 +269,7 @@ export default class LineChart extends PureComponent<Props> {
         width={width}
         height={height}
         position="top"
-        renderLegend={createRenderLegend(
-          this.createEncoder(encoding),
-          data,
-          this.props,
-        )}
+        renderLegend={createRenderLegend(this.createEncoder(encoding), data, this.props)}
         renderChart={this.renderChart}
       />
     );

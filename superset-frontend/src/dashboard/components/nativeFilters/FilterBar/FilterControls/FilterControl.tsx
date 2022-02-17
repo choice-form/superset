@@ -62,19 +62,14 @@ const FilterControl: React.FC<FilterProps> = ({
 }) => {
   const { name = '<undefined>' } = filter;
 
-  const isMissingRequiredValue = checkIsMissingRequiredValue(
-    filter,
-    filter.dataMask?.filterState,
-  );
+  const isMissingRequiredValue = checkIsMissingRequiredValue(filter, filter.dataMask?.filterState);
 
   return (
     <StyledFilterControlContainer layout="vertical">
       <FormItem
         label={
           <StyledFilterControlTitleBox>
-            <StyledFilterControlTitle data-test="filter-control-name">
-              {name}
-            </StyledFilterControlTitle>
+            <StyledFilterControlTitle data-test="filter-control-name">{name}</StyledFilterControlTitle>
             <StyledIcon data-test="filter-icon">{icon}</StyledIcon>
           </StyledFilterControlTitleBox>
         }

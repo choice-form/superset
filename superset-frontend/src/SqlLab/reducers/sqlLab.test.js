@@ -61,9 +61,7 @@ describe('sqlLabReducer', () => {
         queryEditor: defaultQueryEditor,
       };
       newState = sqlLabReducer(newState, setActiveQueryEditorAction);
-      expect(newState.tabHistory[newState.tabHistory.length - 1]).toBe(
-        defaultQueryEditor.id,
-      );
+      expect(newState.tabHistory[newState.tabHistory.length - 1]).toBe(defaultQueryEditor.id);
     });
     it('should not fail while setting DB', () => {
       const dbId = 9;

@@ -24,28 +24,16 @@ import { chart as initChart } from 'src/chart/chartReducer';
 import { applyDefaultFormData } from 'src/explore/store';
 import { getClientErrorObject } from 'src/utils/getClientErrorObject';
 import { SAVE_TYPE_OVERWRITE } from 'src/dashboard/util/constants';
-import {
-  addSuccessToast,
-  addWarningToast,
-  addDangerToast,
-} from 'src/components/MessageToasts/actions';
+import { addSuccessToast, addWarningToast, addDangerToast } from 'src/components/MessageToasts/actions';
 import serializeActiveFilterValues from 'src/dashboard/util/serializeActiveFilterValues';
 import serializeFilterScopes from 'src/dashboard/util/serializeFilterScopes';
 import { getActiveFilters } from 'src/dashboard/util/activeDashboardFilters';
 import { safeStringify } from 'src/utils/safeStringify';
 import { FeatureFlag, isFeatureEnabled } from 'src/featureFlags';
 import { UPDATE_COMPONENTS_PARENTS_LIST } from './dashboardLayout';
-import {
-  setChartConfiguration,
-  dashboardInfoChanged,
-  SET_CHART_CONFIG_COMPLETE,
-} from './dashboardInfo';
+import { setChartConfiguration, dashboardInfoChanged, SET_CHART_CONFIG_COMPLETE } from './dashboardInfo';
 import { fetchDatasourceMetadata } from './datasources';
-import {
-  addFilter,
-  removeFilter,
-  updateDirectPathToFilter,
-} from './dashboardFilters';
+import { addFilter, removeFilter, updateDirectPathToFilter } from './dashboardFilters';
 import { SET_FILTER_CONFIG_COMPLETE } from './nativeFilters';
 
 export const SET_UNSAVED_CHANGES = 'SET_UNSAVED_CHANGES';
@@ -78,15 +66,7 @@ export function fetchFaveStar(id) {
       .then(({ json }) => {
         if (json.count > 0) dispatch(toggleFaveStar(true));
       })
-      .catch(() =>
-        dispatch(
-          addDangerToast(
-            t(
-              'There was an issue fetching the favorite status of this dashboard.',
-            ),
-          ),
-        ),
-      );
+      .catch(() => dispatch(addDangerToast(t('There was an issue fetching the favorite status of this dashboard.'))));
   };
 }
 
@@ -100,11 +80,7 @@ export function saveFaveStar(id, isStarred) {
       .then(() => {
         dispatch(toggleFaveStar(!isStarred));
       })
-      .catch(() =>
-        dispatch(
-          addDangerToast(t('There was an issue favoriting this dashboard.')),
-        ),
-      );
+      .catch(() => dispatch(addDangerToast(t('There was an issue favoriting this dashboard.'))));
   };
 }
 
@@ -128,11 +104,7 @@ export function savePublished(id, isPublished) {
         dispatch(togglePublished(isPublished));
       })
       .catch(() => {
-        dispatch(
-          addDangerToast(
-            t('You do not have permissions to edit this dashboard.'),
-          ),
-        );
+        dispatch(addDangerToast(t('You do not have permissions to edit this dashboard.')));
       });
   };
 }
@@ -192,15 +164,7 @@ export function saveDashboardRequest(data, id, saveType) {
     const serializedFilters = serializeActiveFilterValues(getActiveFilters());
     // serialize filter scope for each filter field, grouped by filter id
     const serializedFilterScopes = serializeFilterScopes(dashboardFilters);
-    const {
-      certified_by,
-      certification_details,
-      css,
-      dashboard_title,
-      owners,
-      roles,
-      slug,
-    } = data;
+    const { certified_by, certification_details, css, dashboard_title, owners, roles, slug } = data;
 
     const hasId = item => item.id !== undefined;
 
@@ -208,8 +172,7 @@ export function saveDashboardRequest(data, id, saveType) {
     const cleanedData = {
       ...data,
       certified_by: certified_by || '',
-      certification_details:
-        certified_by && certification_details ? certification_details : '',
+      certification_details: certified_by && certification_details ? certification_details : '',
       css: css || '',
       dashboard_title: dashboard_title || t('[ untitled dashboard ]'),
       owners: ensureIsArray(owners).map(o => (hasId(o) ? o.id : o)),
@@ -224,8 +187,7 @@ export function saveDashboardRequest(data, id, saveType) {
         expanded_slices: data.metadata?.expanded_slices || {},
         label_colors: data.metadata?.label_colors || {},
         refresh_frequency: data.metadata?.refresh_frequency || 0,
-        timed_refresh_immune_slices:
-          data.metadata?.timed_refresh_immune_slices || [],
+        timed_refresh_immune_slices: data.metadata?.timed_refresh_immune_slices || [],
       },
     };
 
@@ -235,20 +197,13 @@ export function saveDashboardRequest(data, id, saveType) {
           metadata: { chart_configuration = {} },
         },
       } = getState();
-      const chartConfiguration = Object.values(chart_configuration).reduce(
-        (prev, next) => {
-          // If chart removed from dashboard - remove it from metadata
-          if (
-            Object.values(layout).find(
-              layoutItem => layoutItem?.meta?.chartId === next.id,
-            )
-          ) {
-            return { ...prev, [next.id]: next };
-          }
-          return prev;
-        },
-        {},
-      );
+      const chartConfiguration = Object.values(chart_configuration).reduce((prev, next) => {
+        // If chart removed from dashboard - remove it from metadata
+        if (Object.values(layout).find(layoutItem => layoutItem?.meta?.chartId === next.id)) {
+          return { ...prev, [next.id]: next };
+        }
+        return prev;
+      }, {});
       return chartConfiguration;
     };
 
@@ -293,11 +248,7 @@ export function saveDashboardRequest(data, id, saveType) {
         dispatch(saveDashboardRequestSuccess(lastModifiedTime));
       }
       // redirect to the new slug or id
-      window.history.pushState(
-        { event: 'dashboard_properties_changed' },
-        '',
-        `/dashboard/${slug || id}/`,
-      );
+      window.history.pushState({ event: 'dashboard_properties_changed' }, '', `/dashboard/${slug || id}/`);
 
       dispatch(addSuccessToast(t('This dashboard was saved successfully.')));
       return response;
@@ -308,10 +259,7 @@ export function saveDashboardRequest(data, id, saveType) {
       let errorText = t('Sorry, an unknown error occured');
 
       if (error) {
-        errorText = t(
-          'Sorry, there was an error saving this dashboard: %s',
-          error,
-        );
+        errorText = t('Sorry, there was an error saving this dashboard: %s', error);
       }
       if (typeof message === 'string' && message === 'Forbidden') {
         errorText = t('You do not have permission to edit this dashboard');
@@ -373,36 +321,21 @@ export function saveDashboardRequest(data, id, saveType) {
   };
 }
 
-export function fetchCharts(
-  chartList = [],
-  force = false,
-  interval = 0,
-  dashboardId,
-) {
+export function fetchCharts(chartList = [], force = false, interval = 0, dashboardId) {
   return (dispatch, getState) => {
     if (!interval) {
-      chartList.forEach(chartKey =>
-        dispatch(refreshChart(chartKey, force, dashboardId)),
-      );
+      chartList.forEach(chartKey => dispatch(refreshChart(chartKey, force, dashboardId)));
       return;
     }
 
     const { metadata: meta } = getState().dashboardInfo;
     const refreshTime = Math.max(interval, meta.stagger_time || 5000); // default 5 seconds
     if (typeof meta.stagger_refresh !== 'boolean') {
-      meta.stagger_refresh =
-        meta.stagger_refresh === undefined
-          ? true
-          : meta.stagger_refresh === 'true';
+      meta.stagger_refresh = meta.stagger_refresh === undefined ? true : meta.stagger_refresh === 'true';
     }
-    const delay = meta.stagger_refresh
-      ? refreshTime / (chartList.length - 1)
-      : 0;
+    const delay = meta.stagger_refresh ? refreshTime / (chartList.length - 1) : 0;
     chartList.forEach((chartKey, i) => {
-      setTimeout(
-        () => dispatch(refreshChart(chartKey, force, dashboardId)),
-        delay * i,
-      );
+      setTimeout(() => dispatch(refreshChart(chartKey, force, dashboardId)), delay * i);
     });
   };
 }
@@ -419,17 +352,10 @@ export function onRefreshSuccess() {
 }
 
 export const ON_REFRESH = 'ON_REFRESH';
-export function onRefresh(
-  chartList = [],
-  force = false,
-  interval = 0,
-  dashboardId,
-) {
+export function onRefresh(chartList = [], force = false, interval = 0, dashboardId) {
   return dispatch => {
     dispatch({ type: ON_REFRESH });
-    refreshCharts(chartList, force, interval, dashboardId, dispatch).then(() =>
-      dispatch({ type: ON_REFRESH_SUCCESS }),
-    );
+    refreshCharts(chartList, force, interval, dashboardId, dispatch).then(() => dispatch({ type: ON_REFRESH_SUCCESS }));
   };
 }
 
@@ -444,9 +370,7 @@ export function addSliceToDashboard(id, component) {
     const selectedSlice = sliceEntities.slices[id];
     if (!selectedSlice) {
       return dispatch(
-        addWarningToast(
-          'Sorry, there is no chart definition associated with the chart trying to be added.',
-        ),
+        addWarningToast('Sorry, there is no chart definition associated with the chart trying to be added.'),
       );
     }
     const form_data = {

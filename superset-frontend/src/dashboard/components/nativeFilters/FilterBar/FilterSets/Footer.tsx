@@ -50,37 +50,23 @@ export const ActionButtons = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-const Footer: FC<FooterProps> = ({
-  onCancel,
-  editMode,
-  onEdit,
-  onCreate,
-  disabled,
-  filterSetName,
-}) => {
+const Footer: FC<FooterProps> = ({ onCancel, editMode, onEdit, onCreate, disabled, filterSetName }) => {
   const isFilterSetNameDuplicated = useFilterSetNameDuplicated(filterSetName);
 
-  const isCreateDisabled =
-    !filterSetName || isFilterSetNameDuplicated || disabled;
+  const isCreateDisabled = !filterSetName || isFilterSetNameDuplicated || disabled;
 
   return (
     <>
       {editMode ? (
         <ActionButtons>
-          <Button
-            buttonStyle="tertiary"
-            buttonSize="small"
-            onClick={onCancel}
-            data-test="filter-set-cancel-button"
-          >
+          <Button buttonStyle="tertiary" buttonSize="small" onClick={onCancel} data-test="filter-set-cancel-button">
             {t('Cancel')}
           </Button>
           <Tooltip
             placement="right"
             title={
               (!filterSetName && t('Please filter set name')) ||
-              (isFilterSetNameDuplicated &&
-                t('Filter set with this name already exists')) ||
+              (isFilterSetNameDuplicated && t('Filter set with this name already exists')) ||
               (disabled && APPLY_FILTERS_HINT)
             }
           >

@@ -146,8 +146,7 @@ export const antDModalStyles = (theme: SupersetTheme) => css`
   }
 
   .ant-modal-header {
-    padding: ${theme.gridUnit * 4.5}px ${theme.gridUnit * 4}px
-      ${theme.gridUnit * 4}px;
+    padding: ${theme.gridUnit * 4.5}px ${theme.gridUnit * 4}px ${theme.gridUnit * 4}px;
   }
 
   .ant-modal-close-x .close {
@@ -337,8 +336,7 @@ export const StyledInputContainer = styled.div`
   textarea,
   input[type='text'],
   input[type='number'] {
-    padding: ${({ theme }) => theme.gridUnit * 1.5}px
-      ${({ theme }) => theme.gridUnit * 2}px;
+    padding: ${({ theme }) => theme.gridUnit * 1.5}px ${({ theme }) => theme.gridUnit * 2}px;
     border-style: none;
     border: 1px solid ${({ theme }) => theme.colors.grayscale.light2};
     border-radius: ${({ theme }) => theme.gridUnit}px;

@@ -27,11 +27,7 @@ export interface SelectPageSizeRendererProps {
   onChange: SelectPageSizeProps['onChange'];
 }
 
-function DefaultSelectRenderer({
-  current,
-  options,
-  onChange,
-}: SelectPageSizeRendererProps) {
+function DefaultSelectRenderer({ current, options, onChange }: SelectPageSizeRendererProps) {
   return (
     <span className="dt-select-page-size form-inline">
       Show{' '}
@@ -44,9 +40,7 @@ function DefaultSelectRenderer({
         }}
       >
         {options.map(option => {
-          const [size, text] = Array.isArray(option)
-            ? option
-            : [option, option];
+          const [size, text] = Array.isArray(option) ? option : [option, option];
           return (
             <option key={size} value={size}>
               {text}
@@ -93,7 +87,5 @@ export default React.memo(function SelectPageSize({
   }
   const current = currentSize === undefined ? sizeOptionValues[0] : currentSize;
   const SelectRenderer = selectRenderer || DefaultSelectRenderer;
-  return (
-    <SelectRenderer current={current} options={options} onChange={onChange} />
-  );
+  return <SelectRenderer current={current} options={options} onChange={onChange} />;
 });

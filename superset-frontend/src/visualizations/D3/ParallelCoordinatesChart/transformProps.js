@@ -18,14 +18,7 @@
  */
 export default function transformProps(chartProps) {
   const { width, height, formData, queriesData } = chartProps;
-  const {
-    includeSeries,
-    linearColorScheme,
-    metrics,
-    secondaryMetric,
-    series,
-    showDatatable,
-  } = formData;
+  const { includeSeries, linearColorScheme, metrics, secondaryMetric, series, showDatatable } = formData;
 
   return {
     width,
@@ -34,10 +27,7 @@ export default function transformProps(chartProps) {
     includeSeries,
     linearColorScheme,
     metrics: metrics.map(m => m.label || m),
-    colorMetric:
-      secondaryMetric && secondaryMetric.label
-        ? secondaryMetric.label
-        : secondaryMetric,
+    colorMetric: secondaryMetric && secondaryMetric.label ? secondaryMetric.label : secondaryMetric,
     series,
     showDatatable,
   };

@@ -25,9 +25,7 @@ import { AGGREGATES } from 'src/explore/constants';
 import { LabelsContainer } from 'src/explore/components/controls/OptionControls';
 import { supersetTheme } from 'src/core';
 import MetricsControl from 'src/explore/components/controls/MetricControl/MetricsControl';
-import AdhocMetric, {
-  EXPRESSION_TYPES,
-} from 'src/explore/components/controls/MetricControl/AdhocMetric';
+import AdhocMetric, { EXPRESSION_TYPES } from 'src/explore/components/controls/MetricControl/AdhocMetric';
 
 const defaultProps = {
   name: 'metrics',

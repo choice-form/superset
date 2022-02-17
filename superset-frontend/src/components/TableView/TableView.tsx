@@ -84,8 +84,7 @@ const TableViewStyles = styled.div<{
 
   th[role='columnheader'] {
     z-index: 1;
-    border-bottom: ${({ theme }) =>
-      `${theme.gridUnit - 2}px solid ${theme.colors.grayscale.light2}`};
+    border-bottom: ${({ theme }) => `${theme.gridUnit - 2}px solid ${theme.colors.grayscale.light2}`};
     ${({ small }) => small && `padding-bottom: 0;`}
   }
 `;
@@ -184,9 +183,7 @@ const TableView = ({
       break;
     case EmptyWrapperType.Default:
     default:
-      EmptyWrapperComponent = ({ children }: any) => (
-        <EmptyWrapper>{children}</EmptyWrapper>
-      );
+      EmptyWrapperComponent = ({ children }: any) => <EmptyWrapper>{children}</EmptyWrapper>;
   }
 
   const isEmpty = !loading && content.length === 0;
@@ -207,10 +204,7 @@ const TableView = ({
         {isEmpty && (
           <EmptyWrapperComponent>
             {noDataText ? (
-              <Empty
-                image={Empty.PRESENTED_IMAGE_SIMPLE}
-                description={noDataText}
-              />
+              <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={noDataText} />
             ) : (
               <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
             )}
@@ -218,10 +212,7 @@ const TableView = ({
         )}
       </TableViewStyles>
       {hasPagination && (
-        <PaginationStyles
-          className="pagination-container"
-          isPaginationSticky={props.isPaginationSticky}
-        >
+        <PaginationStyles className="pagination-container" isPaginationSticky={props.isPaginationSticky}>
           <Pagination
             totalPages={pageCount || 0}
             currentPage={pageCount ? pageIndex + 1 : 0}

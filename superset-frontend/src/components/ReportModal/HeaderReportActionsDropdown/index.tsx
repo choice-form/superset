@@ -43,8 +43,7 @@ export default function HeaderReportActionsDropDown({
   const reports = useSelector<any, AlertObject>(state => state.reports);
   const reportsIds = Object.keys(reports);
   const report = reports[reportsIds[0]];
-  const [currentReportDeleting, setCurrentReportDeleting] =
-    useState<AlertObject | null>(null);
+  const [currentReportDeleting, setCurrentReportDeleting] = useState<AlertObject | null>(null);
   const theme = useTheme();
 
   const toggleActiveKey = async (data: AlertObject, checked: boolean) => {
@@ -71,10 +70,7 @@ export default function HeaderReportActionsDropDown({
         />
       </Menu.Item>
       <Menu.Item onClick={showReportModal}>{t('Edit email report')}</Menu.Item>
-      <Menu.Item
-        onClick={() => setCurrentReportDeleting(report)}
-        css={deleteColor}
-      >
+      <Menu.Item onClick={() => setCurrentReportDeleting(report)} css={deleteColor}>
         {t('Delete email report')}
       </Menu.Item>
     </Menu>
@@ -86,9 +82,7 @@ export default function HeaderReportActionsDropDown({
         // ref={ref}
         overlay={menu()}
         trigger={['click']}
-        getPopupContainer={(triggerNode: any) =>
-          triggerNode.closest('.action-button')
-        }
+        getPopupContainer={(triggerNode: any) => triggerNode.closest('.action-button')}
       >
         <span role="button" className="action-button" tabIndex={0}>
           <Icons.Calendar />
@@ -96,10 +90,7 @@ export default function HeaderReportActionsDropDown({
       </NoAnimationDropdown>
       {currentReportDeleting && (
         <DeleteModal
-          description={t(
-            'This action will permanently delete %s.',
-            currentReportDeleting.name,
-          )}
+          description={t('This action will permanently delete %s.', currentReportDeleting.name)}
           onConfirm={() => {
             if (currentReportDeleting) {
               handleReportDelete(currentReportDeleting);

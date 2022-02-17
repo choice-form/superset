@@ -118,11 +118,7 @@ export default function ControlHeader({
           )}
           {validationErrors.length > 0 && (
             <span>
-              <Tooltip
-                id="error-tooltip"
-                placement="top"
-                title={validationErrors.join(' ')}
-              >
+              <Tooltip id="error-tooltip" placement="top" title={validationErrors.join(' ')}>
                 <i className="fa fa-exclamation-circle text-danger" />
               </Tooltip>{' '}
             </span>

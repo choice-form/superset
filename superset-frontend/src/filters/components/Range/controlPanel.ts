@@ -17,11 +17,7 @@
  * under the License.
  */
 import { t } from 'src/core';
-import {
-  ControlPanelConfig,
-  sections,
-  sharedControls,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, sections, sharedControls } from 'src/chartConntrols';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [

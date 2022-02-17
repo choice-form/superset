@@ -76,11 +76,7 @@ export function fetchAllSlices(userId) {
             form_data = {
               ...form_data,
               // force using datasource stored in relational table prop
-              datasource:
-                getDatasourceParameter(
-                  slice.datasource_id,
-                  slice.datasource_type,
-                ) || form_data.datasource,
+              datasource: getDatasourceParameter(slice.datasource_id, slice.datasource_type) || form_data.datasource,
             };
             slices[slice.id] = {
               slice_id: slice.id,
@@ -106,16 +102,8 @@ export function fetchAllSlices(userId) {
           errorResponse =>
             console.log(errorResponse) ||
             getClientErrorObject(errorResponse).then(({ error }) => {
-              dispatch(
-                fetchAllSlicesFailed(
-                  error || t('Could not fetch all saved charts'),
-                ),
-              );
-              dispatch(
-                addDangerToast(
-                  t('Sorry there was an error fetching saved charts: ') + error,
-                ),
-              );
+              dispatch(fetchAllSlicesFailed(error || t('Could not fetch all saved charts')));
+              dispatch(addDangerToast(t('Sorry there was an error fetching saved charts: ') + error));
             }),
         );
     }

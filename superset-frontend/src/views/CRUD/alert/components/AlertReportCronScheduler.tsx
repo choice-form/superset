@@ -29,14 +29,10 @@ interface AlertReportCronSchedulerProps {
   onChange: (change: string) => any;
 }
 
-export const AlertReportCronScheduler: FunctionComponent<
-  AlertReportCronSchedulerProps
-> = ({ value, onChange }) => {
+export const AlertReportCronScheduler: FunctionComponent<AlertReportCronSchedulerProps> = ({ value, onChange }) => {
   const theme = useTheme();
   const inputRef = useRef<AntdInput>(null);
-  const [scheduleFormat, setScheduleFormat] = useState<'picker' | 'input'>(
-    'picker',
-  );
+  const [scheduleFormat, setScheduleFormat] = useState<'picker' | 'input'>('picker');
   const customSetValue = useCallback(
     (newValue: string) => {
       onChange(newValue);
@@ -48,10 +44,7 @@ export const AlertReportCronScheduler: FunctionComponent<
 
   return (
     <>
-      <Radio.Group
-        onChange={e => setScheduleFormat(e.target.value)}
-        value={scheduleFormat}
-      >
+      <Radio.Group onChange={e => setScheduleFormat(e.target.value)} value={scheduleFormat}>
         <div className="inline-container add-margin">
           <Radio value="picker" />
           <CronPicker

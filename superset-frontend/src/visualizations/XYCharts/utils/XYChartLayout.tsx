@@ -20,13 +20,7 @@
 import React, { ReactNode, CSSProperties } from 'react';
 import { XAxis, YAxis } from '@data-ui/xy-chart';
 import { ChartFrame, Margin, mergeMargin, Dimension } from 'src/core';
-import {
-  ChannelEncoder,
-  PlainObject,
-  Value,
-  XFieldDef,
-  YFieldDef,
-} from 'encodable';
+import { ChannelEncoder, PlainObject, Value, XFieldDef, YFieldDef } from 'encodable';
 import createTickComponent from './createTickComponent';
 import computeAxisLayout, { AxisLayout } from './computeAxisLayout';
 
@@ -35,10 +29,7 @@ export const DEFAULT_LABEL_ANGLE = 40;
 // Additional margin to avoid content hidden behind scroll bar
 const OVERFLOW_MARGIN = 8;
 
-export interface XYChartLayoutConfig<
-  XOutput extends Value,
-  YOutput extends Value
-> {
+export interface XYChartLayoutConfig<XOutput extends Value, YOutput extends Value> {
   width: number;
   height: number;
   minContentWidth?: number;
@@ -54,10 +45,7 @@ export interface XYChartLayoutConfig<
   autoAdjustYMargin?: boolean;
 }
 
-export default class XYChartLayout<
-  XOutput extends Value,
-  YOutput extends Value
-> {
+export default class XYChartLayout<XOutput extends Value, YOutput extends Value> {
   chartWidth: number;
 
   chartHeight: number;
@@ -104,14 +92,8 @@ export default class XYChartLayout<
       });
     }
 
-    const secondMargin =
-      this.yLayout && autoAdjustYMargin
-        ? mergeMargin(margin, this.yLayout.minMargin)
-        : margin;
-    const innerWidth = Math.max(
-      width - secondMargin.left - secondMargin.right,
-      minContentWidth,
-    );
+    const secondMargin = this.yLayout && autoAdjustYMargin ? mergeMargin(margin, this.yLayout.minMargin) : margin;
+    const innerWidth = Math.max(width - secondMargin.left - secondMargin.right, minContentWidth);
 
     if (typeof xEncoder.axis !== 'undefined') {
       this.xLayout = computeAxisLayout(xEncoder.axis, {
@@ -122,21 +104,12 @@ export default class XYChartLayout<
     }
 
     const finalMargin =
-      this.xLayout && autoAdjustXMargin
-        ? mergeMargin(secondMargin, this.xLayout.minMargin)
-        : secondMargin;
+      this.xLayout && autoAdjustXMargin ? mergeMargin(secondMargin, this.xLayout.minMargin) : secondMargin;
 
-    const innerHeight = Math.max(
-      height - finalMargin.top - finalMargin.bottom,
-      minContentHeight,
-    );
+    const innerHeight = Math.max(height - finalMargin.top - finalMargin.bottom, minContentHeight);
 
-    const chartWidth = Math.round(
-      innerWidth + finalMargin.left + finalMargin.right,
-    );
-    const chartHeight = Math.round(
-      innerHeight + finalMargin.top + finalMargin.bottom,
-    );
+    const chartWidth = Math.round(innerWidth + finalMargin.left + finalMargin.right);
+    const chartHeight = Math.round(innerHeight + finalMargin.top + finalMargin.bottom);
 
     const isOverFlowX = chartWidth > width;
     const isOverFlowY = chartHeight > height;
@@ -147,9 +120,7 @@ export default class XYChartLayout<
       finalMargin.right += OVERFLOW_MARGIN;
     }
     this.chartWidth = isOverFlowX ? chartWidth + OVERFLOW_MARGIN : chartWidth;
-    this.chartHeight = isOverFlowY
-      ? chartHeight + OVERFLOW_MARGIN
-      : chartHeight;
+    this.chartHeight = isOverFlowY ? chartHeight + OVERFLOW_MARGIN : chartHeight;
     this.containerWidth = width;
     this.containerHeight = height;
     this.margin = finalMargin;

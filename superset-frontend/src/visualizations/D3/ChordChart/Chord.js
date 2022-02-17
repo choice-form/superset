@@ -50,11 +50,7 @@ function Chord(element, props) {
 
   const arc = d3.svg.arc().innerRadius(innerRadius).outerRadius(outerRadius);
 
-  const layout = d3.layout
-    .chord()
-    .padding(0.04)
-    .sortSubgroups(d3.descending)
-    .sortChords(d3.descending);
+  const layout = d3.layout.chord().padding(0.04).sortSubgroups(d3.descending).sortChords(d3.descending);
 
   const path = d3.svg.chord().radius(innerRadius);
 
@@ -102,9 +98,7 @@ function Chord(element, props) {
   // Remove the labels that don't fit. :(
   groupText
     .filter(function filter(d, i) {
-      return (
-        groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength()
-      );
+      return groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength();
     })
     .remove();
 
@@ -126,11 +120,9 @@ function Chord(element, props) {
     .append('title')
     .text(
       d =>
-        `${nodes[d.source.index]} → ${nodes[d.target.index]}: ${f(
-          d.source.value,
-        )}\n${nodes[d.target.index]} → ${nodes[d.source.index]}: ${f(
-          d.target.value,
-        )}`,
+        `${nodes[d.source.index]} → ${nodes[d.target.index]}: ${f(d.source.value)}\n${nodes[d.target.index]} → ${
+          nodes[d.source.index]
+        }: ${f(d.target.value)}`,
     );
 }
 

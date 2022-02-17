@@ -22,10 +22,7 @@ interface GetDashboardFilterKeyProps {
   column: string;
 }
 
-export function getDashboardFilterKey({
-  chartId,
-  column,
-}: GetDashboardFilterKeyProps) {
+export function getDashboardFilterKey({ chartId, column }: GetDashboardFilterKeyProps) {
   return `${chartId}_${column}`;
 }
 

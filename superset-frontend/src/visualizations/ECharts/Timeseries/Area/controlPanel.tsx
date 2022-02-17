@@ -27,17 +27,9 @@ import {
   sharedControls,
 } from 'src/chartConntrols';
 
-import {
-  legendSection,
-  richTooltipSection,
-  showValueSection,
-} from 'src/visualizations/ECharts/controls';
+import { legendSection, richTooltipSection, showValueSection } from 'src/visualizations/ECharts/controls';
 
-import {
-  DEFAULT_FORM_DATA,
-  EchartsTimeseriesContributionType,
-  EchartsTimeseriesSeriesType,
-} from '../types';
+import { DEFAULT_FORM_DATA, EchartsTimeseriesContributionType, EchartsTimeseriesSeriesType } from '../types';
 
 const {
   contributionMode,
@@ -135,9 +127,7 @@ const config: ControlPanelConfig = {
               max: 1,
               step: 0.1,
               default: opacity,
-              description: t(
-                'Opacity of Area Chart. Also applies to confidence band.',
-              ),
+              description: t('Opacity of Area Chart. Also applies to confidence band.'),
             },
           },
         ],
@@ -150,9 +140,7 @@ const config: ControlPanelConfig = {
               label: t('Marker'),
               renderTrigger: true,
               default: markerEnabled,
-              description: t(
-                'Draw a marker on data points. Only applicable for line types.',
-              ),
+              description: t('Draw a marker on data points. Only applicable for line types.'),
             },
           },
         ],
@@ -166,11 +154,8 @@ const config: ControlPanelConfig = {
               min: 0,
               max: 20,
               default: markerSize,
-              description: t(
-                'Size of marker. Also applies to forecast observations.',
-              ),
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                Boolean(controls?.markerEnabled?.value),
+              description: t('Size of marker. Also applies to forecast observations.'),
+              visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.markerEnabled?.value),
             },
           },
         ],
@@ -214,9 +199,7 @@ const config: ControlPanelConfig = {
               ],
               default: xAxisLabelRotation,
               renderTrigger: true,
-              description: t(
-                'Input field supports custom rotation. e.g. 30 for 30°',
-              ),
+              description: t('Input field supports custom rotation. e.g. 30 for 30°'),
             },
           },
         ],
@@ -256,9 +239,7 @@ const config: ControlPanelConfig = {
               label: t('Truncate Y Axis'),
               default: truncateYAxis,
               renderTrigger: true,
-              description: t(
-                'Truncate Y Axis. Can be overridden by specifying a min or max bound.',
-              ),
+              description: t('Truncate Y Axis. Can be overridden by specifying a min or max bound.'),
             },
           },
         ],
@@ -276,8 +257,7 @@ const config: ControlPanelConfig = {
                   "this feature will only expand the axis range. It won't " +
                   "narrow the data's extent.",
               ),
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                Boolean(controls?.truncateYAxis?.value),
+              visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.truncateYAxis?.value),
             },
           },
         ],

@@ -26,10 +26,7 @@ import DatasourcePanelDragOption from '.';
 test('should render', () => {
   render(
     <DndProvider backend={HTML5Backend}>
-      <DatasourcePanelDragOption
-        value={{ metric_name: 'test' }}
-        type={DndItemType.Metric}
-      />
+      <DatasourcePanelDragOption value={{ metric_name: 'test' }} type={DndItemType.Metric} />
     </DndProvider>,
   );
 
@@ -40,15 +37,9 @@ test('should render', () => {
 test('should have attribute draggable:true', () => {
   render(
     <DndProvider backend={HTML5Backend}>
-      <DatasourcePanelDragOption
-        value={{ metric_name: 'test' }}
-        type={DndItemType.Metric}
-      />
+      <DatasourcePanelDragOption value={{ metric_name: 'test' }} type={DndItemType.Metric} />
     </DndProvider>,
   );
 
-  expect(screen.getByTestId('DatasourcePanelDragOption')).toHaveAttribute(
-    'draggable',
-    'true',
-  );
+  expect(screen.getByTestId('DatasourcePanelDragOption')).toHaveAttribute('draggable', 'true');
 });

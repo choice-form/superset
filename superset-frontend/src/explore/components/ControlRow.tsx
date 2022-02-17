@@ -25,9 +25,7 @@ type Control = React.ReactElement | null;
 export default function ControlRow({ controls }: { controls: Control[] }) {
   // ColorMapControl renders null and should not be counted
   // in the columns number
-  const countableControls = controls.filter(
-    control => !['ColorMapControl'].includes(control?.props.type),
-  );
+  const countableControls = controls.filter(control => !['ColorMapControl'].includes(control?.props.type));
   const colSize = NUM_COLUMNS / countableControls.length;
   return (
     <div className="row space-1">

@@ -24,11 +24,7 @@ import { AsyncCreatableSelect, CreatableSelect } from 'src/components/Select';
 import Button from 'src/components/Button';
 import { t, SupersetClient, ensureIsArray } from 'src/core';
 
-import {
-  BOOL_FALSE_DISPLAY,
-  BOOL_TRUE_DISPLAY,
-  SLOW_DEBOUNCE,
-} from 'src/constants';
+import { BOOL_FALSE_DISPLAY, BOOL_TRUE_DISPLAY, SLOW_DEBOUNCE } from 'src/constants';
 import { FormLabel } from 'src/components/Form';
 import DateFilterControl from 'src/explore/components/controls/DateFilterControl';
 import ControlRow from 'src/explore/components/ControlRow';
@@ -249,9 +245,7 @@ class FilterBox extends React.PureComponent {
         const labelA = a.id.toLowerCase();
         const labelB = b.id.toLowerCase();
         const textOrder = labelB.startsWith(input) - labelA.startsWith(input);
-        return textOrder === 0
-          ? (a.metric - b.metric) * (sortAsc ? 1 : -1)
-          : textOrder;
+        return textOrder === 0 ? (a.metric - b.metric) * (sortAsc ? 1 : -1) : textOrder;
       });
     }
     return this.transformOptions(options, this.getKnownMax(key, options));
@@ -263,10 +257,7 @@ class FilterBox extends React.PureComponent {
     if (showDateFilter) {
       return (
         <div className="row space-1">
-          <div
-            className="col-lg-12 col-xs-12"
-            data-test="date-filter-container"
-          >
+          <div className="col-lg-12 col-xs-12" data-test="date-filter-container">
             <DateFilterControl
               name={TIME_RANGE}
               label={label}
@@ -286,12 +277,7 @@ class FilterBox extends React.PureComponent {
   }
 
   renderDatasourceFilters() {
-    const {
-      showSqlaTimeGrain,
-      showSqlaTimeColumn,
-      showDruidTimeGrain,
-      showDruidTimeOrigin,
-    } = this.props;
+    const { showSqlaTimeGrain, showSqlaTimeColumn, showDruidTimeGrain, showDruidTimeOrigin } = this.props;
     const datasourceFilters = [];
     const sqlaFilters = [];
     const druidFilters = [];
@@ -339,9 +325,7 @@ class FilterBox extends React.PureComponent {
         }
         const choices = filtersChoices[key] || (filtersChoices[key] = []);
         const choiceIds = new Set(choices.map(f => f.id));
-        const selectedValuesForKey = Array.isArray(selectedValues[key])
-          ? selectedValues[key]
-          : [selectedValues[key]];
+        const selectedValuesForKey = Array.isArray(selectedValues[key]) ? selectedValues[key] : [selectedValues[key]];
         selectedValuesForKey
           .filter(value => value !== null && !choiceIds.has(value))
           .forEach(value => {
@@ -392,11 +376,7 @@ class FilterBox extends React.PureComponent {
         onMenuOpen={() => this.onFilterMenuOpen(key)}
         onBlur={() => this.onFilterMenuClose(key)}
         onMenuClose={() => this.onFilterMenuClose(key)}
-        selectWrap={
-          searchAllOptions && data.length >= FILTER_OPTIONS_LIMIT
-            ? AsyncCreatableSelect
-            : CreatableSelect
-        }
+        selectWrap={searchAllOptions && data.length >= FILTER_OPTIONS_LIMIT ? AsyncCreatableSelect : CreatableSelect}
         noResultsText={t('No results found')}
         forceOverflow
       />

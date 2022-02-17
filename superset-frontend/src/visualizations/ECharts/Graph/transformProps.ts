@@ -16,13 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  CategoricalColorNamespace,
-  ChartProps,
-  getMetricLabel,
-  DataRecord,
-  DataRecordValue,
-} from 'src/core';
+import { CategoricalColorNamespace, ChartProps, getMetricLabel, DataRecord, DataRecordValue } from 'src/core';
 import { EChartsCoreOption, GraphSeriesOption } from 'echarts';
 import { extent as d3Extent } from 'd3-array';
 import { GraphEdgeItemOption } from 'echarts/types/src/chart/graph/GraphSeries';
@@ -81,17 +75,12 @@ function normalizeStyles(
   const maxNodeSize = baseNodeSize * 2;
   const minEdgeWidth = baseEdgeWidth * 0.5;
   const maxEdgeWidth = baseEdgeWidth * 2;
-  const [nodeMinValue, nodeMaxValue] = d3Extent(nodes, x => x.value) as [
-    number,
-    number,
-  ];
+  const [nodeMinValue, nodeMaxValue] = d3Extent(nodes, x => x.value) as [number, number];
 
   const nodeSpread = nodeMaxValue - nodeMinValue;
   nodes.forEach(node => {
     // eslint-disable-next-line no-param-reassign
-    node.symbolSize =
-      (((node.value - nodeMinValue) / nodeSpread) * maxNodeSize || 0) +
-      minNodeSize;
+    node.symbolSize = (((node.value - nodeMinValue) / nodeSpread) * maxNodeSize || 0) + minNodeSize;
     // eslint-disable-next-line no-param-reassign
     node.label = {
       ...node.label,
@@ -99,15 +88,10 @@ function normalizeStyles(
     };
   });
 
-  const [linkMinValue, linkMaxValue] = d3Extent(links, x => x.value) as [
-    number,
-    number,
-  ];
+  const [linkMinValue, linkMaxValue] = d3Extent(links, x => x.value) as [number, number];
   const linkSpread = linkMaxValue - linkMinValue;
   links.forEach(link => {
-    const lineWidth =
-      ((link.value! - linkMinValue) / linkSpread) * maxEdgeWidth ||
-      0 + minEdgeWidth;
+    const lineWidth = ((link.value! - linkMinValue) / linkSpread) * maxEdgeWidth || 0 + minEdgeWidth;
     // eslint-disable-next-line no-param-reassign
     link.lineStyle.width = lineWidth;
     // eslint-disable-next-line no-param-reassign
@@ -124,10 +108,7 @@ function normalizeStyles(
   });
 }
 
-function getKeyByValue(
-  object: { [name: string]: number },
-  value: number,
-): string {
+function getKeyByValue(object: { [name: string]: number }, value: number): string {
   return Object.keys(object).find(key => object[key] === value) as string;
 }
 
@@ -139,9 +120,7 @@ function edgeFormatter(
 ): string {
   const source = Number(sourceIndex);
   const target = Number(targetIndex);
-  return `${sanitizeHtml(getKeyByValue(nodes, source))} > ${sanitizeHtml(
-    getKeyByValue(nodes, target),
-  )} : ${value}`;
+  return `${sanitizeHtml(getKeyByValue(nodes, source))} > ${sanitizeHtml(getKeyByValue(nodes, target))} : ${value}`;
 }
 
 function getCategoryName(columnName: string, name?: DataRecordValue) {
@@ -228,12 +207,8 @@ export default function transformProps(chartProps: ChartProps): EchartsProps {
     }
     const sourceName = link[source] as string;
     const targetName = link[target] as string;
-    const sourceCategoryName = sourceCategory
-      ? getCategoryName(sourceCategory, link[sourceCategory])
-      : undefined;
-    const targetCategoryName = targetCategory
-      ? getCategoryName(targetCategory, link[targetCategory])
-      : undefined;
+    const sourceCategoryName = sourceCategory ? getCategoryName(sourceCategory, link[sourceCategory]) : undefined;
+    const targetCategoryName = targetCategory ? getCategoryName(targetCategory, link[targetCategory]) : undefined;
     const sourceNode = getOrCreateNode(sourceName, sourceCategoryName);
     const targetNode = getOrCreateNode(targetName, targetCategoryName);
 
@@ -294,13 +269,7 @@ export default function transformProps(chartProps: ChartProps): EchartsProps {
     animationDuration: DEFAULT_GRAPH_SERIES_OPTION.animationDuration,
     animationEasing: DEFAULT_GRAPH_SERIES_OPTION.animationEasing,
     tooltip: {
-      formatter: (params: any): string =>
-        edgeFormatter(
-          params.data.source,
-          params.data.target,
-          params.value,
-          nodes,
-        ),
+      formatter: (params: any): string => edgeFormatter(params.data.source, params.data.target, params.value, nodes),
     },
     legend: {
       ...getLegendProps(legendType, legendOrientation, showLegend),

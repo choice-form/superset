@@ -37,11 +37,7 @@ export default class HoverMenu extends React.PureComponent<HoverMenuProps> {
     return (
       <div
         ref={innerRef}
-        className={cx(
-          'hover-menu',
-          position === 'left' && 'hover-menu--left',
-          position === 'top' && 'hover-menu--top',
-        )}
+        className={cx('hover-menu', position === 'left' && 'hover-menu--left', position === 'top' && 'hover-menu--top')}
       >
         {children}
       </div>

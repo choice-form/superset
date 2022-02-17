@@ -83,18 +83,13 @@ import {
 import HistogramChartPlugin from '../DataUI/HistogramChart';
 import EventFlowChartPlugin from '../DataUI/EventFlowChart';
 import TimeTableChartPlugin from '../DataUI/TimeTable';
-import {
-  BigNumberChartPlugin,
-  BigNumberTotalChartPlugin,
-} from '../DataUI/BigNumber';
+import { BigNumberChartPlugin, BigNumberTotalChartPlugin } from '../DataUI/BigNumber';
 
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '../PivotTable';
 
 export default class MainPreset extends Preset {
   constructor() {
-    const experimentalplugins = isFeatureEnabled(
-      FeatureFlag.DASHBOARD_FILTERS_EXPERIMENTAL,
-    )
+    const experimentalplugins = isFeatureEnabled(FeatureFlag.DASHBOARD_FILTERS_EXPERIMENTAL)
       ? [new GroupByFilterPlugin().configure({ key: 'filter_groupby' })]
       : [];
 

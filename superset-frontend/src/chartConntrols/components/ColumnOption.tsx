@@ -37,12 +37,7 @@ const StyleOverrides = styled.span`
   }
 `;
 
-export function ColumnOption({
-  column,
-  labelRef,
-  showType = false,
-  showTooltip = true,
-}: ColumnOptionProps) {
+export function ColumnOption({ column, labelRef, showType = false, showTooltip = true }: ColumnOptionProps) {
   const { expression, column_name, type_generic } = column;
   const hasExpression = expression && expression !== column_name;
   const type = hasExpression ? 'expression' : type_generic;
@@ -64,10 +59,7 @@ export function ColumnOption({
           trigger={['hover']}
           placement="top"
         >
-          <span
-            className="m-r-5 option-label column-option-label"
-            ref={labelRef}
-          >
+          <span className="m-r-5 option-label column-option-label" ref={labelRef}>
             {column.verbose_name || column.column_name}
           </span>
         </Tooltip>

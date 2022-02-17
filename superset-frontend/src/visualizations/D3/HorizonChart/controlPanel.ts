@@ -17,11 +17,7 @@
  * under the License.
  */
 import { t } from 'src/core';
-import {
-  ControlPanelConfig,
-  formatSelectOptions,
-  sections,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, formatSelectOptions, sections } from 'src/chartConntrols';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -70,16 +66,7 @@ const config: ControlPanelConfig = {
               freeForm: true,
               label: t('Series Height'),
               default: '25',
-              choices: formatSelectOptions([
-                '10',
-                '25',
-                '40',
-                '50',
-                '75',
-                '100',
-                '150',
-                '200',
-              ]),
+              choices: formatSelectOptions(['10', '25', '40', '50', '75', '100', '150', '200']),
               description: t('Pixel height of each series'),
             },
           },

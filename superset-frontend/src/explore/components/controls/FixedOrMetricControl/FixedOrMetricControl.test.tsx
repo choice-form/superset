@@ -35,23 +35,14 @@ test('renders with minimal props', () => {
 });
 
 test('renders with default value', () => {
-  render(
-    <FixedOrMetricControl
-      {...createProps()}
-      default={{ type: 'fix', value: 10 }}
-    />,
-  );
+  render(<FixedOrMetricControl {...createProps()} default={{ type: 'fix', value: 10 }} />);
   expect(screen.getByRole('button')).toBeInTheDocument();
   expect(screen.getByText('10')).toBeInTheDocument();
 });
 
 test('renders with value', () => {
   render(
-    <FixedOrMetricControl
-      {...createProps()}
-      default={{ type: 'fix', value: 10 }}
-      value={{ type: 'fix', value: 20 }}
-    />,
+    <FixedOrMetricControl {...createProps()} default={{ type: 'fix', value: 10 }} value={{ type: 'fix', value: 20 }} />,
   );
   expect(screen.getByRole('button')).toBeInTheDocument();
   expect(screen.getByText('20')).toBeInTheDocument();
@@ -77,13 +68,7 @@ test('renders with metric type', () => {
 
 test('triggers onChange', () => {
   const onChange = jest.fn();
-  render(
-    <FixedOrMetricControl
-      {...createProps()}
-      value={{ type: 'fix', value: 10 }}
-      onChange={onChange}
-    />,
-  );
+  render(<FixedOrMetricControl {...createProps()} value={{ type: 'fix', value: 10 }} onChange={onChange} />);
   userEvent.click(screen.getByText('10'));
   expect(onChange).not.toHaveBeenCalled();
   userEvent.type(screen.getByRole('textbox'), '20');
@@ -91,12 +76,7 @@ test('triggers onChange', () => {
 });
 
 test('switches control type', () => {
-  render(
-    <FixedOrMetricControl
-      {...createProps()}
-      value={{ type: 'fix', value: 10 }}
-    />,
-  );
+  render(<FixedOrMetricControl {...createProps()} value={{ type: 'fix', value: 10 }} />);
   userEvent.click(screen.getByText('10'));
   userEvent.click(screen.getByText('Based on a metric'));
   expect(screen.getByText('metric:')).toBeInTheDocument();

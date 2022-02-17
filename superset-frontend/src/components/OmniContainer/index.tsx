@@ -71,10 +71,7 @@ export default function OmniContainer() {
     }
 
     function handleClickOutside(event: MouseEvent) {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         handleClose();
       }
     }
@@ -88,20 +85,9 @@ export default function OmniContainer() {
   });
 
   return (
-    <OmniModal
-      title=""
-      show={showModal}
-      hideFooter
-      closable={false}
-      onHide={() => {}}
-      destroyOnClose
-    >
+    <OmniModal title="" show={showModal} hideFooter closable={false} onHide={() => {}} destroyOnClose>
       <div ref={modalRef}>
-        <Omnibar
-          id="InputOmnibar"
-          placeholder={t('Search all dashboards')}
-          extensions={[getDashboards]}
-        />
+        <Omnibar id="InputOmnibar" placeholder={t('Search all dashboards')} extensions={[getDashboards]} />
       </div>
     </OmniModal>
   );

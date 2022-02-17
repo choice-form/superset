@@ -25,11 +25,7 @@ import {
   JsonObject,
 } from '../../../connection';
 
-export type ParsedResponseType<T> = T extends 'text'
-  ? string
-  : T extends 'raw' | null
-  ? Response
-  : JsonValue;
+export type ParsedResponseType<T> = T extends 'text' ? string : T extends 'raw' | null ? Response : JsonValue;
 
 /**
  * Runtime options when calling a Superset API. Currently only allow overriding
@@ -118,15 +114,10 @@ export class SupersetApiError extends Error {
     originalError?: SupersetApiError['originalError'];
   }) {
     super(message);
-    const originalErrorStack =
-      stack ||
-      (originalError instanceof Error ? originalError.stack : undefined);
+    const originalErrorStack = stack || (originalError instanceof Error ? originalError.stack : undefined);
     this.stack =
       originalErrorStack && this.stack
-        ? [
-            this.stack.split('\n')[0],
-            ...originalErrorStack.split('\n').slice(1),
-          ].join('\n')
+        ? [this.stack.split('\n')[0], ...originalErrorStack.split('\n').slice(1)].join('\n')
         : this.stack;
     this.name = 'SupersetApiError';
     this.errorType = errorType || SupersetApiErrorType.UNKNOWN_ERROR;

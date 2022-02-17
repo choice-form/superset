@@ -35,9 +35,7 @@ describe('getChartIdsFromLayout', () => {
 
   it('should encode filters', () => {
     const url = getDashboardUrl({ pathname: 'path', filters });
-    expect(url).toBe(
-      'path?preselect_filters=%7B%2235%22%3A%7B%22key%22%3A%5B%22value%22%5D%7D%7D',
-    );
+    expect(url).toBe('path?preselect_filters=%7B%2235%22%3A%7B%22key%22%3A%5B%22value%22%5D%7D%7D');
   });
 
   it('should encode filters with hash', () => {
@@ -46,9 +44,7 @@ describe('getChartIdsFromLayout', () => {
       filters,
       hash: 'iamhashtag',
     });
-    expect(urlWithHash).toBe(
-      'path?preselect_filters=%7B%2235%22%3A%7B%22key%22%3A%5B%22value%22%5D%7D%7D#iamhashtag',
-    );
+    expect(urlWithHash).toBe('path?preselect_filters=%7B%2235%22%3A%7B%22key%22%3A%5B%22value%22%5D%7D%7D#iamhashtag');
   });
 
   it('should encode filters with standalone', () => {
@@ -68,9 +64,7 @@ describe('getChartIdsFromLayout', () => {
       filters,
       standalone: null,
     });
-    expect(urlWithStandalone).toBe(
-      'path?preselect_filters=%7B%2235%22%3A%7B%22key%22%3A%5B%22value%22%5D%7D%7D',
-    );
+    expect(urlWithStandalone).toBe('path?preselect_filters=%7B%2235%22%3A%7B%22key%22%3A%5B%22value%22%5D%7D%7D');
   });
 
   it('should encode native filters', () => {

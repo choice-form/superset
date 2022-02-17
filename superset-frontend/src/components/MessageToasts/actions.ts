@@ -26,12 +26,7 @@ export function getToastUuid(type: ToastType) {
 }
 
 export const ADD_TOAST = 'ADD_TOAST';
-export function addToast({
-  toastType,
-  text,
-  duration = 8000,
-  noDuplicate = false,
-}: Omit<ToastMeta, 'id'>) {
+export function addToast({ toastType, text, duration = 8000, noDuplicate = false }: Omit<ToastMeta, 'id'>) {
   return {
     type: ADD_TOAST,
     payload: {

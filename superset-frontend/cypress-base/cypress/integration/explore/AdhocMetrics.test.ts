@@ -28,13 +28,9 @@ describe('AdhocMetrics', () => {
   it('Clear metric and set simple adhoc metric', () => {
     const metric = 'sum(num_girls)';
     const metricName = 'Sum Girls';
-    cy.get('[data-test=metrics]')
-      .find('[data-test="remove-control-button"]')
-      .click();
+    cy.get('[data-test=metrics]').find('[data-test="remove-control-button"]').click();
 
-    cy.get('[data-test=metrics]')
-      .find('[data-test="add-metric-button"]')
-      .click();
+    cy.get('[data-test=metrics]').find('[data-test="add-metric-button"]').click();
 
     // Title edit for saved metrics is disabled - switch to Simple
     cy.get('[id="adhoc-metric-edit-tabs-tab-SIMPLE"]').click();
@@ -42,12 +38,8 @@ describe('AdhocMetrics', () => {
     cy.get('[data-test="AdhocMetricEditTitle#trigger"]').click();
     cy.get('[data-test="AdhocMetricEditTitle#input"]').type(metricName);
 
-    cy.get('input[aria-label="Select column"]')
-      .click()
-      .type('num_girls{enter}');
-    cy.get('input[aria-label="Select aggregate options"]')
-      .click()
-      .type('sum{enter}');
+    cy.get('input[aria-label="Select column"]').click().type('num_girls{enter}');
+    cy.get('input[aria-label="Select aggregate options"]').click().type('sum{enter}');
 
     cy.get('[data-test="AdhocMetricEdit#save"]').contains('Save').click();
 
@@ -62,9 +54,7 @@ describe('AdhocMetrics', () => {
   });
 
   xit('Switch from simple to custom sql', () => {
-    cy.get('[data-test=metrics]')
-      .find('[data-test="metric-option"]')
-      .should('have.length', 1);
+    cy.get('[data-test=metrics]').find('[data-test="metric-option"]').should('have.length', 1);
 
     // select column "num"
     cy.get('[data-test=metrics]').find('.Select__clear-indicator').click();
@@ -73,11 +63,7 @@ describe('AdhocMetrics', () => {
 
     cy.get('[data-test=metrics]').find('.Select__control input').type('num');
 
-    cy.get('[data-test=metrics]')
-      .find('.option-label')
-      .first()
-      .should('have.text', 'num')
-      .click();
+    cy.get('[data-test=metrics]').find('.option-label').first().should('have.text', 'num').click();
 
     // add custom SQL
     cy.get('#adhoc-metric-edit-tabs-tab-SQL').click();
@@ -102,9 +88,7 @@ describe('AdhocMetrics', () => {
       cy.get('.Select__dropdown-indicator').click();
       cy.get('input[type=text]').type('num_girls{enter}');
     });
-    cy.get('[data-test=metrics]')
-      .find('[data-test="metric-option"]')
-      .should('have.length', 2);
+    cy.get('[data-test=metrics]').find('[data-test="metric-option"]').should('have.length', 2);
 
     cy.get('#metrics-edit-popover').within(() => {
       cy.get('#adhoc-metric-edit-tabs-tab-SQL').click();

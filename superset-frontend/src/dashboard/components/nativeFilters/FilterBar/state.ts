@@ -18,29 +18,18 @@
  */
 /* eslint-disable no-param-reassign */
 import { useSelector } from 'react-redux';
-import {
-  Filters,
-  FilterSets as FilterSetsType,
-} from 'src/dashboard/reducers/types';
-import {
-  DataMaskState,
-  DataMaskStateWithId,
-  DataMaskWithId,
-} from 'src/dataMask/types';
+import { Filters, FilterSets as FilterSetsType } from 'src/dashboard/reducers/types';
+import { DataMaskState, DataMaskStateWithId, DataMaskWithId } from 'src/dataMask/types';
 import { useEffect, useState } from 'react';
 import { ChartsState, RootState } from 'src/dashboard/types';
 import { NATIVE_FILTER_PREFIX } from '../FiltersConfigModal/utils';
 import { Filter } from '../types';
 
-export const useFilterSets = () =>
-  useSelector<any, FilterSetsType>(
-    state => state.nativeFilters.filterSets || {},
-  );
+export const useFilterSets = () => useSelector<any, FilterSetsType>(state => state.nativeFilters.filterSets || {});
 
 export const useFilters = () =>
   useSelector<any, Filters>(state => {
-    const preselectNativeFilters =
-      state.dashboardState?.preselectNativeFilters || {};
+    const preselectNativeFilters = state.dashboardState?.preselectNativeFilters || {};
     return Object.entries(state.nativeFilters.filters).reduce(
       (acc, [filterId, filter]: [string, Filter]) => ({
         ...acc,
@@ -54,18 +43,11 @@ export const useFilters = () =>
   });
 
 export const useNativeFiltersDataMask = () => {
-  const dataMask = useSelector<RootState, DataMaskStateWithId>(
-    state => state.dataMask,
-  );
+  const dataMask = useSelector<RootState, DataMaskStateWithId>(state => state.dataMask);
 
   return Object.values(dataMask)
-    .filter((item: DataMaskWithId) =>
-      String(item.id).startsWith(NATIVE_FILTER_PREFIX),
-    )
-    .reduce(
-      (prev, next: DataMaskWithId) => ({ ...prev, [next.id]: next }),
-      {},
-    ) as DataMaskStateWithId;
+    .filter((item: DataMaskWithId) => String(item.id).startsWith(NATIVE_FILTER_PREFIX))
+    .reduce((prev, next: DataMaskWithId) => ({ ...prev, [next.id]: next }), {}) as DataMaskStateWithId;
 };
 
 export const useFilterUpdates = (
@@ -96,9 +78,7 @@ export const useInitialization = () => {
   // We need to know how much charts now shown on dashboard to know how many of all charts should be loaded
   let numberOfLoadingCharts = 0;
   if (!isInitialized) {
-    numberOfLoadingCharts = document.querySelectorAll(
-      '[data-ui-anchor="chart"]',
-    ).length;
+    numberOfLoadingCharts = document.querySelectorAll('[data-ui-anchor="chart"]').length;
   }
   useEffect(() => {
     if (isInitialized) {
@@ -124,13 +104,8 @@ export const useInitialization = () => {
       clearTimeout(filterTimeout);
     }
 
-    const numberOfLoadedCharts = Object.values(charts).filter(
-      ({ chartStatus }) => chartStatus !== 'loading',
-    ).length;
-    if (
-      numberOfLoadingCharts > 0 &&
-      numberOfLoadedCharts >= numberOfLoadingCharts
-    ) {
+    const numberOfLoadedCharts = Object.values(charts).filter(({ chartStatus }) => chartStatus !== 'loading').length;
+    if (numberOfLoadingCharts > 0 && numberOfLoadedCharts >= numberOfLoadingCharts) {
       setIsInitialized(true);
     }
   }, [charts, isInitialized, numberOfLoadingCharts]);

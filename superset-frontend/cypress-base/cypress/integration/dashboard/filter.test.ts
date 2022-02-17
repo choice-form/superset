@@ -32,9 +32,7 @@ describe('Dashboard filter', () => {
 
   it('should apply filter', () => {
     WORLD_HEALTH_CHARTS.forEach(waitForChartLoad);
-    getChartAliasesBySpec(
-      WORLD_HEALTH_CHARTS.filter(({ viz }) => viz !== 'filter_box'),
-    ).then(nonFilterChartAliases => {
+    getChartAliasesBySpec(WORLD_HEALTH_CHARTS.filter(({ viz }) => viz !== 'filter_box')).then(nonFilterChartAliases => {
       cy.get('.Select__placeholder:first').click();
 
       // should show the filter indicator
@@ -61,9 +59,7 @@ describe('Dashboard filter', () => {
           let requestFilter;
           if (isLegacyResponse(responseBody)) {
             const requestFormData = parsePostForm(request.body);
-            const requestParams = JSON.parse(
-              requestFormData.form_data as string,
-            );
+            const requestParams = JSON.parse(requestFormData.form_data as string);
             requestFilter = requestParams.extra_filters[0];
           } else {
             requestFilter = request.body.queries[0].filters[0];

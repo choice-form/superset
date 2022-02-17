@@ -43,7 +43,5 @@ test('get correct annotation when isNative:true', () => {
 
 test('get correct annotation when isNative:false', () => {
   const response = getAnnotationJsonUrl('slice_id', { json: 'my-data' }, false);
-  expect(response).toBe(
-    '/slice_json/slice_id?form_data=%7B%22json%22%3A%22my-data%22%7D',
-  );
+  expect(response).toBe('/slice_json/slice_id?form_data=%7B%22json%22%3A%22my-data%22%7D');
 });

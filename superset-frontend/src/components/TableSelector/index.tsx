@@ -16,20 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, {
-  FunctionComponent,
-  useState,
-  ReactNode,
-  useMemo,
-  useEffect,
-} from 'react';
+import React, { FunctionComponent, useState, ReactNode, useMemo, useEffect } from 'react';
 import { styled, SupersetClient, t } from 'src/core';
 import { Select } from 'src/components';
 import { FormLabel } from 'src/components/Form';
 import Icons from 'src/components/Icons';
-import DatabaseSelector, {
-  DatabaseObject,
-} from 'src/components/DatabaseSelector';
+import DatabaseSelector, { DatabaseObject } from 'src/components/DatabaseSelector';
 import RefreshLabel from 'src/components/RefreshLabel';
 import CertifiedIcon from 'src/components/CertifiedIcon';
 import WarningIconWithTooltip from 'src/components/WarningIconWithTooltip';
@@ -117,24 +109,11 @@ const TableOption = ({ table }: { table: Table }) => {
   const { label, type, extra } = table;
   return (
     <TableLabel title={label}>
-      {type === 'view' ? (
-        <Icons.Eye iconSize="m" />
-      ) : (
-        <Icons.Table iconSize="m" />
-      )}
+      {type === 'view' ? <Icons.Eye iconSize="m" /> : <Icons.Table iconSize="m" />}
       {extra?.certification && (
-        <CertifiedIcon
-          certifiedBy={extra.certification.certified_by}
-          details={extra.certification.details}
-          size="l"
-        />
+        <CertifiedIcon certifiedBy={extra.certification.certified_by} details={extra.certification.details} size="l" />
       )}
-      {extra?.warning_markdown && (
-        <WarningIconWithTooltip
-          warningMarkdown={extra.warning_markdown}
-          size="l"
-        />
-      )}
+      {extra?.warning_markdown && <WarningIconWithTooltip warningMarkdown={extra.warning_markdown} size="l" />}
       {label}
     </TableLabel>
   );
@@ -156,12 +135,8 @@ const TableSelector: FunctionComponent<TableSelectorProps> = ({
   sqlLabMode = true,
   tableName,
 }) => {
-  const [currentDatabase, setCurrentDatabase] = useState<
-    DatabaseObject | undefined
-  >(database);
-  const [currentSchema, setCurrentSchema] = useState<string | undefined>(
-    schema,
-  );
+  const [currentDatabase, setCurrentDatabase] = useState<DatabaseObject | undefined>(database);
+  const [currentSchema, setCurrentSchema] = useState<string | undefined>(schema);
   const [currentTable, setCurrentTable] = useState<TableOption | undefined>();
   const [refresh, setRefresh] = useState(0);
   const [previousRefresh, setPreviousRefresh] = useState(0);
@@ -183,9 +158,7 @@ const TableSelector: FunctionComponent<TableSelectorProps> = ({
       const encodedSchema = encodeURIComponent(currentSchema);
       const forceRefresh = refresh !== previousRefresh;
       // TODO: Would be nice to add pagination in a follow-up. Needs endpoint changes.
-      const endpoint = encodeURI(
-        `/tables/${currentDatabase.id}/${encodedSchema}/undefined/${forceRefresh}/`,
-      );
+      const endpoint = encodeURI(`/tables/${currentDatabase.id}/${encodedSchema}/undefined/${forceRefresh}/`);
 
       if (previousRefresh !== refresh) {
         setPreviousRefresh(refresh);
@@ -209,11 +182,7 @@ const TableSelector: FunctionComponent<TableSelectorProps> = ({
           if (onTablesLoad) {
             onTablesLoad(json.options);
           }
-          setTableOptions(
-            options.sort((a: { text: string }, b: { text: string }) =>
-              a.text.localeCompare(b.text),
-            ),
-          );
+          setTableOptions(options.sort((a: { text: string }, b: { text: string }) => a.text.localeCompare(b.text)));
           setCurrentTable(currentTable);
           setLoadingTables(false);
         })
@@ -288,14 +257,9 @@ const TableSelector: FunctionComponent<TableSelectorProps> = ({
 
   function renderTableSelect() {
     const disabled =
-      (currentSchema && !formMode && readOnly) ||
-      (!currentSchema && !database?.allow_multi_schema_metadata_fetch);
+      (currentSchema && !formMode && readOnly) || (!currentSchema && !database?.allow_multi_schema_metadata_fetch);
 
-    const header = sqlLabMode ? (
-      <FormLabel>{t('See table schema')}</FormLabel>
-    ) : (
-      <FormLabel>{t('Table')}</FormLabel>
-    );
+    const header = sqlLabMode ? <FormLabel>{t('See table schema')}</FormLabel> : <FormLabel>{t('Table')}</FormLabel>;
 
     const select = (
       <Select
@@ -316,10 +280,7 @@ const TableSelector: FunctionComponent<TableSelectorProps> = ({
     );
 
     const refreshLabel = !formMode && !readOnly && (
-      <RefreshLabel
-        onClick={() => setRefresh(refresh + 1)}
-        tooltipContent={t('Force refresh table list')}
-      />
+      <RefreshLabel onClick={() => setRefresh(refresh + 1)} tooltipContent={t('Force refresh table list')} />
     );
 
     return renderSelectRow(select, refreshLabel);

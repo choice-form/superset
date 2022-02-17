@@ -38,17 +38,13 @@ describe('Visualization > Line', () => {
     cy.get('.ant-alert-warning').contains(`Metrics: cannot be empty`);
     cy.get('.text-danger').contains('Metrics');
 
-    cy.get('[data-test=metrics]')
-      .find('[data-test="add-metric-button"]')
-      .click();
+    cy.get('[data-test=metrics]').find('[data-test="add-metric-button"]').click();
 
     // Title edit for saved metrics is disabled - switch to Simple
     cy.get('[id="adhoc-metric-edit-tabs-tab-SIMPLE"]').click();
 
     cy.get('input[aria-label="Select column"]').click().type('num{enter}');
-    cy.get('input[aria-label="Select aggregate options"]')
-      .click()
-      .type('sum{enter}');
+    cy.get('input[aria-label="Select aggregate options"]').click().type('sum{enter}');
     cy.get('[data-test="AdhocMetricEdit#save"]').contains('Save').click();
 
     cy.get('.text-danger').should('not.exist');
@@ -67,12 +63,8 @@ describe('Visualization > Line', () => {
   it('should allow type to search color schemes', () => {
     cy.get('#controlSections-tab-display').click();
     cy.get('.Control[data-test="color_scheme"]').scrollIntoView();
-    cy.get('.Control[data-test="color_scheme"] input[type="search"]')
-      .focus()
-      .type('bnbColors{enter}');
-    cy.get(
-      '.Control[data-test="color_scheme"] .ant-select-selection-item > ul[data-test="bnbColors"]',
-    ).should('exist');
+    cy.get('.Control[data-test="color_scheme"] input[type="search"]').focus().type('bnbColors{enter}');
+    cy.get('.Control[data-test="color_scheme"] .ant-select-selection-item > ul[data-test="bnbColors"]').should('exist');
   });
 
   it('should work with adhoc metric', () => {
@@ -249,40 +241,36 @@ describe('Visualization > Line', () => {
   });
 
   it('Test event annotation time override', () => {
-    cy.request('/chart/api/read?_flt_3_slice_name=Daily+Totals').then(
-      response => {
-        const value = response.body.pks[0];
-        const formData = {
-          ...LINE_CHART_DEFAULTS,
-          metrics: ['count'],
-          annotation_layers: [
-            {
-              name: 'Yearly date',
-              annotationType: 'EVENT',
-              sourceType: 'table',
-              value,
-              overrides: { time_range: null },
-              show: true,
-              titleColumn: 'ds',
-              descriptionColumns: ['ds'],
-              timeColumn: 'ds',
-              color: null,
-              opacity: '',
-              style: 'solid',
-              width: 1,
-              showMarkers: false,
-              hideLine: false,
-            },
-          ],
-        };
-        cy.visitChartByParams(JSON.stringify(formData));
-      },
-    );
+    cy.request('/chart/api/read?_flt_3_slice_name=Daily+Totals').then(response => {
+      const value = response.body.pks[0];
+      const formData = {
+        ...LINE_CHART_DEFAULTS,
+        metrics: ['count'],
+        annotation_layers: [
+          {
+            name: 'Yearly date',
+            annotationType: 'EVENT',
+            sourceType: 'table',
+            value,
+            overrides: { time_range: null },
+            show: true,
+            titleColumn: 'ds',
+            descriptionColumns: ['ds'],
+            timeColumn: 'ds',
+            color: null,
+            opacity: '',
+            style: 'solid',
+            width: 1,
+            showMarkers: false,
+            hideLine: false,
+          },
+        ],
+      };
+      cy.visitChartByParams(JSON.stringify(formData));
+    });
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
     cy.get('.slice_container').within(() => {
-      cy.get('.nv-event-annotation-layer-0')
-        .children()
-        .should('have.length', 44);
+      cy.get('.nv-event-annotation-layer-0').children().should('have.length', 44);
     });
   });
 });

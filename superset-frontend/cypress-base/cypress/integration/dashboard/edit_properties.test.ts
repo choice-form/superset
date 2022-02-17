@@ -50,26 +50,17 @@ function assertMetadata(text: string) {
 }
 
 function typeMetadata(text: string) {
-  cy.get('.ant-modal-body')
-    .find('#json_metadata')
-    .should('be.visible')
-    .type(text);
+  cy.get('.ant-modal-body').find('#json_metadata').should('be.visible').type(text);
 }
 
 function openAdvancedProperties() {
-  return cy
-    .get('.ant-modal-body')
-    .contains('Advanced')
-    .should('be.visible')
-    .click();
+  return cy.get('.ant-modal-body').contains('Advanced').should('be.visible').click();
 }
 
 function openDashboardEditProperties() {
   // open dashboard properties edit modal
   cy.get('#save-dash-split-button').trigger('click', { force: true });
-  cy.get('[data-test=header-actions-menu]')
-    .contains('Edit dashboard properties')
-    .click({ force: true });
+  cy.get('[data-test=header-actions-menu]').contains('Edit dashboard properties').click({ force: true });
 }
 
 describe('Dashboard edit action', () => {
@@ -80,9 +71,7 @@ describe('Dashboard edit action', () => {
     cy.get('.dashboard-grid', { timeout: 50000 })
       .should('be.visible') // wait for 50 secs to load dashboard
       .then(() => {
-        cy.get('.dashboard-header [aria-label=edit-alt]')
-          .should('be.visible')
-          .click();
+        cy.get('.dashboard-header [aria-label=edit-alt]').should('be.visible').click();
         openDashboardEditProperties();
       });
   });
@@ -138,9 +127,7 @@ describe('Dashboard edit action', () => {
     xit('should save json metadata color change to dropdown', () => {
       // edit json metadata
       openAdvancedProperties().then(() => {
-        typeMetadata(
-          '{selectall}{backspace}{{}"color_scheme":"d3Category20"{}}',
-        );
+        typeMetadata('{selectall}{backspace}{{}"color_scheme":"d3Category20"{}}');
       });
 
       // save edit changes
@@ -156,11 +143,7 @@ describe('Dashboard edit action', () => {
           openAdvancedProperties().then(() => {
             assertMetadata('d3Category20');
           });
-          cy.get('.color-scheme-container').should(
-            'have.attr',
-            'data-test',
-            'd3Category20',
-          );
+          cy.get('.color-scheme-container').should('have.attr', 'data-test', 'd3Category20');
         });
     });
   });
@@ -169,9 +152,7 @@ describe('Dashboard edit action', () => {
     xit('should throw an error', () => {
       // edit json metadata
       openAdvancedProperties().then(() => {
-        typeMetadata(
-          '{selectall}{backspace}{{}"color_scheme":"THIS_DOES_NOT_WORK"{}}',
-        );
+        typeMetadata('{selectall}{backspace}{{}"color_scheme":"THIS_DOES_NOT_WORK"{}}');
       });
 
       // save edit changes
@@ -180,9 +161,7 @@ describe('Dashboard edit action', () => {
         .click()
         .then(() => {
           // assert that modal edit window has closed
-          cy.get('.ant-modal-body')
-            .contains('A valid color scheme is required')
-            .should('be.visible');
+          cy.get('.ant-modal-body').contains('A valid color scheme is required').should('be.visible');
         });
 
       cy.on('uncaught:exception', err => {
