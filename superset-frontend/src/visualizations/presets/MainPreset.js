@@ -22,7 +22,6 @@ import {
   BigNumberTotalChartPlugin,
 } from '@superset-ui/legacy-preset-chart-big-number';
 
-import WorldMapChartPlugin from '@superset-ui/legacy-plugin-chart-world-map';
 import {
   AreaChartPlugin,
   BarChartPlugin,
@@ -82,6 +81,7 @@ import SankeyChartPlugin from '../D3/SankeyChart';
 import SankeyLoopChartPlugin from '../D3/SankeyLoopChart';
 import SunburstChartPlugin from '../D3/SunburstChart';
 import TreemapChartPlugin from '../D3/TreemapChart';
+import WorldMapChartPlugin from '../D3/WorldMapChart';
 
 import RoseChartPlugin from '../D3/Nvd3/RoseChart';
 
