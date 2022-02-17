@@ -21,7 +21,6 @@ import {
   BigNumberChartPlugin,
   BigNumberTotalChartPlugin,
 } from '@superset-ui/legacy-preset-chart-big-number';
-import ChordChartPlugin from '@superset-ui/legacy-plugin-chart-chord';
 import CountryMapChartPlugin from '@superset-ui/legacy-plugin-chart-country-map';
 import EventFlowChartPlugin from '@superset-ui/legacy-plugin-chart-event-flow';
 import HeatmapChartPlugin from '@superset-ui/legacy-plugin-chart-heatmap';
@@ -82,6 +81,7 @@ import TimeTableChartPlugin from '../TimeTable/TimeTableChartPlugin';
 import { WordCloudChartPlugin } from '../D3/WordCloud';
 import TableChartPlugin from '../D3/TableChart';
 import CalendarChartPlugin from '../D3/CalendarChart';
+import ChordChartPlugin from '../D3/ChordChart';
 
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '../PivotTable';
 
