@@ -71,9 +71,8 @@ import EchartsGaugeChartPlugin from '../ECharts/Gauge';
 import EchartsRadarChartPlugin from '../ECharts/Radar';
 import EchartsFunnelChartPlugin from '../ECharts/Funnel';
 import EchartsMixedTimeseriesChartPlugin from '../ECharts/MixedTimeseries';
-import FilterBoxChartPlugin from '../FilterBox/FilterBoxChartPlugin';
-import TimeTableChartPlugin from '../TimeTable/TimeTableChartPlugin';
-import EventFlowChartPlugin from '../EventFlowChart';
+
+import FilterBoxChartPlugin from '../FilterBox';
 
 import { WordCloudChartPlugin } from '../D3/WordCloud';
 import TableChartPlugin from '../D3/TableChart';
@@ -84,6 +83,8 @@ import ForceDirectedChartPlugin from '../D3/ForceDirectedChart';
 import HeatmapChartPlugin from '../D3/HeatmapChart';
 
 import HistogramChartPlugin from '../DataUI/HistogramChart';
+import EventFlowChartPlugin from '../DataUI/EventFlowChart';
+import TimeTableChartPlugin from '../DataUI/TimeTable';
 
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '../PivotTable';
 

@@ -31,7 +31,7 @@ import { testWithId } from 'src/utils/testUtils';
 import { LineChartPlugin } from 'src/visualizations/XYCharts';
 import EchartsMixedTimeseriesChartPlugin from 'src/visualizations/ECharts/MixedTimeseries';
 import EchartsTimeseriesChartPlugin from 'src/visualizations/ECharts/Timeseries';
-import TimeTableChartPlugin from 'src/visualizations/TimeTable/TimeTableChartPlugin';
+import TimeTableChartPlugin from 'src/visualizations/DataUI/TimeTable';
 import VizTypeControl, { VIZ_TYPE_CONTROL_TEST_ID } from './index';
 
 jest.useFakeTimers();
