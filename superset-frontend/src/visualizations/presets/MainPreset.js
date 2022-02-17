@@ -22,7 +22,6 @@ import {
   BigNumberTotalChartPlugin,
 } from '@superset-ui/legacy-preset-chart-big-number';
 
-import RoseChartPlugin from '@superset-ui/legacy-plugin-chart-rose';
 import SankeyChartPlugin from '@superset-ui/legacy-plugin-chart-sankey';
 import SunburstChartPlugin from '@superset-ui/legacy-plugin-chart-sunburst';
 import TreemapChartPlugin from '@superset-ui/legacy-plugin-chart-treemap';
@@ -82,6 +81,8 @@ import HorizonChartPlugin from '../D3/HorizonChart';
 import ParallelCoordinatesChartPlugin from '../D3/ParallelCoordinatesChart';
 import PartitionChartPlugin from '../D3/PartitionChart';
 import PivotTableChartPlugin from '../D3/PivotTableChart';
+
+import RoseChartPlugin from '../D3/Nvd3/RoseChart';
 
 import HistogramChartPlugin from '../DataUI/HistogramChart';
 import EventFlowChartPlugin from '../DataUI/EventFlowChart';
