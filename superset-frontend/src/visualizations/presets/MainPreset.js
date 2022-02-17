@@ -61,7 +61,6 @@ import {
   TimeGrainFilterPlugin,
   GroupByFilterPlugin,
 } from 'src/filters/components';
-import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '@superset-ui/plugin-chart-pivot-table';
 
 // 正常显示的图
 import EchartsBoxPlotChartPlugin from '../ECharts/BoxPlot';
@@ -82,6 +81,8 @@ import EchartsFunnelChartPlugin from '../ECharts/Funnel';
 import EchartsMixedTimeseriesChartPlugin from '../ECharts/MixedTimeseries';
 import FilterBoxChartPlugin from '../FilterBox/FilterBoxChartPlugin';
 import TimeTableChartPlugin from '../TimeTable/TimeTableChartPlugin';
+
+import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '../PivotTable';
 
 export default class MainPreset extends Preset {
   constructor() {
