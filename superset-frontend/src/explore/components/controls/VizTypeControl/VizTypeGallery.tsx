@@ -392,7 +392,7 @@ const Selector: React.FC<{
         }),
       );
     }
-  }, []);
+  }, [isSelected]);
 
   return (
     <SelectorLabel
@@ -525,7 +525,7 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
     // Unlike focusSearch, this is a simple one-step process.
     setIsSearchFocused(false);
     setSearchInputValue('');
-    searchInputRef.current!.blur();
+    searchInputRef.current?.blur();
   }, []);
 
   const clickSelector = useCallback(
@@ -673,8 +673,8 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
               {!!selectedVizMetadata?.exampleGallery?.length && t('Examples')}
             </SectionTitle>
             <Examples>
-              {(selectedVizMetadata?.exampleGallery || []).map(example => (
-                <img src={example.url} alt={example.caption} title={example.caption} />
+              {(selectedVizMetadata?.exampleGallery || []).map((example, index) => (
+                <img key={index} src={example.url} alt={example.caption} title={example.caption} />
               ))}
             </Examples>
           </>
