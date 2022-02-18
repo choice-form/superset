@@ -195,7 +195,7 @@ export function Menu({
   const renderSubMenu = ({ label, childs, url, index, isFrontendRoute }: MenuObjectProps) => {
     if (url && isFrontendRoute) {
       return (
-        <DropdownMenu.Item key={label} role="presentation">
+        <DropdownMenu.Item key={`${label}${index}`} role="presentation">
           <Link role="button" to={url}>
             {label}
           </Link>
@@ -204,20 +204,20 @@ export function Menu({
     }
     if (url) {
       return (
-        <DropdownMenu.Item key={label}>
+        <DropdownMenu.Item key={`${label}${index}`}>
           <a href={url}>{label}</a>
         </DropdownMenu.Item>
       );
     }
     return (
-      <SubMenu key={index} title={label} icon={showMenu === 'inline' ? <></> : <Icons.TriangleDown />}>
+      <SubMenu key={`${label}${index}`} title={label} icon={showMenu === 'inline' ? <></> : <Icons.TriangleDown />}>
         {childs?.map((child: MenuObjectChildProps | string, index1: number) => {
           if (typeof child === 'string' && child === '-') {
-            return <DropdownMenu.Divider key={`$${index1}`} />;
+            return <DropdownMenu.Divider key={`${child}${index1}`} />;
           }
           if (typeof child !== 'string') {
             return (
-              <DropdownMenu.Item key={`${child.label}`}>
+              <DropdownMenu.Item key={`${child.label}${index1}`}>
                 {child.isFrontendRoute ? (
                   <Link to={child.url || ''}>{child.label}</Link>
                 ) : (

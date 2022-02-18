@@ -41,7 +41,7 @@ function UIFilters({ filters, internalFilters = [], updateFilterValue }: UIFilte
               Header={Header}
               fetchSelects={fetchSelects}
               initialValue={initialValue}
-              key={id}
+              key={`${id}${index}`}
               name={id}
               onSelect={(option: SelectOption | undefined) => updateFilterValue(index, option)}
               paginate={paginate}
@@ -54,7 +54,7 @@ function UIFilters({ filters, internalFilters = [], updateFilterValue }: UIFilte
             <SearchFilter
               Header={Header}
               initialValue={initialValue}
-              key={id}
+              key={`${id}${index}`}
               name={id}
               onSubmit={(value: string) => updateFilterValue(index, value)}
             />
@@ -65,7 +65,7 @@ function UIFilters({ filters, internalFilters = [], updateFilterValue }: UIFilte
             <DateRangeFilter
               Header={Header}
               initialValue={initialValue}
-              key={id}
+              key={`${id}${index}`}
               name={id}
               onSubmit={value => updateFilterValue(index, value)}
             />
