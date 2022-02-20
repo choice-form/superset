@@ -17,7 +17,7 @@
  * under the License.
  */
 import React, { useCallback } from 'react';
-import { DrillDown } from 'src/core';
+import { DataMask, DrillDown } from 'src/core';
 import { PieChartTransformedProps } from './types';
 import Echart from '../Echart';
 import { EventHandlers } from '../types';
@@ -41,8 +41,7 @@ export default function EchartsPie({
 
       const groupbyValues = values.map(value => labelMap[value]);
 
-      let dataMask = {};
-
+      let dataMask: DataMask = {};
       if (formData.emitFilter) {
         dataMask = {
           extraFormData: {
@@ -81,11 +80,15 @@ export default function EchartsPie({
             drilldown,
           },
         };
+        dataMask['extraFormData'] = {
+          filters: drilldown.filters,
+        };
+        dataMask['ownState'] = { drilldown };
       }
 
       setDataMask(dataMask);
     },
-    [formData.emitFilter, formData.drillDown, ownState, setDataMask, labelMap, groupby],
+    [groupby, labelMap, setDataMask, selectedValues],
   );
 
   const eventHandlers: EventHandlers = {

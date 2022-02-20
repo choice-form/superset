@@ -51,6 +51,7 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['groupby'],
+        // 下钻控件，放在这里表示饼图可以使用下钻
         isFeatureEnabled(FeatureFlag.DASHBOARD_DRILL_DOWN)
           ? [
               {
@@ -60,13 +61,10 @@ const config: ControlPanelConfig = {
                   label: t('Enable drill down'),
                   default: drillDown,
                   description: t('Columns as hierarchy.'),
-                  mapStateToProps: _ref => {
-                    const { form_data } = _ref;
-                    return {
-                      chartId: (form_data == null ? 0 : form_data.slice_id) || 0,
-                      columns: form_data.groupby,
-                    };
-                  },
+                  mapStateToProps: ({ form_data }) => ({
+                    chartId: form_data?.slice_id || 0,
+                    columns: form_data.groupby,
+                  }),
                 },
               },
             ]

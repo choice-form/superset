@@ -16,76 +16,64 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { QueryObjectFilterClause, DrillDownType } from './types';
 import { ensureIsArray } from '../utils';
 
-export const fromHierarchy = (hierarchy: string[]): DrillDownType => {
-  const hierarchy2: any = ensureIsArray(hierarchy);
-  return {
-    hierarchy: hierarchy2,
-    currentIdx: hierarchy2.length > 0 ? 0 : -1,
-    filters: [],
-  };
-};
-
-export const drillDown = (value: DrillDownType, selectValue: string): DrillDownType => {
-  const idx = value.currentIdx;
-  const len = value.hierarchy.length;
-
-  if (idx + 1 >= len) {
+export default class DrillDown {
+  static fromHierarchy(hierarchy: string[]): DrillDownType {
+    const _hierarchy = ensureIsArray(hierarchy);
     return {
-      hierarchy: value.hierarchy,
-      currentIdx: 0,
+      hierarchy: _hierarchy,
+      currentIdx: _hierarchy.length > 0 ? 0 : -1,
       filters: [],
     };
   }
 
-  return {
-    hierarchy: value.hierarchy,
-    currentIdx: idx + 1,
-    filters: value.filters.concat({
-      col: value.hierarchy[idx],
-      op: 'IN',
-      val: [selectValue],
-    }),
-  };
-};
+  static drillDown(value: DrillDownType, selectValue: string): DrillDownType {
+    const idx = value.currentIdx;
+    const len = value.hierarchy.length;
 
-export const rollUp = (value: DrillDownType): DrillDownType => {
-  const idx = value.currentIdx;
-  const len = value.hierarchy.length;
-  return {
-    hierarchy: value.hierarchy,
-    currentIdx: idx - 1 < 0 ? len - 1 : idx - 1,
-    filters: value.filters.slice(0, -1),
-  };
-};
-
-export const getColumn = (value: DrillDownType | undefined | null, hierarchy: string[]): string => {
-  if (value) {
-    return value.hierarchy[value.currentIdx];
+    if (idx + 1 >= len) {
+      return {
+        hierarchy: value.hierarchy,
+        currentIdx: 0,
+        filters: [],
+      };
+    }
+    return {
+      hierarchy: value.hierarchy,
+      currentIdx: idx + 1,
+      filters: value.filters.concat({
+        col: value.hierarchy[idx],
+        op: 'IN',
+        val: [selectValue],
+      }),
+    };
   }
 
-  const val = fromHierarchy(hierarchy);
-  return val.hierarchy[val.currentIdx];
-};
-
-export const getFilters = (value: DrillDownType | undefined | null, hierarchy: string[]): any[] => {
-  if (value) {
-    return value.filters;
+  static rollUp(value: DrillDownType): DrillDownType {
+    const idx = value.currentIdx;
+    const len = value.hierarchy.length;
+    return {
+      hierarchy: value.hierarchy,
+      currentIdx: idx - 1 < 0 ? len - 1 : idx - 1,
+      filters: value.filters.slice(0, -1),
+    };
   }
 
-  const val = fromHierarchy(hierarchy);
-  return val.filters;
-};
+  static getColumn(value: DrillDownType | undefined | null, hierarchy: string[]): string {
+    if (value) {
+      return value.hierarchy[value.currentIdx];
+    }
+    const val = DrillDown.fromHierarchy(hierarchy);
+    return val.hierarchy[val.currentIdx];
+  }
 
-export default class DrillDown {
-  static fromHierarchy = fromHierarchy;
-
-  static drillDown = drillDown;
-
-  static rollUp = rollUp;
-
-  static getColumn = getColumn;
-
-  static getFilters = getFilters;
+  static getFilters(value: DrillDownType | undefined | null, hierarchy: string[]): QueryObjectFilterClause[] {
+    if (value) {
+      return value.filters;
+    }
+    const val = DrillDown.fromHierarchy(hierarchy);
+    return val.filters;
+  }
 }

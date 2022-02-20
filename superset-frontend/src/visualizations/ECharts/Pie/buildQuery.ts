@@ -18,25 +18,21 @@
  */
 import { buildQueryContext, QueryFormData, DrillDown } from 'src/core';
 
-export default function buildQuery(formData: QueryFormData, options: any) {
-  const { metric, sort_by_metric, drillDown } = formData;
+// @ts-ignore
+export default function buildQuery(formData: QueryFormData, { ownState }) {
+  const { metric, sort_by_metric, drillDown, groupby } = formData;
 
-  return buildQueryContext(formData, baseQueryObject => {
-    let queryObject = {
+  return buildQueryContext(formData, baseQueryObject => [
+    {
       ...baseQueryObject,
       ...(sort_by_metric && { orderby: [[metric, false]] }),
-    };
-    if (drillDown) {
-      const { ownState } = options;
-      const groupBy: any = formData.groupby;
-      queryObject = {
-        ...queryObject,
-        ...(drillDown && {
-          groupby: [DrillDown.getColumn(ownState.drilldown, groupBy)],
-          filters: [...(baseQueryObject.filters || []), ...DrillDown.getFilters(ownState.drilldown, groupBy)],
-        }),
-      };
-    }
-    return [queryObject];
-  });
+      ...(drillDown && {
+        groupby: [DrillDown.getColumn((ownState && ownState?.drilldown) || [], groupby as string[])],
+        filters: [
+          ...(baseQueryObject.filters || []),
+          ...DrillDown.getFilters((ownState && ownState?.drilldown) || [], groupby as string[]),
+        ],
+      }),
+    },
+  ]);
 }

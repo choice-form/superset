@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { ExtraFormData } from '../../query';
-import { JsonObject } from '../..';
+import { ExtraFormData, OwnState } from '../../query';
 
 export type HandlerFunction = (...args: unknown[]) => void;
 
@@ -40,7 +39,7 @@ export type FilterState = { value?: any; [key: string]: any };
 export type DataMask = {
   extraFormData?: ExtraFormData;
   filterState?: FilterState;
-  ownState?: JsonObject;
+  ownState?: OwnState;
 };
 
 export type SetDataMaskHook = {

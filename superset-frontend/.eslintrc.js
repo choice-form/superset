@@ -132,6 +132,8 @@ module.exports = {
         'react/require-default-props': 0,
         'react/sort-comp': 0, // TODO: re-enable in separate PR
         'react/static-property-placement': 0, // re-enable up for discussion
+        'dot-notation': 0,
+        'no-underscore-dangle': 0,
       },
       settings: {
         'import/resolver': {

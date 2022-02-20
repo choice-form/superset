@@ -94,7 +94,7 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
   const {
     colorScheme,
     donut,
-    groupby,
+    groupby: hierarchyOrColumns,
     innerRadius,
     labelsOutside,
     labelLine,
@@ -117,10 +117,8 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
     ...formData,
   };
   const metricLabel = getMetricLabel(metric);
-  const groupbyLabels =
-    drillDown && ownState != null && ownState.drilldown
-      ? [DrillDown.getColumn(ownState.drilldown, [])]
-      : groupby.map(getColumnLabel);
+  const groupby = drillDown && ownState?.drilldown ? [DrillDown.getColumn(ownState.drilldown, [])] : hierarchyOrColumns;
+  const groupbyLabels = groupby.map(getColumnLabel);
   const minShowLabelAngle = (showLabelsThreshold || 0) * 3.6;
 
   const keys = data.map(datum =>
