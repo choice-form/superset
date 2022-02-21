@@ -136,7 +136,7 @@ export type DrillDownType = {
   filters: QueryObjectFilterClause[];
 };
 
-export type OwnState = JsonObject & { drilldown: DrillDownType };
+export type OwnState = JsonObject & { drilldown?: DrillDownType };
 
 // Type signature for formData shared by all viz types
 // It will be gradually filled out as we build out the query object

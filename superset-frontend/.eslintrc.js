@@ -134,6 +134,7 @@ module.exports = {
         'react/static-property-placement': 0, // re-enable up for discussion
         'dot-notation': 0,
         'no-underscore-dangle': 0,
+        'no-extra-boolean-cast': 0,
       },
       settings: {
         'import/resolver': {

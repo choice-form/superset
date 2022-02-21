@@ -62,7 +62,7 @@ export default class DrillDown {
   }
 
   static getColumn(value: DrillDownType | undefined | null, hierarchy: string[]): string {
-    if (value) {
+    if (!!value) {
       return value.hierarchy[value.currentIdx];
     }
     const val = DrillDown.fromHierarchy(hierarchy);
