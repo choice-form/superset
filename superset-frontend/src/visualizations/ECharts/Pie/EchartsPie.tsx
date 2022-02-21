@@ -80,6 +80,10 @@ export default function EchartsPie({
             drilldown,
           },
         };
+        dataMask['extraFormData'] = {
+          filters: drilldown.filters,
+        };
+        dataMask['ownState'] = { drilldown };
       }
       setDataMask(dataMask);
     },
