@@ -223,13 +223,17 @@ function ExploreViewContainer(props) {
       } else if (isS) {
         if (props.slice) {
           props.actions
-            .saveSlice(props.form_data, {
-              action: 'overwrite',
-              slice_id: props.slice.slice_id,
-              slice_name: props.slice.slice_name,
-              add_to_dash: 'noSave',
-              goto_dash: false,
-            })
+            .saveSlice(
+              props.form_data,
+              {
+                action: 'overwrite',
+                slice_id: props.slice.slice_id,
+                slice_name: props.slice.slice_name,
+                add_to_dash: 'noSave',
+                goto_dash: false,
+              },
+              props.ownState,
+            )
             .then(({ data }) => {
               window.location = data.slice.slice_url;
             });
@@ -427,6 +431,7 @@ function ExploreViewContainer(props) {
       {showingModal && (
         <SaveModal
           onHide={toggleModal}
+          ownState={props.ownState}
           actions={props.actions}
           form_data={props.form_data}
           sliceName={props.sliceName}

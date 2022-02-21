@@ -42,9 +42,10 @@ const MENU_KEYS = {
   VIEW_QUERY: 'view_query',
 };
 
+// 图表右上角的扩展按钮
 const ExploreAdditionalActionsMenu = props => {
-  const { datasource } = props.latestQueryFormData;
-  const sqlSupported = datasource && datasource.split('__')[1] === 'table';
+  // const { datasource } = props.latestQueryFormData;
+  // const sqlSupported = datasource && datasource.split('__')[1] === 'table';
   const handleMenuClick = ({ key, domEvent }) => {
     const { slice, onOpenInEditor, latestQueryFormData } = props;
     switch (key) {
@@ -80,13 +81,13 @@ const ExploreAdditionalActionsMenu = props => {
             <ModalTrigger
               triggerNode={<span data-test="view-query-menu-item">{t('View query')}</span>}
               modalTitle={t('View query')}
-              modalBody={<ViewQueryModal latestQueryFormData={props.latestQueryFormData} />}
+              modalBody={<ViewQueryModal latestQueryFormData={props.latestQueryFormData} ownState={props.ownState} />}
               draggable
               resizable
               responsive
             />
           </Menu.Item>
-          {sqlSupported && <Menu.Item key={MENU_KEYS.RUN_IN_SQL_LAB}>{t('Run in SQL Lab')}</Menu.Item>}
+          {/* {sqlSupported && <Menu.Item key={MENU_KEYS.RUN_IN_SQL_LAB}>{t('Run in SQL Lab')}</Menu.Item>} */}
           <Menu.Item key={MENU_KEYS.DOWNLOAD_AS_IMAGE}>{t('Download as image')}</Menu.Item>
         </Menu>
       }

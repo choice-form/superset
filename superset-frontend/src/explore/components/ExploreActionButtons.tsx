@@ -40,6 +40,7 @@ type ActionButtonProps = {
 
 type ExploreActionButtonsProps = {
   actions: { redirectSQLLab: () => void; openPropertiesModal: () => void };
+  ownState: {};
   canDownloadCSV: boolean;
   chartStatus: string;
   latestQueryFormData: {};
@@ -78,7 +79,7 @@ const ActionButton = (props: ActionButtonProps) => {
 };
 
 const ExploreActionButtons = (props: ExploreActionButtonsProps) => {
-  const { actions, canDownloadCSV, chartStatus, latestQueryFormData, slice, addDangerToast } = props;
+  const { actions, canDownloadCSV, chartStatus, latestQueryFormData, slice, addDangerToast, ownState } = props;
 
   const copyTooltipText = t('Copy chart URL to clipboard');
   const [copyTooltip, setCopyTooltip] = useState(copyTooltipText);
@@ -159,6 +160,7 @@ const ExploreActionButtons = (props: ExploreActionButtonsProps) => {
       )}
       <ExploreAdditionalActionsMenu
         latestQueryFormData={latestQueryFormData}
+        ownState={ownState}
         chartStatus={chartStatus}
         onOpenInEditor={actions.redirectSQLLab}
         onOpenPropertiesModal={actions.openPropertiesModal}

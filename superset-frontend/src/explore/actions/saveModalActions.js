@@ -60,7 +60,7 @@ export function removeSaveModalAlert() {
   return { type: REMOVE_SAVE_MODAL_ALERT };
 }
 
-export function saveSlice(formData, requestParams) {
+export function saveSlice(formData, requestParams, ownState) {
   return dispatch => {
     const url = getExploreUrl({
       formData,
@@ -77,6 +77,7 @@ export function saveSlice(formData, requestParams) {
       force: false,
       resultFormat: 'json',
       resultType: 'full',
+      ownState,
     });
 
     return SupersetClient.post({
