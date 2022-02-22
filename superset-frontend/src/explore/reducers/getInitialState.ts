@@ -46,11 +46,15 @@ export default function getInitialState(bootstrapData: ExlorePageBootstrapData) 
   const { form_data: initialFormData } = bootstrapData;
   const { slice } = bootstrapData;
   const sliceName = slice ? slice.slice_name : null;
+  // 取出扩展数据
+  const extra_form_data = slice?.form_data?.extra_form_data;
 
   const exploreState = {
     // note this will add `form_data` to state,
     // which will be manipulatable by future reducers.
     ...bootstrapData,
+    // @ts-ignore
+    savedOwnState: extra_form_data?.ownState, // 之前保存的数据
     sliceName,
     common: {
       flash_messages: bootstrapData.common.flash_messages,

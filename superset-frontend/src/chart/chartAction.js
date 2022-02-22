@@ -215,6 +215,7 @@ export async function getChartDataRequest({
   if (shouldUseLegacyApi(formData)) {
     return legacyChartDataRequest(formData, resultFormat, resultType, force, method, querySettings, ownState);
   }
+  // 饼图请求走的这里
   return v1ChartDataRequest(formData, resultFormat, resultType, force, querySettings, setDataMask, ownState);
 }
 

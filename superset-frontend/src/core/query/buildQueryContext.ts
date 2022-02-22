@@ -51,20 +51,26 @@ export default function buildQueryContext(
       }
     | BuildFinalQueryObjects,
 ): QueryContext {
-  const { queryFields, buildQuery = WRAP_IN_ARRAY, hooks = {}, ownState = {} } =
-    typeof options === 'function' ? { buildQuery: options, queryFields: {} } : options || {};
+  const queryOptions = typeof options === 'function' ? { buildQuery: options, queryFields: {} } : options || {};
+
+  const { queryFields, buildQuery = WRAP_IN_ARRAY, hooks = {}, ownState = {} } = queryOptions;
+
+  const queryObj = buildQueryObject(formData, queryFields);
+
+  const queries = buildQuery(queryObj, {
+    extras: {},
+    ownState,
+    hooks: {
+      setDataMask: () => {},
+      setCachedChanges: () => {},
+      ...hooks,
+    },
+  });
+
   return {
     datasource: new DatasourceKey(formData.datasource).toObject(),
     force: formData.force || false,
-    queries: buildQuery(buildQueryObject(formData, queryFields), {
-      extras: {},
-      ownState,
-      hooks: {
-        setDataMask: () => {},
-        setCachedChanges: () => {},
-        ...hooks,
-      },
-    }),
+    queries,
     result_format: formData.result_format || 'json',
     result_type: formData.result_type || 'full',
   };

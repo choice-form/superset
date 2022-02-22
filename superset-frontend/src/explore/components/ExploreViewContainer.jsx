@@ -516,8 +516,16 @@ function mapStateToProps(state) {
       ...dataMask[form_data.slice_id ?? 0]?.ownState, // 0 - unsaved chart
     },
   );
+  form_data.savedOwnState = explore.savedOwnState;
   const chartKey = Object.keys(charts)[0];
   const chart = charts[chartKey];
+
+  let ownState = dataMask[chart.id]?.ownState;
+
+  if (!ownState || ownState?.drilldown?.currentIdx === 0) {
+    ownState = explore.savedOwnState;
+    // exploreActions.updateDataMask(chart.id, { drilldown: { ...ownState } });
+  }
 
   return {
     isDatasourceMetaLoading: explore.isDatasourceMetaLoading,
@@ -542,7 +550,7 @@ function mapStateToProps(state) {
     forcedHeight: explore.forced_height,
     chart,
     timeout: explore.common.conf.SUPERSET_WEBSERVER_TIMEOUT,
-    ownState: dataMask[form_data?.slice_id || 0]?.ownState,
+    ownState,
     impressionId,
     user: explore.user,
     reports,

@@ -33,6 +33,8 @@ export default function EchartsPie({
   formData,
   ownState,
 }: PieChartTransformedProps) {
+  console.log('formData:', formData);
+
   const handleChange = useCallback(
     (values: string[]) => {
       if (!formData.emitFilter && !formData.drillDown) {
