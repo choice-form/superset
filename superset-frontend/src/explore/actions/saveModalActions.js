@@ -82,7 +82,10 @@ export function saveSlice(formData, requestParams, ownState) {
 
     return SupersetClient.post({
       url,
-      postPayload: { form_data: formData, query_context: queryContext },
+      postPayload: {
+        form_data: { ...formData, extra_form_data: { ...formData.extra_form_data, ownState } },
+        query_context: queryContext,
+      },
     })
       .then(response => {
         dispatch(saveSliceSuccess(response.json));

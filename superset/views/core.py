@@ -859,6 +859,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
         if datasource:
             datasource_data["owners"] = datasource.owners_data
 
+        # 图表页面渲染的数据
         bootstrap_data = {
             "can_add": slice_add_perm,
             "can_download": slice_download_perm,
