@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t, validateNonEmpty, FeatureFlag, isFeatureEnabled } from 'src/core';
+import { t, validateNonEmpty } from 'src/core';
 import {
   ControlPanelConfig,
   ControlPanelsContainerProps,
@@ -27,9 +27,8 @@ import {
   sections,
   emitFilterControl,
 } from 'src/chartConntrols';
-
-import { legendSection } from 'src/visualizations/ECharts/controls';
 import { DEFAULT_FORM_DATA } from './types';
+import { legendSection } from '../controls';
 
 const {
   donut,
@@ -40,7 +39,6 @@ const {
   outerRadius,
   numberFormat,
   showLabels,
-  drillDown,
 } = DEFAULT_FORM_DATA;
 
 const config: ControlPanelConfig = {
@@ -51,24 +49,6 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['groupby'],
-        // 下钻控件，放在这里表示饼图可以使用下钻
-        isFeatureEnabled(FeatureFlag.DASHBOARD_DRILL_DOWN)
-          ? [
-              {
-                name: 'drillDown',
-                config: {
-                  type: 'DrillDownControl',
-                  label: t('Enable drill down'),
-                  default: drillDown,
-                  description: t('Columns as hierarchy.'),
-                  mapStateToProps: ({ form_data }) => ({
-                    chartId: form_data?.slice_id || 0,
-                    columns: form_data.groupby,
-                  }),
-                },
-              },
-            ]
-          : [],
         ['metric'],
         ['adhoc_filters'],
         emitFilterControl,

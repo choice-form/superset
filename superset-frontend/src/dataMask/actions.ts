@@ -61,9 +61,7 @@ export function setDataMaskForFilterConfigComplete(
 export function updateDataMask(filterId: string | number, dataMask: DataMask): UpdateDataMask {
   // Only apply data mask if one of the relevant features is enabled
   const isFeatureFlagActive =
-    isFeatureEnabled(FeatureFlag.DASHBOARD_NATIVE_FILTERS) ||
-    isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS) ||
-    isFeatureEnabled(FeatureFlag.DASHBOARD_DRILL_DOWN);
+    isFeatureEnabled(FeatureFlag.DASHBOARD_NATIVE_FILTERS) || isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS);
   return {
     type: UPDATE_DATA_MASK,
     filterId,

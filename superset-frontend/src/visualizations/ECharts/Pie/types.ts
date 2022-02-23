@@ -21,7 +21,6 @@ import {
   ChartDataResponseResult,
   ChartProps,
   DataRecordValue,
-  JsonObject,
   QueryFormColumn,
   QueryFormData,
   SetDataMaskHook,
@@ -46,7 +45,6 @@ export type EchartsPieFormData = QueryFormData &
     dateFormat: string;
     showLabelsThreshold: number;
     emitFilter: boolean;
-    drillDown: boolean;
   };
 
 export enum EchartsPieLabelType {
@@ -80,11 +78,9 @@ export const DEFAULT_FORM_DATA: EchartsPieFormData = {
   showLabelsThreshold: 5,
   emitFilter: false,
   dateFormat: 'smart_date',
-  drillDown: false,
 };
 
 export interface PieChartTransformedProps {
-  ownState?: JsonObject;
   formData: EchartsPieFormData;
   height: number;
   width: number;

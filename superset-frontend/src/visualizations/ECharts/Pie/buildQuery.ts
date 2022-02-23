@@ -16,23 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { buildQueryContext, QueryFormData, DrillDown } from 'src/core';
+import { buildQueryContext, QueryFormData } from 'src/core';
 
-// @ts-ignore
-export default function buildQuery(formData: QueryFormData, { ownState }) {
-  const { metric, sort_by_metric, drillDown, groupby } = formData;
-
+export default function buildQuery(formData: QueryFormData) {
+  const { metric, sort_by_metric } = formData;
   return buildQueryContext(formData, baseQueryObject => [
     {
       ...baseQueryObject,
       ...(sort_by_metric && { orderby: [[metric, false]] }),
-      ...(drillDown && {
-        groupby: [DrillDown.getColumn((ownState && ownState?.drilldown) || {}, groupby as string[])],
-        filters: [
-          ...(baseQueryObject.filters || []),
-          ...DrillDown.getFilters((ownState && ownState?.drilldown) || {}, groupby as string[]),
-        ],
-      }),
     },
   ]);
 }

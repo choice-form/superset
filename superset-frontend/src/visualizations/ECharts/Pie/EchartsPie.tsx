@@ -17,7 +17,6 @@
  * under the License.
  */
 import React, { useCallback } from 'react';
-import { DataMask, DrillDown } from 'src/core';
 import { PieChartTransformedProps } from './types';
 import Echart from '../Echart';
 import { EventHandlers } from '../types';
@@ -31,63 +30,39 @@ export default function EchartsPie({
   groupby,
   selectedValues,
   formData,
-  ownState,
 }: PieChartTransformedProps) {
-  console.log('formData:', formData);
-
   const handleChange = useCallback(
     (values: string[]) => {
-      if (!formData.emitFilter && !formData.drillDown) {
+      if (!formData.emitFilter) {
         return;
       }
 
       const groupbyValues = values.map(value => labelMap[value]);
 
-      let dataMask: DataMask = {};
-      if (formData.emitFilter) {
-        dataMask = {
-          extraFormData: {
-            filters:
-              values.length === 0
-                ? []
-                : groupby.map((col, idx) => {
-                    const val = groupbyValues.map(v => v[idx]);
-                    if (val === null || val === undefined) {
-                      return { col, op: 'IS NULL' };
-                    }
+      setDataMask({
+        extraFormData: {
+          filters:
+            values.length === 0
+              ? []
+              : groupby.map((col, idx) => {
+                  const val = groupbyValues.map(v => v[idx]);
+                  if (val === null || val === undefined)
                     return {
                       col,
-                      op: 'IN',
-                      val: val as (string | number | boolean)[],
+                      op: 'IS NULL',
                     };
-                  }),
-          },
-          filterState: {
-            value: groupbyValues.length ? groupbyValues : null,
-            selectedValues: values.length ? values : null,
-          },
-        };
-      }
-
-      if (formData.drillDown && ownState != null && ownState.drilldown) {
-        const drilldown = DrillDown.drillDown(ownState.drilldown, values[0]);
-        dataMask = {
-          extraFormData: {
-            filters: drilldown.filters,
-          },
-          filterState: {
-            value: groupbyValues.length && drilldown.filters.length > 0 ? groupbyValues : null,
-          },
-          ownState: {
-            drilldown,
-          },
-        };
-        dataMask['extraFormData'] = {
-          filters: drilldown.filters,
-        };
-        dataMask['ownState'] = { drilldown };
-      }
-      setDataMask(dataMask);
+                  return {
+                    col,
+                    op: 'IN',
+                    val: val as (string | number | boolean)[],
+                  };
+                }),
+        },
+        filterState: {
+          value: groupbyValues.length ? groupbyValues : null,
+          selectedValues: values.length ? values : null,
+        },
+      });
     },
     [groupby, labelMap, setDataMask, selectedValues],
   );

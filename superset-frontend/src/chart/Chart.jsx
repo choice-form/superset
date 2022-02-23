@@ -19,7 +19,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Alert from 'src/components/Alert';
-import { styled, logging, t, DrillDown } from 'src/core';
+import { styled, logging, t } from 'src/core';
 
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import { PLACEHOLDER_DATASOURCE } from 'src/dashboard/constants';
@@ -85,7 +85,6 @@ const defaultProps = {
 const Styles = styled.div`
   min-height: ${p => p.height}px;
   position: relative;
-
   .chart-tooltip {
     opacity: 0.75;
     font-size: ${({ theme }) => theme.typography.sizes.s}px;
@@ -110,11 +109,6 @@ class Chart extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (this.props.formData?.drillDown) {
-      const drilldown = DrillDown.fromHierarchy(this.props.formData.groupby);
-      this.props.actions.updateDataMask(this.props.chartId, { ownState: { drilldown } });
-    }
-
     if (this.props.triggerQuery) {
       this.runQuery();
     }

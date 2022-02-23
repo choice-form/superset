@@ -223,17 +223,13 @@ function ExploreViewContainer(props) {
       } else if (isS) {
         if (props.slice) {
           props.actions
-            .saveSlice(
-              props.form_data,
-              {
-                action: 'overwrite',
-                slice_id: props.slice.slice_id,
-                slice_name: props.slice.slice_name,
-                add_to_dash: 'noSave',
-                goto_dash: false,
-              },
-              props.ownState,
-            )
+            .saveSlice(props.form_data, {
+              action: 'overwrite',
+              slice_id: props.slice.slice_id,
+              slice_name: props.slice.slice_name,
+              add_to_dash: 'noSave',
+              goto_dash: false,
+            })
             .then(({ data }) => {
               window.location = data.slice.slice_url;
             });
@@ -431,7 +427,6 @@ function ExploreViewContainer(props) {
       {showingModal && (
         <SaveModal
           onHide={toggleModal}
-          ownState={props.ownState}
           actions={props.actions}
           form_data={props.form_data}
           sliceName={props.sliceName}
@@ -513,19 +508,11 @@ function mapStateToProps(state) {
   form_data.extra_form_data = mergeExtraFormData(
     { ...form_data.extra_form_data },
     {
-      ...dataMask[form_data.slice_id ?? 0]?.ownState, // 0 - unsaved chart
+      ...dataMask[form_data?.slice_id ?? 0]?.ownState, // 0 - unsaved chart
     },
   );
-  form_data.savedOwnState = explore.savedOwnState;
   const chartKey = Object.keys(charts)[0];
   const chart = charts[chartKey];
-
-  let ownState = dataMask[chart.id]?.ownState;
-
-  if (!ownState || ownState?.drilldown?.currentIdx === 0) {
-    ownState = explore.savedOwnState;
-    // exploreActions.updateDataMask(chart.id, { drilldown: { ...ownState } });
-  }
 
   return {
     isDatasourceMetaLoading: explore.isDatasourceMetaLoading,
@@ -550,7 +537,7 @@ function mapStateToProps(state) {
     forcedHeight: explore.forced_height,
     chart,
     timeout: explore.common.conf.SUPERSET_WEBSERVER_TIMEOUT,
-    ownState,
+    ownState: dataMask[form_data?.slice_id ?? 0]?.ownState, // 0 - unsaved chart
     impressionId,
     user: explore.user,
     reports,

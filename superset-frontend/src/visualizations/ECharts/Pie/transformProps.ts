@@ -25,11 +25,9 @@ import {
   getTimeFormatter,
   NumberFormats,
   NumberFormatter,
-  DrillDown,
 } from 'src/core';
 import { CallbackDataParams } from 'echarts/types/src/util/types';
 import { EChartsCoreOption, PieSeriesOption } from 'echarts';
-import { OpacityEnum } from 'src/visualizations/ECharts/constants';
 import {
   DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA,
   EchartsPieChartProps,
@@ -46,6 +44,7 @@ import {
   sanitizeHtml,
 } from '../utils/series';
 import { defaultGrid, defaultTooltip } from '../defaults';
+import { OpacityEnum } from '../constants';
 
 const percentFormatter = getNumberFormatter(NumberFormats.PERCENT_2_POINT);
 
@@ -84,15 +83,14 @@ export function formatPieLabel({
 }
 
 export default function transformProps(chartProps: EchartsPieChartProps): PieChartTransformedProps {
-  const { ownState, formData, height, hooks, filterState, queriesData, width } = chartProps;
-
+  const { formData, height, hooks, filterState, queriesData, width } = chartProps;
   const { data = [] } = queriesData[0];
   const coltypeMapping = getColtypesMapping(queriesData[0]);
 
   const {
     colorScheme,
     donut,
-    groupby: hierarchyOrColumns,
+    groupby,
     innerRadius,
     labelsOutside,
     labelLine,
@@ -108,14 +106,12 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
     showLegend,
     showLabelsThreshold,
     emitFilter,
-    drillDown,
   }: EchartsPieFormData = {
     ...DEFAULT_LEGEND_FORM_DATA,
     ...DEFAULT_PIE_FORM_DATA,
     ...formData,
   };
   const metricLabel = getMetricLabel(metric);
-  const groupby = drillDown && ownState?.drilldown ? [DrillDown.getColumn(ownState.drilldown, [])] : hierarchyOrColumns;
   const groupbyLabels = groupby.map(getColumnLabel);
   const minShowLabelAngle = (showLabelsThreshold || 0) * 3.6;
 
@@ -244,7 +240,6 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
   };
 
   return {
-    ownState,
     formData,
     width,
     height,

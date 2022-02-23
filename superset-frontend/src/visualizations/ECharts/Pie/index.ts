@@ -48,7 +48,6 @@ export default class EchartsPieChartPlugin extends ChartPlugin<EchartsPieFormDat
         category: t('Part of a Whole'),
         credits: ['https://echarts.apache.org'],
         description: t(`The classic. Great for showing how much of a company each investor gets, what demographics follow your blog, or what portion of the budget goes to the military industrial complex.
-
         Pie charts can be difficult to interpret precisely. If clarity of relative proportion is important, consider using a bar or other chart type instead.`),
         exampleGallery: [{ url: example1 }, { url: example2 }, { url: example3 }, { url: example4 }],
         name: t('Pie Chart'),

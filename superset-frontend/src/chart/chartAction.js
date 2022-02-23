@@ -19,7 +19,7 @@
 /* eslint no-undef: 'error' */
 /* eslint no-param-reassign: ["error", { "props": false }] */
 import moment from 'moment';
-import { t, SupersetClient, DrillDown } from 'src/core';
+import { t, SupersetClient } from 'src/core';
 import { getControlsState } from 'src/explore/store';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import {
@@ -114,7 +114,6 @@ const legacyChartDataRequest = async (
   force,
   method = 'POST',
   requestParams = {},
-  ownState,
 ) => {
   const endpointType = getLegacyEndpointType({ resultFormat, resultType });
   const allowDomainSharding =
@@ -128,17 +127,10 @@ const legacyChartDataRequest = async (
     method,
     requestParams: requestParams.dashboard_id ? { dashboard_id: requestParams.dashboard_id } : {},
   });
-  const drillPayload = formData.drillDown
-    ? {
-        groupby: [DrillDown.getColumn(ownState.drilldown, formData.groupby)],
-        filters: [...(formData.filters || []), ...DrillDown.getFilters(ownState.drilldown, formData.groupby)],
-      }
-    : {};
-
   const querySettings = {
     ...requestParams,
     url,
-    postPayload: { form_data: { ...formData, ...drillPayload } },
+    postPayload: { form_data: formData },
   };
 
   const clientMethod = 'GET' && isFeatureEnabled(FeatureFlag.CLIENT_CACHE) ? SupersetClient.get : SupersetClient.post;
@@ -213,7 +205,7 @@ export async function getChartDataRequest({
   }
 
   if (shouldUseLegacyApi(formData)) {
-    return legacyChartDataRequest(formData, resultFormat, resultType, force, method, querySettings, ownState);
+    return legacyChartDataRequest(formData, resultFormat, resultType, force, method, querySettings);
   }
   // 饼图请求走的这里
   return v1ChartDataRequest(formData, resultFormat, resultType, force, querySettings, setDataMask, ownState);

@@ -21,7 +21,6 @@ import { DatasourceMeta } from 'src/chartConntrols';
 import { t, SupersetClient, DatasourceType, QueryFormData } from 'src/core';
 import { Dispatch } from 'redux';
 import { addDangerToast, toastActions } from 'src/components/MessageToasts/actions';
-import { updateDataMask } from 'src/dataMask/actions';
 import { Slice } from 'src/types/Chart';
 
 const FAVESTAR_BASE_URL = '/favstar/slice';
@@ -142,7 +141,6 @@ export const exploreActions = {
   updateChartTitle,
   createNewSlice,
   sliceUpdated,
-  updateDataMask,
 };
 
 export type ExploreActions = typeof exploreActions;

@@ -45,7 +45,6 @@ type SaveModalProps = {
   slice?: Record<string, any>;
   datasource?: Record<string, any>;
   dashboardId: '' | number | null;
-  ownState: object;
 };
 
 type ActionType = 'overwrite' | 'saveas';
@@ -134,7 +133,7 @@ class SaveModal extends React.Component<SaveModalProps, SaveModalState> {
     sliceParams.save_to_dashboard_id = this.state.saveToDashboardId;
     sliceParams.new_dashboard_name = this.state.newDashboardName;
 
-    this.props.actions.saveSlice(this.props.form_data, sliceParams, this.props.ownState).then((data: JsonObject) => {
+    this.props.actions.saveSlice(this.props.form_data, sliceParams).then((data: JsonObject) => {
       if (data.dashboard_id === null) {
         sessionStorage.removeItem(SK_DASHBOARD_ID);
       } else {
