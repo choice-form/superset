@@ -175,13 +175,6 @@ module.exports = {
     },
   ],
   rules: {
-    camelcase: [
-      'error',
-      {
-        allow: ['^UNSAFE_'],
-        properties: 'never',
-      },
-    ],
     'class-methods-use-this': 0,
     curly: 1,
     'func-names': 0,
@@ -241,5 +234,6 @@ module.exports = {
     'react/require-default-props': 0,
     'react/sort-comp': 0, // TODO: re-enable in separate PR
     'react/static-property-placement': 0, // disabled temporarily
+    camelcase: 0,
   },
 };
