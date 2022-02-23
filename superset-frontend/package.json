@@ -73,7 +73,6 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@react-icons/all-files": "^4.1.0",
-    "@superset-ui/legacy-preset-chart-deckgl": "^0.4.13",
     "@superset-ui/react-pivottable": "^0.12.12",
     "@vx/axis": "^0.0.198",
     "@vx/legend": "^0.0.198",
