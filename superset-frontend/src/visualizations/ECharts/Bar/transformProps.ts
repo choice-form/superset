@@ -96,8 +96,8 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     animation: true, // 开启动画
     // 标签的统一布局配置。
     labelLayout: {
-      // 在标签重叠的时候是否挪动标签位置以防止重叠
-      moveOverlap: 'shiftY', // 垂直方向依次位移，在垂直方向对齐时使用
+      // 是否隐藏重叠的标签
+      hideOverlap: true,
     },
     label: {
       // 在柱子上显示值
@@ -165,6 +165,9 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     xAxis: {
       type: 'category',
       name: xAxisLabel,
+      axisLabel: {
+        hideOverlap: true, // 是否隐藏重叠的标签
+      },
       data: orderBars ? xLabels.sort((x, y) => x.localeCompare(y)) : xLabels,
     },
     yAxis: {
