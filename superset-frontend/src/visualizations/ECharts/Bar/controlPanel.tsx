@@ -22,7 +22,6 @@ import { ControlPanelConfig, sections } from 'src/chartConntrols';
 import {
   barStacked,
   bottomMargin,
-  reduceXTicks,
   showBarValue,
   showLegendControl,
   xAxisLabel,
@@ -97,7 +96,7 @@ const config: ControlPanelConfig = {
     {
       label: t('X Axis'),
       expanded: true,
-      controlSetRows: [[xAxisLabel], [bottomMargin], [xTicksLayout], [reduceXTicks]],
+      controlSetRows: [[xAxisLabel], [bottomMargin], [xTicksLayout]],
     },
   ],
 };

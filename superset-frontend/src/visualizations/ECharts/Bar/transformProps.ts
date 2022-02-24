@@ -45,6 +45,7 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     showLegend, // 是否显示图例
     yAxisShowminmax,  // 是否显示Y轴的最大值最小值限制
     yAxisBounds, // Y轴的最小值和最大值数组
+    bottomMargin, // X轴距离下方的距离
   }: EchartsBarFormData = {
     ...DEFAULT_LEGEND_FORM_DATA,
     ...DEFAULT_PIE_FORM_DATA,
@@ -145,9 +146,15 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     max: yAxisBounds[1]
   } : {}
 
+  // 位置计算
+  const gridBottom = bottomMargin !== 'auto' ? {
+    bottom: parseInt(bottomMargin, 10)
+  } : {}
+
   const echartOptions: EChartsCoreOption = {
     grid: {
       ...defaultGrid,
+      ...gridBottom
     },
     tooltip: {
       ...defaultTooltip,

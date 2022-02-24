@@ -175,27 +175,10 @@ export const bottomMargin: CustomControlItem = {
     clearable: false,
     freeForm: true,
     label: t('Bottom Margin'),
-    choices: formatSelectOptions(['auto', 50, 75, 100, 125, 150, 200]),
+    choices: formatSelectOptions(['auto', 0, 10, 20,  30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 200]),
     default: 'auto',
     renderTrigger: true,
     description: t('Bottom margin, in pixels, allowing for more room for axis labels'),
-  },
-};
-
-export const reduceXTicks: CustomControlItem = {
-  name: 'reduce_x_ticks',
-  config: {
-    type: 'CheckboxControl',
-    label: t('Reduce X ticks'),
-    renderTrigger: true,
-    default: false,
-    description: t(
-      'Reduces the number of X-axis ticks to be rendered. ' +
-        'If true, the x-axis will not overflow and labels may be ' +
-        'missing. If false, a minimum width will be applied ' +
-        'to columns and the width may overflow into an ' +
-        'horizontal scroll.',
-    ),
   },
 };
 
