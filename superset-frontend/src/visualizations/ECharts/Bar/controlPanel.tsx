@@ -25,7 +25,7 @@ import {
   showBarValue,
   showLegendControl,
   xAxisLabel,
-  xTicksLayout,
+  xLabelLayout,
   yAxisBounds,
   yAxisLabel,
   yAxisShowMinmax,
@@ -96,7 +96,7 @@ const config: ControlPanelConfig = {
     {
       label: t('X Axis'),
       expanded: true,
-      controlSetRows: [[xAxisLabel], [bottomMargin], [xTicksLayout]],
+      controlSetRows: [[xAxisLabel], [bottomMargin], [xLabelLayout]],
     },
   ],
 };

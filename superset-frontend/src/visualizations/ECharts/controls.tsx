@@ -218,16 +218,16 @@ export const xAxisLabel: CustomControlItem = {
   },
 };
 
-export const xTicksLayout: CustomControlItem = {
-  name: 'x_ticks_layout',
+export const xLabelLayout: CustomControlItem = {
+  name: 'x_label_layout',
   config: {
     type: 'SelectControl',
-    label: t('X Tick Layout'),
-    choices: formatSelectOptions(['auto', 'flat', '45°', 'staggered']),
+    label: t('X Label Rotate'),
+    choices: formatSelectOptions(['auto', '-90°', '-45°', '0°', '45°', '90°']),
     default: 'auto',
     clearable: false,
     renderTrigger: true,
-    description: t('The way the ticks are laid out on the X-axis'),
+    description: t('Rotation degree of axis label, which is especially useful when there is no enough space for category axis.'),
   },
 };
 

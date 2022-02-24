@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { useCallback } from 'react';
+import React from 'react';
 import { BarChartTransformedProps } from './types';
 import Echart from '../Echart';
 import { EventHandlers } from '../types';
@@ -25,57 +25,60 @@ export default function EchartsPie({
   height,
   width,
   echartOptions,
-  setDataMask,
-  labelMap,
-  groupby,
+  // setDataMask,
+  // labelMap,
+  // groupby,
   selectedValues,
-  formData,
-}: BarChartTransformedProps) {
-  const handleChange = useCallback(
-    (values: string[]) => {
-      if (!formData.emitFilter) {
-        return;
-      }
+}: // formData,
+BarChartTransformedProps) {
+  // const handleChange = useCallback(
+  //   (values: string[]) => {
+  //     if (!formData.emitFilter) {
+  //       return;
+  //     }
+  //
+  //     const groupbyValues = values.map(value => labelMap[value]);
+  //
+  //     setDataMask({
+  //       extraFormData: {
+  //         filters:
+  //           values.length === 0
+  //             ? []
+  //             : groupby.map((col, idx) => {
+  //                 const val = groupbyValues.map(v => v[idx]);
+  //                 if (val === null || val === undefined)
+  //                   return {
+  //                     col,
+  //                     op: 'IS NULL',
+  //                   };
+  //                 return {
+  //                   col,
+  //                   op: 'IN',
+  //                   val: val as (string | number | boolean)[],
+  //                 };
+  //               }),
+  //       },
+  //       filterState: {
+  //         value: groupbyValues.length ? groupbyValues : null,
+  //         selectedValues: values.length ? values : null,
+  //       },
+  //     });
+  //   },
+  //   [groupby, labelMap, setDataMask, selectedValues],
+  // );
 
-      const groupbyValues = values.map(value => labelMap[value]);
-
-      setDataMask({
-        extraFormData: {
-          filters:
-            values.length === 0
-              ? []
-              : groupby.map((col, idx) => {
-                  const val = groupbyValues.map(v => v[idx]);
-                  if (val === null || val === undefined)
-                    return {
-                      col,
-                      op: 'IS NULL',
-                    };
-                  return {
-                    col,
-                    op: 'IN',
-                    val: val as (string | number | boolean)[],
-                  };
-                }),
-        },
-        filterState: {
-          value: groupbyValues.length ? groupbyValues : null,
-          selectedValues: values.length ? values : null,
-        },
-      });
-    },
-    [groupby, labelMap, setDataMask, selectedValues],
-  );
-
+  // 图表事件定义
   const eventHandlers: EventHandlers = {
     click: props => {
-      const { name } = props;
-      const values = Object.values(selectedValues);
-      if (values.includes(name)) {
-        handleChange(values.filter(v => v !== name));
-      } else {
-        handleChange([name]);
-      }
+      // 具体信息看打印日志，堆叠信息都有
+      // const { name } = props;
+      // console.log('props:', props)
+      // const values = Object.values(selectedValues);
+      // if (values.includes(name)) {
+      //   handleChange(values.filter(v => v !== name));
+      // } else {
+      //   handleChange([name]);
+      // }
     },
   };
 
