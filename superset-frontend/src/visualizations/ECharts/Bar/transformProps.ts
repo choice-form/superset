@@ -43,6 +43,8 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     showBarValue, // 是否将值显示在柱子上
     barStacked, // 柱子是否堆叠
     showLegend, // 是否显示图例
+    yAxisShowminmax,  // 是否显示Y轴的最大值最小值限制
+    yAxisBounds, // Y轴的最小值和最大值数组
   }: EchartsBarFormData = {
     ...DEFAULT_LEGEND_FORM_DATA,
     ...DEFAULT_PIE_FORM_DATA,
@@ -137,6 +139,11 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
 
   // Y轴的格式化方法
   const numberFormatter = getNumberFormatter(yAxisFormat);
+  // Y轴的最大值和最小值
+  const yMinMax = yAxisShowminmax && yAxisBounds.length === 2 ? {
+    min: yAxisBounds[0],
+    max: yAxisBounds[1]
+  } : {}
 
   const echartOptions: EChartsCoreOption = {
     grid: {
@@ -167,6 +174,7 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
         // 显示边线
         show: true,
       },
+      ...yMinMax,
       axisLabel: {
         formatter(val: number) {
           return numberFormatter(val);
