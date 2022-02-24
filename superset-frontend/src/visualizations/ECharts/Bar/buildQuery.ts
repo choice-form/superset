@@ -1,5 +1,3 @@
-import { LegendOrientation } from './types';
-
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -18,24 +16,14 @@ import { LegendOrientation } from './types';
  * specific language governing permissions and limitations
  * under the License.
  */
-export const defaultGrid = {
-  left: '3%',
-  right: '4%',
-  bottom: '3%',
-  containLabel: true,
-};
+import { buildQueryContext, QueryFormData } from 'src/core';
 
-export const defaultTooltip = {
-  confine: true,
-};
-
-export const defaultYAxis = {
-  scale: true,
-};
-
-export const defaultLegendPadding = {
-  [LegendOrientation.Top]: 20,
-  [LegendOrientation.Bottom]: 20,
-  [LegendOrientation.Left]: 170,
-  [LegendOrientation.Right]: 170,
-};
+export default function buildQuery(formData: QueryFormData) {
+  const { metric, sort_by_metric } = formData;
+  return buildQueryContext(formData, baseQueryObject => [
+    {
+      ...baseQueryObject,
+      ...(sort_by_metric && { orderby: [[metric, false]] }),
+    },
+  ]);
+}

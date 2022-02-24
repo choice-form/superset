@@ -44,6 +44,7 @@ import EchartsGaugeChartPlugin from '../ECharts/Gauge';
 import EchartsRadarChartPlugin from '../ECharts/Radar';
 import EchartsFunnelChartPlugin from '../ECharts/Funnel';
 import EchartsMixedTimeseriesChartPlugin from '../ECharts/MixedTimeseries';
+import EchartsBarChartPlugin from '../ECharts/Bar';
 
 import FilterBoxChartPlugin from '../FilterBox';
 import MapBoxChartPlugin from '../MapBoxChart';
@@ -67,18 +68,18 @@ import TreemapChartPlugin from '../D3/TreemapChart';
 import WorldMapChartPlugin from '../D3/WorldMapChart';
 import RoseChartPlugin from '../D3/RoseChart';
 
-import {
-  AreaChartPlugin,
-  BarChartPlugin,
-  BubbleChartPlugin,
-  BulletChartPlugin,
-  CompareChartPlugin,
-  DistBarChartPlugin,
-  DualLineChartPlugin,
-  LineChartPlugin,
-  LineMultiChartPlugin,
-  TimePivotChartPlugin,
-} from '../NVD3';
+// import {
+//   AreaChartPlugin,
+//   // BarChartPlugin,
+//   BubbleChartPlugin,
+//   BulletChartPlugin,
+//   CompareChartPlugin,
+//   DistBarChartPlugin,
+//   DualLineChartPlugin,
+//   LineChartPlugin,
+//   LineMultiChartPlugin,
+//   TimePivotChartPlugin,
+// } from '../NVD3';
 
 import HistogramChartPlugin from '../DataUI/HistogramChart';
 import EventFlowChartPlugin from '../DataUI/EventFlowChart';
@@ -97,19 +98,19 @@ export default class MainPreset extends Preset {
       name: 'Legacy charts',
       presets: [],
       plugins: [
-        new AreaChartPlugin().configure({ key: 'area' }),
-        new BarChartPlugin().configure({ key: 'bar' }),
+        // new AreaChartPlugin().configure({ key: 'area' }),
+        new EchartsBarChartPlugin().configure({ key: 'bar' }),
         new BigNumberChartPlugin().configure({ key: 'big_number' }),
         new BigNumberTotalChartPlugin().configure({ key: 'big_number_total' }),
         new EchartsBoxPlotChartPlugin().configure({ key: 'box_plot' }),
-        new BubbleChartPlugin().configure({ key: 'bubble' }),
-        new BulletChartPlugin().configure({ key: 'bullet' }),
+        // new BubbleChartPlugin().configure({ key: 'bubble' }),
+        // new BulletChartPlugin().configure({ key: 'bullet' }),
         new CalendarChartPlugin().configure({ key: 'cal_heatmap' }),
         new ChordChartPlugin().configure({ key: 'chord' }),
-        new CompareChartPlugin().configure({ key: 'compare' }),
+        // new CompareChartPlugin().configure({ key: 'compare' }),
         new CountryMapChartPlugin().configure({ key: 'country_map' }),
-        new DistBarChartPlugin().configure({ key: 'dist_bar' }),
-        new DualLineChartPlugin().configure({ key: 'dual_line' }),
+        // new DistBarChartPlugin().configure({ key: 'dist_bar' }),
+        // new DualLineChartPlugin().configure({ key: 'dual_line' }),
         new EventFlowChartPlugin().configure({ key: 'event_flow' }),
         new FilterBoxChartPlugin().configure({ key: 'filter_box' }),
         new EchartsFunnelChartPlugin().configure({ key: 'funnel' }),
@@ -127,8 +128,8 @@ export default class MainPreset extends Preset {
         new HeatmapChartPlugin().configure({ key: 'heatmap' }),
         new HistogramChartPlugin().configure({ key: 'histogram' }),
         new HorizonChartPlugin().configure({ key: 'horizon' }),
-        new LineChartPlugin().configure({ key: 'line' }),
-        new LineMultiChartPlugin().configure({ key: 'line_multi' }),
+        // new LineChartPlugin().configure({ key: 'line' }),
+        // new LineMultiChartPlugin().configure({ key: 'line_multi' }),
         new MapBoxChartPlugin().configure({ key: 'mapbox' }),
         new PairedTTestChartPlugin().configure({ key: 'paired_ttest' }),
         new ParallelCoordinatesChartPlugin().configure({ key: 'para' }),
@@ -141,7 +142,7 @@ export default class MainPreset extends Preset {
         new SankeyLoopChartPlugin().configure({ key: 'sankey_loop' }),
         new SunburstChartPlugin().configure({ key: 'sunburst' }),
         new TableChartPlugin().configure({ key: 'table' }),
-        new TimePivotChartPlugin().configure({ key: 'time_pivot' }),
+        // new TimePivotChartPlugin().configure({ key: 'time_pivot' }),
         new TimeTableChartPlugin().configure({ key: 'time_table' }),
         new TreemapChartPlugin().configure({ key: 'treemap' }),
         new WordCloudChartPlugin().configure({ key: 'word_cloud' }),

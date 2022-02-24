@@ -1,12 +1,18 @@
 import React from 'react';
 import { t } from 'src/core';
 
-import { ControlPanelsContainerProps, ControlSetRow, sharedControls } from 'src/chartConntrols';
+import {
+  ControlPanelsContainerProps,
+  ControlSetRow,
+  CustomControlItem,
+  formatSelectOptions,
+  sharedControls,
+} from 'src/chartConntrols';
 import { DEFAULT_LEGEND_FORM_DATA } from './types';
 
 const { legendMargin, legendOrientation, legendType, showLegend } = DEFAULT_LEGEND_FORM_DATA;
 
-const showLegendControl = {
+export const showLegendControl = {
   name: 'show_legend',
   config: {
     type: 'CheckboxControl',
@@ -150,3 +156,131 @@ const onlyTotalControl = {
 };
 
 export const showValueSection = [[showValueControl], [stackControl], [onlyTotalControl]];
+
+export const barStacked: CustomControlItem = {
+  name: 'bar_stacked',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Stacked Bars'),
+    renderTrigger: true,
+    default: false,
+    description: null,
+  },
+};
+
+export const bottomMargin: CustomControlItem = {
+  name: 'bottom_margin',
+  config: {
+    type: 'SelectControl',
+    clearable: false,
+    freeForm: true,
+    label: t('Bottom Margin'),
+    choices: formatSelectOptions(['auto', 50, 75, 100, 125, 150, 200]),
+    default: 'auto',
+    renderTrigger: true,
+    description: t('Bottom margin, in pixels, allowing for more room for axis labels'),
+  },
+};
+
+export const reduceXTicks: CustomControlItem = {
+  name: 'reduce_x_ticks',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Reduce X ticks'),
+    renderTrigger: true,
+    default: false,
+    description: t(
+      'Reduces the number of X-axis ticks to be rendered. ' +
+        'If true, the x-axis will not overflow and labels may be ' +
+        'missing. If false, a minimum width will be applied ' +
+        'to columns and the width may overflow into an ' +
+        'horizontal scroll.',
+    ),
+  },
+};
+
+export const showBarValue: CustomControlItem = {
+  name: 'show_bar_value',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Bar Values'),
+    default: false,
+    renderTrigger: true,
+    description: t('Show the value on top of the bar'),
+  },
+};
+
+export const showControls: CustomControlItem = {
+  name: 'show_controls',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Extra Controls'),
+    renderTrigger: true,
+    default: false,
+    description: t(
+      'Whether to show extra controls or not. Extra controls ' +
+        'include things like making mulitBar charts stacked ' +
+        'or side by side.',
+    ),
+  },
+};
+
+export const xAxisLabel: CustomControlItem = {
+  name: 'x_axis_label',
+  config: {
+    type: 'TextControl',
+    label: t('X Axis Label'),
+    renderTrigger: true,
+    default: '',
+  },
+};
+
+export const xTicksLayout: CustomControlItem = {
+  name: 'x_ticks_layout',
+  config: {
+    type: 'SelectControl',
+    label: t('X Tick Layout'),
+    choices: formatSelectOptions(['auto', 'flat', '45°', 'staggered']),
+    default: 'auto',
+    clearable: false,
+    renderTrigger: true,
+    description: t('The way the ticks are laid out on the X-axis'),
+  },
+};
+
+export const yAxisBounds: CustomControlItem = {
+  name: 'y_axis_bounds',
+  config: {
+    type: 'BoundsControl',
+    label: t('Y Axis Bounds'),
+    renderTrigger: true,
+    default: [null, null],
+    description: t(
+      'Bounds for the Y-axis. When left empty, the bounds are ' +
+        'dynamically defined based on the min/max of the data. Note that ' +
+        "this feature will only expand the axis range. It won't " +
+        "narrow the data's extent.",
+    ),
+  },
+};
+
+export const yAxisLabel: CustomControlItem = {
+  name: 'y_axis_label',
+  config: {
+    type: 'TextControl',
+    label: t('Y Axis Label'),
+    renderTrigger: true,
+    default: '',
+  },
+};
+
+export const yAxisShowMinmax: CustomControlItem = {
+  name: 'y_axis_showminmax',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Y bounds'),
+    renderTrigger: true,
+    default: false,
+    description: t('Whether to display the min and max values of the Y-axis'),
+  },
+};

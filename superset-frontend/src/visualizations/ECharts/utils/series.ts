@@ -203,6 +203,14 @@ export function sanitizeHtml(text: string): string {
   return format.encodeHTML(text);
 }
 
+export function formatLabel(input: any, verboseMap = {}) {
+  // The input for label may be a string or an array of string
+  // When using the time shift feature, the label contains a '---' in the array
+  const verboseLookup = (s: string) => verboseMap[s] || s;
+
+  return Array.isArray(input) && input.length > 0 ? input.map(l => verboseLookup(l)).join(', ') : verboseLookup(input);
+}
+
 // TODO: Better use other method to maintain this state
 export const currentSeries = {
   name: '',
