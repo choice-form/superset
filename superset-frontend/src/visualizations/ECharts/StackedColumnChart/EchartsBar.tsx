@@ -21,13 +21,13 @@ import { BarChartTransformedProps } from './types';
 import Echart from '../Echart';
 import { EventHandlers } from '../types';
 
-export default function EchartsPie({
+export default function EchartsBar({
   height,
   width,
   echartOptions,
   // setDataMask,
   // labelMap,
-  // groupby,
+  groupby,
   selectedValues,
 }: // formData,
 BarChartTransformedProps) {

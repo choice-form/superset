@@ -21,13 +21,10 @@ import buildQuery from './buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
-import example1 from './images/Bar1.png';
-import example2 from './images/Bar2.png';
-import example3 from './images/Bar3.png';
-import example4 from './images/Bar4.png';
+import example1 from './images/Bar.png';
 import { EchartsBarChartProps, EchartsBarFormData } from './types';
 
-export default class EchartsPieChartPlugin extends ChartPlugin<EchartsBarFormData, EchartsBarChartProps> {
+export default class EchartsStackedColumnChartPlugin extends ChartPlugin<EchartsBarFormData, EchartsBarChartProps> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library
@@ -50,8 +47,8 @@ export default class EchartsPieChartPlugin extends ChartPlugin<EchartsBarFormDat
         description: t(
           'Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.',
         ),
-        exampleGallery: [{ url: example1 }, { url: example2 }, { url: example3 }, { url: example4 }],
-        name: t('Bar Chart'),
+        exampleGallery: [{ url: example1 }],
+        name: t('Stacked Column Chart'),
         tags: [
           t('Aesthetic'),
           t('Categorical'),

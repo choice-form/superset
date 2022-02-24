@@ -651,11 +651,11 @@ class BaseViz:  # pylint: disable=too-many-public-methods
         security_manager.raise_for_access(viz=self)
 
 
-class BarViz(BaseViz):
+class StackedColumnViz(BaseViz):
     """A basic html table that is sortable and searchable"""
 
-    viz_type = 'bar'
-    verbose_name = _("Bar Chart")
+    viz_type = 'stacked_column'
+    verbose_name = _("Stacked Column Chart")
     is_timeseries = False
 
     def query_obj(self) -> QueryObjectDict:

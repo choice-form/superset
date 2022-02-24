@@ -44,7 +44,7 @@ import EchartsGaugeChartPlugin from '../ECharts/Gauge';
 import EchartsRadarChartPlugin from '../ECharts/Radar';
 import EchartsFunnelChartPlugin from '../ECharts/Funnel';
 import EchartsMixedTimeseriesChartPlugin from '../ECharts/MixedTimeseries';
-import EchartsBarChartPlugin from '../ECharts/Bar';
+import EchartsStackedColumnChartPlugin from '../ECharts/StackedColumnChart';
 
 import FilterBoxChartPlugin from '../FilterBox';
 import MapBoxChartPlugin from '../MapBoxChart';
@@ -99,7 +99,7 @@ export default class MainPreset extends Preset {
       presets: [],
       plugins: [
         // new AreaChartPlugin().configure({ key: 'area' }),
-        new EchartsBarChartPlugin().configure({ key: 'bar' }),
+        new EchartsStackedColumnChartPlugin().configure({ key: 'stacked_column' }),
         new BigNumberChartPlugin().configure({ key: 'big_number' }),
         new BigNumberTotalChartPlugin().configure({ key: 'big_number_total' }),
         new EchartsBoxPlotChartPlugin().configure({ key: 'box_plot' }),

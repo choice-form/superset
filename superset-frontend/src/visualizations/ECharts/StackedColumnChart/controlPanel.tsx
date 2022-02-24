@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t } from 'src/core';
-import { ControlPanelConfig, sections } from 'src/chartConntrols';
+import { ensureIsArray, t, validateNonEmpty } from 'src/core';
+import { ColumnMeta, ControlPanelConfig, sections, sharedControls } from 'src/chartConntrols';
 
 import {
   barStacked,
@@ -99,6 +99,19 @@ const config: ControlPanelConfig = {
       controlSetRows: [[xAxisLabel], [bottomMargin], [xLabelLayout]],
     },
   ],
+  controlOverrides: {
+    groupby: {
+      label: t('Series'),
+      validators: [validateNonEmpty],
+      mapStateToProps: (state, controlState) => {
+        console.log('state:', state, controlState);
+        const groupbyProps = sharedControls.groupby.mapStateToProps?.(state, controlState) || {};
+        groupbyProps.canDropValue = (column: ColumnMeta) =>
+          !ensureIsArray(state.controls?.columns?.value).includes(column.column_name);
+        return groupbyProps;
+      },
+    },
+  },
 };
 
 export default config;
