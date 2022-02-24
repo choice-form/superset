@@ -22,19 +22,25 @@
       "One or more parameters specified in the query are missing.": [
         "查询中指定的一个或多个参数丢失。"
       ],
-      "The hostname provided can't be resolved.": [""],
+      "The hostname provided can't be resolved.": ["提供的主机名无法解析。"],
       "The port is closed.": ["端口已被关闭。"],
       "The host might be down, and can't be reached on the provided port.": [
-        ""
+        "主机可能关闭，无法访问提供的端口。"
       ],
       "Superset encountered an error while running a command.": [
         "执行命令时发现错误。"
       ],
       "Superset encountered an unexpected error.": ["出现意外错误。"],
-      "The username provided when connecting to a database is not valid.": [""],
-      "The password provided when connecting to a database is not valid.": [""],
-      "Either the username or the password is wrong.": [""],
-      "Either the database is spelled incorrectly or does not exist.": [""],
+      "The username provided when connecting to a database is not valid.": [
+        "连接数据库时所提供的用户名无效。"
+      ],
+      "The password provided when connecting to a database is not valid.": [
+        "连接数据库时所提供的密码无效。"
+      ],
+      "Either the username or the password is wrong.": ["用户名或密码错误。"],
+      "Either the database is spelled incorrectly or does not exist.": [
+        "数据库拼写错误或不存在。"
+      ],
       "The schema was deleted or renamed in the database.": [
         "该模式已在数据库中删除或重命名。"
       ],
@@ -42,33 +48,51 @@
       "One or more parameters needed to configure a database are missing.": [
         "配置数据库时指定的一个或多个参数丢失。"
       ],
-      "The submitted payload has the incorrect format.": [""],
-      "The submitted payload has the incorrect schema.": [""],
-      "Results backend needed for asynchronous queries is not configured.": [
-        ""
+      "The submitted payload has the incorrect format.": [
+        "提交的载荷格式错误。"
       ],
-      "Database does not allow data manipulation.": [""],
+      "The submitted payload has the incorrect schema.": [
+        "提交的载荷模式错误。"
+      ],
+      "Results backend needed for asynchronous queries is not configured.": [
+        "未配置异步查询所需的结果后端。"
+      ],
+      "Database does not allow data manipulation.": ["数据库不允许数据操作。"],
       "The CTAS (create table as select) doesn't have a SELECT statement at the end. Please make sure your query has a SELECT as its last statement. Then, try running your query again.": [
         "CTA（create table as select）只能与最后一条语句为SELECT的查询一起运行。请确保查询的最后一个语句是SELECT。然后再次尝试运行查询。"
       ],
-      "CVAS (create view as select) query has more than one statement.": [""],
-      "CVAS (create view as select) query is not a SELECT statement.": [""],
-      "Query is too complex and takes too long to run.": [""],
-      "The database is currently running too many queries.": [""],
+      "CVAS (create view as select) query has more than one statement.": [
+        "CVAS (create view as select) 查询具有多个语句。"
+      ],
+      "CVAS (create view as select) query is not a SELECT statement.": [
+        "CVAS (create view as select) 查询不是SELECT语句。"
+      ],
+      "Query is too complex and takes too long to run.": [
+        "查询过于复杂，需要较长运行时间。"
+      ],
+      "The database is currently running too many queries.": [
+        "数据库目前正在执行大量查询任务。"
+      ],
       "One or more parameters specified in the query are malformatted.": [
         "查询中指定的一个或多个参数丢失。"
       ],
       "The object does not exist in the given database.": [
         "给定的数据库中没有目标对象。"
       ],
-      "The query has a syntax error.": [""],
-      "The results backend no longer has the data from the query.": [""],
-      "The query associated with the results was deleted.": [""],
+      "The query has a syntax error.": ["查询语法错误。"],
+      "The results backend no longer has the data from the query.": [
+        "结果后端不再具有来自查询的数据。"
+      ],
+      "The query associated with the results was deleted.": [
+        "删除了与结果关联的查询。"
+      ],
       "The results stored in the backend were stored in a different format, and no longer can be deserialized.": [
-        ""
+        "存储在后端的结果以不同的格式存储，并且不再可以进行反序列化。"
       ],
       "The port number is invalid.": ["端口号无效。"],
-      "Failed to start remote query on a worker.": [""],
+      "Failed to start remote query on a worker.": [
+        "无法在工作者上启动远程查询。"
+      ],
       "The database was deleted.": ["数据集已删除。"],
       "Invalid certificate": ["无效认证"],
       "Unsafe return type for function %(func)s: %(value_type)s": [
@@ -87,9 +111,9 @@
         "此数据库只允许使用 `SELECT` 语句。"
       ],
       "The query was killed after %(sqllab_timeout)s seconds. It might be too complex, or the database might be under heavy load.": [
-        ""
+        "查询在 %(sqllab_timeout)s 秒后会被终止。它可能完成或者数据库负载过大"
       ],
-      "Results backend is not configured.": [""],
+      "Results backend is not configured.": ["没有配置结果后端。"],
       "CTAS (create table as select) can only be run with a query where the last statement is a SELECT. Please make sure your query has a SELECT as its last statement. Then, try running your query again.": [
         "CTA（create table as select）只能与最后一条语句为SELECT的查询一起运行。请确保查询的最后一个语句是SELECT。然后再次尝试运行查询。"
       ],
@@ -603,7 +627,7 @@
       "Please check your query for syntax errors at or near \"%(syntax_error)s\". Then, try running your query again.": [
         ""
       ],
-      "Original value": [""],
+      "Original value": ["原值"],
       "Second": ["秒"],
       "5 second": ["5秒"],
       "30 second": ["30秒钟"],
@@ -685,26 +709,18 @@
         "我们似乎无法解析列 \"%(column_name)s\""
       ],
       "Home": ["主页"],
-      "Annotation Layers": ["注释层"],
+      "Plugins": ["插件"],
       "Manage": ["管理"],
+      "Import Dashboards": ["导入看板"],
       "Dashboards": ["看板"],
       "Charts": ["图表"],
-      "Plugins": ["插件"],
-      "CSS Templates": ["CSS 模板"],
-      "Row level security": ["行级安全"],
-      "Security": ["安全"],
-      "Import Dashboards": ["导入看板"],
-      "SQL Editor": ["SQL 编辑器"],
-      "SQL Lab": ["SQL 工具箱"],
-      "Saved Queries": ["已保存查询"],
-      "Query History": ["历史查询"],
       "Databases": ["数据库"],
       "Data": ["数据"],
       "Datasets": ["数据集"],
       "Upload a CSV": ["上传CSV文件"],
-      "Upload a Columnar file": ["上传列式数据库文件"],
       "Upload Excel": ["上传Excel"],
       "Action Log": ["操作日志"],
+      "Security": ["安全"],
       "Dashboard Emails": ["看板"],
       "Chart Email Schedules": ["图表电子邮件时间表"],
       "Alerts": ["警报"],
@@ -926,6 +942,7 @@
       "Start": ["开始"],
       "End": ["结束"],
       "JSON Metadata": ["JSON 元数据"],
+      "Annotation Layers": ["注释层"],
       "Show Annotation Layer": ["查看注释层"],
       "Add Annotation Layer": ["添加注释层"],
       "Edit Annotation Layer": ["编辑注释层"],
@@ -1012,6 +1029,7 @@
         "%(validator)s 无法检查您的查询。\n请重新检查您的查询。\n异常: %(ex)s"
       ],
       "%(user)s's profile": ["%(user)s 的信息"],
+      "CSS Templates": ["CSS 模板"],
       "Show CSS Template": ["查看CSS模板"],
       "Add CSS Template": ["新增CSS模板"],
       "Edit CSS Template": ["编辑CSS模板"],
@@ -1509,12 +1527,155 @@
       "Choose a dataset": ["选择数据源"],
       "Dataset": ["数据集"],
       "Instructions to add a dataset are available in the Superset tutorial.": [
-        ""
+        "Superset 教程中提供了添加数据集的说明。"
       ],
       "Choose chart type": ["选择图表类型"],
-      "Please select both a Dataset and a Chart type to proceed": [""],
+      "Please select both a Dataset and a Chart type to proceed": [
+        "请同时选择数据集和图表类型以继续。"
+      ],
       "Create new chart": ["创建新图表"],
       "An error occurred while loading the SQL": ["创建数据源时发生错误"],
+      "Certified by %s": ["认证人 %s"],
+      "description": ["描述"],
+      "bolt": ["螺栓"],
+      "Changing this control takes effect instantly": ["更改此控件立即生效"],
+      "Show info tooltip": [""],
+      "Advanced analytics": ["高级分析"],
+      "This section contains options that allow for advanced analytical post processing of query results": [
+        "本节包含允许对查询结果进行高级分析处理后的选项"
+      ],
+      "Rolling window": ["滚动窗口"],
+      "Rolling function": ["滚动函数"],
+      "None": ["空"],
+      "Defines a rolling window function to apply, works along with the [Periods] text box": [
+        "定义要应用的滚动窗口函数，与 [期限] 文本框一起使用"
+      ],
+      "Periods": ["周期"],
+      "Defines the size of the rolling window function, relative to the time granularity selected": [
+        "定义滚动窗口函数的大小，相对于所选的时间粒度"
+      ],
+      "Min periods": ["最小周期"],
+      "The minimum number of rolling periods required to show a value. For instance if you do a cumulative sum on 7 days you may want your \"Min Period\" to be 7, so that all data points shown are the total of 7 periods. This will hide the \"ramp up\" taking place over the first 7 periods": [
+        "显示值所需的滚动周期的最小值。例如，如果您想累积 7 天的总额，您可能希望您的“最小周期”为 7，以便显示的所有数据点都是 7 个区间的总和。这将隐藏掉前 7 个阶段的“加速”效果"
+      ],
+      "Time comparison": ["时间比较"],
+      "Time shift": ["时间偏移"],
+      "Overlay one or more timeseries from a relative time period. Expects relative time deltas in natural language (example:  24 hours, 7 days, 52 weeks, 365 days). Free text is supported.": [
+        "从相对时间段覆盖一个或多个时间序列。期望自然语言中的相对时间增量（例如：24小时、7天、56周、365天）"
+      ],
+      "Calculation type": ["计算类型"],
+      "Rule": ["规则"],
+      "Pandas resample rule": ["Pandas 重新采样的规则"],
+      "Pandas resample method": ["Pandas 重新采样的填充方法"],
+      "X Axis": ["X 轴"],
+      "X Axis Title": [""],
+      "X AXIS TITLE BOTTOM MARGIN": [""],
+      "Y Axis": ["Y 轴"],
+      "Y Axis Title": [""],
+      "Y AXIS TITLE MARGIN": [""],
+      "Y AXIS TITLE POSITION": [""],
+      "Enable forecast": [""],
+      "Enable forecasting": [""],
+      "How many periods into the future do we want to predict": [""],
+      "Should yearly seasonality be applied. An integer value will specify Fourier order of seasonality.": [
+        ""
+      ],
+      "Should weekly seasonality be applied. An integer value will specify Fourier order of seasonality.": [
+        ""
+      ],
+      "Should daily seasonality be applied. An integer value will specify Fourier order of seasonality.": [
+        ""
+      ],
+      "Time": ["时间"],
+      "Time related form attributes": ["时间相关的表单属性"],
+      "Chart ID": ["图表 ID"],
+      "The id of the active chart": ["活动图表的ID"],
+      "Cache Timeout (seconds)": ["缓存超时（秒）"],
+      "The number of seconds before expiring the cache": [
+        "终止缓存前的时间（秒）"
+      ],
+      "Time range endpoints": ["时间范围端点"],
+      "Time range endpoints (SIP-15)": ["时间范围端点 (SIP-15)"],
+      "Group by": ["分组"],
+      "One or many columns to group by. High cardinality groupings should include a series limit to limit the number of fetched and rendered series.": [
+        "高基数分组的一个或多个列到组应包括一个系列限制，以限制获取和渲染系列的数量。"
+      ],
+      "Series": ["序列"],
+      "Defines the grouping of entities. Each series is shown as a specific color on the chart and has a legend toggle": [
+        "定义实体的分组。每个序列在图表上显示为特定颜色，并有一个可切换的图例"
+      ],
+      "Entity": ["实体"],
+      "This defines the element to be plotted on the chart": [
+        "这定义了要在图表上绘制的元素"
+      ],
+      "One or many metrics to display": ["一个或多个指标显示"],
+      "Choose a metric for right axis": ["为右轴选择一个指标"],
+      "Sort by": ["排序"],
+      "Metric used to define how the top series are sorted if a series or row limit is present. If undefined reverts to the first metric (where appropriate).": [
+        "用于定义如果存在序列或行限制，如何对顶部序列进行排序的度量。如果未定义，则返回到第一个度量（在适当的情况下）。"
+      ],
+      "Metric used to calculate bubble size": [""],
+      "Metric assigned to the [X] axis": ["分配给 [X] 轴的指标"],
+      "Metric assigned to the [Y] axis": ["分配给 [Y] 轴的指标"],
+      "A metric to use for color": ["用于颜色的指标"],
+      "The time column for the visualization. Note that you can define arbitrary expression that return a DATETIME column in the table. Also note that the filter below is applied against this column or expression": [
+        "可视化的时间栏。注意，您可以定义返回表中的DATETIMLE列的任意表达式。还请注意下面的筛选器应用于该列或表达式"
+      ],
+      "Drop temporal column here": [""],
+      "One or many columns to group by. High cardinality groupings should include a sort by metric and series limit to limit the number of fetched and rendered series.": [
+        ""
+      ],
+      "The type of visualization to display": ["要显示的可视化类型"],
+      "Use this to define a static color for all circles": [
+        "使用此定义所有圆圈的静态颜色"
+      ],
+      "Defines the origin where time buckets start, accepts natural dates as in `now`, `sunday` or `1970-01-01`": [
+        "定义时间桶的起点，接受 `now`，`sunday` 或 `1970-01-01` 等格式的日期表达"
+      ],
+      "The time granularity for the visualization. Note that you can type and use simple natural language as in `10 seconds`, `1 day` or `56 weeks`": [
+        "可视化的时间粒度。请注意，您可以输入和使用简单的日期表达方式，如 `10 seconds`, `1 day` or `56 weeks`"
+      ],
+      "The time granularity for the visualization. This applies a date transformation to alter your time column and defines a new time granularity. The options here are defined on a per database engine basis in the Superset source code.": [
+        "可视化的时间粒度。这将应用日期转换来更改时间列，并定义新的时间粒度。这里的选项是在 Superset 源代码中的每个数据库引擎基础上定义的。"
+      ],
+      "No filter": ["无筛选"],
+      "The time range for the visualization. All relative times, e.g. \"Last month\", \"Last 7 days\", \"now\", etc. are evaluated on the server using the server's local time (sans timezone). All tooltips and placeholder times are expressed in UTC (sans timezone). The timestamps are then evaluated by the database using the engine's local timezone. Note one can explicitly set the timezone per the ISO 8601 format if specifying either the start and/or end time.": [
+        "可视化的时间范围。所有相关的时间，例如\"上个月\"、\"过去7天\"、\"现在\"等，都在服务器上使用服务器的本地时间（sans时区）进行计算。所有工具提示和占位符时间均以UTC（无时区）表示。然后，数据库使用引擎的本地时区来评估时间戳。注：如果指定开始时间和、或者结束时间，可以根据ISO 8601格式显式设置时区。"
+      ],
+      "Row limit": ["行限制"],
+      "Limits the number of rows that get displayed.": ["限制行的显示数量。"],
+      "Series limit": ["序列限制"],
+      "Y Axis Format": ["Y 轴格式化"],
+      "When `Calculation type` is set to \"Percentage change\", the Y Axis Format is forced to `.1%`": [
+        "当设置“周期比”时，y轴格式强制为“1%”"
+      ],
+      "The color scheme for rendering chart": ["绘制图表的配色方案"],
+      "Sort descending": ["降序"],
+      "If you wish to specify a different target column than the original column, it can be entered here": [
+        ""
+      ],
+      "D3 format": ["D3 格式"],
+      "Fraction digits": [""],
+      "Number of decimal digits to round numbers to": [""],
+      "Default minimal column width in pixels, actual width may still be larger than this if other columns don't need much space": [
+        ""
+      ],
+      "Text align": [""],
+      "Horizontal alignment": [""],
+      "Show cell bars": [""],
+      "Whether to display a bar chart background in table columns": [""],
+      "Align +/-": [""],
+      "Whether to align positive and negative values in cell bar chart at 0": [
+        ""
+      ],
+      "Color +/-": [""],
+      "Whether to colorize numeric values by if they are positive or negative": [
+        "是否根据数值是正值还是负值来为其着色"
+      ],
+      "Small number format": [""],
+      "D3 number format for numbers between -1.0 and 1.0, useful when you want to have different siginificant digits for small and large numbers": [
+        ""
+      ],
       "Click to see difference": ["点击查看差异"],
       "Altered": ["已更改"],
       "Chart changes": ["图表变化"],
@@ -1525,7 +1686,6 @@
       "Loaded from cache": ["从缓存中加载"],
       "Click to force-refresh": ["点击强制刷新"],
       "cached": ["已缓存"],
-      "Certified by %s": ["认证人 %s"],
       "Copy to clipboard": ["复制到剪贴板"],
       "Sorry, your browser does not support copying. Use Ctrl / Cmd + C!": [
         "抱歉，您的浏览器不支持复制操作。使用 Ctrl / Cmd + C！"
@@ -1641,7 +1801,6 @@
       "Type a value": ["输入值"],
       "Filter": ["筛选"],
       "Select or type a value": ["选择或输入值"],
-      "SQL query": ["SQL查询"],
       "Settings": ["设置"],
       "About": ["关于"],
       "Powered by Choiceform": [""],
@@ -1668,6 +1827,9 @@
       "Force refresh table list": ["强制刷新数据"],
       "Timezone selector": ["时区选择器"],
       "%s%s": ["%s%s"],
+      "No results were returned for this query. If you expected results to be returned, ensure any filters are configured properly and the datasource contains data for the selected time range.": [
+        ""
+      ],
       "There is not enough space for this component. Try decreasing its width, or increasing the destination width.": [
         "此组件没有足够的空间。请尝试减小其宽度，或增加目标宽度。"
       ],
@@ -1735,7 +1897,6 @@
       "[dashboard name]": ["[看板名称]"],
       "also copy (duplicate) charts": ["同时复制图表"],
       "Filter your charts": ["过滤您的图表"],
-      "Sort by": ["排序"],
       "Load a CSS template": ["加载一个 CSS 模板"],
       "Live CSS editor": ["即时 CSS 编辑器"],
       "Applied Filters (%d)": ["应用的条件 (%d)"],
@@ -1783,7 +1944,9 @@
         "认证此看板的个人或团体。"
       ],
       "Certification details": ["认证细节"],
-      "Any additional detail to show in the certification tooltip.": [""],
+      "Any additional detail to show in the certification tooltip.": [
+        "要在认证提示中显示的任何其他详细信息。"
+      ],
       "Advanced": ["进阶"],
       "JSON metadata": ["JSON 元数据"],
       "This dashboard is not published, it will not show up in the list of dashboards. Click here to publish this dashboard.": [
@@ -1842,7 +2005,6 @@
       "Rebuild": [""],
       "This filter doesn't exist in dashboard. It will not be applied.": [""],
       "Filter metadata changed in dashboard. It will not be applied.": [""],
-      "None": ["空"],
       "Create": ["创建"],
       "Create new filter set": ["创建过滤器集"],
       "Clear all": ["清理所有"],
@@ -1850,6 +2012,7 @@
       "(Removed)": ["(已删除)"],
       "Undo?": ["撤消？"],
       "[untitled]": ["[未命名]"],
+      "Filters configuration and scoping": ["过滤配置和范围"],
       "Select a column": ["选择列"],
       "Configuration": ["配置"],
       "Scoping": ["范围"],
@@ -1862,25 +2025,25 @@
       "Time column": ["时间列"],
       "Time grain": ["时间粒度（grain）"],
       "Group By": ["分组"],
-      "Group by": ["分组"],
       "Parent filter": ["父级过滤"],
       "Filter name": ["过滤值"],
       "Name is required": ["需要名称"],
       "Filter has default value": [""],
       "Refresh the default values": [""],
       "Fill all required fields to enable \"Default Value\"": [""],
-      "Filter is hierarchical": [""],
-      "Pre-filter available values": [""],
+      "Filter is hierarchical": ["分层过滤器"],
+      "Pre-filter available values": ["预筛选可用值"],
       "Optional time column if time range should apply to another column than the default time column": [
         ""
       ],
+      "Sort filter values": ["可被过滤"],
       "Sort ascending": ["升序排序"],
-      "Sort descending": ["降序"],
       "If a metric is specified, sorting will be done based on the metric value": [
         ""
       ],
       "Sort metric": ["排序指标"],
       "You have removed this filter.": ["您已删除此过滤条件。"],
+      "Restore Filter": ["还原过滤条件"],
       "${mainControlItem.config?.label}": [""],
       "Populate \"Default value\" to enable this control": [""],
       "Apply to all panels": ["应用于所有面板"],
@@ -1893,6 +2056,7 @@
       ],
       "Keep editing": ["继续编辑"],
       "Yes, cancel": ["是的，取消"],
+      "There are unsaved changes.": ["您有一些未保存的修改。"],
       "Are you sure you want to cancel?": ["您确定要取消吗？"],
       "Error loading chart datasources. Filters may not work correctly.": [""],
       "All filters": ["所有过滤"],
@@ -1951,13 +2115,16 @@
       "When using \"Autocomplete filters\", this can be used to improve performance of the query fetching the values. Use this option to apply a predicate (WHERE clause) to the query selecting the distinct values from the table. Typically the intent would be to limit the scan by applying a relative time filter on a partitioned or indexed time-related field.": [
         "当使用 \"自适配过滤条件\" 时，这可以用来提高获取查询数据的性能。使用此选项可将谓词（WHERE子句）应用于从表中进行选择不同值的查询。通常，这样做的目的是通过对分区或索引的相关时间字段配置相对应的过滤时间来限制扫描。"
       ],
+      "Extra data to specify table metadata. Currently supports metadata of the format: `{ \"certification\": { \"certified_by\": \"Data Platform Team\", \"details\": \"This table is the source of truth.\" }, \"warning_markdown\": \"This is a warning.\" }`.": [
+        "指定表元数据的额外内容。目前支持的认证数据格式为：`{ \"certification\": { \"certified_by\": \"Data Platform Team\", \"details\": \"This table is the source of truth.\" } }`."
+      ],
       "Cache timeout": ["缓存时间"],
       "The duration of time in seconds before the cache is invalidated": [
         "缓存失效前的持续时间（以秒为单位）"
       ],
       "Hours offset": ["小时偏移"],
       "The number of hours, negative or positive, to shift the time column. This can be used to move UTC time to local time.": [
-        ""
+        "转移时间列的小时数，负或正数。这可以用来将UTC时间移动到当地时间。"
       ],
       "Spatial": ["空间"],
       "virtual": ["虚拟信息"],
@@ -1976,7 +2143,6 @@
       "Click the lock to prevent further changes.": [
         "单击锁定以防止进一步更改。"
       ],
-      "D3 format": ["D3 格式"],
       "Warning": ["警告"],
       "Optional warning about use of this metric": [""],
       "Be careful.": ["小心。"],
@@ -2000,62 +2166,17 @@
         "对 [时间] 配置的引用，会将粒度考虑在内"
       ],
       "One or many controls to group by": ["一个或多个控件来分组"],
-      "One or many metrics to display": ["一个或多个指标显示"],
       "Visualization type": ["可视化类型"],
-      "The type of visualization to display": ["要显示的可视化类型"],
       "Fixed color": ["固定颜色"],
-      "Use this to define a static color for all circles": [
-        "使用此定义所有圆圈的静态颜色"
-      ],
       "Right axis metric": ["右轴指标"],
-      "Choose a metric for right axis": ["为右轴选择一个指标"],
       "Linear color scheme": ["线性颜色方案"],
       "Color metric": ["颜色指标"],
-      "A metric to use for color": ["用于颜色的指标"],
       "One or many controls to pivot as columns": ["一个或多个控件作为主列"],
-      "Defines the origin where time buckets start, accepts natural dates as in `now`, `sunday` or `1970-01-01`": [
-        "定义时间桶的起点，接受 `now`，`sunday` 或 `1970-01-01` 等格式的日期表达"
-      ],
-      "The time granularity for the visualization. Note that you can type and use simple natural language as in `10 seconds`, `1 day` or `56 weeks`": [
-        "可视化的时间粒度。请注意，您可以输入和使用简单的日期表达方式，如 `10 seconds`, `1 day` or `56 weeks`"
-      ],
-      "The time column for the visualization. Note that you can define arbitrary expression that return a DATETIME column in the table. Also note that the filter below is applied against this column or expression": [
-        "可视化的时间栏。注意，您可以定义返回表中的DATETIMLE列的任意表达式。还请注意下面的筛选器应用于该列或表达式"
-      ],
-      "The time granularity for the visualization. This applies a date transformation to alter your time column and defines a new time granularity. The options here are defined on a per database engine basis in the Superset source code.": [
-        "可视化的时间粒度。这将应用日期转换来更改时间列，并定义新的时间粒度。这里的选项是在 Superset 源代码中的每个数据库引擎基础上定义的。"
-      ],
-      "No filter": ["无筛选"],
-      "The time range for the visualization. All relative times, e.g. \"Last month\", \"Last 7 days\", \"now\", etc. are evaluated on the server using the server's local time (sans timezone). All tooltips and placeholder times are expressed in UTC (sans timezone). The timestamps are then evaluated by the database using the engine's local timezone. Note one can explicitly set the timezone per the ISO 8601 format if specifying either the start and/or end time.": [
-        "可视化的时间范围。所有相关的时间，例如\"上个月\"、\"过去7天\"、\"现在\"等，都在服务器上使用服务器的本地时间（sans时区）进行计算。所有工具提示和占位符时间均以UTC（无时区）表示。然后，数据库使用引擎的本地时区来评估时间戳。注：如果指定开始时间和、或者结束时间，可以根据ISO 8601格式显式设置时区。"
-      ],
-      "Row limit": ["行限制"],
-      "Series limit": ["序列限制"],
       "Limits the number of time series that get displayed. A sub query (or an extra phase where sub queries are not supported) is applied to limit the number of time series that get fetched and displayed. This feature is useful when grouping by high cardinality dimension(s).": [
         "限制显示的时间序列的数量。应用子查询（或者不支持子查询）来限制获取和显示的时间序列的数量。在高基数维度（S）分组时，此特性是有用的。"
       ],
       "Metric used to define the top series": ["用于定义顶级序列的指标"],
-      "Series": ["序列"],
-      "Defines the grouping of entities. Each series is shown as a specific color on the chart and has a legend toggle": [
-        "定义实体的分组。每个序列在图表上显示为特定颜色，并有一个可切换的图例"
-      ],
-      "Entity": ["实体"],
-      "This defines the element to be plotted on the chart": [
-        "这定义了要在图表上绘制的元素"
-      ],
-      "X Axis": ["X 轴"],
-      "Metric assigned to the [X] axis": ["分配给 [X] 轴的指标"],
-      "Y Axis": ["Y 轴"],
-      "Metric assigned to the [Y] axis": ["分配给 [Y] 轴的指标"],
       "Bubble size": ["气泡尺寸"],
-      "Y Axis Format": ["Y 轴格式化"],
-      "When `Calculation type` is set to \"Percentage change\", the Y Axis Format is forced to `.1%`": [
-        "当设置“周期比”时，y轴格式强制为“1%”"
-      ],
-      "The color scheme for rendering chart": ["绘制图表的配色方案"],
-      "description": ["描述"],
-      "bolt": ["螺栓"],
-      "Changing this control takes effect instantly": ["更改此控件立即生效"],
       "Customize": ["定制化配置"],
       "Height": ["高度"],
       "Width": ["宽度"],
@@ -2065,6 +2186,7 @@
       "Export to .CSV format": ["导出为 .csv 格式"],
       "%s - untitled": ["%s  - 无标题"],
       "Edit chart properties": ["编辑图表属性"],
+      "Controls labeled ": ["控件名称为 "],
       "Control labeled ": ["控件名称为 "],
       "Open Datasource tab": ["打开数据源tab"],
       "rows": ["行"],
@@ -2092,7 +2214,6 @@
       "Show Less...": ["隐藏部分…"],
       "New chart": ["新增图表"],
       "Edit properties": ["编辑属性"],
-      "Run in SQL Lab": ["在 SQL 工具箱中执行"],
       "You do not have permission to edit this chart": [
         "您没有编辑此图表的权限"
       ],
@@ -2148,9 +2269,12 @@
       "Edit annotation layer": ["添加注释层"],
       "Add annotation layer": ["添加注释层"],
       "Add an item": ["新增一行"],
+      "Remove item": ["删除该行"],
+      "Edit formatter": ["日期格式化"],
+      "Add new formatter": ["添加新的格式化程序"],
       "Add new color formatter": [""],
-      "green": [""],
-      "yellow": [""],
+      "green": ["绿色"],
+      "yellow": ["黄色", "红色"],
       "This value should be smaller than the right target value": [""],
       "This value should be greater than the left target value": [""],
       "Required": ["必填"],
@@ -2168,9 +2292,9 @@
       "APPLY": ["应用"],
       "Edit time range": ["编辑时间范围"],
       "Configure Advanced Time Range ": ["配置进阶时间范围 "],
-      "START (INCLUSIVE)": [""],
+      "START (INCLUSIVE)": ["开始（包含）"],
       "Start date included in time range": [""],
-      "END (EXCLUSIVE)": [""],
+      "END (EXCLUSIVE)": ["结束（不包含）"],
       "Configure Time Range: Previous...": ["配置时间范围：前一（Previous）.."],
       "Configure Time Range: Last...": ["配置时间范围：上一（Last）.."],
       "Configure custom time range": ["配置自定义时间范围"],
@@ -2244,10 +2368,11 @@
       "column": ["列"],
       "aggregate": ["合计"],
       "Time series columns": ["时间序列的列"],
-      "Popular": [""],
+      "Other": ["其他"],
+      "Popular": ["流行的"],
       "Advanced-Analytics": ["高级分析"],
-      "Recommended tags": [""],
-      "Category": [""],
+      "Recommended tags": ["推荐标签"],
+      "Category": ["分类"],
       "Tags": ["标签"],
       "Search all charts": ["搜索所有图表"],
       "No description available.": ["没有可用的描述。"],
@@ -2266,53 +2391,17 @@
       "Templated link, it's possible to include {{ metric }} or other values coming from the controls.": [
         "模板链接，可以包含{{度量}}或来自控件的其他值。"
       ],
-      "Time": ["时间"],
-      "Time related form attributes": ["时间相关的表单属性"],
       "Chart type": ["图表类型"],
-      "Chart ID": ["图表 ID"],
-      "The id of the active chart": ["活动图表的ID"],
-      "Cache Timeout (seconds)": ["缓存超时（秒）"],
-      "The number of seconds before expiring the cache": [
-        "终止缓存前的时间（秒）"
-      ],
       "URL parameters": ["URL 参数"],
       "Extra parameters for use in jinja templated queries": [
         "用于jinja模板化查询的额外参数"
       ],
-      "Time range endpoints": ["时间范围端点"],
-      "Time range endpoints (SIP-15)": ["时间范围端点 (SIP-15)"],
       "Annotations and layers": ["注释与注释层"],
       "Whether to sort descending or ascending": ["是降序还是升序排序"],
       "Contribution": ["贡献"],
       "Compute the contribution to the total": ["计算对总数的贡献值"],
-      "Advanced analytics": ["高级分析"],
-      "This section contains options that allow for advanced analytical post processing of query results": [
-        "本节包含允许对查询结果进行高级分析处理后的选项"
-      ],
-      "Rolling window": ["滚动窗口"],
-      "Rolling function": ["滚动函数"],
-      "Defines a rolling window function to apply, works along with the [Periods] text box": [
-        "定义要应用的滚动窗口函数，与 [期限] 文本框一起使用"
-      ],
-      "Periods": ["周期"],
-      "Defines the size of the rolling window function, relative to the time granularity selected": [
-        "定义滚动窗口函数的大小，相对于所选的时间粒度"
-      ],
-      "Min periods": ["最小周期"],
-      "The minimum number of rolling periods required to show a value. For instance if you do a cumulative sum on 7 days you may want your \"Min Period\" to be 7, so that all data points shown are the total of 7 periods. This will hide the \"ramp up\" taking place over the first 7 periods": [
-        "显示值所需的滚动周期的最小值。例如，如果您想累积 7 天的总额，您可能希望您的“最小周期”为 7，以便显示的所有数据点都是 7 个区间的总和。这将隐藏掉前 7 个阶段的“加速”效果"
-      ],
-      "Time comparison": ["时间比较"],
-      "Time shift": ["时间偏移"],
-      "Overlay one or more timeseries from a relative time period. Expects relative time deltas in natural language (example:  24 hours, 7 days, 52 weeks, 365 days). Free text is supported.": [
-        "从相对时间段覆盖一个或多个时间序列。期望自然语言中的相对时间增量（例如：24小时、7天、56周、365天）"
-      ],
-      "Calculation type": ["计算类型"],
       "Python functions": ["Python函数"],
-      "Rule": ["规则"],
-      "Pandas resample rule": ["Pandas 重新采样的规则"],
       "Method": ["方法"],
-      "Pandas resample method": ["Pandas 重新采样的填充方法"],
       "No columns": ["没有列"],
       "%s option": ["%s 选项"],
       "Chosen non-numeric column": [""],
@@ -2591,36 +2680,59 @@
       "Display Name": ["显示名称"],
       "Pick a nickname for this database to display as in Superset.": [""],
       "SSL Mode \"require\" will be used.": [""],
-      "Expose database in SQL Lab": [""],
-      "Allow this database to be queried in SQL Lab": [""],
-      "Allow creation of new tables based on queries": [""],
-      "Allow creation of new views based on queries": [""],
+      "Expose database in SQL Lab": ["在SQL Lab中公开数据库"],
+      "Allow this database to be queried in SQL Lab": [
+        "允许在SQL Lab中查询此数据库"
+      ],
+      "Allow creation of new tables based on queries": ["允许基于查询创建新表"],
+      "Allow creation of new views based on queries": [
+        "允许基于查询创建新视图"
+      ],
       "CTAS & CVAS SCHEMA": [""],
-      "Create or select schema...": [""],
+      "Create or select schema...": ["创建或选择模式..."],
       "Force all tables and views to be created in this schema when clicking CTAS or CVAS in SQL Lab.": [
         ""
       ],
       "Allow manipulation of the database using non-SELECT statements such as UPDATE, DELETE, CREATE, etc.": [
         ""
       ],
-      "Enable query cost estimation": [""],
-      "Allow this database to be explored": [""],
+      "Enable query cost estimation": ["启用查询成本估算"],
+      "Allow this database to be explored": ["允许浏览此数据库"],
       "When enabled, users are able to visualize SQL Lab results in Explore.": [
-        ""
+        "启用后，用户可以在Explore中可视化SQL Lab结果。"
       ],
       "Chart cache timeout": ["图表缓存超时"],
+      "Enter duration in seconds": ["以秒为单位输入持续时间"],
+      "Duration (in seconds) of the metadata caching timeout for schemas of this database. If left unset, the cache never expires.": [
+        "此数据库图表的缓存超时持续时间(以秒为单位)。超时为0表示缓存永远不会过期。注意，如果未定义，这默认为全局超时。"
+      ],
       "Table cache timeout": ["表缓存超时"],
+      "Duration (in seconds) of the metadata caching timeout for tables of this database. If left unset, the cache never expires. ": [
+        "此数据库图表的缓存超时持续时间(以秒为单位)。超时为0表示缓存永远不会过期。注意，如果未定义，这默认为全局超时。"
+      ],
       "Operate the database in asynchronous mode, meaning that the queries are executed on remote workers as opposed to on the web server itself. This assumes that you have a Celery worker setup as well as a results backend. Refer to the installation docs for more information.": [
         "以异步模式操作数据库，这意味着查询是在远程worker上执行的，而不是在web服务器本身上执行的, 这假设您有一个Celery worker setup以及一个执行后端。有关更多信息，请参考安装文档。"
       ],
-      "Cancel query on window unload event": [""],
+      "Cancel query on window unload event": ["取消窗口卸载事件的查询"],
       "Terminate running queries when browser window closed or navigated to another page. Available for Presto, Hive, MySQL, Postgres and Snowflake databases.": [
-        ""
+        "当浏览器窗口关闭或跳转到其他页面时，终止运行的查询。可用于Presto、Hive、MySQL、Postgres和Snowflake数据库。"
       ],
       "Secure extra": ["安全"],
+      "JSON string containing additional connection configuration. This is used to provide connection information for systems like Hive, Presto and BigQuery which do not conform to the username:password syntax normally used by SQLAlchemy.": [
+        "包含附加连接配置的JSON字符串。这用于为Hive、Presto和BigQuery等不符合SQLAlchemy通常使用的用户名：密码语法的系统提供连接信息。"
+      ],
       "Enter CA_BUNDLE": [""],
       "Optional CA_BUNDLE contents to validate HTTPS requests. Only available on certain database engines.": [
         "用于验证HTTPS请求的可选 CA_BUNDLE 内容。仅在某些数据库引擎上可用。"
+      ],
+      "A comma-separated list of schemas that CSVs are allowed to upload to.": [
+        "允许CSV上载到的模式的逗号分隔列表。"
+      ],
+      "Impersonate logged in user (Presto, Trino, Drill, Hive, and GSheets)": [
+        "模拟登录用户 (Presto, Trino, Drill & Hive)"
+      ],
+      "If Presto or Trino, all the queries in SQL Lab are going to be executed as the currently logged on user who must have permission to run them. If Hive and hive.server2.enable.doAs is enabled, will run the queries as service account, but impersonate the currently logged on user via hive.server2.proxy.user property.": [
+        "如果使用Presto，SQL 工具箱中的所有查询都将被当前登录的用户执行，并且这些用户必须拥有运行它们的权限。如果启用 Hive 和 hive.server2.enable.doAs，将作为服务帐户运行查询，但会根据 hive.server2.proxy.user 的属性伪装当前登录用户。"
       ],
       "Allow data upload": ["允许数据上传"],
       "If selected, please set the schemas allowed for data upload in Extra.": [
@@ -2628,32 +2740,40 @@
       ],
       "Metadata Parameters": ["元数据参数"],
       "The metadata_params object gets unpacked into the sqlalchemy.MetaData call.": [
-        ""
+        "metadata_params 对象被解压到sqlalchemy中"
       ],
       "Engine Parameters": ["引擎参数"],
-      "Version": ["版本"],
-      "Version number": [""],
-      "Specify the database version. This should be used with Presto in order to enable query cost estimation.": [
-        ""
+      "The engine_params object gets unpacked into the sqlalchemy.create_engine call.": [
+        "engine_params 对象被解包到sqlalchemy中。创建引擎调用。"
       ],
-      "Pick a name to help you identify this database.": [""],
+      "Version": ["版本"],
+      "Version number": ["版本号"],
+      "Specify the database version. This should be used with Presto in order to enable query cost estimation.": [
+        "指定数据库版本。这应该与Presto一起使用，以便启用查询成本估算。"
+      ],
+      "Pick a name to help you identify this database.": [
+        "选择一个名称以帮助您识别此数据库。"
+      ],
       "dialect+driver://username:password@host:port/database": [""],
       "Refer to the": ["参考"],
+      "for more information on how to structure your URI.": [
+        " 来查询有关如何构造URI的更多信息。"
+      ],
       "Test connection": ["测试连接"],
       "Please enter a SQLAlchemy URI to test": ["请输入要测试的SQLAlchemy URI"],
       "Sorry there was an error fetching database information: %s": [
         "抱歉，获取数据库信息时出错：%s"
       ],
-      "Want to add a new database?": [""],
+      "Want to add a new database?": ["是否添加新数据库？"],
       "Connect": ["连接"],
       "Edit database": ["编辑数据库"],
       "Connect a database": ["连接数据库"],
       "Click this link to switch to an alternate form that exposes only the required fields needed to connect this database.": [
-        ""
+        "单击此链接可切换到另一个表单，该表单仅公开连接此数据库所需的字段。"
       ],
-      "Finish": [""],
+      "Finish": ["完成"],
       "Click this link to switch to an alternate form that allows you to input the SQLAlchemy URL for this database manually.": [
-        ""
+        "单击此链接切换到另一个表单，该表单允许您手动输入此数据库的SQLAlchemy URL。"
       ],
       "Add dataset": ["添加数据集"],
       "An error occurred while fetching dataset related data": [
@@ -2745,6 +2865,7 @@
       "Recently edited charts, dashboards, and saved queries will appear here": [
         "最近编辑的图表、看板和保存的查询将显示在此处"
       ],
+      "SQL query": ["SQL查询"],
       "${tableName\n                      .split('')\n                      .slice(0, tableName.length - 1)\n                      .join('')}\n                    ": [
         ""
       ],
@@ -2755,14 +2876,391 @@
       "Share": ["分享"],
       "Ran %s": ["运行时间：%s"],
       "Recents": ["最近"],
+      "Correlation": ["相互关系"],
+      "Visualizes how a metric has changed over a time using a color scale and a calendar view. Gray values are used to indicate missing values and the linear color scheme is used to encode the magnitude of each day's value.": [
+        "使用色标和日历视图可视化度量在一段时间内的变化。灰度值用于指示缺失值，线性颜色方案用于编码每天值的大小。"
+      ],
+      "Business": ["商务"],
+      "Comparison": ["比较"],
+      "Intensity": ["强度"],
+      "Pattern": ["模型"],
+      "Report": ["报告"],
+      "Trend": ["趋势"],
+      "Flow": [""],
+      "Showcases the flow or link between categories using thickness of chords. The value and corresponding thickness can be different for each side.": [
+        ""
+      ],
+      "Relationships between community channels": ["社区渠道之间的关系"],
+      "Chord Diagram": ["和弦图"],
+      "Aesthetic": ["美感"],
+      "Circular": ["圆形"],
+      "Legacy": ["传统的"],
+      "Proportional": ["比例"],
+      "Relational": ["相关联的"],
+      "Visualizes how a single metric varies across a country's principal subdivisions (states, provinces, etc) on a chloropleth map. Each subdivision's value is elevated when you hover over the corresponding geographic boundary.": [
+        "在叶绿体地图上，可视化一个国家的主要分区（州、省等）中单个指标的变化。将鼠标悬停在相应的地理边界上时，每个细分的值都会升高。"
+      ],
+      "2D": [""],
+      "Geo": ["地域"],
+      "Range": ["范围"],
+      "Force-directed Graph": ["力引导布局"],
+      "Categorical": ["明确的"],
+      "Density": ["密度"],
+      "Single Metric": ["单指标"],
+      "Visualize a related metric across pairs of groups. Heatmaps excel at showcasing the correlation or strength between two groups. Color is used to emphasize the strength of the link between each pair of groups.": [
+        "在成对的组中可视化相关指标。热图擅长显示两组之间的相关性或强度。颜色用来强调每一对群体之间的联系强度。"
+      ],
+      "Sizes of vehicles": [""],
+      "Employment and education": [""],
+      "Predictive": ["预测型"],
+      "Distribution": ["分配"],
+      "Compares how a metric changes over time between different groups. Each group is mapped to a row and change over time is visualized bar lengths and color.": [
+        "比较不同组之间指标随时间的变化。每个组都映射到一行，并通过可视化的条长度和颜色显示随时间的变化。"
+      ],
+      "Horizon Chart": ["水平图"],
+      "Ranking": ["等级"],
+      "Plots the individual metrics for each row in the data vertically and links them together as a line. This chart is useful for comparing multiple metrics across all of the samples or rows in the data.": [
+        "垂直绘制数据中每一行的单独指标，并将它们链接为一条线。此图表可用于比较数据中所有样本或行的多个指标。"
+      ],
+      "Coordinates": ["平行坐标"],
+      "Directional": ["方向"],
+      "Options": ["%s 选项"],
+      "Ignore time": ["忽略时间"],
+      "Standard time series": ["标准时间序列"],
+      "Mean of values over specified period": ["指定时间段内的平均值"],
+      "Sum of values over specified period": ["指定时间段内的值之和"],
+      "Metric change in value from `since` to `until`": [""],
+      "Metric percent change in value from `since` to `until`": [""],
+      "Metric factor change from `since` to `until`": [""],
+      "Use the Advanced Analytics options below": ["使用下面的高级分析选项"],
+      "Settings for time series": ["时间序列的设置"],
+      "Chart Options": ["图表选项"],
+      "The maximum number of subdivisions of each group; lower values are pruned first": [
+        ""
+      ],
+      "Partition Threshold": ["分区阈值"],
+      "Partitions whose height to parent height proportions are below this value are pruned": [
+        ""
+      ],
+      "Log Scale": [""],
+      "Use a log scale": ["使用对数标尺"],
+      "Equal Date Sizes": ["日期大小相等"],
+      "Check to force date partitions to have the same height": [
+        "选中此项可强制日期分区具有相同的高度"
+      ],
+      "Rich Tooltip": ["丰富的工具提示"],
+      "The rich tooltip shows a list of all series for that point in time": [
+        "丰富的工具提示显示该时间点的所有系列的列表"
+      ],
+      "Part of a Whole": ["部分与整体"],
+      "Compare the same summarized metric across multiple groups.": [
+        "在多个组中比较相同的汇总指标。"
+      ],
+      "Partition Chart": ["分区图"],
+      "Used to summarize a set of data by grouping together multiple statistics along two axes. Examples: Sales numbers by region and month, tasks by status and assignee, active users by age and location.\n\n  This chart is being deprecated and we recommend checking out Pivot Table V2 instead!": [
+        "用于通过沿两个轴将多个统计信息组合在一起来汇总一组数据。示例：按地区和月份列出的销售数字，按状态和工作人员列出的任务，按年龄和地点列出的活跃用户。此图表已被弃用，我们建议改为查看Pivot表V2！"
+      ],
+      "Check if the Rose Chart should use segment area instead of segment radius for proportioning": [
+        ""
+      ],
+      "A polar coordinate chart where the circle is broken into wedges of equal angle, and the value represented by any wedge is illustrated by its area, rather than its radius or sweep angle.": [
+        "一种极坐标图，其中圆被分成等角的楔块，任何楔块所代表的值由其面积而不是半径或扫掠角来表示。"
+      ],
+      "Nightingale Rose Chart": ["南丁格尔玫瑰图"],
+      "Multi-Layers": ["多层次"],
+      "Visualizes the flow of different group's values through different stages of a system. New stages in the pipeline are visualized as nodes or layers. The thickness of the bars or edges represent the metric being visualized.": [
+        "将不同群体的价值观在系统不同阶段的流动可视化。管道中的新阶段被可视化为节点或层。条或边的厚度表示正在可视化的度量。"
+      ],
+      "Demographics": ["人口统计"],
+      "Survey Responses": ["调查反馈"],
+      "Sankey Diagram": ["桑基图"],
+      "Percentages": ["百分比"],
+      "Sankey Diagram with Loops": ["循环桑基图"],
+      "Uses circles to visualize the flow of data through different stages of a system. Hover over individual paths in the visualization to understand the stages a value took. Useful for multi-stage, multi-group visualizing funnels and pipelines.": [
+        "使用圆圈来可视化通过系统不同阶段的数据流。将鼠标悬停在可视化中的各个路径上，以了解值所处的阶段。用于多阶段、多组可视化漏斗和管道。"
+      ],
+      "Multi-Levels": ["多等级"],
+      "search.num_records": [""],
+      "page_size.show": [""],
+      "page_size.entries": [""],
+      "Totals": ["总数"],
+      "Group By, Metrics or Percentage Metrics must have a value": [
+        "分组依据、指标或百分比指标必须有一个值"
+      ],
+      "Query mode": ["查询模式"],
+      "Metrics for which percentage of total are to be displayed. Calculated from only data within the row limit.": [
+        "显示占总数百分比的指标。仅根据行限制内的数据计算。"
+      ],
+      "Order results by selected columns": ["按选定列排序结果"],
+      "Server pagination": ["服务器分页"],
+      "Enable server side pagination of results (experimental feature)": [
+        "启用服务器端结果分页（实验功能）"
+      ],
+      "Server Page Length": ["服务器页数"],
+      "Rows per page, 0 means no pagination": ["每页行数，0代表没有分页"],
+      "Whether to include the time granularity as defined in the time section": [
+        "是否包括时间部分中定义的时间粒度"
+      ],
+      "Show totals": ["显示总数"],
+      "Show total aggregations of selected metrics. Note that row limit does not apply to the result.": [
+        "显示选定指标的总聚合。请注意，行限制不适用于结果。"
+      ],
+      "D3 time format for datetime columns": ["datetime 列的D3时间格式"],
+      "Page length": [""],
+      "Whether to include a client-side search box": ["是否包含时间过滤器"],
+      "Whether to align background charts with both positive and negative values at 0": [
+        "是否将背景图表与0处的正值和负值对齐"
+      ],
+      "Further customize how to display each column": [
+        "进一步自定义如何显示每个列"
+      ],
+      "Conditional formatting": ["附加信息"],
+      "Apply conditional color formatting to numeric columns": [
+        "将条件颜色格式应用于数字列"
+      ],
+      "Shows the composition of a dataset by segmenting a given rectangle as smaller rectangles with areas proportional to their value or contribution to the whole. Those rectangles may also, in turn, be further segmented hierarchically.": [
+        "通过将给定矩形分割为面积与其值或对整体的贡献成比例的较小矩形，显示数据集的组成。反过来，这些矩形也可以进一步分层分割。"
+      ],
+      "A map of the world, that can indicate values in different countries.": [
+        "一张世界地图，可以显示不同国家的值。"
+      ],
+      "Multi-Dimensions": ["多维度"],
+      "Multi-Variables": ["多变量"],
+      "Scatter": ["分散的"],
+      "N/A": [""],
+      "Last available value seen on %s": [""],
+      "Not up to date": ["不是最新的"],
+      "No data after filtering or data is NULL for the latest time record": [
+        "过滤后没有数据，或者最新时间记录的数据为空"
+      ],
+      "Try applying different filters or ensuring your datasource has data": [
+        "尝试应用不同的过滤器或确保数据源中有数据"
+      ],
+      "Comparison Period Lag": [""],
+      "Based on granularity, number of time periods to compare against": [""],
+      "Suffix to apply after the percentage display": [
+        "百分比显示后要应用的后缀"
+      ],
+      "Whether to display the timestamp": ["是否显示时间戳"],
+      "Show Trend Line": ["显示趋势线"],
+      "Whether to display the trend line": ["是否显示趋势线"],
+      "Start y-axis at 0": [""],
+      "Start y-axis at zero. Uncheck to start y-axis at minimum value in the data.": [
+        ""
+      ],
+      "Fix the trend line to the full time range specified in case filtered results do not include the start or end dates": [
+        "将趋势线固定到指定的完整时间范围，以防筛选结果不包括开始或结束日期"
+      ],
+      "Sorry, there appears to be no data": ["抱歉，似乎没有数据"],
+      "Event definition": ["事件定义"],
+      "Order by entity id": ["按实体id排序"],
+      "Important! Select this if the table is not already sorted by entity id, else there is no guarantee that all events for each entity are returned.": [
+        ""
+      ],
+      "Minimum leaf node event count": ["最小叶子节点事件数"],
+      "Leaf nodes that represent fewer than this number of events will be initially hidden in the visualization": [
+        ""
+      ],
+      "Select any columns for metadata inspection": [
+        "选择任何列进行元数据检查"
+      ],
+      "Max Events": ["最大事件数"],
+      "The maximum number of events to return, equivalent to the number of rows": [
+        "要返回的最大事件数，相当于行数"
+      ],
+      "percentile (exclusive)": [""],
+      "Take your data points, and group them into \"bins\" to see where the densest areas of information lie": [
+        "把你的数据点分组到“箱子”里，看看最密集的信息区域在哪里"
+      ],
+      "Population age data": ["人口年龄数据"],
+      "Time-series Table": ["时间序列-表格"],
+      "Compare multiple time series charts (as sparklines) and related metrics quickly.": [
+        "快速比较多个时间序列图（如迷你图）和相关指标。"
+      ],
+      "Tabular": ["表格，列表"],
+      "Text": ["文本"],
+      "Show legend": ["显示图例"],
+      "Whether to display a legend for the chart": [""],
+      "Rich tooltip": [""],
+      "Shows a list of all series available at that point in time": [""],
+      "Whether to sort tooltip by the selected metric in descending order.": [
+        ""
+      ],
+      "Tooltip": ["工具提示"],
+      "Show series values on the chart": [""],
+      "Stack series": [""],
+      "Stack series on top of each other": [""],
+      "Only Total": ["总数"],
+      "Only show the total value on the stacked chart, and not show on the selected category": [
+        ""
+      ],
+      "Whether to sort results by the selected metric in descending order.": [
+        "是否按所选指标按降序对结果排序。"
+      ],
+      "What should be shown on the label?": ["标签上应该显示什么？"],
+      "Whether to display the labels.": ["是否显示标签。"],
+      "General": ["全体的"],
+      "Minimum value on the gauge axis": [""],
+      "Maximum value on the gauge axis": [""],
+      "Angle at which to start progress axis": [""],
+      "Angle at which to end progress axis": ["结束进度轴的角度"],
+      "Font size": ["字体大小"],
+      "Font size for axis labels, detail value and other text elements": [
+        "轴标签、细节值和其他文本元素的字体大小"
+      ],
+      "D3 format syntax: https://github.com/d3/d3-format": [
+        "D3 标准语法：https://github.com/d3/d3-format"
+      ],
+      "Additional text to add before or after the value, e.g. unit": [
+        "在值之前或之后添加的附加文本，例如单位"
+      ],
+      "Show pointer": ["显示指针"],
+      "Whether to show the pointer": ["是否显示指针"],
+      "Whether to animate the progress and the value or just display them": [
+        "是为进度和值设置动画，还是仅显示它们"
+      ],
+      "Show axis line ticks": ["显示轴线刻度"],
+      "Whether to show minor ticks on the axis": ["是否在轴上显示小刻度"],
+      "Show split lines": ["显示分割线"],
+      "Whether to show the split lines on the axis": [
+        "是否在坐标轴上显示分割线"
+      ],
+      "Number of split segments on the axis": ["轴上拆分的段数"],
+      "Progress": ["进度条"],
+      "Whether to show the progress of gauge chart": ["是否显示仪表图的进度"],
+      "Whether the progress bar overlaps when there are multiple groups of data": [
+        "当存在多组数据时，进度条是否重叠"
+      ],
+      "Style the ends of the progress bar with a round cap": [""],
+      "Comma-separated interval bounds, e.g. 2,4,5 for intervals 0-2, 2-4 and 4-5. Last number should match the value provided for MAX.": [
+        ""
+      ],
+      "Comma-separated color picks for the intervals, e.g. 1,2,4. Integers denote colors from the chosen color scheme and are 1-indexed. Length must be matching that of interval bounds.": [
+        ""
+      ],
+      "Name of the source nodes": ["源节点的名称"],
+      "Name of the target nodes": ["目标节点的名称"],
+      "The category of source nodes used to assign colors. If a node is associated with more than one category, only the first will be used.": [
+        ""
+      ],
+      "Target category": ["目标分类"],
+      "Category of target nodes": ["目标节点的分类"],
+      "Layout": ["布局"],
+      "Graph layout": ["图形布局"],
+      "Layout type of graph": ["图形的布局类型"],
+      "Edge symbols": ["边缘符号"],
+      "Symbol of two ends of edge line": ["边缘线两端的符号"],
+      "None -> None": [""],
+      "None -> Arrow": [""],
+      "Circle -> Arrow": [""],
+      "Circle -> Circle": [""],
+      "Enable node dragging": ["启用节点拖动"],
+      "Whether to enable node dragging in force layout mode.": [
+        "是否在强制布局模式下启用节点拖动。"
+      ],
+      "Enable graph roaming": ["启用图形漫游"],
+      "Scale only": [""],
+      "Move only": ["只移动"],
+      "Scale and Move": [""],
+      "Whether to enable changing graph position and scaling.": [
+        "是否启用更改图形位置和缩放。"
+      ],
+      "Multiple": [""],
+      "Label threshold": [""],
+      "Minimum value for label to be displayed on graph.": [""],
+      "Median node size, the largest node will be 4 times larger than the smallest": [
+        ""
+      ],
+      "Median edge width, the thickest edge will be 4 times thicker than the thinnest.": [
+        ""
+      ],
+      "Edge length": [""],
+      "Edge length between nodes": [""],
+      "Gravity": [""],
+      "Strength to pull the graph toward center": [""],
+      "Repulsion strength between nodes": [""],
+      "Friction between nodes": [""],
+      "Series chart type (line, bar etc)": [""],
+      "Draw area under curves. Only applicable for line types.": [""],
+      "Whether to display the numerical values within the cells": [""],
+      "Opacity of area chart.": [""],
+      "Draw a marker on data points. Only applicable for line types.": [""],
+      "Marker size": [""],
+      "Size of marker. Also applies to forecast observations.": [""],
+      "Primary or secondary y-axis": [""],
+      "Data Zoom": [""],
+      "Enable data zooming controls": [""],
+      "Rotate x axis label": [""],
+      "Input field supports custom rotation. e.g. 30 for 30°": [""],
+      "Minor Split Line": [""],
+      "Draw split lines for minor y-axis ticks": [""],
+      "Truncate Y Axis": [""],
+      "Truncate Y Axis. Can be overridden by specifying a min or max bound.": [
+        ""
+      ],
+      "Y Axis Bounds": [""],
+      "Bounds for the Y-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
+        ""
+      ],
+      "Primary y-axis format": [""],
+      "Logarithmic y-axis": [""],
+      "Logarithmic scale on primary y-axis": [""],
+      "Secondary y-axis format": [""],
+      "Secondary y-axis title": [""],
+      "Logarithmic scale on secondary y-axis": [""],
+      "Enable drill down": [""],
+      "Columns as hierarchy.": [""],
+      "Minimum threshold in percentage points for showing labels.": [""],
+      "Put labels outside": [""],
+      "Put the labels outside of the pie?": [""],
+      "Label Line": [""],
+      "Draw line from Pie to label when labels outside?": [""],
+      "Outer Radius": [""],
+      "Do you want a donut or a pie?": [""],
+      "Inner Radius": [""],
+      "Inner radius of donut hole": [""],
+      "The maximum value of metrics. It is an optional configuration": [""],
+      "Radar": [""],
+      "Further customize how to display each metric": [""],
+      "Circle radar shape": [""],
+      "Radar render type, whether to display 'circle' shape.": [""],
+      "Area Chart": ["面积图"],
+      "Area chart opacity": [""],
+      "Opacity of Area Chart. Also applies to confidence band.": [""],
+      "Marker Size": [""],
+      "It’s not recommended to truncate y-axis in Bar chart.": [""],
+      "Defines whether the step should appear at the beginning, middle or end between two data points": [
+        ""
+      ],
+      "Parent": [""],
+      "Name of the column containing the id of the parent node": [""],
+      "Optional name of the data column.": [""],
+      "Root node id": [""],
+      "Id of root node of the tree.": [""],
+      "Metric for node values": [""],
+      "Tree layout": [""],
+      "Orthogonal": [""],
+      "Layout type of tree": [""],
+      "Left to Right": [""],
+      "Right to Left": [""],
+      "Top to Bottom": [""],
+      "Bottom to Top": [""],
+      "Node label position": [""],
+      "Position of intermidiate node label on tree": [""],
+      "Child label position": [""],
+      "Position of child node label on tree": [""],
+      "Emphasis": [""],
+      "ancestor": [""],
+      "Which relatives to highlight on hover": [""],
+      "Empty circle": [""],
+      "Triangle": [""],
+      "Diamond": [""],
+      "Size of edge symbols": [""],
+      "Show Upper Labels": [""],
+      "Show labels when the node has children.": [""],
       "Select start and end date": ["选择开始和结束时间"],
       "Type or Select [%s]": ["键入或选择 [%s]"],
       "No results found": ["未找到结果"],
-      "Tools": ["工具"],
-      "Filter box": ["过滤器"],
-      "Chart component that lets you add a custom filter UI in your dashboard. When added to dashboard, a filter box lets users specify specific values or ranges to filter charts by. The charts that each filter box is applied to can be fine tuned as well in the dashboard view.\n\n    Note that this plugin is being replaced with the new Filters feature that lives in the dashboard view itself. It's easier to use and has more capabilities!": [
-        ""
-      ],
       "Show Druid granularity dropdown": ["显示Druid时间粒度下拉列表"],
       "Check to include Druid granularity dropdown": [
         "检查包含Druid时间粒度下拉列表"
@@ -2784,17 +3282,101 @@
       "These filters apply to the values available in the dropdowns": [
         "这些过滤器应用于下拉列表中的可用值"
       ],
-      "Time-series Table": ["时间序列-表格"],
-      "Compare multiple time series charts (as sparklines) and related metrics quickly.": [
+      "Tools": ["工具"],
+      "Filter box": ["过滤器"],
+      "Chart component that lets you add a custom filter UI in your dashboard. When added to dashboard, a filter box lets users specify specific values or ranges to filter charts by. The charts that each filter box is applied to can be fine tuned as well in the dashboard view.\n\n    Note that this plugin is being replaced with the new Filters feature that lives in the dashboard view itself. It's easier to use and has more capabilities!": [
+        "图表组件，用于在仪表板中添加自定义过滤器UI。当添加到仪表板时，过滤框允许用户指定特定的值或范围来过滤图表。每个过滤器框应用到的图表也可以在仪表板视图中进行微调。请注意，这个插件正在被仪表板视图本身的新过滤器功能所取代。它更易于使用，功能更强！"
+      ],
+      "Light mode": ["明亮模式"],
+      "Dark mode": ["黑暗模式"],
+      "MapBox": ["箱图"],
+      "Transformable": ["可变形的"],
+      "Show Markers": [""],
+      "Show data points as circle markers on the lines": [""],
+      "Left Margin": [""],
+      "Left margin, in pixels, allowing for more room for axis labels": [""],
+      "Y bounds": [""],
+      "Whether to display the min and max values of the Y-axis": [""],
+      "Y 2 bounds": [""],
+      "Line Style": [""],
+      "Line interpolation as defined by d3.js": [""],
+      "Whether to display the time range interactive selector": [""],
+      "Whether to display the legend (toggles)": [""],
+      "Extra Controls": [""],
+      "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         ""
       ],
-      "Multi-Variables": [""],
-      "Comparison": ["比较"],
-      "Legacy": [""],
-      "Percentages": ["百分比"],
-      "Tabular": [""],
-      "Text": ["文本"],
-      "Trend": ["趋势"]
+      "X Axis Label": [""],
+      "Bottom Margin": [""],
+      "Bottom margin, in pixels, allowing for more room for axis labels": [""],
+      "X Tick Layout": [""],
+      "The way the ticks are laid out on the X-axis": [""],
+      "Y Log Scale": [""],
+      "Use a log scale for the Y-axis": [""],
+      "Y Axis 2 Bounds": [""],
+      "X bounds": [""],
+      "Whether to display the min and max values of the X-axis": [""],
+      "Show the value on top of the bar": [""],
+      "Stacked Bars": [""],
+      "Reduce X ticks": [""],
+      "Reduces the number of X-axis ticks to be rendered. If true, the x-axis will not overflow and labels may be missing. If false, a minimum width will be applied to columns and the width may overflow into an horizontal scroll.": [
+        ""
+      ],
+      "Y Axis Label": [""],
+      "You cannot use 45° tick layout along with the time range filter": [""],
+      "Evolution": ["演化"],
+      "A time series chart that visualizes how a related metric from multiple groups vary over time. Each group is visualized using a different color.": [
+        "一个时间序列图，显示多个组的相关指标随时间的变化。每个组都使用不同的颜色进行可视化。"
+      ],
+      "Stacked style": [""],
+      "Video game consoles": [""],
+      "Continuous": ["持续的"],
+      "Line": ["折线图"],
+      "nvd3": [""],
+      "Deprecated": ["反对"],
+      "Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.": [
+        "使用条形图可视化度量值如何随时间变化。按列添加分组，以可视化组级别的指标以及它们随时间的变化。"
+      ],
+      "Time-series Bar Chart": ["时间序列 - 柱状图"],
+      "Vertical": ["虚拟的"],
+      "Box Plot": ["盒须图"],
+      "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
+        "在单个图表（X轴、Y轴和气泡大小）中可视化跨越三维数据的度量。同一组中的气泡可以使用气泡颜色来显示。"
+      ],
+      "KPI": [""],
+      "Showcases the progress of a single metric against a given target. The higher the fill, the closer the metric is to the target.": [
+        ""
+      ],
+      "Visualizes many different time-series objects in a single chart. This chart is being deprecated and we recommend using the Time-series Chart instead.": [
+        "在一个图表中可视化许多不同的时间序列对象。此图表已被弃用，建议改用时间序列图。"
+      ],
+      "Time-series Percent Change": ["时间序列 - 百分比变化"],
+      "Compares metrics from different categories using bars. Bar lengths are used to indicate the magnitude of each value and color is used to differentiate groups.": [
+        "使用条形图比较不同类别的指标。条形长度用于指示每个值的大小，颜色用于区分组。"
+      ],
+      "Bar Chart": ["柱状图"],
+      "Additive": ["增加条件"],
+      "Discrete": ["不连续的"],
+      "Visualizes 2 metrics as line plots using the same x-axis. This chart is useful for comparing metrics across the same time range.": [
+        "使用相同的x轴将两个指标可视化为直线图。此图表有助于比较同一时间范围内的指标。"
+      ],
+      "Dual Line Chart": ["双折线图"],
+      "Classic chart that visualizes how metrics change over time.": [
+        "经典图表可视化度量如何随时间变化。"
+      ],
+      "Battery level over time": [""],
+      "Line Chart": ["折线图"],
+      "Visualize two different time series using the same x-axis time range. This chart is being deprecated and we recommend using the Mixed Timeseries Chart instead!": [
+        "使用相同的x轴时间范围可视化两个不同的时间序列。此图表已被弃用，建议改用混合时间序列图表！"
+      ],
+      "Multiple Line Charts": ["时间序列-多线图"],
+      "Pie Chart": ["饼图"],
+      "Time-series Period Pivot": ["时间序列 - 周期透视表"],
+      "Table that visualizes paired t-tests, which are used to understand statistical differences between groups.": [
+        "表中显示了配对t检验，用于了解各组之间的统计差异。"
+      ],
+      "Paired t-test Table": ["双样本t检验表"],
+      "Statistical": ["统计的"]
     }
   }
 }
