@@ -134,16 +134,8 @@ class BaseViz:  # pylint: disable=too-many-public-methods
         self.query = ""
         self.token = utils.get_form_data_token(form_data)
 
-        # 处理groupby可能为非数组的情况
-        gb: List[str] or str = self.form_data.get("groupby")
-        if not gb:
-            raise QueryObjectValidationError(_("Pick at least one field for [Series]"))
-        elif isinstance(gb, list):
-            self.groupby: List[str] = gb
-        else:
-            self.groupby: List[str] = [gb]
-
-        # self.groupby: List[str] = self.form_data.get("groupby") or []
+        # 这里是基类，不要再这里处理数据
+        self.groupby: List[str] = self.form_data.get("groupby") or []
         self.time_shift = timedelta()
 
         self.status: Optional[str] = None
@@ -1712,13 +1704,13 @@ class NVD3DualLineViz(NVD3Viz):
         return chart_data
 
 
-# class NVD3TimeSeriesBarViz(NVD3TimeSeriesViz):
-#
-#     """A bar chart where the x axis is time"""
-#
-#     viz_type = "bar"
-#     sort_series = True
-#     verbose_name = _("Time Series - Bar Chart")
+class NVD3TimeSeriesBarViz(NVD3TimeSeriesViz):
+
+    """A bar chart where the x axis is time"""
+
+    viz_type = "bar"
+    sort_series = True
+    verbose_name = _("Bar Chart")
 
 
 class NVD3TimePivotViz(NVD3TimeSeriesViz):
