@@ -129,7 +129,7 @@
       "Columns missing in datasource: %(invalid_columns)s": [
         "数据源中缺少列：%(invalid_columns)s"
       ],
-      "Stacked Column Chart": [""],
+      "Stacked Column Chart": ["堆叠柱状图"],
       "Can't have overlap between Series and Breakdowns": [
         "Series 和 Breakdown 之间不能有重叠"
       ],
@@ -3703,7 +3703,7 @@
       "Sort Bars": ["柱排序"],
       "Sort bars by x labels.": ["按x标签对柱进行排序。"],
       "Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.": [
-        "使用条形图可视化度量值如何随时间变化。按列添加分组，以可视化组级别的指标以及它们随时间的变化。"
+        "使用堆叠柱状图可视化度量值如何随时间变化。按列添加分组，以可视化组级别的指标以及它们随时间的变化。"
       ],
       "Contribution Mode": ["贡献模式"],
       "Area Chart": ["面积图"],
