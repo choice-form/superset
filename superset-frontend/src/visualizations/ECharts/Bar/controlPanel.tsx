@@ -54,9 +54,13 @@ const config: ControlPanelConfig = {
   controlOverrides: {
     metrics: {
       multi: false, // 柱状图只能有一个指标
+      description: '',
     },
     groupby: {
       validators: [validateNonEmpty], // 非空校验
+    },
+    color_scheme: {
+      default: 'echarts5Colors', // 默认使用echarts5配色
     },
   },
 };

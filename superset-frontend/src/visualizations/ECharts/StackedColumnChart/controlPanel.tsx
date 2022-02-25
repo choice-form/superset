@@ -107,6 +107,9 @@ const config: ControlPanelConfig = {
       description: '',
       validators: [validateNonEmpty],
     },
+    color_scheme: {
+      default: 'echarts5Colors', // 默认使用echarts5配色
+    },
   },
 };
 
