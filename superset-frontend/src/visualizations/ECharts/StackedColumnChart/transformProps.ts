@@ -123,6 +123,8 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     label: {
       // 在柱子上显示值
       show: showBarValue,
+      // 堆叠的时候，显示在内部，组显示的时候，显示在头部
+      position: barStacked ? 'inside' : 'top',
       // 格式化值
       formatter({ value }: any) {
         if (typeof value === 'number') {

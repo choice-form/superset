@@ -22,6 +22,7 @@ import controlPanel from './controlPanel';
 import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
 import example1 from './images/Bar.png';
+import example2 from './images/Bar2.png';
 import { EchartsBarChartProps, EchartsBarFormData } from './types';
 
 export default class EchartsStackedColumnChartPlugin extends ChartPlugin<EchartsBarFormData, EchartsBarChartProps> {
@@ -47,7 +48,7 @@ export default class EchartsStackedColumnChartPlugin extends ChartPlugin<Echarts
         description: t(
           'Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.',
         ),
-        exampleGallery: [{ url: example1 }],
+        exampleGallery: [{ url: example1 }, { url: example2 }],
         name: t('Stacked Column Chart'),
         tags: [
           t('Aesthetic'),
