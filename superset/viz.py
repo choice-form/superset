@@ -134,7 +134,16 @@ class BaseViz:  # pylint: disable=too-many-public-methods
         self.query = ""
         self.token = utils.get_form_data_token(form_data)
 
-        self.groupby: List[str] = self.form_data.get("groupby") or []
+        # 处理groupby可能为非数组的情况
+        gb: List[str] or str = self.form_data.get("groupby")
+        if not gb:
+            raise QueryObjectValidationError(_("Pick at least one field for [Series]"))
+        elif isinstance(gb, list):
+            self.groupby: List[str] = gb
+        else:
+            self.groupby: List[str] = [gb]
+
+        # self.groupby: List[str] = self.form_data.get("groupby") or []
         self.time_shift = timedelta()
 
         self.status: Optional[str] = None
@@ -659,8 +668,17 @@ class StackedColumnViz(BaseViz):
     is_timeseries = False
 
     def query_obj(self) -> QueryObjectDict:
+        # 处理groupby可能为非数组的情况
+        gb: List[str] or str = self.form_data.get("groupby")
+        if not gb:
+            raise QueryObjectValidationError(_("Pick at least one field for [Series]"))
+        elif isinstance(gb, list):
+            self.groupby: List[str] = gb
+        else:
+            self.groupby: List[str] = [gb]
+
         query_obj = super().query_obj()
-        if len(query_obj["groupby"]) < len(self.form_data.get("groupby") or []) + len(
+        if len(query_obj["groupby"]) < len(self.groupby) + len(
             self.form_data.get("columns") or []
         ):
             raise QueryObjectValidationError(
@@ -668,8 +686,6 @@ class StackedColumnViz(BaseViz):
             )
         if not self.form_data.get("metrics"):
             raise QueryObjectValidationError(_("Pick at least one metric"))
-        if not self.form_data.get("groupby"):
-            raise QueryObjectValidationError(_("Pick at least one field for [Series]"))
 
         sort_by = self.form_data.get("timeseries_limit_metric")
         if sort_by:

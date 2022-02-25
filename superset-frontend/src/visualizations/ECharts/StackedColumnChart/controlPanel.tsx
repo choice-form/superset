@@ -102,6 +102,8 @@ const config: ControlPanelConfig = {
   controlOverrides: {
     groupby: {
       label: t('Series'),
+      multi: false,
+      description: '',
       validators: [validateNonEmpty],
       mapStateToProps: (state, controlState) => {
         console.log('state:', state, controlState);
