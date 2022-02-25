@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ensureIsArray, t, validateNonEmpty } from 'src/core';
-import { ColumnMeta, ControlPanelConfig, sections, sharedControls } from 'src/chartConntrols';
+import { t, validateNonEmpty } from 'src/core';
+import { ControlPanelConfig, sections } from 'src/chartConntrols';
 
 import {
   barStacked,
@@ -87,11 +87,12 @@ const config: ControlPanelConfig = {
             },
           },
         ],
-        ['y_axis_format'],
-        [yAxisLabel],
-        [yAxisShowMinmax],
-        [yAxisBounds],
       ],
+    },
+    {
+      label: t('Y Axis'),
+      expanded: true,
+      controlSetRows: [['y_axis_format'], [yAxisLabel], [yAxisShowMinmax], [yAxisBounds]],
     },
     {
       label: t('X Axis'),
@@ -105,13 +106,6 @@ const config: ControlPanelConfig = {
       multi: false,
       description: '',
       validators: [validateNonEmpty],
-      mapStateToProps: (state, controlState) => {
-        console.log('state:', state, controlState);
-        const groupbyProps = sharedControls.groupby.mapStateToProps?.(state, controlState) || {};
-        groupbyProps.canDropValue = (column: ColumnMeta) =>
-          !ensureIsArray(state.controls?.columns?.value).includes(column.column_name);
-        return groupbyProps;
-      },
     },
   },
 };

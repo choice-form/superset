@@ -652,6 +652,50 @@ class BaseViz:  # pylint: disable=too-many-public-methods
         security_manager.raise_for_access(viz=self)
 
 
+class BarViz(BaseViz):
+    """A bar chart where the x axis is time"""
+
+    viz_type = "bar"
+    verbose_name = _("Bar Chart")
+    is_timeseries = False
+
+    def query_obj(self) -> QueryObjectDict:
+        query_obj = super().query_obj()
+
+        # 指标不能为空
+        if not self.form_data.get("metrics"):
+            raise QueryObjectValidationError(_("Pick at least one metric"))
+
+        # 只能有一个指标
+        if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) > 1:
+            print('metrics:', self.form_data["metrics"])
+            raise QueryObjectValidationError(
+                _("When using 'Group By' you are limited to use a single metric")
+            )
+
+        return query_obj
+
+    def get_data(self, df: pd.DataFrame) -> VizData:
+        if df.empty:
+            return None
+
+        columns = None
+        values: Union[List[str], str] = self.metric_labels
+        if self.form_data.get("groupby"):
+            values = self.metric_labels[0]
+            columns = self.form_data.get("groupby")
+        pt = df.pivot_table(columns=columns, values=values)
+        pt.index = pt.index.map(str)
+        pt = pt.sort_index()
+
+        # 基础柱状图只需要label数组和值数组
+        return dict(
+            records=list(pt.values[0]),
+            columns=list(pt.columns),
+            groupby=self.form_data.get("groupby")
+        )
+
+
 class StackedColumnViz(BaseViz):
     """A basic html table that is sortable and searchable"""
 
@@ -1704,15 +1748,6 @@ class NVD3DualLineViz(NVD3Viz):
         return chart_data
 
 
-class NVD3TimeSeriesBarViz(NVD3TimeSeriesViz):
-
-    """A bar chart where the x axis is time"""
-
-    viz_type = "bar"
-    sort_series = True
-    verbose_name = _("Bar Chart")
-
-
 class NVD3TimePivotViz(NVD3TimeSeriesViz):
 
     """Time Series - Periodicity Pivot"""
@@ -1833,92 +1868,6 @@ class HistogramViz(BaseViz):
                     for column in self.columns
                 ]
             )
-        return chart_data
-
-
-class DistributionBarViz(BaseViz):
-
-    """A good old bar chart"""
-
-    viz_type = "dist_bar"
-    verbose_name = _("Distribution - Bar Chart")
-    is_timeseries = False
-
-    def query_obj(self) -> QueryObjectDict:
-        query_obj = super().query_obj()
-        if len(query_obj["groupby"]) < len(self.form_data.get("groupby") or []) + len(
-            self.form_data.get("columns") or []
-        ):
-            raise QueryObjectValidationError(
-                _("Can't have overlap between Series and Breakdowns")
-            )
-        if not self.form_data.get("metrics"):
-            raise QueryObjectValidationError(_("Pick at least one metric"))
-        if not self.form_data.get("groupby"):
-            raise QueryObjectValidationError(_("Pick at least one field for [Series]"))
-
-        sort_by = self.form_data.get("timeseries_limit_metric")
-        if sort_by:
-            sort_by_label = utils.get_metric_name(sort_by)
-            if sort_by_label not in utils.get_metric_names(query_obj["metrics"]):
-                query_obj["metrics"].append(sort_by)
-            query_obj["orderby"] = [
-                (sort_by, not self.form_data.get("order_desc", True))
-            ]
-        elif query_obj["metrics"]:
-            # Legacy behavior of sorting by first metric by default
-            first_metric = query_obj["metrics"][0]
-            query_obj["orderby"] = [
-                (first_metric, not self.form_data.get("order_desc", True))
-            ]
-
-        return query_obj
-
-    def get_data(self, df: pd.DataFrame) -> VizData:  # pylint: disable=too-many-locals
-        if df.empty:
-            return None
-
-        metrics = self.metric_labels
-        columns = self.form_data.get("columns") or []
-
-        # pandas will throw away nulls when grouping/pivoting,
-        # so we substitute NULL_STRING for any nulls in the necessary columns
-        filled_cols = self.groupby + columns
-        df = df.copy()
-        df[filled_cols] = df[filled_cols].fillna(value=NULL_STRING)
-
-        sortby = utils.get_metric_name(
-            self.form_data.get("timeseries_limit_metric") or metrics[0]
-        )
-        row = df.groupby(self.groupby).sum()[sortby].copy()
-        is_asc = not self.form_data.get("order_desc")
-        row.sort_values(ascending=is_asc, inplace=True)
-        pt = df.pivot_table(index=self.groupby, columns=columns, values=metrics)
-        if self.form_data.get("contribution"):
-            pt = pt.T
-            pt = (pt / pt.sum()).T
-        pt = pt.reindex(row.index)
-
-        # Re-order the columns adhering to the metric ordering.
-        pt = pt[metrics]
-        chart_data = []
-        for name, ys in pt.items():
-            if pt[name].dtype.kind not in "biufc" or name in self.groupby:
-                continue
-            if isinstance(name, str):
-                series_title = name
-            else:
-                offset = 0 if len(metrics) > 1 else 1
-                series_title = ", ".join([str(s) for s in name[offset:]])
-            values = []
-            for i, v in ys.items():
-                x = i
-                if isinstance(x, (tuple, list)):
-                    x = ", ".join([str(s) for s in x])
-                else:
-                    x = str(x)
-                values.append({"x": x, "y": v})
-            chart_data.append({"key": series_title, "values": values})
         return chart_data
 
 

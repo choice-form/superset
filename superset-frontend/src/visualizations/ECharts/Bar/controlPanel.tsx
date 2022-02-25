@@ -16,62 +16,49 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t } from 'src/core';
-import { ControlPanelConfig, sections } from 'src/chartConntrols';
+import { t, validateNonEmpty } from 'src/core';
+import { ControlPanelConfig } from 'src/chartConntrols';
 import {
-  lineInterpolation,
-  showBrush,
-  showLegend,
-  showControls,
-  xAxisLabel,
-  yAxisLabel,
   bottomMargin,
-  xTicksLayout,
-  xAxisFormat,
-  yLogScale,
-  yAxisBounds,
-  xAxisShowMinmax,
-  yAxisShowMinmax,
-  richTooltip,
   showBarValue,
-  barStacked,
-  reduceXTicks,
-  leftMargin,
-  timeSeriesSection,
-} from '../NVD3Controls';
+  xAxisLabel,
+  xLabelLayout,
+  yAxisBounds,
+  yAxisLabel,
+  yAxisShowMinmax,
+} from '../controls';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
-    sections.legacyTimeseriesTime,
-    timeSeriesSection[0],
+    {
+      label: t('Query'),
+      expanded: true,
+      controlSetRows: [['metrics'], ['adhoc_filters'], ['row_limit'], ['groupby']],
+    },
     {
       label: t('Chart Options'),
       expanded: true,
-      controlSetRows: [
-        ['color_scheme'],
-        [showBrush],
-        [showLegend],
-        [showBarValue],
-        [richTooltip],
-        [barStacked],
-        [lineInterpolation],
-        [showControls],
-        [bottomMargin],
-      ],
-    },
-    {
-      label: t('X Axis'),
-      expanded: true,
-      controlSetRows: [[xAxisLabel], [bottomMargin], [xTicksLayout], [xAxisFormat], [xAxisShowMinmax], [reduceXTicks]],
+      controlSetRows: [['color_scheme'], [showBarValue]],
     },
     {
       label: t('Y Axis'),
       expanded: true,
-      controlSetRows: [[yAxisLabel], [leftMargin], [yAxisShowMinmax], [yLogScale], ['y_axis_format'], [yAxisBounds]],
+      controlSetRows: [['y_axis_format'], [yAxisLabel], [yAxisShowMinmax], [yAxisBounds]],
     },
-    timeSeriesSection[1],
-    sections.annotations,
+    {
+      label: t('X Axis'),
+      expanded: true,
+      controlSetRows: [[xAxisLabel], [bottomMargin], [xLabelLayout]],
+    },
   ],
+  controlOverrides: {
+    metrics: {
+      multi: false, // 柱状图只能有一个指标
+    },
+    groupby: {
+      validators: [validateNonEmpty], // 非空校验
+    },
+  },
 };
 
 export default config;

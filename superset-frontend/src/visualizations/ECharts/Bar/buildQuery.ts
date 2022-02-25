@@ -1,4 +1,4 @@
-/*
+/**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -16,15 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { buildQueryContext, QueryFormData } from 'src/core';
 
-export { default as NVD3ChartPreset } from './preset';
-export { default as AreaChartPlugin } from './Area';
-export { default as BoxPlotChartPlugin } from './BoxPlot';
-export { default as BubbleChartPlugin } from './Bubble';
-export { default as BulletChartPlugin } from './Bullet';
-export { default as CompareChartPlugin } from './Compare';
-export { default as DualLineChartPlugin } from './DualLine';
-export { default as LineChartPlugin } from './Line';
-export { default as LineMultiChartPlugin } from './LineMulti';
-export { default as PieChartPlugin } from './Pie';
-export { default as TimePivotChartPlugin } from './TimePivot';
+export default function buildQuery(formData: QueryFormData) {
+  const { metric, sort_by_metric } = formData;
+  return buildQueryContext(formData, baseQueryObject => [
+    {
+      ...baseQueryObject,
+      ...(sort_by_metric && { orderby: [[metric, false]] }),
+    },
+  ]);
+}
