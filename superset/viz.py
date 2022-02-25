@@ -1813,64 +1813,6 @@ class NVD3TimeSeriesStackedViz(NVD3TimeSeriesViz):
     pivot_fill_value = 0
 
 
-class HistogramViz(BaseViz):
-
-    """Histogram"""
-
-    viz_type = "histogram"
-    verbose_name = _("Histogram")
-    is_timeseries = False
-
-    def query_obj(self) -> QueryObjectDict:
-        """Returns the query object for this visualization"""
-        query_obj = super().query_obj()
-        numeric_columns = self.form_data.get("all_columns_x")
-        if numeric_columns is None:
-            raise QueryObjectValidationError(
-                _("Must have at least one numeric column specified")
-            )
-        self.columns = (  #  pylint: disable=attribute-defined-outside-init
-            numeric_columns
-        )
-        query_obj["columns"] = numeric_columns + self.groupby
-        # override groupby entry to avoid aggregation
-        query_obj["groupby"] = None
-        query_obj["metrics"] = None
-        return query_obj
-
-    def labelify(self, keys: Union[List[str], str], column: str) -> str:
-        if isinstance(keys, str):
-            keys = [keys]
-        # removing undesirable characters
-        labels = [re.sub(r"\W+", r"_", k) for k in keys]
-        if len(self.columns) > 1 or not self.groupby:
-            # Only show numeric column in label if there are many
-            labels = [column] + labels
-        return "__".join(labels)
-
-    def get_data(self, df: pd.DataFrame) -> VizData:
-        """Returns the chart data"""
-        if df.empty:
-            return None
-
-        chart_data = []
-        if len(self.groupby) > 0:
-            groups = df.groupby(self.groupby)
-        else:
-            groups = [((), df)]
-        for keys, data in groups:
-            chart_data.extend(
-                [
-                    {
-                        "key": self.labelify(keys, column),
-                        "values": data[column].tolist(),
-                    }
-                    for column in self.columns
-                ]
-            )
-        return chart_data
-
-
 class SunburstViz(BaseViz):
 
     """A multi level sunburst chart"""

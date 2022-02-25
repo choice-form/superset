@@ -83,7 +83,6 @@ import {
   TimePivotChartPlugin,
 } from '../NVD3';
 
-import HistogramChartPlugin from '../DataUI/HistogramChart';
 import EventFlowChartPlugin from '../DataUI/EventFlowChart';
 import TimeTableChartPlugin from '../DataUI/TimeTable';
 import { BigNumberChartPlugin, BigNumberTotalChartPlugin } from '../DataUI/BigNumber';
@@ -136,7 +135,6 @@ export default class MainPreset extends Preset {
           key: 'force_directed_graph',
         }),
         new HeatmapChartPlugin().configure({ key: 'heatmap' }),
-        new HistogramChartPlugin().configure({ key: 'histogram' }),
         new HorizonChartPlugin().configure({ key: 'horizon' }),
         new MapBoxChartPlugin().configure({ key: 'mapbox' }),
         new PairedTTestChartPlugin().configure({ key: 'paired_ttest' }),
