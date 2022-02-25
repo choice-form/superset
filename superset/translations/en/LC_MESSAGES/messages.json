@@ -1311,6 +1311,20 @@
       "Please select both a Dataset and a Chart type to proceed": [""],
       "Create new chart": [""],
       "An error occurred while loading the SQL": [""],
+      "Updating chart was stopped": [""],
+      "An error occurred while rendering the visualization: %s": [""],
+      "Network error.": [""],
+      "Time Range": [""],
+      "Time Column": [""],
+      "Time Grain": [""],
+      "Origin": [""],
+      "Time Granularity": [""],
+      "Time": [""],
+      "A reference to the [Time] configuration, taking granularity into account": [
+        ""
+      ],
+      "Aggregate": [""],
+      "Raw records": [""],
       "Certified by %s": [""],
       "description": [""],
       "bolt": [""],
@@ -1373,7 +1387,6 @@
       "Should daily seasonality be applied. An integer value will specify Fourier order of seasonality.": [
         ""
       ],
-      "Time": [""],
       "Time related form attributes": [""],
       "Datasource & Chart Type": [""],
       "Chart ID": [""],
@@ -1487,6 +1500,11 @@
       "D3 number format for numbers between -1.0 and 1.0, useful when you want to have different siginificant digits for small and large numbers": [
         ""
       ],
+      "D3 format syntax: https://github.com/d3/d3-format": [""],
+      "Adaptative formating": [""],
+      "Duration in ms (66000 => 1m 6s)": [""],
+      "Duration in ms (1.40008 => 1ms 400µs 80ns)": [""],
+      "D3 time format syntax: https://github.com/d3/d3-time-format": [""],
       "Click to see difference": [""],
       "Altered": [""],
       "Chart changes": [""],
@@ -1613,6 +1631,7 @@
       "Documentation": [""],
       "Report a bug": [""],
       "OK": [""],
+      "An error occurred while fetching dashboards": [""],
       "Search all dashboards": [""],
       "Edit Email Report": [""],
       "New Email Report": [""],
@@ -1641,6 +1660,10 @@
         ""
       ],
       "No Results": [""],
+      "Found invalid orderby options": [""],
+      "is expected to be an integer": [""],
+      "is expected to be a number": [""],
+      "cannot be empty": [""],
       "There is not enough space for this component. Try decreasing its width, or increasing the destination width.": [
         ""
       ],
@@ -1808,12 +1831,15 @@
       "Create": [""],
       "Create new filter set": [""],
       "New filter set": [""],
+      "Please apply filter changes": [""],
+      "Unknown value": [""],
       "Clear all": [""],
       "Add filter": [""],
       "(Removed)": [""],
       "Undo?": [""],
       "[untitled]": [""],
       "Filters configuration and scoping": [""],
+      "Cannot create cyclic hierarchy": [""],
       "Column select": [""],
       "Select a column": [""],
       "No compatible columns found": [""],
@@ -1864,17 +1890,33 @@
       "${mainControlItem.config?.label}": [""],
       "Column is required": [""],
       "Populate \"Default value\" to enable this control": [""],
+      "Default value set automatically when \"Default to first item\" is checked": [
+        ""
+      ],
+      "Default value must be set when \"Required\" is checked": [""],
+      "Default value must be set when \"Filter has default value\" is checked": [
+        ""
+      ],
       "Apply to all panels": [""],
       "Apply to specific panels": [""],
       "Only selected panels will be affected by this filter": [""],
       "All panels with this column will be affected by this filter": [""],
+      "All panels": [""],
+      "This chart might be incompatible with the filter (datasets don't match)": [
+        ""
+      ],
       "Keep editing": [""],
       "Yes, cancel": [""],
       "There are unsaved changes.": [""],
       "Are you sure you want to cancel?": [""],
       "Error loading chart datasources. Filters may not work correctly.": [""],
+      "Transparent": [""],
+      "White": [""],
       "All filters": [""],
       "All charts": [""],
+      "Small": [""],
+      "Medium": [""],
+      "Large": [""],
       "Tab title": [""],
       "Warning! Changing the dataset may break the chart if the metadata does not exist.": [
         ""
@@ -1961,9 +2003,7 @@
       "Confirm save": [""],
       "Edit Dataset ": [""],
       "Use legacy datasource editor": [""],
-      "A reference to the [Time] configuration, taking granularity into account": [
-        ""
-      ],
+      "Time granularity": [""],
       "One or many controls to group by": [""],
       "Visualization type": [""],
       "Fixed color": [""],
@@ -1976,6 +2016,7 @@
       ],
       "Metric used to define the top series": [""],
       "Bubble size": [""],
+      "An error occurred while starring this chart": [""],
       "Customize": [""],
       "Height": [""],
       "Width": [""],
@@ -2123,6 +2164,23 @@
       ],
       "Get the last date by the date unit.": [""],
       "Get the specify date for the holiday": [""],
+      "Last": [""],
+      "Previous": [""],
+      "Custom": [""],
+      "last day": [""],
+      "last week": [""],
+      "last month": [""],
+      "last quarter": [""],
+      "last year": [""],
+      "previous calendar week": [""],
+      "previous calendar month": [""],
+      "previous calendar year": [""],
+      "Before": [""],
+      "After": [""],
+      "Specific Date/Time": [""],
+      "Relative Date/Time": [""],
+      "Now": [""],
+      "Midnight": [""],
       "Saved expressions": [""],
       "Saved": [""],
       "%s column(s)": [""],
@@ -2216,8 +2274,26 @@
       "Method": [""],
       "No columns": [""],
       "%s option": [""],
+      "UI Configuration": [""],
+      "Multiple select": [""],
+      "Allow selecting multiple values": [""],
+      "User must select a value for this filter.": [""],
+      "Group By filter plugin": [""],
+      "Experimental": [""],
       "Chosen non-numeric column": [""],
+      "Range filter plugin using AntD": [""],
+      "User must select a value before applying the filter": [""],
+      "Default to first item": [""],
+      "Select first item by default (when using this option, default value can’t be set)": [
+        ""
+      ],
+      "Inverse selection": [""],
+      "Exclude selected values": [""],
+      "Select filter plugin using AntD": [""],
+      "Custom time filter plugin": [""],
       "No time columns": [""],
+      "Time column filter plugin": [""],
+      "Time grain filter plugin": [""],
       "Favorites": [""],
       "Created content": [""],
       "Recent activity": [""],
@@ -2236,6 +2312,20 @@
       "We were unable to active or deactivate this report.": [""],
       "Your report could not be deleted": [""],
       "Deleted: %s": [""],
+      "Image download failed, please refresh and try again.": [""],
+      "Unexpected error: ": [""],
+      "(no description, click to see stack trace)": [""],
+      "Issue 1000 - The dataset is too large to query.": [""],
+      "Issue 1001 - The database is under an unusual load.": [""],
+      "An error occurred while fetching %s info: %s": [""],
+      "An error occurred while fetching %ss: %s": [""],
+      "An error occurred while creating %ss: %s": [""],
+      "An error occurred while importing %s: %s": [""],
+      "There was an error fetching the favorite status: %s": [""],
+      "There was an error saving the favorite status: %s": [""],
+      "Link Copied!": [""],
+      "Connection looks good!": [""],
+      "${t('ERROR: ')}${parsedErrorMessage(errMsg)}": [""],
       "There was an error fetching your recent activity:": [""],
       "There was an issue deleting: %s": [""],
       "There was an issue deleting %s: %s": [""],
@@ -2554,6 +2644,12 @@
       "%s Selected (Virtual)": [""],
       "%s Selected (Physical)": [""],
       "%s Selected (%s Physical, %s Virtual)": [""],
+      "The passwords for the databases below are needed in order to import them together with the datasets. Please note that the \"Secure Extra\" and \"Certificate\" sections of the database configuration are not present in export files, and should be added manually after the import if they are needed.": [
+        ""
+      ],
+      "You are importing one or more datasets that already exist. Overwriting might cause you to lose some of your work. Are you sure you want to overwrite?": [
+        ""
+      ],
       "There was an issue previewing the selected query. %s": [""],
       "Duration: %s": [""],
       "Tab name": [""],
@@ -2564,7 +2660,6 @@
       "An error occurred while fetching user values: %s": [""],
       "Search by query text": [""],
       "Query preview": [""],
-      "Previous": [""],
       "Next": [""],
       "Open in SQL Lab": [""],
       "User query": [""],
@@ -2578,7 +2673,6 @@
       "Saved queries": [""],
       "There was an issue previewing the selected query %s": [""],
       "Import queries": [""],
-      "Link Copied!": [""],
       "There was an issue deleting the selected queries: %s": [""],
       "Edit query": [""],
       "Copy query URL": [""],
@@ -2621,6 +2715,29 @@
       "There was an issues fetching your chart: %s": [""],
       "There was an issues fetching your saved queries: %s": [""],
       "Recents": [""],
+      "Domain": [""],
+      "The time unit used for the grouping of blocks": [""],
+      "Subdomain": [""],
+      "The time unit for each block. Should be a smaller unit than domain_granularity. Should be larger or equal to Time Grain": [
+        ""
+      ],
+      "Chart Options": [""],
+      "Cell Size": [""],
+      "The size of the square cell, in pixels": [""],
+      "Cell Padding": [""],
+      "The distance between cells, in pixels": [""],
+      "Cell Radius": [""],
+      "The pixel radius": [""],
+      "Color Steps": [""],
+      "The number color \"steps\"": [""],
+      "Time Format": [""],
+      "Legend": [""],
+      "Whether to display the legend (toggles)": [""],
+      "Show Values": [""],
+      "Whether to display the numerical values within the cells": [""],
+      "Show Metric Names": [""],
+      "Whether to display the metric name as a title": [""],
+      "Number Format": [""],
       "Correlation": [""],
       "Visualizes how a metric has changed over a time using a color scale and a calendar view. Gray values are used to indicate missing values and the linear color scheme is used to encode the magnitude of each day's value.": [
         ""
@@ -2631,6 +2748,15 @@
       "Pattern": [""],
       "Report": [""],
       "Trend": [""],
+      "Sort by metric": [""],
+      "Whether to sort results by the selected metric in descending order.": [
+        ""
+      ],
+      "Number format": [""],
+      "Choose a number format": [""],
+      "Choose a source": [""],
+      "Target": [""],
+      "Choose a target": [""],
       "Flow": [""],
       "Showcases the flow or link between categories using thickness of chords. The value and corresponding thickness can be different for each side.": [
         ""
@@ -2642,6 +2768,13 @@
       "Legacy": [""],
       "Proportional": [""],
       "Relational": [""],
+      "Country": [""],
+      "Which country to plot the map for?": [""],
+      "ISO 3166-2 Codes": [""],
+      "Column containing ISO 3166-2 codes of region/province/department in your table.": [
+        ""
+      ],
+      "Metric to display bottom title": [""],
       "Map": [""],
       "Visualizes how a single metric varies across a country's principal subdivisions (states, provinces, etc) on a chloropleth map. Each subdivision's value is elevated when you hover over the corresponding geographic boundary.": [
         ""
@@ -2650,30 +2783,81 @@
       "Geo": [""],
       "Range": [""],
       "Stacked": [""],
+      "Link Length": [""],
+      "Link length in the force layout": [""],
+      "Charge": [""],
+      "Charge in the force layout": [""],
+      "Source / Target": [""],
+      "Choose a source and a target": [""],
       "Force-directed Graph": [""],
       "Categorical": [""],
       "Density": [""],
       "Single Metric": [""],
+      "Axis ascending": [""],
+      "Axis descending": [""],
+      "Metric ascending": [""],
+      "Metric descending": [""],
+      "Columns to display": [""],
+      "Heatmap Options": [""],
+      "XScale Interval": [""],
+      "Number of steps to take between ticks when displaying the X scale": [""],
+      "YScale Interval": [""],
+      "Number of steps to take between ticks when displaying the Y scale": [""],
+      "Rendering": [""],
+      "image-rendering CSS attribute of the canvas object that defines how the browser scales up the image": [
+        ""
+      ],
+      "Normalize Across": [""],
+      "Color will be rendered based on a ratio of the cell against the sum of across this criteria": [
+        ""
+      ],
+      "Left Margin": [""],
+      "Left margin, in pixels, allowing for more room for axis labels": [""],
+      "Bottom Margin": [""],
+      "Bottom margin, in pixels, allowing for more room for axis labels": [""],
+      "Value bounds": [""],
+      "Hard value bounds applied for color coding. Is only relevant and applied when the normalization is applied against the whole heatmap.": [
+        ""
+      ],
+      "Sort X Axis": [""],
+      "Sort Y Axis": [""],
+      "Show percentage": [""],
+      "Whether to include the percentage in the tooltip": [""],
+      "Normalized": [""],
+      "Whether to apply a normal distribution based on rank on the color scale": [
+        ""
+      ],
+      "Value Format": [""],
       "Visualize a related metric across pairs of groups. Heatmaps excel at showcasing the correlation or strength between two groups. Color is used to emphasize the strength of the link between each pair of groups.": [
         ""
       ],
       "Sizes of vehicles": [""],
       "Employment and education": [""],
       "Predictive": [""],
+      "Sort Descending": [""],
+      "Series Height": [""],
+      "Pixel height of each series": [""],
+      "Value Domain": [""],
+      "series: Treat each series independently; overall: All series use the same scale; change: Show changes compared to the first data point in each series": [
+        ""
+      ],
       "Distribution": [""],
       "Compares how a metric changes over time between different groups. Each group is mapped to a row and change over time is visualized bar lengths and color.": [
         ""
       ],
       "Horizon Chart": [""],
+      "Options": [""],
+      "Data Table": [""],
+      "Whether to display the interactive data table": [""],
+      "Include Series": [""],
+      "Include series name as an axis": [""],
       "Ranking": [""],
       "Plots the individual metrics for each row in the data vertically and links them together as a line. This chart is useful for comparing multiple metrics across all of the samples or rows in the data.": [
         ""
       ],
       "Coordinates": [""],
       "Directional": [""],
-      "Sort Descending": [""],
       "Time Series Options": [""],
-      "Options": [""],
       "Not Time Series": [""],
       "Ignore time": [""],
       "Time Series": [""],
@@ -2691,8 +2875,6 @@
       "Advanced Analytics": [""],
       "Use the Advanced Analytics options below": [""],
       "Settings for time series": [""],
-      "Chart Options": [""],
-      "Number format": [""],
       "Date Time Format": [""],
       "Partition Limit": [""],
       "The maximum number of subdivisions of each group; lower values are pruned first": [
@@ -2719,6 +2901,20 @@
       "Part of a Whole": [""],
       "Compare the same summarized metric across multiple groups.": [""],
       "Partition Chart": [""],
+      "Pivot Options": [""],
+      "Aggregation function": [""],
+      "Aggregate function to apply when pivoting and computing the total rows and columns": [
+        ""
+      ],
+      "Show totals": [""],
+      "Display total row/column": [""],
+      "Combine Metrics": [""],
+      "Display metrics side by side within each column, as opposed to each column being displayed side by side for each metric.": [
+        ""
+      ],
+      "Transpose Pivot": [""],
+      "Swap Groups and Columns": [""],
+      "Date format": [""],
       "Used to summarize a set of data by grouping together multiple statistics along two axes. Examples: Sales numbers by region and month, tasks by status and assignee, active users by age and location.\n\n  This chart is being deprecated and we recommend checking out Pivot Table V2 instead!": [
         ""
       ],
@@ -2731,6 +2927,9 @@
       ],
       "Nightingale Rose Chart": [""],
       "Multi-Layers": [""],
+      "Limiting rows may result in incomplete data and misleading charts. Consider filtering or grouping source/target names instead.": [
+        ""
+      ],
       "Visualizes the flow of different group's values through different stages of a system. New stages in the pipeline are visualized as nodes or layers. The thickness of the bars or edges represent the metric being visualized.": [
         ""
       ],
@@ -2739,6 +2938,20 @@
       "Sankey Diagram": [""],
       "Percentages": [""],
       "Sankey Diagram with Loops": [""],
+      "Primary Metric": [""],
+      "The primary metric is used to define the arc segment sizes": [""],
+      "Secondary Metric": [""],
+      "[optional] this secondary metric is used to define the color as a ratio against the primary metric. When omitted, the color is categorical and based on labels": [
+        ""
+      ],
+      "When only a primary metric is provided, a categorical color scale is used.": [
+        ""
+      ],
+      "When a secondary metric is provided, a linear color scale is used.": [
+        ""
+      ],
+      "Hierarchy": [""],
+      "This defines the level of the hierarchy": [""],
       "Uses circles to visualize the flow of data through different stages of a system. Hover over individual paths in the visualization to understand the stages a value took. Useful for multi-stage, multi-group visualizing funnels and pipelines.": [
         ""
       ],
@@ -2748,9 +2961,9 @@
       "page_size.show": [""],
       "page_size.entries": [""],
       "Totals": [""],
+      "page_size.all": [""],
       "Group By, Metrics or Percentage Metrics must have a value": [""],
       "Query mode": [""],
-      "Columns to display": [""],
       "must have a value": [""],
       "Percentage metrics": [""],
       "Metrics for which percentage of total are to be displayed. Calculated from only data within the row limit.": [
@@ -2766,7 +2979,6 @@
       "Whether to include the time granularity as defined in the time section": [
         ""
       ],
-      "Show totals": [""],
       "Show total aggregations of selected metrics. Note that row limit does not apply to the result.": [
         ""
       ],
@@ -2783,15 +2995,53 @@
       "Further customize how to display each column": [""],
       "Conditional formatting": [""],
       "Apply conditional color formatting to numeric columns": [""],
+      "Classic row-by-column spreadsheet like view of a dataset. Use tables to showcase a view into the underlying data or to show aggregated metrics.": [
+        ""
+      ],
+      "Additive": [""],
+      "Formattable": [""],
+      "Sequential": [""],
+      "Tabular": [""],
+      "Ratio": [""],
+      "Target aspect ratio for treemap tiles.": [""],
       "Shows the composition of a dataset by segmenting a given rectangle as smaller rectangles with areas proportional to their value or contribution to the whole. Those rectangles may also, in turn, be further segmented hierarchically.": [
         ""
       ],
+      "Word Cloud": [""],
+      "Minimum Font Size": [""],
+      "Font size for the smallest value in the list": [""],
+      "Maximum Font Size": [""],
+      "Font size for the biggest value in the list": [""],
+      "Word Rotation": [""],
+      "Rotation to apply to words in the cloud": [""],
+      "Visualizes the words in a column that appear the most often. Bigger font corresponds to higher frequency.": [
+        ""
+      ],
+      "Country Field Type": [""],
+      "The country code standard that Superset should expect to find in the [country] column": [
+        ""
+      ],
+      "Show Bubbles": [""],
+      "Whether to display bubbles on top of countries": [""],
+      "Max Bubble Size": [""],
+      "Country Column": [""],
+      "3 letter code of the country": [""],
+      "Metric for Color": [""],
+      "Metric that defines the color of the country": [""],
+      "Metric that defines the size of the bubble": [""],
+      "Bubble Color": [""],
+      "Country Color Scheme": [""],
       "A map of the world, that can indicate values in different countries.": [
         ""
       ],
       "Multi-Dimensions": [""],
       "Multi-Variables": [""],
       "Scatter": [""],
+      "Big Number Font Size": [""],
+      "Tiny": [""],
+      "Normal": [""],
+      "Huge": [""],
+      "Subheader Font Size": [""],
       "N/A": [""],
       "Last available value seen on %s": [""],
       "Not up to date": [""],
@@ -2817,6 +3067,20 @@
       "Fix the trend line to the full time range specified in case filtered results do not include the start or end dates": [
         ""
       ],
+      "KPI": [""],
+      "Showcases a single number accompanied by a simple line chart, to call attention to an important metric along with its change over time or other dimension.": [
+        ""
+      ],
+      "Line": [""],
+      "Subheader": [""],
+      "Description text that shows up below your Big Number": [""],
+      "Timestamp Format": [""],
+      "Whether to format the timestamp": [""],
+      "Showcases a single metric front-and-center. Big number is best used to call attention to a KPI or the one thing you want your audience to focus on.": [
+        ""
+      ],
+      "A Big Number": [""],
+      "With a subheader": [""],
       "Sorry, there appears to be no data": [""],
       "Event definition": [""],
       "Event Names": [""],
@@ -2837,9 +3101,22 @@
       "The maximum number of events to return, equivalent to the number of rows": [
         ""
       ],
+      "Compares the lengths of time different activities take in a shared timeline view.": [
+        ""
+      ],
+      "Event Flow": [""],
+      "Progressive": [""],
       "count": [""],
       "cumulative": [""],
       "percentile (exclusive)": [""],
+      "Select the numeric columns to draw the histogram": [""],
+      "No of Bins": [""],
+      "Select the number of bins for the histogram": [""],
+      "X Axis Label": [""],
+      "Y Axis Label": [""],
+      "Whether to normalize the histogram": [""],
+      "Cumulative": [""],
+      "Whether to make the histogram cumulative": [""],
       "Take your data points, and group them into \"bins\" to see where the densest areas of information lie": [
         ""
       ],
@@ -2848,14 +3125,12 @@
       "Compare multiple time series charts (as sparklines) and related metrics quickly.": [
         ""
       ],
-      "Tabular": [""],
       "Text": [""],
       "Show legend": [""],
       "Whether to display a legend for the chart": [""],
       "Legend type": [""],
       "Margin": [""],
       "Additional padding for legend.": [""],
-      "Legend": [""],
       "Rich tooltip": [""],
       "Shows a list of all series available at that point in time": [""],
       "Tooltip sort by metric": [""],
@@ -2872,15 +3147,29 @@
       "Only show the total value on the stacked chart, and not show on the selected category": [
         ""
       ],
-      "Sort by metric": [""],
-      "Whether to sort results by the selected metric in descending order.": [
+      "Whisker/outlier options": [""],
+      "Determines how whiskers and outliers are calculated.": [""],
+      "X Tick Layout": [""],
+      "The way the ticks are laid out on the X-axis": [""],
+      "Categories to group by on the x-axis.": [""],
+      "Distribute across": [""],
+      "Columns to calculate distribution across. Defaults to temporal column if left empty.": [
         ""
       ],
+      "Also known as a box and whisker plot, this visualization compares the distributions of a related metric across multiple groups. The box in the middle emphasizes the mean, median, and inner 2 quartiles. The whiskers around each box visualize the min, max, range, and outer 2 quartiles.": [
+        ""
+      ],
+      "Box Plot": [""],
+      "Statistical": [""],
       "Labels": [""],
       "Label Type": [""],
       "What should be shown on the label?": [""],
       "Show Labels": [""],
       "Whether to display the labels.": [""],
+      "Showcases how a metric changes as the funnel progresses. This classic chart is useful for visualizing drop-off between stages in a pipeline or lifecycle.": [
+        ""
+      ],
+      "Funnel Chart": [""],
       "Columns to group by": [""],
       "General": [""],
       "Minimum value on the gauge axis": [""],
@@ -2891,7 +3180,6 @@
       "Angle at which to end progress axis": [""],
       "Font size": [""],
       "Font size for axis labels, detail value and other text elements": [""],
-      "D3 format syntax: https://github.com/d3/d3-format": [""],
       "Value format": [""],
       "Additional text to add before or after the value, e.g. unit": [""],
       "Show pointer": [""],
@@ -2925,8 +3213,11 @@
       "Comma-separated color picks for the intervals, e.g. 1,2,4. Integers denote colors from the chosen color scheme and are 1-indexed. Length must be matching that of interval bounds.": [
         ""
       ],
+      "Uses a gauge to showcase progress of a metric towards a target. The position of the dial represents the progress and the terminal value in the gauge represents the target value.": [
+        ""
+      ],
+      "Gauge Chart": [""],
       "Name of the source nodes": [""],
-      "Target": [""],
       "Name of the target nodes": [""],
       "Source category": [""],
       "The category of source nodes used to assign colors. If a node is associated with more than one category, only the first will be used.": [
@@ -2975,12 +3266,16 @@
       "Repulsion strength between nodes": [""],
       "Friction": [""],
       "Friction between nodes": [""],
+      "Displays connections between entities in a graph structure. Useful for mapping relationships and showing which nodes are important in a network. Graph charts can be configured to be force-directed or circulate. If your data has a geospatial component, try the deck.gl Arc chart.": [
+        ""
+      ],
+      "Graph Chart": [""],
+      "Structural": [""],
+      "Transformable": [""],
       "Series type": [""],
       "Series chart type (line, bar etc)": [""],
       "Area chart": [""],
       "Draw area under curves. Only applicable for line types.": [""],
-      "Show Values": [""],
-      "Whether to display the numerical values within the cells": [""],
       "Opacity of area chart.": [""],
       "Marker": [""],
       "Draw a marker on data points. Only applicable for line types.": [""],
@@ -3011,11 +3306,13 @@
       "Secondary y-axis format": [""],
       "Secondary y-axis title": [""],
       "Logarithmic scale on secondary y-axis": [""],
-      "Enable drill down": [""],
-      "Columns as hierarchy.": [""],
+      "Evolution": [""],
+      "Visualize two different time series using the same x-axis time range. Note that each time series can be visualized differently (e.g. 1 using bars and 1 using a line).": [
+        ""
+      ],
+      "Mixed Time-Series": [""],
       "Percentage threshold": [""],
       "Minimum threshold in percentage points for showing labels.": [""],
-      "Date format": [""],
       "Put labels outside": [""],
       "Put the labels outside of the pie?": [""],
       "Label Line": [""],
@@ -3027,6 +3324,10 @@
       "Do you want a donut or a pie?": [""],
       "Inner Radius": [""],
       "Inner radius of donut hole": [""],
+      "The classic. Great for showing how much of a company each investor gets, what demographics follow your blog, or what portion of the budget goes to the military industrial complex.\n        Pie charts can be difficult to interpret precisely. If clarity of relative proportion is important, consider using a bar or other chart type instead.": [
+        ""
+      ],
+      "Pie Chart": [""],
       "The maximum value of metrics. It is an optional configuration": [""],
       "Label position": [""],
       "Radar": [""],
@@ -3034,6 +3335,11 @@
       "Further customize how to display each metric": [""],
       "Circle radar shape": [""],
       "Radar render type, whether to display 'circle' shape.": [""],
+      "Visualize a parallel set of metrics across multiple groups. Each group is visualized using its own line of points and each metric is represented as an edge in the chart.": [
+        ""
+      ],
+      "Radar Chart": [""],
+      "Web": [""],
       "Contribution Mode": [""],
       "Calculate contribution per series or total": [""],
       "Series Style": [""],
@@ -3041,11 +3347,41 @@
       "Area chart opacity": [""],
       "Opacity of Area Chart. Also applies to confidence band.": [""],
       "Marker Size": [""],
+      "Swiss army knife for visualizing time series data. Choose between  step, line, scatter, and bar charts. This viz type has many customization options as well.": [
+        ""
+      ],
+      "Time-series Chart": [""],
+      "Time-series Area chart are similar to line chart in that they represent variables with the same scale, but area charts stack the metrics on top of each other. An area chart in Superset can be stream, stack, or expand.": [
+        ""
+      ],
+      "Time-series Area Chart": [""],
       "It’s not recommended to truncate y-axis in Bar chart.": [""],
+      "Time-series Bar Charts are used to show the changes in a metric over time as a series of bars.": [
+        ""
+      ],
+      "Time-series Bar Chart v2": [""],
+      "Vertical": [""],
+      "Bar": [""],
+      "Time-series line chart is used to visualize repeated measurements taken over regular time intervals. Line chart is a type of chart which displays information as a series of data points connected by straight line segments. It is a basic type of chart common in many fields.": [
+        ""
+      ],
+      "Time-series Line Chart": [""],
+      "Time-series Scatter Plot has time on the horizontal axis in linear units, and the points are connected in order. It shows a statistical relationship between two variables.": [
+        ""
+      ],
+      "Time-series Scatter Plot": [""],
+      "Time-series Smooth-line is a variation of line chart. Without angles and hard edges, Smooth-line looks more smarter and more professional.": [
+        ""
+      ],
+      "Time-series Smooth Line": [""],
       "Step type": [""],
       "Defines whether the step should appear at the beginning, middle or end between two data points": [
         ""
       ],
+      "Time-series Stepped-line graph (also called step chart) is a variation of line chart but with the line forming a series of steps between data points. A step chart can be useful when you want to show the changes that occur at irregular intervals.": [
+        ""
+      ],
+      "Time-series Stepped Line": [""],
       "Id": [""],
       "Name of the id column": [""],
       "Parent": [""],
@@ -3086,8 +3422,16 @@
       "Arrow": [""],
       "Symbol size": [""],
       "Size of edge symbols": [""],
+      "Visualize multiple levels of hierarchy using a familiar tree-like structure.": [
+        ""
+      ],
+      "Tree Chart": [""],
       "Show Upper Labels": [""],
       "Show labels when the node has children.": [""],
+      "Show hierarchical relationships of data, with with the value represented by area, showing proportion and contribution to the whole.": [
+        ""
+      ],
+      "Treemap v2": [""],
       "Select start and end date": [""],
       "Type or Select [%s]": [""],
       "No results found": [""],
@@ -3117,15 +3461,54 @@
       "Chart component that lets you add a custom filter UI in your dashboard. When added to dashboard, a filter box lets users specify specific values or ranges to filter charts by. The charts that each filter box is applied to can be fine tuned as well in the dashboard view.\n\n    Note that this plugin is being replaced with the new Filters feature that lives in the dashboard view itself. It's easier to use and has more capabilities!": [
         ""
       ],
+      "Longitude": [""],
+      "Column containing longitude data": [""],
+      "Latitude": [""],
+      "Column containing latitude data": [""],
+      "Clustering Radius": [""],
+      "The radius (in pixels) the algorithm uses to define a cluster. Choose 0 to turn off clustering, but beware that a large number of points (>1000) will cause lag.": [
+        ""
+      ],
+      "Points": [""],
+      "Point Radius": [""],
+      "The radius of individual points (ones that are not in a cluster). Either a numerical column or `Auto`, which scales the point based on the largest cluster": [
+        ""
+      ],
+      "Point Radius Unit": [""],
+      "The unit of measure for the specified point radius": [""],
+      "Labelling": [""],
+      "label": [""],
+      "`count` is COUNT(*) if a group by is used. Numerical columns will be aggregated with the aggregator. Non-numerical columns will be used to label points. Leave empty to get a count of points in each cluster.": [
+        ""
+      ],
+      "Cluster label aggregator": [""],
+      "Aggregate function applied to the list of points in each cluster to produce the cluster label.": [
+        ""
+      ],
+      "Visual Tweaks": [""],
+      "Live render": [""],
+      "Points and clusters will update as the viewport is being changed": [""],
+      "Map Style": [""],
+      "Base layer map style": [""],
+      "Opacity of all clusters, points, and labels. Between 0 and 1.": [""],
+      "RGB Color": [""],
+      "The color for points and clusters in RGB": [""],
+      "Viewport": [""],
+      "Default longitude": [""],
+      "Longitude of default viewport": [""],
+      "Default latitude": [""],
+      "Latitude of default viewport": [""],
+      "Zoom": [""],
+      "Zoom level of the map": [""],
+      "One or many controls to group by. If grouping, latitude and longitude columns must be present.": [
+        ""
+      ],
       "Light mode": [""],
       "Dark mode": [""],
       "MapBox": [""],
-      "Transformable": [""],
       "Right Axis Format": [""],
       "Show Markers": [""],
       "Show data points as circle markers on the lines": [""],
-      "Left Margin": [""],
-      "Left margin, in pixels, allowing for more room for axis labels": [""],
       "Y bounds": [""],
       "Whether to display the min and max values of the Y-axis": [""],
       "Y 2 bounds": [""],
@@ -3133,16 +3516,10 @@
       "Line interpolation as defined by d3.js": [""],
       "Show Range Filter": [""],
       "Whether to display the time range interactive selector": [""],
-      "Whether to display the legend (toggles)": [""],
       "Extra Controls": [""],
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         ""
       ],
-      "X Axis Label": [""],
-      "Bottom Margin": [""],
-      "Bottom margin, in pixels, allowing for more room for axis labels": [""],
-      "X Tick Layout": [""],
-      "The way the ticks are laid out on the X-axis": [""],
       "X Axis Format": [""],
       "Y Log Scale": [""],
       "Use a log scale for the Y-axis": [""],
@@ -3156,9 +3533,8 @@
       "Reduces the number of X-axis ticks to be rendered. If true, the x-axis will not overflow and labels may be missing. If false, a minimum width will be applied to columns and the width may overflow into an horizontal scroll.": [
         ""
       ],
-      "Y Axis Label": [""],
       "You cannot use 45° tick layout along with the time range filter": [""],
-      "Evolution": [""],
+      "Stacked Style": [""],
       "A time series chart that visualizes how a related metric from multiple groups vary over time. Each group is visualized using a different color.": [
         ""
       ],
@@ -3167,19 +3543,29 @@
       "Video game consoles": [""],
       "Vehicle Types": [""],
       "Continuous": [""],
-      "Line": [""],
       "nvd3": [""],
       "Deprecated": [""],
       "Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.": [
         ""
       ],
       "Time-series Bar Chart": [""],
-      "Vertical": [""],
-      "Box Plot": [""],
+      "X Log Scale": [""],
+      "Use a log scale for the X-axis": [""],
       "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
         ""
       ],
-      "KPI": [""],
+      "Ranges": [""],
+      "Ranges to highlight with shading": [""],
+      "Range labels": [""],
+      "Labels for the ranges": [""],
+      "Markers": [""],
+      "List of values to mark with triangles": [""],
+      "Marker labels": [""],
+      "Labels for the markers": [""],
+      "Marker lines": [""],
+      "List of values to mark with lines": [""],
+      "Marker line labels": [""],
+      "Labels for the marker lines": [""],
       "Showcases the progress of a single metric against a given target. The higher the fill, the closer the metric is to the target.": [
         ""
       ],
@@ -3187,30 +3573,92 @@
         ""
       ],
       "Time-series Percent Change": [""],
+      "Sort Bars": [""],
+      "Sort bars by x labels.": [""],
+      "Breakdowns": [""],
+      "Defines how each series is broken down": [""],
       "Compares metrics from different categories using bars. Bar lengths are used to indicate the magnitude of each value and color is used to differentiate groups.": [
         ""
       ],
       "Bar Chart": [""],
-      "Additive": [""],
       "Discrete": [""],
+      "Y Axis 1": [""],
+      "Y Axis 2": [""],
+      "Left Axis Metric": [""],
+      "Choose a metric for left axis": [""],
+      "Left Axis Format": [""],
       "Visualizes 2 metrics as line plots using the same x-axis. This chart is useful for comparing metrics across the same time range.": [
         ""
       ],
       "Dual Line Chart": [""],
+      "Propagate": [""],
+      "Send range filter events to other charts": [""],
       "Classic chart that visualizes how metrics change over time.": [""],
       "Battery level over time": [""],
       "Line Chart": [""],
+      "Prefix metric name with slice name": [""],
+      "Y Axis Left": [""],
+      "Left Axis chart(s)": [""],
+      "Choose one or more charts for left axis": [""],
+      "Select charts": [""],
+      "Error while fetching charts": [""],
+      "Y Axis Right": [""],
+      "Right Axis chart(s)": [""],
+      "Choose one or more charts for right axis": [""],
       "Visualize two different time series using the same x-axis time range. This chart is being deprecated and we recommend using the Mixed Timeseries Chart instead!": [
         ""
       ],
       "Multiple Line Charts": [""],
-      "Pie Chart": [""],
+      "Whether to display the labels. Note that the label only displays when the the 5% threshold.": [
+        ""
+      ],
+      "Put the labels outside the pie?": [""],
+      "Frequency": [""],
+      "The periodicity over which to pivot time. Users can provide\n            \"Pandas\" offset alias.\n            Click on the info bubble for more details on accepted \"freq\" expressions.": [
+        ""
+      ],
       "Time-series Period Pivot": [""],
+      "Significance Level": [""],
+      "Threshold alpha level for determining significance": [""],
+      "p-value precision": [""],
+      "Number of decimal places with which to display p-values": [""],
+      "Lift percent precision": [""],
+      "Number of decimal places with which to display lift values": [""],
       "Table that visualizes paired t-tests, which are used to understand statistical differences between groups.": [
         ""
       ],
       "Paired t-test Table": [""],
-      "Statistical": [""]
+      "Columns to group by on the rows": [""],
+      "Columns to group by on the columns": [""],
+      "Apply metrics on": [""],
+      "Use metrics as a top level group for columns or for rows": [""],
+      "Show rows total": [""],
+      "Display row level total": [""],
+      "Show columns total": [""],
+      "Display column level total": [""],
+      "Transpose pivot": [""],
+      "Swap rows and columns": [""],
+      "Combine metrics": [""],
+      "Rows sort by": [""],
+      "key a-z": [""],
+      "key z-a": [""],
+      "value ascending": [""],
+      "value descending": [""],
+      "Order of rows": [""],
+      "Cols sort by": [""],
+      "Order of columns": [""],
+      "Rows subtotal position": [""],
+      "Top": [""],
+      "Bottom": [""],
+      "Position of row level subtotal": [""],
+      "Cols subtotal position": [""],
+      "Position of column level subtotal": [""],
+      "Apply conditional color formatting to metrics": [""],
+      "Used to summarize a set of data by grouping together multiple statistics along two axes. Examples: Sales numbers by region and month, tasks by status and assignee, active users by age and location. Not the most visually stunning visualization, but highly informative and versatile.": [
+        ""
+      ],
+      "Pivot Table v2": [""],
+      "Scatter Plot": [""]
     }
   }
 }
