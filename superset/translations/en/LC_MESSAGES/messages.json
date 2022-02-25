@@ -79,13 +79,16 @@
       "From date cannot be larger than to date": [""],
       "Cached value not found": [""],
       "Columns missing in datasource: %(invalid_columns)s": [""],
+      "Stacked Column Chart": [""],
+      "Can't have overlap between Series and Breakdowns": [""],
+      "Pick at least one metric": [""],
+      "Pick at least one field for [Series]": [""],
       "Table View": [""],
       "You cannot use [Columns] in combination with [Group By]/[Metrics]/[Percentage Metrics]. Please choose one or the other.": [
         ""
       ],
       "Pick a granularity in the Time section or uncheck 'Include Time'": [""],
       "Time Table View": [""],
-      "Pick at least one metric": [""],
       "When using 'Group By' you are limited to use a single metric": [""],
       "Pivot Table": [""],
       "Please choose at least one 'Group by' field ": [""],
@@ -111,15 +114,12 @@
       "Pick a metric for left axis!": [""],
       "Pick a metric for right axis!": [""],
       "Please choose different metrics on left and right axis": [""],
-      "Time Series - Bar Chart": [""],
       "Time Series - Period Pivot": [""],
       "Time Series - Percent Change": [""],
       "Time Series - Stacked": [""],
       "Histogram": [""],
       "Must have at least one numeric column specified": [""],
       "Distribution - Bar Chart": [""],
-      "Can't have overlap between Series and Breakdowns": [""],
-      "Pick at least one field for [Series]": [""],
       "Sunburst": [""],
       "Sankey": [""],
       "Pick exactly 2 columns as [Source / Target]": [""],
@@ -3147,6 +3147,23 @@
       "Only show the total value on the stacked chart, and not show on the selected category": [
         ""
       ],
+      "Stacked Bars": [""],
+      "Bar Values": [""],
+      "Show the value on top of the bar": [""],
+      "Extra Controls": [""],
+      "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
+        ""
+      ],
+      "X Label Rotate": [""],
+      "Rotation degree of axis label, which is especially useful when there is no enough space for category axis.": [
+        ""
+      ],
+      "Y Axis Bounds": [""],
+      "Bounds for the Y-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
+        ""
+      ],
+      "Y bounds": [""],
+      "Whether to display the min and max values of the Y-axis": [""],
       "Whisker/outlier options": [""],
       "Determines how whiskers and outliers are calculated.": [""],
       "X Tick Layout": [""],
@@ -3296,10 +3313,6 @@
       "Truncate Y Axis. Can be overridden by specifying a min or max bound.": [
         ""
       ],
-      "Y Axis Bounds": [""],
-      "Bounds for the Y-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
-        ""
-      ],
       "Primary y-axis format": [""],
       "Logarithmic y-axis": [""],
       "Logarithmic scale on primary y-axis": [""],
@@ -3340,6 +3353,11 @@
       ],
       "Radar Chart": [""],
       "Web": [""],
+      "Sort Bars": [""],
+      "Sort bars by x labels.": [""],
+      "Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.": [
+        ""
+      ],
       "Contribution Mode": [""],
       "Calculate contribution per series or total": [""],
       "Series Style": [""],
@@ -3509,26 +3527,17 @@
       "Right Axis Format": [""],
       "Show Markers": [""],
       "Show data points as circle markers on the lines": [""],
-      "Y bounds": [""],
-      "Whether to display the min and max values of the Y-axis": [""],
       "Y 2 bounds": [""],
       "Line Style": [""],
       "Line interpolation as defined by d3.js": [""],
       "Show Range Filter": [""],
       "Whether to display the time range interactive selector": [""],
-      "Extra Controls": [""],
-      "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
-        ""
-      ],
       "X Axis Format": [""],
       "Y Log Scale": [""],
       "Use a log scale for the Y-axis": [""],
       "Y Axis 2 Bounds": [""],
       "X bounds": [""],
       "Whether to display the min and max values of the X-axis": [""],
-      "Bar Values": [""],
-      "Show the value on top of the bar": [""],
-      "Stacked Bars": [""],
       "Reduce X ticks": [""],
       "Reduces the number of X-axis ticks to be rendered. If true, the x-axis will not overflow and labels may be missing. If false, a minimum width will be applied to columns and the width may overflow into an horizontal scroll.": [
         ""
@@ -3545,9 +3554,6 @@
       "Continuous": [""],
       "nvd3": [""],
       "Deprecated": [""],
-      "Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.": [
-        ""
-      ],
       "Time-series Bar Chart": [""],
       "X Log Scale": [""],
       "Use a log scale for the X-axis": [""],
@@ -3573,8 +3579,6 @@
         ""
       ],
       "Time-series Percent Change": [""],
-      "Sort Bars": [""],
-      "Sort bars by x labels.": [""],
       "Breakdowns": [""],
       "Defines how each series is broken down": [""],
       "Compares metrics from different categories using bars. Bar lengths are used to indicate the magnitude of each value and color is used to differentiate groups.": [
