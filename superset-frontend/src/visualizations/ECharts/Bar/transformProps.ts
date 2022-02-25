@@ -25,7 +25,7 @@ import { defaultGrid, defaultTooltip } from '../defaults';
 import { OpacityEnum } from '../constants';
 
 export default function transformProps(chartProps: EchartsBarChartProps): BarChartTransformedProps {
-  const { formData, height, hooks, filterState, queriesData, width } = chartProps;
+  const { formData, locale, height, hooks, filterState, queriesData, width } = chartProps;
 
   // console.log('chartProps:', chartProps);
 
@@ -157,7 +157,9 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     },
     xAxis: {
       type: 'category',
-      name: xAxisLabel.split('').join('\n'),
+      name: String(xAxisLabel)
+        .split(locale === 'zh' ? '' : ' ')
+        .join('\n'),
       axisLabel: {
         hideOverlap: true, // 是否隐藏重叠的标签
         rotate: getRotate(xLabelLayout), // 标签旋转角度

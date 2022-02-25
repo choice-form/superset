@@ -26,6 +26,7 @@ import SuperChartCore, { Props as SuperChartCoreProps } from './SuperChartCore';
 import DefaultFallbackComponent from './FallbackComponent';
 import ChartProps, { ChartPropsConfig } from '../models/ChartProps';
 import NoResultsComponent from './NoResultsComponent';
+import { Locale } from '../../translation';
 
 const defaultProps = {
   FallbackComponent: DefaultFallbackComponent,
@@ -64,6 +65,8 @@ export type Props = Omit<SuperChartCoreProps, 'chartProps'> &
     height?: number | string;
     /** Chart height */
     width?: number | string;
+    /** language */
+    locale: Locale;
     /**
      * Component to wrap the actual chart
      * after the dynamic width and height are determined.
@@ -123,6 +126,7 @@ export default class SuperChart extends React.PureComponent<Props, {}> {
   renderChart(width: number, height: number) {
     const {
       id,
+      locale,
       className,
       chartType,
       preTransformProps,
@@ -160,7 +164,7 @@ export default class SuperChart extends React.PureComponent<Props, {}> {
           id={id}
           className={className}
           chartType={chartType}
-          chartProps={chartProps}
+          chartProps={{ ...chartProps, locale }}
           preTransformProps={preTransformProps}
           overrideTransformProps={overrideTransformProps}
           postTransformProps={postTransformProps}

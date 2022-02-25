@@ -53,6 +53,7 @@ const propTypes = {
   triggerRender: PropTypes.bool,
   isFiltersInitialized: PropTypes.bool,
   // state
+  locale: PropTypes.string,
   chartAlert: PropTypes.string,
   chartStatus: PropTypes.string,
   chartStackTrace: PropTypes.string,

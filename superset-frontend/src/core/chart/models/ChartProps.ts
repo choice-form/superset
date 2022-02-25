@@ -21,7 +21,7 @@
  * TS declarations for selectors with up to 12 arguments. */
 // @ts-nocheck
 import { createSelector } from 'reselect';
-import { AppSection, Behavior, convertKeysToCamelCase, Datasource, FilterState, JsonObject } from '../..';
+import { AppSection, Behavior, convertKeysToCamelCase, Datasource, FilterState, JsonObject, Locale } from '../..';
 import { HandlerFunction, PlainObject, SetDataMaskHook } from '../types/Base';
 import { QueryData, DataRecordFilters } from '..';
 
@@ -105,6 +105,8 @@ export default class ChartProps<FormData extends RawFormData = RawFormData> {
 
   height: number;
 
+  locale: Locale;
+
   hooks: Hooks;
 
   ownState: JsonObject;
@@ -134,11 +136,13 @@ export default class ChartProps<FormData extends RawFormData = RawFormData> {
       behaviors = [],
       width = DEFAULT_WIDTH,
       height = DEFAULT_HEIGHT,
+      locale,
       appSection,
       isRefreshing,
     } = config;
     this.width = width;
     this.height = height;
+    this.locale = locale;
     this.annotationData = annotationData;
     this.datasource = convertKeysToCamelCase(datasource) as Datasource;
     this.rawDatasource = datasource;
@@ -162,6 +166,7 @@ ChartProps.createSelector = function create(): ChartPropsSelector {
     input => input.datasource,
     input => input.formData,
     input => input.height,
+    input => input.locale,
     input => input.hooks,
     input => input.initialValues,
     input => input.queriesData,
@@ -176,6 +181,7 @@ ChartProps.createSelector = function create(): ChartPropsSelector {
       datasource,
       formData,
       height,
+      locale,
       hooks,
       initialValues,
       queriesData,
@@ -191,6 +197,7 @@ ChartProps.createSelector = function create(): ChartPropsSelector {
         datasource,
         formData,
         height,
+        locale,
         hooks,
         initialValues,
         queriesData,

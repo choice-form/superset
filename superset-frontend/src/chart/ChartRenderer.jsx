@@ -169,6 +169,7 @@ class ChartRenderer extends React.Component {
     const {
       width,
       height,
+      locale,
       datasource,
       annotationData,
       initialValues,
@@ -206,6 +207,7 @@ class ChartRenderer extends React.Component {
         chartType={vizType}
         width={width}
         height={height}
+        locale={locale}
         annotationData={annotationData}
         datasource={datasource}
         initialValues={initialValues}

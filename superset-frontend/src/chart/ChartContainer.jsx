@@ -24,6 +24,16 @@ import { logEvent } from '../logger/actions';
 import Chart from './Chart';
 import { updateDataMask } from '../dataMask/actions';
 
+const exploreViewContainer = document.getElementById('app');
+const bootstrapData = JSON.parse(exploreViewContainer.getAttribute('data-bootstrap'));
+const common = bootstrapData?.common;
+
+function mapStateToProps() {
+  return {
+    locale: common.locale,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
@@ -37,4 +47,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Chart);
+export default connect(mapStateToProps, mapDispatchToProps)(Chart);
