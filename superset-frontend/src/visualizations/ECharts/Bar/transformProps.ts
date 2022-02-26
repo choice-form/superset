@@ -157,9 +157,11 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     },
     xAxis: {
       type: 'category',
-      name: String(xAxisLabel)
-        .split(locale === 'zh' ? '' : ' ')
-        .join('\n'),
+      name: xAxisLabel
+        ? String(xAxisLabel)
+            .split(locale === 'zh' ? '' : ' ')
+            .join('\n')
+        : '',
       axisLabel: {
         hideOverlap: true, // 是否隐藏重叠的标签
         rotate: getRotate(xLabelLayout), // 标签旋转角度

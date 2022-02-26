@@ -668,7 +668,6 @@ class BarViz(BaseViz):
 
         # 只能有一个指标
         if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) > 1:
-            print('metrics:', self.form_data["metrics"])
             raise QueryObjectValidationError(
                 _("When using 'Group By' you are limited to use a single metric")
             )
