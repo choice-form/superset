@@ -45,6 +45,10 @@ import EchartsRadarChartPlugin from '../ECharts/Radar';
 import EchartsFunnelChartPlugin from '../ECharts/Funnel';
 import EchartsMixedTimeseriesChartPlugin from '../ECharts/MixedTimeseries';
 
+// 高级图形
+// 基础柱状&基础折线组合图
+import EchartsBarLineChartPlugin from '../ECharts/Advanced/BarLine';
+
 // 基础柱状图
 import EchartsBarChartPlugin from '../ECharts/Bar';
 // 堆叠柱状图
@@ -109,7 +113,10 @@ export default class MainPreset extends Preset {
         new LineMultiChartPlugin().configure({ key: 'line_multi' }),
         new TimePivotChartPlugin().configure({ key: 'time_pivot' }),
 
-        // 柱状图
+        // 基础柱状&基础折线组合图
+        new EchartsBarLineChartPlugin().configure({ key: 'bar_line' }),
+
+        // 基础柱状图
         new EchartsBarChartPlugin().configure({ key: 'bar' }),
         // 堆叠柱状图
         new EchartsStackedColumnChartPlugin().configure({ key: 'stacked_column' }),

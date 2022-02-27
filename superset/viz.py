@@ -652,6 +652,49 @@ class BaseViz:  # pylint: disable=too-many-public-methods
         security_manager.raise_for_access(viz=self)
 
 
+class BarLineViz(BaseViz):
+    """A bar chart where the x axis is time"""
+
+    viz_type = "bar_line"
+    verbose_name = _("Bar Line Chart")
+    is_timeseries = False
+
+    def query_obj(self) -> QueryObjectDict:
+        query_obj = super().query_obj()
+
+        # 指标不能为空
+        if not self.form_data.get("metrics"):
+            raise QueryObjectValidationError(_("Pick at least one metric"))
+
+        # 只能有一个指标
+        if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) > 1:
+            raise QueryObjectValidationError(
+                _("When using 'Group By' you are limited to use a single metric")
+            )
+
+        return query_obj
+
+    def get_data(self, df: pd.DataFrame) -> VizData:
+        if df.empty:
+            return None
+
+        columns = None
+        values: Union[List[str], str] = self.metric_labels
+        if self.form_data.get("groupby"):
+            values = self.metric_labels[0]
+            columns = self.form_data.get("groupby")
+        pt = df.pivot_table(columns=columns, values=values)
+        pt.index = pt.index.map(str)
+        pt = pt.sort_index()
+
+        # 基础柱状图只需要label数组和值数组
+        return dict(
+            records=list(pt.values[0]),
+            columns=list(pt.columns),
+            groupby=self.form_data.get("groupby")
+        )
+
+
 class BarViz(BaseViz):
     """A bar chart where the x axis is time"""
 
