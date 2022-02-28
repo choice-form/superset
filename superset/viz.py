@@ -669,7 +669,7 @@ class BarLineViz(BaseViz):
 
         # 只能有2个指标
         if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) != 2:
-            raise QueryObjectValidationError(_("2 values must be selected"))
+            raise QueryObjectValidationError(_("2 metrics need to be selected"))
 
         return query_obj
 

@@ -213,7 +213,7 @@ const druid_time_origin: SharedControlConfig<'SelectControl'> = {
   ],
   default: null,
   description: t(
-    'Defines the origin where time buckets start, ' + 'accepts natural dates as in `now`, `sunday` or `1970-01-01`',
+    'Defines the origin where time buckets start, accepts natural dates as in `now`, `sunday` or `1970-01-01`',
   ),
 };
 
@@ -241,9 +241,8 @@ const granularity: SharedControlConfig<'SelectControl'> = {
     ['P1Y', 'year'],
   ],
   description: t(
-    'The time granularity for the visualization. Note that you ' +
-      'can type and use simple natural language as in `10 seconds`, ' +
-      '`1 day` or `56 weeks`',
+    'The time granularity for the visualization. Note that you can type and use simple natural language ' +
+      'as in `10 seconds`, `1 day` or `56 weeks`',
   ),
 };
 
@@ -251,11 +250,8 @@ const granularity_sqla: SharedControlConfig<'SelectControl', ColumnMeta> = {
   type: 'SelectControl',
   label: TIME_FILTER_LABELS.granularity_sqla,
   description: t(
-    'The time column for the visualization. Note that you ' +
-      'can define arbitrary expression that return a DATETIME ' +
-      'column in the table. Also note that the ' +
-      'filter below is applied against this column or ' +
-      'expression',
+    'The time column for the visualization. Note that you can define arbitrary expression that return a ' +
+      'DATETIME column in the table. Also note that the filter below is applied against this column or expression',
   ),
   default: (c: Control) => c.default,
   clearable: false,
@@ -282,10 +278,8 @@ const time_grain_sqla: SharedControlConfig<'SelectControl'> = {
   label: TIME_FILTER_LABELS.time_grain_sqla,
   default: 'P1D',
   description: t(
-    'The time granularity for the visualization. This ' +
-      'applies a date transformation to alter ' +
-      'your time column and defines a new time granularity. ' +
-      'The options here are defined on a per database ' +
+    'The time granularity for the visualization. This applies a date transformation to alter ' +
+      'your time column and defines a new time granularity. The options here are defined on a per database ' +
       'engine basis in the Superset source code.',
   ),
   mapStateToProps: ({ datasource }) => ({
@@ -373,9 +367,7 @@ const series: typeof groupByControl = {
   multi: false,
   default: null,
   description: t(
-    'Defines the grouping of entities. ' +
-      'Each series is shown as a specific color on the chart and ' +
-      'has a legend toggle',
+    'Defines the grouping of entities. Each series is shown as a specific color on the chart and has a legend toggle',
   ),
 };
 
@@ -421,7 +413,7 @@ const y_axis_format: SharedControlConfig<'SelectControl'> = {
     const showWarning = state.controls?.comparison_type?.value === 'percentage';
     return {
       warning: showWarning
-        ? t('When `Calculation type` is set to "Percentage change", the Y ' + 'Axis Format is forced to `.1%`')
+        ? t('When `Calculation type` is set to "Percentage change", the Y Axis Format is forced to `.1%`')
         : null,
       disabled: showWarning,
     };
@@ -441,7 +433,7 @@ const y_axis_2_format: SharedControlConfig<'SelectControl'> = {
     const showWarning = state.controls?.comparison_type?.value === 'percentage';
     return {
       warning: showWarning
-        ? t('When `Calculation type` is set to "Percentage change", the Y ' + 'Axis Format is forced to `.1%`')
+        ? t('When `Calculation type` is set to "Percentage change", the Y Axis Format is forced to `.1%`')
         : null,
       disabled: showWarning,
     };

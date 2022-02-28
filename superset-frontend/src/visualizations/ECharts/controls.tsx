@@ -186,7 +186,7 @@ export const showBarValue: CustomControlItem = {
   name: 'show_bar_value',
   config: {
     type: 'CheckboxControl',
-    label: t('Bar Values'),
+    label: t('Show Bar Values'),
     default: false,
     renderTrigger: true,
     description: t('Show the value on top of the bar'),
@@ -233,7 +233,7 @@ export const xLabelLayout: CustomControlItem = {
   name: 'x_label_layout',
   config: {
     type: 'SelectControl',
-    label: t('X Label Rotate'),
+    label: t('X Axis Label Rotate'),
     choices: formatSelectOptions(['auto', '-90°', '-45°', '0°', '45°', '90°']),
     default: 'auto',
     clearable: false,
@@ -300,7 +300,7 @@ export const yAxisShowMinmax: CustomControlItem = {
   name: 'y_axis_showminmax',
   config: {
     type: 'CheckboxControl',
-    label: t('Y Axis bounds'),
+    label: t('Maximum and minimum values for the Y axis'),
     renderTrigger: true,
     default: false,
     description: t('Whether to display the min and max values of the Y-axis'),
@@ -311,7 +311,7 @@ export const yAxis2ShowMinmax: CustomControlItem = {
   name: 'y_axis_2_showminmax',
   config: {
     type: 'CheckboxControl',
-    label: t('Y Axis 2 bounds'),
+    label: t('Maximum and minimum values for the Y axis 2'),
     renderTrigger: true,
     default: false,
     description: t('Whether to display the min and max values of the Y-axis'),

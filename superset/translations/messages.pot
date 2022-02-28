@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-25 17:06+0800\n"
+"POT-Creation-Date: 2022-02-28 23:11+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -225,337 +225,340 @@ msgid ""
 "statement. Then, try running your query again."
 msgstr ""
 
-#: superset/viz.py:127
+#: superset/viz.py:128
 msgid "Viz is missing a datasource"
 msgstr ""
 
-#: superset/viz.py:231
+#: superset/viz.py:233
 msgid ""
 "Applied rolling window did not return any data. Please make sure the "
 "source query satisfies the minimum periods defined in the rolling window."
 msgstr ""
 
-#: superset/utils/date_parser.py:263 superset/viz.py:353
+#: superset/utils/date_parser.py:263 superset/viz.py:355
 msgid "From date cannot be larger than to date"
 msgstr ""
 
-#: superset/viz.py:529
+#: superset/viz.py:531
 msgid "Cached value not found"
 msgstr ""
 
-#: superset/common/query_context.py:463 superset/viz.py:542
+#: superset/common/query_context.py:463 superset/viz.py:544
 #, python-format
 msgid "Columns missing in datasource: %(invalid_columns)s"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:51
-#: superset/viz.py:658
-msgid "Stacked Column Chart"
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:51
+#: superset/viz.py:660
+msgid "Bar Line Chart"
 msgstr ""
 
-#: superset/viz.py:667 superset/viz.py:1845
-msgid "Can't have overlap between Series and Breakdowns"
-msgstr ""
-
-#: superset/viz.py:670 superset/viz.py:903 superset/viz.py:1848
+#: superset/viz.py:668 superset/viz.py:738 superset/viz.py:794
+#: superset/viz.py:1025
 msgid "Pick at least one metric"
 msgstr ""
 
-#: superset/viz.py:672 superset/viz.py:1850
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:75
+#: superset/viz.py:672
+msgid "2 metrics need to be selected"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:51
+#: superset/viz.py:730
+msgid "Bar Chart"
+msgstr ""
+
+#: superset/viz.py:743 superset/viz.py:1029
+msgid "When using 'Group By' you are limited to use a single metric"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:52
+#: superset/viz.py:773
+msgid "Stacked Column Chart"
+msgstr ""
+
+#: superset/viz.py:780
 msgid "Pick at least one field for [Series]"
 msgstr ""
 
-#: superset/viz.py:744
+#: superset/viz.py:791
+msgid "Can't have overlap between Series and Breakdowns"
+msgstr ""
+
+#: superset/viz.py:866
 msgid "Table View"
 msgstr ""
 
-#: superset/viz.py:769
+#: superset/viz.py:891
 msgid ""
 "You cannot use [Columns] in combination with [Group "
 "By]/[Metrics]/[Percentage Metrics]. Please choose one or the other."
 msgstr ""
 
-#: superset/viz.py:815
+#: superset/viz.py:937
 msgid "Pick a granularity in the Time section or uncheck 'Include Time'"
 msgstr ""
 
-#: superset/viz.py:895
+#: superset/viz.py:1017
 msgid "Time Table View"
 msgstr ""
 
-#: superset/viz.py:907
-msgid "When using 'Group By' you are limited to use a single metric"
-msgstr ""
-
 #: superset-frontend/src/visualizations/D3/PivotTableChart/index.js:29
-#: superset/viz.py:935
+#: superset/viz.py:1057
 msgid "Pivot Table"
 msgstr ""
 
-#: superset/viz.py:952
+#: superset/viz.py:1074
 msgid "Please choose at least one 'Group by' field "
 msgstr ""
 
-#: superset/viz.py:964
+#: superset/viz.py:1086
 msgid "Please choose at least one metric"
 msgstr ""
 
-#: superset/viz.py:966
+#: superset/viz.py:1088
 msgid "Group By' and 'Columns' can't overlap"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/TreemapChart/index.js:35
-#: superset/viz.py:1070
+#: superset/viz.py:1192
 msgid "Treemap"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/CalendarChart/index.js:30
-#: superset/viz.py:1115
+#: superset/viz.py:1237
 msgid "Calendar Heatmap"
 msgstr ""
 
 #: superset-frontend/src/visualizations/NVD3/Bubble/index.js:30
-#: superset/viz.py:1206
+#: superset/viz.py:1328
 msgid "Bubble Chart"
 msgstr ""
 
-#: superset/viz.py:1228
+#: superset/viz.py:1350
 msgid "Please use 3 different metric labels"
 msgstr ""
 
-#: superset/viz.py:1230
+#: superset/viz.py:1352
 msgid "Pick a metric for x, y and size"
 msgstr ""
 
 #: superset-frontend/src/visualizations/NVD3/Bullet/index.js:30
-#: superset/viz.py:1257
+#: superset/viz.py:1379
 msgid "Bullet Chart"
 msgstr ""
 
-#: superset/viz.py:1269
+#: superset/viz.py:1391
 msgid "Pick a metric to display"
 msgstr ""
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/index.ts:31
-#: superset/viz.py:1287
+#: superset/viz.py:1409
 msgid "Big Number with Trendline"
 msgstr ""
 
-#: superset/viz.py:1295 superset/viz.py:1329
+#: superset/viz.py:1417 superset/viz.py:1451
 msgid "Pick a metric!"
 msgstr ""
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:35
-#: superset/viz.py:1321
+#: superset/viz.py:1443
 msgid "Big Number"
 msgstr ""
 
-#: superset/viz.py:1343
+#: superset/viz.py:1465
 msgid "Time Series - Line Chart"
 msgstr ""
 
-#: superset/viz.py:1425 superset/viz.py:1688
+#: superset/viz.py:1547 superset/viz.py:1810
 msgid "Pick a time granularity for your time series"
 msgstr ""
 
-#: superset/common/query_context.py:151 superset/viz.py:1482
+#: superset/common/query_context.py:151 superset/viz.py:1604
 msgid ""
 "An enclosed time range (both start and end) must be specified when using "
 "a Time Comparison."
 msgstr ""
 
-#: superset/viz.py:1553
+#: superset/viz.py:1675
 msgid "Time Series - Multiple Line Charts"
 msgstr ""
 
-#: superset/viz.py:1631
+#: superset/viz.py:1753
 msgid "Time Series - Dual Axis Line Chart"
 msgstr ""
 
-#: superset/viz.py:1640
+#: superset/viz.py:1762
 msgid "Pick a metric for left axis!"
 msgstr ""
 
-#: superset/viz.py:1642
+#: superset/viz.py:1764
 msgid "Pick a metric for right axis!"
 msgstr ""
 
-#: superset/viz.py:1645
+#: superset/viz.py:1767
 msgid "Please choose different metrics on left and right axis"
 msgstr ""
 
-#: superset/viz.py:1714
+#: superset/viz.py:1827
 msgid "Time Series - Period Pivot"
 msgstr ""
 
-#: superset/viz.py:1760
+#: superset/viz.py:1873
 msgid "Time Series - Percent Change"
 msgstr ""
 
-#: superset/viz.py:1768
+#: superset/viz.py:1881
 msgid "Time Series - Stacked"
 msgstr ""
 
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/index.js:31
-#: superset/viz.py:1778
-msgid "Histogram"
-msgstr ""
-
-#: superset/viz.py:1787
-msgid "Must have at least one numeric column specified"
-msgstr ""
-
-#: superset/viz.py:1836
-msgid "Distribution - Bar Chart"
-msgstr ""
-
-#: superset/viz.py:1922
+#: superset/viz.py:1891
 msgid "Sunburst"
 msgstr ""
 
-#: superset/viz.py:1969
+#: superset/viz.py:1938
 msgid "Sankey"
 msgstr ""
 
-#: superset/viz.py:1977
+#: superset/viz.py:1946
 msgid "Pick exactly 2 columns as [Source / Target]"
 msgstr ""
 
-#: superset/viz.py:2021
+#: superset/viz.py:1990
 msgid ""
 "There's a loop in your Sankey, please provide a tree. Here's a faulty "
 "link: {}"
 msgstr ""
 
-#: superset/viz.py:2034
+#: superset/viz.py:2003
 msgid "Directed Force Layout"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/CountryMapChart/index.js:30
-#: superset/viz.py:2073
+#: superset/viz.py:2042
 msgid "Country Map"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/WorldMapChart/index.js:31
-#: superset/viz.py:2108
+#: superset/viz.py:2077
 msgid "World Map"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:75
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:443
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:455
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Header/index.tsx:97
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FilterTabs.tsx:210
-#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:2170
+#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:2139
 msgid "Filters"
 msgstr ""
 
-#: superset/viz.py:2191
+#: superset/viz.py:2160
 msgid "Invalid filter configuration, please select a column"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/ParallelCoordinatesChart/index.js:30
-#: superset/viz.py:2242
+#: superset/viz.py:2211
 msgid "Parallel Coordinates"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/index.js:38
-#: superset/viz.py:2272
+#: superset/viz.py:2241
 msgid "Heatmap"
 msgstr ""
 
-#: superset/viz.py:2333
+#: superset/viz.py:2302
 msgid "Horizon Charts"
 msgstr ""
 
-#: superset/viz.py:2345
+#: superset/viz.py:2314
 msgid "Mapbox"
 msgstr ""
 
-#: superset/viz.py:2359
+#: superset/viz.py:2328
 msgid "[Longitude] and [Latitude] must be set"
 msgstr ""
 
-#: superset/viz.py:2369
+#: superset/viz.py:2338
 msgid "Must have a [Group By] column to have 'count' as the [Label]"
 msgstr ""
 
-#: superset/viz.py:2393
+#: superset/viz.py:2362
 msgid "Choice of [Label] must be present in [Group By]"
 msgstr ""
 
-#: superset/viz.py:2401
+#: superset/viz.py:2370
 msgid "Choice of [Point Radius] must be present in [Group By]"
 msgstr ""
 
-#: superset/viz.py:2409
+#: superset/viz.py:2378
 msgid "[Longitude] and [Latitude] columns must be present in [Group By]"
 msgstr ""
 
-#: superset/viz.py:2491
+#: superset/viz.py:2460
 msgid "Deck.gl - Multiple Layers"
 msgstr ""
 
-#: superset/viz.py:2532 superset/viz.py:2568
+#: superset/viz.py:2501 superset/viz.py:2537
 msgid "Bad spatial key"
 msgstr ""
 
-#: superset/viz.py:2553
+#: superset/viz.py:2522
 #, python-format
 msgid "Invalid spatial point encountered: %s"
 msgstr ""
 
-#: superset/viz.py:2590
+#: superset/viz.py:2559
 msgid ""
 "Encountered invalid NULL spatial entry,"
 "                                        please consider filtering those "
 "out"
 msgstr ""
 
-#: superset/viz.py:2685
+#: superset/viz.py:2654
 msgid "Deck.gl - Scatter plot"
 msgstr ""
 
-#: superset/viz.py:2737
+#: superset/viz.py:2706
 msgid "Deck.gl - Screen Grid"
 msgstr ""
 
-#: superset/viz.py:2766
+#: superset/viz.py:2735
 msgid "Deck.gl - 3D Grid"
 msgstr ""
 
-#: superset/viz.py:2798
+#: superset/viz.py:2767
 msgid "Deck.gl - Paths"
 msgstr ""
 
-#: superset/viz.py:2849
+#: superset/viz.py:2818
 msgid "Deck.gl - Polygon"
 msgstr ""
 
-#: superset/viz.py:2882
+#: superset/viz.py:2851
 msgid "Deck.gl - 3D HEX"
 msgstr ""
 
-#: superset/viz.py:2903
+#: superset/viz.py:2872
 msgid "Deck.gl - GeoJSON"
 msgstr ""
 
-#: superset/viz.py:2922
+#: superset/viz.py:2891
 msgid "Deck.gl - Arc"
 msgstr ""
 
-#: superset/viz.py:2956
+#: superset/viz.py:2925
 msgid "Event flow"
 msgstr ""
 
-#: superset/viz.py:2988
+#: superset/viz.py:2957
 msgid "Time Series - Paired t-test"
 msgstr ""
 
-#: superset/viz.py:3060
+#: superset/viz.py:3029
 msgid "Time Series - Nightingale Rose Chart"
 msgstr ""
 
-#: superset/viz.py:3095
+#: superset/viz.py:3064
 msgid "Partition Diagram"
 msgstr ""
 
@@ -855,7 +858,6 @@ msgstr ""
 #: superset-frontend/src/explore/controls.jsx:233
 #: superset-frontend/src/visualizations/D3/TableChart/controlPanel.tsx:95
 #: superset-frontend/src/visualizations/D3/TableChart/controlPanel.tsx:116
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:31
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:53
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:76
 #: superset/connectors/druid/views.py:70 superset/connectors/sqla/views.py:63
@@ -3394,7 +3396,7 @@ msgstr ""
 msgid "Changed on"
 msgstr ""
 
-#: superset-frontend/src/chart/Chart.jsx:72 superset/views/utils.py:268
+#: superset-frontend/src/chart/Chart.jsx:73 superset/views/utils.py:268
 msgid "The dataset associated with this chart no longer exists"
 msgstr ""
 
@@ -4697,7 +4699,7 @@ msgstr ""
 
 #: superset-frontend/src/SqlLab/components/SqlEditor/index.jsx:269
 #: superset-frontend/src/SqlLab/components/SqlEditor/index.jsx:279
-#: superset-frontend/src/chart/Chart.jsx:222
+#: superset-frontend/src/chart/Chart.jsx:223
 msgid "Run query"
 msgstr ""
 
@@ -4930,7 +4932,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/index.ts:58
 #: superset-frontend/src/visualizations/ECharts/Timeseries/index.ts:62
 #: superset-frontend/src/visualizations/NVD3/Area/index.js:52
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:38
 #: superset-frontend/src/visualizations/NVD3/Bubble/index.js:37
 #: superset-frontend/src/visualizations/NVD3/Compare/index.js:33
 #: superset-frontend/src/visualizations/NVD3/LineMulti/index.js:31
@@ -5150,10 +5151,12 @@ msgstr ""
 
 #: superset-frontend/src/chartConntrols/sections/chartTitle.tsx:31
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:139
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:393
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:385
 #: superset-frontend/src/explore/controls.jsx:403
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:59
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:284
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:97
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:98
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:175
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:139
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:122
@@ -5161,10 +5164,8 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:188
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:191
 #: superset-frontend/src/visualizations/NVD3/Area/controlPanel.ts:69
-#: superset-frontend/src/visualizations/NVD3/Bar/controlPanel.ts:63
 #: superset-frontend/src/visualizations/NVD3/Bubble/controlPanel.ts:70
 #: superset-frontend/src/visualizations/NVD3/Compare/controlPanel.ts:45
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:100
 #: superset-frontend/src/visualizations/NVD3/Line/controlPanel.ts:69
 #: superset-frontend/src/visualizations/NVD3/LineMulti/controlPanel.ts:77
 #: superset-frontend/src/visualizations/NVD3/TimePivot/controlPanel.ts:80
@@ -5181,10 +5182,12 @@ msgstr ""
 
 #: superset-frontend/src/chartConntrols/sections/chartTitle.tsx:59
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:145
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:400
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:392
 #: superset-frontend/src/explore/controls.jsx:410
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:44
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:227
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:306
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:93
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:208
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:173
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:157
@@ -5192,7 +5195,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:221
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:224
 #: superset-frontend/src/visualizations/NVD3/Area/controlPanel.ts:79
-#: superset-frontend/src/visualizations/NVD3/Bar/controlPanel.ts:68
 #: superset-frontend/src/visualizations/NVD3/Bubble/controlPanel.ts:102
 #: superset-frontend/src/visualizations/NVD3/Compare/controlPanel.ts:54
 #: superset-frontend/src/visualizations/NVD3/Line/controlPanel.ts:74
@@ -5317,7 +5319,7 @@ msgid "Time range endpoints (SIP-15)"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/sections/sections.tsx:98
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:457
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:469
 msgid "Color Scheme"
 msgstr ""
 
@@ -5342,16 +5344,15 @@ msgid "One or many columns to pivot as columns"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:54
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:372
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:366
 #: superset-frontend/src/explore/controls.jsx:382
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:115
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:104
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:107
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:105
 msgid "Series"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:57
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:375
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:369
 #: superset-frontend/src/explore/controls.jsx:385
 msgid ""
 "Defines the grouping of entities. Each series is shown as a specific "
@@ -5359,13 +5360,13 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:66
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:384
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:376
 #: superset-frontend/src/explore/controls.jsx:394
 msgid "Entity"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:70
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:388
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:380
 #: superset-frontend/src/explore/controls.jsx:398
 msgid "This defines the element to be plotted on the chart"
 msgstr ""
@@ -5388,14 +5389,14 @@ msgid "Choose a metric for right axis"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:117
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:356
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:350
 #: superset-frontend/src/dashboard/components/SliceAdder.jsx:235
 #: superset-frontend/src/explore/controls.jsx:369
 msgid "Sort by"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:119
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:358
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:352
 msgid ""
 "Metric used to define how the top series are sorted if a series or row "
 "limit is present. If undefined reverts to the first metric (where "
@@ -5403,24 +5404,24 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:133
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:407
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:399
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:108
 msgid "Bubble Size"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:134
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:408
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:400
 msgid "Metric used to calculate bubble size"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:140
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:394
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:386
 #: superset-frontend/src/explore/controls.jsx:404
 msgid "Metric assigned to the [X] axis"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:146
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:402
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:394
 #: superset-frontend/src/explore/controls.jsx:412
 msgid "Metric assigned to the [Y] axis"
 msgstr ""
@@ -5437,7 +5438,7 @@ msgid "A metric to use for color"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:159
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:253
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:252
 #: superset-frontend/src/explore/controls.jsx:284
 msgid ""
 "The time column for the visualization. Note that you can define arbitrary"
@@ -5496,7 +5497,7 @@ msgid ""
 "use simple natural language as in `10 seconds`, `1 day` or `56 weeks`"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:284
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:280
 #: superset-frontend/src/explore/controls.jsx:313
 msgid ""
 "The time granularity for the visualization. This applies a date "
@@ -5505,13 +5506,13 @@ msgid ""
 "in the Superset source code."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:300
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:294
 #: superset-frontend/src/explore/components/controls/DateFilterControl/utils/constants.ts:35
 #: superset-frontend/src/explore/controls.jsx:329
 msgid "No filter"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:301
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:295
 #: superset-frontend/src/explore/controls.jsx:330
 msgid ""
 "The time range for the visualization. All relative times, e.g. \"Last "
@@ -5523,23 +5524,23 @@ msgid ""
 " the start and/or end time."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:318
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:312
 #: superset-frontend/src/explore/controls.jsx:347
 msgid "Row limit"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:322
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:316
 msgid "Limits the number of rows that get displayed."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:328
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:343
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:322
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:337
 #: superset-frontend/src/explore/controls.jsx:356
 msgid "Series limit"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:332
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:346
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:326
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:340
 msgid ""
 "Limits the number of series that get displayed. A joined subquery (or an "
 "extra phase where subqueries are not supported) is applied to limit the "
@@ -5548,23 +5549,28 @@ msgid ""
 "query complexity and cost."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:415
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:407
 #: superset-frontend/src/explore/controls.jsx:424
 msgid "Y Axis Format"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:424
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:416
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:436
 #: superset-frontend/src/explore/controls.jsx:434
 msgid ""
 "When `Calculation type` is set to \"Percentage change\", the Y Axis "
 "Format is forced to `.1%`"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:434
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:427
+msgid "Y Axis 2 Format"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:446
 msgid "Time format"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:461
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:473
 #: superset-frontend/src/explore/controls.jsx:459
 msgid "The color scheme for rendering chart"
 msgstr ""
@@ -6375,6 +6381,7 @@ msgid "is expected to be a number"
 msgstr ""
 
 #: superset-frontend/src/core/validator/validateNonEmpty.ts:24
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:72
 msgid "cannot be empty"
 msgstr ""
 
@@ -8608,7 +8615,7 @@ msgstr ""
 msgid "My metric"
 msgstr ""
 
-#: superset-frontend/src/explore/components/controls/MetricControl/MetricsControl.jsx:293
+#: superset-frontend/src/explore/components/controls/MetricControl/MetricsControl.jsx:300
 msgid "Add metric"
 msgstr ""
 
@@ -8656,18 +8663,21 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/WorldMapChart/index.js:42
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/index.ts:37
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:42
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:57
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:57
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:60
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:58
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/index.ts:76
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/index.ts:73
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Line/index.ts:62
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/index.ts:69
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:46
 #: superset-frontend/src/visualizations/PivotTable/plugin/index.ts:45
 msgid "Popular"
 msgstr ""
 
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:110
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:59
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:59
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/index.ts:52
 #: superset-frontend/src/visualizations/ECharts/Funnel/index.ts:50
 #: superset-frontend/src/visualizations/ECharts/Gauge/index.ts:40
@@ -8697,7 +8707,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/SmoothLine/index.ts:64
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/index.ts:56
 #: superset-frontend/src/visualizations/ECharts/Timeseries/index.ts:62
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:44
 #: superset-frontend/src/visualizations/NVD3/Compare/index.js:35
 msgid "Advanced-Analytics"
 msgstr ""
@@ -8792,12 +8801,13 @@ msgstr ""
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:27
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:89
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:53
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:39
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:34
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:28
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:40
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:48
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:46
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:54
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:38
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:52
@@ -8811,7 +8821,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/MapBoxChart/controlPanel.ts:43
 #: superset-frontend/src/visualizations/NVD3/Bubble/controlPanel.ts:39
 #: superset-frontend/src/visualizations/NVD3/Bullet/controlPanel.ts:26
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:39
 #: superset-frontend/src/visualizations/NVD3/DualLine/controlPanel.ts:50
 #: superset-frontend/src/visualizations/NVD3/LineMulti/controlPanel.ts:150
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:328
@@ -8865,7 +8874,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:81
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:84
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:85
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:55
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:343
 #: superset-frontend/src/visualizations/PairedTTestChart/controlPanel.ts:47
 msgid "Whether to sort descending or ascending"
@@ -8876,7 +8884,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/PartitionChart/controlPanel.tsx:57
 #: superset-frontend/src/visualizations/D3/RoseChart/controlPanel.tsx:55
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:62
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:64
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:352
 #: superset-frontend/src/visualizations/PairedTTestChart/controlPanel.ts:54
 msgid "Contribution"
@@ -8887,7 +8894,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/PartitionChart/controlPanel.tsx:59
 #: superset-frontend/src/visualizations/D3/RoseChart/controlPanel.tsx:57
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:64
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:66
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:354
 #: superset-frontend/src/visualizations/PairedTTestChart/controlPanel.ts:56
 msgid "Compute the contribution to the total"
@@ -10711,12 +10717,13 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/TreemapChart/controlPanel.ts:48
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:135
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:81
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:68
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:44
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:39
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:62
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:67
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:265
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:70
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:68
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:74
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:71
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:96
@@ -10727,11 +10734,9 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:97
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:58
 #: superset-frontend/src/visualizations/NVD3/Area/controlPanel.ts:42
-#: superset-frontend/src/visualizations/NVD3/Bar/controlPanel.ts:48
 #: superset-frontend/src/visualizations/NVD3/Bubble/controlPanel.ts:64
 #: superset-frontend/src/visualizations/NVD3/Bullet/controlPanel.ts:31
 #: superset-frontend/src/visualizations/NVD3/Compare/controlPanel.ts:40
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:73
 #: superset-frontend/src/visualizations/NVD3/DualLine/controlPanel.ts:35
 #: superset-frontend/src/visualizations/NVD3/Line/controlPanel.ts:45
 #: superset-frontend/src/visualizations/NVD3/LineMulti/controlPanel.ts:54
@@ -10779,7 +10784,6 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/D3/CalendarChart/controlPanel.ts:142
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:240
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:113
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:76
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:140
 msgid "Legend"
@@ -10787,7 +10791,6 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/D3/CalendarChart/controlPanel.ts:145
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:243
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:116
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:143
 msgid "Whether to display the legend (toggles)"
 msgstr ""
@@ -10848,8 +10851,9 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/PartitionChart/index.js:28
 #: superset-frontend/src/visualizations/D3/WordCloud/plugin/index.ts:40
 #: superset-frontend/src/visualizations/D3/WorldMapChart/index.js:35
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/index.js:32
 #: superset-frontend/src/visualizations/DataUI/TimeTable/index.js:27
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:55
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:55
 #: superset-frontend/src/visualizations/ECharts/Gauge/index.ts:40
 #: superset-frontend/src/visualizations/ECharts/Graph/index.ts:41
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:58
@@ -10859,7 +10863,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/NVD3/Area/index.js:45
 #: superset-frontend/src/visualizations/NVD3/Bubble/index.js:34
 #: superset-frontend/src/visualizations/NVD3/Compare/index.js:36
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:42
 #: superset-frontend/src/visualizations/NVD3/LineMulti/index.js:31
 msgid "Comparison"
 msgstr ""
@@ -10874,7 +10877,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/CalendarChart/index.js:31
 #: superset-frontend/src/visualizations/D3/RoseChart/index.js:30
 #: superset-frontend/src/visualizations/D3/TableChart/index.ts:46
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/index.js:32
 msgid "Pattern"
 msgstr ""
 
@@ -10897,7 +10899,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/DataUI/TimeTable/index.js:27
 #: superset-frontend/src/visualizations/ECharts/Funnel/index.ts:50
 #: superset-frontend/src/visualizations/NVD3/Area/index.js:53
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:39
 #: superset-frontend/src/visualizations/NVD3/Bubble/index.js:38
 #: superset-frontend/src/visualizations/NVD3/Compare/index.js:40
 msgid "Trend"
@@ -10912,7 +10913,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:57
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:63
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:59
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:62
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:60
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:48
 msgid "Sort by metric"
 msgstr ""
@@ -10926,7 +10927,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:58
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:64
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:60
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:63
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:61
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:49
 msgid "Whether to sort results by the selected metric in descending order."
 msgstr ""
@@ -10942,7 +10943,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:86
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:139
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:116
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:114
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:128
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:110
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:58
@@ -10993,10 +10994,12 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/SunburstChart/index.js:33
 #: superset-frontend/src/visualizations/D3/WordCloud/plugin/index.ts:40
 #: superset-frontend/src/visualizations/D3/WorldMapChart/index.js:34
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:53
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:53
 #: superset-frontend/src/visualizations/ECharts/Graph/index.ts:39
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/index.ts:61
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:55
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:53
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:54
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/index.ts:71
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/index.ts:67
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Line/index.ts:62
@@ -11016,7 +11019,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:108
 #: superset-frontend/src/visualizations/ECharts/Graph/index.ts:40
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:57
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:55
 msgid "Circular"
 msgstr ""
 
@@ -11033,14 +11035,12 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/WorldMapChart/index.js:37
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:40
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/index.ts:28
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/index.js:32
 #: superset-frontend/src/visualizations/DataUI/TimeTable/index.js:27
 #: superset-frontend/src/visualizations/MapBoxChart/index.js:34
 #: superset-frontend/src/visualizations/NVD3/Area/index.js:47
 #: superset-frontend/src/visualizations/NVD3/Bubble/index.js:35
 #: superset-frontend/src/visualizations/NVD3/Bullet/index.js:31
 #: superset-frontend/src/visualizations/NVD3/Compare/index.js:32
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:44
 #: superset-frontend/src/visualizations/NVD3/DualLine/index.js:31
 #: superset-frontend/src/visualizations/NVD3/Line/index.js:41
 #: superset-frontend/src/visualizations/NVD3/LineMulti/index.js:31
@@ -11054,11 +11054,12 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/SankeyChart/index.js:37
 #: superset-frontend/src/visualizations/D3/SunburstChart/index.js:33
 #: superset-frontend/src/visualizations/D3/TreemapChart/index.js:36
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:58
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:58
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:61
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:59
 #: superset-frontend/src/visualizations/ECharts/Treemap/index.ts:61
 #: superset-frontend/src/visualizations/NVD3/Area/index.js:50
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:43
 msgid "Proportional"
 msgstr ""
 
@@ -11116,7 +11117,6 @@ msgid "Geo"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/CountryMapChart/index.js:31
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/index.js:32
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/index.ts:52
 msgid "Range"
 msgstr ""
@@ -11126,8 +11126,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/index.ts:70
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/index.ts:60
 #: superset-frontend/src/visualizations/NVD3/Area/index.js:51
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:40
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:47
 msgid "Stacked"
 msgstr ""
 
@@ -11168,11 +11166,12 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/SankeyChart/index.js:37
 #: superset-frontend/src/visualizations/D3/TreemapChart/index.js:36
 #: superset-frontend/src/visualizations/D3/WordCloud/plugin/index.ts:40
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:54
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:54
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:56
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:54
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:55
 #: superset-frontend/src/visualizations/ECharts/Tree/index.ts:38
 #: superset-frontend/src/visualizations/ECharts/Treemap/index.ts:56
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:41
 msgid "Categorical"
 msgstr ""
 
@@ -11302,7 +11301,6 @@ msgid "Whether to include the percentage in the tooltip"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:276
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:125
 msgid "Normalized"
 msgstr ""
 
@@ -11356,7 +11354,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:79
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:82
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:83
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:53
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:341
 #: superset-frontend/src/visualizations/PairedTTestChart/controlPanel.ts:45
 msgid "Sort Descending"
@@ -11382,7 +11379,6 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/HorizonChart/index.js:26
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/index.js:28
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/index.ts:45
 #: superset-frontend/src/visualizations/XYCharts/BoxPlot/createMetadata.ts:25
 msgid "Distribution"
@@ -11432,7 +11428,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/RoseChart/index.js:25
 #: superset-frontend/src/visualizations/D3/WordCloud/plugin/index.ts:33
 #: superset-frontend/src/visualizations/ECharts/Radar/index.ts:45
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:28
 msgid "Ranking"
 msgstr ""
 
@@ -11625,8 +11620,10 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/PartitionChart/index.js:25
 #: superset-frontend/src/visualizations/D3/SunburstChart/index.js:26
 #: superset-frontend/src/visualizations/D3/TreemapChart/index.js:29
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:45
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:45
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:48
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:45
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:46
 #: superset-frontend/src/visualizations/ECharts/Tree/index.ts:33
 #: superset-frontend/src/visualizations/ECharts/Treemap/index.ts:47
 msgid "Part of a Whole"
@@ -11687,7 +11684,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/PivotTableChart/controlPanel.ts:132
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:66
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:102
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:132
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:130
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:144
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:126
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:206
@@ -11762,13 +11759,13 @@ msgstr ""
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/index.ts:36
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:41
 #: superset-frontend/src/visualizations/DataUI/TimeTable/index.js:27
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:56
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:56
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:59
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:57
 #: superset-frontend/src/visualizations/ECharts/Treemap/index.ts:60
 #: superset-frontend/src/visualizations/NVD3/Area/index.js:49
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:42
 #: superset-frontend/src/visualizations/NVD3/Compare/index.js:38
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:45
 msgid "Percentages"
 msgstr ""
 
@@ -11969,7 +11966,6 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/D3/TableChart/index.ts:43
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:37
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:40
 #: superset-frontend/src/visualizations/PivotTable/plugin/index.ts:45
 msgid "Additive"
 msgstr ""
@@ -12347,65 +12343,6 @@ msgstr ""
 msgid "Progressive"
 msgstr ""
 
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/Histogram.jsx:116
-msgid "count"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/Histogram.jsx:120
-msgid "cumulative"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/Histogram.jsx:124
-msgid "percentile (exclusive)"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:33
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:43
-msgid "Select the numeric columns to draw the histogram"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:79
-msgid "No of Bins"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:82
-msgid "Select the number of bins for the histogram"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:91
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:215
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:166
-msgid "X Axis Label"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:102
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:254
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
-msgid "Y Axis Label"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:127
-msgid "Whether to normalize the histogram"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:137
-msgid "Cumulative"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/controlPanel.ts:139
-msgid "Whether to make the histogram cumulative"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/index.js:29
-msgid ""
-"Take your data points, and group them into \"bins\" to see where the "
-"densest areas of information lie"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/HistogramChart/index.js:30
-msgid "Population age data"
-msgstr ""
-
 #: superset-frontend/src/visualizations/DataUI/TimeTable/index.js:25
 msgid "Time-series Table"
 msgstr ""
@@ -12499,8 +12436,7 @@ msgid "Stacked Bars"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:189
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:281
-msgid "Bar Values"
+msgid "Show Bar Values"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:192
@@ -12509,22 +12445,35 @@ msgid "Show the value on top of the bar"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:200
+msgid "Axis Pointer"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:203
+msgid "Show Axis Pointer"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:211
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:151
 msgid "Extra Controls"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:203
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:214
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:154
 msgid ""
 "Whether to show extra controls or not. Extra controls include things like"
 " making mulitBar charts stacked or side by side."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:225
-msgid "X Label Rotate"
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:226
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:166
+msgid "X Axis Label"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:230
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:236
+msgid "X Axis Label Rotate"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:241
 msgid ""
 "Rotation degree of axis label, which is especially useful when there is "
 "no enough space for category axis."
@@ -12537,7 +12486,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:216
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:264
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:267
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:238
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:251
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:227
 msgid "Y Axis Bounds"
 msgstr ""
@@ -12549,7 +12498,8 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:219
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:267
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:270
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:241
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:254
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:270
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:230
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:246
 msgid ""
@@ -12558,15 +12508,55 @@ msgid ""
 "only expand the axis range. It won't narrow the data's extent."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:264
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:89
-msgid "Y bounds"
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:267
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:243
+msgid "Y Axis 2 Bounds"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:267
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:283
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
+msgid "Y Axis Label"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:293
+msgid "Y Axis 2 Label"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:303
+msgid "Maximum and minimum values for the Y axis"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:306
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:317
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:92
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:103
 msgid "Whether to display the min and max values of the Y-axis"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:314
+msgid "Maximum and minimum values for the Y axis 2"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:49
+#: superset-frontend/src/visualizations/NVD3/DualLine/controlPanel.ts:40
+msgid "Y Axis 1"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:54
+#: superset-frontend/src/visualizations/NVD3/DualLine/controlPanel.ts:45
+msgid "Y Axis 2"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/index.ts:47
+msgid ""
+"Bar chart and Line chart can be displayed in one chart at the same time, "
+"with 1 X-axis and 2 Y-axes."
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/index.ts:47
+msgid ""
+"Bar chart shows different data through the height of a bar, which is used"
+" in rectangular coordinate with at least 1 category axis."
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:51
@@ -12625,14 +12615,14 @@ msgid "Statistical"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:77
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:89
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:87
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:79
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:62
 msgid "Labels"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:83
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:95
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:93
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:97
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:92
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:39
@@ -12640,7 +12630,7 @@ msgid "Label Type"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:94
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:106
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:100
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:50
@@ -12648,7 +12638,7 @@ msgid "What should be shown on the label?"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:119
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:145
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:143
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:85
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:68
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:86
@@ -12656,7 +12646,7 @@ msgid "Show Labels"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:122
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:148
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:146
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:88
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:71
 msgid "Whether to display the labels."
@@ -13252,7 +13242,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/index.ts:40
 #: superset-frontend/src/visualizations/ECharts/Timeseries/index.ts:49
 #: superset-frontend/src/visualizations/NVD3/Area/index.js:30
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:29
 #: superset-frontend/src/visualizations/NVD3/Compare/index.js:25
 #: superset-frontend/src/visualizations/NVD3/DualLine/index.js:25
 #: superset-frontend/src/visualizations/NVD3/Line/index.js:30
@@ -13272,58 +13261,58 @@ msgstr ""
 msgid "Mixed Time-Series"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:79
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:77
 msgid "Percentage threshold"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:83
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:81
 msgid "Minimum threshold in percentage points for showing labels."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:157
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:155
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:98
 msgid "Put labels outside"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:160
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:158
 msgid "Put the labels outside of the pie?"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:170
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:168
 msgid "Label Line"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:173
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:171
 msgid "Draw line from Pie to label when labels outside?"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:179
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:177
 msgid "Pie shape"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:185
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:183
 msgid "Outer Radius"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:191
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:189
 msgid "Outer edge of Pie chart"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:200
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:198
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:73
 msgid "Donut"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:203
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:201
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:76
 msgid "Do you want a donut or a pie?"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:212
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:210
 msgid "Inner Radius"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:218
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:216
 msgid "Inner radius of donut hole"
 msgstr ""
 
@@ -13386,17 +13375,14 @@ msgid "Web"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:83
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:85
 msgid "Sort Bars"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:86
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:88
 msgid "Sort bars by x labels."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:47
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:31
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:48
 msgid ""
 "Visualize how a metric changes over time using bars. Add a group by "
 "column to visualize group level metrics and how they change over time."
@@ -13487,8 +13473,6 @@ msgid "Time-series Bar Chart v2"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/index.ts:71
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:41
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:48
 msgid "Vertical"
 msgstr ""
 
@@ -14020,6 +14004,10 @@ msgstr ""
 msgid "Show data points as circle markers on the lines"
 msgstr ""
 
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:89
+msgid "Y bounds"
+msgstr ""
+
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:100
 msgid "Y 2 bounds"
 msgstr ""
@@ -14052,16 +14040,16 @@ msgstr ""
 msgid "Use a log scale for the Y-axis"
 msgstr ""
 
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:243
-msgid "Y Axis 2 Bounds"
-msgstr ""
-
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:259
 msgid "X bounds"
 msgstr ""
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:262
 msgid "Whether to display the min and max values of the X-axis"
+msgstr ""
+
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:281
+msgid "Bar Values"
 msgstr ""
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:303
@@ -14114,7 +14102,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/NVD3/Bubble/index.js:39
 #: superset-frontend/src/visualizations/NVD3/Bullet/index.js:31
 #: superset-frontend/src/visualizations/NVD3/Compare/index.js:34
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:49
 #: superset-frontend/src/visualizations/NVD3/Line/index.js:41
 #: superset-frontend/src/visualizations/NVD3/LineMulti/index.js:31
 #: superset-frontend/src/visualizations/NVD3/TimePivot/index.js:29
@@ -14125,10 +14112,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/NVD3/Line/index.js:41
 #: superset-frontend/src/visualizations/NVD3/LineMulti/index.js:31
 msgid "Deprecated"
-msgstr ""
-
-#: superset-frontend/src/visualizations/NVD3/Bar/index.js:35
-msgid "Time-series Bar Chart"
 msgstr ""
 
 #: superset-frontend/src/visualizations/NVD3/Bubble/controlPanel.ts:91
@@ -14209,37 +14192,6 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/NVD3/Compare/index.js:30
 msgid "Time-series Percent Change"
-msgstr ""
-
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:118
-msgid "Breakdowns"
-msgstr ""
-
-#: superset-frontend/src/visualizations/NVD3/DistBar/controlPanel.ts:119
-msgid "Defines how each series is broken down"
-msgstr ""
-
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:30
-msgid ""
-"Compares metrics from different categories using bars. Bar lengths are "
-"used to indicate the magnitude of each value and color is used to "
-"differentiate groups."
-msgstr ""
-
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:38
-msgid "Bar Chart"
-msgstr ""
-
-#: superset-frontend/src/visualizations/NVD3/DistBar/index.js:43
-msgid "Discrete"
-msgstr ""
-
-#: superset-frontend/src/visualizations/NVD3/DualLine/controlPanel.ts:40
-msgid "Y Axis 1"
-msgstr ""
-
-#: superset-frontend/src/visualizations/NVD3/DualLine/controlPanel.ts:45
-msgid "Y Axis 2"
 msgstr ""
 
 #: superset-frontend/src/visualizations/NVD3/DualLine/controlPanel.ts:58

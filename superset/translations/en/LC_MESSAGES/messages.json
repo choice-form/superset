@@ -79,17 +79,20 @@
       "From date cannot be larger than to date": [""],
       "Cached value not found": [""],
       "Columns missing in datasource: %(invalid_columns)s": [""],
-      "Stacked Column Chart": [""],
-      "Can't have overlap between Series and Breakdowns": [""],
+      "Bar Line Chart": [""],
       "Pick at least one metric": [""],
+      "2 metrics need to be selected": [""],
+      "Bar Chart": [""],
+      "When using 'Group By' you are limited to use a single metric": [""],
+      "Stacked Column Chart": [""],
       "Pick at least one field for [Series]": [""],
+      "Can't have overlap between Series and Breakdowns": [""],
       "Table View": [""],
       "You cannot use [Columns] in combination with [Group By]/[Metrics]/[Percentage Metrics]. Please choose one or the other.": [
         ""
       ],
       "Pick a granularity in the Time section or uncheck 'Include Time'": [""],
       "Time Table View": [""],
-      "When using 'Group By' you are limited to use a single metric": [""],
       "Pivot Table": [""],
       "Please choose at least one 'Group by' field ": [""],
       "Please choose at least one metric": [""],
@@ -117,9 +120,6 @@
       "Time Series - Period Pivot": [""],
       "Time Series - Percent Change": [""],
       "Time Series - Stacked": [""],
-      "Histogram": [""],
-      "Must have at least one numeric column specified": [""],
-      "Distribution - Bar Chart": [""],
       "Sunburst": [""],
       "Sankey": [""],
       "Pick exactly 2 columns as [Source / Target]": [""],
@@ -1462,6 +1462,7 @@
       "When `Calculation type` is set to \"Percentage change\", the Y Axis Format is forced to `.1%`": [
         ""
       ],
+      "Y Axis 2 Format": [""],
       "Time format": [""],
       "The color scheme for rendering chart": [""],
       "Sort descending": [""],
@@ -3106,21 +3107,6 @@
       ],
       "Event Flow": [""],
       "Progressive": [""],
-      "count": [""],
-      "cumulative": [""],
-      "percentile (exclusive)": [""],
-      "Select the numeric columns to draw the histogram": [""],
-      "No of Bins": [""],
-      "Select the number of bins for the histogram": [""],
-      "X Axis Label": [""],
-      "Y Axis Label": [""],
-      "Whether to normalize the histogram": [""],
-      "Cumulative": [""],
-      "Whether to make the histogram cumulative": [""],
-      "Take your data points, and group them into \"bins\" to see where the densest areas of information lie": [
-        ""
-      ],
-      "Population age data": [""],
       "Time-series Table": [""],
       "Compare multiple time series charts (as sparklines) and related metrics quickly.": [
         ""
@@ -3148,13 +3134,16 @@
         ""
       ],
       "Stacked Bars": [""],
-      "Bar Values": [""],
+      "Show Bar Values": [""],
       "Show the value on top of the bar": [""],
+      "Axis Pointer": [""],
+      "Show Axis Pointer": [""],
       "Extra Controls": [""],
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         ""
       ],
-      "X Label Rotate": [""],
+      "X Axis Label": [""],
+      "X Axis Label Rotate": [""],
       "Rotation degree of axis label, which is especially useful when there is no enough space for category axis.": [
         ""
       ],
@@ -3162,8 +3151,20 @@
       "Bounds for the Y-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
         ""
       ],
-      "Y bounds": [""],
+      "Y Axis 2 Bounds": [""],
+      "Y Axis Label": [""],
+      "Y Axis 2 Label": [""],
+      "Maximum and minimum values for the Y axis": [""],
       "Whether to display the min and max values of the Y-axis": [""],
+      "Maximum and minimum values for the Y axis 2": [""],
+      "Y Axis 1": [""],
+      "Y Axis 2": [""],
+      "Bar chart and Line chart can be displayed in one chart at the same time, with 1 X-axis and 2 Y-axes.": [
+        ""
+      ],
+      "Bar chart shows different data through the height of a bar, which is used in rectangular coordinate with at least 1 category axis.": [
+        ""
+      ],
       "Whisker/outlier options": [""],
       "Determines how whiskers and outliers are calculated.": [""],
       "X Tick Layout": [""],
@@ -3527,6 +3528,7 @@
       "Right Axis Format": [""],
       "Show Markers": [""],
       "Show data points as circle markers on the lines": [""],
+      "Y bounds": [""],
       "Y 2 bounds": [""],
       "Line Style": [""],
       "Line interpolation as defined by d3.js": [""],
@@ -3535,9 +3537,9 @@
       "X Axis Format": [""],
       "Y Log Scale": [""],
       "Use a log scale for the Y-axis": [""],
-      "Y Axis 2 Bounds": [""],
       "X bounds": [""],
       "Whether to display the min and max values of the X-axis": [""],
+      "Bar Values": [""],
       "Reduce X ticks": [""],
       "Reduces the number of X-axis ticks to be rendered. If true, the x-axis will not overflow and labels may be missing. If false, a minimum width will be applied to columns and the width may overflow into an horizontal scroll.": [
         ""
@@ -3554,7 +3556,6 @@
       "Continuous": [""],
       "nvd3": [""],
       "Deprecated": [""],
-      "Time-series Bar Chart": [""],
       "X Log Scale": [""],
       "Use a log scale for the X-axis": [""],
       "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
@@ -3579,15 +3580,6 @@
         ""
       ],
       "Time-series Percent Change": [""],
-      "Breakdowns": [""],
-      "Defines how each series is broken down": [""],
-      "Compares metrics from different categories using bars. Bar lengths are used to indicate the magnitude of each value and color is used to differentiate groups.": [
-        ""
-      ],
-      "Bar Chart": [""],
-      "Discrete": [""],
-      "Y Axis 1": [""],
-      "Y Axis 2": [""],
       "Left Axis Metric": [""],
       "Choose a metric for left axis": [""],
       "Left Axis Format": [""],

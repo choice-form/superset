@@ -29,10 +29,8 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
   // console.log('chartProps:', chartProps);
 
   const {
-    // colorScheme,
     groupby,
     xAxisLabel, // X轴名称
-    // orderBars, // 是否按柱子的标签名称排序
     showBarValue, // 是否将值显示在柱子上
     showLegend, // 是否显示图例
     showAxisPointer, // 是否显示坐标轴指示器

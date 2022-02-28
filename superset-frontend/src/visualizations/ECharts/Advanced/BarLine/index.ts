@@ -45,7 +45,7 @@ export default class EchartsBarLineChartPlugin extends ChartPlugin<EchartsBarFor
         category: t('Part of a Whole'),
         credits: ['https://echarts.apache.org'],
         description: t(
-          'Bar chart and Line chart can be displayed in one chart at the same time, with 2 X-axes and 2 Y-axes.',
+          'Bar chart and Line chart can be displayed in one chart at the same time, with 1 X-axis and 2 Y-axes.',
         ),
         exampleGallery: [{ url: demo }],
         name: t('Bar Line Chart'),

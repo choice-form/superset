@@ -43,7 +43,7 @@ const config: ControlPanelConfig = {
     {
       label: t('Chart Options'),
       expanded: true,
-      controlSetRows: [['color_scheme'], [showLegendControl], [showBarValue], [showAxisPointer]],
+      controlSetRows: [[showLegendControl], [showBarValue], [showAxisPointer]],
     },
     {
       label: t('Y Axis 1'),
@@ -72,7 +72,7 @@ const config: ControlPanelConfig = {
             return t('cannot be empty');
           }
           if (Array.isArray(v) && v.length !== 2) {
-            return t('2 values must be selected');
+            return t('2 metrics need to be selected');
           }
           return false;
         },
