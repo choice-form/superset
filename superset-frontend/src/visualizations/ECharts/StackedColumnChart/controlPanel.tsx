@@ -17,7 +17,7 @@
  * under the License.
  */
 import { t, validateNonEmpty } from 'src/core';
-import { ControlPanelConfig, sections } from 'src/chartConntrols';
+import { ControlPanelConfig } from 'src/chartConntrols';
 
 import {
   barStacked,
@@ -33,7 +33,6 @@ import {
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
-    sections.legacyRegularTime,
     {
       label: t('Query'),
       expanded: true,

@@ -17,23 +17,21 @@
  * under the License.
  */
 import { CategoricalColorNamespace, getNumberFormatter } from 'src/core';
-import { BarSeriesOption, EChartsCoreOption } from 'echarts';
+import { EChartsCoreOption } from 'echarts';
 import { BarChartTransformedProps, EchartsBarChartProps, EchartsBarFormData } from './types';
 import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA } from '../types';
-import { formatLabel } from '../utils/series';
 import { defaultGrid, defaultTooltip } from '../defaults';
 import { OpacityEnum } from '../constants';
 
 export default function transformProps(chartProps: EchartsBarChartProps): BarChartTransformedProps {
-  const { formData, locale, height, hooks, filterState, queriesData, width, datasource } = chartProps;
+  const { formData, height, hooks, queriesData, width } = chartProps;
 
   // console.log('chartProps:', chartProps);
 
   const {
     colorScheme,
     groupby,
-    metrics,
     xAxisLabel, // X轴名称
     yAxisLabel, // Y轴名称
     yAxisFormat, // Y轴的格式化类
@@ -51,67 +49,9 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     ...formData,
   };
 
-  const rawData = queriesData[0].data || [];
-  const data = Array.isArray(rawData)
-    ? rawData.map(row => ({
-        ...row,
-        key: formatLabel(row.key, datasource.verboseMap),
-      }))
-    : rawData;
+  const source: any[] = queriesData[0].data;
 
   const { setDataMask = () => {} } = hooks;
-
-  const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
-
-  // 图例数组
-  const xLabels = metrics?.map(metric => metric?.label ?? metric);
-
-  // 柱子数据
-  const barData: { name: string; data: any[] }[] = [];
-  // 图例数据
-  const legendData: string[] = [];
-  data.forEach(row => {
-    row.values.forEach(row2 => {
-      const idx = barData.map(o => o.name).indexOf(row2.x);
-      // 表示存在
-      if (idx > -1) {
-        barData[idx].data.push(row2.y);
-      } else {
-        // 添加新的图例
-        legendData.push(row2.x);
-        // 添加新的柱子数据
-        barData.push({
-          name: row2.x,
-          data: [row2.y],
-        });
-      }
-    });
-  });
-
-  // 计算图例排序，数据重新排序
-  let xLabelData: string[] = xLabels;
-  // 1个元素就不用排序了
-  if (orderBars && xLabels.length > 1) {
-    // 元素的旧顺序
-    const orderMap = {};
-    xLabels.forEach((label, idx) => {
-      orderMap[label] = idx;
-    });
-    // 元素进行排序
-    xLabelData = xLabels.sort((x, y) => x.localeCompare(y));
-    // 得到元素的新顺序
-    const newOrderList = xLabelData.map(label => orderMap[label]);
-    // 数据交换
-    barData.forEach(bar => {
-      const arr: any[] = [];
-      newOrderList.forEach((newIdx, idx) => {
-        arr[idx] = bar.data[newIdx];
-      });
-      // 将新的数组赋值给data属性
-      // eslint-disable-next-line no-param-reassign
-      bar.data = arr;
-    });
-  }
 
   // 柱状图的通用配置
   const barSeries = {
@@ -127,40 +67,36 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
       show: showBarValue,
       // 堆叠的时候，显示在内部，组显示的时候，显示在头部
       position: barStacked ? 'inside' : 'top',
-      // 格式化值
-      formatter({ value }: any) {
-        if (typeof value === 'number') {
-          return `${value.toFixed(2)}`;
-        }
-        return value;
+      // 格式化值(标准数据集的取值格式化，非数据集才可以直接格式化)
+      formatter({ value, encode }: any) {
+        const idx = encode.y[0];
+        const row = value[idx];
+        return typeof row === 'number' ? `${row.toFixed(2)}` : row;
       },
     },
     stack: barStacked && 'total', // 这个值相同的柱子，会堆叠起来。值是什么都行，但最好是有意义的值。
   };
 
-  // @ts-ignore
-  const series: BarSeriesOption[] = barData.map(row => {
-    const isFiltered = filterState.selectedValues && !filterState.selectedValues.includes(row.name);
-    return {
-      ...barSeries,
-      ...row,
-      itemStyle: {
-        color: colorFn(row.name),
-        opacity: isFiltered ? OpacityEnum.SemiTransparent : OpacityEnum.NonTransparent,
-      },
-    };
-  });
-
-  const selectedValues = (filterState.selectedValues || []).reduce(
-    (acc: Record<string, number>, selectedValue: string) => {
-      const index = series.findIndex(({ name }) => name === selectedValue);
-      return {
-        ...acc,
-        [index]: selectedValue,
-      };
+  const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
+  // 这里只是生成相应数据的系列值
+  const series = Array.from({ length: source[0].length - 1 }).map((_, idx) => ({
+    ...barSeries,
+    itemStyle: {
+      color: colorFn(idx),
+      opacity: OpacityEnum.NonTransparent,
     },
-    {},
-  );
+  }));
+
+  // const selectedValues = (filterState.selectedValues || []).reduce(
+  //   (acc: Record<string, number>, selectedValue: string) => {
+  //     const index = series.findIndex(({ name }) => name === selectedValue);
+  //     return {
+  //       ...acc,
+  //       [index]: selectedValue,
+  //     };
+  //   },
+  //   {},
+  // );
 
   // Y轴的格式化方法
   const numberFormatter = getNumberFormatter(yAxisFormat);
@@ -199,6 +135,15 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     }
   };
 
+  // 计算数据集的数据（排序）
+  let sourceData = source;
+  if (orderBars) {
+    const dataArr = source.slice(1, source.length);
+    // 第一个元素是x轴的标签，肯定是字符串，所以使用字符串的比较方法来处理
+    const arr = dataArr.sort((a, b) => a[0].localeCompare(b[0]));
+    sourceData = [source[0], ...arr];
+  }
+
   const echartOptions: EChartsCoreOption = {
     grid: {
       ...defaultGrid,
@@ -206,25 +151,20 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     },
     tooltip: {
       ...defaultTooltip,
-      // 提示的值格式化
-      valueFormatter: (value: any) => (typeof value === 'number' ? `${value.toFixed(2)}` : value),
     },
     legend: {
       show: showLegend,
-      data: legendData,
+    },
+    dataset: {
+      source: sourceData,
     },
     xAxis: {
       type: 'category',
-      name: xAxisLabel
-        ? String(xAxisLabel)
-            .split(locale === 'zh' ? '' : ' ')
-            .join('\n')
-        : '',
+      name: xAxisLabel,
       axisLabel: {
         hideOverlap: true, // 是否隐藏重叠的标签
         rotate: getRotate(xLabelLayout), // 标签旋转角度
       },
-      data: xLabelData,
     },
     yAxis: {
       type: 'value',
@@ -250,6 +190,6 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     echartOptions,
     setDataMask,
     groupby,
-    selectedValues,
+    selectedValues: [],
   };
 }

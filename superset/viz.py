@@ -853,9 +853,21 @@ class StackedColumnViz(BaseViz):
                     x = ", ".join([str(s) for s in x])
                 else:
                     x = str(x)
-                values.append({"x": x, "y": v})
-            chart_data.append({"key": series_title, "values": values})
-        return chart_data
+                values.append((x, v))
+
+            handle = {series_title: dict(values)}
+            chart_data.append(handle)
+
+        # 返回数据集
+        dataset = []
+        for i in range(len(chart_data)):
+            for (k, v) in chart_data[i].items():
+                if i == 0:
+                    product = ['product'] + list(v.keys())
+                    dataset.append(product)
+                dataset.append([k] + list(v.values()))
+
+        return dataset
 
 
 class TableViz(BaseViz):
