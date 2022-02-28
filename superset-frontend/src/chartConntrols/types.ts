@@ -227,6 +227,7 @@ export interface SelectControlConfig<
   clearable?: boolean;
   freeForm?: boolean;
   multi?: boolean;
+  max?: number;
   valueKey?: string;
   labelKey?: string;
   options?: O[];

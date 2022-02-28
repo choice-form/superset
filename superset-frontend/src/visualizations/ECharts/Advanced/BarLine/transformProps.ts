@@ -22,10 +22,9 @@ import { BarChartTransformedProps, EchartsBarChartProps, EchartsBarFormData } fr
 import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA } from '../../types';
 import { defaultGrid, defaultTooltip } from '../../defaults';
-// import { OpacityEnum } from '../constants';
 
 export default function transformProps(chartProps: EchartsBarChartProps): BarChartTransformedProps {
-  const { formData, locale, height, hooks, queriesData, width } = chartProps;
+  const { formData, height, hooks, queriesData, width } = chartProps;
 
   // console.log('chartProps:', chartProps);
 
@@ -33,12 +32,21 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     // colorScheme,
     groupby,
     xAxisLabel, // X轴名称
-    yAxisLabel, // Y轴名称
-    yAxisFormat, // Y轴的格式化类
     // orderBars, // 是否按柱子的标签名称排序
     showBarValue, // 是否将值显示在柱子上
+    showLegend, // 是否显示图例
+    showAxisPointer, // 是否显示坐标轴指示器
+
+    yAxisLabel, // Y轴名称
+    yAxisFormat, // Y轴的格式化类
     yAxisShowminmax, // 是否显示Y轴的最大值最小值限制
     yAxisBounds, // Y轴的最小值和最大值数组
+
+    yAxis2Bounds,
+    yAxis2Format,
+    yAxis2Label,
+    yAxis2Showminmax,
+
     bottomMargin, // X轴距离下方的距离
     xLabelLayout, // X轴布局：标签旋转角度
   }: EchartsBarFormData = {
@@ -47,11 +55,16 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     ...formData,
   };
 
-  const rawData = queriesData[0].data || [];
+  const rawData = queriesData[0].data;
+
+  const legendData = Object.keys(rawData);
+  const x1 = Object.values(rawData)[0];
+  const x2 = Object.values(rawData)[1];
+  const xLabels = Object.keys(x1);
+  const x1Data = Object.values(x1);
+  const x2Data = Object.values(x2);
 
   const { setDataMask = () => {} } = hooks;
-
-  // const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
 
   // 基础柱状图的通用配置
   const barSeries = {
@@ -77,43 +90,6 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     },
   };
 
-  // @ts-ignore
-  const series = [
-    {
-      ...barSeries,
-      xAxisIndex: 1,
-      yAxisIndex: 1,
-      data: rawData.records.map((raw, idx) => {
-        const name = rawData.columns[idx];
-        // const isFiltered = filterState.selectedValues && !filterState.selectedValues.includes(name);
-        return {
-          name,
-          value: raw,
-          // itemStyle: {
-          //   color: colorFn(name),
-          //   opacity: isFiltered ? OpacityEnum.SemiTransparent : OpacityEnum.NonTransparent,
-          // },
-        };
-      }),
-    },
-    {
-      ...barSeries,
-      type: 'line',
-      data: rawData.records.map((raw, idx) => {
-        const name = rawData.columns[idx];
-        // const isFiltered = filterState.selectedValues && !filterState.selectedValues.includes(name);
-        return {
-          name,
-          value: raw,
-          // itemStyle: {
-          //   color: colorFn(name),
-          //   opacity: isFiltered ? OpacityEnum.SemiTransparent : OpacityEnum.NonTransparent,
-          // },
-        };
-      }),
-    },
-  ];
-
   // 暂时还用不到这个，保留做参考
   // const selectedValues = (filterState.selectedValues || []).reduce(
   //   (acc: Record<string, number>, selectedValue: string) => {
@@ -128,12 +104,22 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
 
   // Y轴的格式化方法
   const numberFormatter = getNumberFormatter(yAxisFormat);
+  const numberFormatter2 = getNumberFormatter(yAxis2Format);
+
   // Y轴的最大值和最小值
   const yMinMax =
     yAxisShowminmax && yAxisBounds.length === 2
       ? {
           min: yAxisBounds[0],
           max: yAxisBounds[1],
+        }
+      : {};
+  // Y轴2
+  const y2MinMax =
+    yAxis2Showminmax && yAxis2Bounds.length === 2
+      ? {
+          min: yAxis2Bounds[0],
+          max: yAxis2Bounds[1],
         }
       : {};
 
@@ -163,44 +149,41 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     }
   };
 
+  const axisPointer = showAxisPointer
+    ? {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          label: {
+            backgroundColor: '#283b56',
+          },
+        },
+      }
+    : {};
+
   const echartOptions: EChartsCoreOption = {
     grid: {
       ...defaultGrid,
       ...gridBottom,
     },
+    legend: {
+      show: showLegend,
+    },
     tooltip: {
       ...defaultTooltip,
+      ...axisPointer,
       // 提示的值格式化
       valueFormatter: (value: any) => (typeof value === 'number' ? `${value.toFixed(2)}` : value),
     },
-    xAxis: [
-      {
-        type: 'category',
-        name: xAxisLabel
-          ? String(xAxisLabel)
-              .split(locale === 'zh' ? '' : ' ')
-              .join('\n')
-          : '',
-        axisLabel: {
-          hideOverlap: true, // 是否隐藏重叠的标签
-          rotate: getRotate(xLabelLayout), // 标签旋转角度
-        },
-        data: rawData.columns,
+    xAxis: {
+      type: 'category',
+      name: xAxisLabel,
+      axisLabel: {
+        hideOverlap: true, // 是否隐藏重叠的标签
+        rotate: getRotate(xLabelLayout), // 标签旋转角度
       },
-      {
-        type: 'category',
-        name: xAxisLabel
-          ? String(xAxisLabel)
-              .split(locale === 'zh' ? '' : ' ')
-              .join('\n')
-          : '',
-        axisLabel: {
-          hideOverlap: true, // 是否隐藏重叠的标签
-          rotate: getRotate(xLabelLayout), // 标签旋转角度
-        },
-        data: rawData.columns,
-      },
-    ],
+      data: xLabels,
+    },
     yAxis: [
       {
         type: 'value',
@@ -218,20 +201,34 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
       },
       {
         type: 'value',
-        name: yAxisLabel,
+        name: yAxis2Label,
         axisLine: {
           // 显示边线
           show: true,
         },
-        ...yMinMax,
+        ...y2MinMax,
         axisLabel: {
           formatter(val: number) {
-            return numberFormatter(val);
+            return val === 0 ? null : numberFormatter2(val);
           },
         },
       },
     ],
-    series,
+    series: [
+      {
+        ...barSeries,
+        name: legendData[0],
+        yAxisIndex: 0,
+        data: x1Data,
+      },
+      {
+        ...barSeries,
+        name: legendData[1],
+        yAxisIndex: 1,
+        type: 'line',
+        data: x2Data,
+      },
+    ],
   };
 
   return {

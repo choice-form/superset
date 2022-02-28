@@ -47,6 +47,7 @@ const propTypes = {
   savedMetrics: PropTypes.arrayOf(savedMetricType),
   isLoading: PropTypes.bool,
   multi: PropTypes.bool,
+  max: PropTypes.number,
   clearable: PropTypes.bool,
   datasourceType: PropTypes.string,
 };
@@ -54,6 +55,7 @@ const propTypes = {
 const defaultProps = {
   onChange: () => {},
   clearable: true,
+  max: 0,
   savedMetrics: [],
   columns: [],
 };
@@ -108,6 +110,7 @@ const getMetricsMatchingCurrentDataset = (value, columns, savedMetrics) =>
 const MetricsControl = ({
   onChange,
   multi,
+  max,
   value: propsValue,
   columns,
   savedMetrics,
@@ -195,7 +198,11 @@ const MetricsControl = ({
     [value],
   );
 
-  const isAddNewMetricDisabled = useCallback(() => !multi && value.length > 0, [multi, value.length]);
+  const isAddNewMetricDisabled = useCallback(() => (!multi && value.length > 0) || (max > 0 && value.length === max), [
+    multi,
+    max,
+    value.length,
+  ]);
 
   const savedMetricOptions = useMemo(() => getOptionsForSavedMetrics(savedMetrics, propsValue, null), [
     propsValue,

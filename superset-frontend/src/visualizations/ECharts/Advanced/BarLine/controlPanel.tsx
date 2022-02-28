@@ -21,11 +21,16 @@ import { ControlPanelConfig } from 'src/chartConntrols';
 import {
   bottomMargin,
   showBarValue,
+  showAxisPointer,
+  showLegendControl,
   xAxisLabel,
   xLabelLayout,
   yAxisBounds,
   yAxisLabel,
+  yAxis2Label,
   yAxisShowMinmax,
+  yAxis2ShowMinmax,
+  yAxis2Bounds,
 } from '../../controls';
 
 const config: ControlPanelConfig = {
@@ -38,12 +43,17 @@ const config: ControlPanelConfig = {
     {
       label: t('Chart Options'),
       expanded: true,
-      controlSetRows: [['color_scheme'], [showBarValue]],
+      controlSetRows: [['color_scheme'], [showLegendControl], [showBarValue], [showAxisPointer]],
     },
     {
-      label: t('Y Axis'),
+      label: t('Y Axis 1'),
       expanded: true,
       controlSetRows: [['y_axis_format'], [yAxisLabel], [yAxisShowMinmax], [yAxisBounds]],
+    },
+    {
+      label: t('Y Axis 2'),
+      expanded: true,
+      controlSetRows: [['y_axis_2_format'], [yAxis2Label], [yAxis2ShowMinmax], [yAxis2Bounds]],
     },
     {
       label: t('X Axis'),
@@ -53,8 +63,20 @@ const config: ControlPanelConfig = {
   ],
   controlOverrides: {
     metrics: {
-      multi: false, // 柱状图只能有一个指标
+      multi: true,
+      max: 2,
       description: '',
+      validators: [
+        (v: any) => {
+          if (v === null || typeof v === 'undefined' || v === '') {
+            return t('cannot be empty');
+          }
+          if (Array.isArray(v) && v.length !== 2) {
+            return t('2 values must be selected');
+          }
+          return false;
+        },
+      ],
     },
     groupby: {
       validators: [validateNonEmpty], // 非空校验

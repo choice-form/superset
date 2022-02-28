@@ -175,7 +175,7 @@ export const bottomMargin: CustomControlItem = {
     clearable: false,
     freeForm: true,
     label: t('Bottom Margin'),
-    choices: formatSelectOptions(['auto', 0, 10, 20,  30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 200]),
+    choices: formatSelectOptions(['auto', 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 200]),
     default: 'auto',
     renderTrigger: true,
     description: t('Bottom margin, in pixels, allowing for more room for axis labels'),
@@ -190,6 +190,17 @@ export const showBarValue: CustomControlItem = {
     default: false,
     renderTrigger: true,
     description: t('Show the value on top of the bar'),
+  },
+};
+
+export const showAxisPointer: CustomControlItem = {
+  name: 'show_axis_pointer',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Axis Pointer'), // 坐标轴指示器
+    default: true,
+    renderTrigger: true,
+    description: t('Show Axis Pointer'),
   },
 };
 
@@ -227,7 +238,9 @@ export const xLabelLayout: CustomControlItem = {
     default: 'auto',
     clearable: false,
     renderTrigger: true,
-    description: t('Rotation degree of axis label, which is especially useful when there is no enough space for category axis.'),
+    description: t(
+      'Rotation degree of axis label, which is especially useful when there is no enough space for category axis.',
+    ),
   },
 };
 
@@ -236,6 +249,22 @@ export const yAxisBounds: CustomControlItem = {
   config: {
     type: 'BoundsControl',
     label: t('Y Axis Bounds'),
+    renderTrigger: true,
+    default: [null, null],
+    description: t(
+      'Bounds for the Y-axis. When left empty, the bounds are ' +
+        'dynamically defined based on the min/max of the data. Note that ' +
+        "this feature will only expand the axis range. It won't " +
+        "narrow the data's extent.",
+    ),
+  },
+};
+
+export const yAxis2Bounds: CustomControlItem = {
+  name: 'y_axis_2_bounds',
+  config: {
+    type: 'BoundsControl',
+    label: t('Y Axis 2 Bounds'),
     renderTrigger: true,
     default: [null, null],
     description: t(
@@ -257,11 +286,32 @@ export const yAxisLabel: CustomControlItem = {
   },
 };
 
+export const yAxis2Label: CustomControlItem = {
+  name: 'y_axis_2_label',
+  config: {
+    type: 'TextControl',
+    label: t('Y Axis 2 Label'),
+    renderTrigger: true,
+    default: '',
+  },
+};
+
 export const yAxisShowMinmax: CustomControlItem = {
   name: 'y_axis_showminmax',
   config: {
     type: 'CheckboxControl',
-    label: t('Y bounds'),
+    label: t('Y Axis bounds'),
+    renderTrigger: true,
+    default: false,
+    description: t('Whether to display the min and max values of the Y-axis'),
+  },
+};
+
+export const yAxis2ShowMinmax: CustomControlItem = {
+  name: 'y_axis_2_showminmax',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Y Axis 2 bounds'),
     renderTrigger: true,
     default: false,
     description: t('Whether to display the min and max values of the Y-axis'),

@@ -28,6 +28,7 @@ import re
 from collections import defaultdict, OrderedDict
 from datetime import date, datetime, timedelta
 from itertools import product
+from collections import Counter
 from typing import (
     Any,
     Callable,
@@ -666,11 +667,9 @@ class BarLineViz(BaseViz):
         if not self.form_data.get("metrics"):
             raise QueryObjectValidationError(_("Pick at least one metric"))
 
-        # 只能有一个指标
-        if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) > 1:
-            raise QueryObjectValidationError(
-                _("When using 'Group By' you are limited to use a single metric")
-            )
+        # 只能有2个指标
+        if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) != 2:
+            raise QueryObjectValidationError(_("2 values must be selected"))
 
         return query_obj
 
@@ -678,21 +677,50 @@ class BarLineViz(BaseViz):
         if df.empty:
             return None
 
-        columns = None
-        values: Union[List[str], str] = self.metric_labels
-        if self.form_data.get("groupby"):
-            values = self.metric_labels[0]
-            columns = self.form_data.get("groupby")
-        pt = df.pivot_table(columns=columns, values=values)
-        pt.index = pt.index.map(str)
-        pt = pt.sort_index()
+        metrics = self.metric_labels
+        df = df.copy()
+        df[self.groupby] = df[self.groupby].fillna(value=NULL_STRING)
+        pt = df.pivot_table(index=self.groupby, columns=[], values=metrics)
 
-        # 基础柱状图只需要label数组和值数组
-        return dict(
-            records=list(pt.values[0]),
-            columns=list(pt.columns),
-            groupby=self.form_data.get("groupby")
-        )
+        # Re-order the columns adhering to the metric ordering.
+        pt = pt[metrics]
+        chart_data = []
+        for name, ys in pt.items():
+            if isinstance(name, (tuple, list)):
+                name = name[0]
+            else:
+                name = str(name)
+
+            values = []
+            for x, v in ys.items():
+                # 多个group的情况下，x的值会是元组或者列表，所以必须处理一下。
+                if isinstance(x, (tuple, list)):
+                    x = ", ".join([str(s) for s in x])
+                else:
+                    x = str(x)
+                values.append((x,  0 if math.isnan(v) else v))
+
+            chart_data.append({"key": name, "values": dict(values)})
+
+        # 合并key，将key相同的value进行合并
+        handle = {}
+        for item in chart_data:
+            if item["key"] in handle:
+                handle[item["key"]].append(item['values'])
+            else:
+                handle[item["key"]] = [item['values']]
+
+        # key 相同的值进行合并
+        result = {}
+        for k, v in handle.items():
+            # 将对象变成可计算值（相同的key, value求和）
+            v = map(lambda n: Counter(n), v)
+            res = Counter()
+            for i in v:
+                res += i
+            result[k] = res
+
+        return result
 
 
 class BarViz(BaseViz):
