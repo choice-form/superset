@@ -137,14 +137,17 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
   const pieSeries = {
     type: 'pie', // 饼图
     emphasis: {
+      scaleSize: 15,
       label: {
-        show: true,
-        fontSize: '24',
+        show: labelsOutside && showLabels,
         fontWeight: 'bold',
+      },
+      labelLine: {
+        show: labelsOutside && labelLine,
       },
     },
     // 是否启用防止标签重叠策略，
-    avoidLabelOverlap: false,
+    avoidLabelOverlap: true,
   };
 
   // 标签配置
@@ -158,9 +161,6 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
         position: 'inner',
       };
 
-  // 标签线
-  const labelLineData = showLabels && labelsOutside && labelLine ? { labelLine: {} } : {};
-
   const series = [
     {
       ...pieSeries,
@@ -170,7 +170,10 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
       // 小于这个角度（0 ~ 360）的扇区，不显示标签（label 和 labelLine）。
       // 5.3.0 存在BUG，标签不显示的时候，标签线仍然会显示，所以暂时不开启该功能。
       // minShowLabelAngle: (showLabelsThreshold || 0) * 3.6,
-      ...labelLineData,
+      // 视觉引导线,
+      labelLine: {
+        show: labelsOutside && labelLine,
+      },
       // 标签
       label: {
         show: showLabels,
@@ -216,8 +219,9 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
           labelType: EchartsPieLabelType.KeyValuePercent,
           sanitizeName: true,
         });
-        return `<span style="font-size: 16px;font-weight: bold;">${params.seriesName}</span>
-                  <br /><span style="color: ${params.color};font-size: 14px">${tip}</span>`;
+        return `<span style="font-size: 16px;font-weight: bold;color: #000;">${params.seriesName}</span>
+                  <br /><span style="color: ${params.color};font-size: 14px">●</span>
+                  <span style="font-weight: bold;font-size: 14px;color: #000;">${tip}</span>`;
       },
     },
     legend: {

@@ -145,7 +145,8 @@ const config: ControlPanelConfig = {
               default: labelLine,
               renderTrigger: true,
               description: t('Draw line from Pie to label when labels outside?'),
-              visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_labels?.value),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.show_labels?.value && controls?.labels_outside?.value),
             },
           },
         ],
