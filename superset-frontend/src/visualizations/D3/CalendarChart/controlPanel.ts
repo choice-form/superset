@@ -174,7 +174,7 @@ const config: ControlPanelConfig = {
   ],
   controlOverrides: {
     y_axis_format: {
-      label: t('Number Format'),
+      label: t('Number format'),
     },
   },
 };

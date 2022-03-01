@@ -24,7 +24,6 @@ import {
   D3_FORMAT_DOCS,
   D3_FORMAT_OPTIONS,
   D3_TIME_FORMAT_OPTIONS,
-  sections,
   emitFilterControl,
 } from 'src/chartConntrols';
 import { DEFAULT_FORM_DATA } from './types';
@@ -43,7 +42,6 @@ const {
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
-    sections.legacyRegularTime,
     {
       label: t('Query'),
       expanded: true,

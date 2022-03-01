@@ -2738,7 +2738,7 @@
       "Whether to display the numerical values within the cells": [""],
       "Show Metric Names": [""],
       "Whether to display the metric name as a title": [""],
-      "Number Format": [""],
+      "Number format": [""],
       "Correlation": [""],
       "Visualizes how a metric has changed over a time using a color scale and a calendar view. Gray values are used to indicate missing values and the linear color scheme is used to encode the magnitude of each day's value.": [
         ""
@@ -2753,7 +2753,6 @@
       "Whether to sort results by the selected metric in descending order.": [
         ""
       ],
-      "Number format": [""],
       "Choose a number format": [""],
       "Choose a source": [""],
       "Target": [""],

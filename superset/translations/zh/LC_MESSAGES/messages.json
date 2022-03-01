@@ -1901,6 +1901,7 @@
       "No results were returned for this query. If you expected results to be returned, ensure any filters are configured properly and the datasource contains data for the selected time range.": [
         "没有为此查询返回任何结果。如果希望返回结果，请确保所有筛选器都已正确配置，并且数据源包含选定时间范围的数据。"
       ],
+      "No Results": ["没有匹配数据"],
       "Found invalid orderby options": ["发现无效的orderby选项"],
       "is expected to be an integer": ["应为整数"],
       "is expected to be a number": ["应为数字"],
@@ -3077,6 +3078,7 @@
       "Whether to display the numerical values within the cells": [
         "是否在单元格内显示数值"
       ],
+      "Number format": ["数字格式化"],
       "Correlation": ["相互关系"],
       "Visualizes how a metric has changed over a time using a color scale and a calendar view. Gray values are used to indicate missing values and the linear color scheme is used to encode the magnitude of each day's value.": [
         "使用色标和日历视图可视化度量在一段时间内的变化。灰度值用于指示缺失值，线性颜色方案用于编码每天值的大小。"
@@ -3232,6 +3234,7 @@
       ],
       "Transpose Pivot": ["转置轴心"],
       "Swap Groups and Columns": ["交换组和列"],
+      "Date format": ["日期格式化"],
       "Used to summarize a set of data by grouping together multiple statistics along two axes. Examples: Sales numbers by region and month, tasks by status and assignee, active users by age and location.\n\n  This chart is being deprecated and we recommend checking out Pivot Table V2 instead!": [
         "用于通过沿两个轴将多个统计信息组合在一起来汇总一组数据。示例：按地区和月份列出的销售数字，按状态和工作人员列出的任务，按年龄和地点列出的活跃用户。此图表已被弃用，我们建议改为查看Pivot表V2！"
       ],
@@ -3514,7 +3517,9 @@
       "Box Plot": ["盒须图"],
       "Statistical": ["统计的"],
       "Labels": ["标签"],
+      "Label Type": ["标签类型"],
       "What should be shown on the label?": ["标签上应该显示什么？"],
+      "Show Labels": ["显示标签"],
       "Whether to display the labels.": ["是否显示标签。"],
       "Showcases how a metric changes as the funnel progresses. This classic chart is useful for visualizing drop-off between stages in a pipeline or lifecycle.": [
         "展示指标如何随着漏斗的推进而变化。这个经典图表对于可视化管道或生命周期中各个阶段之间的下降非常有用。"
