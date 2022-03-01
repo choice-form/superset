@@ -21,24 +21,13 @@ import { t, validateNonEmpty } from 'src/core';
 import {
   ControlPanelConfig,
   ControlPanelsContainerProps,
-  D3_FORMAT_DOCS,
   D3_FORMAT_OPTIONS,
-  D3_TIME_FORMAT_OPTIONS,
   emitFilterControl,
 } from 'src/chartConntrols';
 import { DEFAULT_FORM_DATA } from './types';
 import { legendSection } from '../controls';
 
-const {
-  donut,
-  innerRadius,
-  labelsOutside,
-  labelType,
-  labelLine,
-  outerRadius,
-  numberFormat,
-  showLabels,
-} = DEFAULT_FORM_DATA;
+const { labelsOutside, labelType, labelLine, numberFormat, showLabels } = DEFAULT_FORM_DATA;
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -73,17 +62,20 @@ const config: ControlPanelConfig = {
           {
             name: 'show_labels_threshold',
             config: {
-              type: 'TextControl',
+              type: 'SliderControl',
               label: t('Percentage threshold'),
               renderTrigger: true,
-              isFloat: true,
+              min: 0,
+              max: 100,
+              step: 1,
               default: 5,
               description: t('Minimum threshold in percentage points for showing labels.'),
+              // 5.3.0 存在BUG，标签不显示的时候，标签线仍然会显示，所以暂时不开启该功能。
+              visibility: () => false,
             },
           },
         ],
         ...legendSection,
-        // eslint-disable-next-line react/jsx-key
         [<h1 className="section-header">{t('Labels')}</h1>],
         [
           {
@@ -94,12 +86,12 @@ const config: ControlPanelConfig = {
               default: labelType,
               renderTrigger: true,
               choices: [
-                ['key', 'Category Name'],
-                ['value', 'Value'],
-                ['percent', 'Percentage'],
-                ['key_value', 'Category and Value'],
-                ['key_percent', 'Category and Percentage'],
-                ['key_value_percent', 'Category, Value and Percentage'],
+                ['key', t('Category Name')], // 类型
+                ['value', t('Value')], // 值
+                ['percent', t('Percentage')], // 百分比
+                ['key_value', t('Category and Value')], // 类型 和 值
+                ['key_percent', t('Category and Percentage')], // 类型 和 百分比
+                ['key_value_percent', t('Category, Value and Percentage')], // 类型，值 和 百分比
               ],
               description: t('What should be shown on the label?'),
             },
@@ -115,23 +107,7 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: numberFormat,
               choices: D3_FORMAT_OPTIONS,
-              description: `${t('D3 format syntax: https://github.com/d3/d3-format')} ${t(
-                'Only applies when "Label Type" is set to show values.',
-              )}`,
-            },
-          },
-        ],
-        [
-          {
-            name: 'date_format',
-            config: {
-              type: 'SelectControl',
-              freeForm: true,
-              label: t('Date format'),
-              renderTrigger: true,
-              choices: D3_TIME_FORMAT_OPTIONS,
-              default: 'smart_date',
-              description: D3_FORMAT_DOCS,
+              description: t('Format the displayed value in the selected format'),
             },
           },
         ],
@@ -173,7 +149,6 @@ const config: ControlPanelConfig = {
             },
           },
         ],
-        // eslint-disable-next-line react/jsx-key
         [<h1 className="section-header">{t('Pie shape')}</h1>],
         [
           {
@@ -185,18 +160,18 @@ const config: ControlPanelConfig = {
               min: 10,
               max: 100,
               step: 1,
-              default: outerRadius,
+              default: 70, // 外环70%
               description: t('Outer edge of Pie chart'),
             },
           },
         ],
         [
           {
-            name: 'donut',
+            name: 'donut', // 圆环图
             config: {
               type: 'CheckboxControl',
               label: t('Donut'),
-              default: donut,
+              default: false,
               renderTrigger: true,
               description: t('Do you want a donut or a pie?'),
             },
@@ -212,7 +187,7 @@ const config: ControlPanelConfig = {
               min: 0,
               max: 100,
               step: 1,
-              default: innerRadius,
+              default: 40, // 内环40%
               description: t('Inner radius of donut hole'),
               visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.donut?.value),
             },

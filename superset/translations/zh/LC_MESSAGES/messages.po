@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-01 10:44+0800\n"
+"POT-Creation-Date: 2022-03-01 19:27+0800\n"
 "PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -271,8 +271,8 @@ msgstr "数据源中缺少列：%(invalid_columns)s"
 msgid "Bar Line Chart"
 msgstr "柱状折线图"
 
-#: superset/viz.py:668 superset/viz.py:738 superset/viz.py:794
-#: superset/viz.py:1037
+#: superset/viz.py:668 superset/viz.py:737 superset/viz.py:808
+#: superset/viz.py:864 superset/viz.py:1107
 msgid "Pick at least one metric"
 msgstr "选择至少一个指标"
 
@@ -281,184 +281,190 @@ msgstr "选择至少一个指标"
 msgid "2 metrics need to be selected"
 msgstr "需要选择2个指标"
 
+#: superset-frontend/src/visualizations/ECharts/Pie/index.ts:53
+#: superset-frontend/src/visualizations/NVD3/Pie/index.js:27
+#: superset/viz.py:729
+msgid "Pie Chart"
+msgstr "饼图"
+
 #: superset-frontend/src/visualizations/ECharts/Bar/index.ts:51
-#: superset/viz.py:730
+#: superset/viz.py:800
 msgid "Bar Chart"
 msgstr "柱状图"
 
-#: superset/viz.py:743 superset/viz.py:1041
+#: superset/viz.py:813 superset/viz.py:1111
 msgid "When using 'Group By' you are limited to use a single metric"
 msgstr "当使用“Group by”时，只限于使用单个度量"
 
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:52
-#: superset/viz.py:773
+#: superset/viz.py:843
 msgid "Stacked Column Chart"
 msgstr "堆叠柱状图"
 
-#: superset/viz.py:780
+#: superset/viz.py:850
 msgid "Pick at least one field for [Series]"
 msgstr "为 [序列] 选择至少一个字段"
 
-#: superset/viz.py:791
+#: superset/viz.py:861
 msgid "Can't have overlap between Series and Breakdowns"
 msgstr "Series 和 Breakdown 之间不能有重叠"
 
-#: superset/viz.py:878
+#: superset/viz.py:948
 msgid "Table View"
 msgstr "表视图"
 
-#: superset/viz.py:903
+#: superset/viz.py:973
 msgid ""
 "You cannot use [Columns] in combination with [Group "
 "By]/[Metrics]/[Percentage Metrics]. Please choose one or the other."
 msgstr "不能将 [列] 与 [分组]/[指标]/[百分比度量] 结合使用。请选择其中一个。"
 
-#: superset/viz.py:949
+#: superset/viz.py:1019
 msgid "Pick a granularity in the Time section or uncheck 'Include Time'"
 msgstr "在“时间”部分选择一个粒度，或取消选中“包含时间”"
 
-#: superset/viz.py:1029
+#: superset/viz.py:1099
 msgid "Time Table View"
 msgstr "时间表视图"
 
 #: superset-frontend/src/visualizations/D3/PivotTableChart/index.js:29
-#: superset/viz.py:1069
+#: superset/viz.py:1139
 msgid "Pivot Table"
 msgstr "透视表"
 
-#: superset/viz.py:1086
+#: superset/viz.py:1156
 msgid "Please choose at least one 'Group by' field "
 msgstr "请至少选择一个分组字段 "
 
-#: superset/viz.py:1098
+#: superset/viz.py:1168
 msgid "Please choose at least one metric"
 msgstr "请至少选择一个指标"
 
-#: superset/viz.py:1100
+#: superset/viz.py:1170
 msgid "Group By' and 'Columns' can't overlap"
 msgstr "“Group by”列和字段不能重叠"
 
 #: superset-frontend/src/visualizations/D3/TreemapChart/index.js:35
-#: superset/viz.py:1204
+#: superset/viz.py:1274
 msgid "Treemap"
 msgstr "树状图"
 
 #: superset-frontend/src/visualizations/D3/CalendarChart/index.js:30
-#: superset/viz.py:1249
+#: superset/viz.py:1319
 msgid "Calendar Heatmap"
 msgstr "时间热力图"
 
 #: superset-frontend/src/visualizations/NVD3/Bubble/index.js:30
-#: superset/viz.py:1340
+#: superset/viz.py:1410
 msgid "Bubble Chart"
 msgstr "气泡图"
 
-#: superset/viz.py:1362
+#: superset/viz.py:1432
 msgid "Please use 3 different metric labels"
 msgstr "请在左右轴上选择不同的指标"
 
-#: superset/viz.py:1364
+#: superset/viz.py:1434
 msgid "Pick a metric for x, y and size"
 msgstr "为 x 轴，y 轴和大小选择一个指标"
 
 #: superset-frontend/src/visualizations/NVD3/Bullet/index.js:30
-#: superset/viz.py:1391
+#: superset/viz.py:1461
 msgid "Bullet Chart"
 msgstr "子弹图"
 
-#: superset/viz.py:1403
+#: superset/viz.py:1473
 msgid "Pick a metric to display"
 msgstr "选择一个指标来显示"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/index.ts:31
-#: superset/viz.py:1421
+#: superset/viz.py:1491
 msgid "Big Number with Trendline"
 msgstr "数字和趋势线"
 
-#: superset/viz.py:1429 superset/viz.py:1463
+#: superset/viz.py:1499 superset/viz.py:1533
 msgid "Pick a metric!"
 msgstr "选择一个指标！"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:35
-#: superset/viz.py:1455
+#: superset/viz.py:1525
 msgid "Big Number"
 msgstr "数字"
 
-#: superset/viz.py:1477
+#: superset/viz.py:1547
 msgid "Time Series - Line Chart"
 msgstr "时间序列-折线图"
 
-#: superset/viz.py:1559 superset/viz.py:1822
+#: superset/viz.py:1629 superset/viz.py:1892
 msgid "Pick a time granularity for your time series"
 msgstr "为您的时间序列选择一个时间粒度"
 
-#: superset/common/query_context.py:151 superset/viz.py:1616
+#: superset/common/query_context.py:151 superset/viz.py:1686
 msgid ""
 "An enclosed time range (both start and end) must be specified when using "
 "a Time Comparison."
 msgstr "使用时间比较时，必须指定封闭的时间范围（有开始和结束）。"
 
-#: superset/viz.py:1687
+#: superset/viz.py:1757
 msgid "Time Series - Multiple Line Charts"
 msgstr "时间序列-多线图"
 
-#: superset/viz.py:1765
+#: superset/viz.py:1835
 msgid "Time Series - Dual Axis Line Chart"
 msgstr "时间序列-双轴线图"
 
-#: superset/viz.py:1774
+#: superset/viz.py:1844
 msgid "Pick a metric for left axis!"
 msgstr "为左轴选择一个指标！"
 
-#: superset/viz.py:1776
+#: superset/viz.py:1846
 msgid "Pick a metric for right axis!"
 msgstr "为右轴选择一个指标！"
 
-#: superset/viz.py:1779
+#: superset/viz.py:1849
 msgid "Please choose different metrics on left and right axis"
 msgstr "请在左右轴上选择不同的指标"
 
-#: superset/viz.py:1839
+#: superset/viz.py:1909
 msgid "Time Series - Period Pivot"
 msgstr "时间序列 - 周期透视表"
 
-#: superset/viz.py:1885
+#: superset/viz.py:1955
 msgid "Time Series - Percent Change"
 msgstr "时间序列 - 百分比变化"
 
-#: superset/viz.py:1893
+#: superset/viz.py:1963
 msgid "Time Series - Stacked"
 msgstr "时间序列 - 堆积图"
 
-#: superset/viz.py:1903
+#: superset/viz.py:1973
 msgid "Sunburst"
 msgstr "环状层次图"
 
-#: superset/viz.py:1950
+#: superset/viz.py:2020
 msgid "Sankey"
 msgstr "蛇形图"
 
-#: superset/viz.py:1958
+#: superset/viz.py:2028
 msgid "Pick exactly 2 columns as [Source / Target]"
 msgstr "为 [来源 / 目标] 选择两个列"
 
-#: superset/viz.py:2002
+#: superset/viz.py:2072
 msgid ""
 "There's a loop in your Sankey, please provide a tree. Here's a faulty "
 "link: {}"
 msgstr "桑基图里面有一个循环，请提供一棵树。这是一个错误的链接：{}"
 
-#: superset/viz.py:2015
+#: superset/viz.py:2085
 msgid "Directed Force Layout"
 msgstr "有向图"
 
 #: superset-frontend/src/visualizations/D3/CountryMapChart/index.js:30
-#: superset/viz.py:2054
+#: superset/viz.py:2124
 msgid "Country Map"
 msgstr "国家地图"
 
 #: superset-frontend/src/visualizations/D3/WorldMapChart/index.js:31
-#: superset/viz.py:2089
+#: superset/viz.py:2159
 msgid "World Map"
 msgstr "世界地图"
 
@@ -466,117 +472,117 @@ msgstr "世界地图"
 #: superset-frontend/src/chartConntrols/shared-controls/index.tsx:455
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Header/index.tsx:97
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FilterTabs.tsx:210
-#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:2151
+#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:2221
 msgid "Filters"
 msgstr "过滤"
 
-#: superset/viz.py:2172
+#: superset/viz.py:2242
 msgid "Invalid filter configuration, please select a column"
 msgstr "过滤器配置无效，请选择一个列"
 
 #: superset-frontend/src/visualizations/D3/ParallelCoordinatesChart/index.js:30
-#: superset/viz.py:2223
+#: superset/viz.py:2293
 msgid "Parallel Coordinates"
 msgstr "平行坐标"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/index.js:38
-#: superset/viz.py:2253
+#: superset/viz.py:2323
 msgid "Heatmap"
 msgstr "热力图"
 
-#: superset/viz.py:2314
+#: superset/viz.py:2384
 msgid "Horizon Charts"
 msgstr "水平图"
 
-#: superset/viz.py:2326
+#: superset/viz.py:2396
 msgid "Mapbox"
 msgstr "箱图"
 
-#: superset/viz.py:2340
+#: superset/viz.py:2410
 msgid "[Longitude] and [Latitude] must be set"
 msgstr "[经度] 和 [纬度] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2350
+#: superset/viz.py:2420
 msgid "Must have a [Group By] column to have 'count' as the [Label]"
 msgstr "[Group By] 列必须要有 ‘count’字段作为 [标签]"
 
-#: superset/viz.py:2374
+#: superset/viz.py:2444
 msgid "Choice of [Label] must be present in [Group By]"
 msgstr "[标签] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2382
+#: superset/viz.py:2452
 msgid "Choice of [Point Radius] must be present in [Group By]"
 msgstr "[点半径] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2390
+#: superset/viz.py:2460
 msgid "[Longitude] and [Latitude] columns must be present in [Group By]"
 msgstr "[经度] 和 [纬度] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2472
+#: superset/viz.py:2542
 msgid "Deck.gl - Multiple Layers"
 msgstr "多图层"
 
-#: superset/viz.py:2513 superset/viz.py:2549
+#: superset/viz.py:2583 superset/viz.py:2619
 msgid "Bad spatial key"
 msgstr "错误的空间字段"
 
-#: superset/viz.py:2534
+#: superset/viz.py:2604
 #, python-format
 msgid "Invalid spatial point encountered: %s"
 msgstr "遇到无效的空间点：%s"
 
-#: superset/viz.py:2571
+#: superset/viz.py:2641
 msgid ""
 "Encountered invalid NULL spatial entry,"
 "                                        please consider filtering those "
 "out"
 msgstr "遇到无效的为 NULL 的空间条目，请考虑将其过滤掉"
 
-#: superset/viz.py:2666
+#: superset/viz.py:2736
 msgid "Deck.gl - Scatter plot"
 msgstr "Deck.gl - 散点图"
 
-#: superset/viz.py:2718
+#: superset/viz.py:2788
 msgid "Deck.gl - Screen Grid"
 msgstr "Deck.gl - 屏幕网格"
 
-#: superset/viz.py:2747
+#: superset/viz.py:2817
 msgid "Deck.gl - 3D Grid"
 msgstr "Deck.gl - 3D网格"
 
-#: superset/viz.py:2779
+#: superset/viz.py:2849
 msgid "Deck.gl - Paths"
 msgstr "Deck.gl - 路径"
 
-#: superset/viz.py:2830
+#: superset/viz.py:2900
 msgid "Deck.gl - Polygon"
 msgstr "Deck.gl - 多角形"
 
-#: superset/viz.py:2863
+#: superset/viz.py:2933
 msgid "Deck.gl - 3D HEX"
 msgstr "Deck.gl - 3D六角曲面"
 
-#: superset/viz.py:2884
+#: superset/viz.py:2954
 msgid "Deck.gl - GeoJSON"
 msgstr "Deck.gl - GeoJson"
 
-#: superset/viz.py:2903
+#: superset/viz.py:2973
 msgid "Deck.gl - Arc"
 msgstr "Deck.gl - 弧度"
 
-#: superset/viz.py:2937
+#: superset/viz.py:3007
 msgid "Event flow"
 msgstr "事件流"
 
-#: superset/viz.py:2969
+#: superset/viz.py:3039
 msgid "Time Series - Paired t-test"
 msgstr "时间序列 - 配对t检验"
 
-#: superset/viz.py:3041
+#: superset/viz.py:3111
 msgid "Time Series - Nightingale Rose Chart"
 msgstr "时间序列 - 南丁格尔玫瑰图"
 
-#: superset/viz.py:3076
+#: superset/viz.py:3146
 msgid "Partition Diagram"
 msgstr "分区图"
 
@@ -1715,7 +1721,7 @@ msgstr "额外字段中的元数据参数配置不正确。键 %(key)s 无效。
 msgid ""
 "Engine spec \"InvalidEngine\" does not support being configured via "
 "individual parameters."
-msgstr "引擎规格\"InvalidEngine\，不支持通过单个参数进行配置。"
+msgstr "引擎规格\"InvalidEngine\\，不支持通过单个参数进行配置。"
 
 #: superset/databases/schemas.py:299
 msgid ""
@@ -2054,7 +2060,7 @@ msgstr "表 \"%(schema)s\" 不存在。必须使用有效的表来运行此查�
 msgid ""
 "Please check your query for syntax errors near \"%(server_error)s\". "
 "Then, try running your query again."
-msgstr "请检查\“%（服务器错误）s\”附近的语法错误。请修改后再次尝试运行查询。"
+msgstr "请检查\\“%（服务器错误）s\\”附近的语法错误。请修改后再次尝试运行查询。"
 
 #: superset/db_engine_specs/mssql.py:69
 #, python-format
@@ -2959,7 +2965,9 @@ msgid ""
 " replacement feature <a "
 "href='https://superset.apache.org/docs/installation/alerts-"
 "reports'>Alerts & Reports documentation</a>"
-msgstr "此功能已弃用，将在2.0上删除，<a href=”https://superset.apache.org/docs/installation/alerts-reports“>警报和报告文档</a>"
+msgstr ""
+"此功能已弃用，将在2.0上删除，<a href=”https://superset.apache.org/docs/installation"
+"/alerts-reports“>警报和报告文档</a>"
 
 #: superset/views/annotations.py:40
 msgid "annotation start time or end time is required."
@@ -4049,7 +4057,9 @@ msgstr "列式上载不允许使用多个文件扩展名。请确保所有文件
 msgid ""
 "Database \"%(database_name)s\" schema \"%(schema_name)s\" is not allowed "
 "for columnar uploads. Please contact your Superset Admin."
-msgstr "数据库 \"%(database_name)s\" schema \"%(schema_name)s\" 不允许用于columnar上传。请联系管理员。"
+msgstr ""
+"数据库 \"%(database_name)s\" schema \"%(schema_name)s\" "
+"不允许用于columnar上传。请联系管理员。"
 
 #: superset/views/database/views.py:463
 msgid ""
@@ -4057,8 +4067,8 @@ msgid ""
 "\"%(columnar_table.table)s\" and in the schema field: "
 "\"%(columnar_table.schema)s\". Please remove one"
 msgstr ""
-"不能同时在表名 \"%(columnar_table.table)s\" 和schema字段 \"%(columnar_table.schema)s\" "
-"中指定命名空间。请删除一个。"
+"不能同时在表名 \"%(columnar_table.table)s\" 和schema字段 "
+"\"%(columnar_table.schema)s\" 中指定命名空间。请删除一个。"
 
 #: superset/views/database/views.py:538
 #, python-format
@@ -4067,8 +4077,8 @@ msgid ""
 "\"%(table_name)s\" in database \"%(db_name)s\". Error message: "
 "%(error_msg)s"
 msgstr ""
-"无法将Columnar文件 \"%(filename)s\" 上传到数据库 \"%(db_name)s\" 中的表 \"%(table_name)s\""
-" 内。错误消息：%(error_msg)s"
+"无法将Columnar文件 \"%(filename)s\" 上传到数据库 \"%(db_name)s\" 中的表 "
+"\"%(table_name)s\" 内。错误消息：%(error_msg)s"
 
 #: superset/views/database/views.py:550
 #, python-format
@@ -5301,7 +5311,7 @@ msgstr "启用预测"
 msgid "Enable forecasting"
 msgstr "启用预测功能"
 
-#: superset-frontend/src/chartConntrols/sections/forecastInterval.tsx:52预测期
+#: superset-frontend/src/chartConntrols/sections/forecastInterval.tsx:52
 msgid "Forecast periods"
 msgstr "预测期"
 
@@ -5526,9 +5536,6 @@ msgid "Drop temporal column here"
 msgstr "把时间柱放在此处"
 
 #: superset-frontend/src/chartConntrols/shared-controls/emitFilterControl.tsx:30
-msgid "Emit dashboard cross filters"
-msgstr "发出看板的交叉过滤器"
-
 #: superset-frontend/src/chartConntrols/shared-controls/emitFilterControl.tsx:33
 msgid "Emit dashboard cross filters."
 msgstr "发出看板的交叉过滤器"
@@ -5716,6 +5723,7 @@ msgid "Horizontal alignment"
 msgstr "水平对齐"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:104
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:52
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:278
 msgid "Left"
 msgstr "左边"
@@ -5725,6 +5733,7 @@ msgid "Center"
 msgstr "中间"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:106
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:53
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:279
 msgid "Right"
 msgstr "右边"
@@ -7214,6 +7223,7 @@ msgstr "选择过滤器"
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1076
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1091
 #: superset-frontend/src/views/CRUD/alert/ExecutionLog.tsx:124
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:90
 msgid "Value"
 msgstr "值"
 
@@ -8900,7 +8910,7 @@ msgstr "把您的代码放在这里"
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:28
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:40
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:46
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:35
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:54
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:37
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:52
@@ -10831,7 +10841,7 @@ msgstr "每个区块的时间单位。应该是比域粒度更小的单位。应
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:67
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:265
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:68
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:57
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:74
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:70
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:96
@@ -10892,7 +10902,7 @@ msgstr "时间格式"
 
 #: superset-frontend/src/visualizations/D3/CalendarChart/controlPanel.ts:142
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:240
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:76
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:78
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:140
 msgid "Legend"
 msgstr "图例"
@@ -10935,7 +10945,7 @@ msgstr "是否将度量名称显示为标题"
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:86
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:139
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:114
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:106
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:128
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:110
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:58
@@ -11036,7 +11046,7 @@ msgstr "趋势"
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:57
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:63
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:59
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:60
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:48
 msgid "Sort by metric"
 msgstr "排序指标"
@@ -11050,7 +11060,7 @@ msgstr "排序指标"
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:58
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:64
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:60
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:61
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:50
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:49
 msgid "Whether to sort results by the selected metric in descending order."
 msgstr "是否按所选指标按降序对结果排序。"
@@ -11368,13 +11378,13 @@ msgid "Left margin, in pixels, allowing for more room for axis labels"
 msgstr "左边距，以像素为单位，为轴标签留出更多空间"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:187
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:177
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:179
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:178
 msgid "Bottom Margin"
 msgstr "底部边距"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:191
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:181
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:183
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:182
 msgid "Bottom margin, in pixels, allowing for more room for axis labels"
 msgstr "底边距，以像素为单位，为轴标签留出更多空间"
@@ -11789,7 +11799,6 @@ msgstr "交换组和列"
 #: superset-frontend/src/visualizations/D3/PivotTableChart/controlPanel.ts:132
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:66
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:102
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:130
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:144
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:126
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:206
@@ -12470,115 +12479,144 @@ msgstr "显示图例"
 msgid "Whether to display a legend for the chart"
 msgstr "是否显示图表的图例"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:38
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:57
-msgid "Legend type"
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:31
+msgid "Legend Type"
 msgstr "图例类型"
 
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:33
+msgid "Scroll"
+msgstr "可滚动翻页的图例"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:34
+msgid "Plain"
+msgstr "普通图例"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:38
+msgid "Show Legend type"
+msgstr "显示图例类型"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:48
+msgid "Legend Orientation"
+msgstr "图例列表的布局朝向"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:50
+#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:261
+msgid "Top"
+msgstr "顶部"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:51
+#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:262
+msgid "Bottom"
+msgstr "底部"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:57
+msgid "Choose the orientation of the legend"
+msgstr "选择图例的方向"
+
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:66
-msgid "Margin"
-msgstr "边距"
+msgid "Legend Padding"
+msgstr "图例内边距"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:70
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:72
 msgid "Additional padding for legend."
-msgstr "图例的额外填充。"
+msgstr "为图例提供额外的填充"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:87
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:89
 msgid "Rich tooltip"
 msgstr "丰富的工具提示"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:90
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:92
 msgid "Shows a list of all series available at that point in time"
 msgstr "显示该时间点可用的所有系列的列表"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:98
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:100
 msgid "Tooltip sort by metric"
 msgstr "按指标排序"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:101
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:103
 msgid "Whether to sort tooltip by the selected metric in descending order."
 msgstr "是否按所选指标按降序排列工具提示。"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:110
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:112
 msgid "Tooltip time format"
 msgstr "时间格式"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:117
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:119
 msgid "Tooltip"
 msgstr "工具提示"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:127
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:129
 msgid "Show Value"
 msgstr "显示值"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:130
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:132
 msgid "Show series values on the chart"
 msgstr "在图表上显示系列值"
 
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:150
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:138
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:140
 msgid "Stack series"
 msgstr "堆叠"
 
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:153
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:141
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:143
 msgid "Stack series on top of each other"
 msgstr "堆叠在彼此的顶部"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:149
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:151
 msgid "Only Total"
 msgstr "只有总数"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:152
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:154
 msgid ""
 "Only show the total value on the stacked chart, and not show on the "
 "selected category"
 msgstr "仅在堆叠图表上显示总值，而不在所选类别上显示"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:164
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:166
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:292
 msgid "Stacked Bars"
 msgstr "堆叠柱"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:189
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:191
 msgid "Show Bar Values"
 msgstr "显示柱状图的值"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:192
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:194
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:284
 msgid "Show the value on top of the bar"
 msgstr "在柱顶端显示值"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:200
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:202
 msgid "Axis Pointer"
 msgstr "坐标轴指示器"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:203
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:205
 msgid "Show Axis Pointer"
 msgstr "显示坐标轴指示器"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:211
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:213
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:151
 msgid "Extra Controls"
 msgstr "额外控制"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:214
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:216
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:154
 msgid ""
 "Whether to show extra controls or not. Extra controls include things like"
 " making mulitBar charts stacked or side by side."
 msgstr "是否显示额外控件。额外的控制包括使多柱状图堆叠或并排。"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:226
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:228
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:166
 msgid "X Axis Label"
 msgstr "X轴标题"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:236
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:238
 msgid "X Axis Label Rotate"
 msgstr "X轴标签旋转"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:241
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:243
 msgid ""
 "Rotation degree of axis label, which is especially useful when there is "
 "no enough space for category axis."
@@ -12591,7 +12629,7 @@ msgstr "刻度标签旋转的角度，在类目轴的类目标签显示不下的
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:216
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:264
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:267
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:251
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:253
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:227
 msgid "Y Axis Bounds"
 msgstr "Y轴的边界"
@@ -12603,8 +12641,8 @@ msgstr "Y轴的边界"
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:219
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:267
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:270
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:254
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:270
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:256
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:272
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:230
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:246
 msgid ""
@@ -12613,32 +12651,32 @@ msgid ""
 "only expand the axis range. It won't narrow the data's extent."
 msgstr "Y轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:267
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:269
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:243
 msgid "Y Axis 2 Bounds"
 msgstr "Y轴2的边界"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:283
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:285
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
 msgid "Y Axis Label"
 msgstr "Y轴的标题"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:293
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:295
 msgid "Y Axis 2 Label"
 msgstr "Y轴2的标题"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:303
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:305
 msgid "Maximum and minimum values for the Y axis"
 msgstr "Y轴的最大值和最小值"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:306
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:317
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:308
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:319
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:92
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:103
 msgid "Whether to display the min and max values of the Y-axis"
 msgstr "是否显示Y轴的最小值和最大值"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:314
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:316
 msgid "Maximum and minimum values for the Y axis 2"
 msgstr "Y轴2的最大值和最小值"
 
@@ -12720,14 +12758,14 @@ msgid "Statistical"
 msgstr "统计的"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:77
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:87
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:79
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:79
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:62
 msgid "Labels"
 msgstr "标签"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:83
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:93
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:85
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:97
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:92
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:39
@@ -12735,7 +12773,7 @@ msgid "Label Type"
 msgstr "标签类型"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:94
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:104
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:96
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:100
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:50
@@ -12743,7 +12781,7 @@ msgid "What should be shown on the label?"
 msgstr "标签上应该显示什么？"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:119
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:143
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:119
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:85
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:68
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:86
@@ -12751,7 +12789,7 @@ msgid "Show Labels"
 msgstr "显示标签"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:122
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:146
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:122
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:88
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:71
 msgid "Whether to display the labels."
@@ -13366,58 +13404,82 @@ msgstr "使用相同的x轴时间范围可视化两个不同的时间序列。�
 msgid "Mixed Time-Series"
 msgstr "混合标准时间序列"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:77
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:66
 msgid "Percentage threshold"
 msgstr "百分比"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:81
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:72
 msgid "Minimum threshold in percentage points for showing labels."
 msgstr "显示标签的最低百分比阈值。"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:155
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:89
+msgid "Category Name"
+msgstr "类别名称"
+
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:91
+msgid "Percentage"
+msgstr "百分比"
+
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:92
+msgid "Category and Value"
+msgstr "百分比和值"
+
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:93
+msgid "Category and Percentage"
+msgstr "分类名称和百分比"
+
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:94
+msgid "Category, Value and Percentage"
+msgstr "分类名称，值和百分比"
+
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:110
+msgid "Format the displayed value in the selected format"
+msgstr "以选定的格式，来格式化展示的值"
+
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:131
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:98
 msgid "Put labels outside"
 msgstr "在外侧放置标题"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:158
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:134
 msgid "Put the labels outside of the pie?"
 msgstr "是否把标签放在饼图外侧？"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:168
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:144
 msgid "Label Line"
-msgstr "标题线"
+msgstr "视觉引导线"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:171
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:147
 msgid "Draw line from Pie to label when labels outside?"
 msgstr "当标签在外面时，是否需要从饼图到标签画一条线？"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:177
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:152
 msgid "Pie shape"
 msgstr "饼状"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:183
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:158
 msgid "Outer Radius"
 msgstr "外半径"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:189
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:164
 msgid "Outer edge of Pie chart"
 msgstr "饼图外缘"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:198
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:173
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:73
 msgid "Donut"
 msgstr "圆环图"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:201
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:176
 #: superset-frontend/src/visualizations/NVD3/Pie/controlPanel.ts:76
 msgid "Do you want a donut or a pie?"
 msgstr "你需要饼状图还是圆环图？"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:210
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:185
 msgid "Inner Radius"
 msgstr "内半径"
 
-#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:216
+#: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:191
 msgid "Inner radius of donut hole"
 msgstr "圆环内半径"
 
@@ -13430,11 +13492,6 @@ msgid ""
 " relative proportion is important, consider using a bar or other chart "
 "type instead."
 msgstr "很好地展示了每个投资者从一家公司获得了多少股份，你的博客上有哪些人口统计数据，或者预算的哪一部分流向了军工综合体。饼图可能很难精确解释。如果相对比例的清晰度很重要，可以考虑使用条形图或其他图表类型。"
-
-#: superset-frontend/src/visualizations/ECharts/Pie/index.ts:53
-#: superset-frontend/src/visualizations/NVD3/Pie/index.js:27
-msgid "Pie Chart"
-msgstr "饼图"
 
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:42
 msgid "The maximum value of metrics. It is an optional configuration"
@@ -14131,7 +14188,7 @@ msgstr "显示范围过滤"
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:132
 msgid "Whether to display the time range interactive selector"
-msgstr "是否显示时间范围交互式选择器X
+msgstr "是否显示时间范围交互式选择器"
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:204
 msgid "X Axis Format"
@@ -14453,8 +14510,8 @@ msgid "Paired t-test Table"
 msgstr "双样本t检验表"
 
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:44
-msgid "要按行分组的列"
-msgstr "一个或多个控件来分组"
+msgid "Columns to group by on the rows"
+msgstr "对行进行分组的列"
 
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:54
 msgid "Columns to group by on the columns"
@@ -14535,14 +14592,6 @@ msgstr "列排序"
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:257
 msgid "Rows subtotal position"
 msgstr "行小计位置"
-
-#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:261
-msgid "Top"
-msgstr "顶部"
-
-#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:262
-msgid "Bottom"
-msgstr "底部"
 
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:265
 msgid "Position of row level subtotal"

@@ -132,6 +132,7 @@
       "Bar Line Chart": ["柱状折线图"],
       "Pick at least one metric": ["选择至少一个指标"],
       "2 metrics need to be selected": ["需要选择2个指标"],
+      "Pie Chart": ["饼图"],
       "Bar Chart": ["柱状图"],
       "When using 'Group By' you are limited to use a single metric": [
         "当使用“Group by”时，只限于使用单个度量"
@@ -573,7 +574,7 @@
         "额外字段中的元数据参数配置不正确。键 %(key)s 无效。"
       ],
       "Engine spec \"InvalidEngine\" does not support being configured via individual parameters.": [
-        "引擎规格\"InvalidEngine，不支持通过单个参数进行配置。"
+        "引擎规格\"InvalidEngine\\，不支持通过单个参数进行配置。"
       ],
       "An engine must be specified when passing individual parameters to a database.": [
         "向数据库传递单个参数时，必须指定引擎。"
@@ -683,7 +684,7 @@
         "表 \"%(schema)s\" 不存在。必须使用有效的表来运行此查询。"
       ],
       "Please check your query for syntax errors near \"%(server_error)s\". Then, try running your query again.": [
-        "请检查“%（服务器错误）s”附近的语法错误。请修改后再次尝试运行查询。"
+        "请检查\\“%（服务器错误）s\\”附近的语法错误。请修改后再次尝试运行查询。"
       ],
       "Either the username \"%(username)s\", password, or database name \"%(database)s\" is incorrect.": [
         "用户名\"%(username)s\"、密码或数据库名称\"%(database)s\"不正确。"
@@ -1765,7 +1766,6 @@
         "可视化的时间栏。注意，您可以定义返回表中的DATETIMLE列的任意表达式。还请注意下面的筛选器应用于该列或表达式"
       ],
       "Drop temporal column here": ["把时间柱放在此处"],
-      "Emit dashboard cross filters": ["发出看板的交叉过滤器"],
       "Emit dashboard cross filters.": ["发出看板的交叉过滤器"],
       "One or many columns to group by. High cardinality groupings should include a sort by metric and series limit to limit the number of fetched and rendered series.": [
         "一个或多个要分组的列。高基数分组应包括按度量排序和序列限制，以限制获取和呈现序列的数量。"
@@ -3044,9 +3044,6 @@
       "Type of Google Sheets allowed": ["允许的谷歌表单类型"],
       "Publicly shared sheets only": ["仅限公开共享的表单"],
       "Public and privately shared sheets": ["公共和私人共享的表单"],
-      "How do you want to enter service account credentials?": [
-        "您想如何输入服务帐户凭据？"
-      ],
       "Upload JSON file": ["上传JSON文件"],
       "Copy and Paste JSON credentials": ["复制或粘贴JSON资格证书"],
       "Service Account": ["服务器账户"],
@@ -3750,9 +3747,16 @@
       "Text": ["文本"],
       "Show legend": ["显示图例"],
       "Whether to display a legend for the chart": ["是否显示图表的图例"],
-      "Legend type": ["图例类型"],
-      "Margin": ["边距"],
-      "Additional padding for legend.": ["图例的额外填充。"],
+      "Legend Type": ["图例类型"],
+      "Scroll": ["可滚动翻页的图例"],
+      "Plain": ["普通图例"],
+      "Show Legend type": ["显示图例类型"],
+      "Legend Orientation": ["图例列表的布局朝向"],
+      "Top": ["顶部"],
+      "Bottom": ["底部"],
+      "Choose the orientation of the legend": ["选择图例的方向"],
+      "Legend Padding": ["图例内边距"],
+      "Additional padding for legend.": ["为图例提供额外的填充"],
       "Rich tooltip": ["丰富的工具提示"],
       "Shows a list of all series available at that point in time": [
         "显示该时间点可用的所有系列的列表"
@@ -3993,9 +3997,14 @@
       "Minimum threshold in percentage points for showing labels.": [
         "显示标签的最低百分比阈值。"
       ],
+      "Category Name": ["类别名称"],
+      "Percentage": ["百分比"],
+      "Category and Value": ["百分比和值"],
+      "Category and Percentage": ["分类名称和百分比"],
+      "Category, Value and Percentage": ["分类名称，值和百分比"],
       "Put labels outside": ["在外侧放置标题"],
       "Put the labels outside of the pie?": ["是否把标签放在饼图外侧？"],
-      "Label Line": ["标题线"],
+      "Label Line": ["视觉引导线"],
       "Draw line from Pie to label when labels outside?": [
         "当标签在外面时，是否需要从饼图到标签画一条线？"
       ],
@@ -4009,7 +4018,6 @@
       "The classic. Great for showing how much of a company each investor gets, what demographics follow your blog, or what portion of the budget goes to the military industrial complex.\n        Pie charts can be difficult to interpret precisely. If clarity of relative proportion is important, consider using a bar or other chart type instead.": [
         "很好地展示了每个投资者从一家公司获得了多少股份，你的博客上有哪些人口统计数据，或者预算的哪一部分流向了军工综合体。饼图可能很难精确解释。如果相对比例的清晰度很重要，可以考虑使用条形图或其他图表类型。"
       ],
-      "Pie Chart": ["饼图"],
       "The maximum value of metrics. It is an optional configuration": [
         "度量的最大值。这是一种可选配置"
       ],
@@ -4232,7 +4240,93 @@
       "Line interpolation as defined by d3.js": ["d3.js 定义的直线插值"],
       "Show Range Filter": ["显示范围过滤"],
       "Whether to display the time range interactive selector": [
-        "是否显示时间范围交互式选择器X\n\n#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:204\nmsgid ",
+        "是否显示时间范围交互式选择器"
+      ],
+      "X Axis Format": ["X 轴格式化"],
+      "Y Log Scale": ["Y对数刻度"],
+      "Use a log scale for the Y-axis": ["Y轴使用对数刻度"],
+      "X bounds": ["X 边界"],
+      "Whether to display the min and max values of the X-axis": [
+        "是否显示X轴的最小值和最大值"
+      ],
+      "Bar Values": ["柱状图的值"],
+      "Reduce X ticks": ["减少X刻度"],
+      "Reduces the number of X-axis ticks to be rendered. If true, the x-axis will not overflow and labels may be missing. If false, a minimum width will be applied to columns and the width may overflow into an horizontal scroll.": [
+        "减少要渲染的X轴刻度的数量。如果为true，x轴将不会溢出，标签可能会丢失。如果为false，将对列应用最小宽度，该宽度可能会溢出到水平滚动中。"
+      ],
+      "You cannot use 45° tick layout along with the time range filter": [
+        "不能将45°刻度布局与时间范围过滤器一起使用"
+      ],
+      "Stacked Style": ["堆叠样式"],
+      "A time series chart that visualizes how a related metric from multiple groups vary over time. Each group is visualized using a different color.": [
+        "一个时间序列图，显示多个组的相关指标随时间的变化。每个组都使用不同的颜色进行可视化。"
+      ],
+      "Stretched style": ["拉伸样式"],
+      "Stacked style": ["堆叠样式"],
+      "Video game consoles": ["视频游戏控制台"],
+      "Vehicle Types": ["媒介类型"],
+      "Continuous": ["持续的"],
+      "nvd3": [""],
+      "Deprecated": ["反对"],
+      "X Log Scale": ["X Log 刻度"],
+      "Use a log scale for the X-axis": ["X轴使用Log刻度"],
+      "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
+        "在单个图表（X轴、Y轴和气泡大小）中可视化跨越三维数据的度量。同一组中的气泡可以使用气泡颜色来显示。"
+      ],
+      "Ranges": ["范围"],
+      "Ranges to highlight with shading": ["高亮显示范围"],
+      "Range labels": ["范围标签"],
+      "Labels for the ranges": ["范围的标签"],
+      "Markers": ["标记"],
+      "List of values to mark with triangles": ["要用三角形标记的值列表"],
+      "Marker labels": ["标记标签"],
+      "Labels for the markers": ["标记的标签"],
+      "Marker lines": ["标记的线"],
+      "List of values to mark with lines": ["要用线标记的值列表"],
+      "Marker line labels": ["标记线标签"],
+      "Labels for the marker lines": ["标记线的标签"],
+      "Showcases the progress of a single metric against a given target. The higher the fill, the closer the metric is to the target.": [
+        "显示单个指标相对于给定目标的进度。填充越高，度量值越接近目标。"
+      ],
+      "Visualizes many different time-series objects in a single chart. This chart is being deprecated and we recommend using the Time-series Chart instead.": [
+        "在一个图表中可视化许多不同的时间序列对象。此图表已被弃用，建议改用时间序列图。"
+      ],
+      "Time-series Percent Change": ["时间序列 - 百分比变化"],
+      "Left Axis Metric": ["左轴指标"],
+      "Choose a metric for left axis": ["为左轴选择一个指标"],
+      "Left Axis Format": ["左轴格式化"],
+      "Visualizes 2 metrics as line plots using the same x-axis. This chart is useful for comparing metrics across the same time range.": [
+        "使用相同的x轴将两个指标可视化为直线图。此图表有助于比较同一时间范围内的指标。"
+      ],
+      "Dual Line Chart": ["双折线图"],
+      "Propagate": ["传播"],
+      "Send range filter events to other charts": [
+        "将范围筛选器事件发送到其他图表"
+      ],
+      "Classic chart that visualizes how metrics change over time.": [
+        "经典图表可视化度量如何随时间变化。"
+      ],
+      "Battery level over time": ["电池电量随时间变化"],
+      "Line Chart": ["折线图"],
+      "Prefix metric name with slice name": ["在度量名称前面加上切片名称"],
+      "Y Axis Left": ["Y轴左侧"],
+      "Left Axis chart(s)": ["左轴图表"],
+      "Choose one or more charts for left axis": ["为左轴选择一个或多个图表"],
+      "Select charts": ["选择图表"],
+      "Error while fetching charts": ["获取图表错误"],
+      "Y Axis Right": ["Y轴右侧"],
+      "Right Axis chart(s)": ["右轴图表"],
+      "Choose one or more charts for right axis": ["为右轴选择一个或多个图表"],
+      "Visualize two different time series using the same x-axis time range. This chart is being deprecated and we recommend using the Mixed Timeseries Chart instead!": [
+        "使用相同的x轴时间范围可视化两个不同的时间序列。请注意，每个时间序列可以以不同的方式显示（例如，1个使用条形图，1个使用直线）。"
+      ],
+      "Multiple Line Charts": ["多线图"],
+      "Whether to display the labels. Note that the label only displays when the the 5% threshold.": [
+        "是否显示标签。请注意，标签仅在设定为5%阈值时显示。"
+      ],
+      "Put the labels outside the pie?": ["是否把标签放在饼图外侧？"],
+      "Frequency": ["刷新频率"],
+      "The periodicity over which to pivot time. Users can provide\n            \"Pandas\" offset alias.\n            Click on the info bubble for more details on accepted \"freq\" expressions.": [
         "以时间为轴心的周期。用户可以提供\"Pandas\"偏移别名。点击信息气泡，了解更多关于已接受的\"freq\"表达式的详细信息。"
       ],
       "Time-series Period Pivot": ["时间序列 - 周期透视表"],
@@ -4252,7 +4346,7 @@
         "表中显示了配对t检验，用于了解各组之间的统计差异。"
       ],
       "Paired t-test Table": ["双样本t检验表"],
-      "要按行分组的列": ["一个或多个控件来分组"],
+      "Columns to group by on the rows": ["对行进行分组的列"],
       "Columns to group by on the columns": ["要按列分组的列"],
       "Apply metrics on": ["将指标应用于"],
       "Use metrics as a top level group for columns or for rows": [
@@ -4274,8 +4368,6 @@
       "Cols sort by": ["列排序方式"],
       "Order of columns": ["列排序"],
       "Rows subtotal position": ["行小计位置"],
-      "Top": ["顶部"],
-      "Bottom": ["底部"],
       "Position of row level subtotal": ["行级小计的位置"],
       "Cols subtotal position": ["Cols小计位置"],
       "Position of column level subtotal": ["列级小计的位置"],

@@ -723,6 +723,76 @@ class BarLineViz(BaseViz):
         return result
 
 
+class PieViz(BaseViz):
+
+    viz_type = "pie"
+    verbose_name = _("Pie Chart")
+    is_timeseries = False
+
+    def query_obj(self) -> QueryObjectDict:
+        query_obj = super().query_obj()
+
+        # 指标不能为空
+        if not self.form_data.get("metric"):
+            raise QueryObjectValidationError(_("Pick at least one metric"))
+
+        return query_obj
+
+    def get_data(self, df: pd.DataFrame) -> VizData:
+        if df.empty:
+            return None
+
+        metrics = self.metric_labels
+        print('metrics:', metrics)
+        df = df.copy()
+        df[self.groupby] = df[self.groupby].fillna(value=NULL_STRING)
+        pt = df.pivot_table(index=self.groupby, columns=[], values=metrics)
+
+        # Re-order the columns adhering to the metric ordering.
+        pt = pt[metrics]
+        chart_data = []
+        for name, ys in pt.items():
+            if isinstance(name, (tuple, list)):
+                name = name[0]
+            else:
+                name = str(name)
+
+            values = []
+            for x, v in ys.items():
+                # 多个group的情况下，x的值会是元组或者列表，所以必须处理一下。
+                if isinstance(x, (tuple, list)):
+                    x = ", ".join([str(s) for s in x])
+                else:
+                    x = str(x)
+                values.append((x,  0 if math.isnan(v) else v))
+
+            chart_data.append({"key": name, "values": dict(values)})
+
+        # 合并key，将key相同的value进行合并
+        handle = {}
+        for item in chart_data:
+            if item["key"] in handle:
+                handle[item["key"]].append(item['values'])
+            else:
+                handle[item["key"]] = [item['values']]
+
+        # 转换数据为饼图数据
+        for k, v in handle.items():
+            # 将对象变成可计算值（相同的key, value求和）
+            v = map(lambda n: Counter(n), v)
+            res = Counter()
+            for i in v:
+                res += i
+
+            # 饼图数据
+            values = []
+            for x, y in res.items():
+                values.append({"name": x, "value": y})
+
+            # 饼图的指标名称和饼图数据
+            return dict(metric_label=k, data=values)
+
+
 class BarViz(BaseViz):
     """A bar chart where the x axis is time"""
 

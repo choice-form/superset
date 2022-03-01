@@ -16,18 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  CategoricalColorNamespace,
-  DataRecordValue,
-  getColumnLabel,
-  getMetricLabel,
-  getNumberFormatter,
-  getTimeFormatter,
-  NumberFormats,
-  NumberFormatter,
-} from 'src/core';
+import { CategoricalColorNamespace, getNumberFormatter, NumberFormats, NumberFormatter } from 'src/core';
 import { CallbackDataParams } from 'echarts/types/src/util/types';
-import { EChartsCoreOption, PieSeriesOption } from 'echarts';
+import { EChartsCoreOption } from 'echarts';
 import {
   DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA,
   EchartsPieChartProps,
@@ -35,16 +26,9 @@ import {
   EchartsPieLabelType,
   PieChartTransformedProps,
 } from './types';
-import { DEFAULT_LEGEND_FORM_DATA } from '../types';
-import {
-  extractGroupbyLabel,
-  getChartPadding,
-  getColtypesMapping,
-  getLegendProps,
-  sanitizeHtml,
-} from '../utils/series';
+import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
+import { sanitizeHtml } from '../utils/series';
 import { defaultGrid, defaultTooltip } from '../defaults';
-import { OpacityEnum } from '../constants';
 
 const percentFormatter = getNumberFormatter(NumberFormats.PERCENT_2_POINT);
 
@@ -84,8 +68,6 @@ export function formatPieLabel({
 
 export default function transformProps(chartProps: EchartsPieChartProps): PieChartTransformedProps {
   const { formData, height, hooks, filterState, queriesData, width } = chartProps;
-  const { data = [] } = queriesData[0];
-  const coltypeMapping = getColtypesMapping(queriesData[0]);
 
   const {
     colorScheme,
@@ -95,71 +77,43 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
     labelsOutside,
     labelLine,
     labelType,
-    legendMargin,
+    legendPadding,
     legendOrientation,
     legendType,
-    metric = '',
     numberFormat,
-    dateFormat,
     outerRadius,
     showLabels,
     showLegend,
-    showLabelsThreshold,
+    // showLabelsThreshold,
     emitFilter,
   }: EchartsPieFormData = {
     ...DEFAULT_LEGEND_FORM_DATA,
     ...DEFAULT_PIE_FORM_DATA,
     ...formData,
   };
-  const metricLabel = getMetricLabel(metric);
-  const groupbyLabels = groupby.map(getColumnLabel);
-  const minShowLabelAngle = (showLabelsThreshold || 0) * 3.6;
 
-  const keys = data.map(datum =>
-    extractGroupbyLabel({
-      datum,
-      groupby: groupbyLabels,
-      coltypeMapping,
-      timeFormatter: getTimeFormatter(dateFormat),
-    }),
-  );
-  const labelMap = data.reduce((acc: Record<string, DataRecordValue[]>, datum) => {
-    const label = extractGroupbyLabel({
-      datum,
-      groupby: groupbyLabels,
-      coltypeMapping,
-      timeFormatter: getTimeFormatter(dateFormat),
-    });
-    return {
-      ...acc,
-      [label]: groupbyLabels.map(col => datum[col]),
-    };
-  }, {});
+  // console.log('chartProps:', chartProps);
+
+  const { metric_label, data } = queriesData[0].data;
+
+  const labelMap = {};
+  data.forEach(({ name }) => {
+    if (!Object.keys(labelMap).includes(name)) {
+      labelMap[name] = name.split(',').map(o => o.trim());
+    }
+  });
 
   const { setDataMask = () => {} } = hooks;
 
   const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
   const numberFormatter = getNumberFormatter(numberFormat);
 
-  const transformedData: PieSeriesOption[] = data.map(datum => {
-    const name = extractGroupbyLabel({
-      datum,
-      groupby: groupbyLabels,
-      coltypeMapping,
-      timeFormatter: getTimeFormatter(dateFormat),
-    });
-
-    const isFiltered = filterState.selectedValues && !filterState.selectedValues.includes(name);
-
-    return {
-      value: datum[metricLabel],
-      name,
-      itemStyle: {
-        color: colorFn(name),
-        opacity: isFiltered ? OpacityEnum.SemiTransparent : OpacityEnum.NonTransparent,
-      },
-    };
-  });
+  const transformedData = data.map(row => ({
+    ...row,
+    itemStyle: {
+      color: colorFn(row.name),
+    },
+  }));
 
   const selectedValues = (filterState.selectedValues || []).reduce(
     (acc: Record<string, number>, selectedValue: string) => {
@@ -179,43 +133,74 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
       labelType,
     });
 
-  const defaultLabel = {
-    formatter,
-    show: showLabels,
-    color: '#000000',
+  // 饼图的通用配置
+  const pieSeries = {
+    type: 'pie', // 饼图
+    emphasis: {
+      label: {
+        show: true,
+        fontSize: '24',
+        fontWeight: 'bold',
+      },
+    },
+    // 是否启用防止标签重叠策略，
+    avoidLabelOverlap: false,
   };
 
-  const series: PieSeriesOption[] = [
+  // 标签配置
+  const pieLabels = labelsOutside
+    ? {
+        position: 'outer',
+        alignTo: 'none',
+        bleedMargin: 5,
+      }
+    : {
+        position: 'inner',
+      };
+
+  // 标签线
+  const labelLineData = showLabels && labelsOutside && labelLine ? { labelLine: {} } : {};
+
+  const series = [
     {
-      type: 'pie',
-      ...getChartPadding(showLegend, legendOrientation, legendMargin),
-      animation: false,
-      radius: [`${donut ? innerRadius : 0}%`, `${outerRadius}%`],
-      center: ['50%', '50%'],
-      avoidLabelOverlap: true,
-      labelLine: labelsOutside && labelLine ? { show: true } : { show: false },
-      minShowLabelAngle,
-      label: labelsOutside
-        ? {
-            ...defaultLabel,
-            position: 'outer',
-            alignTo: 'none',
-            bleedMargin: 5,
-          }
-        : {
-            ...defaultLabel,
-            position: 'inner',
-          },
-      emphasis: {
-        label: {
-          show: true,
-          fontWeight: 'bold',
-          backgroundColor: 'white',
-        },
+      ...pieSeries,
+      name: metric_label,
+      // 饼图显示区域
+      radius: donut ? [`${donut ? innerRadius : 0}%`, `${outerRadius}%`] : `${outerRadius}%`,
+      // 小于这个角度（0 ~ 360）的扇区，不显示标签（label 和 labelLine）。
+      // 5.3.0 存在BUG，标签不显示的时候，标签线仍然会显示，所以暂时不开启该功能。
+      // minShowLabelAngle: (showLabelsThreshold || 0) * 3.6,
+      ...labelLineData,
+      // 标签
+      label: {
+        show: showLabels,
+        formatter,
+        ...pieLabels,
       },
       data: transformedData,
     },
   ];
+
+  // 图例的位置布局方式
+  let legendPosition = {};
+  // eslint-disable-next-line default-case
+  switch (legendOrientation) {
+    case LegendOrientation.Right:
+      legendPosition = { orient: 'vertical', top: 'center', right: 'right' };
+      break;
+    case LegendOrientation.Top:
+      legendPosition = { top: 'top' };
+      break;
+    case LegendOrientation.Left:
+      legendPosition = { orient: 'vertical', left: 'left', top: 'center' };
+      break;
+    case LegendOrientation.Bottom:
+      legendPosition = { bottom: 'bottom' };
+  }
+  // 图例的内边距
+  if (typeof legendPadding === 'number') {
+    legendPosition = { ...legendPosition, padding: legendPadding };
+  }
 
   const echartOptions: EChartsCoreOption = {
     grid: {
@@ -224,17 +209,21 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
     tooltip: {
       ...defaultTooltip,
       trigger: 'item',
-      formatter: (params: any) =>
-        formatPieLabel({
+      formatter: (params: any) => {
+        const tip = formatPieLabel({
           params,
           numberFormatter,
           labelType: EchartsPieLabelType.KeyValuePercent,
           sanitizeName: true,
-        }),
+        });
+        return `<span style="font-size: 16px;font-weight: bold;">${params.seriesName}</span>
+                  <br /><span style="color: ${params.color};font-size: 14px">${tip}</span>`;
+      },
     },
     legend: {
-      ...getLegendProps(legendType, legendOrientation, showLegend),
-      data: keys,
+      show: showLegend,
+      type: legendType === 'scroll' ? 'scroll' : 'plain',
+      ...legendPosition,
     },
     series,
   };

@@ -10,7 +10,7 @@ import {
 } from 'src/chartConntrols';
 import { DEFAULT_LEGEND_FORM_DATA } from './types';
 
-const { legendMargin, legendOrientation, legendType, showLegend } = DEFAULT_LEGEND_FORM_DATA;
+const { legendOrientation, legendType, showLegend } = DEFAULT_LEGEND_FORM_DATA;
 
 export const showLegendControl = {
   name: 'show_legend',
@@ -28,14 +28,14 @@ const legendTypeControl = {
   config: {
     type: 'SelectControl',
     freeForm: false,
-    label: 'Type',
+    label: t('Legend Type'),
     choices: [
-      ['scroll', 'Scroll'],
-      ['plain', 'Plain'],
+      ['scroll', t('Scroll')],
+      ['plain', t('Plain')],
     ],
     default: legendType,
     renderTrigger: true,
-    description: t('Legend type'),
+    description: t('Show Legend type'),
     visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_legend?.value),
   },
 };
@@ -45,28 +45,30 @@ const legendOrientationControl = {
   config: {
     type: 'SelectControl',
     freeForm: false,
-    label: 'Orientation',
+    label: t('Legend Orientation'),
     choices: [
-      ['top', 'Top'],
-      ['bottom', 'Bottom'],
-      ['left', 'Left'],
-      ['right', 'Right'],
+      ['top', t('Top')],
+      ['bottom', t('Bottom')],
+      ['left', t('Left')],
+      ['right', t('Right')],
     ],
     default: legendOrientation,
     renderTrigger: true,
-    description: t('Legend type'),
+    description: t('Choose the orientation of the legend'),
     visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_legend?.value),
   },
 };
 
-const legendMarginControl = {
-  name: 'legendMargin',
+const legendPaddingControl = {
+  name: 'legendPadding',
   config: {
-    type: 'TextControl',
-    label: t('Margin'),
+    type: 'SliderControl',
+    label: t('Legend Padding'),
     renderTrigger: true,
-    isInt: true,
-    default: legendMargin,
+    min: 0,
+    max: 100,
+    step: 1,
+    default: 5,
     description: t('Additional padding for legend.'),
     visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_legend?.value),
   },
@@ -77,7 +79,7 @@ export const legendSection = [
   [showLegendControl],
   [legendTypeControl],
   [legendOrientationControl],
-  [legendMarginControl],
+  [legendPaddingControl],
 ];
 
 const richTooltipControl = {

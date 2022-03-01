@@ -58,7 +58,10 @@ export enum EchartsPieLabelType {
 
 export interface EchartsPieChartProps extends ChartProps {
   formData: EchartsPieFormData;
-  queriesData: ChartDataResponseResult[];
+  queriesData: {
+    data: { metric_label: string; data: { name: string; value: number | any }[] };
+  }[] &
+    ChartDataResponseResult[];
 }
 
 // @ts-ignore

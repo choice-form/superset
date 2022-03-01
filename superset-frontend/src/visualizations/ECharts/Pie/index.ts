@@ -62,6 +62,7 @@ export default class EchartsPieChartPlugin extends ChartPlugin<EchartsPieFormDat
           t('ECharts'),
         ],
         thumbnail,
+        useLegacyApi: true,
       }),
       transformProps,
     });
