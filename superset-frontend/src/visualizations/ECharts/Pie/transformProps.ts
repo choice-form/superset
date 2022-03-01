@@ -137,9 +137,9 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
   const pieSeries = {
     type: 'pie', // 饼图
     emphasis: {
-      scaleSize: 15,
+      scaleSize: 12,
       label: {
-        show: labelsOutside && showLabels,
+        show: showLabels,
         fontWeight: 'bold',
       },
       labelLine: {
@@ -155,7 +155,6 @@ export default function transformProps(chartProps: EchartsPieChartProps): PieCha
     ? {
         position: 'outer',
         alignTo: 'none',
-        bleedMargin: 5,
       }
     : {
         position: 'inner',
