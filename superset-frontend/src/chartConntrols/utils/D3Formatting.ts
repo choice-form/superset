@@ -35,8 +35,8 @@ export const D3_FORMAT_OPTIONS: [string, string][] = [
   [',.3f', ',.3f (12345.432 => 12,345.432)'],
   ['+,', '+, (12345.432 => +12,345.432)'],
   ['$,.2f', '$,.2f (12345.432 => $12,345.43)'],
-  ['DURATION', t('Duration in ms (66000 => 1m 6s)')],
-  ['DURATION_SUB', t('Duration in ms (1.40008 => 1ms 400µs 80ns)')],
+  ['DURATION', t('Duration in s (66000 => 1m 6s)')],
+  ['DURATION_SUB', t('Duration in ns (1.40008 => 1ms 400µs 80ns)')],
 ];
 
 export const D3_TIME_FORMAT_DOCS = t('D3 time format syntax: https://github.com/d3/d3-time-format');

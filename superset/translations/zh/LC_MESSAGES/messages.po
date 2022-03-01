@@ -735,19 +735,19 @@ msgstr "存在关联的警报或报告：%s,"
 msgid ""
 "Time string is ambiguous. Please specify [%(human_readable)s ago] or "
 "[%(human_readable)s later]."
-msgstr ""
+msgstr "时间字符串不明确。请具体说明 [%(human_readable)s ago] or [%(human_readable)s later]。"
 
 #: superset/charts/commands/exceptions.py:51
 #, python-format
 msgid "Cannot parse time string [%(human_readable)s]"
-msgstr ""
+msgstr "无法分析时间字符串 [%(human_readable)s]"
 
 #: superset/charts/commands/exceptions.py:66
 #, python-format
 msgid ""
 "Time delta is ambiguous. Please specify [%(human_readable)s ago] or "
 "[%(human_readable)s later]."
-msgstr ""
+msgstr "时差不明确。请具体说明 [%(human_readable)s ago] 或 [%(human_readable)s later]。"
 
 #: superset/charts/commands/exceptions.py:82
 #: superset/datasets/commands/exceptions.py:41
@@ -827,14 +827,14 @@ msgstr "图表没有找到"
 msgid ""
 "Duplicate column/metric labels: %(labels)s. Please make sure all columns "
 "and metrics have a unique label."
-msgstr ""
+msgstr "重复的列/指标标签 %(labels)s。请确保所有列和指标都有唯一的标签。"
 
 #: superset/common/query_object.py:319
 #, python-format
 msgid ""
 "The following entries in `series_columns` are missing in `columns`: "
 "%(columns)s. "
-msgstr ""
+msgstr "`columns`中缺少`series_columns`中的以下条目：%(columns)s。"
 
 #: superset/common/query_object.py:412
 msgid "`operation` property of post processing object undefined"
@@ -1255,12 +1255,12 @@ msgstr "指标 '%(metric)s' 不存在"
 #: superset/connectors/sqla/models.py:1074
 #, python-format
 msgid "Unknown column used in orderby: %(col)s"
-msgstr ""
+msgstr "orderby 中使用了未知列：%(col)s。"
 
 #: superset/connectors/sqla/models.py:1118
 #, python-format
 msgid "Time column \"%(col)s\" does not exist in dataset"
-msgstr ""
+msgstr "数据集中不存在时间列\"%(col)s\""
 
 #: superset/connectors/sqla/models.py:1212
 msgid "Filter value list cannot be empty"
@@ -1715,7 +1715,7 @@ msgstr "额外字段中的元数据参数配置不正确。键 %(key)s 无效。
 msgid ""
 "Engine spec \"InvalidEngine\" does not support being configured via "
 "individual parameters."
-msgstr ""
+msgstr "引擎规格\"InvalidEngine\，不支持通过单个参数进行配置。"
 
 #: superset/databases/schemas.py:299
 msgid ""
@@ -1726,7 +1726,7 @@ msgstr "向数据库传递单个参数时，必须指定引擎。"
 #: superset/databases/commands/validate.py:59 superset/databases/schemas.py:308
 #, python-format
 msgid "Engine \"%(engine)s\" is not a valid engine."
-msgstr ""
+msgstr "无效引擎\"%(engine)s\""
 
 #: superset/databases/commands/exceptions.py:32
 msgid "Database parameters are invalid."
@@ -1799,7 +1799,7 @@ msgstr "无法加载数据库驱动程序：{}"
 #: superset/databases/commands/validate.py:71
 #, python-format
 msgid "Engine \"%(engine)s\" cannot be configured through parameters."
-msgstr ""
+msgstr "引擎\"%(engine)s\"无法通过参数配置"
 
 #: superset/databases/commands/validate.py:136
 msgid "Database is offline."
@@ -1913,7 +1913,7 @@ msgstr "删除数据集指标错误。"
 msgid ""
 "Please check your query for syntax errors at or near "
 "\"%(syntax_error)s\". Then, try running your query again."
-msgstr ""
+msgstr "请在\"%(syntax_error)s\"处或附近检查您的查询是否存在语法错误。请修改后再次尝试运行查询。"
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:27
 #: superset/db_engine_specs/base.py:86
@@ -2054,14 +2054,14 @@ msgstr "表 \"%(schema)s\" 不存在。必须使用有效的表来运行此查�
 msgid ""
 "Please check your query for syntax errors near \"%(server_error)s\". "
 "Then, try running your query again."
-msgstr ""
+msgstr "请检查\“%（服务器错误）s\”附近的语法错误。请修改后再次尝试运行查询。"
 
 #: superset/db_engine_specs/mssql.py:69
 #, python-format
 msgid ""
 "Either the username \"%(username)s\", password, or database name "
 "\"%(database)s\" is incorrect."
-msgstr ""
+msgstr "用户名\"%(username)s\"、密码或数据库名称\"%(database)s\"不正确。"
 
 #: superset/db_engine_specs/mssql.py:77
 #: superset/db_engine_specs/postgres.py:127
@@ -2069,7 +2069,7 @@ msgstr ""
 #: superset/db_engine_specs/redshift.py:68
 #, python-format
 msgid "The hostname \"%(hostname)s\" cannot be resolved."
-msgstr ""
+msgstr "无法解析主机名\"%(hostname)s\""
 
 #: superset/db_engine_specs/mssql.py:82
 #: superset/db_engine_specs/postgres.py:132
@@ -2077,7 +2077,7 @@ msgstr ""
 #: superset/db_engine_specs/redshift.py:73
 #, python-format
 msgid "Port %(port)s on hostname \"%(hostname)s\" refused the connection."
-msgstr ""
+msgstr "主机\"%(hostname)s\"的%(port)s端口拒绝访问。"
 
 #: superset/db_engine_specs/mssql.py:87
 #: superset/db_engine_specs/postgres.py:137
@@ -2087,29 +2087,29 @@ msgstr ""
 msgid ""
 "The host \"%(hostname)s\" might be down, and can't be reached on port "
 "%(port)s."
-msgstr ""
+msgstr "主机\"%(hostname)s\"可能已关闭，无法在端口%(port)s上访问"
 
 #: superset/db_engine_specs/mysql.py:124 superset/db_engine_specs/presto.py:195
 #: superset/db_engine_specs/redshift.py:63
 #, python-format
 msgid "Either the username \"%(username)s\" or the password is incorrect."
-msgstr ""
+msgstr "用户名\"%(username)s\"或密码不正确。"
 
 #: superset/db_engine_specs/mysql.py:129
 #, python-format
 msgid "Unknown MySQL server host \"%(hostname)s\"."
-msgstr ""
+msgstr "无效的MySQL服务器主机\"%(hostname)s\"。"
 
 #: superset/db_engine_specs/mysql.py:134
 #, python-format
 msgid "The host \"%(hostname)s\" might be down and can't be reached."
-msgstr ""
+msgstr "主机\"%(hostname)s\"可能已关闭，无法访问。"
 
 #: superset/db_engine_specs/mysql.py:139
 #: superset/db_engine_specs/postgres.py:145
 #, python-format
 msgid "Unable to connect to database \"%(database)s\"."
-msgstr ""
+msgstr "无法连接到数据库\"%(database)s\"。"
 
 #: superset/db_engine_specs/postgres.py:112
 #, python-format
@@ -2119,7 +2119,7 @@ msgstr "用户 '%(username)s' 不存在。"
 #: superset/db_engine_specs/postgres.py:117
 #, python-format
 msgid "The password provided for username \"%(username)s\" is incorrect."
-msgstr ""
+msgstr "为用户名\"%(username)s\"提供的密码不正确。"
 
 #: superset/db_engine_specs/postgres.py:122
 msgid "Please re-enter the password."
@@ -2150,7 +2150,7 @@ msgstr "模式 \"%(schema_name)s\" 不存在。必须使用有效的表来运行
 #: superset/db_engine_specs/presto.py:218
 #, python-format
 msgid "Unable to connect to catalog named \"%(catalog_name)s\"."
-msgstr ""
+msgstr "无法连接到名为\"%(catalog_name)s\"的目录。"
 
 #: superset/db_engine_specs/presto.py:1005
 msgid "Unknown Presto Error"
@@ -2161,12 +2161,12 @@ msgstr "未知 Presto 错误"
 msgid ""
 "We were unable to connect to your database named \"%(database)s\". Please"
 " verify your database name and try again."
-msgstr ""
+msgstr "我们无法连接到名为\"%(database)s\"的数据库。请验证您的数据库名称，然后重试。"
 
 #: superset/db_engine_specs/snowflake.py:73
 #, python-format
 msgid "%(object)s does not exist in this database."
-msgstr ""
+msgstr "此数据库不存在%(object)s。"
 
 #: superset/db_engine_specs/sqlite.py:63
 #, python-format
@@ -2289,7 +2289,7 @@ msgstr "刷新 Druid 元数据"
 #: superset/models/sql_types/base.py:48
 #, python-format
 msgid "Temporal expression not supported for type: %(col_type)s"
-msgstr ""
+msgstr "类型不支持时态表达式：%(col_type)s"
 
 #: superset/queries/saved_queries/api.py:197
 #, python-format
@@ -2489,7 +2489,7 @@ msgid ""
 "\n"
 "            Error: %(text)s\n"
 "            "
-msgstr ""
+msgstr "错误：%(text)s"
 
 #: superset/reports/notifications/email.py:91
 msgid "Explore in Superset"
@@ -2554,7 +2554,7 @@ msgid ""
 "Please check your query and confirm that all template parameters are "
 "surround by double braces, for example, \"{{ ds }}\". Then, try running "
 "your query again."
-msgstr ""
+msgstr "请检查您的查询并确认所有模板参数都用双括号括起来，例如\"{{ ds }}\"。然后，再次尝试运行查询。"
 
 #: superset/tasks/schedules.py:159
 #, python-format
@@ -2763,7 +2763,7 @@ msgstr "[Superset] 允许访问数据源 %(name)s"
 #: superset/utils/core.py:1069
 #, python-format
 msgid "Unsupported clause type: %(clause)s"
-msgstr ""
+msgstr "不支持簇类型：%(clause)s"
 
 #: superset/utils/core.py:1316
 msgid "Invalid metric object"
@@ -2849,7 +2849,7 @@ msgstr "无效的 geodetic 字符串"
 msgid ""
 "Column \"%(column)s\" is not numeric or does not exists in the query "
 "results."
-msgstr ""
+msgstr "列\"%(column)s\"不是数字或在查询结果中不存在"
 
 #: superset/utils/pandas_postprocessing.py:722
 msgid "`rename_columns` must have the same length as `columns`."
@@ -2959,7 +2959,7 @@ msgid ""
 " replacement feature <a "
 "href='https://superset.apache.org/docs/installation/alerts-"
 "reports'>Alerts & Reports documentation</a>"
-msgstr ""
+msgstr "此功能已弃用，将在2.0上删除，<a href=”https://superset.apache.org/docs/installation/alerts-reports“>警报和报告文档</a>"
 
 #: superset/views/annotations.py:40
 msgid "annotation start time or end time is required."
@@ -4086,7 +4086,7 @@ msgstr "请求缺少数据字段。"
 #: superset/views/datasource/views.py:119
 #, python-format
 msgid "Duplicate column name(s): %(columns)s"
-msgstr ""
+msgstr "重复列名：%(columns)s"
 
 #: superset/views/log/__init__.py:21
 msgid "Logs"
@@ -4539,7 +4539,7 @@ msgstr "过滤结果"
 msgid ""
 "The number of results displayed is limited to %(rows)d by the "
 "configuration DISPLAY_MAX_ROWS. "
-msgstr ""
+msgstr "显示结果数量受配置DISPLAY_MAX_ROWS限制"
 
 #: superset-frontend/src/SqlLab/components/ResultSet/index.tsx:539
 msgid ""
@@ -4819,7 +4819,7 @@ msgstr "行数："
 
 #: superset-frontend/src/SqlLab/components/SqlEditorLeftBar/index.jsx:136
 msgid "${isActive ? 'Collapse' : 'Expand'} table preview"
-msgstr ""
+msgstr "${isActive ? 'Collapse' : 'Expand'} 表格预览"
 
 #: superset-frontend/src/SqlLab/components/SqlEditorLeftBar/index.jsx:204
 msgid "Reset state"
@@ -5695,7 +5695,7 @@ msgstr "分数位数"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:74
 msgid "Number of decimal digits to round numbers to"
-msgstr ""
+msgstr "将数字四舍五入的小数位数"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:83
 msgid "Min Width"
@@ -5778,12 +5778,12 @@ msgid "Adaptative formating"
 msgstr "适应格式"
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:38
-msgid "Duration in ms (66000 => 1m 6s)"
-msgstr "持续时间（毫秒）(66000 => 1m 6s)"
+msgid "Duration in s (66000 => 1m 6s)"
+msgstr "持续时间（秒）(66000 => 1m 6s)"
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:39
-msgid "Duration in ms (1.40008 => 1ms 400µs 80ns)"
-msgstr "持续时间（毫秒）(1.40008 => 1ms 400µs 80ns)"
+msgid "Duration in ns (1.40008 => 1ms 400µs 80ns)"
+msgstr "持续时间（纳秒）(1.40008 => 1ms 400µs 80ns)"
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:42
 msgid "D3 time format syntax: https://github.com/d3/d3-time-format"
@@ -8489,15 +8489,15 @@ msgstr "去年"
 
 #: superset-frontend/src/explore/components/controls/DateFilterControl/utils/constants.ts:48
 msgid "previous calendar week"
-msgstr ""
+msgstr "上一个日历周"
 
 #: superset-frontend/src/explore/components/controls/DateFilterControl/utils/constants.ts:49
 msgid "previous calendar month"
-msgstr ""
+msgstr "上一个日历月"
 
 #: superset-frontend/src/explore/components/controls/DateFilterControl/utils/constants.ts:50
 msgid "previous calendar year"
-msgstr ""
+msgstr "上一个日历周年"
 
 #: superset-frontend/src/explore/components/controls/DateFilterControl/utils/constants.ts:67
 msgid "Before"
@@ -11192,7 +11192,7 @@ msgstr ""
 msgid ""
 "Column containing ISO 3166-2 codes of region/province/department in your "
 "table."
-msgstr ""
+msgstr "表中包含ISO 3166-2地区/省/部门代码的列。"
 
 #: superset-frontend/src/visualizations/D3/CountryMapChart/controlPanel.ts:78
 msgid "Metric to display bottom title"
@@ -11240,7 +11240,7 @@ msgstr "链接长度"
 
 #: superset-frontend/src/visualizations/D3/ForceDirectedChart/controlPanel.ts:59
 msgid "Link length in the force layout"
-msgstr ""
+msgstr "力布局中的链接长度"
 
 #: superset-frontend/src/visualizations/D3/ForceDirectedChart/controlPanel.ts:70
 msgid "Charge"
@@ -11248,7 +11248,7 @@ msgstr "费用"
 
 #: superset-frontend/src/visualizations/D3/ForceDirectedChart/controlPanel.ts:84
 msgid "Charge in the force layout"
-msgstr ""
+msgstr "在力布局中充能"
 
 #: superset-frontend/src/visualizations/D3/ForceDirectedChart/controlPanel.ts:93
 #: superset-frontend/src/visualizations/D3/SankeyChart/controlPanel.ts:33
@@ -11387,7 +11387,7 @@ msgstr "值界限"
 msgid ""
 "Hard value bounds applied for color coding. Is only relevant and applied "
 "when the normalization is applied against the whole heatmap."
-msgstr ""
+msgstr "应用于颜色编码的硬边界。仅在对整个热图应用归一化时才相关和应用"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:216
 msgid "Sort X Axis"
@@ -11756,7 +11756,7 @@ msgstr "聚集函数"
 msgid ""
 "Aggregate function to apply when pivoting and computing the total rows "
 "and columns"
-msgstr ""
+msgstr "转和计算总行和总列时要应用的聚合函数"
 
 #: superset-frontend/src/visualizations/D3/PivotTableChart/controlPanel.ts:77
 #: superset-frontend/src/visualizations/D3/TableChart/controlPanel.tsx:316
@@ -11776,7 +11776,7 @@ msgstr "绑定指标"
 msgid ""
 "Display metrics side by side within each column, as opposed to each "
 "column being displayed side by side for each metric."
-msgstr ""
+msgstr "在每列中并排显示度量，而不是为每个度量并排显示每列。"
 
 #: superset-frontend/src/visualizations/D3/PivotTableChart/controlPanel.ts:100
 msgid "Transpose Pivot"
@@ -12393,7 +12393,7 @@ msgstr "按实体id排序"
 msgid ""
 "Important! Select this if the table is not already sorted by entity id, "
 "else there is no guarantee that all events for each entity are returned."
-msgstr ""
+msgstr "重要的如果表尚未按实体id排序，则选择此选项，否则无法保证返回每个实体的所有事件。"
 
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:76
 msgid "Minimum leaf node event count"
@@ -12403,7 +12403,7 @@ msgstr "最小叶子节点事件数"
 msgid ""
 "Leaf nodes that represent fewer than this number of events will be "
 "initially hidden in the visualization"
-msgstr ""
+msgstr "表示少于此数量的事件的叶节点最初将隐藏在可视化中"
 
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:94
 msgid "Additional metadata"
@@ -12518,12 +12518,12 @@ msgstr "在图表上显示系列值"
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:150
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:138
 msgid "Stack series"
-msgstr ""
+msgstr "堆叠"
 
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:153
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:141
 msgid "Stack series on top of each other"
-msgstr ""
+msgstr "堆叠在彼此的顶部"
 
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:149
 msgid "Only Total"
@@ -12678,13 +12678,13 @@ msgstr "确定如何计算盒须和异常值。"
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:190
 #: superset-frontend/src/visualizations/XYCharts/BoxPlot/controlPanel.ts:51
 msgid "X Tick Layout"
-msgstr ""
+msgstr "X轴刻度布局"
 
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:76
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:195
 #: superset-frontend/src/visualizations/XYCharts/BoxPlot/controlPanel.ts:56
 msgid "The way the ticks are laid out on the X-axis"
-msgstr ""
+msgstr "在X轴上的排列方式"
 
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:116
 msgid "Categories to group by on the x-axis."
@@ -12987,15 +12987,15 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:125
 msgid "None -> Arrow"
-msgstr ""
+msgstr "None -> 箭头"
 
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:126
 msgid "Circle -> Arrow"
-msgstr ""
+msgstr "圆 -> 箭头"
 
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:127
 msgid "Circle -> Circle"
-msgstr ""
+msgstr "圆 -> 圆"
 
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:137
 msgid "Enable node dragging"
@@ -13279,7 +13279,7 @@ msgstr "小分割线"
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:243
 #: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:246
 msgid "Draw split lines for minor y-axis ticks"
-msgstr ""
+msgstr "为短y轴记号绘制分割线"
 
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:324
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:239
@@ -14007,7 +14007,7 @@ msgid ""
 "`count` is COUNT(*) if a group by is used. Numerical columns will be "
 "aggregated with the aggregator. Non-numerical columns will be used to "
 "label points. Leave empty to get a count of points in each cluster."
-msgstr ""
+msgstr "`count` 是 COUNT(*) 如果使用了group by。数字列将使用聚合器聚合。非数字列将用于标记点。留空以获得每个簇中的点数。"
 
 #: superset-frontend/src/visualizations/MapBoxChart/controlPanel.ts:155
 msgid "Cluster label aggregator"
@@ -14123,7 +14123,7 @@ msgstr "折线样式"
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:115
 msgid "Line interpolation as defined by d3.js"
-msgstr ""
+msgstr "d3.js 定义的直线插值"
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:123
 msgid "Show Range Filter"
@@ -14131,11 +14131,11 @@ msgstr "显示范围过滤"
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:132
 msgid "Whether to display the time range interactive selector"
-msgstr "是否显示时间范围交互式选择器"
+msgstr "是否显示时间范围交互式选择器X
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:204
 msgid "X Axis Format"
-msgstr "Y 轴格式化"
+msgstr "X 轴格式化"
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:216
 msgid "Y Log Scale"
@@ -14159,7 +14159,7 @@ msgstr "柱状图的值"
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:303
 msgid "Reduce X ticks"
-msgstr ""
+msgstr "减少X刻度"
 
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:306
 msgid ""
@@ -14336,7 +14336,7 @@ msgstr "经典图表可视化度量如何随时间变化。"
 
 #: superset-frontend/src/visualizations/NVD3/Line/index.js:33
 msgid "Battery level over time"
-msgstr ""
+msgstr "电池电量随时间变化"
 
 #: superset-frontend/src/visualizations/NVD3/Line/index.js:34
 #: superset-frontend/src/visualizations/XYCharts/Line/createMetadata.ts:26
@@ -14412,7 +14412,7 @@ msgid ""
 "            \"Pandas\" offset alias.\n"
 "            Click on the info bubble for more details on accepted "
 "\"freq\" expressions."
-msgstr ""
+msgstr "以时间为轴心的周期。用户可以提供\"Pandas\"偏移别名。点击信息气泡，了解更多关于已接受的\"freq\"表达式的详细信息。"
 
 #: superset-frontend/src/visualizations/NVD3/TimePivot/index.js:28
 msgid "Time-series Period Pivot"
@@ -14424,7 +14424,7 @@ msgstr "重要性等级"
 
 #: superset-frontend/src/visualizations/PairedTTestChart/controlPanel.ts:74
 msgid "Threshold alpha level for determining significance"
-msgstr ""
+msgstr "确定显著性的阈值 alpha 水平"
 
 #: superset-frontend/src/visualizations/PairedTTestChart/controlPanel.ts:83
 msgid "p-value precision"

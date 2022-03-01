@@ -283,11 +283,13 @@
         "存在关联的警报或报告：%s,"
       ],
       "Time string is ambiguous. Please specify [%(human_readable)s ago] or [%(human_readable)s later].": [
-        ""
+        "时间字符串不明确。请具体说明 [%(human_readable)s ago] or [%(human_readable)s later]。"
       ],
-      "Cannot parse time string [%(human_readable)s]": [""],
+      "Cannot parse time string [%(human_readable)s]": [
+        "无法分析时间字符串 [%(human_readable)s]"
+      ],
       "Time delta is ambiguous. Please specify [%(human_readable)s ago] or [%(human_readable)s later].": [
-        ""
+        "时差不明确。请具体说明 [%(human_readable)s ago] 或 [%(human_readable)s later]。"
       ],
       "Database does not exist": ["数据库不存在"],
       "Dashboards do not exist": ["看板"],
@@ -310,10 +312,10 @@
       ],
       "The chart does not exist": ["图表没有找到"],
       "Duplicate column/metric labels: %(labels)s. Please make sure all columns and metrics have a unique label.": [
-        ""
+        "重复的列/指标标签 %(labels)s。请确保所有列和指标都有唯一的标签。"
       ],
       "The following entries in `series_columns` are missing in `columns`: %(columns)s. ": [
-        ""
+        "`columns`中缺少`series_columns`中的以下条目：%(columns)s。"
       ],
       "`operation` property of post processing object undefined": [
         "后处理必须指定操作类型（`operation`）"
@@ -420,8 +422,12 @@
       ],
       "Empty query?": ["查询为空？"],
       "Metric '%(metric)s' does not exist": ["指标 '%(metric)s' 不存在"],
-      "Unknown column used in orderby: %(col)s": [""],
-      "Time column \"%(col)s\" does not exist in dataset": [""],
+      "Unknown column used in orderby: %(col)s": [
+        "orderby 中使用了未知列：%(col)s。"
+      ],
+      "Time column \"%(col)s\" does not exist in dataset": [
+        "数据集中不存在时间列\"%(col)s\""
+      ],
       "Filter value list cannot be empty": ["过滤器值列表不能为空"],
       "Must specify a value for filters with comparison operators": [
         "必须为带有比较运算符的筛选器指定一个值"
@@ -567,12 +573,14 @@
         "额外字段中的元数据参数配置不正确。键 %(key)s 无效。"
       ],
       "Engine spec \"InvalidEngine\" does not support being configured via individual parameters.": [
-        ""
+        "引擎规格\"InvalidEngine，不支持通过单个参数进行配置。"
       ],
       "An engine must be specified when passing individual parameters to a database.": [
         "向数据库传递单个参数时，必须指定引擎。"
       ],
-      "Engine \"%(engine)s\" is not a valid engine.": [""],
+      "Engine \"%(engine)s\" is not a valid engine.": [
+        "无效引擎\"%(engine)s\""
+      ],
       "Database parameters are invalid.": ["数据库参数无效。"],
       "A database with the same name already exists.": ["同名数据库已存在。"],
       "Field is required": ["字段是必需的"],
@@ -601,7 +609,9 @@
         "导入数据库失败，原因未知"
       ],
       "Could not load database driver: {}": ["无法加载数据库驱动程序：{}"],
-      "Engine \"%(engine)s\" cannot be configured through parameters.": [""],
+      "Engine \"%(engine)s\" cannot be configured through parameters.": [
+        "引擎\"%(engine)s\"无法通过参数配置"
+      ],
       "Database is offline.": ["数据库处于离线状态。"],
       "Deleted %(num)d dataset": ["已经删除 %(num)d 个数据集"],
       "Null or Empty": ["Null或空"],
@@ -631,7 +641,7 @@
       "Dataset metric not found.": ["没有找到数据集指标。"],
       "Dataset metric delete failed.": ["删除数据集指标错误。"],
       "Please check your query for syntax errors at or near \"%(syntax_error)s\". Then, try running your query again.": [
-        ""
+        "请在\"%(syntax_error)s\"处或附近检查您的查询是否存在语法错误。请修改后再次尝试运行查询。"
       ],
       "Original value": ["原值"],
       "Second": ["秒"],
@@ -673,28 +683,38 @@
         "表 \"%(schema)s\" 不存在。必须使用有效的表来运行此查询。"
       ],
       "Please check your query for syntax errors near \"%(server_error)s\". Then, try running your query again.": [
-        ""
+        "请检查“%（服务器错误）s”附近的语法错误。请修改后再次尝试运行查询。"
       ],
       "Either the username \"%(username)s\", password, or database name \"%(database)s\" is incorrect.": [
-        ""
+        "用户名\"%(username)s\"、密码或数据库名称\"%(database)s\"不正确。"
       ],
-      "The hostname \"%(hostname)s\" cannot be resolved.": [""],
+      "The hostname \"%(hostname)s\" cannot be resolved.": [
+        "无法解析主机名\"%(hostname)s\""
+      ],
       "Port %(port)s on hostname \"%(hostname)s\" refused the connection.": [
-        ""
+        "主机\"%(hostname)s\"的%(port)s端口拒绝访问。"
       ],
       "The host \"%(hostname)s\" might be down, and can't be reached on port %(port)s.": [
-        ""
+        "主机\"%(hostname)s\"可能已关闭，无法在端口%(port)s上访问"
       ],
       "Either the username \"%(username)s\" or the password is incorrect.": [
-        ""
+        "用户名\"%(username)s\"或密码不正确。"
       ],
-      "Unknown MySQL server host \"%(hostname)s\".": [""],
-      "The host \"%(hostname)s\" might be down and can't be reached.": [""],
-      "Unable to connect to database \"%(database)s\".": [""],
+      "Unknown MySQL server host \"%(hostname)s\".": [
+        "无效的MySQL服务器主机\"%(hostname)s\"。"
+      ],
+      "The host \"%(hostname)s\" might be down and can't be reached.": [
+        "主机\"%(hostname)s\"可能已关闭，无法访问。"
+      ],
+      "Unable to connect to database \"%(database)s\".": [
+        "无法连接到数据库\"%(database)s\"。"
+      ],
       "The username \"%(username)s\" does not exist.": [
         "用户 '%(username)s' 不存在。"
       ],
-      "The password provided for username \"%(username)s\" is incorrect.": [""],
+      "The password provided for username \"%(username)s\" is incorrect.": [
+        "为用户名\"%(username)s\"提供的密码不正确。"
+      ],
       "Please re-enter the password.": ["请重新输入密码。"],
       "We can't seem to resolve the column \"%(column_name)s\" at line %(location)s.": [
         "我们似乎无法解析行 %(location)s 所处的列 \"%(column_name)s\" 。"
@@ -705,12 +725,16 @@
       "The schema \"%(schema_name)s\" does not exist. A valid schema must be used to run this query.": [
         "模式 \"%(schema_name)s\" 不存在。必须使用有效的表来运行此查询。"
       ],
-      "Unable to connect to catalog named \"%(catalog_name)s\".": [""],
+      "Unable to connect to catalog named \"%(catalog_name)s\".": [
+        "无法连接到名为\"%(catalog_name)s\"的目录。"
+      ],
       "Unknown Presto Error": ["未知 Presto 错误"],
       "We were unable to connect to your database named \"%(database)s\". Please verify your database name and try again.": [
-        ""
+        "我们无法连接到名为\"%(database)s\"的数据库。请验证您的数据库名称，然后重试。"
       ],
-      "%(object)s does not exist in this database.": [""],
+      "%(object)s does not exist in this database.": [
+        "此数据库不存在%(object)s。"
+      ],
       "We can't seem to resolve the column \"%(column_name)s\"": [
         "我们似乎无法解析列 \"%(column_name)s\""
       ],
@@ -734,7 +758,9 @@
       "Access requests": ["访问请求"],
       "Scan New Datasources": ["扫描新的数据源"],
       "Refresh Druid Metadata": ["刷新 Druid 元数据"],
-      "Temporal expression not supported for type: %(col_type)s": [""],
+      "Temporal expression not supported for type: %(col_type)s": [
+        "类型不支持时态表达式：%(col_type)s"
+      ],
       "Deleted %(num)d saved query": ["已经删除 %(num)d 个保存的查询"],
       "Saved queries could not be deleted.": ["无法删除已保存的查询。"],
       "Saved query not found.": ["找不到已保存的查询。"],
@@ -809,7 +835,7 @@
       "Report schedule unexpected error": ["报告计划意外错误"],
       "Changing this report is forbidden": ["禁止更改此报告"],
       "An error occurred while pruning logs ": ["精简日志时出错 "],
-      "\n            Error: %(text)s\n            ": [""],
+      "\n            Error: %(text)s\n            ": ["错误：%(text)s"],
       "Explore in Superset": ["探索superset"],
       "%(name)s.csv": [""],
       "%(prefix)s %(title)s": [""],
@@ -830,7 +856,7 @@
         "查询包含一个或多个格式错误的模板参数。"
       ],
       "Please check your query and confirm that all template parameters are surround by double braces, for example, \"{{ ds }}\". Then, try running your query again.": [
-        ""
+        "请检查您的查询并确认所有模板参数都用双括号括起来，例如\"{{ ds }}\"。然后，再次尝试运行查询。"
       ],
       "\n        *%(name)s*\n\n        <%(url)s|Explore in Superset>\n        ": [
         "\n        *%(name)s*\n\n        <%(url)s|探索 Superset>\n        "
@@ -874,7 +900,7 @@
       "[Superset] Access to the datasource %(name)s was granted": [
         "[Superset] 允许访问数据源 %(name)s"
       ],
-      "Unsupported clause type: %(clause)s": [""],
+      "Unsupported clause type: %(clause)s": ["不支持簇类型：%(clause)s"],
       "Invalid metric object": ["无效的度量对象"],
       "Unable to find such a holiday: [%(holiday)s]": [
         "找不到这样的假期：[%(holiday)s]"
@@ -914,7 +940,7 @@
       "Invalid longitude/latitude": ["无效的经度/纬度"],
       "Invalid geodetic string": ["无效的 geodetic 字符串"],
       "Column \"%(column)s\" is not numeric or does not exists in the query results.": [
-        ""
+        "列\"%(column)s\"不是数字或在查询结果中不存在"
       ],
       "`rename_columns` must have the same length as `columns`.": [
         "`rename_columns'的长度必须与columns'相同。"
@@ -959,7 +985,7 @@
         "定义是否应触发警报的SQL语句。查询应返回NULL或数字值。"
       ],
       "This feature is deprecated and will be removed on 2.0. Take a look at the replacement feature <a href='https://superset.apache.org/docs/installation/alerts-reports'>Alerts & Reports documentation</a>": [
-        ""
+        "此功能已弃用，将在2.0上删除，<a href=”https://superset.apache.org/docs/installation/alerts-reports“>警报和报告文档</a>"
       ],
       "annotation start time or end time is required.": [
         "注释的开始时间或结束时间是必需的。"
@@ -1337,7 +1363,7 @@
         "Columnar文件 \"%(columnar_filename)s\" 上传到数据库 \"%(db_name)s\" 中的表 \"%(table_name)s\""
       ],
       "Request missing data field.": ["请求缺少数据字段。"],
-      "Duplicate column name(s): %(columns)s": [""],
+      "Duplicate column name(s): %(columns)s": ["重复列名：%(columns)s"],
       "Logs": ["日志"],
       "Show Log": ["查看日志"],
       "Add Log": ["新增日志"],
@@ -1492,7 +1518,7 @@
       "Copy to Clipboard": ["复制到剪贴板"],
       "Filter results": ["过滤结果"],
       "The number of results displayed is limited to %(rows)d by the configuration DISPLAY_MAX_ROWS. ": [
-        ""
+        "显示结果数量受配置DISPLAY_MAX_ROWS限制"
       ],
       "Please add additional limits/filters or download to csv to see more rows up to ": [
         "请添加其他限制/过滤器，或下载到csv以查看最多的更多行"
@@ -1570,7 +1596,9 @@
         "在运行查询之前计算执行计划"
       ],
       "LIMIT:": ["行数："],
-      "${isActive ? 'Collapse' : 'Expand'} table preview": [""],
+      "${isActive ? 'Collapse' : 'Expand'} table preview": [
+        "${isActive ? 'Collapse' : 'Expand'} 表格预览"
+      ],
       "Reset state": ["状态重置"],
       "Enter a new title for the tab": ["输入标签的新标题"],
       "Untitled Query %s": ["未命名的查询 %s"],
@@ -1786,7 +1814,9 @@
       ],
       "D3 format": ["D3 格式"],
       "Fraction digits": ["分数位数"],
-      "Number of decimal digits to round numbers to": [""],
+      "Number of decimal digits to round numbers to": [
+        "将数字四舍五入的小数位数"
+      ],
       "Min Width": ["最小宽度"],
       "Default minimal column width in pixels, actual width may still be larger than this if other columns don't need much space": [
         "默认最小列宽（以像素为单位），如果其他列不需要太多空间，实际宽度可能仍然大于此值。"
@@ -1816,9 +1846,9 @@
         "D3 标准语法：https://github.com/d3/d3-format"
       ],
       "Adaptative formating": ["适应格式"],
-      "Duration in ms (66000 => 1m 6s)": ["持续时间（毫秒）(66000 => 1m 6s)"],
-      "Duration in ms (1.40008 => 1ms 400µs 80ns)": [
-        "持续时间（毫秒）(1.40008 => 1ms 400µs 80ns)"
+      "Duration in s (66000 => 1m 6s)": ["持续时间（秒）(66000 => 1m 6s)"],
+      "Duration in ns (1.40008 => 1ms 400µs 80ns)": [
+        "持续时间（纳秒）(1.40008 => 1ms 400µs 80ns)"
       ],
       "D3 time format syntax: https://github.com/d3/d3-time-format": [
         "D3 时间格式语法：https://github.com/d3/d3-time-format"
@@ -2590,9 +2620,9 @@
       "last month": ["上月"],
       "last quarter": ["上季度"],
       "last year": ["去年"],
-      "previous calendar week": [""],
-      "previous calendar month": [""],
-      "previous calendar year": [""],
+      "previous calendar week": ["上一个日历周"],
+      "previous calendar month": ["上一个日历月"],
+      "previous calendar year": ["上一个日历周年"],
       "Before": ["之前"],
       "After": ["之后"],
       "Specific Date/Time": ["指定的日期/时间。"],
@@ -3337,7 +3367,7 @@
       "Which country to plot the map for?": ["该为哪个国家绘制地图？"],
       "ISO 3166-2 Codes": [""],
       "Column containing ISO 3166-2 codes of region/province/department in your table.": [
-        ""
+        "表中包含ISO 3166-2地区/省/部门代码的列。"
       ],
       "Metric to display bottom title": ["显示底部标题的度量"],
       "Map": ["地图"],
@@ -3349,9 +3379,9 @@
       "Range": ["范围"],
       "Stacked": ["堆叠"],
       "Link Length": ["链接长度"],
-      "Link length in the force layout": [""],
+      "Link length in the force layout": ["力布局中的链接长度"],
       "Charge": ["费用"],
-      "Charge in the force layout": [""],
+      "Charge in the force layout": ["在力布局中充能"],
       "Source / Target": ["源 / 目标"],
       "Choose a source and a target": ["选择数据源和目标"],
       "Force-directed Graph": ["力引导布局"],
@@ -3390,7 +3420,7 @@
       ],
       "Value bounds": ["值界限"],
       "Hard value bounds applied for color coding. Is only relevant and applied when the normalization is applied against the whole heatmap.": [
-        ""
+        "应用于颜色编码的硬边界。仅在对整个热图应用归一化时才相关和应用"
       ],
       "Sort X Axis": ["X轴排序"],
       "Sort Y Axis": ["Y轴排序"],
@@ -3489,13 +3519,13 @@
       "Pivot Options": ["轴心选项"],
       "Aggregation function": ["聚集函数"],
       "Aggregate function to apply when pivoting and computing the total rows and columns": [
-        ""
+        "转和计算总行和总列时要应用的聚合函数"
       ],
       "Show totals": ["显示总数"],
       "Display total row/column": ["显示所有行/列"],
       "Combine Metrics": ["绑定指标"],
       "Display metrics side by side within each column, as opposed to each column being displayed side by side for each metric.": [
-        ""
+        "在每列中并排显示度量，而不是为每个度量并排显示每列。"
       ],
       "Transpose Pivot": ["转置轴心"],
       "Swap Groups and Columns": ["交换组和列"],
@@ -3691,11 +3721,11 @@
       "Event Names": ["事件名称"],
       "Order by entity id": ["按实体id排序"],
       "Important! Select this if the table is not already sorted by entity id, else there is no guarantee that all events for each entity are returned.": [
-        ""
+        "重要的如果表尚未按实体id排序，则选择此选项，否则无法保证返回每个实体的所有事件。"
       ],
       "Minimum leaf node event count": ["最小叶子节点事件数"],
       "Leaf nodes that represent fewer than this number of events will be initially hidden in the visualization": [
-        ""
+        "表示少于此数量的事件的叶节点最初将隐藏在可视化中"
       ],
       "Additional metadata": ["附加的元数据"],
       "Metadata": ["元数据"],
@@ -3735,8 +3765,8 @@
       "Tooltip": ["工具提示"],
       "Show Value": ["显示值"],
       "Show series values on the chart": ["在图表上显示系列值"],
-      "Stack series": [""],
-      "Stack series on top of each other": [""],
+      "Stack series": ["堆叠"],
+      "Stack series on top of each other": ["堆叠在彼此的顶部"],
       "Only Total": ["只有总数"],
       "Only show the total value on the stacked chart, and not show on the selected category": [
         "仅在堆叠图表上显示总值，而不在所选类别上显示"
@@ -3779,8 +3809,8 @@
       "Determines how whiskers and outliers are calculated.": [
         "确定如何计算盒须和异常值。"
       ],
-      "X Tick Layout": [""],
-      "The way the ticks are laid out on the X-axis": [""],
+      "X Tick Layout": ["X轴刻度布局"],
+      "The way the ticks are laid out on the X-axis": ["在X轴上的排列方式"],
       "Categories to group by on the x-axis.": ["要在x轴上分组的类别。"],
       "Distribute across": ["分布"],
       "Columns to calculate distribution across. Defaults to temporal column if left empty.": [
@@ -3871,9 +3901,9 @@
       "Edge symbols": ["边缘符号"],
       "Symbol of two ends of edge line": ["边缘线两端的符号"],
       "None -> None": [""],
-      "None -> Arrow": [""],
-      "Circle -> Arrow": [""],
-      "Circle -> Circle": [""],
+      "None -> Arrow": ["None -> 箭头"],
+      "Circle -> Arrow": ["圆 -> 箭头"],
+      "Circle -> Circle": ["圆 -> 圆"],
       "Enable node dragging": ["启用节点拖动"],
       "Whether to enable node dragging in force layout mode.": [
         "是否在强制布局模式下启用节点拖动。"
@@ -3943,7 +3973,7 @@
         "输入自定义字段旋转角度。例如 30 为 30°"
       ],
       "Minor Split Line": ["小分割线"],
-      "Draw split lines for minor y-axis ticks": [""],
+      "Draw split lines for minor y-axis ticks": ["为短y轴记号绘制分割线"],
       "Truncate Y Axis": ["截断Y轴"],
       "Truncate Y Axis. Can be overridden by specifying a min or max bound.": [
         "截断Y轴。可以通过指定最小或最大界限来覆盖。"
@@ -4160,7 +4190,7 @@
       "Labelling": ["标签"],
       "label": ["标签"],
       "`count` is COUNT(*) if a group by is used. Numerical columns will be aggregated with the aggregator. Non-numerical columns will be used to label points. Leave empty to get a count of points in each cluster.": [
-        ""
+        "`count` 是 COUNT(*) 如果使用了group by。数字列将使用聚合器聚合。非数字列将用于标记点。留空以获得每个簇中的点数。"
       ],
       "Cluster label aggregator": ["群集标签聚合器"],
       "Aggregate function applied to the list of points in each cluster to produce the cluster label.": [
@@ -4199,101 +4229,17 @@
       "Y bounds": ["Y轴的边界"],
       "Y 2 bounds": ["Y轴2的边界"],
       "Line Style": ["折线样式"],
-      "Line interpolation as defined by d3.js": [""],
+      "Line interpolation as defined by d3.js": ["d3.js 定义的直线插值"],
       "Show Range Filter": ["显示范围过滤"],
       "Whether to display the time range interactive selector": [
-        "是否显示时间范围交互式选择器"
-      ],
-      "X Axis Format": ["Y 轴格式化"],
-      "Y Log Scale": ["Y对数刻度"],
-      "Use a log scale for the Y-axis": ["Y轴使用对数刻度"],
-      "X bounds": ["X 边界"],
-      "Whether to display the min and max values of the X-axis": [
-        "是否显示X轴的最小值和最大值"
-      ],
-      "Bar Values": ["柱状图的值"],
-      "Reduce X ticks": [""],
-      "Reduces the number of X-axis ticks to be rendered. If true, the x-axis will not overflow and labels may be missing. If false, a minimum width will be applied to columns and the width may overflow into an horizontal scroll.": [
-        "减少要渲染的X轴刻度的数量。如果为true，x轴将不会溢出，标签可能会丢失。如果为false，将对列应用最小宽度，该宽度可能会溢出到水平滚动中。"
-      ],
-      "You cannot use 45° tick layout along with the time range filter": [
-        "不能将45°刻度布局与时间范围过滤器一起使用"
-      ],
-      "Stacked Style": ["堆叠样式"],
-      "A time series chart that visualizes how a related metric from multiple groups vary over time. Each group is visualized using a different color.": [
-        "一个时间序列图，显示多个组的相关指标随时间的变化。每个组都使用不同的颜色进行可视化。"
-      ],
-      "Stretched style": ["拉伸样式"],
-      "Stacked style": ["堆叠样式"],
-      "Video game consoles": ["视频游戏控制台"],
-      "Vehicle Types": ["媒介类型"],
-      "Continuous": ["持续的"],
-      "nvd3": [""],
-      "Deprecated": ["反对"],
-      "X Log Scale": ["X Log 刻度"],
-      "Use a log scale for the X-axis": ["X轴使用Log刻度"],
-      "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
-        "在单个图表（X轴、Y轴和气泡大小）中可视化跨越三维数据的度量。同一组中的气泡可以使用气泡颜色来显示。"
-      ],
-      "Ranges": ["范围"],
-      "Ranges to highlight with shading": ["高亮显示范围"],
-      "Range labels": ["范围标签"],
-      "Labels for the ranges": ["范围的标签"],
-      "Markers": ["标记"],
-      "List of values to mark with triangles": ["要用三角形标记的值列表"],
-      "Marker labels": ["标记标签"],
-      "Labels for the markers": ["标记的标签"],
-      "Marker lines": ["标记的线"],
-      "List of values to mark with lines": ["要用线标记的值列表"],
-      "Marker line labels": ["标记线标签"],
-      "Labels for the marker lines": ["标记线的标签"],
-      "Showcases the progress of a single metric against a given target. The higher the fill, the closer the metric is to the target.": [
-        "显示单个指标相对于给定目标的进度。填充越高，度量值越接近目标。"
-      ],
-      "Visualizes many different time-series objects in a single chart. This chart is being deprecated and we recommend using the Time-series Chart instead.": [
-        "在一个图表中可视化许多不同的时间序列对象。此图表已被弃用，建议改用时间序列图。"
-      ],
-      "Time-series Percent Change": ["时间序列 - 百分比变化"],
-      "Left Axis Metric": ["左轴指标"],
-      "Choose a metric for left axis": ["为左轴选择一个指标"],
-      "Left Axis Format": ["左轴格式化"],
-      "Visualizes 2 metrics as line plots using the same x-axis. This chart is useful for comparing metrics across the same time range.": [
-        "使用相同的x轴将两个指标可视化为直线图。此图表有助于比较同一时间范围内的指标。"
-      ],
-      "Dual Line Chart": ["双折线图"],
-      "Propagate": ["传播"],
-      "Send range filter events to other charts": [
-        "将范围筛选器事件发送到其他图表"
-      ],
-      "Classic chart that visualizes how metrics change over time.": [
-        "经典图表可视化度量如何随时间变化。"
-      ],
-      "Battery level over time": [""],
-      "Line Chart": ["折线图"],
-      "Prefix metric name with slice name": ["在度量名称前面加上切片名称"],
-      "Y Axis Left": ["Y轴左侧"],
-      "Left Axis chart(s)": ["左轴图表"],
-      "Choose one or more charts for left axis": ["为左轴选择一个或多个图表"],
-      "Select charts": ["选择图表"],
-      "Error while fetching charts": ["获取图表错误"],
-      "Y Axis Right": ["Y轴右侧"],
-      "Right Axis chart(s)": ["右轴图表"],
-      "Choose one or more charts for right axis": ["为右轴选择一个或多个图表"],
-      "Visualize two different time series using the same x-axis time range. This chart is being deprecated and we recommend using the Mixed Timeseries Chart instead!": [
-        "使用相同的x轴时间范围可视化两个不同的时间序列。请注意，每个时间序列可以以不同的方式显示（例如，1个使用条形图，1个使用直线）。"
-      ],
-      "Multiple Line Charts": ["多线图"],
-      "Whether to display the labels. Note that the label only displays when the the 5% threshold.": [
-        "是否显示标签。请注意，标签仅在设定为5%阈值时显示。"
-      ],
-      "Put the labels outside the pie?": ["是否把标签放在饼图外侧？"],
-      "Frequency": ["刷新频率"],
-      "The periodicity over which to pivot time. Users can provide\n            \"Pandas\" offset alias.\n            Click on the info bubble for more details on accepted \"freq\" expressions.": [
-        ""
+        "是否显示时间范围交互式选择器X\n\n#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:204\nmsgid ",
+        "以时间为轴心的周期。用户可以提供\"Pandas\"偏移别名。点击信息气泡，了解更多关于已接受的\"freq\"表达式的详细信息。"
       ],
       "Time-series Period Pivot": ["时间序列 - 周期透视表"],
       "Significance Level": ["重要性等级"],
-      "Threshold alpha level for determining significance": [""],
+      "Threshold alpha level for determining significance": [
+        "确定显著性的阈值 alpha 水平"
+      ],
       "p-value precision": ["p值精度"],
       "Number of decimal places with which to display p-values": [
         "用于显示p值的小数位数"
