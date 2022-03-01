@@ -26,6 +26,17 @@ import { Tooltip } from 'src/components/Tooltip';
 
 export type OnClickHandler = React.MouseEventHandler<HTMLElement>;
 
+export type ButtonStyle =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'default'
+  | 'link'
+  | 'dashed';
+
 export interface ButtonProps {
   id?: string;
   className?: string;
@@ -46,16 +57,7 @@ export interface ButtonProps {
     | 'rightBottom';
   onClick?: OnClickHandler;
   disabled?: boolean;
-  buttonStyle?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'default'
-    | 'link'
-    | 'dashed';
+  buttonStyle?: ButtonStyle;
   buttonSize?: 'default' | 'small' | 'xsmall';
   style?: CSSProperties;
   children?: React.ReactNode;
@@ -200,14 +202,17 @@ export default function Button(props: ButtonProps) {
         },
         '&[disabled], &[disabled]:hover': {
           color: grayscale.base,
-          backgroundColor: backgroundColorDisabled,
-          borderColor: borderColorDisabled,
+          backgroundColor:
+            buttonStyle === 'link' ? 'transparent' : backgroundColorDisabled,
+          borderColor:
+            buttonStyle === 'link' ? 'transparent' : borderColorDisabled,
+          pointerEvents: 'none',
         },
         marginLeft: 0,
         '& + .superset-button': {
           marginLeft: theme.gridUnit * 2,
         },
-        '& :first-of-type': {
+        '& > :first-of-type': {
           marginRight: firstChildMargin,
         },
       }}
@@ -226,7 +231,11 @@ export default function Button(props: ButtonProps) {
       >
         {/* this ternary wraps the button in a span so that the tooltip shows up
         when the button is disabled.  */}
-        {disabled ? <span>{button}</span> : button}
+        {disabled ? (
+          <span css={{ cursor: 'not-allowed' }}>{button}</span>
+        ) : (
+          button
+        )}
       </Tooltip>
     );
   }
