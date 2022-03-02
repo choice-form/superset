@@ -20,5 +20,4 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   arrowParens: 'avoid',
-  printWidth: 120, // 换行字符串阈值
 };
