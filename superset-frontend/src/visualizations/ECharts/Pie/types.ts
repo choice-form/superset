@@ -24,6 +24,7 @@ import {
   QueryFormColumn,
   QueryFormData,
   SetDataMaskHook,
+  JsonObject,
 } from 'src/core';
 import { DEFAULT_LEGEND_FORM_DATA, EchartsLegendFormData, LegendOrientation, LegendType } from '../types';
 
@@ -33,6 +34,7 @@ export type EchartsPieFormData = QueryFormData &
     currentOwnValue?: string[] | null;
     donut: boolean;
     defaultValue?: string[] | null;
+    drilldown: boolean;
     groupby: QueryFormColumn[];
     innerRadius: number;
     labelLine: boolean;
@@ -84,6 +86,7 @@ export const DEFAULT_FORM_DATA: EchartsPieFormData = {
 };
 
 export interface PieChartTransformedProps {
+  ownState?: JsonObject;
   formData: EchartsPieFormData;
   height: number;
   width: number;

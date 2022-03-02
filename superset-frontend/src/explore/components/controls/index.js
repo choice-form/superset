@@ -41,6 +41,7 @@ import AdhocFilterControl from './FilterControl/AdhocFilterControl';
 import FilterBoxItemControl from './FilterBoxItemControl';
 import ConditionalFormattingControl from './ConditionalFormattingControl';
 import DndColumnSelectControl, { DndColumnSelect, DndFilterSelect, DndMetricSelect } from './DndColumnSelectControl';
+import DrillDownControl from './DrillDownControl';
 
 const controlMap = {
   AnnotationLayerControl,
@@ -55,6 +56,7 @@ const controlMap = {
   DndColumnSelect,
   DndFilterSelect,
   DndMetricSelect,
+  DrillDownControl,
   FixedOrMetricControl,
   HiddenControl,
   SelectAsyncControl,

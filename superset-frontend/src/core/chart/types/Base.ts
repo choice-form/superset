@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { ExtraFormData } from '../../query';
-import { JsonObject } from '../..';
+import { ExtraFormData, OwnState } from '../../query';
 
 export type HandlerFunction = (...args: unknown[]) => void;
 
@@ -38,13 +37,13 @@ export enum AppSection {
 export type FilterState = { value?: any; [key: string]: any };
 
 export type DataMask = {
-  extraFormData?: ExtraFormData;
+  extraFormData?: { extraFormData: { filter: [] } } & ExtraFormData;
   filterState?: FilterState;
-  ownState?: JsonObject;
+  ownState?: OwnState;
 };
 
 export type SetDataMaskHook = {
-  ({ filterState, extraFormData, ownState }: DataMask): void;
+  (dataMask: DataMask, drilldown?: boolean): void;
 };
 
 export interface PlainObject {

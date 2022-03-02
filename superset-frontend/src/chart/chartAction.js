@@ -19,7 +19,7 @@
 /* eslint no-undef: 'error' */
 /* eslint no-param-reassign: ["error", { "props": false }] */
 import moment from 'moment';
-import { t, SupersetClient } from 'src/core';
+import { t, SupersetClient, DrillDown } from 'src/core';
 import { getControlsState } from 'src/explore/store';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import {
@@ -114,6 +114,7 @@ const legacyChartDataRequest = async (
   force,
   method = 'POST',
   requestParams = {},
+  ownState,
 ) => {
   const endpointType = getLegacyEndpointType({ resultFormat, resultType });
   const allowDomainSharding =
@@ -127,10 +128,18 @@ const legacyChartDataRequest = async (
     method,
     requestParams: requestParams.dashboard_id ? { dashboard_id: requestParams.dashboard_id } : {},
   });
+
+  const drillPayload = formData.drilldown
+    ? {
+        groupby: [DrillDown.getColumn(ownState.drilldown, formData.groupby)],
+        filters: [...(formData.filters || []), ...DrillDown.getFilters(ownState.drilldown, formData.groupby)],
+      }
+    : {};
+
   const querySettings = {
     ...requestParams,
     url,
-    postPayload: { form_data: formData },
+    postPayload: { form_data: { ...formData, ...drillPayload } },
   };
 
   const clientMethod = 'GET' && isFeatureEnabled(FeatureFlag.CLIENT_CACHE) ? SupersetClient.get : SupersetClient.post;
@@ -205,9 +214,10 @@ export async function getChartDataRequest({
   }
 
   if (shouldUseLegacyApi(formData)) {
-    return legacyChartDataRequest(formData, resultFormat, resultType, force, method, querySettings);
+    // useLegacyApi: true 走这里
+    return legacyChartDataRequest(formData, resultFormat, resultType, force, method, querySettings, ownState);
   }
-  // 饼图请求走的这里
+  // useLegacyApi: false 走这里
   return v1ChartDataRequest(formData, resultFormat, resultType, force, querySettings, setDataMask, ownState);
 }
 
@@ -320,7 +330,7 @@ export function exploreJSON(formData, force = false, timeout = 60, key, method, 
     if (dashboardId) requestParams.dashboard_id = dashboardId;
 
     const setDataMask = dataMask => {
-      dispatch(updateDataMask(formData.slice_id, dataMask));
+      dispatch(updateDataMask(formData.slice_id, dataMask, formData.drilldown));
     };
     const chartDataRequest = getChartDataRequest({
       setDataMask,

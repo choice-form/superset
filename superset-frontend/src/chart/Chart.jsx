@@ -19,7 +19,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Alert from 'src/components/Alert';
-import { styled, logging, t } from 'src/core';
+import { styled, logging, t, DrillDown } from 'src/core';
 
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
 import { PLACEHOLDER_DATASOURCE } from 'src/dashboard/constants';
@@ -107,9 +107,15 @@ class Chart extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleRenderContainerFailure = this.handleRenderContainerFailure.bind(this);
+    this.runQuery = this.runQuery.bind(this);
+    this.renderErrorMessage = this.renderErrorMessage.bind(this);
   }
 
   componentDidMount() {
+    if (this.props.formData?.drilldown) {
+      const drilldown = DrillDown.fromHierarchy(this.props.formData.groupby);
+      this.props.actions.updateDataMask(this.props.chartId, { ownState: { drilldown } }, true);
+    }
     if (this.props.triggerQuery) {
       this.runQuery();
     }

@@ -23,6 +23,22 @@ export const showLegendControl = {
   },
 };
 
+export const drilldown = {
+  name: 'drilldown',
+  config: {
+    type: 'DrillDownControl',
+    label: t('drill-down'),
+    default: false,
+    description: t('Enable drill-down query.'),
+    mapStateToProps: ({ form_data }: any) => ({
+      chartId: form_data?.slice_id || 0,
+      columns: form_data.groupby,
+      drilldown: form_data.drilldown,
+    }),
+    visibility: ({ form_data }: ControlPanelsContainerProps) => !!form_data?.slice_id,
+  },
+};
+
 const legendTypeControl = {
   name: 'legendType',
   config: {

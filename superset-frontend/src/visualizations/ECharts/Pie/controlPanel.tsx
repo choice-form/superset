@@ -25,7 +25,7 @@ import {
   emitFilterControl,
 } from 'src/chartConntrols';
 import { DEFAULT_FORM_DATA } from './types';
-import { legendSection } from '../controls';
+import { legendSection, drilldown } from '../controls';
 
 const { labelsOutside, labelType, labelLine, numberFormat, showLabels } = DEFAULT_FORM_DATA;
 
@@ -36,6 +36,7 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['groupby'],
+        [drilldown],
         ['metric'],
         ['adhoc_filters'],
         emitFilterControl,
@@ -198,6 +199,9 @@ const config: ControlPanelConfig = {
     },
   ],
   controlOverrides: {
+    groupby: {
+      validators: [validateNonEmpty], // 非空校验
+    },
     series: {
       validators: [validateNonEmpty],
       clearable: false,

@@ -17,6 +17,7 @@
  * under the License.
  */
 import React, { useCallback } from 'react';
+import { DrillDown } from 'src/core';
 import { PieChartTransformedProps } from './types';
 import Echart from '../Echart';
 import { EventHandlers } from '../types';
@@ -30,41 +31,59 @@ export default function EchartsPie({
   groupby,
   selectedValues,
   formData,
+  ownState,
 }: PieChartTransformedProps) {
   const handleChange = useCallback(
     (values: string[]) => {
-      if (!formData.emitFilter) {
+      if (!formData.emitFilter && !formData.drilldown) {
         return;
       }
 
       const groupbyValues = values.map(value => labelMap[value]);
 
-      setDataMask({
-        extraFormData: {
-          filters:
-            values.length === 0
-              ? []
-              : groupby.map((col, idx) => {
-                  const val = groupbyValues.map(v => v[idx]);
-                  if (val === null || val === undefined)
+      if (formData.emitFilter) {
+        const dataMask: DrillDown = {
+          extraFormData: {
+            filters:
+              values.length === 0
+                ? []
+                : groupby.map((col, idx) => {
+                    const val = groupbyValues.map(v => v[idx]);
+                    if (val === null || val === undefined) {
+                      return { col, op: 'IS NULL' };
+                    }
                     return {
                       col,
-                      op: 'IS NULL',
+                      op: 'IN',
+                      val: val as (string | number | boolean)[],
                     };
-                  return {
-                    col,
-                    op: 'IN',
-                    val: val as (string | number | boolean)[],
-                  };
-                }),
-        },
-        filterState: {
-          value: groupbyValues.length ? groupbyValues : null,
-          selectedValues: values.length ? values : null,
-        },
-      });
+                  }),
+          },
+          filterState: {
+            value: groupbyValues.length ? groupbyValues : null,
+            selectedValues: values.length ? values : null,
+          },
+        };
+        setDataMask(dataMask);
+      }
+
+      if (formData.drilldown) {
+        const drilldown = DrillDown.drillDown(ownState?.drilldown, values[0]);
+        const dataMask: DrillDown = {
+          extraFormData: {
+            filters: drilldown.filters,
+          },
+          filterState: {
+            value: groupbyValues.length && drilldown.filters.length > 0 ? groupbyValues : null,
+          },
+          ownState: {
+            drilldown,
+          },
+        };
+        setDataMask(dataMask, true);
+      }
     },
-    [groupby, labelMap, setDataMask, selectedValues],
+    [formData.emitFilter, formData.drilldown, ownState, setDataMask, labelMap, groupby],
   );
 
   const eventHandlers: EventHandlers = {

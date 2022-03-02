@@ -44,11 +44,13 @@ export default class EchartsPieChartPlugin extends ChartPlugin<EchartsPieFormDat
       controlPanel,
       loadChart: () => import('./EchartsPie'),
       metadata: new ChartMetadata({
-        behaviors: [Behavior.INTERACTIVE_CHART],
+        behaviors: [Behavior.INTERACTIVE_CHART], // INTERACTIVE_CHART 表示创建图表，搜索图表的时候，可以搜索到。
         category: t('Part of a Whole'),
         credits: ['https://echarts.apache.org'],
-        description: t(`The classic. Great for showing how much of a company each investor gets, what demographics follow your blog, or what portion of the budget goes to the military industrial complex.
-        Pie charts can be difficult to interpret precisely. If clarity of relative proportion is important, consider using a bar or other chart type instead.`),
+        description: t(
+          'The pie chart is mainly used for showing proportion of different' +
+            ' categories. Each arc length represents the proportion of data quantity. ',
+        ),
         exampleGallery: [{ url: example1 }, { url: example2 }, { url: example3 }, { url: example4 }],
         name: t('Pie Chart'),
         tags: [

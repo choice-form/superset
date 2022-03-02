@@ -18,7 +18,7 @@
  * under the License.
  */
 import React, { ReactNode, ReactText, ReactElement } from 'react';
-import { AdhocColumn, Column, DatasourceType, JsonValue, Metric, QueryFormData } from 'src/core';
+import { AdhocColumn, Column, DatasourceType, JsonValue, Metric, QueryFormData, JsonObject } from 'src/core';
 import { sharedControls } from './shared-controls';
 import sharedControlComponents from './shared-controls/components';
 
@@ -64,6 +64,7 @@ export interface ControlPanelState {
   form_data: QueryFormData;
   datasource: DatasourceMeta | null;
   controls: ControlStateMapping;
+  dataMask: JsonObject;
 }
 
 /**

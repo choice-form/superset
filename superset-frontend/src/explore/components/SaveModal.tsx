@@ -266,4 +266,4 @@ function mapStateToProps({ explore, saveModal }: Record<string, any>): Partial<S
   };
 }
 
-export default connect(mapStateToProps, () => ({}))(SaveModal);
+export default connect(mapStateToProps, null)(SaveModal);

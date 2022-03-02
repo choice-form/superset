@@ -130,6 +130,14 @@ export type ExtraFormDataOverride = ExtraFormDataOverrideRegular & ExtraFormData
 
 export type ExtraFormData = ExtraFormDataAppend & ExtraFormDataOverride;
 
+export type DrillDownType = {
+  hierarchy: string[];
+  currentIdx: number;
+  filters: QueryObjectFilterClause[];
+};
+
+export type OwnState = JsonObject & { drilldown?: DrillDownType };
+
 // Type signature for formData shared by all viz types
 // It will be gradually filled out as we build out the query object
 
@@ -200,7 +208,7 @@ export interface DruidFormData extends BaseFormData {
   druid_time_origin?: string;
 }
 
-export type QueryFormData = DruidFormData | SqlaFormData;
+export type QueryFormData = { drilldown?: DrillDownType } & (DruidFormData | SqlaFormData);
 
 //---------------------------------------------------
 // Type guards
