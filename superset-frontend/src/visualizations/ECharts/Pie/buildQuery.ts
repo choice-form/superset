@@ -27,10 +27,10 @@ export default function buildQuery(formData: QueryFormData, { ownState }) {
       ...baseQueryObject,
       ...(sort_by_metric && { orderby: [[metric, false]] }),
       ...(drillDown && {
-        groupby: [DrillDown.getColumn((ownState && ownState?.drilldown) || [], groupby as string[])],
+        groupby: [DrillDown.getColumn((ownState && ownState?.drilldown) || {}, groupby as string[])],
         filters: [
           ...(baseQueryObject.filters || []),
-          ...DrillDown.getFilters((ownState && ownState?.drilldown) || [], groupby as string[]),
+          ...DrillDown.getFilters((ownState && ownState?.drilldown) || {}, groupby as string[]),
         ],
       }),
     },

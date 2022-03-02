@@ -17,7 +17,6 @@
  * under the License.
  */
 import { isFeatureEnabled, Preset, FeatureFlag } from 'src/core';
-import { DeckGLChartPreset } from '@superset-ui/legacy-preset-chart-deckgl';
 import {
   SelectFilterPlugin,
   RangeFilterPlugin,
@@ -95,7 +94,7 @@ export default class MainPreset extends Preset {
 
     super({
       name: 'Legacy charts',
-      presets: [new DeckGLChartPreset()],
+      presets: [],
       plugins: [
         new AreaChartPlugin().configure({ key: 'area' }),
         new BarChartPlugin().configure({ key: 'bar' }),
