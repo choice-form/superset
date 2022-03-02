@@ -220,17 +220,6 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             href="/welcome/",
             cond=lambda: bool(appbuilder.app.config["LOGO_TARGET_PATH"]),
         )
-        appbuilder.add_view(
-            DynamicPluginsView,
-            "Plugins",
-            label=__("Plugins"),
-            category="Manage",
-            category_label=__("Manage"),
-            icon="fa-puzzle-piece",
-            menu_cond=lambda: feature_flag_manager.is_feature_enabled(
-                "DYNAMIC_PLUGINS"
-            ),
-        )
         # 注释层
         # appbuilder.add_view(
         #     AnnotationLayerModelView,
@@ -241,30 +230,6 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         #     category_label=__("Manage"),
         #     category_icon="",
         # )
-        # css 模板
-        # appbuilder.add_view(
-        #     CssTemplateModelView,
-        #     "CSS Templates",
-        #     label=__("CSS Templates"),
-        #     icon="fa-css3",
-        #     category="Manage",
-        #     category_label=__("Manage"),
-        #     category_icon="",
-        # )
-        # 导入看板
-        appbuilder.add_link(
-            "Import Dashboards",
-            label=__("Import Dashboards"),
-            href="/import_dashboards/",
-            icon="fa-cloud-upload",
-            category="Manage",
-            category_label=__("Manage"),
-            category_icon="fa-wrench",
-            cond=lambda: not feature_flag_manager.is_feature_enabled(
-                "VERSIONED_EXPORT"
-            ),
-        )
-
         appbuilder.add_view(
             DashboardModelView,
             "Dashboards",
@@ -281,7 +246,27 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             category="",
             category_icon="",
         )
-
+        appbuilder.add_view(
+            DynamicPluginsView,
+            "Plugins",
+            label=__("Plugins"),
+            category="Manage",
+            category_label=__("Manage"),
+            icon="fa-puzzle-piece",
+            menu_cond=lambda: feature_flag_manager.is_feature_enabled(
+                "DYNAMIC_PLUGINS"
+            ),
+        )
+        # css 模板
+        # appbuilder.add_view(
+        #     CssTemplateModelView,
+        #     "CSS Templates",
+        #     label=__("CSS Templates"),
+        #     icon="fa-css3",
+        #     category="Manage",
+        #     category_label=__("Manage"),
+        #     category_icon="",
+        # )
         # 行级安全
         # appbuilder.add_view(
         #     RowLevelSecurityFiltersModelView,
@@ -324,6 +309,19 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         #
         # Add links
         #
+        # 导入看板
+        appbuilder.add_link(
+            "Import Dashboards",
+            label=__("Import Dashboards"),
+            href="/import_dashboards/",
+            icon="fa-cloud-upload",
+            category="Manage",
+            category_label=__("Manage"),
+            category_icon="fa-wrench",
+            cond=lambda: not feature_flag_manager.is_feature_enabled(
+                "VERSIONED_EXPORT"
+            ),
+        )
         # appbuilder.add_link(
         #     "SQL Editor",
         #     label=_("SQL Editor"),
