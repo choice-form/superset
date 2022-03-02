@@ -18,7 +18,7 @@
  */
 /* eslint camelcase: 0 */
 import React from 'react';
-import { Input } from 'src/components/Input';
+import { Input } from 'src/common/components';
 import { Form, FormItem } from 'src/components/Form';
 import Alert from 'src/components/Alert';
 import { JsonObject, t, styled } from '@superset-ui/core';

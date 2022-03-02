@@ -279,7 +279,7 @@ const DetailsPanelPopover = ({
       content={content}
       visible={visible}
       onVisibleChange={handlePopoverStatus}
-      placement="bottomRight"
+      placement="bottom"
       trigger="click"
     >
       {children}

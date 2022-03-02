@@ -18,7 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextArea } from 'src/components/Input';
+import { TextArea } from 'src/common/components';
 import { t } from '@superset-ui/core';
 
 import Button from 'src/components/Button';

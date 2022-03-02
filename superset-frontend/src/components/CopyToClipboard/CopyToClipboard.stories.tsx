@@ -49,7 +49,6 @@ InteractiveCopyToClipboard.args = {
   text: 'http://superset.apache.org/',
   wrapped: true,
   tooltipText: 'Copy to clipboard',
-  hideTooltip: false,
 };
 
 InteractiveCopyToClipboard.argTypes = {

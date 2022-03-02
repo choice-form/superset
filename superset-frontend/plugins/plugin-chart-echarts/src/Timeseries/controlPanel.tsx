@@ -73,10 +73,10 @@ const config: ControlPanelConfig = {
               default: contributionMode,
               choices: [
                 [null, 'None'],
-                [EchartsTimeseriesContributionType.Row, 'Row'],
+                [EchartsTimeseriesContributionType.Row, 'Total'],
                 [EchartsTimeseriesContributionType.Column, 'Series'],
               ],
-              description: t('Calculate contribution per series or row'),
+              description: t('Calculate contribution per series or total'),
             },
           },
         ],

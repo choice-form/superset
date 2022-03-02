@@ -24,17 +24,6 @@ type Payload = {
   chart_id?: number;
 };
 
-const assembleEndpoint = (key?: string, tabId?: string) => {
-  let endpoint = 'api/v1/explore/form_data';
-  if (key) {
-    endpoint = endpoint.concat(`/${key}`);
-  }
-  if (tabId) {
-    endpoint = endpoint.concat(`?tab_id=${tabId}`);
-  }
-  return endpoint;
-};
-
 const assemblePayload = (
   datasetId: number,
   form_data: JsonObject,
@@ -54,10 +43,9 @@ export const postFormData = (
   datasetId: number,
   form_data: JsonObject,
   chartId?: number,
-  tabId?: string,
 ): Promise<string> =>
   SupersetClient.post({
-    endpoint: assembleEndpoint(undefined, tabId),
+    endpoint: 'api/v1/explore/form_data',
     jsonPayload: assemblePayload(datasetId, form_data, chartId),
   }).then(r => r.json.key);
 
@@ -66,9 +54,8 @@ export const putFormData = (
   key: string,
   form_data: JsonObject,
   chartId?: number,
-  tabId?: string,
 ): Promise<string> =>
   SupersetClient.put({
-    endpoint: assembleEndpoint(key, tabId),
+    endpoint: `api/v1/explore/form_data/${key}`,
     jsonPayload: assemblePayload(datasetId, form_data, chartId),
   }).then(r => r.json.message);

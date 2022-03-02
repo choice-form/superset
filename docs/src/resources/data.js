@@ -133,14 +133,4 @@ export const Databases = [
     href: 'https://www.ibm.com/products/netezza',
     imgName: 'netezza.png',
   },
-  {
-    title: 'Teradata',
-    href: "www.teradata.com",
-    imgName: 'teradata.png'
-  },
-  {
-    title: 'YugabyteDB',
-    href: "www.yugabyte.com",
-    imgName: 'yugabyte.png'
-  }
 ];

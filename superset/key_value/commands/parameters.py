@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 from dataclasses import dataclass
-from typing import Optional
+from typing import Dict, Optional
 
 from flask_appbuilder.security.sqla.models import User
 
@@ -24,6 +24,6 @@ from flask_appbuilder.security.sqla.models import User
 class CommandParameters:
     actor: User
     resource_id: int
-    tab_id: Optional[int] = None
+    query_params: Dict[str, str]
     key: Optional[str] = None
     value: Optional[str] = None

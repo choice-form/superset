@@ -21,8 +21,7 @@ import PropTypes from 'prop-types';
 
 import { styled, SupersetClient, t } from '@superset-ui/core';
 
-import { Menu } from 'src/components/Menu';
-import { NoAnimationDropdown } from 'src/components/Dropdown';
+import { Menu, NoAnimationDropdown } from 'src/common/components';
 import Icons from 'src/components/Icons';
 import { URL_PARAMS } from 'src/constants';
 import ShareMenuItems from 'src/dashboard/components/menu/ShareMenuItems';

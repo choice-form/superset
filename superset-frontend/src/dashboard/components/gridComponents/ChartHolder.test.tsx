@@ -18,6 +18,7 @@
  */
 
 import React from 'react';
+import { waitFor } from '@testing-library/react';
 import { sliceId as chartId } from 'spec/fixtures/mockChartQueries';
 import { nativeFiltersInfo } from 'src/dashboard/fixtures/mockNativeFilters';
 import newComponentFactory from 'src/dashboard/util/newComponentFactory';
@@ -79,17 +80,14 @@ describe('ChartHolder', () => {
       </Provider>,
     );
 
-  it('should render empty state', async () => {
+  it('should render full size', async () => {
     renderWrapper();
 
-    expect(
-      screen.getByText('No results were returned for this query'),
-    ).toBeVisible();
-    expect(
-      screen.getByText(
-        'Make sure that the controls are configured properly and the datasource contains data for the selected time range',
-      ),
-    ).toBeVisible();
-    expect(screen.getByAltText('empty')).toBeVisible();
+    const chart = (
+      screen.getByTestId('slice-container').firstChild as HTMLElement
+    ).style;
+
+    await waitFor(() => expect(chart?.width).toBe('992px'));
+    expect(chart?.height).toBe('714px');
   });
 });

@@ -16,6 +16,7 @@
 # under the License.
 import logging
 from abc import ABC, abstractmethod
+from secrets import token_urlsafe
 
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -32,7 +33,10 @@ class CreateKeyValueCommand(BaseCommand, ABC):
 
     def run(self) -> str:
         try:
-            return self.create(self._cmd_params)
+            key = token_urlsafe(48)
+            self._cmd_params.key = key
+            self.create(self._cmd_params)
+            return key
         except SQLAlchemyError as ex:
             logger.exception("Error running create command")
             raise KeyValueCreateFailedError() from ex
@@ -41,5 +45,5 @@ class CreateKeyValueCommand(BaseCommand, ABC):
         pass
 
     @abstractmethod
-    def create(self, cmd_params: CommandParameters) -> str:
+    def create(self, cmd_params: CommandParameters) -> bool:
         ...

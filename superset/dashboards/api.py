@@ -952,7 +952,7 @@ class DashboardRestApi(BaseSupersetModelRestApi):
                         `{"databases/MyDatabase.yaml": "my_password"}`.
                       type: string
                     overwrite:
-                      description: overwrite existing dashboards?
+                      description: overwrite existing databases?
                       type: boolean
           responses:
             200:

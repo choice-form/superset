@@ -19,8 +19,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { styled, useTheme } from '@superset-ui/core';
-import { Dropdown } from 'src/common/components';
-import { Menu } from 'src/components/Menu';
+import { Dropdown, Menu } from 'src/common/components';
 import Icons from 'src/components/Icons';
 
 export interface OptionProps {

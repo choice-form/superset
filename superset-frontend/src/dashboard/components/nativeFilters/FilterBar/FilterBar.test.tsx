@@ -241,9 +241,9 @@ describe('FilterBar', () => {
     expect(screen.getByText('Clear all')).toBeInTheDocument();
   });
 
-  it('should render the "Apply filters" option', () => {
+  it('should render the "Apply" option', () => {
     renderWrapper();
-    expect(screen.getByText('Apply filters')).toBeInTheDocument();
+    expect(screen.getByText('Apply')).toBeInTheDocument();
   });
 
   it('should render the collapse icon', () => {

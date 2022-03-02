@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { Menu } from 'src/components/Menu';
+import { Menu } from 'src/common/components';
 import { DropdownButton, DropdownButtonProps } from '.';
 
 export default {

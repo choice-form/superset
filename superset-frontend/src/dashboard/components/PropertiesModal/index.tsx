@@ -17,8 +17,7 @@
  * under the License.
  */
 import React, { useCallback, useEffect, useState } from 'react';
-import { Form, Row, Col } from 'src/common/components';
-import { Input } from 'src/components/Input';
+import { Form, Row, Col, Input } from 'src/common/components';
 import { FormItem } from 'src/components/Form';
 import jsonStringify from 'json-stringify-pretty-compact';
 import Button from 'src/components/Button';

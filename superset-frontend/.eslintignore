@@ -33,3 +33,4 @@ esm/
 lib/
 tmp/
 storybook-static/
+temporary_superset_ui/**/*

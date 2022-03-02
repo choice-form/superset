@@ -31,9 +31,13 @@ import StyledModal from 'src/components/Modal';
 import Mousetrap from 'mousetrap';
 import Button from 'src/components/Button';
 import Timer from 'src/components/Timer';
-import { Dropdown, Switch } from 'src/common/components';
-import { Input } from 'src/components/Input';
-import { Menu } from 'src/components/Menu';
+import {
+  Dropdown,
+  Menu as AntdMenu,
+  Menu,
+  Switch,
+  Input,
+} from 'src/common/components';
 import Icons from 'src/components/Icons';
 import { detectOS } from 'src/utils/common';
 import {
@@ -574,16 +578,19 @@ class SqlEditor extends React.PureComponent {
     LIMIT_DROPDOWN.push(maxRow);
 
     return (
-      <Menu>
+      <AntdMenu>
         {[...new Set(LIMIT_DROPDOWN)].map(limit => (
-          <Menu.Item key={`${limit}`} onClick={() => this.setQueryLimit(limit)}>
+          <AntdMenu.Item
+            key={`${limit}`}
+            onClick={() => this.setQueryLimit(limit)}
+          >
             {/* // eslint-disable-line no-use-before-define */}
             <a role="button" styling="link">
               {this.convertToNumWithSpaces(limit)}
             </a>{' '}
-          </Menu.Item>
+          </AntdMenu.Item>
         ))}
-      </Menu>
+      </AntdMenu>
     );
   }
 

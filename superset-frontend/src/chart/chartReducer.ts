@@ -201,10 +201,9 @@ export default function chartReducer(
     return Object.fromEntries(
       Object.entries(charts).map(([chartId, chart]) => [
         chartId,
-        // some charts may not have properly handled missing datasource,
-        // causing a JS error, so we reset error message and try to re-render
-        // the chart once the datasource is fully loaded
-        chart.chartStatus === 'failed' && chart.chartStackTrace
+        // if render has failed, clear error message,
+        // which will trigger a re-render
+        chart.chartStatus === 'failed'
           ? {
               ...chart,
               chartStatus: '',

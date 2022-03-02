@@ -25,8 +25,7 @@ import { Provider } from 'react-redux';
 import { mockStore } from 'spec/fixtures/mockStore';
 import { styledMount as mount } from 'spec/helpers/theming';
 import waitForComponentToPaint from 'spec/helpers/waitForComponentToPaint';
-import { Dropdown } from 'src/common/components';
-import { Menu } from 'src/components/Menu';
+import { Dropdown, Menu } from 'src/common/components';
 import Alert from 'src/components/Alert';
 import { FiltersConfigModal } from 'src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigModal';
 

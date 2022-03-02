@@ -27,7 +27,6 @@ import {
 import Collapse from 'src/components/Collapse';
 import Tabs from 'src/components/Tabs';
 import Loading from 'src/components/Loading';
-import { EmptyStateMedium } from 'src/components/EmptyState';
 import TableView, { EmptyWrapperType } from 'src/components/TableView';
 import { getChartDataRequest } from 'src/chart/chartAction';
 import { getClientErrorObject } from 'src/utils/getClientErrorObject';
@@ -121,7 +120,6 @@ interface DataTableProps {
   isLoading: boolean;
   error: string | undefined;
   errorMessage: React.ReactElement | undefined;
-  type: 'results' | 'samples';
 }
 
 const DataTable = ({
@@ -134,7 +132,6 @@ const DataTable = ({
   isLoading,
   error,
   errorMessage,
-  type,
 }: DataTableProps) => {
   // this is to preserve the order of the columns, even if there are integer values,
   // while also only grabbing the first column's keys
@@ -155,18 +152,14 @@ const DataTable = ({
   }
   if (data) {
     if (data.length === 0) {
-      const title =
-        type === 'samples'
-          ? t('No samples were returned for this query')
-          : t('No results were returned for this query');
-      return <EmptyStateMedium image="document.svg" title={title} />;
+      return <span>No data</span>;
     }
     return (
       <TableView
         columns={columns}
         data={filteredData}
         pageSize={DATA_TABLE_PAGE_SIZE}
-        noDataText={t('No results')}
+        noDataText={t('No data')}
         emptyWrapperType={EmptyWrapperType.Small}
         className="table-condensed"
         isPaginationSticky
@@ -176,11 +169,7 @@ const DataTable = ({
     );
   }
   if (errorMessage) {
-    const title =
-      type === 'samples'
-        ? t('Run a query to display samples')
-        : t('Run a query to display results');
-    return <EmptyStateMedium image="document.svg" title={title} />;
+    return <Error>{errorMessage}</Error>;
   }
   return null;
 };
@@ -431,7 +420,6 @@ export const DataTablesPane = ({
                     filterText={filterText}
                     error={error[RESULT_TYPES.results]}
                     errorMessage={errorMessage}
-                    type={RESULT_TYPES.results}
                   />
                 </Tabs.TabPane>
                 <Tabs.TabPane
@@ -448,7 +436,6 @@ export const DataTablesPane = ({
                     filterText={filterText}
                     error={error[RESULT_TYPES.samples]}
                     errorMessage={errorMessage}
-                    type={RESULT_TYPES.samples}
                   />
                 </Tabs.TabPane>
               </Tabs>

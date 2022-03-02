@@ -37,7 +37,6 @@ import { DndControlProps } from './types';
 
 export type DndColumnSelectProps = DndControlProps<QueryFormColumn> & {
   options: Record<string, ColumnMeta>;
-  isTemporal?: boolean;
 };
 
 export function DndColumnSelect(props: DndColumnSelectProps) {
@@ -50,7 +49,6 @@ export function DndColumnSelect(props: DndColumnSelectProps) {
     ghostButtonText,
     name,
     label,
-    isTemporal,
   } = props;
   const [newColumnPopoverVisible, setNewColumnPopoverVisible] = useState(false);
 
@@ -153,7 +151,6 @@ export function DndColumnSelect(props: DndColumnSelectProps) {
               onChange(optionSelector.getValues());
             }}
             editedColumn={column}
-            isTemporal={isTemporal}
           >
             <OptionWrapper
               key={idx}
@@ -247,7 +244,6 @@ export function DndColumnSelect(props: DndColumnSelectProps) {
         togglePopover={togglePopover}
         closePopover={closePopover}
         visible={newColumnPopoverVisible}
-        isTemporal={isTemporal}
       >
         <div />
       </ColumnSelectPopoverTrigger>

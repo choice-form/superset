@@ -17,8 +17,7 @@
  * under the License.
  */
 import React, { useState, useRef, useCallback } from 'react';
-import { Divider } from 'src/common/components';
-import { Input } from 'src/components/Input';
+import { Input, Divider } from 'src/common/components';
 import { CronPicker, CronError, CronProps } from '.';
 
 export default {

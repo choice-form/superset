@@ -19,8 +19,7 @@
 /* eslint-env browser */
 import React from 'react';
 import { Radio } from 'src/components/Radio';
-import { RadioChangeEvent } from 'src/common/components';
-import { Input } from 'src/components/Input';
+import { RadioChangeEvent, Input } from 'src/common/components';
 import Button from 'src/components/Button';
 import { t, JsonResponse } from '@superset-ui/core';
 

@@ -73,11 +73,6 @@ class ExploreFormDataRestApi(BaseApi, ABC):
         post:
           description: >-
             Stores a new form_data.
-          parameters:
-          - in: query
-            schema:
-              type: integer
-            name: tab_id
           requestBody:
             required: true
             content:
@@ -106,12 +101,10 @@ class ExploreFormDataRestApi(BaseApi, ABC):
         """
         try:
             item = self.add_model_schema.load(request.json)
-            tab_id = request.args.get("tab_id")
             args = CommandParameters(
                 actor=g.user,
                 dataset_id=item["dataset_id"],
                 chart_id=item.get("chart_id"),
-                tab_id=tab_id,
                 form_data=item["form_data"],
             )
             key = CreateFormDataCommand(args).run()
@@ -146,10 +139,6 @@ class ExploreFormDataRestApi(BaseApi, ABC):
             schema:
               type: string
             name: key
-          - in: query
-            schema:
-              type: integer
-            name: tab_id
           requestBody:
             required: true
             content:
@@ -164,9 +153,9 @@ class ExploreFormDataRestApi(BaseApi, ABC):
                   schema:
                     type: object
                     properties:
-                      key:
+                      message:
                         type: string
-                        description: The key to retrieve the form_data.
+                        description: The result of the operation
             400:
               $ref: '#/components/responses/400'
             401:
@@ -180,19 +169,17 @@ class ExploreFormDataRestApi(BaseApi, ABC):
         """
         try:
             item = self.edit_model_schema.load(request.json)
-            tab_id = request.args.get("tab_id")
             args = CommandParameters(
                 actor=g.user,
                 dataset_id=item["dataset_id"],
                 chart_id=item.get("chart_id"),
-                tab_id=tab_id,
                 key=key,
                 form_data=item["form_data"],
             )
             result = UpdateFormDataCommand(args).run()
             if not result:
                 return self.response_404()
-            return self.response(200, key=result)
+            return self.response(200, message="Value updated successfully.")
         except ValidationError as ex:
             return self.response(400, message=ex.messages)
         except (

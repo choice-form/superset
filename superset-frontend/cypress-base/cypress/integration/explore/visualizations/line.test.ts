@@ -29,17 +29,13 @@ describe('Visualization > Line', () => {
   it('should show validator error when no metric', () => {
     const formData = { ...LINE_CHART_DEFAULTS, metrics: [] };
     cy.visitChartByParams(JSON.stringify(formData));
-    cy.get('.panel-body').contains(
-      `Add required control values to preview chart`,
-    );
+    cy.get('.ant-alert-warning').contains(`Metrics: cannot be empty`);
   });
 
   it('should not show validator error when metric added', () => {
     const formData = { ...LINE_CHART_DEFAULTS, metrics: [] };
     cy.visitChartByParams(JSON.stringify(formData));
-    cy.get('.panel-body').contains(
-      `Add required control values to preview chart`,
-    );
+    cy.get('.ant-alert-warning').contains(`Metrics: cannot be empty`);
     cy.get('.text-danger').contains('Metrics');
 
     cy.get('[data-test=metrics]')

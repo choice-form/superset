@@ -22,7 +22,6 @@ import jwt
 
 from tests.integration_tests.base_tests import SupersetTestCase
 from flask_wtf.csrf import generate_csrf
-from superset.utils.urls import get_url_host
 
 
 class TestSecurityCsrfApi(SupersetTestCase):
@@ -91,8 +90,6 @@ class TestSecurityGuestTokenApi(SupersetTestCase):
 
         self.assert200(response)
         token = json.loads(response.data)["token"]
-        decoded_token = jwt.decode(
-            token, self.app.config["GUEST_TOKEN_JWT_SECRET"], audience=get_url_host()
-        )
+        decoded_token = jwt.decode(token, self.app.config["GUEST_TOKEN_JWT_SECRET"])
         self.assertEqual(user, decoded_token["user"])
         self.assertEqual(resource, decoded_token["resources"][0])

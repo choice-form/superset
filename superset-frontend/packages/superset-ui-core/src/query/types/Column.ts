@@ -54,11 +54,7 @@ export interface Column {
 export default {};
 
 export function isPhysicalColumn(
-  column?: AdhocColumn | PhysicalColumn,
+  column: AdhocColumn | PhysicalColumn,
 ): column is PhysicalColumn {
   return typeof column === 'string';
-}
-
-export function isAdhocColumn(column?: AdhocColumn | PhysicalColumn) {
-  return (column as AdhocColumn)?.sqlExpression !== undefined;
 }

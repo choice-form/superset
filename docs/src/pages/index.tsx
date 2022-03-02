@@ -248,11 +248,6 @@ const CarouselSection = styled('div')`
     }
   }
 `;
-
-const StyledDatabaseImg = styled.img`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-`;
 interface featureProps {
   icon: React.ReactNode,
   title: string,
@@ -446,7 +441,7 @@ export default function Home(): JSX.Element {
                     title, imgName: imageName, width, height,
                   }) => (
                     <li>
-                      <StyledDatabaseImg src={`img/databases/${imageName}`} title={title} width={width || 'auto'} height={height || '50px'}/>
+                      <img src={`img/databases/${imageName}`} width={width} height={height || 50} title={title} />
                     </li>
                   ),
                 )}

@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime, timedelta
-from pprint import pformat
 from typing import Any, Dict, List, NamedTuple, Optional, TYPE_CHECKING
 
 from flask_babel import gettext as _
@@ -396,7 +395,6 @@ class QueryObject:  # pylint: disable=too-many-instance-attributes
         :raises QueryObjectValidationError: If the post processing operation
                  is incorrect
         """
-        logger.debug("post_processing: %s", pformat(self.post_processing))
         for post_process in self.post_processing:
             operation = post_process.get("operation")
             if not operation:

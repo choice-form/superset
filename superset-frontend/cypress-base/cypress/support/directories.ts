@@ -327,10 +327,6 @@ export const nativeFilters = {
     addFilter: dataTestLocator('add-filter-button'),
     defaultValueCheck: '.ant-checkbox-checked',
   },
-  addFilterButton: {
-    button: `.ant-modal-content [data-test="new-dropdown-icon"]`,
-    dropdownItem: '.ant-dropdown-menu-item',
-  },
   filtersPanel: {
     filterName: dataTestLocator('filters-config-modal__name-input'),
     datasetName: dataTestLocator('filters-config-modal__datasource-input'),
@@ -347,14 +343,13 @@ export const nativeFilters = {
     collapse: dataTestLocator('filter-bar__collapse-button'),
     filterName: dataTestLocator('filter-control-name'),
     filterContent: '.ant-select-selection-item',
-    createFilterButton: dataTestLocator('filter-bar__create-filter'),
+    createFilterButton: dataTestLocator('create-filter'),
     timeRangeFilterContent: dataTestLocator('time-range-trigger'),
   },
   createFilterButton: dataTestLocator('filter-bar__create-filter'),
   removeFilter: '[aria-label="remove"]',
   silentLoading: '.loading inline-centered css-101mkpk',
   filterConfigurationSections: {
-    displayedSection: 'div[style="height: 100%; overflow-y: auto;"]',
     collapseExpandButton: '.ant-collapse-arrow',
     checkedCheckbox: '.ant-checkbox-wrapper-checked',
     infoTooltip: '[aria-label="Show info tooltip"]',

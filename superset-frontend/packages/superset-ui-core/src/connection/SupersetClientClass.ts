@@ -232,8 +232,6 @@ export default class SupersetClientClass {
   }
 
   redirectUnauthorized() {
-    window.location.href = `/login?next=${
-      window.location.pathname + window.location.search
-    }`;
+    window.location.href = `/login?next=${window.location.href}`;
   }
 }

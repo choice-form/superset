@@ -114,9 +114,8 @@ interface FilterableTableProps {
 
 interface FilterableTableState {
   sortBy?: string;
-  sortDirection?: SortDirectionType;
+  sortDirection: SortDirectionType;
   fitted: boolean;
-  displayedList: Datum[];
 }
 
 export default class FilterableTable extends PureComponent<
@@ -176,8 +175,8 @@ export default class FilterableTable extends PureComponent<
     this.totalTableHeight = props.height;
 
     this.state = {
+      sortDirection: SortDirection.ASC,
       fitted: false,
-      displayedList: [...this.list],
     };
 
     this.container = React.createRef();
@@ -192,7 +191,7 @@ export default class FilterableTable extends PureComponent<
   }
 
   getWidthsForColumns() {
-    const PADDING = 50; // accounts for cell padding and width of sorting icon
+    const PADDING = 40; // accounts for cell padding and width of sorting icon
     const widthsByColumnKey = {};
     const cellContent = ([] as string[]).concat(
       ...this.props.orderedColumnKeys.map(key => {
@@ -296,31 +295,7 @@ export default class FilterableTable extends PureComponent<
     sortBy: string;
     sortDirection: SortDirectionType;
   }) {
-    let updatedState: FilterableTableState;
-
-    const shouldClearSort =
-      this.state.sortDirection === SortDirection.DESC &&
-      this.state.sortBy === sortBy;
-
-    if (shouldClearSort) {
-      updatedState = {
-        ...this.state,
-        sortBy: undefined,
-        sortDirection: undefined,
-        displayedList: [...this.list],
-      };
-    } else {
-      updatedState = {
-        ...this.state,
-        sortBy,
-        sortDirection,
-        displayedList: [...this.list].sort(
-          this.sortResults(sortBy, sortDirection === SortDirection.DESC),
-        ),
-      };
-    }
-
-    this.setState(updatedState);
+    this.setState({ sortBy, sortDirection });
   }
 
   fitTableToWidthIfNeeded() {
@@ -387,17 +362,6 @@ export default class FilterableTable extends PureComponent<
     };
   }
 
-  sortGrid = (label: string) => {
-    this.sort({
-      sortBy: label,
-      sortDirection:
-        this.state.sortDirection === SortDirection.DESC ||
-        this.state.sortBy !== label
-          ? SortDirection.ASC
-          : SortDirection.DESC,
-    });
-  };
-
   renderTableHeader({
     dataKey,
     label,
@@ -461,14 +425,8 @@ export default class FilterableTable extends PureComponent<
                 : style.top,
           }}
           className={`${className} grid-cell grid-header-cell`}
-          role="columnheader"
-          tabIndex={columnIndex}
-          onClick={() => this.sortGrid(label)}
         >
-          {label}
-          {this.state.sortBy === label && (
-            <SortIndicator sortDirection={this.state.sortDirection} />
-          )}
+          <div>{label}</div>
         </div>
       </Tooltip>
     );
@@ -486,7 +444,7 @@ export default class FilterableTable extends PureComponent<
     style: React.CSSProperties;
   }) {
     const columnKey = this.props.orderedColumnKeys[columnIndex];
-    const cellData = this.state.displayedList[rowIndex][columnKey];
+    const cellData = this.list[rowIndex][columnKey];
     const cellText = this.getCellContent({ cellData, columnKey });
     const content =
       cellData === null ? <i className="text-muted">{cellText}</i> : cellText;
@@ -605,11 +563,17 @@ export default class FilterableTable extends PureComponent<
       rowHeight,
     } = this.props;
 
-    let sortedAndFilteredList = this.state.displayedList;
+    let sortedAndFilteredList = this.list;
     // filter list
     if (filterText) {
-      sortedAndFilteredList = sortedAndFilteredList.filter((row: Datum) =>
+      sortedAndFilteredList = this.list.filter((row: Datum) =>
         this.hasMatch(filterText, row),
+      );
+    }
+    // sort list
+    if (sortBy) {
+      sortedAndFilteredList = sortedAndFilteredList.sort(
+        this.sortResults(sortBy, sortDirection === SortDirection.DESC),
       );
     }
 

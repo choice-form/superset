@@ -29,18 +29,18 @@ export enum EmptyStateSize {
 }
 
 export interface EmptyStateSmallProps {
-  title: ReactNode;
-  description?: ReactNode;
-  image: ReactNode;
+  title: string | ReactNode;
+  description?: string | ReactNode;
+  image: string | ReactNode;
 }
 
 export interface EmptyStateProps extends EmptyStateSmallProps {
-  buttonText?: ReactNode;
+  buttonText?: string;
   buttonAction?: React.MouseEventHandler<HTMLElement>;
 }
 
 export interface ImageContainerProps {
-  image: ReactNode;
+  image: string | ReactNode;
   size: EmptyStateSize;
 }
 
@@ -103,7 +103,6 @@ const SmallDescription = styled(Description)`
 const ActionButton = styled(Button)`
   ${({ theme }) => css`
     margin-top: ${theme.gridUnit * 4}px;
-    z-index: 1;
   `}
 `;
 

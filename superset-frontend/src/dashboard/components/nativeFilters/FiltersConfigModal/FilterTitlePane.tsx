@@ -18,8 +18,7 @@
  */
 import { NativeFilterType, styled, t, useTheme } from '@superset-ui/core';
 import React from 'react';
-import { Dropdown } from 'src/common/components';
-import { MainNav as Menu } from 'src/components/Menu';
+import { Dropdown, MainNav as Menu } from 'src/common/components';
 import FilterTitleContainer from './FilterTitleContainer';
 import { FilterRemoval } from './types';
 

@@ -18,8 +18,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'src/common/components';
-import { Input } from 'src/components/Input';
+import { Row, Col, Input } from 'src/common/components';
 import Button from 'src/components/Button';
 import Popover from 'src/components/Popover';
 import { Select } from 'src/components';

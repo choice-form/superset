@@ -17,7 +17,6 @@
 import logging
 from abc import ABC
 
-from flask import session
 from sqlalchemy.exc import SQLAlchemyError
 
 from superset.commands.base import BaseCommand
@@ -29,7 +28,6 @@ from superset.key_value.commands.exceptions import (
     KeyValueAccessDeniedError,
     KeyValueDeleteFailedError,
 )
-from superset.key_value.utils import cache_key
 
 logger = logging.getLogger(__name__)
 
@@ -46,16 +44,9 @@ class DeleteFormDataCommand(BaseCommand, ABC):
                 key
             )
             if state:
-                dataset_id = state["dataset_id"]
-                chart_id = state["chart_id"]
-                check_access(dataset_id, chart_id, actor)
+                check_access(state["dataset_id"], state["chart_id"], actor)
                 if state["owner"] != actor.get_user_id():
                     raise KeyValueAccessDeniedError()
-                tab_id = self._cmd_params.tab_id
-                contextual_key = cache_key(
-                    session.get("_id"), tab_id, dataset_id, chart_id
-                )
-                cache_manager.explore_form_data_cache.delete(contextual_key)
                 return cache_manager.explore_form_data_cache.delete(key)
             return False
         except SQLAlchemyError as ex:

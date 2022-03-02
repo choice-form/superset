@@ -23,8 +23,8 @@ import { render, screen } from 'spec/helpers/testing-library';
 import { FeatureFlag } from 'src/featureFlags';
 import SliceHeaderControls from '.';
 
-jest.mock('src/components/Dropdown', () => {
-  const original = jest.requireActual('src/components/Dropdown');
+jest.mock('src/common/components', () => {
+  const original = jest.requireActual('src/common/components');
   return {
     ...original,
     NoAnimationDropdown: (props: any) => (

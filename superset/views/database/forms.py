@@ -29,7 +29,7 @@ from wtforms import (
     StringField,
 )
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms.validators import DataRequired, Length, NumberRange, Optional, Regexp
+from wtforms.validators import DataRequired, Length, NumberRange, Optional
 
 from superset import app, db, security_manager
 from superset.forms import (
@@ -94,10 +94,7 @@ class CsvToDatabaseForm(UploadToDatabaseForm):
     name = StringField(
         _("Table Name"),
         description=_("Name of table to be created from csv data."),
-        validators=[
-            DataRequired(),
-            Regexp(r"^[^\.]+$", message=_("Table name cannot contain a schema")),
-        ],
+        validators=[DataRequired()],
         widget=BS3TextFieldWidget(),
     )
     csv_file = FileField(
@@ -248,10 +245,7 @@ class ExcelToDatabaseForm(UploadToDatabaseForm):
     name = StringField(
         _("Table Name"),
         description=_("Name of table to be created from excel data."),
-        validators=[
-            DataRequired(),
-            Regexp(r"^[^\.]+$", message=_("Table name cannot contain a schema")),
-        ],
+        validators=[DataRequired()],
         widget=BS3TextFieldWidget(),
     )
     excel_file = FileField(
@@ -384,10 +378,7 @@ class ColumnarToDatabaseForm(UploadToDatabaseForm):
     name = StringField(
         _("Table Name"),
         description=_("Name of table to be created from columnar data."),
-        validators=[
-            DataRequired(),
-            Regexp(r"^[^\.]+$", message=_("Table name cannot contain a schema")),
-        ],
+        validators=[DataRequired()],
         widget=BS3TextFieldWidget(),
     )
     columnar_file = MultipleFileField(

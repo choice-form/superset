@@ -854,11 +854,6 @@ class TimeTableViz(BaseViz):
             raise QueryObjectValidationError(
                 _("When using 'Group By' you are limited to use a single metric")
             )
-
-        sort_by = utils.get_first_metric_name(query_obj["metrics"])
-        is_asc = not query_obj.get("order_desc")
-        query_obj["orderby"] = [(sort_by, is_asc)]
-
         return query_obj
 
     def get_data(self, df: pd.DataFrame) -> VizData:

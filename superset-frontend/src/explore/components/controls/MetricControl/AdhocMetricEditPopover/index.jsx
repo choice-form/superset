@@ -19,16 +19,17 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t, styled, ensureIsArray } from '@superset-ui/core';
 import Tabs from 'src/components/Tabs';
 import Button from 'src/components/Button';
 import { Select } from 'src/components';
 import { Tooltip } from 'src/components/Tooltip';
-import { EmptyStateSmall } from 'src/components/EmptyState';
+import { t, styled } from '@superset-ui/core';
+
 import { Form, FormItem } from 'src/components/Form';
 import { SQLEditor } from 'src/components/AsyncAceEditor';
 import sqlKeywords from 'src/SqlLab/utils/sqlKeywords';
 import { noOp } from 'src/utils/common';
+
 import {
   AGGREGATES_OPTIONS,
   POPOVER_INITIAL_HEIGHT,
@@ -365,29 +366,21 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
           allowOverflow
         >
           <Tabs.TabPane key={SAVED_TAB_KEY} tab={t('Saved')}>
-            {ensureIsArray(savedMetricsOptions).length > 0 ? (
-              <FormItem label={t('Saved metric')}>
-                <StyledSelect
-                  options={ensureIsArray(savedMetricsOptions).map(
-                    savedMetric => ({
-                      value: savedMetric.metric_name,
-                      label: savedMetric.metric_name,
-                      customLabel: this.renderMetricOption(savedMetric),
-                      key: savedMetric.id,
-                    }),
-                  )}
-                  {...savedSelectProps}
-                />
-              </FormItem>
-            ) : (
-              <EmptyStateSmall
-                image="empty.svg"
-                title={t('No saved metrics found')}
-                description={t(
-                  'Add metrics to dataset in "Edit datasource" modal',
-                )}
+            <FormItem label={t('Saved metric')}>
+              <StyledSelect
+                options={
+                  Array.isArray(savedMetricsOptions)
+                    ? savedMetricsOptions.map(savedMetric => ({
+                        value: savedMetric.metric_name,
+                        label: savedMetric.metric_name,
+                        customLabel: this.renderMetricOption(savedMetric),
+                        key: savedMetric.id,
+                      }))
+                    : []
+                }
+                {...savedSelectProps}
               />
-            )}
+            </FormItem>
           </Tabs.TabPane>
           <Tabs.TabPane
             key={EXPRESSION_TYPES.SIMPLE}

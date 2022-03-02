@@ -19,8 +19,7 @@
 import React, { ReactChild, useCallback } from 'react';
 import { t, styled } from '@superset-ui/core';
 import Icons from 'src/components/Icons';
-import { Dropdown } from 'src/common/components';
-import { Menu } from 'src/components/Menu';
+import { Dropdown, Menu } from 'src/common/components';
 
 enum MENU_KEYS {
   EXPORT_ORIGINAL = 'export_original',

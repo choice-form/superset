@@ -33,14 +33,16 @@ export default styled.div`
   }
 
   thead > tr > th {
-    padding-right: 0;
+    padding-right: 1.4em;
     position: relative;
     background: ${({ theme: { colors } }) => colors.grayscale.light5};
     text-align: left;
   }
   th svg {
     color: ${({ theme: { colors } }) => colors.grayscale.light2};
-    margin: ${({ theme: { gridUnit } }) => gridUnit / 2}px;
+    position: relative;
+    vertical-align: middle;
+    margin: 0 ${({ theme: { gridUnit } }) => gridUnit}px;
   }
   th.is-sorted svg {
     color: ${({ theme: { colors } }) => colors.grayscale.base};

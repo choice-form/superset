@@ -16,9 +16,7 @@
 # under the License.
 import logging
 from abc import ABC
-from typing import Optional
 
-from flask import session
 from sqlalchemy.exc import SQLAlchemyError
 
 from superset.commands.base import BaseCommand
@@ -30,7 +28,6 @@ from superset.key_value.commands.exceptions import (
     KeyValueAccessDeniedError,
     KeyValueUpdateFailedError,
 )
-from superset.key_value.utils import cache_key, random_key
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +38,7 @@ class UpdateFormDataCommand(BaseCommand, ABC):
     ):
         self._cmd_params = cmd_params
 
-    def run(self) -> Optional[str]:
+    def run(self) -> bool:
         try:
             dataset_id = self._cmd_params.dataset_id
             chart_id = self._cmd_params.chart_id
@@ -56,25 +53,14 @@ class UpdateFormDataCommand(BaseCommand, ABC):
                 user_id = actor.get_user_id()
                 if state["owner"] != user_id:
                     raise KeyValueAccessDeniedError()
-
-                # Generate a new key if tab_id changes or equals 0
-                tab_id = self._cmd_params.tab_id
-                contextual_key = cache_key(
-                    session.get("_id"), tab_id, dataset_id, chart_id
-                )
-                key = cache_manager.explore_form_data_cache.get(contextual_key)
-                if not key or not tab_id:
-                    key = random_key()
-                    cache_manager.explore_form_data_cache.set(contextual_key, key)
-
                 new_state: TemporaryExploreState = {
                     "owner": actor.get_user_id(),
                     "dataset_id": dataset_id,
                     "chart_id": chart_id,
                     "form_data": form_data,
                 }
-                cache_manager.explore_form_data_cache.set(key, new_state)
-            return key
+                return cache_manager.explore_form_data_cache.set(key, new_state)
+            return False
         except SQLAlchemyError as ex:
             logger.exception("Error running update command")
             raise KeyValueUpdateFailedError() from ex

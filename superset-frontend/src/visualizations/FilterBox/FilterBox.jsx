@@ -277,7 +277,6 @@ class FilterBox extends React.PureComponent {
               onOpenDateFilterControl={this.onOpenDateFilterControl}
               onCloseDateFilterControl={this.onCloseDateFilterControl}
               value={this.state.selectedValues[TIME_RANGE] || 'No filter'}
-              endpoints={['inclusive', 'exclusive']}
             />
           </div>
         </div>

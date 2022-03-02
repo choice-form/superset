@@ -18,7 +18,7 @@
  */
 import React, { useCallback, useState } from 'react';
 import { t } from '@superset-ui/core';
-import { Input } from 'src/components/Input';
+import { Input } from 'src/common/components';
 import { Tooltip } from 'src/components/Tooltip';
 
 export const DndColumnSelectPopoverTitle = ({

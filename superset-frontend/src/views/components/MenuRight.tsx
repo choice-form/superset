@@ -16,8 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { useState } from 'react';
-import { MainNav as Menu } from 'src/components/Menu';
+import React from 'react';
+import { MainNav as Menu } from 'src/common/components';
 import { t, styled, css, SupersetTheme } from '@superset-ui/core';
 import { Link } from 'react-router-dom';
 import Icons from 'src/components/Icons';
@@ -25,14 +25,31 @@ import findPermission from 'src/dashboard/util/findPermission';
 import { useSelector } from 'react-redux';
 import { UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';
 import LanguagePicker from './LanguagePicker';
-import DatabaseModal from '../CRUD/data/database/DatabaseModal';
-import { checkUploadExtensions } from '../CRUD/utils';
-import {
-  ExtentionConfigs,
-  GlobalMenuDataOptions,
-  RightMenuProps,
-} from './types';
-import { MenuObjectProps } from './Menu';
+import { NavBarProps, MenuObjectProps } from './Menu';
+
+export const dropdownItems = [
+  {
+    label: t('SQL query'),
+    url: '/superset/sqllab?new=true',
+    icon: 'fa-fw fa-search',
+    perm: 'can_sqllab',
+    view: 'Superset',
+  },
+  {
+    label: t('Chart'),
+    url: '/chart/add',
+    icon: 'fa-fw fa-bar-chart',
+    perm: 'can_write',
+    view: 'Chart',
+  },
+  {
+    label: t('Dashboard'),
+    url: '/dashboard/new',
+    icon: 'fa-fw fa-dashboard',
+    perm: 'can_write',
+    view: 'Dashboard',
+  },
+];
 
 const versionInfoStyles = (theme: SupersetTheme) => css`
   padding: ${theme.gridUnit * 1.5}px ${theme.gridUnit * 4}px
@@ -63,6 +80,13 @@ const StyledAnchor = styled.a`
 
 const { SubMenu } = Menu;
 
+interface RightMenuProps {
+  align: 'flex-start' | 'flex-end';
+  settings: MenuObjectProps[];
+  navbarRight: NavBarProps;
+  isFrontendRoute: (path?: string) => boolean;
+}
+
 const RightMenu = ({
   align,
   settings,
@@ -72,107 +96,15 @@ const RightMenu = ({
   const { roles } = useSelector<any, UserWithPermissionsAndRoles>(
     state => state.user,
   );
-  const {
-    CSV_EXTENSIONS,
-    COLUMNAR_EXTENSIONS,
-    EXCEL_EXTENSIONS,
-    ALLOWED_EXTENSIONS,
-    HAS_GSHEETS_INSTALLED,
-  } = useSelector<any, ExtentionConfigs>(state => state.common.conf);
 
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [engine, setEngine] = useState<string>('');
+  // if user has any of these roles the dropdown will appear
   const canSql = findPermission('can_sqllab', 'Superset', roles);
   const canDashboard = findPermission('can_write', 'Dashboard', roles);
   const canChart = findPermission('can_write', 'Chart', roles);
   const showActionDropdown = canSql || canChart || canDashboard;
-  const dropdownItems: MenuObjectProps[] = [
-    {
-      label: t('Data'),
-      icon: 'fa-database',
-      childs: [
-        {
-          label: t('Connect Database'),
-          name: GlobalMenuDataOptions.DB_CONNECTION,
-          perm: true,
-        },
-        {
-          label: t('Connect Google Sheet'),
-          name: GlobalMenuDataOptions.GOOGLE_SHEETS,
-          perm: HAS_GSHEETS_INSTALLED,
-        },
-        {
-          label: t('Upload a CSV'),
-          name: 'Upload a CSV',
-          url: '/csvtodatabaseview/form',
-          perm: CSV_EXTENSIONS,
-        },
-        {
-          label: t('Upload a Columnar File'),
-          name: 'Upload a Columnar file',
-          url: '/columnartodatabaseview/form',
-          perm: COLUMNAR_EXTENSIONS,
-        },
-        {
-          label: t('Upload Excel'),
-          name: 'Upload Excel',
-          url: '/exceltodatabaseview/form',
-          perm: EXCEL_EXTENSIONS,
-        },
-      ],
-    },
-    {
-      label: t('SQL query'),
-      url: '/superset/sqllab?new=true',
-      icon: 'fa-fw fa-search',
-      perm: 'can_sqllab',
-      view: 'Superset',
-    },
-    {
-      label: t('Chart'),
-      url: '/chart/add',
-      icon: 'fa-fw fa-bar-chart',
-      perm: 'can_write',
-      view: 'Chart',
-    },
-    {
-      label: t('Dashboard'),
-      url: '/dashboard/new',
-      icon: 'fa-fw fa-dashboard',
-      perm: 'can_write',
-      view: 'Dashboard',
-    },
-  ];
-
-  const menuIconAndLabel = (menu: MenuObjectProps) => (
-    <>
-      <i data-test={`menu-item-${menu.label}`} className={`fa ${menu.icon}`} />
-      {menu.label}
-    </>
-  );
-
-  const handleMenuSelection = (itemChose: any) => {
-    if (itemChose.key === GlobalMenuDataOptions.DB_CONNECTION) {
-      setShowModal(true);
-    } else if (itemChose.key === GlobalMenuDataOptions.GOOGLE_SHEETS) {
-      setShowModal(true);
-      setEngine('Google Sheets');
-    }
-  };
-
-  const handleOnHideModal = () => {
-    setEngine('');
-    setShowModal(false);
-  };
-
   return (
     <StyledDiv align={align}>
-      <DatabaseModal
-        onHide={handleOnHideModal}
-        show={showModal}
-        dbEngine={engine}
-      />
-      <Menu selectable={false} mode="horizontal" onClick={handleMenuSelection}>
+      <Menu mode="horizontal">
         {!navbarRight.user_is_anonymous && showActionDropdown && (
           <SubMenu
             data-test="new-dropdown"
@@ -181,39 +113,9 @@ const RightMenu = ({
             }
             icon={<Icons.TriangleDown />}
           >
-            {dropdownItems.map(menu => {
-              if (menu.childs) {
-                return (
-                  <SubMenu
-                    key="sub2"
-                    className="data-menu"
-                    title={menuIconAndLabel(menu)}
-                  >
-                    {menu.childs.map((item, idx) =>
-                      typeof item !== 'string' &&
-                      item.name &&
-                      checkUploadExtensions(item.perm, ALLOWED_EXTENSIONS) ? (
-                        <>
-                          {idx === 2 && <Menu.Divider />}
-                          <Menu.Item key={item.name}>
-                            {item.url ? (
-                              <a href={item.url}> {item.label} </a>
-                            ) : (
-                              item.label
-                            )}
-                          </Menu.Item>
-                        </>
-                      ) : null,
-                    )}
-                  </SubMenu>
-                );
-              }
-              return (
-                findPermission(
-                  menu.perm as string,
-                  menu.view as string,
-                  roles,
-                ) && (
+            {dropdownItems.map(
+              menu =>
+                findPermission(menu.perm, menu.view, roles) && (
                   <Menu.Item key={menu.label}>
                     <a href={menu.url}>
                       <i
@@ -223,9 +125,8 @@ const RightMenu = ({
                       {menu.label}
                     </a>
                   </Menu.Item>
-                )
-              );
-            })}
+                ),
+            )}
           </SubMenu>
         )}
         <SubMenu

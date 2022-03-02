@@ -18,29 +18,9 @@
  */
 import { SupersetClient, logging } from '@superset-ui/core';
 
-const assembleEndpoint = (
-  dashId: string | number,
-  key?: string,
-  tabId?: string,
-) => {
-  let endpoint = `api/v1/dashboard/${dashId}/filter_state`;
-  if (key) {
-    endpoint = endpoint.concat(`/${key}`);
-  }
-  if (tabId) {
-    endpoint = endpoint.concat(`?tab_id=${tabId}`);
-  }
-  return endpoint;
-};
-
-export const updateFilterKey = (
-  dashId: string,
-  value: string,
-  key: string,
-  tabId?: string,
-) =>
+export const updateFilterKey = (dashId: string, value: string, key: string) =>
   SupersetClient.put({
-    endpoint: assembleEndpoint(dashId, key, tabId),
+    endpoint: `api/v1/dashboard/${dashId}/filter_state/${key}/`,
     jsonPayload: { value },
   })
     .then(r => r.json.message)
@@ -49,13 +29,9 @@ export const updateFilterKey = (
       return null;
     });
 
-export const createFilterKey = (
-  dashId: string | number,
-  value: string,
-  tabId?: string,
-) =>
+export const createFilterKey = (dashId: string | number, value: string) =>
   SupersetClient.post({
-    endpoint: assembleEndpoint(dashId, undefined, tabId),
+    endpoint: `api/v1/dashboard/${dashId}/filter_state`,
     jsonPayload: { value },
   })
     .then(r => r.json.key)
@@ -64,9 +40,12 @@ export const createFilterKey = (
       return null;
     });
 
-export const getFilterValue = (dashId: string | number, key: string) =>
+export const getFilterValue = (
+  dashId: string | number | undefined,
+  key: string,
+) =>
   SupersetClient.get({
-    endpoint: assembleEndpoint(dashId, key),
+    endpoint: `api/v1/dashboard/${dashId}/filter_state/${key}/`,
   })
     .then(({ json }) => JSON.parse(json.value))
     .catch(err => {

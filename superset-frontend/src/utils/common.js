@@ -144,5 +144,3 @@ export const detectOS = () => {
 
   return 'Unknown OS';
 };
-
-export const isNullish = value => value === null || value === undefined;

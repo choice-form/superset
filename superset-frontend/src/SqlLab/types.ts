@@ -118,7 +118,6 @@ export type RootState = {
     tables: Record<string, any>[];
     queriesLastUpdate: number;
     user: UserWithPermissionsAndRoles;
-    errorMessage: string | null;
   };
   localStorageUsageInKilobytes: number;
   messageToasts: toastState[];

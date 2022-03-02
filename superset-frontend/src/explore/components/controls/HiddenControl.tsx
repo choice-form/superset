@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { Input } from 'src/components/Input';
+import { Input } from 'src/common/components';
 
 interface HiddenControlsProps {
   onChange: () => void;

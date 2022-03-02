@@ -33,6 +33,7 @@ from superset.models.core import Database
 
 
 class ImportModelsCommand(BaseCommand):
+
     """Import models"""
 
     dao = BaseDAO
@@ -72,6 +73,14 @@ class ImportModelsCommand(BaseCommand):
     def validate(self) -> None:
         exceptions: List[ValidationError] = []
 
+        # load existing databases so we can apply the password validation
+        db_passwords = {
+            str(uuid): password
+            for uuid, password in db.session.query(
+                Database.uuid, Database.password
+            ).all()
+        }
+
         # verify that the metadata file is present and valid
         try:
             metadata: Optional[Dict[str, str]] = load_metadata(self.contents)
@@ -79,19 +88,7 @@ class ImportModelsCommand(BaseCommand):
             exceptions.append(exc)
             metadata = None
 
-        self._validate_metadata_type(metadata, exceptions)
-        self._load__configs(exceptions)
-        self._prevent_overwrite_existing_model(exceptions)
-
-        if exceptions:
-            exception = CommandInvalidError(f"Error importing {self.model_name}")
-            exception.add_list(exceptions)
-            raise exception
-
-    def _validate_metadata_type(
-        self, metadata: Optional[Dict[str, str]], exceptions: List[ValidationError]
-    ) -> None:
-        """Validate that the type declared in METADATA_FILE_NAME is correct"""
+        # validate that the type declared in METADATA_FILE_NAME is correct
         if metadata and "type" in metadata:
             type_validator = validate.Equal(self.dao.model_cls.__name__)  # type: ignore
             try:
@@ -100,14 +97,7 @@ class ImportModelsCommand(BaseCommand):
                 exc.messages = {METADATA_FILE_NAME: {"type": exc.messages}}
                 exceptions.append(exc)
 
-    def _load__configs(self, exceptions: List[ValidationError]) -> None:
-        # load existing databases so we can apply the password validation
-        db_passwords: Dict[str, str] = {
-            str(uuid): password
-            for uuid, password in db.session.query(
-                Database.uuid, Database.password
-            ).all()
-        }
+        # validate objects
         for file_name, content in self.contents.items():
             # skip directories
             if not content:
@@ -131,10 +121,7 @@ class ImportModelsCommand(BaseCommand):
                     exc.messages = {file_name: exc.messages}
                     exceptions.append(exc)
 
-    def _prevent_overwrite_existing_model(  # pylint: disable=invalid-name
-        self, exceptions: List[ValidationError]
-    ) -> None:
-        """check if the object exists and shouldn't be overwritten"""
+        # check if the object exists and shouldn't be overwritten
         if not self.overwrite:
             existing_uuids = self._get_uuids()
             for file_name, config in self._configs.items():
@@ -152,3 +139,8 @@ class ImportModelsCommand(BaseCommand):
                             }
                         )
                     )
+
+        if exceptions:
+            exception = CommandInvalidError(f"Error importing {self.model_name}")
+            exception.add_list(exceptions)
+            raise exception

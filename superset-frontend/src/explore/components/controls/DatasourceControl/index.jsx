@@ -22,8 +22,7 @@ import PropTypes from 'prop-types';
 import { t, styled, supersetTheme } from '@superset-ui/core';
 import { getUrlParam } from 'src/utils/urlUtils';
 
-import { Dropdown } from 'src/common/components';
-import { Menu } from 'src/components/Menu';
+import { Dropdown, Menu } from 'src/common/components';
 import { Tooltip } from 'src/components/Tooltip';
 import Icons from 'src/components/Icons';
 import {

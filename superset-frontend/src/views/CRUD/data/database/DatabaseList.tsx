@@ -68,11 +68,6 @@ const IconCancelX = styled(Icons.CancelX)`
 
 const Actions = styled.div`
   color: ${({ theme }) => theme.colors.grayscale.base};
-
-  .action-button {
-    display: inline-block;
-    height: 100%;
-  }
 `;
 
 function BooleanDisplay({ value }: { value: Boolean }) {

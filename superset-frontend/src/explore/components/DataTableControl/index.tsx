@@ -30,8 +30,7 @@ import { Global } from '@emotion/react';
 import { Column } from 'react-table';
 import debounce from 'lodash/debounce';
 import { useDispatch } from 'react-redux';
-import { Space } from 'src/common/components';
-import { Input } from 'src/components/Input';
+import { Input, Space } from 'src/common/components';
 import {
   BOOL_FALSE_DISPLAY,
   BOOL_TRUE_DISPLAY,

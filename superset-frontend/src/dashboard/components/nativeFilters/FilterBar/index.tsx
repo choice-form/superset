@@ -27,7 +27,6 @@ import {
   HandlerFunction,
   styled,
   t,
-  SLOW_DEBOUNCE,
 } from '@superset-ui/core';
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,14 +38,12 @@ import { usePrevious } from 'src/hooks/usePrevious';
 import { FeatureFlag, isFeatureEnabled } from 'src/featureFlags';
 import { updateDataMask, clearDataMask } from 'src/dataMask/actions';
 import { useImmer } from 'use-immer';
-import { isEmpty, isEqual, debounce } from 'lodash';
+import { isEmpty, isEqual } from 'lodash';
 import { testWithId } from 'src/utils/testUtils';
 import Loading from 'src/components/Loading';
 import { getInitialDataMask } from 'src/dataMask/reducer';
 import { URL_PARAMS } from 'src/constants';
 import { getUrlParam } from 'src/utils/urlUtils';
-import { EmptyStateSmall } from 'src/components/EmptyState';
-import { useTabId } from 'src/hooks/useTabId';
 import { checkIsApplyDisabled, TabIds } from './utils';
 import FilterSets from './FilterSets';
 import {
@@ -60,8 +57,6 @@ import { createFilterKey, updateFilterKey } from './keyValue';
 import EditSection from './FilterSets/EditSection';
 import Header from './Header';
 import FilterControls from './FilterControls/FilterControls';
-import { RootState } from '../../../types';
-import { ActionButtons } from './ActionButtons';
 
 export const FILTER_BAR_TEST_ID = 'filter-bar';
 export const getFilterBarTestId = testWithId(FILTER_BAR_TEST_ID);
@@ -138,14 +133,6 @@ const StyledTabs = styled(Tabs)`
     margin: 0;
     flex: 1;
   }
-
-  & > .ant-tabs-nav .ant-tabs-nav-operations {
-    display: none;
-  }
-`;
-
-const FilterBarEmptyStateContainer = styled.div`
-  margin-top: ${({ theme }) => theme.gridUnit * 8}px;
 `;
 
 export interface FiltersBarProps {
@@ -156,53 +143,6 @@ export interface FiltersBarProps {
   height: number | string;
   offset: number;
 }
-
-const publishDataMask = debounce(
-  async (
-    history,
-    dashboardId,
-    updateKey,
-    dataMaskSelected: DataMaskStateWithId,
-    tabId,
-  ) => {
-    const { location } = history;
-    const { search } = location;
-    const previousParams = new URLSearchParams(search);
-    const newParams = new URLSearchParams();
-    let dataMaskKey: string;
-    previousParams.forEach((value, key) => {
-      if (key !== URL_PARAMS.nativeFilters.name) {
-        newParams.append(key, value);
-      }
-    });
-
-    const nativeFiltersCacheKey = getUrlParam(URL_PARAMS.nativeFiltersKey);
-    const dataMask = JSON.stringify(dataMaskSelected);
-    if (
-      updateKey &&
-      nativeFiltersCacheKey &&
-      (await updateFilterKey(
-        dashboardId,
-        dataMask,
-        nativeFiltersCacheKey,
-        tabId,
-      ))
-    ) {
-      dataMaskKey = nativeFiltersCacheKey;
-    } else {
-      dataMaskKey = await createFilterKey(dashboardId, dataMask, tabId);
-    }
-    newParams.set(URL_PARAMS.nativeFiltersKey.name, dataMaskKey);
-
-    // pathname could be updated somewhere else through window.history
-    // keep react router history in sync with window history
-    history.location.pathname = window.location.pathname;
-    history.replace({
-      search: newParams.toString(),
-    });
-  },
-  SLOW_DEBOUNCE,
-);
 
 const FilterBar: React.FC<FiltersBarProps> = ({
   filtersOpen,
@@ -219,7 +159,6 @@ const FilterBar: React.FC<FiltersBarProps> = ({
     useImmer<DataMaskStateWithId>(dataMaskApplied);
   const dispatch = useDispatch();
   const [updateKey, setUpdateKey] = useState(0);
-  const tabId = useTabId();
   const filterSets = useFilterSets();
   const filterSetFilterValues = Object.values(filterSets);
   const [tab, setTab] = useState(TabIds.AllFilters);
@@ -228,9 +167,6 @@ const FilterBar: React.FC<FiltersBarProps> = ({
   const filterValues = Object.values<Filter>(filters);
   const dashboardId = useSelector<any, string>(
     ({ dashboardInfo }) => dashboardInfo?.id,
-  );
-  const canEdit = useSelector<RootState, boolean>(
-    ({ dashboardInfo }) => dashboardInfo.dash_edit_perm,
   );
 
   const handleFilterSelectionChange = useCallback(
@@ -255,20 +191,53 @@ const FilterBar: React.FC<FiltersBarProps> = ({
         };
       });
     },
-    [dataMaskSelected, dispatch, setDataMaskSelected],
+    [dataMaskSelected, dispatch, setDataMaskSelected, tab],
+  );
+
+  const publishDataMask = useCallback(
+    async (dataMaskSelected: DataMaskStateWithId) => {
+      const { location } = history;
+      const { search } = location;
+      const previousParams = new URLSearchParams(search);
+      const newParams = new URLSearchParams();
+      let dataMaskKey = '';
+      previousParams.forEach((value, key) => {
+        if (key !== URL_PARAMS.nativeFilters.name) {
+          newParams.append(key, value);
+        }
+      });
+
+      const nativeFiltersCacheKey = getUrlParam(URL_PARAMS.nativeFiltersKey);
+      const dataMask = JSON.stringify(dataMaskSelected);
+      if (
+        updateKey &&
+        nativeFiltersCacheKey &&
+        (await updateFilterKey(dashboardId, dataMask, nativeFiltersCacheKey))
+      ) {
+        dataMaskKey = nativeFiltersCacheKey;
+      } else {
+        dataMaskKey = await createFilterKey(dashboardId, dataMask);
+      }
+      newParams.set(URL_PARAMS.nativeFiltersKey.name, dataMaskKey);
+
+      // pathname could be updated somewhere else through window.history
+      // keep react router history in sync with window history
+      history.location.pathname = window.location.pathname;
+      history.replace({
+        search: newParams.toString(),
+      });
+    },
+    [history, updateKey],
   );
 
   useEffect(() => {
     if (previousFilters) {
       const updates = {};
       Object.values(filters).forEach(currentFilter => {
-        const previousFilter = previousFilters?.[currentFilter.id];
-        if (!previousFilter) {
-          return;
-        }
         const currentType = currentFilter.filterType;
         const currentTargets = currentFilter.targets;
         const currentDataMask = currentFilter.defaultDataMask;
+        const previousFilter = previousFilters?.[currentFilter.id];
         const previousType = previousFilter?.filterType;
         const previousTargets = previousFilter?.targets;
         const previousDataMask = previousFilter?.defaultDataMask;
@@ -288,16 +257,15 @@ const FilterBar: React.FC<FiltersBarProps> = ({
     }
   }, [JSON.stringify(filters), JSON.stringify(previousFilters)]);
 
-  const dataMaskAppliedText = JSON.stringify(dataMaskApplied);
-
   useEffect(() => {
     setDataMaskSelected(() => dataMaskApplied);
-  }, [dataMaskAppliedText, setDataMaskSelected]);
+  }, [JSON.stringify(dataMaskApplied), setDataMaskSelected]);
 
+  const dataMaskAppliedText = JSON.stringify(dataMaskApplied);
   useEffect(() => {
-    publishDataMask(history, dashboardId, updateKey, dataMaskApplied, tabId);
+    publishDataMask(dataMaskApplied);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dashboardId, dataMaskAppliedText, history, updateKey, tabId]);
+  }, [dataMaskAppliedText, publishDataMask]);
 
   const handleApply = useCallback(() => {
     const filterIds = Object.keys(dataMaskSelected);
@@ -314,14 +282,9 @@ const FilterBar: React.FC<FiltersBarProps> = ({
     filterIds.forEach(filterId => {
       if (dataMaskSelected[filterId]) {
         dispatch(clearDataMask(filterId));
-        setDataMaskSelected(draft => {
-          if (draft[filterId].filterState?.value !== undefined) {
-            draft[filterId].filterState!.value = undefined;
-          }
-        });
       }
     });
-  }, [dataMaskSelected, dispatch, setDataMaskSelected]);
+  }, [dataMaskSelected, dispatch]);
 
   const openFiltersBar = useCallback(
     () => toggleFiltersBar(true),
@@ -335,10 +298,7 @@ const FilterBar: React.FC<FiltersBarProps> = ({
     filterValues,
   );
   const isInitialized = useInitialization();
-  const tabPaneStyle = useMemo(
-    () => ({ overflow: 'auto', height, overscrollBehavior: 'contain' }),
-    [height],
-  );
+  const tabPaneStyle = useMemo(() => ({ overflow: 'auto', height }), [height]);
 
   const numberOfFilters = filterValues.filter(
     filterValue => filterValue.type === NativeFilterType.NATIVE_FILTER,
@@ -363,7 +323,14 @@ const FilterBar: React.FC<FiltersBarProps> = ({
         <StyledFilterIcon {...getFilterBarTestId('filter-icon')} iconSize="l" />
       </CollapsedBar>
       <Bar className={cx({ open: filtersOpen })} width={width}>
-        <Header toggleFiltersBar={toggleFiltersBar} />
+        <Header
+          toggleFiltersBar={toggleFiltersBar}
+          onApply={handleApply}
+          onClearAll={handleClearAll}
+          isApplyDisabled={isApplyDisabled}
+          dataMaskSelected={dataMaskSelected}
+          dataMaskApplied={dataMaskApplied}
+        />
         {!isInitialized ? (
           <div css={{ height }}>
             <Loading />
@@ -390,26 +357,11 @@ const FilterBar: React.FC<FiltersBarProps> = ({
                   filterSetId={editFilterSetId}
                 />
               )}
-              {filterValues.length === 0 ? (
-                <FilterBarEmptyStateContainer>
-                  <EmptyStateSmall
-                    title={t('No filters are currently added')}
-                    image="filter.svg"
-                    description={
-                      canEdit &&
-                      t(
-                        'Click the button above to add a filter to the dashboard',
-                      )
-                    }
-                  />
-                </FilterBarEmptyStateContainer>
-              ) : (
-                <FilterControls
-                  dataMaskSelected={dataMaskSelected}
-                  directPathToChild={directPathToChild}
-                  onFilterSelectionChange={handleFilterSelectionChange}
-                />
-              )}
+              <FilterControls
+                dataMaskSelected={dataMaskSelected}
+                directPathToChild={directPathToChild}
+                onFilterSelectionChange={handleFilterSelectionChange}
+              />
             </Tabs.TabPane>
             <Tabs.TabPane
               disabled={!!editFilterSetId}
@@ -430,33 +382,13 @@ const FilterBar: React.FC<FiltersBarProps> = ({
           </StyledTabs>
         ) : (
           <div css={tabPaneStyle}>
-            {filterValues.length === 0 ? (
-              <FilterBarEmptyStateContainer>
-                <EmptyStateSmall
-                  title={t('No filters are currently added')}
-                  image="filter.svg"
-                  description={
-                    canEdit &&
-                    t('Click the button above to add a filter to the dashboard')
-                  }
-                />
-              </FilterBarEmptyStateContainer>
-            ) : (
-              <FilterControls
-                dataMaskSelected={dataMaskSelected}
-                directPathToChild={directPathToChild}
-                onFilterSelectionChange={handleFilterSelectionChange}
-              />
-            )}
+            <FilterControls
+              dataMaskSelected={dataMaskSelected}
+              directPathToChild={directPathToChild}
+              onFilterSelectionChange={handleFilterSelectionChange}
+            />
           </div>
         )}
-        <ActionButtons
-          onApply={handleApply}
-          onClearAll={handleClearAll}
-          dataMaskSelected={dataMaskSelected}
-          dataMaskApplied={dataMaskApplied}
-          isApplyDisabled={isApplyDisabled}
-        />
       </Bar>
     </BarWrapper>
   );
