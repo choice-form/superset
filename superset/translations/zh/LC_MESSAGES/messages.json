@@ -740,11 +740,11 @@
         "我们似乎无法解析列 \"%(column_name)s\""
       ],
       "Home": ["主页"],
+      "Dashboards": ["看板"],
+      "Charts": ["图表"],
       "Plugins": ["插件"],
       "Manage": ["管理"],
       "Import Dashboards": ["导入看板"],
-      "Dashboards": ["看板"],
-      "Charts": ["图表"],
       "Databases": ["数据库"],
       "Data": ["数据"],
       "Datasets": ["数据集"],
@@ -2571,7 +2571,7 @@
         "该值应大于左侧目标值"
       ],
       "Required": ["必填"],
-      "Operator": ["操作者"],
+      "Operator": ["操作符号"],
       "Left value": ["左侧值"],
       "Right value": ["右侧值"],
       "Target value": ["目标值"],
@@ -3044,6 +3044,9 @@
       "Type of Google Sheets allowed": ["允许的谷歌表单类型"],
       "Publicly shared sheets only": ["仅限公开共享的表单"],
       "Public and privately shared sheets": ["公共和私人共享的表单"],
+      "How do you want to enter service account credentials?": [
+        "您想如何输入服务帐户凭据？"
+      ],
       "Upload JSON file": ["上传JSON文件"],
       "Copy and Paste JSON credentials": ["复制或粘贴JSON资格证书"],
       "Service Account": ["服务器账户"],
@@ -3747,6 +3750,8 @@
       "Text": ["文本"],
       "Show legend": ["显示图例"],
       "Whether to display a legend for the chart": ["是否显示图表的图例"],
+      "drill-down": ["下钻"],
+      "Enable drill-down query.": ["启用下钻查询"],
       "Legend Type": ["图例类型"],
       "Scroll": ["可滚动翻页的图例"],
       "Plain": ["普通图例"],
@@ -4002,6 +4007,9 @@
       "Category and Value": ["百分比和值"],
       "Category and Percentage": ["分类名称和百分比"],
       "Category, Value and Percentage": ["分类名称，值和百分比"],
+      "Format the displayed value in the selected format": [
+        "以选定的格式，来格式化展示的值"
+      ],
       "Put labels outside": ["在外侧放置标题"],
       "Put the labels outside of the pie?": ["是否把标签放在饼图外侧？"],
       "Label Line": ["视觉引导线"],
@@ -4015,9 +4023,11 @@
       "Do you want a donut or a pie?": ["你需要饼状图还是圆环图？"],
       "Inner Radius": ["内半径"],
       "Inner radius of donut hole": ["圆环内半径"],
-      "The classic. Great for showing how much of a company each investor gets, what demographics follow your blog, or what portion of the budget goes to the military industrial complex.\n        Pie charts can be difficult to interpret precisely. If clarity of relative proportion is important, consider using a bar or other chart type instead.": [
-        "很好地展示了每个投资者从一家公司获得了多少股份，你的博客上有哪些人口统计数据，或者预算的哪一部分流向了军工综合体。饼图可能很难精确解释。如果相对比例的清晰度很重要，可以考虑使用条形图或其他图表类型。"
+      "The pie chart is mainly used for showing proportion of different categories. Each arc length represents the proportion of data quantity. ": [
+        "饼图主要用于表现不同类目的数据在总和中的占比。每个的弧度表示数据数量的比例。"
       ],
+      "drill-up": ["上钻"],
+      "Reset drill-down": ["重置下钻"],
       "The maximum value of metrics. It is an optional configuration": [
         "度量的最大值。这是一种可选配置"
       ],
