@@ -17,7 +17,13 @@
  * under the License.
  */
 import { EChartsCoreOption } from 'echarts';
-import { ChartDataResponseResult, ChartProps, QueryFormColumn, QueryFormData, SetDataMaskHook } from 'src/core';
+import {
+  ChartDataResponseResult,
+  ChartProps,
+  QueryFormColumn,
+  QueryFormData,
+  SetDataMaskHook,
+} from 'src/core';
 import { EchartsLegendFormData } from '../types';
 import { EchartsBarLabelType } from './constants';
 
@@ -43,7 +49,7 @@ export type EchartsBarFormData = EchartsLegendFormData & {
 } & QueryFormData;
 
 export type EchartsBarQueriesData = {
-  data: { columns: string[]; records: any[] };
+  data: any[][];
 }[] &
   ChartDataResponseResult[];
 

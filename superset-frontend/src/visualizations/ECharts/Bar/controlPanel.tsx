@@ -19,7 +19,10 @@
 import { t, validateNonEmpty } from 'src/core';
 import { ControlPanelConfig } from 'src/chartConntrols';
 import {
+  barStacked,
   bottomMargin,
+  legendSection,
+  showAxisPointer,
   showBarValue,
   xAxisLabel,
   xLabelLayout,
@@ -33,17 +36,45 @@ const config: ControlPanelConfig = {
     {
       label: t('Query'),
       expanded: true,
-      controlSetRows: [['metrics'], ['adhoc_filters'], ['row_limit'], ['groupby']],
+      controlSetRows: [
+        ['metrics'],
+        ['adhoc_filters'],
+        ['row_limit'],
+        ['groupby'],
+      ],
     },
     {
       label: t('Chart Options'),
       expanded: true,
-      controlSetRows: [['color_scheme'], [showBarValue]],
+      controlSetRows: [
+        ['color_scheme'],
+        ...legendSection,
+        [showBarValue],
+        [barStacked],
+        [
+          {
+            name: 'order_bars',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Sort Bars'),
+              default: false,
+              renderTrigger: true,
+              description: t('Sort bars by x labels.'),
+            },
+          },
+        ],
+        [showAxisPointer],
+      ],
     },
     {
       label: t('Y Axis'),
       expanded: true,
-      controlSetRows: [['y_axis_format'], [yAxisLabel], [yAxisShowMinmax], [yAxisBounds]],
+      controlSetRows: [
+        ['y_axis_format'],
+        [yAxisLabel],
+        [yAxisShowMinmax],
+        [yAxisBounds],
+      ],
     },
     {
       label: t('X Axis'),
@@ -52,10 +83,6 @@ const config: ControlPanelConfig = {
     },
   ],
   controlOverrides: {
-    metrics: {
-      multi: false, // 柱状图只能有一个指标
-      description: '',
-    },
     groupby: {
       validators: [validateNonEmpty], // 非空校验
     },

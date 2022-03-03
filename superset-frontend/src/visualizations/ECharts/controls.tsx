@@ -35,7 +35,28 @@ export const drilldown = {
       columns: form_data.groupby,
       drilldown: form_data.drilldown,
     }),
-    visibility: ({ form_data }: ControlPanelsContainerProps) => !!form_data?.slice_id,
+    visibility: ({ form_data }: ControlPanelsContainerProps) =>
+      !!form_data?.slice_id,
+  },
+};
+
+export const legendModeControl = {
+  name: 'legendMode',
+  config: {
+    type: 'SelectControl',
+    freeForm: false,
+    label: t('Legend Selected Mode'),
+    choices: [
+      ['multiple', t('Multiple Mode')],
+      ['single', t('Single Mode')],
+    ],
+    default: 'multiple',
+    renderTrigger: true,
+    description: t(
+      'Selected mode of legend, which controls whether series can be toggled displaying by clicking legends.',
+    ),
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.show_legend?.value),
   },
 };
 
@@ -52,7 +73,8 @@ const legendTypeControl = {
     default: legendType,
     renderTrigger: true,
     description: t('Show Legend type'),
-    visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_legend?.value),
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.show_legend?.value),
   },
 };
 
@@ -71,7 +93,8 @@ const legendOrientationControl = {
     default: legendOrientation,
     renderTrigger: true,
     description: t('Choose the orientation of the legend'),
-    visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_legend?.value),
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.show_legend?.value),
   },
 };
 
@@ -86,13 +109,15 @@ const legendPaddingControl = {
     step: 1,
     default: 5,
     description: t('Additional padding for legend.'),
-    visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_legend?.value),
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.show_legend?.value),
   },
 };
 
 export const legendSection = [
   [<h1 className="section-header">{t('Legend')}</h1>],
   [showLegendControl],
+  [legendModeControl],
   [legendTypeControl],
   [legendOrientationControl],
   [legendPaddingControl],
@@ -105,7 +130,9 @@ const richTooltipControl = {
     label: t('Rich tooltip'),
     renderTrigger: true,
     default: true,
-    description: t('Shows a list of all series available at that point in time'),
+    description: t(
+      'Shows a list of all series available at that point in time',
+    ),
   },
 };
 
@@ -116,8 +143,11 @@ const tooltipSortByMetricControl = {
     label: t('Tooltip sort by metric'),
     renderTrigger: true,
     default: false,
-    description: t('Whether to sort tooltip by the selected metric in descending order.'),
-    visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.rich_tooltip?.value),
+    description: t(
+      'Whether to sort tooltip by the selected metric in descending order.',
+    ),
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.rich_tooltip?.value),
   },
 };
 
@@ -167,13 +197,19 @@ const onlyTotalControl = {
     label: t('Only Total'),
     default: true,
     renderTrigger: true,
-    description: t('Only show the total value on the stacked chart, and not show on the selected category'),
+    description: t(
+      'Only show the total value on the stacked chart, and not show on the selected category',
+    ),
     visibility: ({ controls }: ControlPanelsContainerProps) =>
       Boolean(controls?.show_value?.value) && Boolean(controls?.stack?.value),
   },
 };
 
-export const showValueSection = [[showValueControl], [stackControl], [onlyTotalControl]];
+export const showValueSection = [
+  [showValueControl],
+  [stackControl],
+  [onlyTotalControl],
+];
 
 export const barStacked: CustomControlItem = {
   name: 'bar_stacked',
@@ -193,10 +229,28 @@ export const bottomMargin: CustomControlItem = {
     clearable: false,
     freeForm: true,
     label: t('Bottom Margin'),
-    choices: formatSelectOptions(['auto', 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 200]),
+    choices: formatSelectOptions([
+      'auto',
+      0,
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80,
+      90,
+      100,
+      125,
+      150,
+      200,
+    ]),
     default: 'auto',
     renderTrigger: true,
-    description: t('Bottom margin, in pixels, allowing for more room for axis labels'),
+    description: t(
+      'Bottom margin, in pixels, allowing for more room for axis labels',
+    ),
   },
 };
 

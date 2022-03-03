@@ -808,10 +808,10 @@ class BarViz(BaseViz):
             raise QueryObjectValidationError(_("Pick at least one metric"))
 
         # 只能有一个指标
-        if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) > 1:
-            raise QueryObjectValidationError(
-                _("When using 'Group By' you are limited to use a single metric")
-            )
+        # if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) > 1:
+        #     raise QueryObjectValidationError(
+        #         _("When using 'Group By' you are limited to use a single metric")
+        #     )
 
         return query_obj
 
@@ -819,21 +819,92 @@ class BarViz(BaseViz):
         if df.empty:
             return None
 
-        columns = None
-        values: Union[List[str], str] = self.metric_labels
-        if self.form_data.get("groupby"):
-            values = self.metric_labels[0]
-            columns = self.form_data.get("groupby")
-        pt = df.pivot_table(columns=columns, values=values)
-        pt.index = pt.index.map(str)
-        pt = pt.sort_index()
+        # columns = None
+        # values: Union[List[str], str] = self.metric_labels
+        # if self.form_data.get("groupby"):
+        #     values = self.metric_labels[0]
+        #     columns = self.form_data.get("groupby")
+        # pt = df.pivot_table(columns=columns, values=values)
+        # pt.index = pt.index.map(str)
+        # pt = pt.sort_index()
 
-        # 基础柱状图只需要label数组和值数组
-        return dict(
-            records=list(pt.values[0]),
-            columns=list(pt.columns),
-            groupby=self.form_data.get("groupby")
+        metrics = self.metric_labels
+        columns = self.form_data.get("columns") or []
+
+        # pandas will throw away nulls when grouping/pivoting,
+        # so we substitute NULL_STRING for any nulls in the necessary columns
+        filled_cols = self.groupby + columns
+        df = df.copy()
+        df[filled_cols] = df[filled_cols].fillna(value=NULL_STRING)
+
+        sortby = utils.get_metric_name(
+            self.form_data.get("timeseries_limit_metric") or metrics[0]
         )
+        row = df.groupby(self.groupby).sum()[sortby].copy()
+        is_asc = not self.form_data.get("order_desc")
+        row.sort_values(ascending=is_asc, inplace=True)
+        pt = df.pivot_table(index=self.groupby, columns=columns, values=metrics)
+        if self.form_data.get("contribution"):
+            pt = pt.T
+            pt = (pt / pt.sum()).T
+        pt = pt.reindex(row.index)
+
+        # Re-order the columns adhering to the metric ordering.
+        pt = pt[metrics]
+        chart_data = []
+        for name, ys in pt.items():
+            if pt[name].dtype.kind not in "biufc" or name in self.groupby:
+                continue
+            if isinstance(name, str):
+                series_title = name
+            else:
+                offset = 0 if len(metrics) > 1 else 1
+                series_title = ", ".join([str(s) for s in name[offset:]])
+            values = []
+            for i, v in ys.items():
+                x = i
+                if isinstance(x, (tuple, list)):
+                    x = ", ".join([str(s) for s in x])
+                else:
+                    x = str(x)
+                values.append((x, v))
+
+            handle = {series_title: dict(values)}
+            chart_data.append(handle)
+
+        print('chart_data:', chart_data)
+
+        # 返回数据集
+        dataset = []
+        if len(chart_data) == 1:
+            for (k, v) in chart_data[0].items():
+                product = ['product', k]
+                dataset.append(product)
+                for (x, y) in v.items():
+                    dataset.append([x, y])
+            return dataset
+
+        for i in range(len(chart_data)):
+            for (k, v) in chart_data[i].items():
+                if i == 0:
+                    product = ['product'] + list(v.keys())
+                    dataset.append(product)
+                dataset.append([k] + list(v.values()))
+
+        return dataset
+
+        # 返回数据集
+        # dataset = []
+        # # 第一列是分组维度列
+        # product = ['product'] + list(self.form_data.get("groupby"))
+        # dataset.append(product)
+        # # 第二列开始是数据
+        # for i in range(len(pt.columns)):
+        #     key = pt.columns[i]
+        #     val = pt.values[0][i]
+        #     dataset.append(list([key, val]))
+        # # 返回数据
+        # return dataset
 
 
 class StackedColumnViz(BaseViz):
