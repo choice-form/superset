@@ -49,10 +49,9 @@ import EchartsMixedTimeseriesChartPlugin from '../ECharts/MixedTimeseries';
 // 基础柱状&基础折线组合图
 import EchartsBarLineChartPlugin from '../ECharts/Advanced/BarLine';
 
-// 基础柱状图
+// 柱状图
 import EchartsBarChartPlugin from '../ECharts/Bar';
-// 堆叠柱状图
-import EchartsStackedColumnChartPlugin from '../ECharts/StackedColumnChart';
+
 // 筛选器
 import FilterBoxChartPlugin from '../FilterBox';
 import MapBoxChartPlugin from '../MapBoxChart';
@@ -89,13 +88,18 @@ import {
 
 import EventFlowChartPlugin from '../DataUI/EventFlowChart';
 import TimeTableChartPlugin from '../DataUI/TimeTable';
-import { BigNumberChartPlugin, BigNumberTotalChartPlugin } from '../DataUI/BigNumber';
+import {
+  BigNumberChartPlugin,
+  BigNumberTotalChartPlugin,
+} from '../DataUI/BigNumber';
 
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '../PivotTable';
 
 export default class MainPreset extends Preset {
   constructor() {
-    const experimentalplugins = isFeatureEnabled(FeatureFlag.DASHBOARD_FILTERS_EXPERIMENTAL)
+    const experimentalplugins = isFeatureEnabled(
+      FeatureFlag.DASHBOARD_FILTERS_EXPERIMENTAL,
+    )
       ? [new GroupByFilterPlugin().configure({ key: 'filter_groupby' })]
       : [];
 
@@ -118,8 +122,6 @@ export default class MainPreset extends Preset {
 
         // 基础柱状图
         new EchartsBarChartPlugin().configure({ key: 'bar' }),
-        // 堆叠柱状图
-        new EchartsStackedColumnChartPlugin().configure({ key: 'stacked_column' }),
 
         new BigNumberChartPlugin().configure({ key: 'big_number' }),
         new BigNumberTotalChartPlugin().configure({ key: 'big_number_total' }),
