@@ -19,7 +19,9 @@
 import { t, smartDateFormatter, NumberFormats } from 'src/core';
 
 // D3 specific formatting config
-export const D3_FORMAT_DOCS = t('D3 format syntax: https://github.com/d3/d3-format');
+export const D3_FORMAT_DOCS = t(
+  'D3 format syntax: https://github.com/d3/d3-format',
+);
 
 // input choices & options
 export const D3_FORMAT_OPTIONS: [string, string][] = [
@@ -28,6 +30,7 @@ export const D3_FORMAT_OPTIONS: [string, string][] = [
   [',d', ',d (12345.432 => 12,345)'],
   ['.1s', '.1s (12345.432 => 10k)'],
   ['.3s', '.3s (12345.432 => 12.3k)'],
+  ['.0%', '.0% (0.2 => 20%)'],
   [',.1%', ',.1% (12345.432 => 1,234,543.2%)'],
   ['.2%', '.2% (12345.432 => 1234543.20%)'],
   ['.3%', '.3% (12345.432 => 1234543.200%)'],
@@ -39,7 +42,9 @@ export const D3_FORMAT_OPTIONS: [string, string][] = [
   ['DURATION_SUB', t('Duration in ns (1.40008 => 1ms 400µs 80ns)')],
 ];
 
-export const D3_TIME_FORMAT_DOCS = t('D3 time format syntax: https://github.com/d3/d3-time-format');
+export const D3_TIME_FORMAT_DOCS = t(
+  'D3 time format syntax: https://github.com/d3/d3-time-format',
+);
 
 export const D3_TIME_FORMAT_OPTIONS: [string, string][] = [
   [smartDateFormatter.id, t('Adaptative formating')],

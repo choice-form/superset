@@ -134,9 +134,6 @@
       "2 metrics need to be selected": ["需要选择2个指标"],
       "Pie Chart": ["饼图"],
       "Bar Chart": ["柱状图"],
-      "When using 'Group By' you are limited to use a single metric": [
-        "当使用“Group by”时，只限于使用单个度量"
-      ],
       "Stacked Column Chart": ["堆叠柱状图"],
       "Pick at least one field for [Series]": ["为 [序列] 选择至少一个字段"],
       "Can't have overlap between Series and Breakdowns": [
@@ -150,6 +147,9 @@
         "在“时间”部分选择一个粒度，或取消选中“包含时间”"
       ],
       "Time Table View": ["时间表视图"],
+      "When using 'Group By' you are limited to use a single metric": [
+        "当使用“Group by”时，只限于使用单个度量"
+      ],
       "Pivot Table": ["透视表"],
       "Please choose at least one 'Group by' field ": [
         "请至少选择一个分组字段 "
@@ -1736,6 +1736,38 @@
       "Time range endpoints": ["时间范围端点"],
       "Time range endpoints (SIP-15)": ["时间范围端点 (SIP-15)"],
       "Color Scheme": ["配色方案"],
+      "Bar Background": ["柱形背景"],
+      "Enable the background of the bar.": ["启用柱形的背景"],
+      "Y Axis Line": ["Y轴的轴线"],
+      "Show or hide the axis of Y-axis.": ["显示或隐藏Y轴的轴线"],
+      "Y Axis Label": ["Y轴的标题"],
+      "Y Axis 2 Label": ["Y轴2的标题"],
+      "Maximum and minimum values for the Y axis": ["Y轴的最大值和最小值"],
+      "Whether to display the min and max values of the Y-axis": [
+        "是否显示Y轴的最小值和最大值"
+      ],
+      "Maximum and minimum values for the Y axis 2": ["Y轴2的最大值和最小值"],
+      "Whether to display the min and max values of the Y-axis 2": [
+        "是否显示Y轴的最小值和最大值"
+      ],
+      "Y Axis Format": ["Y轴格式化"],
+      "When `Calculation type` is set to \"Percentage change\", the Y Axis Format is forced to `.1%`": [
+        "当设置“周期比”时，y轴格式强制为“1%”"
+      ],
+      "Y Axis 2 Format": ["Y轴2格式化"],
+      "Y Axis Bounds": ["Y轴的边界"],
+      "Bounds for the Y-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
+        "Y轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
+      ],
+      "Y Axis 2 Bounds": ["Y轴2的边界"],
+      "Bounds for the Y-axis 2. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
+        "Y轴2的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
+      ],
+      "X Axis Label": ["X轴标题"],
+      "X Axis Label Rotate": ["X轴标签旋转"],
+      "Rotation degree of axis label, which is especially useful when there is no enough space for category axis.": [
+        "刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。"
+      ],
       "Group by": ["分组"],
       "One or many columns to group by. High cardinality groupings should include a series limit to limit the number of fetched and rendered series.": [
         "高基数分组的一个或多个列到组应包括一个系列限制，以限制获取和渲染系列的数量。"
@@ -1795,11 +1827,6 @@
       "Limits the number of series that get displayed. A joined subquery (or an extra phase where subqueries are not supported) is applied to limit the number of series that get fetched and rendered. This feature is useful when grouping by high cardinality column(s) though does increase the query complexity and cost.": [
         "限制显示的时间序列的数量。应用子查询（或者不支持子查询）来限制获取和显示的时间序列的数量。在高基数维度（S）分组时，此特性是有用的。"
       ],
-      "Y Axis Format": ["Y轴格式化"],
-      "When `Calculation type` is set to \"Percentage change\", the Y Axis Format is forced to `.1%`": [
-        "当设置“周期比”时，y轴格式强制为“1%”"
-      ],
-      "Y Axis 2 Format": ["Y轴2格式化"],
       "Time format": ["时间格式"],
       "The color scheme for rendering chart": ["绘制图表的配色方案"],
       "Sort descending": ["降序"],
@@ -3752,6 +3779,16 @@
       "Whether to display a legend for the chart": ["是否显示图表的图例"],
       "drill-down": ["下钻"],
       "Enable drill-down query.": ["启用下钻查询"],
+      "Layout direction": ["布局方向"],
+      "horizontal": ["横向"],
+      "vertical": ["纵向"],
+      "Select the layout direction of the chart.": ["选择图表的布局方向。"],
+      "Select mode of legend": ["选择图例的模式"],
+      "Multiple": ["多个"],
+      "Single": ["单个"],
+      "Selected mode of legend, which controls whether series can be toggled displaying by clicking legends.": [
+        "图例选择的模式，控制是否可以通过点击图例改变系列的显示状态。"
+      ],
       "Legend Type": ["图例类型"],
       "Scroll": ["可滚动翻页的图例"],
       "Plain": ["普通图例"],
@@ -3781,6 +3818,7 @@
         "仅在堆叠图表上显示总值，而不在所选类别上显示"
       ],
       "Stacked Bars": ["堆叠柱"],
+      "Show Stacked Precent": ["按百分比显示堆叠"],
       "Show Bar Values": ["显示柱状图的值"],
       "Show the value on top of the bar": ["在柱顶端显示值"],
       "Axis Pointer": ["坐标轴指示器"],
@@ -3789,28 +3827,31 @@
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         "是否显示额外控件。额外的控制包括使多柱状图堆叠或并排。"
       ],
-      "X Axis Label": ["X轴标题"],
-      "X Axis Label Rotate": ["X轴标签旋转"],
-      "Rotation degree of axis label, which is especially useful when there is no enough space for category axis.": [
-        "刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。"
-      ],
-      "Y Axis Bounds": ["Y轴的边界"],
-      "Bounds for the Y-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
-        "Y轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
-      ],
-      "Y Axis 2 Bounds": ["Y轴2的边界"],
-      "Y Axis Label": ["Y轴的标题"],
-      "Y Axis 2 Label": ["Y轴2的标题"],
-      "Maximum and minimum values for the Y axis": ["Y轴的最大值和最小值"],
-      "Whether to display the min and max values of the Y-axis": [
-        "是否显示Y轴的最小值和最大值"
-      ],
-      "Maximum and minimum values for the Y axis 2": ["Y轴2的最大值和最小值"],
       "Y Axis 1": ["Y轴1"],
       "Y Axis 2": ["Y轴2"],
       "Bar chart and Line chart can be displayed in one chart at the same time, with 1 X-axis and 2 Y-axes.": [
         "柱状图和折线图可以同时显示在一张图表中，有1个X轴和2个Y轴。"
       ],
+      "Sort Bars": ["柱排序"],
+      "Sort bars by x labels.": ["按x标签对柱进行排序。"],
+      "Value Axis": ["数值轴"],
+      "Category Axis": ["类目轴"],
+      "Value Axis Format": ["数值轴格式化"],
+      "Value Axis Line": ["数值轴的轴线"],
+      "Show or hide the axis of Value-axis.": ["显示或隐藏数值轴的轴线。"],
+      "Value Axis Label": ["数值轴的标签"],
+      "Maximum and minimum values for the Value axis": [
+        "数值轴的最大值和最小值"
+      ],
+      "Whether to display the min and max values of the Value-axis": [
+        "是否显示数值轴的最小值和最大值"
+      ],
+      "Value Axis Bounds": ["数值轴的边界"],
+      "Bounds for the Value-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
+        "数值轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
+      ],
+      "Category Axis Label": ["类目轴的标签"],
+      "Category Axis Label Rotate": ["类目轴的标签旋转"],
       "Bar chart shows different data through the height of a bar, which is used in rectangular coordinate with at least 1 category axis.": [
         "柱状图（或称条形图）是一种通过柱形的高度（横向的情况下则是宽度）来表现数据大小的一种常用图表类型。"
       ],
@@ -3926,8 +3967,6 @@
         "是否启用更改图形位置和缩放。"
       ],
       "Node select mode": ["节点选择模式"],
-      "Single": ["单个"],
-      "Multiple": ["多个"],
       "Allow node selections": ["允许节点选择"],
       "Label threshold": ["标签阈值"],
       "Minimum value for label to be displayed on graph.": [
@@ -4046,8 +4085,6 @@
       ],
       "Radar Chart": ["雷达图"],
       "Web": [""],
-      "Sort Bars": ["柱排序"],
-      "Sort bars by x labels.": ["按x标签对柱进行排序。"],
       "Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.": [
         "使用堆叠柱状图可视化度量值如何随时间变化。按列添加分组，以可视化组级别的指标以及它们随时间的变化。"
       ],

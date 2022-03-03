@@ -84,7 +84,6 @@
       "2 metrics need to be selected": [""],
       "Pie Chart": [""],
       "Bar Chart": [""],
-      "When using 'Group By' you are limited to use a single metric": [""],
       "Stacked Column Chart": [""],
       "Pick at least one field for [Series]": [""],
       "Can't have overlap between Series and Breakdowns": [""],
@@ -94,6 +93,7 @@
       ],
       "Pick a granularity in the Time section or uncheck 'Include Time'": [""],
       "Time Table View": [""],
+      "When using 'Group By' you are limited to use a single metric": [""],
       "Pivot Table": [""],
       "Please choose at least one 'Group by' field ": [""],
       "Please choose at least one metric": [""],
@@ -1403,6 +1403,37 @@
       "Time range endpoints": [""],
       "Time range endpoints (SIP-15)": [""],
       "Color Scheme": [""],
+      "Bar Background": [""],
+      "Enable the background of the bar.": [""],
+      "Y Axis Line": [""],
+      "Show or hide the axis of Y-axis.": [""],
+      "Y Axis Label": [""],
+      "Y Axis 2 Label": [""],
+      "Maximum and minimum values for the Y axis": [""],
+      "Whether to display the min and max values of the Y-axis": [""],
+      "Maximum and minimum values for the Y axis 2": [""],
+      "Whether to display the min and max values of the Y-axis 2": [""],
+      "Y Axis Format": [""],
+      "When `Calculation type` is set to \"Percentage change\", the Y Axis Format is forced to `.1%`": [
+        ""
+      ],
+      "Y Axis 2 Format": [""],
+      "When `Calculation type` is set to \"Percentage change\", the Y Axis 2 Format is forced to `.1%`": [
+        ""
+      ],
+      "Y Axis Bounds": [""],
+      "Bounds for the Y-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
+        ""
+      ],
+      "Y Axis 2 Bounds": [""],
+      "Bounds for the Y-axis 2. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
+        ""
+      ],
+      "X Axis Label": [""],
+      "X Axis Label Rotate": [""],
+      "Rotation degree of axis label, which is especially useful when there is no enough space for category axis.": [
+        ""
+      ],
       "Group by": [""],
       "One or many columns to group by. High cardinality groupings should include a series limit to limit the number of fetched and rendered series.": [
         ""
@@ -1458,11 +1489,6 @@
       "Limits the number of series that get displayed. A joined subquery (or an extra phase where subqueries are not supported) is applied to limit the number of series that get fetched and rendered. This feature is useful when grouping by high cardinality column(s) though does increase the query complexity and cost.": [
         ""
       ],
-      "Y Axis Format": [""],
-      "When `Calculation type` is set to \"Percentage change\", the Y Axis Format is forced to `.1%`": [
-        ""
-      ],
-      "Y Axis 2 Format": [""],
       "Time format": [""],
       "The color scheme for rendering chart": [""],
       "Sort descending": [""],
@@ -3115,6 +3141,16 @@
       "Whether to display a legend for the chart": [""],
       "drill-down": [""],
       "Enable drill-down query.": [""],
+      "Layout direction": [""],
+      "horizontal": [""],
+      "vertical": [""],
+      "Select the layout direction of the chart.": [""],
+      "Select mode of legend": [""],
+      "Multiple": [""],
+      "Single": [""],
+      "Selected mode of legend, which controls whether series can be toggled displaying by clicking legends.": [
+        ""
+      ],
       "Legend Type": [""],
       "Scroll": [""],
       "Plain": [""],
@@ -3142,6 +3178,7 @@
         ""
       ],
       "Stacked Bars": [""],
+      "Show Stacked Precent": [""],
       "Show Bar Values": [""],
       "Show the value on top of the bar": [""],
       "Axis Pointer": [""],
@@ -3150,26 +3187,27 @@
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         ""
       ],
-      "X Axis Label": [""],
-      "X Axis Label Rotate": [""],
-      "Rotation degree of axis label, which is especially useful when there is no enough space for category axis.": [
-        ""
-      ],
-      "Y Axis Bounds": [""],
-      "Bounds for the Y-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
-        ""
-      ],
-      "Y Axis 2 Bounds": [""],
-      "Y Axis Label": [""],
-      "Y Axis 2 Label": [""],
-      "Maximum and minimum values for the Y axis": [""],
-      "Whether to display the min and max values of the Y-axis": [""],
-      "Maximum and minimum values for the Y axis 2": [""],
       "Y Axis 1": [""],
       "Y Axis 2": [""],
       "Bar chart and Line chart can be displayed in one chart at the same time, with 1 X-axis and 2 Y-axes.": [
         ""
       ],
+      "Sort Bars": [""],
+      "Sort bars by x labels.": [""],
+      "Value Axis": [""],
+      "Category Axis": [""],
+      "Value Axis Format": [""],
+      "Value Axis Line": [""],
+      "Show or hide the axis of Value-axis.": [""],
+      "Value Axis Label": [""],
+      "Maximum and minimum values for the Value axis": [""],
+      "Whether to display the min and max values of the Value-axis": [""],
+      "Value Axis Bounds": [""],
+      "Bounds for the Value-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
+        ""
+      ],
+      "Category Axis Label": [""],
+      "Category Axis Label Rotate": [""],
       "Bar chart shows different data through the height of a bar, which is used in rectangular coordinate with at least 1 category axis.": [
         ""
       ],
@@ -3271,8 +3309,6 @@
       "Scale and Move": [""],
       "Whether to enable changing graph position and scaling.": [""],
       "Node select mode": [""],
-      "Single": [""],
-      "Multiple": [""],
       "Allow node selections": [""],
       "Label threshold": [""],
       "Minimum value for label to be displayed on graph.": [""],
@@ -3369,8 +3405,6 @@
       ],
       "Radar Chart": [""],
       "Web": [""],
-      "Sort Bars": [""],
-      "Sort bars by x labels.": [""],
       "Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.": [
         ""
       ],

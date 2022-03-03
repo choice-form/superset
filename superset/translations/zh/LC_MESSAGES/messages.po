@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-03 12:26+0800\n"
+"POT-Creation-Date: 2022-03-04 04:18+0800\n"
 "PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -272,7 +272,7 @@ msgid "Bar Line Chart"
 msgstr "柱状折线图"
 
 #: superset/viz.py:668 superset/viz.py:737 superset/viz.py:808
-#: superset/viz.py:864 superset/viz.py:1107
+#: superset/viz.py:905 superset/viz.py:1148
 msgid "Pick at least one metric"
 msgstr "选择至少一个指标"
 
@@ -292,297 +292,297 @@ msgstr "饼图"
 msgid "Bar Chart"
 msgstr "柱状图"
 
-#: superset/viz.py:813 superset/viz.py:1111
-msgid "When using 'Group By' you are limited to use a single metric"
-msgstr "当使用“Group by”时，只限于使用单个度量"
-
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:52
-#: superset/viz.py:843
+#: superset/viz.py:884
 msgid "Stacked Column Chart"
 msgstr "堆叠柱状图"
 
-#: superset/viz.py:850
+#: superset/viz.py:891
 msgid "Pick at least one field for [Series]"
 msgstr "为 [序列] 选择至少一个字段"
 
-#: superset/viz.py:861
+#: superset/viz.py:902
 msgid "Can't have overlap between Series and Breakdowns"
 msgstr "Series 和 Breakdown 之间不能有重叠"
 
-#: superset/viz.py:948
+#: superset/viz.py:989
 msgid "Table View"
 msgstr "表视图"
 
-#: superset/viz.py:973
+#: superset/viz.py:1014
 msgid ""
 "You cannot use [Columns] in combination with [Group "
 "By]/[Metrics]/[Percentage Metrics]. Please choose one or the other."
 msgstr "不能将 [列] 与 [分组]/[指标]/[百分比度量] 结合使用。请选择其中一个。"
 
-#: superset/viz.py:1019
+#: superset/viz.py:1060
 msgid "Pick a granularity in the Time section or uncheck 'Include Time'"
 msgstr "在“时间”部分选择一个粒度，或取消选中“包含时间”"
 
-#: superset/viz.py:1099
+#: superset/viz.py:1140
 msgid "Time Table View"
 msgstr "时间表视图"
 
+#: superset/viz.py:1152
+msgid "When using 'Group By' you are limited to use a single metric"
+msgstr "当使用“Group by”时，只限于使用单个度量"
+
 #: superset-frontend/src/visualizations/D3/PivotTableChart/index.js:29
-#: superset/viz.py:1139
+#: superset/viz.py:1180
 msgid "Pivot Table"
 msgstr "透视表"
 
-#: superset/viz.py:1156
+#: superset/viz.py:1197
 msgid "Please choose at least one 'Group by' field "
 msgstr "请至少选择一个分组字段 "
 
-#: superset/viz.py:1168
+#: superset/viz.py:1209
 msgid "Please choose at least one metric"
 msgstr "请至少选择一个指标"
 
-#: superset/viz.py:1170
+#: superset/viz.py:1211
 msgid "Group By' and 'Columns' can't overlap"
 msgstr "“Group by”列和字段不能重叠"
 
 #: superset-frontend/src/visualizations/D3/TreemapChart/index.js:35
-#: superset/viz.py:1274
+#: superset/viz.py:1315
 msgid "Treemap"
 msgstr "树状图"
 
 #: superset-frontend/src/visualizations/D3/CalendarChart/index.js:30
-#: superset/viz.py:1319
+#: superset/viz.py:1360
 msgid "Calendar Heatmap"
 msgstr "时间热力图"
 
 #: superset-frontend/src/visualizations/NVD3/Bubble/index.js:30
-#: superset/viz.py:1410
+#: superset/viz.py:1451
 msgid "Bubble Chart"
 msgstr "气泡图"
 
-#: superset/viz.py:1432
+#: superset/viz.py:1473
 msgid "Please use 3 different metric labels"
 msgstr "请在左右轴上选择不同的指标"
 
-#: superset/viz.py:1434
+#: superset/viz.py:1475
 msgid "Pick a metric for x, y and size"
 msgstr "为 x 轴，y 轴和大小选择一个指标"
 
 #: superset-frontend/src/visualizations/NVD3/Bullet/index.js:30
-#: superset/viz.py:1461
+#: superset/viz.py:1502
 msgid "Bullet Chart"
 msgstr "子弹图"
 
-#: superset/viz.py:1473
+#: superset/viz.py:1514
 msgid "Pick a metric to display"
 msgstr "选择一个指标来显示"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/index.ts:31
-#: superset/viz.py:1491
+#: superset/viz.py:1532
 msgid "Big Number with Trendline"
 msgstr "数字和趋势线"
 
-#: superset/viz.py:1499 superset/viz.py:1533
+#: superset/viz.py:1540 superset/viz.py:1574
 msgid "Pick a metric!"
 msgstr "选择一个指标！"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:35
-#: superset/viz.py:1525
+#: superset/viz.py:1566
 msgid "Big Number"
 msgstr "数字"
 
-#: superset/viz.py:1547
+#: superset/viz.py:1588
 msgid "Time Series - Line Chart"
 msgstr "时间序列-折线图"
 
-#: superset/viz.py:1629 superset/viz.py:1892
+#: superset/viz.py:1670 superset/viz.py:1933
 msgid "Pick a time granularity for your time series"
 msgstr "为您的时间序列选择一个时间粒度"
 
-#: superset/common/query_context.py:151 superset/viz.py:1686
+#: superset/common/query_context.py:151 superset/viz.py:1727
 msgid ""
 "An enclosed time range (both start and end) must be specified when using "
 "a Time Comparison."
 msgstr "使用时间比较时，必须指定封闭的时间范围（有开始和结束）。"
 
-#: superset/viz.py:1757
+#: superset/viz.py:1798
 msgid "Time Series - Multiple Line Charts"
 msgstr "时间序列-多线图"
 
-#: superset/viz.py:1835
+#: superset/viz.py:1876
 msgid "Time Series - Dual Axis Line Chart"
 msgstr "时间序列-双轴线图"
 
-#: superset/viz.py:1844
+#: superset/viz.py:1885
 msgid "Pick a metric for left axis!"
 msgstr "为左轴选择一个指标！"
 
-#: superset/viz.py:1846
+#: superset/viz.py:1887
 msgid "Pick a metric for right axis!"
 msgstr "为右轴选择一个指标！"
 
-#: superset/viz.py:1849
+#: superset/viz.py:1890
 msgid "Please choose different metrics on left and right axis"
 msgstr "请在左右轴上选择不同的指标"
 
-#: superset/viz.py:1909
+#: superset/viz.py:1950
 msgid "Time Series - Period Pivot"
 msgstr "时间序列 - 周期透视表"
 
-#: superset/viz.py:1955
+#: superset/viz.py:1996
 msgid "Time Series - Percent Change"
 msgstr "时间序列 - 百分比变化"
 
-#: superset/viz.py:1963
+#: superset/viz.py:2004
 msgid "Time Series - Stacked"
 msgstr "时间序列 - 堆积图"
 
-#: superset/viz.py:1973
+#: superset/viz.py:2014
 msgid "Sunburst"
 msgstr "环状层次图"
 
-#: superset/viz.py:2020
+#: superset/viz.py:2061
 msgid "Sankey"
 msgstr "蛇形图"
 
-#: superset/viz.py:2028
+#: superset/viz.py:2069
 msgid "Pick exactly 2 columns as [Source / Target]"
 msgstr "为 [来源 / 目标] 选择两个列"
 
-#: superset/viz.py:2072
+#: superset/viz.py:2113
 msgid ""
 "There's a loop in your Sankey, please provide a tree. Here's a faulty "
 "link: {}"
 msgstr "桑基图里面有一个循环，请提供一棵树。这是一个错误的链接：{}"
 
-#: superset/viz.py:2085
+#: superset/viz.py:2126
 msgid "Directed Force Layout"
 msgstr "有向图"
 
 #: superset-frontend/src/visualizations/D3/CountryMapChart/index.js:30
-#: superset/viz.py:2124
+#: superset/viz.py:2165
 msgid "Country Map"
 msgstr "国家地图"
 
 #: superset-frontend/src/visualizations/D3/WorldMapChart/index.js:31
-#: superset/viz.py:2159
+#: superset/viz.py:2200
 msgid "World Map"
 msgstr "世界地图"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:75
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:455
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:426
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Header/index.tsx:97
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FilterTabs.tsx:210
-#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:2221
+#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:2262
 msgid "Filters"
 msgstr "过滤"
 
-#: superset/viz.py:2242
+#: superset/viz.py:2283
 msgid "Invalid filter configuration, please select a column"
 msgstr "过滤器配置无效，请选择一个列"
 
 #: superset-frontend/src/visualizations/D3/ParallelCoordinatesChart/index.js:30
-#: superset/viz.py:2293
+#: superset/viz.py:2334
 msgid "Parallel Coordinates"
 msgstr "平行坐标"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/index.js:38
-#: superset/viz.py:2323
+#: superset/viz.py:2364
 msgid "Heatmap"
 msgstr "热力图"
 
-#: superset/viz.py:2384
+#: superset/viz.py:2425
 msgid "Horizon Charts"
 msgstr "水平图"
 
-#: superset/viz.py:2396
+#: superset/viz.py:2437
 msgid "Mapbox"
 msgstr "箱图"
 
-#: superset/viz.py:2410
+#: superset/viz.py:2451
 msgid "[Longitude] and [Latitude] must be set"
 msgstr "[经度] 和 [纬度] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2420
+#: superset/viz.py:2461
 msgid "Must have a [Group By] column to have 'count' as the [Label]"
 msgstr "[Group By] 列必须要有 ‘count’字段作为 [标签]"
 
-#: superset/viz.py:2444
+#: superset/viz.py:2485
 msgid "Choice of [Label] must be present in [Group By]"
 msgstr "[标签] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2452
+#: superset/viz.py:2493
 msgid "Choice of [Point Radius] must be present in [Group By]"
 msgstr "[点半径] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2460
+#: superset/viz.py:2501
 msgid "[Longitude] and [Latitude] columns must be present in [Group By]"
 msgstr "[经度] 和 [纬度] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2542
+#: superset/viz.py:2583
 msgid "Deck.gl - Multiple Layers"
 msgstr "多图层"
 
-#: superset/viz.py:2583 superset/viz.py:2619
+#: superset/viz.py:2624 superset/viz.py:2660
 msgid "Bad spatial key"
 msgstr "错误的空间字段"
 
-#: superset/viz.py:2604
+#: superset/viz.py:2645
 #, python-format
 msgid "Invalid spatial point encountered: %s"
 msgstr "遇到无效的空间点：%s"
 
-#: superset/viz.py:2641
+#: superset/viz.py:2682
 msgid ""
 "Encountered invalid NULL spatial entry,"
 "                                        please consider filtering those "
 "out"
 msgstr "遇到无效的为 NULL 的空间条目，请考虑将其过滤掉"
 
-#: superset/viz.py:2736
+#: superset/viz.py:2777
 msgid "Deck.gl - Scatter plot"
 msgstr "Deck.gl - 散点图"
 
-#: superset/viz.py:2788
+#: superset/viz.py:2829
 msgid "Deck.gl - Screen Grid"
 msgstr "Deck.gl - 屏幕网格"
 
-#: superset/viz.py:2817
+#: superset/viz.py:2858
 msgid "Deck.gl - 3D Grid"
 msgstr "Deck.gl - 3D网格"
 
-#: superset/viz.py:2849
+#: superset/viz.py:2890
 msgid "Deck.gl - Paths"
 msgstr "Deck.gl - 路径"
 
-#: superset/viz.py:2900
+#: superset/viz.py:2941
 msgid "Deck.gl - Polygon"
 msgstr "Deck.gl - 多角形"
 
-#: superset/viz.py:2933
+#: superset/viz.py:2974
 msgid "Deck.gl - 3D HEX"
 msgstr "Deck.gl - 3D六角曲面"
 
-#: superset/viz.py:2954
+#: superset/viz.py:2995
 msgid "Deck.gl - GeoJSON"
 msgstr "Deck.gl - GeoJson"
 
-#: superset/viz.py:2973
+#: superset/viz.py:3014
 msgid "Deck.gl - Arc"
 msgstr "Deck.gl - 弧度"
 
-#: superset/viz.py:3007
+#: superset/viz.py:3048
 msgid "Event flow"
 msgstr "事件流"
 
-#: superset/viz.py:3039
+#: superset/viz.py:3080
 msgid "Time Series - Paired t-test"
 msgstr "时间序列 - 配对t检验"
 
-#: superset/viz.py:3111
+#: superset/viz.py:3152
 msgid "Time Series - Nightingale Rose Chart"
 msgstr "时间序列 - 南丁格尔玫瑰图"
 
-#: superset/viz.py:3146
+#: superset/viz.py:3187
 msgid "Partition Diagram"
 msgstr "分区图"
 
@@ -873,7 +873,7 @@ msgid "Unsupported extraction function: "
 msgstr "不支持的提取函数: "
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:48
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:202
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:212
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:996
 #: superset-frontend/src/explore/components/DatasourcePanel/index.tsx:283
 #: superset-frontend/src/explore/controls.jsx:233
@@ -919,7 +919,7 @@ msgstr "列"
 msgid "Type"
 msgstr "类型"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:149
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:155
 #: superset/connectors/druid/views.py:93 superset/views/access_requests.py:44
 #: superset/views/chart/mixin.py:80
 msgid "Datasource"
@@ -940,7 +940,7 @@ msgid ""
 msgstr "该列是否在浏览视图的`过滤器`部分显示。"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:91
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:129
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:135
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:992
 #: superset-frontend/src/explore/components/DatasourcePanel/index.tsx:262
 #: superset-frontend/src/explore/controls.jsx:143
@@ -962,8 +962,8 @@ msgstr "编辑 Druid 指标"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:105
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:106
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:143
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:144
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:149
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:150
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:882
 #: superset-frontend/src/explore/controls.jsx:158
 #: superset-frontend/src/explore/controls.jsx:159
@@ -1921,7 +1921,7 @@ msgid ""
 "\"%(syntax_error)s\". Then, try running your query again."
 msgstr "请在\"%(syntax_error)s\"处或附近检查您的查询是否存在语法错误。请修改后再次尝试运行查询。"
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:27
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:29
 #: superset/db_engine_specs/base.py:86
 msgid "Original value"
 msgstr "原值"
@@ -3489,7 +3489,7 @@ msgstr "最后修改"
 msgid "Parameters"
 msgstr "参数"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:160
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:166
 #: superset/views/chart/mixin.py:88
 msgid "Visualization Type"
 msgstr "可视化类型"
@@ -5236,10 +5236,9 @@ msgstr "图表标题"
 
 #: superset-frontend/src/chartConntrols/sections/chartTitle.tsx:31
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:139
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:385
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:395
 #: superset-frontend/src/explore/controls.jsx:403
 #: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:59
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:284
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:97
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:175
@@ -5267,9 +5266,8 @@ msgstr "X轴标题底部边距"
 
 #: superset-frontend/src/chartConntrols/sections/chartTitle.tsx:59
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:145
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:392
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:402
 #: superset-frontend/src/explore/controls.jsx:410
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:44
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:227
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:306
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:92
@@ -5404,12 +5402,134 @@ msgid "Time range endpoints (SIP-15)"
 msgstr "时间范围端点 (SIP-15)"
 
 #: superset-frontend/src/chartConntrols/sections/sections.tsx:98
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:469
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:441
 msgid "Color Scheme"
 msgstr "配色方案"
 
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:12
+msgid "Bar Background"
+msgstr "柱形背景"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:15
+msgid "Enable the background of the bar."
+msgstr "启用柱形的背景"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:21
+msgid "Y Axis Line"
+msgstr "Y轴的轴线"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:24
+msgid "Show or hide the axis of Y-axis."
+msgstr "显示或隐藏Y轴的轴线"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:30
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:33
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
+msgid "Y Axis Label"
+msgstr "Y轴的标题"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:39
+msgid "Y Axis 2 Label"
+msgstr "Y轴2的标题"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:45
+msgid "Maximum and minimum values for the Y axis"
+msgstr "Y轴的最大值和最小值"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:48
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:92
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:103
+msgid "Whether to display the min and max values of the Y-axis"
+msgstr "是否显示Y轴的最小值和最大值"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:54
+msgid "Maximum and minimum values for the Y axis 2"
+msgstr "Y轴2的最大值和最小值"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:55
+msgid "Whether to display the min and max values of the Y-axis 2"
+msgstr "是否显示Y轴的最小值和最大值"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:60
+#: superset-frontend/src/explore/controls.jsx:424
+msgid "Y Axis Format"
+msgstr "Y轴格式化"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:69
+#: superset-frontend/src/explore/controls.jsx:434
+msgid ""
+"When `Calculation type` is set to \"Percentage change\", the Y Axis "
+"Format is forced to `.1%`"
+msgstr "当设置“周期比”时，y轴格式强制为“1%”"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:81
+msgid "Y Axis 2 Format"
+msgstr "Y轴2格式化"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:86
+#, fuzzy
+msgid ""
+"When `Calculation type` is set to \"Percentage change\", the Y Axis 2 "
+"Format is forced to `.1%`"
+msgstr "当设置“周期比”时，y轴格式强制为“1%”"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:99
+#: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:336
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:251
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:217
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:200
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:216
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:264
+#: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:267
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:227
+msgid "Y Axis Bounds"
+msgstr "Y轴的边界"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:102
+#: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:339
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:254
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:220
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:203
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:219
+#: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:267
+#: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:270
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:230
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:246
+msgid ""
+"Bounds for the Y-axis. When left empty, the bounds are dynamically "
+"defined based on the min/max of the data. Note that this feature will "
+"only expand the axis range. It won't narrow the data's extent."
+msgstr "Y轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:113
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:243
+msgid "Y Axis 2 Bounds"
+msgstr "Y轴2的边界"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:114
+msgid ""
+"Bounds for the Y-axis 2. When left empty, the bounds are dynamically "
+"defined based on the min/max of the data. Note that this feature will "
+"only expand the axis range. It won't narrow the data's extent."
+msgstr "Y轴2的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:125
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:166
+msgid "X Axis Label"
+msgstr "X轴标题"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:133
+msgid "X Axis Label Rotate"
+msgstr "X轴标签旋转"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:138
+msgid ""
+"Rotation degree of axis label, which is especially useful when there is "
+"no enough space for category axis."
+msgstr "刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。"
+
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:26
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:93
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:97
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:266
 #: superset-frontend/src/explore/controls.jsx:119
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:36
@@ -5424,12 +5544,12 @@ msgid ""
 msgstr "高基数分组的一个或多个列到组应包括一个系列限制，以限制获取和渲染系列的数量。"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:49
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:203
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:213
 msgid "One or many columns to pivot as columns"
 msgstr "一个或多个列作为列旋转"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:54
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:366
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:376
 #: superset-frontend/src/explore/controls.jsx:382
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:115
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:104
@@ -5437,7 +5557,7 @@ msgid "Series"
 msgstr "序列"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:57
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:369
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:379
 #: superset-frontend/src/explore/controls.jsx:385
 msgid ""
 "Defines the grouping of entities. Each series is shown as a specific "
@@ -5445,43 +5565,43 @@ msgid ""
 msgstr "定义实体的分组。每个序列在图表上显示为特定颜色，并有一个可切换的图例"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:66
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:376
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:386
 #: superset-frontend/src/explore/controls.jsx:394
 msgid "Entity"
 msgstr "实体"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:70
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:380
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:390
 #: superset-frontend/src/explore/controls.jsx:398
 msgid "This defines the element to be plotted on the chart"
 msgstr "这定义了要在图表上绘制的元素"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:99
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:137
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:143
 #: superset-frontend/src/explore/controls.jsx:153
 msgid "One or many metrics to display"
 msgstr "一个或多个指标显示"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:111
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:175
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:181
 msgid "Right Axis Metric"
 msgstr "右轴指标"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:112
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:177
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:183
 #: superset-frontend/src/explore/controls.jsx:206
 msgid "Choose a metric for right axis"
 msgstr "为右轴选择一个指标"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:117
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:350
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:360
 #: superset-frontend/src/dashboard/components/SliceAdder.jsx:235
 #: superset-frontend/src/explore/controls.jsx:369
 msgid "Sort by"
 msgstr "排序"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:119
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:352
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:362
 msgid ""
 "Metric used to define how the top series are sorted if a series or row "
 "limit is present. If undefined reverts to the first metric (where "
@@ -5489,41 +5609,41 @@ msgid ""
 msgstr "用于定义如果存在序列或行限制，如何对顶部序列进行排序的度量。如果未定义，则返回到第一个度量（在适当的情况下）。"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:133
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:399
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:409
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:108
 msgid "Bubble Size"
 msgstr "气泡尺寸"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:134
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:400
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:410
 msgid "Metric used to calculate bubble size"
 msgstr "用于计算气泡大小的度量"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:140
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:386
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:396
 #: superset-frontend/src/explore/controls.jsx:404
 msgid "Metric assigned to the [X] axis"
 msgstr "分配给 [X] 轴的指标"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:146
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:394
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:404
 #: superset-frontend/src/explore/controls.jsx:412
 msgid "Metric assigned to the [Y] axis"
 msgstr "分配给 [Y] 轴的指标"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:151
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:194
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:204
 msgid "Color Metric"
 msgstr "颜色指标"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:153
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:197
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:207
 #: superset-frontend/src/explore/controls.jsx:226
 msgid "A metric to use for color"
 msgstr "用于颜色的指标"
 
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:159
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:252
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:262
 #: superset-frontend/src/explore/controls.jsx:284
 msgid ""
 "The time column for the visualization. Note that you can define arbitrary"
@@ -5540,46 +5660,46 @@ msgstr "把时间柱放在此处"
 msgid "Emit dashboard cross filters."
 msgstr "发出看板的交叉过滤器"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:99
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:103
 msgid ""
 "One or many columns to group by. High cardinality groupings should "
 "include a sort by metric and series limit to limit the number of fetched "
 "and rendered series."
 msgstr "一个或多个要分组的列。高基数分组应包括按度量排序和序列限制，以限制获取和呈现序列的数量。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:162
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:168
 #: superset-frontend/src/explore/controls.jsx:191
 msgid "The type of visualization to display"
 msgstr "要显示的可视化类型"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:167
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:173
 msgid "Fixed Color"
 msgstr "固定颜色"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:168
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:174
 #: superset-frontend/src/explore/controls.jsx:196
 msgid "Use this to define a static color for all circles"
 msgstr "使用此定义所有圆圈的静态颜色"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:182
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:188
 msgid "Linear Color Scheme"
 msgstr "线性颜色方案"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:215
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:225
 #: superset-frontend/src/explore/controls.jsx:246
 msgid ""
 "Defines the origin where time buckets start, accepts natural dates as in "
 "`now`, `sunday` or `1970-01-01`"
 msgstr "定义时间桶的起点，接受 `now`，`sunday` 或 `1970-01-01` 等格式的日期表达"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:243
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:253
 #: superset-frontend/src/explore/controls.jsx:274
 msgid ""
 "The time granularity for the visualization. Note that you can type and "
 "use simple natural language as in `10 seconds`, `1 day` or `56 weeks`"
 msgstr "可视化的时间粒度。请注意，您可以输入和使用简单的日期表达方式，如 `10 seconds`, `1 day` or `56 weeks`"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:280
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:290
 #: superset-frontend/src/explore/controls.jsx:313
 msgid ""
 "The time granularity for the visualization. This applies a date "
@@ -5588,13 +5708,13 @@ msgid ""
 "in the Superset source code."
 msgstr "可视化的时间粒度。这将应用日期转换来更改时间列，并定义新的时间粒度。这里的选项是在 Superset 源代码中的每个数据库引擎基础上定义的。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:294
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:304
 #: superset-frontend/src/explore/components/controls/DateFilterControl/utils/constants.ts:35
 #: superset-frontend/src/explore/controls.jsx:329
 msgid "No filter"
 msgstr "无筛选"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:295
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:305
 #: superset-frontend/src/explore/controls.jsx:330
 msgid ""
 "The time range for the visualization. All relative times, e.g. \"Last "
@@ -5608,23 +5728,23 @@ msgstr ""
 "可视化的时间范围。所有相关的时间，例如\"上个月\"、\"过去7天\"、\"现在\"等，都在服务器上使用服务器的本地时间（sans时区）进行计算。所有工具提示和占位符时间均以UTC（无时区）表示。然后，数据库使用引擎的本地时区来评估时间戳。注：如果指定开始时间和、或者结束时间，可以根据ISO"
 " 8601格式显式设置时区。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:312
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:322
 #: superset-frontend/src/explore/controls.jsx:347
 msgid "Row limit"
 msgstr "行限制"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:316
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:326
 msgid "Limits the number of rows that get displayed."
 msgstr "限制行的显示数量。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:322
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:337
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:332
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:347
 #: superset-frontend/src/explore/controls.jsx:356
 msgid "Series limit"
 msgstr "序列限制"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:326
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:340
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:336
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:350
 msgid ""
 "Limits the number of series that get displayed. A joined subquery (or an "
 "extra phase where subqueries are not supported) is applied to limit the "
@@ -5633,28 +5753,11 @@ msgid ""
 "query complexity and cost."
 msgstr "限制显示的时间序列的数量。应用子查询（或者不支持子查询）来限制获取和显示的时间序列的数量。在高基数维度（S）分组时，此特性是有用的。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:407
-#: superset-frontend/src/explore/controls.jsx:424
-msgid "Y Axis Format"
-msgstr "Y轴格式化"
-
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:416
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:436
-#: superset-frontend/src/explore/controls.jsx:434
-msgid ""
-"When `Calculation type` is set to \"Percentage change\", the Y Axis "
-"Format is forced to `.1%`"
-msgstr "当设置“周期比”时，y轴格式强制为“1%”"
-
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:427
-msgid "Y Axis 2 Format"
-msgstr "Y轴2格式化"
-
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:446
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:417
 msgid "Time format"
 msgstr "时间格式"
 
-#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:473
+#: superset-frontend/src/chartConntrols/shared-controls/index.tsx:445
 #: superset-frontend/src/explore/controls.jsx:459
 msgid "The color scheme for rendering chart"
 msgstr "绘制图表的配色方案"
@@ -5723,7 +5826,7 @@ msgid "Horizontal alignment"
 msgstr "水平对齐"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:104
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:68
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:102
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:278
 msgid "Left"
 msgstr "左边"
@@ -5733,7 +5836,7 @@ msgid "Center"
 msgstr "中间"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:106
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:69
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:103
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:279
 msgid "Right"
 msgstr "右边"
@@ -5781,20 +5884,20 @@ msgstr "D3数字格式，适用于-1.0和1.0之间的数字，当您想要对小
 msgid "D3 format syntax: https://github.com/d3/d3-format"
 msgstr "D3 标准语法：https://github.com/d3/d3-format"
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:26
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:45
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:28
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:50
 msgid "Adaptative formating"
 msgstr "适应格式"
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:38
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:41
 msgid "Duration in s (66000 => 1m 6s)"
 msgstr "持续时间（秒）(66000 => 1m 6s)"
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:39
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:42
 msgid "Duration in ns (1.40008 => 1ms 400µs 80ns)"
 msgstr "持续时间（纳秒）(1.40008 => 1ms 400µs 80ns)"
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:42
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:45
 msgid "D3 time format syntax: https://github.com/d3/d3-time-format"
 msgstr "D3 时间格式语法：https://github.com/d3/d3-time-format"
 
@@ -8905,7 +9008,7 @@ msgstr "把您的代码放在这里"
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:27
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:89
 #: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:39
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:34
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:35
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:34
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:28
@@ -10836,7 +10939,7 @@ msgstr "每个区块的时间单位。应该是比域粒度更小的单位。应
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:135
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:81
 #: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:44
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:39
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:45
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:62
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:67
@@ -10902,7 +11005,7 @@ msgstr "时间格式"
 
 #: superset-frontend/src/visualizations/D3/CalendarChart/controlPanel.ts:142
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:240
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:94
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:130
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:140
 msgid "Legend"
 msgstr "图例"
@@ -11378,13 +11481,13 @@ msgid "Left margin, in pixels, allowing for more room for axis labels"
 msgstr "左边距，以像素为单位，为轴标签留出更多空间"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:187
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:195
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:256
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:178
 msgid "Bottom Margin"
 msgstr "底部边距"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:191
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:199
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:276
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:182
 msgid "Bottom margin, in pixels, allowing for more room for axis labels"
 msgstr "底边距，以像素为单位，为轴标签留出更多空间"
@@ -12488,205 +12591,172 @@ msgid "Enable drill-down query."
 msgstr "启用下钻查询"
 
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:47
+msgid "Layout direction"
+msgstr "布局方向"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:49
+msgid "horizontal"
+msgstr "横向"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:50
+msgid "vertical"
+msgstr "纵向"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:54
+msgid "Select the layout direction of the chart."
+msgstr "选择图表的布局方向。"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:62
+msgid "Select mode of legend"
+msgstr "选择图例的模式"
+
+#: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:176
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:64
+msgid "Multiple"
+msgstr "多个"
+
+#: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:175
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:65
+msgid "Single"
+msgstr "单个"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:69
+msgid ""
+"Selected mode of legend, which controls whether series can be toggled "
+"displaying by clicking legends."
+msgstr "图例选择的模式，控制是否可以通过点击图例改变系列的显示状态。"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:81
 msgid "Legend Type"
 msgstr "图例类型"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:49
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:83
 msgid "Scroll"
 msgstr "可滚动翻页的图例"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:50
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:84
 msgid "Plain"
 msgstr "普通图例"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:54
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:88
 msgid "Show Legend type"
 msgstr "显示图例类型"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:64
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:98
 msgid "Legend Orientation"
 msgstr "图例列表的布局朝向"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:66
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:100
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:261
 msgid "Top"
 msgstr "顶部"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:67
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:101
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:262
 msgid "Bottom"
 msgstr "底部"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:73
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:107
 msgid "Choose the orientation of the legend"
 msgstr "选择图例的方向"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:82
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:117
 msgid "Legend Padding"
 msgstr "图例内边距"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:88
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:123
 msgid "Additional padding for legend."
 msgstr "为图例提供额外的填充"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:105
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:142
 msgid "Rich tooltip"
 msgstr "丰富的工具提示"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:108
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:145
 msgid "Shows a list of all series available at that point in time"
 msgstr "显示该时间点可用的所有系列的列表"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:116
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:155
 msgid "Tooltip sort by metric"
 msgstr "按指标排序"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:119
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:158
 msgid "Whether to sort tooltip by the selected metric in descending order."
 msgstr "是否按所选指标按降序排列工具提示。"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:128
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:170
 msgid "Tooltip time format"
 msgstr "时间格式"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:135
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:177
 msgid "Tooltip"
 msgstr "工具提示"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:145
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:187
 msgid "Show Value"
 msgstr "显示值"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:148
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:190
 msgid "Show series values on the chart"
 msgstr "在图表上显示系列值"
 
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:150
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:156
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:198
 msgid "Stack series"
 msgstr "堆叠"
 
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:153
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:159
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:201
 msgid "Stack series on top of each other"
 msgstr "堆叠在彼此的顶部"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:167
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:209
 msgid "Only Total"
 msgstr "只有总数"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:170
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:212
 msgid ""
 "Only show the total value on the stacked chart, and not show on the "
 "selected category"
 msgstr "仅在堆叠图表上显示总值，而不在所选类别上显示"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:182
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:230
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:292
 msgid "Stacked Bars"
 msgstr "堆叠柱"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:207
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:241
+msgid "Show Stacked Precent"
+msgstr "按百分比显示堆叠"
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:286
 msgid "Show Bar Values"
 msgstr "显示柱状图的值"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:210
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:289
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:284
 msgid "Show the value on top of the bar"
 msgstr "在柱顶端显示值"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:218
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:297
 msgid "Axis Pointer"
 msgstr "坐标轴指示器"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:221
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:300
 msgid "Show Axis Pointer"
 msgstr "显示坐标轴指示器"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:229
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:308
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:151
 msgid "Extra Controls"
 msgstr "额外控制"
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:232
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:311
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:154
 msgid ""
 "Whether to show extra controls or not. Extra controls include things like"
 " making mulitBar charts stacked or side by side."
 msgstr "是否显示额外控件。额外的控制包括使多柱状图堆叠或并排。"
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:244
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:166
-msgid "X Axis Label"
-msgstr "X轴标题"
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:254
-msgid "X Axis Label Rotate"
-msgstr "X轴标签旋转"
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:259
-msgid ""
-"Rotation degree of axis label, which is especially useful when there is "
-"no enough space for category axis."
-msgstr "刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。"
-
-#: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:336
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:251
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:217
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:200
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:216
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:264
-#: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:267
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:269
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:227
-msgid "Y Axis Bounds"
-msgstr "Y轴的边界"
-
-#: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:339
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:254
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:220
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:203
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/controlPanel.tsx:219
-#: superset-frontend/src/visualizations/ECharts/Timeseries/Step/controlPanel.tsx:267
-#: superset-frontend/src/visualizations/ECharts/Timeseries/controlPanel.tsx:270
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:272
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:288
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:230
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:246
-msgid ""
-"Bounds for the Y-axis. When left empty, the bounds are dynamically "
-"defined based on the min/max of the data. Note that this feature will "
-"only expand the axis range. It won't narrow the data's extent."
-msgstr "Y轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:285
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:243
-msgid "Y Axis 2 Bounds"
-msgstr "Y轴2的边界"
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:301
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
-msgid "Y Axis Label"
-msgstr "Y轴的标题"
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:311
-msgid "Y Axis 2 Label"
-msgstr "Y轴2的标题"
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:321
-msgid "Maximum and minimum values for the Y axis"
-msgstr "Y轴的最大值和最小值"
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:324
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:335
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:92
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:103
-msgid "Whether to display the min and max values of the Y-axis"
-msgstr "是否显示Y轴的最小值和最大值"
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:332
-msgid "Maximum and minimum values for the Y axis 2"
-msgstr "Y轴2的最大值和最小值"
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/BarLine/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/NVD3/DualLine/controlPanel.ts:40
@@ -12703,6 +12773,68 @@ msgid ""
 "Bar chart and Line chart can be displayed in one chart at the same time, "
 "with 1 X-axis and 2 Y-axes."
 msgstr "柱状图和折线图可以同时显示在一张图表中，有1个X轴和2个Y轴。"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:60
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:82
+msgid "Sort Bars"
+msgstr "柱排序"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:63
+#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:85
+msgid "Sort bars by x labels."
+msgstr "按x标签对柱进行排序。"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:72
+msgid "Value Axis"
+msgstr "数值轴"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:83
+msgid "Category Axis"
+msgstr "类目轴"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:90
+msgid "Value Axis Format"
+msgstr "数值轴格式化"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:93
+msgid "Value Axis Line"
+msgstr "数值轴的轴线"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:94
+msgid "Show or hide the axis of Value-axis."
+msgstr "显示或隐藏数值轴的轴线。"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:97
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:98
+msgid "Value Axis Label"
+msgstr "数值轴的标签"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:101
+msgid "Maximum and minimum values for the Value axis"
+msgstr "数值轴的最大值和最小值"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:102
+msgid "Whether to display the min and max values of the Value-axis"
+msgstr "是否显示数值轴的最小值和最大值"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:107
+msgid "Value Axis Bounds"
+msgstr "数值轴的边界"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:108
+msgid ""
+"Bounds for the Value-axis. When left empty, the bounds are dynamically "
+"defined based on the min/max of the data. Note that this feature will "
+"only expand the axis range. It won't narrow the data's extent."
+msgstr "数值轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:116
+msgid "Category Axis Label"
+msgstr "类目轴的标签"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:119
+msgid "Category Axis Label Rotate"
+msgstr "类目轴的标签旋转"
 
 #: superset-frontend/src/visualizations/ECharts/Bar/index.ts:47
 msgid ""
@@ -13085,14 +13217,6 @@ msgstr "是否启用更改图形位置和缩放。"
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:171
 msgid "Node select mode"
 msgstr "节点选择模式"
-
-#: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:175
-msgid "Single"
-msgstr "单个"
-
-#: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:176
-msgid "Multiple"
-msgstr "多个"
 
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:178
 msgid "Allow node selections"
@@ -13547,14 +13671,6 @@ msgstr "雷达图"
 #: superset-frontend/src/visualizations/ECharts/Radar/index.ts:57
 msgid "Web"
 msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:82
-msgid "Sort Bars"
-msgstr "柱排序"
-
-#: superset-frontend/src/visualizations/ECharts/StackedColumnChart/controlPanel.tsx:85
-msgid "Sort bars by x labels."
-msgstr "按x标签对柱进行排序。"
 
 #: superset-frontend/src/visualizations/ECharts/StackedColumnChart/index.ts:48
 msgid ""

@@ -20,17 +20,15 @@ import { t, validateNonEmpty } from 'src/core';
 import { ControlPanelConfig } from 'src/chartConntrols';
 import {
   barStacked,
+  stackedPrecent,
   bottomMargin,
+  chartOrientControl,
   legendSection,
   showAxisPointer,
   showBarValue,
-  xAxisLabel,
-  xLabelLayout,
-  yAxisBounds,
-  yAxisLabel,
-  yAxisShowMinmax,
 } from '../controls';
 
+// @ts-ignore
 const config: ControlPanelConfig = {
   controlPanelSections: [
     {
@@ -48,9 +46,12 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['color_scheme'],
+        ['barBackground'],
+        [chartOrientControl],
         ...legendSection,
         [showBarValue],
         [barStacked],
+        [stackedPrecent],
         [
           {
             name: 'order_bars',
@@ -64,25 +65,59 @@ const config: ControlPanelConfig = {
           },
         ],
         [showAxisPointer],
+        [bottomMargin],
       ],
     },
     {
-      label: t('Y Axis'),
+      label: t('Value Axis'),
       expanded: true,
       controlSetRows: [
-        ['y_axis_format'],
-        [yAxisLabel],
-        [yAxisShowMinmax],
-        [yAxisBounds],
+        ['yAxisLine'],
+        ['yAxisFormat'],
+        ['yAxisLabel'],
+        ['yAxisShowMinmax'],
+        ['yAxisBounds'],
       ],
     },
     {
-      label: t('X Axis'),
+      label: t('Category Axis'),
       expanded: true,
-      controlSetRows: [[xAxisLabel], [bottomMargin], [xLabelLayout]],
+      controlSetRows: [['xAxisLabel'], ['xLabelLayout']],
     },
   ],
   controlOverrides: {
+    yAxisFormat: {
+      label: t('Value Axis Format'),
+    },
+    yAxisLine: {
+      label: t('Value Axis Line'),
+      description: t('Show or hide the axis of Value-axis.'),
+    },
+    yAxisLabel: {
+      label: t('Value Axis Label'),
+      description: t('Value Axis Label'),
+    },
+    yAxisShowMinmax: {
+      label: t('Maximum and minimum values for the Value axis'),
+      description: t(
+        'Whether to display the min and max values of the Value-axis',
+      ),
+    },
+    yAxisBounds: {
+      label: t('Value Axis Bounds'),
+      description: t(
+        'Bounds for the Value-axis. When left empty, the bounds are ' +
+          'dynamically defined based on the min/max of the data. Note that ' +
+          "this feature will only expand the axis range. It won't " +
+          "narrow the data's extent.",
+      ),
+    },
+    xAxisLabel: {
+      label: t('Category Axis Label'),
+    },
+    xLabelLayout: {
+      label: t('Category Axis Label Rotate'),
+    },
     groupby: {
       validators: [validateNonEmpty], // 非空校验
     },

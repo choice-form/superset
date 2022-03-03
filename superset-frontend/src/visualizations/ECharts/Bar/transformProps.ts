@@ -18,6 +18,7 @@
  */
 import { CategoricalColorNamespace, getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
+import { sum } from 'lodash';
 import {
   BarChartTransformedProps,
   EchartsBarChartProps,
@@ -27,7 +28,17 @@ import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { defaultGrid, defaultTooltip } from '../defaults';
 import { OpacityEnum } from '../constants';
-// import { OpacityEnum } from '../constants';
+
+// 将值切换为百分比数据
+// @ts-ignore
+const switchPrecent: number[] = (arr: (string | number)[]) => {
+  if (arr.length < 2) return arr;
+  const name: string = arr[0] as string;
+  const tmpArr = arr.slice(1, arr.length) as number[];
+  const total = sum(tmpArr);
+  const newArr = tmpArr.map(o => Number((o / total).toFixed(2)));
+  return [name, ...newArr];
+};
 
 export default function transformProps(
   chartProps: EchartsBarChartProps,
@@ -42,19 +53,23 @@ export default function transformProps(
     datasource,
   } = chartProps;
 
-  console.log('chartProps:', chartProps);
+  // console.log('chartProps:', chartProps);
 
   const {
     colorScheme,
+    barBackground, // 柱形的背景控制
+    chartOrient, // 图表布局方向
     groupby,
     showAxisPointer, // 是否显示坐标轴指示器
     xAxisLabel, // X轴名称
     yAxisLabel, // Y轴名称
+    yAxisLine, // 是否显示Y轴的轴线
     yAxisFormat, // Y轴的格式化类
     orderBars, // 是否按柱子的标签名称排序
     showBarValue, // 是否将值显示在柱子上
     barStacked, // 堆叠
-    yAxisShowminmax, // 是否显示Y轴的最大值最小值限制
+    stackedPrecent, // 堆叠显示成百分比
+    yAxisShowMinmax, // 是否显示Y轴的最大值最小值限制
     yAxisBounds, // Y轴的最小值和最大值数组
     bottomMargin, // X轴距离下方的距离
     xLabelLayout, // X轴布局：标签旋转角度
@@ -69,9 +84,47 @@ export default function transformProps(
     ...formData,
   };
 
-  const rawData = queriesData[0].data;
+  let rawData = queriesData[0].data;
+  // 如果堆叠百分比
+  if (barStacked && stackedPrecent) {
+    const tmpArr = rawData.slice(1, rawData.length);
+    // @ts-ignore
+    rawData = [rawData[0], ...tmpArr.map(switchPrecent)];
+  }
 
   const { setDataMask = () => {} } = hooks;
+
+  // 标签位置，默认顶部
+  let labelPosition = { position: 'top' };
+  // 横向布局的时候，显示
+  if (chartOrient === 'horizontal') {
+    if (barStacked && datasource.metrics.length > 1) {
+      labelPosition = { position: 'inside' };
+    }
+  } else {
+    // 纵向布局的时候，也就是类目轴是竖着的时候
+    labelPosition = { position: 'right' };
+    if (barStacked && datasource.metrics.length > 1) {
+      labelPosition = { position: 'inside' };
+    }
+  }
+
+  // 旋转角度
+  let labelRotate = { rotate: 0 };
+  if (
+    chartOrient !== 'horizontal' &&
+    barStacked &&
+    datasource.metrics.length > 1
+  ) {
+    labelRotate = {
+      rotate: -90,
+    };
+  }
+
+  // Y轴的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
+  const numberFormatter = getNumberFormatter(
+    barStacked && stackedPrecent ? '.0%' : yAxisFormat,
+  );
 
   // 柱状图的通用配置
   const barSeries = {
@@ -82,15 +135,26 @@ export default function transformProps(
       // 是否隐藏重叠的标签
       hideOverlap: true,
     },
+    scaleSize: 12,
+    itemStyle: {
+      shadowBlur: 10,
+      shadowOffsetX: 0,
+      shadowColor: 'rgba(0, 0, 0, 0.5)',
+    },
     label: {
       // 在柱子上显示值
       show: showBarValue,
-      // 堆叠的时候，显示在内部，组显示的时候，显示在头部. 如果只有一组数据，就不切换了
-      position: barStacked && datasource.metrics.length > 1 ? 'inside' : 'top',
+      // 标签的位置
+      ...labelPosition,
+      // 旋转
+      ...labelRotate,
       // 格式化值(标准数据集的取值格式化，非数据集才可以直接格式化)
       formatter({ value, encode }: any) {
-        const idx = encode.y[0];
+        const idx = chartOrient === 'horizontal' ? encode.y[0] : encode.x[0];
         const row = value[idx];
+        if (barStacked && stackedPrecent) {
+          return numberFormatter(row);
+        }
         return typeof row === 'number' ? `${row.toFixed(2)}` : row;
       },
     },
@@ -102,6 +166,10 @@ export default function transformProps(
   const series = Array.from({ length: rawData[0].length - 1 }).map(
     (_, idx) => ({
       ...barSeries,
+      showBackground: barBackground,
+      backgroundStyle: {
+        color: 'rgba(180, 180, 180, 0.2)',
+      },
       itemStyle: {
         color: colorFn(idx),
         opacity: OpacityEnum.NonTransparent,
@@ -122,13 +190,18 @@ export default function transformProps(
   // );
 
   // Y轴的最大值和最小值
-  const yMinMax =
-    yAxisShowminmax && yAxisBounds.length === 2
-      ? {
-          min: yAxisBounds[0],
-          max: yAxisBounds[1],
-        }
-      : {};
+  let yMinMax = {};
+  if (barStacked && stackedPrecent) {
+    yMinMax = {
+      min: 0,
+      max: 1,
+    };
+  } else if (yAxisShowMinmax && yAxisBounds.length === 2) {
+    yMinMax = {
+      min: yAxisBounds[0],
+      max: yAxisBounds[1],
+    };
+  }
 
   // 位置计算
   const gridBottom =
@@ -152,7 +225,7 @@ export default function transformProps(
       case '90°':
         return 90;
       default:
-        return -45;
+        return chartOrient === 'horizontal' ? -45 : 0;
     }
   };
 
@@ -198,8 +271,44 @@ export default function transformProps(
     sourceData = [rawData[0], ...arr];
   }
 
-  // Y轴的格式化方法
-  const numberFormatter = getNumberFormatter(yAxisFormat);
+  // 默认：一般横向，数组直接用就行，第一个分类是X，第二个值就是Y。如果是纵向的布局，就倒过来。
+  const axisData = [
+    {
+      type: 'category', // 类目轴
+      name: xAxisLabel, // X 表示类目轴
+      nameLocation: 'center',
+      nameTextStyle: {
+        fontWeight: 'bold',
+        fontSize: 16,
+      },
+      axisLabel: {
+        hideOverlap: true, // 是否隐藏重叠的标签
+        rotate: getRotate(xLabelLayout), // 标签旋转角度
+      },
+    },
+    {
+      type: 'value', // 数值轴
+      name: yAxisLabel, // Y表示数值轴
+      nameLocation: 'center',
+      nameGap: 32,
+      nameTextStyle: {
+        fontWeight: 'bold',
+        fontSize: 16,
+      },
+      ...yMinMax,
+      axisLine: {
+        // 是否显示数值轴的轴线
+        show: yAxisLine,
+      },
+      axisLabel: {
+        formatter(val: number) {
+          return numberFormatter(val);
+        },
+      },
+    },
+  ];
+  const xAxis = chartOrient === 'horizontal' ? axisData[0] : axisData[1];
+  const yAxis = chartOrient === 'horizontal' ? axisData[1] : axisData[0];
 
   const echartOptions: EChartsCoreOption = {
     grid: {
@@ -210,8 +319,12 @@ export default function transformProps(
       ...defaultTooltip,
       ...axisPointer,
       // 提示的值格式化
-      valueFormatter: (value: any) =>
-        typeof value === 'number' ? `${value.toFixed(2)}` : value,
+      valueFormatter: (value: any) => {
+        if (barStacked && stackedPrecent) {
+          return numberFormatter(value);
+        }
+        return typeof value === 'number' ? `${value.toFixed(2)}` : value;
+      },
     },
     legend: {
       show: showLegend,
@@ -222,32 +335,12 @@ export default function transformProps(
     dataset: {
       source: sourceData,
     },
-    xAxis: {
-      type: 'category',
-      name: xAxisLabel,
-      axisLabel: {
-        // hideOverlap: true, // 是否隐藏重叠的标签
-        rotate: getRotate(xLabelLayout), // 标签旋转角度
-      },
-    },
-    yAxis: {
-      type: 'value',
-      name: yAxisLabel,
-      axisLine: {
-        // 显示边线
-        show: true,
-      },
-      ...yMinMax,
-      axisLabel: {
-        formatter(val: number) {
-          return numberFormatter(val);
-        },
-      },
-    },
+    xAxis,
+    yAxis,
     series,
   };
 
-  console.log('echartOptions', echartOptions);
+  // console.log('echartOptions', echartOptions);
 
   return {
     formData,

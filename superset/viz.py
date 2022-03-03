@@ -807,26 +807,11 @@ class BarViz(BaseViz):
         if not self.form_data.get("metrics"):
             raise QueryObjectValidationError(_("Pick at least one metric"))
 
-        # 只能有一个指标
-        # if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) > 1:
-        #     raise QueryObjectValidationError(
-        #         _("When using 'Group By' you are limited to use a single metric")
-        #     )
-
         return query_obj
 
     def get_data(self, df: pd.DataFrame) -> VizData:
         if df.empty:
             return None
-
-        # columns = None
-        # values: Union[List[str], str] = self.metric_labels
-        # if self.form_data.get("groupby"):
-        #     values = self.metric_labels[0]
-        #     columns = self.form_data.get("groupby")
-        # pt = df.pivot_table(columns=columns, values=values)
-        # pt.index = pt.index.map(str)
-        # pt = pt.sort_index()
 
         metrics = self.metric_labels
         columns = self.form_data.get("columns") or []
@@ -872,8 +857,6 @@ class BarViz(BaseViz):
             handle = {series_title: dict(values)}
             chart_data.append(handle)
 
-        print('chart_data:', chart_data)
-
         # 返回数据集
         dataset = []
         if len(chart_data) == 1:
@@ -892,19 +875,6 @@ class BarViz(BaseViz):
                 dataset.append([k] + list(v.values()))
 
         return dataset
-
-        # 返回数据集
-        # dataset = []
-        # # 第一列是分组维度列
-        # product = ['product'] + list(self.form_data.get("groupby"))
-        # dataset.append(product)
-        # # 第二列开始是数据
-        # for i in range(len(pt.columns)):
-        #     key = pt.columns[i]
-        #     val = pt.values[0][i]
-        #     dataset.append(list([key, val]))
-        # # 返回数据
-        # return dataset
 
 
 class StackedColumnViz(BaseViz):

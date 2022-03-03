@@ -40,15 +40,29 @@ export const drilldown = {
   },
 };
 
+export const chartOrientControl = {
+  name: 'chartOrient',
+  config: {
+    type: 'SelectControl',
+    label: t('Layout direction'),
+    choices: [
+      ['horizontal', t('horizontal')],
+      ['vertical', t('vertical')],
+    ],
+    default: 'horizontal',
+    renderTrigger: true,
+    description: t('Select the layout direction of the chart.'),
+  },
+};
+
 export const legendModeControl = {
   name: 'legendMode',
   config: {
     type: 'SelectControl',
-    freeForm: false,
-    label: t('Legend Selected Mode'),
+    label: t('Select mode of legend'),
     choices: [
-      ['multiple', t('Multiple Mode')],
-      ['single', t('Single Mode')],
+      ['multiple', t('Multiple')],
+      ['single', t('Single')],
     ],
     default: 'multiple',
     renderTrigger: true,
@@ -64,7 +78,6 @@ const legendTypeControl = {
   name: 'legendType',
   config: {
     type: 'SelectControl',
-    freeForm: false,
     label: t('Legend Type'),
     choices: [
       ['scroll', t('Scroll')],
@@ -82,7 +95,6 @@ const legendOrientationControl = {
   name: 'legendOrientation',
   config: {
     type: 'SelectControl',
-    freeForm: false,
     label: t('Legend Orientation'),
     choices: [
       ['top', t('Top')],
@@ -222,6 +234,19 @@ export const barStacked: CustomControlItem = {
   },
 };
 
+export const stackedPrecent: CustomControlItem = {
+  name: 'stacked_precent',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Show Stacked Precent'),
+    renderTrigger: true,
+    default: false,
+    description: null,
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.bar_stacked?.value),
+  },
+};
+
 export const bottomMargin: CustomControlItem = {
   name: 'bottom_margin',
   config: {
@@ -288,104 +313,5 @@ export const showControls: CustomControlItem = {
         'include things like making mulitBar charts stacked ' +
         'or side by side.',
     ),
-  },
-};
-
-export const xAxisLabel: CustomControlItem = {
-  name: 'x_axis_label',
-  config: {
-    type: 'TextControl',
-    label: t('X Axis Label'),
-    renderTrigger: true,
-    default: '',
-  },
-};
-
-export const xLabelLayout: CustomControlItem = {
-  name: 'x_label_layout',
-  config: {
-    type: 'SelectControl',
-    label: t('X Axis Label Rotate'),
-    choices: formatSelectOptions(['auto', '-90°', '-45°', '0°', '45°', '90°']),
-    default: 'auto',
-    clearable: false,
-    renderTrigger: true,
-    description: t(
-      'Rotation degree of axis label, which is especially useful when there is no enough space for category axis.',
-    ),
-  },
-};
-
-export const yAxisBounds: CustomControlItem = {
-  name: 'y_axis_bounds',
-  config: {
-    type: 'BoundsControl',
-    label: t('Y Axis Bounds'),
-    renderTrigger: true,
-    default: [null, null],
-    description: t(
-      'Bounds for the Y-axis. When left empty, the bounds are ' +
-        'dynamically defined based on the min/max of the data. Note that ' +
-        "this feature will only expand the axis range. It won't " +
-        "narrow the data's extent.",
-    ),
-  },
-};
-
-export const yAxis2Bounds: CustomControlItem = {
-  name: 'y_axis_2_bounds',
-  config: {
-    type: 'BoundsControl',
-    label: t('Y Axis 2 Bounds'),
-    renderTrigger: true,
-    default: [null, null],
-    description: t(
-      'Bounds for the Y-axis. When left empty, the bounds are ' +
-        'dynamically defined based on the min/max of the data. Note that ' +
-        "this feature will only expand the axis range. It won't " +
-        "narrow the data's extent.",
-    ),
-  },
-};
-
-export const yAxisLabel: CustomControlItem = {
-  name: 'y_axis_label',
-  config: {
-    type: 'TextControl',
-    label: t('Y Axis Label'),
-    renderTrigger: true,
-    default: '',
-  },
-};
-
-export const yAxis2Label: CustomControlItem = {
-  name: 'y_axis_2_label',
-  config: {
-    type: 'TextControl',
-    label: t('Y Axis 2 Label'),
-    renderTrigger: true,
-    default: '',
-  },
-};
-
-export const yAxisShowMinmax: CustomControlItem = {
-  name: 'y_axis_showminmax',
-  config: {
-    type: 'CheckboxControl',
-    label: t('Maximum and minimum values for the Y axis'),
-    renderTrigger: true,
-    default: false,
-    description: t('Whether to display the min and max values of the Y-axis'),
-  },
-};
-
-export const yAxis2ShowMinmax: CustomControlItem = {
-  name: 'y_axis_2_showminmax',
-  config: {
-    type: 'CheckboxControl',
-    label: t('Maximum and minimum values for the Y axis 2'),
-    renderTrigger: true,
-    default: false,
-    description: t('Whether to display the min and max values of the Y-axis'),
   },
 };

@@ -47,16 +47,20 @@ import {
 
 import {
   formatSelectOptions,
-  D3_FORMAT_OPTIONS,
-  D3_FORMAT_DOCS,
   D3_TIME_FORMAT_OPTIONS,
   D3_TIME_FORMAT_DOCS,
   DEFAULT_TIME_FORMAT,
-  DEFAULT_NUMBER_FORMAT,
 } from '../utils';
 import { TIME_FILTER_LABELS, TIME_COLUMN_OPTION } from '../constants';
-import { Metric, SharedControlConfig, ColumnMeta, ExtraControlProps, SelectControlConfig } from '../types';
+import {
+  Metric,
+  SharedControlConfig,
+  ColumnMeta,
+  ExtraControlProps,
+  SelectControlConfig,
+} from '../types';
 import { ColumnOption } from '../components/ColumnOption';
+import * as chartControls from './chartControls';
 
 import {
   dnd_adhoc_filters,
@@ -105,8 +109,10 @@ const groupByControl: SharedControlConfig<'SelectControl', ColumnMeta> = {
   valueKey: 'column_name',
   allowAll: true,
   filterOption: ({ data: opt }, text: string) =>
-    (opt.column_name && opt.column_name.toLowerCase().includes(text.toLowerCase())) ||
-    (opt.verbose_name && opt.verbose_name.toLowerCase().includes(text.toLowerCase())) ||
+    (opt.column_name &&
+      opt.column_name.toLowerCase().includes(text.toLowerCase())) ||
+    (opt.verbose_name &&
+      opt.verbose_name.toLowerCase().includes(text.toLowerCase())) ||
     false,
   promptTextCreator: (label: unknown) => label,
   mapStateToProps(state, { includeTime }) {
@@ -180,7 +186,11 @@ const metric_2: SharedControlConfig<'MetricsControl'> = {
 const linear_color_scheme: SharedControlConfig<'ColorSchemeControl'> = {
   type: 'ColorSchemeControl',
   label: t('Linear Color Scheme'),
-  choices: () => (sequentialSchemeRegistry.values() as SequentialScheme[]).map(value => [value.id, value.label]),
+  choices: () =>
+    (sequentialSchemeRegistry.values() as SequentialScheme[]).map(value => [
+      value.id,
+      value.label,
+    ]),
   default: sequentialSchemeRegistry.getDefaultKey(),
   clearable: false,
   description: '',
@@ -401,45 +411,6 @@ const size: SharedControlConfig<'MetricsControl'> = {
   default: null,
 };
 
-const y_axis_format: SharedControlConfig<'SelectControl'> = {
-  type: 'SelectControl',
-  freeForm: true,
-  label: t('Y Axis Format'),
-  renderTrigger: true,
-  default: DEFAULT_NUMBER_FORMAT,
-  choices: D3_FORMAT_OPTIONS,
-  description: D3_FORMAT_DOCS,
-  mapStateToProps: state => {
-    const showWarning = state.controls?.comparison_type?.value === 'percentage';
-    return {
-      warning: showWarning
-        ? t('When `Calculation type` is set to "Percentage change", the Y Axis Format is forced to `.1%`')
-        : null,
-      disabled: showWarning,
-    };
-  },
-};
-
-// 第二个Y轴的配置
-const y_axis_2_format: SharedControlConfig<'SelectControl'> = {
-  type: 'SelectControl',
-  freeForm: true,
-  label: t('Y Axis 2 Format'),
-  renderTrigger: true,
-  default: DEFAULT_NUMBER_FORMAT,
-  choices: D3_FORMAT_OPTIONS,
-  description: D3_FORMAT_DOCS,
-  mapStateToProps: state => {
-    const showWarning = state.controls?.comparison_type?.value === 'percentage';
-    return {
-      warning: showWarning
-        ? t('When `Calculation type` is set to "Percentage change", the Y Axis Format is forced to `.1%`')
-        : null,
-      disabled: showWarning,
-    };
-  },
-};
-
 const x_axis_time_format: SharedControlConfig<'SelectControl'> = {
   type: 'SelectControl',
   freeForm: true,
@@ -459,7 +430,8 @@ const adhoc_filters: SharedControlConfig<'AdhocFilterControl'> = {
     columns: datasource?.columns.filter(c => c.filterable) || [],
     savedMetrics: datasource?.metrics || [],
     // current active adhoc metrics
-    selectedMetrics: form_data.metrics || (form_data.metric ? [form_data.metric] : []),
+    selectedMetrics:
+      form_data.metrics || (form_data.metric ? [form_data.metric] : []),
     datasource,
   }),
 };
@@ -477,7 +449,9 @@ const color_scheme: SharedControlConfig<'ColorSchemeControl'> = {
   }),
 };
 
-const enableExploreDnd = isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP);
+const enableExploreDnd = isFeatureEnabled(
+  FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP,
+);
 
 const sharedControls = {
   metrics: enableExploreDnd ? dnd_adhoc_metrics : metrics,
@@ -504,8 +478,6 @@ const sharedControls = {
   x: enableExploreDnd ? dnd_x : x,
   y: enableExploreDnd ? dnd_y : y,
   size: enableExploreDnd ? dnd_size : size,
-  y_axis_format,
-  y_axis_2_format,
   x_axis_time_format,
   adhoc_filters: enableExploreDnd ? dnd_adhoc_filters : adhoc_filters,
   color_scheme,
@@ -513,6 +485,7 @@ const sharedControls = {
   series_limit,
   series_limit_metric: enableExploreDnd ? dnd_sort_by : sort_by,
   legacy_order_by: enableExploreDnd ? dnd_sort_by : sort_by,
+  ...chartControls,
 };
 
 export { sharedControls, dndEntity, dndColumnsControl };
