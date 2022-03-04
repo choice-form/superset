@@ -91,6 +91,7 @@ export default function transformProps(
     // @ts-ignore
     rawData = [rawData[0], ...tmpArr.map(switchPrecent)];
   }
+  // console.log('rawData:', rawData);
 
   const { setDataMask = () => {} } = hooks;
 
@@ -98,13 +99,13 @@ export default function transformProps(
   let labelPosition = { position: 'top' };
   // 横向布局的时候，显示
   if (chartOrient === 'horizontal') {
-    if (barStacked && datasource.metrics.length > 1) {
+    if (barStacked && (datasource.metrics.length > 1 || stackedPrecent)) {
       labelPosition = { position: 'inside' };
     }
   } else {
     // 纵向布局的时候，也就是类目轴是竖着的时候
     labelPosition = { position: 'right' };
-    if (barStacked && datasource.metrics.length > 1) {
+    if (barStacked && (datasource.metrics.length > 1 || stackedPrecent)) {
       labelPosition = { position: 'inside' };
     }
   }
