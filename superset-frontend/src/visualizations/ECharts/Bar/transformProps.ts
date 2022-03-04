@@ -36,7 +36,7 @@ const switchPrecent: number[] = (arr: (string | number)[]) => {
   const name: string = arr[0] as string;
   const tmpArr = arr.slice(1, arr.length) as number[];
   const total = sum(tmpArr);
-  const newArr = tmpArr.map(o => Number((o / total).toFixed(2)));
+  const newArr = tmpArr.map(o => o / total);
   return [name, ...newArr];
 };
 
