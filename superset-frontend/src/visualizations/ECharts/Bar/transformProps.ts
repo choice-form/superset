@@ -50,7 +50,6 @@ export default function transformProps(
     // filterState,
     queriesData,
     width,
-    datasource,
   } = chartProps;
 
   // console.log('chartProps:', chartProps);
@@ -60,6 +59,7 @@ export default function transformProps(
     barBackground, // 柱形的背景控制
     chartOrient, // 图表布局方向
     groupby,
+    metrics, // 查询指标
     showAxisPointer, // 是否显示坐标轴指示器
     xAxisLabel, // X轴名称
     yAxisLabel, // Y轴名称
@@ -95,31 +95,34 @@ export default function transformProps(
 
   const { setDataMask = () => {} } = hooks;
 
+  // console.log('metrics:', metrics);
+  // console.log('barStacked:', barStacked);
+  // console.log('chartOrient:', chartOrient);
   // 标签位置，默认顶部
   let labelPosition = { position: 'top' };
-  // 横向布局的时候，显示
-  if (chartOrient === 'horizontal') {
-    if (barStacked && (datasource.metrics.length > 1 || stackedPrecent)) {
-      labelPosition = { position: 'inside' };
-    }
-  } else {
-    // 纵向布局的时候，也就是类目轴是竖着的时候
-    labelPosition = { position: 'right' };
-    if (barStacked && (datasource.metrics.length > 1 || stackedPrecent)) {
-      labelPosition = { position: 'inside' };
-    }
-  }
-
   // 旋转角度
   let labelRotate = { rotate: 0 };
-  if (
-    chartOrient !== 'horizontal' &&
-    barStacked &&
-    datasource.metrics.length > 1
-  ) {
-    labelRotate = {
-      rotate: -90,
-    };
+  if (metrics.length > 1) {
+    // 横向布局的时候，显示
+    if (chartOrient === 'horizontal') {
+      if (barStacked) {
+        // 多个放在内部显示
+        labelPosition = { position: 'inside' };
+      }
+    } else {
+      // 纵向布局的时候，也就是类目轴是竖着的时候
+      labelPosition = { position: 'right' };
+      if (barStacked) {
+        labelPosition = { position: 'inside' };
+        labelRotate = { rotate: -90 };
+      }
+    }
+  } else {
+    // 横向布局的时候，显示
+    // eslint-disable-next-line no-lonely-if
+    if (chartOrient !== 'horizontal') {
+      labelPosition = { position: 'right' };
+    }
   }
 
   // Y轴的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
