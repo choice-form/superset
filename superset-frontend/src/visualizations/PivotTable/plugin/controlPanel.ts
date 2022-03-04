@@ -16,7 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { QueryFormMetric, smartDateFormatter, t, validateNonEmpty } from 'src/core';
+import {
+  QueryFormMetric,
+  smartDateFormatter,
+  t,
+  validateNonEmpty,
+} from 'src/core';
 import {
   ControlPanelConfig,
   D3_TIME_FORMAT_OPTIONS,
@@ -76,7 +81,9 @@ const config: ControlPanelConfig = {
                 [MetricsLayoutEnum.COLUMNS, t('Columns')],
                 [MetricsLayoutEnum.ROWS, t('Rows')],
               ],
-              description: t('Use metrics as a top level group for columns or for rows'),
+              description: t(
+                'Use metrics as a top level group for columns or for rows',
+              ),
             },
           },
         ],
@@ -126,7 +133,9 @@ const config: ControlPanelConfig = {
                 'Count as Fraction of Columns',
               ]),
               default: 'Sum',
-              description: t('Aggregate function to apply when pivoting and computing the total rows and columns'),
+              description: t(
+                'Aggregate function to apply when pivoting and computing the total rows and columns',
+              ),
               renderTrigger: true,
             },
           },
@@ -185,14 +194,14 @@ const config: ControlPanelConfig = {
       ],
     },
     {
-      label: t('Options'),
+      label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
         [
           {
             name: 'valueFormat',
             config: {
-              ...sharedControls.y_axis_format,
+              ...sharedControls.yAxisFormat,
               label: t('Value format'),
             },
           },
@@ -292,7 +301,9 @@ const config: ControlPanelConfig = {
               label: t('Conditional formatting'),
               description: t('Apply conditional color formatting to metrics'),
               mapStateToProps(explore) {
-                const values = (explore?.controls?.metrics?.value as QueryFormMetric[]) ?? [];
+                const values =
+                  (explore?.controls?.metrics?.value as QueryFormMetric[]) ??
+                  [];
                 const verboseMap = explore?.datasource?.verbose_map ?? {};
                 const metricColumn = values.map(value => {
                   if (typeof value === 'string') {

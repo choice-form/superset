@@ -67,7 +67,6 @@ import HeatmapChartPlugin from '../D3/HeatmapChart';
 import HorizonChartPlugin from '../D3/HorizonChart';
 import ParallelCoordinatesChartPlugin from '../D3/ParallelCoordinatesChart';
 import PartitionChartPlugin from '../D3/PartitionChart';
-import PivotTableChartPlugin from '../D3/PivotTableChart';
 import SankeyChartPlugin from '../D3/SankeyChart';
 import SankeyLoopChartPlugin from '../D3/SankeyLoopChart';
 import SunburstChartPlugin from '../D3/SunburstChart';
@@ -93,7 +92,7 @@ import {
   BigNumberTotalChartPlugin,
 } from '../DataUI/BigNumber';
 
-import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '../PivotTable';
+import { PivotTableChartPlugin } from '../PivotTable';
 
 export default class MainPreset extends Preset {
   constructor() {
@@ -151,7 +150,6 @@ export default class MainPreset extends Preset {
         new PartitionChartPlugin().configure({ key: 'partition' }),
         new EchartsPieChartPlugin().configure({ key: 'pie' }),
         new PivotTableChartPlugin().configure({ key: 'pivot_table' }),
-        new PivotTableChartPluginV2().configure({ key: 'pivot_table_v2' }),
         new RoseChartPlugin().configure({ key: 'rose' }),
         new SankeyChartPlugin().configure({ key: 'sankey' }),
         new SankeyLoopChartPlugin().configure({ key: 'sankey_loop' }),

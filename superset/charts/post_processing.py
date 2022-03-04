@@ -84,7 +84,7 @@ def pivot_df(  # pylint: disable=too-many-locals, too-many-arguments, too-many-s
             index=rows,
             columns=columns,
             values=metrics,
-            aggfunc=pivot_v2_aggfunc_map[aggfunc],
+            aggfunc=pivot_aggfunc_map[aggfunc],
             margins=False,
         )
     else:
@@ -145,7 +145,7 @@ def pivot_df(  # pylint: disable=too-many-locals, too-many-arguments, too-many-s
             subgroups = {group[:level] for group in groups}
             for subgroup in subgroups:
                 slice_ = df.columns.get_loc(subgroup)
-                subtotal = pivot_v2_aggfunc_map[aggfunc](df.iloc[:, slice_], axis=1)
+                subtotal = pivot_aggfunc_map[aggfunc](df.iloc[:, slice_], axis=1)
                 depth = df.columns.nlevels - len(subgroup) - 1
                 total = metric_name if level == 0 else "Subtotal"
                 subtotal_name = tuple([*subgroup, total, *([""] * depth)])
@@ -160,7 +160,7 @@ def pivot_df(  # pylint: disable=too-many-locals, too-many-arguments, too-many-s
             subgroups = {group[:level] for group in groups}
             for subgroup in subgroups:
                 slice_ = df.index.get_loc(subgroup)
-                subtotal = pivot_v2_aggfunc_map[aggfunc](
+                subtotal = pivot_aggfunc_map[aggfunc](
                     df.iloc[slice_, :].apply(pd.to_numeric), axis=0
                 )
                 depth = df.index.nlevels - len(subgroup) - 1
@@ -186,7 +186,7 @@ def list_unique_values(series: pd.Series) -> str:
     return ", ".join(set(str(v) for v in pd.Series.unique(series)))
 
 
-pivot_v2_aggfunc_map = {
+pivot_aggfunc_map = {
     "Count": pd.Series.count,
     "Count Unique Values": pd.Series.nunique,
     "List Unique Values": list_unique_values,
@@ -210,7 +210,7 @@ pivot_v2_aggfunc_map = {
 }
 
 
-def pivot_table_v2(df: pd.DataFrame, form_data: Dict[str, Any]) -> pd.DataFrame:
+def pivot_table(df: pd.DataFrame, form_data: Dict[str, Any]) -> pd.DataFrame:
     """
     Pivot table v2.
     """
@@ -231,40 +231,8 @@ def pivot_table_v2(df: pd.DataFrame, form_data: Dict[str, Any]) -> pd.DataFrame:
     )
 
 
-def pivot_table(df: pd.DataFrame, form_data: Dict[str, Any]) -> pd.DataFrame:
-    """
-    Pivot table (v1).
-    """
-    if form_data.get("granularity") == "all" and DTTM_ALIAS in df:
-        del df[DTTM_ALIAS]
-
-    # v1 func names => v2 func names
-    func_map = {
-        "sum": "Sum",
-        "mean": "Average",
-        "min": "Minimum",
-        "max": "Maximum",
-        "std": "Sample Standard Deviation",
-        "var": "Sample Variance",
-    }
-
-    return pivot_df(
-        df,
-        rows=form_data.get("groupby") or [],
-        columns=form_data.get("columns") or [],
-        metrics=[get_metric_name(m) for m in form_data["metrics"]],
-        aggfunc=func_map.get(form_data.get("pandas_aggfunc", "sum"), "Sum"),
-        transpose_pivot=bool(form_data.get("transpose_pivot")),
-        combine_metrics=bool(form_data.get("combine_metric")),
-        show_rows_total=bool(form_data.get("pivot_margins")),
-        show_columns_total=bool(form_data.get("pivot_margins")),
-        apply_metrics_on_rows=False,
-    )
-
-
 post_processors = {
-    "pivot_table": pivot_table,
-    "pivot_table_v2": pivot_table_v2,
+    "pivot_table": pivot_table
 }
 
 
