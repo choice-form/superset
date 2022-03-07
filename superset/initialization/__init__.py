@@ -233,7 +233,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             DashboardModelView,
             "Dashboards",
-            label=__("Dashboards"),
+            label="Dashboards",
             icon="fa-dashboard",
             category="",
             category_icon="",
@@ -241,7 +241,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             SliceModelView,
             "Charts",
-            label=__("Charts"),
+            label="Charts",
             icon="fa-bar-chart",
             category="",
             category_icon="",
@@ -249,9 +249,9 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             DynamicPluginsView,
             "Plugins",
-            label=__("Plugins"),
+            label="Plugins",
             category="Manage",
-            category_label=__("Manage"),
+            category_label="Manage",
             icon="fa-puzzle-piece",
             menu_cond=lambda: feature_flag_manager.is_feature_enabled(
                 "DYNAMIC_PLUGINS"
@@ -312,11 +312,11 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         # 导入看板
         appbuilder.add_link(
             "Import Dashboards",
-            label=__("Import Dashboards"),
+            label="Import Dashboards",
             href="/import_dashboards/",
             icon="fa-cloud-upload",
             category="Manage",
-            category_label=__("Manage"),
+            category_label="Manage",
             category_icon="fa-wrench",
             cond=lambda: not feature_flag_manager.is_feature_enabled(
                 "VERSIONED_EXPORT"
@@ -349,29 +349,29 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             DatabaseView,
             "Databases",
-            label=__("Databases"),
+            label="Databases",
             icon="fa-database",
             category="Data",
-            category_label=__("Data"),
+            category_label="Data",
             category_icon="fa-database",
         )
         appbuilder.add_link(
             "Datasets",
-            label=__("Datasets"),
+            label="Datasets",
             href="/tablemodelview/list/",
             icon="fa-table",
             category="Data",
-            category_label=__("Data"),
+            category_label="Data",
             category_icon="fa-table",
         )
         appbuilder.add_separator("Data")
         appbuilder.add_link(
             "Upload a CSV",
-            label=__("Upload a CSV"),
+            label="Upload a CSV",
             href="/csvtodatabaseview/form",
             icon="fa-upload",
             category="Data",
-            category_label=__("Data"),
+            category_label="Data",
             category_icon="fa-wrench",
             cond=lambda: bool(
                 self.config["CSV_EXTENSIONS"].intersection(
@@ -399,7 +399,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 
             appbuilder.add_link(
                 "Upload Excel",
-                label=__("Upload Excel"),
+                label="Upload Excel",
                 href="/exceltodatabaseview/form",
                 icon="fa-upload",
                 category="Data",
@@ -418,7 +418,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             LogModelView,
             "Action Log",
-            label=__("Action Log"),
+            label="Action Log",
             category="Security",
             category_label=__("Security"),
             icon="fa-list-ol",
