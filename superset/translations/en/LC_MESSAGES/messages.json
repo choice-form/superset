@@ -84,9 +84,6 @@
       "2 metrics need to be selected": [""],
       "Pie Chart": [""],
       "Bar Chart": [""],
-      "Stacked Column Chart": [""],
-      "Pick at least one field for [Series]": [""],
-      "Can't have overlap between Series and Breakdowns": [""],
       "Table View": [""],
       "You cannot use [Columns] in combination with [Group By]/[Metrics]/[Percentage Metrics]. Please choose one or the other.": [
         ""
@@ -94,10 +91,6 @@
       "Pick a granularity in the Time section or uncheck 'Include Time'": [""],
       "Time Table View": [""],
       "When using 'Group By' you are limited to use a single metric": [""],
-      "Pivot Table": [""],
-      "Please choose at least one 'Group by' field ": [""],
-      "Please choose at least one metric": [""],
-      "Group By' and 'Columns' can't overlap": [""],
       "Treemap": [""],
       "Calendar Heatmap": [""],
       "Bubble Chart": [""],
@@ -571,19 +564,10 @@
       "%(object)s does not exist in this database.": [""],
       "We can't seem to resolve the column \"%(column_name)s\"": [""],
       "Home": [""],
-      "Dashboards": [""],
-      "Charts": [""],
-      "Plugins": [""],
-      "Manage": [""],
-      "Import Dashboards": [""],
-      "Databases": [""],
       "Data": [""],
-      "Datasets": [""],
-      "Upload a CSV": [""],
-      "Upload Excel": [""],
-      "Action Log": [""],
       "Security": [""],
       "Dashboard Emails": [""],
+      "Manage": [""],
       "Chart Email Schedules": [""],
       "Alerts": [""],
       "Alerts & Reports": [""],
@@ -886,6 +870,7 @@
       "The dataset associated with this chart no longer exists": [""],
       "Could not determine datasource type": [""],
       "Could not find viz object": [""],
+      "Charts": [""],
       "Show Chart": [""],
       "Add Chart": [""],
       "Edit Chart": [""],
@@ -895,6 +880,7 @@
       "Duration (in seconds) of the caching timeout for this chart. Note this defaults to the datasource/table timeout if undefined.": [
         ""
       ],
+      "Dashboards": [""],
       "Last Modified": [""],
       "Parameters": [""],
       "Visualization Type": [""],
@@ -987,6 +973,7 @@
       "Name of table to be created from columnar data.": [""],
       "Columnar File": [""],
       "Select a Columnar file to be uploaded to a database.": [""],
+      "Databases": [""],
       "Show Database": [""],
       "Add Database": [""],
       "Edit Database": [""],
@@ -2329,6 +2316,7 @@
       "No dashboards": [""],
       "No favorite charts yet, go click on stars!": [""],
       "No favorite dashboards yet, go click on stars!": [""],
+      "Datasets": [""],
       "Profile picture provided by Gravatar": [""],
       "joined": [""],
       "id:": [""],
@@ -2927,23 +2915,6 @@
       "Part of a Whole": [""],
       "Compare the same summarized metric across multiple groups.": [""],
       "Partition Chart": [""],
-      "Pivot Options": [""],
-      "Aggregation function": [""],
-      "Aggregate function to apply when pivoting and computing the total rows and columns": [
-        ""
-      ],
-      "Show totals": [""],
-      "Display total row/column": [""],
-      "Combine Metrics": [""],
-      "Display metrics side by side within each column, as opposed to each column being displayed side by side for each metric.": [
-        ""
-      ],
-      "Transpose Pivot": [""],
-      "Swap Groups and Columns": [""],
-      "Date format": [""],
-      "Used to summarize a set of data by grouping together multiple statistics along two axes. Examples: Sales numbers by region and month, tasks by status and assignee, active users by age and location.\n\n  This chart is being deprecated and we recommend checking out Pivot Table V2 instead!": [
-        ""
-      ],
       "Use Area Proportions": [""],
       "Check if the Rose Chart should use segment area instead of segment radius for proportioning": [
         ""
@@ -3005,6 +2976,7 @@
       "Whether to include the time granularity as defined in the time section": [
         ""
       ],
+      "Show totals": [""],
       "Show total aggregations of selected metrics. Note that row limit does not apply to the result.": [
         ""
       ],
@@ -3102,6 +3074,7 @@
       "Description text that shows up below your Big Number": [""],
       "Timestamp Format": [""],
       "Whether to format the timestamp": [""],
+      "Date format": [""],
       "Showcases a single metric front-and-center. Big number is best used to call attention to a KPI or the one thing you want your audience to focus on.": [
         ""
       ],
@@ -3405,9 +3378,6 @@
       ],
       "Radar Chart": [""],
       "Web": [""],
-      "Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.": [
-        ""
-      ],
       "Contribution Mode": [""],
       "Calculate contribution per series or total": [""],
       "Series Style": [""],
@@ -3673,10 +3643,16 @@
         ""
       ],
       "Paired t-test Table": [""],
+      "Percentage difference": [""],
+      "Calculating the expected difference of percentage data": [""],
       "Columns to group by on the rows": [""],
       "Columns to group by on the columns": [""],
       "Apply metrics on": [""],
       "Use metrics as a top level group for columns or for rows": [""],
+      "Aggregation function": [""],
+      "Aggregate function to apply when pivoting and computing the total rows and columns": [
+        ""
+      ],
       "Show rows total": [""],
       "Display row level total": [""],
       "Show columns total": [""],
@@ -3684,6 +3660,9 @@
       "Transpose pivot": [""],
       "Swap rows and columns": [""],
       "Combine metrics": [""],
+      "Display metrics side by side within each column, as opposed to each column being displayed side by side for each metric.": [
+        ""
+      ],
       "Rows sort by": [""],
       "key a-z": [""],
       "key z-a": [""],
@@ -3700,7 +3679,7 @@
       "Used to summarize a set of data by grouping together multiple statistics along two axes. Examples: Sales numbers by region and month, tasks by status and assignee, active users by age and location. Not the most visually stunning visualization, but highly informative and versatile.": [
         ""
       ],
-      "Pivot Table v2": [""],
+      "Pivot Table": [""],
       "Scatter Plot": [""]
     }
   }

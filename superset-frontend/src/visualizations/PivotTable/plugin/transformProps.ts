@@ -27,6 +27,7 @@ import {
   smartDateFormatter,
   TimeFormats,
 } from 'src/core';
+import { sum } from 'lodash';
 import { getColorFormatters } from 'src/chartConntrols';
 import { DateFormatter } from '../types';
 
@@ -81,7 +82,9 @@ export default function transformProps(chartProps: ChartProps<QueryFormData>) {
     filterState,
     datasource: { verboseMap = {}, columnFormats = {} },
   } = chartProps;
-  const { data, colnames, coltypes } = queriesData[0];
+  const { colnames, coltypes } = queriesData[0];
+  // 如果是百分比差值计算，这里的data，会被后面的计算结果替代，所以是变量取值
+  let { data } = queriesData[0];
   const {
     groupbyRows,
     groupbyColumns,
@@ -104,27 +107,82 @@ export default function transformProps(chartProps: ChartProps<QueryFormData>) {
     percentageDifference,
   } = formData;
 
-  console.log(
-    'percentageDifference:',
-    percentageDifference,
-    'props:',
-    data,
-    colnames,
-    coltypes,
-  );
-  console.log('formData:', formData);
-
   // 如果是百分比差值计算，更新数据
   if (percentageDifference) {
-    // data;
-    const rows: number[] = [];
-    data.map((o: object) => {
-      const res = Object.values(o).slice(1, Object.values(o).length);
-      rows.push(res.reduce((a: number, b: number) => a + b));
-      return Object.values(o);
+    // 行总计数据
+    const rows: { [name: string]: number }[] = [];
+    // 将对象数组变成纯数字，便于统计
+    const rawData = data.map((o: object) => {
+      const arr = Object.values(o);
+      const real = arr.splice(1, arr.length);
+      // 每行的值求和
+      rows.push({ [arr[0]]: Math.round(sum(real) * 100) });
+      // 返回的值默认是小数，需要处理成百分比的整数
+      return real.map(o => Math.round(o * 100));
     });
-    console.log(rows);
-    // return raw;
+    // console.log('rawData:', rawData);
+    // 计算每列的值求和
+    const cols: number[] = [];
+    for (let i = 0; i < colnames.length - 1; i++) {
+      let val = 0;
+      rawData.forEach((raw: number[]) => {
+        val += raw[i];
+      });
+      cols.push(val);
+    }
+
+    // 计算总数：每列的总和加起来
+    const total = sum(cols);
+
+    // 计算出中间数组，行总计*列总计/总总计（也就是列总计的求和）= 每个单元格的值，这里是一个二维数组
+    const res2: any[] = [];
+    rows.forEach(item => {
+      const val = Object.values(item)[0];
+      const key = Object.keys(item)[0];
+      // 把第一个字符串名称先放进去。
+      const arr: any[] = [key];
+      cols.forEach(col => {
+        arr.push(Math.round((val * col) / total));
+      });
+      // 一行的数据放进去
+      res2.push(arr);
+    });
+
+    const result: any[] = [];
+    // 求差值，生成最终数据
+    res2.forEach((res, idx1) => {
+      // 第二个元素开始，才能计算
+      const arr = res.splice(1, res.length);
+      const end = [res[0]];
+      // 和前面拿出来的第一个二维数组，进行差值计算
+      const endArr = arr.map((row: number, idx2: number) => {
+        return rawData[idx1][idx2] - row;
+      });
+      // 生成新的一行数据
+      const returnData = end.concat(endArr);
+      const newData = {};
+      // 将新的数据，和标题组合成图表需要的数据
+      colnames.forEach((col: string, index: number) => {
+        newData[col] = returnData[index];
+      });
+      // 将最终的一行数据添加到最终的数组中
+      result.push(newData);
+    });
+    // 更新数据，替换默认的数据
+    data = result;
+  } else {
+    // 将小数点转换成百分比整数
+    data = data.map((row: object) => {
+      const res = {};
+      Object.entries(row).forEach(([k, v], idx) => {
+        if (idx > 0) {
+          res[k] = Math.round((v as number) * 100);
+        } else {
+          res[k] = v;
+        }
+      });
+      return res;
+    });
   }
 
   const { selectedFilters } = filterState;

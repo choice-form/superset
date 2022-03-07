@@ -134,11 +134,6 @@
       "2 metrics need to be selected": ["需要选择2个指标"],
       "Pie Chart": ["饼图"],
       "Bar Chart": ["柱状图"],
-      "Stacked Column Chart": ["堆叠柱状图"],
-      "Pick at least one field for [Series]": ["为 [序列] 选择至少一个字段"],
-      "Can't have overlap between Series and Breakdowns": [
-        "Series 和 Breakdown 之间不能有重叠"
-      ],
       "Table View": ["表视图"],
       "You cannot use [Columns] in combination with [Group By]/[Metrics]/[Percentage Metrics]. Please choose one or the other.": [
         "不能将 [列] 与 [分组]/[指标]/[百分比度量] 结合使用。请选择其中一个。"
@@ -150,12 +145,6 @@
       "When using 'Group By' you are limited to use a single metric": [
         "当使用“Group by”时，只限于使用单个度量"
       ],
-      "Pivot Table": ["透视表"],
-      "Please choose at least one 'Group by' field ": [
-        "请至少选择一个分组字段 "
-      ],
-      "Please choose at least one metric": ["请至少选择一个指标"],
-      "Group By' and 'Columns' can't overlap": ["“Group by”列和字段不能重叠"],
       "Treemap": ["树状图"],
       "Calendar Heatmap": ["时间热力图"],
       "Bubble Chart": ["气泡图"],
@@ -740,19 +729,10 @@
         "我们似乎无法解析列 \"%(column_name)s\""
       ],
       "Home": ["主页"],
-      "Dashboards": ["看板"],
-      "Charts": ["图表"],
-      "Plugins": ["插件"],
-      "Manage": ["管理"],
-      "Import Dashboards": ["导入看板"],
-      "Databases": ["数据库"],
       "Data": ["数据"],
-      "Datasets": ["数据集"],
-      "Upload a CSV": ["上传CSV文件"],
-      "Upload Excel": ["上传Excel"],
-      "Action Log": ["操作日志"],
       "Security": ["安全"],
       "Dashboard Emails": ["看板"],
+      "Manage": ["管理"],
       "Chart Email Schedules": ["图表电子邮件时间表"],
       "Alerts": ["警报"],
       "Alerts & Reports": ["警报和报告"],
@@ -1139,6 +1119,7 @@
       ],
       "Could not determine datasource type": ["无法确定数据源类型"],
       "Could not find viz object": ["找不到可视化对象"],
+      "Charts": ["图表"],
       "Show Chart": ["显示图表"],
       "Add Chart": ["添加图表"],
       "Edit Chart": ["编辑图表"],
@@ -1148,6 +1129,7 @@
       "Duration (in seconds) of the caching timeout for this chart. Note this defaults to the datasource/table timeout if undefined.": [
         "此图表的缓存超时持续时间(以秒为单位)。注意，如果未定义，这默认为数据源/表超时。"
       ],
+      "Dashboards": ["看板"],
       "Last Modified": ["最后修改"],
       "Parameters": ["参数"],
       "Visualization Type": ["可视化类型"],
@@ -1270,6 +1252,7 @@
       "Select a Columnar file to be uploaded to a database.": [
         "选择要上传到数据库的列式文件。"
       ],
+      "Databases": ["数据库"],
       "Show Database": ["显示数据库"],
       "Add Database": ["添加数据库"],
       "Edit Database": ["编辑数据库"],
@@ -2791,6 +2774,7 @@
       "No favorite dashboards yet, go click on stars!": [
         "暂无收藏的看板，去点击星星吧！"
       ],
+      "Datasets": ["数据集"],
       "Profile picture provided by Gravatar": ["资料图片由 Gravatar 提供"],
       "joined": ["已加入"],
       "id:": ["id:"],
@@ -3543,23 +3527,6 @@
         "在多个组中比较相同的汇总指标。"
       ],
       "Partition Chart": ["分区图"],
-      "Pivot Options": ["轴心选项"],
-      "Aggregation function": ["聚集函数"],
-      "Aggregate function to apply when pivoting and computing the total rows and columns": [
-        "转和计算总行和总列时要应用的聚合函数"
-      ],
-      "Show totals": ["显示总数"],
-      "Display total row/column": ["显示所有行/列"],
-      "Combine Metrics": ["绑定指标"],
-      "Display metrics side by side within each column, as opposed to each column being displayed side by side for each metric.": [
-        "在每列中并排显示度量，而不是为每个度量并排显示每列。"
-      ],
-      "Transpose Pivot": ["转置轴心"],
-      "Swap Groups and Columns": ["交换组和列"],
-      "Date format": ["日期格式化"],
-      "Used to summarize a set of data by grouping together multiple statistics along two axes. Examples: Sales numbers by region and month, tasks by status and assignee, active users by age and location.\n\n  This chart is being deprecated and we recommend checking out Pivot Table V2 instead!": [
-        "用于通过沿两个轴将多个统计信息组合在一起来汇总一组数据。示例：按地区和月份列出的销售数字，按状态和工作人员列出的任务，按年龄和地点列出的活跃用户。此图表已被弃用，我们建议改为查看Pivot表V2！"
-      ],
       "Use Area Proportions": ["使用面积比例"],
       "Check if the Rose Chart should use segment area instead of segment radius for proportioning": [
         "检查玫瑰图是否应使用分段面积而不是分段半径进行配比"
@@ -3627,6 +3594,7 @@
       "Whether to include the time granularity as defined in the time section": [
         "是否包括时间部分中定义的时间粒度"
       ],
+      "Show totals": ["显示总数"],
       "Show total aggregations of selected metrics. Note that row limit does not apply to the result.": [
         "显示选定指标的总聚合。请注意，行限制不适用于结果。"
       ],
@@ -3738,6 +3706,7 @@
       ],
       "Timestamp Format": ["时间戳格式"],
       "Whether to format the timestamp": ["是否格式化时间戳"],
+      "Date format": ["日期格式化"],
       "Showcases a single metric front-and-center. Big number is best used to call attention to a KPI or the one thing you want your audience to focus on.": [
         "展示单公制正面和中央。“大数字”最适合用来提醒大家注意KPI或你希望听众关注的一件事。"
       ],
@@ -4085,9 +4054,6 @@
       ],
       "Radar Chart": ["雷达图"],
       "Web": [""],
-      "Visualize how a metric changes over time using bars. Add a group by column to visualize group level metrics and how they change over time.": [
-        "使用堆叠柱状图可视化度量值如何随时间变化。按列添加分组，以可视化组级别的指标以及它们随时间的变化。"
-      ],
       "Contribution Mode": ["贡献模式"],
       "Calculate contribution per series or total": ["计算对总数的贡献值"],
       "Series Style": ["系列样式"],
@@ -4393,11 +4359,19 @@
         "表中显示了配对t检验，用于了解各组之间的统计差异。"
       ],
       "Paired t-test Table": ["双样本t检验表"],
+      "Percentage difference": ["百分比差值"],
+      "Calculating the expected difference of percentage data": [
+        "计算百分比数据的预期差异"
+      ],
       "Columns to group by on the rows": ["对行进行分组的列"],
       "Columns to group by on the columns": ["要按列分组的列"],
       "Apply metrics on": ["将指标应用于"],
       "Use metrics as a top level group for columns or for rows": [
         "将度量用作列或行的顶级组"
+      ],
+      "Aggregation function": ["聚集函数"],
+      "Aggregate function to apply when pivoting and computing the total rows and columns": [
+        "转和计算总行和总列时要应用的聚合函数"
       ],
       "Show rows total": ["显示行总数"],
       "Display row level total": ["显示行级总数"],
@@ -4406,6 +4380,9 @@
       "Transpose pivot": ["转置轴心"],
       "Swap rows and columns": ["交换行和列"],
       "Combine metrics": ["合并指标"],
+      "Display metrics side by side within each column, as opposed to each column being displayed side by side for each metric.": [
+        "在每列中并排显示度量，而不是为每个度量并排显示每列。"
+      ],
       "Rows sort by": ["行排序"],
       "key a-z": [""],
       "key z-a": [""],
@@ -4424,7 +4401,7 @@
       "Used to summarize a set of data by grouping together multiple statistics along two axes. Examples: Sales numbers by region and month, tasks by status and assignee, active users by age and location. Not the most visually stunning visualization, but highly informative and versatile.": [
         "用于通过沿两个轴将多个统计信息组合在一起来汇总一组数据。示例：按地区和月份列出的销售数字，按状态和工作人员列出的任务，按年龄和地点列出的活跃用户。这不是视觉上最惊人的视觉效果，但信息量大，用途广。"
       ],
-      "Pivot Table v2": ["透视表 v2"],
+      "Pivot Table": ["透视表"],
       "Scatter Plot": ["散点图"]
     }
   }

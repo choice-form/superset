@@ -37,7 +37,7 @@ const percentageDifference = {
   name: 'percentageDifference',
   config: {
     type: 'CheckboxControl',
-    label: t('Percentage difference data'),
+    label: t('Percentage difference'),
     renderTrigger: true,
     default: false,
     description: t('Calculating the expected difference of percentage data'),
