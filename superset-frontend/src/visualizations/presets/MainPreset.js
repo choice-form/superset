@@ -149,6 +149,7 @@ export default class MainPreset extends Preset {
         new ParallelCoordinatesChartPlugin().configure({ key: 'para' }),
         new PartitionChartPlugin().configure({ key: 'partition' }),
         new EchartsPieChartPlugin().configure({ key: 'pie' }),
+        // 透视表
         new PivotTableChartPlugin().configure({ key: 'pivot_table' }),
         new RoseChartPlugin().configure({ key: 'rose' }),
         new SankeyChartPlugin().configure({ key: 'sankey' }),

@@ -33,6 +33,17 @@ import {
 } from 'src/chartConntrols';
 import { MetricsLayoutEnum } from '../types';
 
+const percentageDifference = {
+  name: 'percentageDifference',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Percentage difference data'),
+    renderTrigger: true,
+    default: false,
+    description: t('Calculating the expected difference of percentage data'),
+  },
+};
+
 const config: ControlPanelConfig = {
   controlPanelSections: [
     { ...sections.legacyTimeseriesTime, expanded: false },
@@ -40,6 +51,7 @@ const config: ControlPanelConfig = {
       label: t('Query'),
       expanded: true,
       controlSetRows: [
+        [percentageDifference],
         [
           {
             name: 'groupbyRows',

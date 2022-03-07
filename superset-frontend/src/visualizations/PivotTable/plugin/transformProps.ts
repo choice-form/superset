@@ -33,7 +33,12 @@ import { DateFormatter } from '../types';
 const { DATABASE_DATETIME } = TimeFormats;
 
 function isNumeric(key: string, data: DataRecord[] = []) {
-  return data.every(record => record[key] === null || record[key] === undefined || typeof record[key] === 'number');
+  return data.every(
+    record =>
+      record[key] === null ||
+      record[key] === undefined ||
+      typeof record[key] === 'number',
+  );
 }
 
 export default function transformProps(chartProps: ChartProps<QueryFormData>) {
@@ -96,32 +101,66 @@ export default function transformProps(chartProps: ChartProps<QueryFormData>) {
     emitFilter,
     metricsLayout,
     conditionalFormatting,
+    percentageDifference,
   } = formData;
+
+  console.log(
+    'percentageDifference:',
+    percentageDifference,
+    'props:',
+    data,
+    colnames,
+    coltypes,
+  );
+  console.log('formData:', formData);
+
+  // 如果是百分比差值计算，更新数据
+  if (percentageDifference) {
+    // data;
+    const rows: number[] = [];
+    data.map((o: object) => {
+      const res = Object.values(o).slice(1, Object.values(o).length);
+      rows.push(res.reduce((a: number, b: number) => a + b));
+      return Object.values(o);
+    });
+    console.log(rows);
+    // return raw;
+  }
+
   const { selectedFilters } = filterState;
   const granularity = extractTimegrain(rawFormData);
 
   const dateFormatters = colnames
-    .filter((colname: string, index: number) => coltypes[index] === GenericDataType.TEMPORAL)
-    .reduce((acc: Record<string, DateFormatter | undefined>, temporalColname: string) => {
-      let formatter: DateFormatter | undefined;
-      if (dateFormat === smartDateFormatter.id) {
-        if (granularity) {
-          // time column use formats based on granularity
-          formatter = getTimeFormatterForGranularity(granularity);
-        } else if (isNumeric(temporalColname, data)) {
-          formatter = getTimeFormatter(DATABASE_DATETIME);
-        } else {
-          // if no column-specific format, print cell as is
-          formatter = String;
+    .filter(
+      (colname: string, index: number) =>
+        coltypes[index] === GenericDataType.TEMPORAL,
+    )
+    .reduce(
+      (
+        acc: Record<string, DateFormatter | undefined>,
+        temporalColname: string,
+      ) => {
+        let formatter: DateFormatter | undefined;
+        if (dateFormat === smartDateFormatter.id) {
+          if (granularity) {
+            // time column use formats based on granularity
+            formatter = getTimeFormatterForGranularity(granularity);
+          } else if (isNumeric(temporalColname, data)) {
+            formatter = getTimeFormatter(DATABASE_DATETIME);
+          } else {
+            // if no column-specific format, print cell as is
+            formatter = String;
+          }
+        } else if (dateFormat) {
+          formatter = getTimeFormatter(dateFormat);
         }
-      } else if (dateFormat) {
-        formatter = getTimeFormatter(dateFormat);
-      }
-      if (formatter) {
-        acc[temporalColname] = formatter;
-      }
-      return acc;
-    }, {});
+        if (formatter) {
+          acc[temporalColname] = formatter;
+        }
+        return acc;
+      },
+      {},
+    );
   const metricColorFormatters = getColorFormatters(conditionalFormatting, data);
 
   return {
