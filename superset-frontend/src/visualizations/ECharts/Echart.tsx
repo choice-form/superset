@@ -16,10 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { useRef, useEffect, useMemo, forwardRef, useImperativeHandle } from 'react';
+import React, {
+  useRef,
+  useEffect,
+  useMemo,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import { styled } from 'src/core';
-import { ECharts, init } from 'echarts';
+import { ECharts, init, registerTheme } from 'echarts';
 import { EchartsHandler, EchartsProps, EchartsStylesProps } from './types';
+// @ts-ignore
+import theme from 'src/visualizations/ECharts/themes/choiceform.json';
 
 const Styles = styled.div<EchartsStylesProps>`
   height: ${({ height }) => height};
@@ -27,12 +35,21 @@ const Styles = styled.div<EchartsStylesProps>`
 `;
 
 function Echart(
-  { width, height, echartOptions, eventHandlers, zrEventHandlers, selectedValues = {} }: EchartsProps,
+  {
+    width,
+    height,
+    echartOptions,
+    eventHandlers,
+    zrEventHandlers,
+    selectedValues = {},
+  }: EchartsProps,
   ref: React.Ref<EchartsHandler>,
 ) {
   const divRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<ECharts>();
-  const currentSelection = useMemo(() => Object.keys(selectedValues) || [], [selectedValues]);
+  const currentSelection = useMemo(() => Object.keys(selectedValues) || [], [
+    selectedValues,
+  ]);
   const previousSelection = useRef<string[]>([]);
 
   useImperativeHandle(ref, () => ({
@@ -42,6 +59,7 @@ function Echart(
   useEffect(() => {
     if (!divRef.current) return;
     if (!chartRef.current) {
+      registerTheme('choiceform', theme);
       chartRef.current = init(divRef.current);
     }
 
@@ -63,7 +81,9 @@ function Echart(
     if (!chartRef.current) return;
     chartRef.current.dispatchAction({
       type: 'downplay',
-      dataIndex: previousSelection.current.filter(value => !currentSelection.includes(value)),
+      dataIndex: previousSelection.current.filter(
+        value => !currentSelection.includes(value),
+      ),
     });
     if (currentSelection.length) {
       chartRef.current.dispatchAction({

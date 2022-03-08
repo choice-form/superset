@@ -17,7 +17,7 @@
  * under the License.
  */
 import {
-  CategoricalColorNamespace,
+  // CategoricalColorNamespace,
   getNumberFormatter,
   NumberFormats,
   NumberFormatter,
@@ -87,7 +87,7 @@ export default function transformProps(
   } = chartProps;
 
   const {
-    colorScheme,
+    // colorScheme, // echarts 图表不使用自定义配色
     donut,
     groupby: hierarchyOrColumns,
     drilldown,
@@ -128,21 +128,19 @@ export default function transformProps(
 
   const { setDataMask = () => {} } = hooks;
 
-  const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
+  // const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
   const numberFormatter = getNumberFormatter(numberFormat);
 
-  const transformedData = data.map(row => ({
-    ...row,
-    itemStyle: {
-      color: colorFn(row.name),
-    },
-  }));
+  // const transformedData = data.map(row => ({
+  //   ...row,
+  //   // itemStyle: {
+  //   //   color: colorFn(row.name),
+  //   // },
+  // }));
 
   const selectedValues = (filterState.selectedValues || []).reduce(
     (acc: Record<string, number>, selectedValue: string) => {
-      const index = transformedData.findIndex(
-        ({ name }) => name === selectedValue,
-      );
+      const index = data.findIndex(({ name }) => name === selectedValue);
       return {
         ...acc,
         [index]: selectedValue,
@@ -211,7 +209,7 @@ export default function transformProps(
         formatter,
         ...pieLabels,
       },
-      data: transformedData,
+      data,
     },
   ];
 

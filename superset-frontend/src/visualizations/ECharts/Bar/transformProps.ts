@@ -16,7 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { CategoricalColorNamespace, getNumberFormatter } from 'src/core';
+import {
+  // CategoricalColorNamespace,
+  getNumberFormatter,
+} from 'src/core';
 import { EChartsCoreOption } from 'echarts';
 import { sum } from 'lodash';
 import {
@@ -27,7 +30,7 @@ import {
 import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { defaultGrid, defaultTooltip } from '../defaults';
-import { OpacityEnum } from '../constants';
+// import { OpacityEnum } from '../constants';
 
 // 将值切换为百分比数据
 // @ts-ignore
@@ -55,7 +58,7 @@ export default function transformProps(
   // console.log('chartProps:', chartProps);
 
   const {
-    colorScheme,
+    // colorScheme,
     barBackground, // 柱形的背景控制
     chartOrient, // 图表布局方向
     groupby,
@@ -165,7 +168,7 @@ export default function transformProps(
     stack: barStacked && 'total', // 这个值相同的柱子，会堆叠起来。值是什么都行，但最好是有意义的值。
   };
 
-  const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
+  // const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
   // 这里只是生成相应数据的系列值
   const series = Array.from({ length: rawData[0].length - 1 }).map(
     (_, idx) => ({
@@ -174,10 +177,10 @@ export default function transformProps(
       backgroundStyle: {
         color: 'rgba(180, 180, 180, 0.2)',
       },
-      itemStyle: {
-        color: colorFn(idx),
-        opacity: OpacityEnum.NonTransparent,
-      },
+      // itemStyle: {
+      //   color: colorFn(idx),
+      //   opacity: OpacityEnum.NonTransparent,
+      // },
     }),
   );
 
@@ -238,9 +241,6 @@ export default function transformProps(
         trigger: 'axis',
         axisPointer: {
           type: 'cross',
-          label: {
-            backgroundColor: '#283b56',
-          },
         },
       }
     : {};

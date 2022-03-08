@@ -45,7 +45,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
-        ['color_scheme'],
+        // ['color_scheme'],
         ['barBackground'],
         [chartOrientControl],
         ...legendSection,

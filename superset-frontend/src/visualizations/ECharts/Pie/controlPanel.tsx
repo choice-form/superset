@@ -27,7 +27,13 @@ import {
 import { DEFAULT_FORM_DATA } from './types';
 import { legendSection, drilldown } from '../controls';
 
-const { labelsOutside, labelType, labelLine, numberFormat, showLabels } = DEFAULT_FORM_DATA;
+const {
+  labelsOutside,
+  labelType,
+  labelLine,
+  numberFormat,
+  showLabels,
+} = DEFAULT_FORM_DATA;
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -48,7 +54,9 @@ const config: ControlPanelConfig = {
               default: true,
               type: 'CheckboxControl',
               label: t('Sort by metric'),
-              description: t('Whether to sort results by the selected metric in descending order.'),
+              description: t(
+                'Whether to sort results by the selected metric in descending order.',
+              ),
             },
           },
         ],
@@ -58,7 +66,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
-        ['color_scheme'],
+        // ['color_scheme'],
         [
           {
             name: 'show_labels_threshold',
@@ -70,7 +78,9 @@ const config: ControlPanelConfig = {
               max: 100,
               step: 1,
               default: 5,
-              description: t('Minimum threshold in percentage points for showing labels.'),
+              description: t(
+                'Minimum threshold in percentage points for showing labels.',
+              ),
               // 5.3.0 存在BUG，标签不显示的时候，标签线仍然会显示，所以暂时不开启该功能。
               visibility: () => false,
             },
@@ -108,7 +118,9 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: numberFormat,
               choices: D3_FORMAT_OPTIONS,
-              description: t('Format the displayed value in the selected format'),
+              description: t(
+                'Format the displayed value in the selected format',
+              ),
             },
           },
         ],
@@ -133,7 +145,8 @@ const config: ControlPanelConfig = {
               default: labelsOutside,
               renderTrigger: true,
               description: t('Put the labels outside of the pie?'),
-              visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.show_labels?.value),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.show_labels?.value),
             },
           },
         ],
@@ -145,9 +158,14 @@ const config: ControlPanelConfig = {
               label: t('Label Line'),
               default: labelLine,
               renderTrigger: true,
-              description: t('Draw line from Pie to label when labels outside?'),
+              description: t(
+                'Draw line from Pie to label when labels outside?',
+              ),
               visibility: ({ controls }: ControlPanelsContainerProps) =>
-                Boolean(controls?.show_labels?.value && controls?.labels_outside?.value),
+                Boolean(
+                  controls?.show_labels?.value &&
+                    controls?.labels_outside?.value,
+                ),
             },
           },
         ],
@@ -191,7 +209,8 @@ const config: ControlPanelConfig = {
               step: 1,
               default: 40, // 内环40%
               description: t('Inner radius of donut hole'),
-              visibility: ({ controls }: ControlPanelsContainerProps) => Boolean(controls?.donut?.value),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.donut?.value),
             },
           },
         ],
