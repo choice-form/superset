@@ -170,19 +170,6 @@ export default function transformProps(chartProps: ChartProps<QueryFormData>) {
     });
     // 更新数据，替换默认的数据
     data = result;
-  } else {
-    // 将小数点转换成百分比整数
-    data = data.map((row: object) => {
-      const res = {};
-      Object.entries(row).forEach(([k, v], idx) => {
-        if (idx > 0 && typeof v === 'number') {
-          res[k] = Math.round((v as number) * 100);
-        } else {
-          res[k] = v;
-        }
-      });
-      return res;
-    });
   }
 
   const { selectedFilters } = filterState;
