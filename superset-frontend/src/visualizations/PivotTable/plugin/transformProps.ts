@@ -175,7 +175,7 @@ export default function transformProps(chartProps: ChartProps<QueryFormData>) {
     data = data.map((row: object) => {
       const res = {};
       Object.entries(row).forEach(([k, v], idx) => {
-        if (idx > 0) {
+        if (idx > 0 && typeof v === 'number') {
           res[k] = Math.round((v as number) * 100);
         } else {
           res[k] = v;
