@@ -262,7 +262,7 @@ export default function transformProps(
     },
     xAxis,
     yAxis,
-    series: metrics.map(() => {
+    series: rawData[0].slice(1, rawData[0].length).map(() => {
       if (showAreaChart) {
         return {
           ...lineSeries,

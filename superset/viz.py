@@ -836,6 +836,7 @@ class BarViz(BaseViz):
 
         # Re-order the columns adhering to the metric ordering.
         pt = pt[metrics]
+        print('metrics:', metrics)
         chart_data = []
         for name, ys in pt.items():
             if pt[name].dtype.kind not in "biufc" or name in self.groupby:
@@ -857,23 +858,29 @@ class BarViz(BaseViz):
             handle = {series_title: dict(values)}
             chart_data.append(handle)
 
-        # 返回数据集
+        # 定义返回列表
         dataset = []
-        if len(chart_data) == 1:
-            for (k, v) in chart_data[0].items():
-                product = ['product', k]
-                dataset.append(product)
-                for (x, y) in v.items():
-                    dataset.append([x, y])
-            return dataset
 
+        # 标题
+        product = ['product'] + list(metrics)
+        dataset.append(product)
+
+        # 数据处理
+        obj = {}
         for i in range(len(chart_data)):
             for (k, v) in chart_data[i].items():
                 if i == 0:
-                    product = ['product'] + list(v.keys())
-                    dataset.append(product)
-                dataset.append([k] + list(v.values()))
+                    for (x, y) in v.items():
+                        obj[x] = [y]
+                else:
+                    for (x, y) in v.items():
+                        obj[x] = obj[x] + [y]
 
+        # 添加到返回数据
+        for (k, v) in obj.items():
+            dataset.append([k] + list(v))
+
+        # 最终返回
         return dataset
 
 
