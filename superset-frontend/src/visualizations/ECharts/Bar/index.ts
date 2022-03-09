@@ -21,10 +21,17 @@ import buildQuery from './buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
-import demo from './images/demo.png';
+import demo1 from './images/demo1.png';
+import demo2 from './images/demo2.png';
+import demo3 from './images/demo3.png';
+import demo4 from './images/demo4.png';
+import large from './images/thumbnailLarge.png';
 import { EchartsBarChartProps, EchartsBarFormData } from './types';
 
-export default class EchartsBarChartPlugin extends ChartPlugin<EchartsBarFormData, EchartsBarChartProps> {
+export default class EchartsBarChartPlugin extends ChartPlugin<
+  EchartsBarFormData,
+  EchartsBarChartProps
+> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library
@@ -47,7 +54,13 @@ export default class EchartsBarChartPlugin extends ChartPlugin<EchartsBarFormDat
         description: t(
           'Bar chart shows different data through the height of a bar, which is used in rectangular coordinate with at least 1 category axis.',
         ),
-        exampleGallery: [{ url: demo }],
+        exampleGallery: [
+          { url: large },
+          { url: demo1 },
+          { url: demo2 },
+          { url: demo3 },
+          { url: demo4 },
+        ],
         name: t('Bar Chart'),
         tags: [
           t('Aesthetic'),
