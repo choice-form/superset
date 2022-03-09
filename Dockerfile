@@ -60,7 +60,7 @@ COPY ./docker/frontend-mem-nag.sh /
 COPY ./superset-frontend/package* /app/superset-frontend/
 RUN /frontend-mem-nag.sh \
         && cd /app/superset-frontend \
-        && npm ci
+        && npm install -p
 
 # Next, copy in the rest and let webpack do its thing
 COPY ./superset-frontend /app/superset-frontend
@@ -161,5 +161,7 @@ COPY --chown=superset ./docker/docker-init.sh /app/docker/
 COPY --chown=superset ./docker/docker-ci.sh /app/docker/
 
 RUN chmod a+x /app/docker/*.sh
+
+VOLUME [ "/app/superset_home" ]
 
 CMD /app/docker/docker-ci.sh
