@@ -223,30 +223,6 @@ export const showValueSection = [
   [onlyTotalControl],
 ];
 
-export const barStacked: CustomControlItem = {
-  name: 'bar_stacked',
-  config: {
-    type: 'CheckboxControl',
-    label: t('Stacked Bars'),
-    renderTrigger: true,
-    default: false,
-    description: null,
-  },
-};
-
-export const stackedPrecent: CustomControlItem = {
-  name: 'stacked_precent',
-  config: {
-    type: 'CheckboxControl',
-    label: t('Show Stacked Precent'),
-    renderTrigger: true,
-    default: false,
-    description: null,
-    visibility: ({ controls }: ControlPanelsContainerProps) =>
-      Boolean(controls?.bar_stacked?.value),
-  },
-};
-
 export const bottomMargin: CustomControlItem = {
   name: 'bottom_margin',
   config: {
@@ -276,28 +252,6 @@ export const bottomMargin: CustomControlItem = {
     description: t(
       'Bottom margin, in pixels, allowing for more room for axis labels',
     ),
-  },
-};
-
-export const showBarValue: CustomControlItem = {
-  name: 'show_bar_value',
-  config: {
-    type: 'CheckboxControl',
-    label: t('Show Bar Values'),
-    default: false,
-    renderTrigger: true,
-    description: t('Show the value on top of the bar'),
-  },
-};
-
-export const showAxisPointer: CustomControlItem = {
-  name: 'show_axis_pointer',
-  config: {
-    type: 'CheckboxControl',
-    label: t('Axis Pointer'), // 坐标轴指示器
-    default: true,
-    renderTrigger: true,
-    description: t('Show Axis Pointer'),
   },
 };
 

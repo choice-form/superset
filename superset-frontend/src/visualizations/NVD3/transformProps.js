@@ -17,7 +17,10 @@
  * under the License.
  */
 import isTruthy from './utils/isTruthy';
-import { tokenizeToNumericArray, tokenizeToStringArray } from './utils/tokenize';
+import {
+  tokenizeToNumericArray,
+  tokenizeToStringArray,
+} from './utils/tokenize';
 import { formatLabel } from './utils';
 
 const NOOP = () => {};
@@ -35,7 +38,15 @@ const grabD3Format = (datasource, targetMetric) => {
 };
 
 export default function transformProps(chartProps) {
-  const { width, height, annotationData, datasource, formData, hooks, queriesData } = chartProps;
+  const {
+    width,
+    height,
+    annotationData,
+    datasource,
+    formData,
+    hooks,
+    queriesData,
+  } = chartProps;
 
   const { onAddFilter = NOOP, onError = NOOP } = hooks;
 
@@ -83,6 +94,7 @@ export default function transformProps(chartProps) {
     yAxisShowminmax,
     yAxis2Showminmax,
     yLogScale,
+    numberFormat,
   } = formData;
 
   let {
@@ -90,7 +102,6 @@ export default function transformProps(chartProps) {
     markerLines,
     markerLineLabels,
     markers,
-    numberFormat,
     rangeLabels,
     ranges,
     yAxisFormat,
@@ -105,13 +116,15 @@ export default function transformProps(chartProps) {
       }))
     : rawData;
 
-  if (vizType === 'pie') {
-    numberFormat = numberFormat || grabD3Format(datasource, metric);
-  } else if (vizType === 'dual_line') {
+  if (vizType === 'dual_line') {
     yAxisFormat = yAxisFormat || grabD3Format(datasource, metric);
     yAxis2Format = yAxis2Format || grabD3Format(datasource, metric2);
-  } else if (['line', 'dist_bar', 'bar', 'area'].includes(chartProps.formData.vizType)) {
-    yAxisFormat = yAxisFormat || grabD3Format(datasource, metrics.length > 0 ? metrics[0] : undefined);
+  } else if (
+    ['dist_bar', 'bar', 'area'].includes(chartProps.formData.vizType)
+  ) {
+    yAxisFormat =
+      yAxisFormat ||
+      grabD3Format(datasource, metrics.length > 0 ? metrics[0] : undefined);
   } else if (vizType === 'bullet') {
     ranges = tokenizeToNumericArray(ranges) || [0, data.measures * 1.1];
     rangeLabels = tokenizeToStringArray(rangeLabels);

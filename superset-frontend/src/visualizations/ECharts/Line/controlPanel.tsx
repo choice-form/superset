@@ -37,21 +37,22 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
-        ['barBackground'],
         [chartOrientControl],
         ...legendSection,
         ['showLabel'],
         ['stacked'],
-        ['stackedPrecent'],
+        ['showAreaChart'],
+        ['areaLinearGradient'],
+        ['smooth'],
         [
           {
-            name: 'order_bars',
+            name: 'order_lines',
             config: {
               type: 'CheckboxControl',
-              label: t('Sort Bars'),
+              label: t('Sort Lines'),
               default: false,
               renderTrigger: true,
-              description: t('Sort bars by x labels.'),
+              description: t('Sort lines by category axis for label names.'),
             },
           },
         ],
@@ -114,6 +115,9 @@ const config: ControlPanelConfig = {
     },
     color_scheme: {
       default: 'echarts5Colors', // 默认使用echarts5配色
+    },
+    showAxisPointer: {
+      default: true,
     },
   },
 };

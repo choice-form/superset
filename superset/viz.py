@@ -877,6 +877,15 @@ class BarViz(BaseViz):
         return dataset
 
 
+# 折线图和柱状图的数据逻辑是一样的
+class LineViz(BarViz):
+    """A line chart"""
+
+    viz_type = "line"
+    verbose_name = _("Line Chart")
+    is_timeseries = False
+
+
 class TableViz(BaseViz):
 
     """A basic html table that is sortable and searchable"""
@@ -1345,7 +1354,7 @@ class NVD3TimeSeriesViz(NVD3Viz):
 
     """A rich line chart component with tons of options"""
 
-    viz_type = "line"
+    viz_type = "time_line"
     verbose_name = _("Time Series - Line Chart")
     sort_series = False
     is_timeseries = True

@@ -134,6 +134,7 @@
       "2 metrics need to be selected": ["需要选择2个指标"],
       "Pie Chart": ["饼图"],
       "Bar Chart": ["柱状图"],
+      "Line Chart": ["折线图"],
       "Table View": ["表视图"],
       "You cannot use [Columns] in combination with [Group By]/[Metrics]/[Percentage Metrics]. Please choose one or the other.": [
         "不能将 [列] 与 [分组]/[指标]/[百分比度量] 结合使用。请选择其中一个。"
@@ -1719,6 +1720,24 @@
       "Time range endpoints": ["时间范围端点"],
       "Time range endpoints (SIP-15)": ["时间范围端点 (SIP-15)"],
       "Color Scheme": ["配色方案"],
+      "Show Label": ["显示标签"],
+      "Text label of , to explain some data information about graphic item like value, name and so on.": [
+        "图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等。"
+      ],
+      "Show Area Chart": ["显示区域面积图"],
+      "Area fill style. The settings are displayed as an area chart.": [
+        "区域填充样式，显示为一个区域面积图。"
+      ],
+      "Area Linear Gradient": ["区域线性渐变"],
+      "Area map with linear gradient effect on.": [
+        "具有线性渐变效果的区域面积图。"
+      ],
+      "Smooth": ["平滑"],
+      "Whether to show as smooth curve.": ["是否平滑曲线显示"],
+      "Stacked": ["堆叠"],
+      "Show Stacked Precent": ["按百分比显示堆叠"],
+      "Axis Pointer": ["坐标轴指示器"],
+      "Show Axis Pointer": ["显示坐标轴指示器"],
       "Bar Background": ["柱形背景"],
       "Enable the background of the bar.": ["启用柱形的背景"],
       "Y Axis Line": ["Y轴的轴线"],
@@ -3388,7 +3407,6 @@
       "2D": [""],
       "Geo": ["地域"],
       "Range": ["范围"],
-      "Stacked": ["堆叠"],
       "Link Length": ["链接长度"],
       "Link length in the force layout": ["力布局中的链接长度"],
       "Charge": ["费用"],
@@ -3786,12 +3804,6 @@
       "Only show the total value on the stacked chart, and not show on the selected category": [
         "仅在堆叠图表上显示总值，而不在所选类别上显示"
       ],
-      "Stacked Bars": ["堆叠柱"],
-      "Show Stacked Precent": ["按百分比显示堆叠"],
-      "Show Bar Values": ["显示柱状图的值"],
-      "Show the value on top of the bar": ["在柱顶端显示值"],
-      "Axis Pointer": ["坐标轴指示器"],
-      "Show Axis Pointer": ["显示坐标轴指示器"],
       "Extra Controls": ["额外控制"],
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         "是否显示额外控件。额外的控制包括使多柱状图堆叠或并排。"
@@ -3963,6 +3975,16 @@
       "Graph Chart": ["图表"],
       "Structural": ["结构"],
       "Transformable": ["可变形的"],
+      "Sort Lines": ["折线排序"],
+      "Sort lines by category axis for label names.": [
+        "按类目轴的标签名称排序折线。"
+      ],
+      "Evolution": ["演化"],
+      "Broken line chart relates all the data points symbol by broken lines, which is used to show the trend of data changing. It could be used in both rectangular coordinate andpolar coordinate.": [
+        "折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。"
+      ],
+      "Battery level over time": ["电池电量随时间变化"],
+      "Deprecated": ["反对"],
       "Series type": ["系列类型"],
       "Series chart type (line, bar etc)": ["系列图表类型（折线，柱 等等）"],
       "Area chart": ["面积图"],
@@ -4001,7 +4023,6 @@
       "Secondary y-axis format": ["副Y轴格式"],
       "Secondary y-axis title": ["副Y轴标题"],
       "Logarithmic scale on secondary y-axis": ["副Y轴上的对数刻度"],
-      "Evolution": ["演化"],
       "Visualize two different time series using the same x-axis time range. Note that each time series can be visualized differently (e.g. 1 using bars and 1 using a line).": [
         "使用相同的x轴时间范围可视化两个不同的时间序列。请注意，每个时间序列可以以不同的方式显示（例如，1个使用条形图，1个使用直线）。"
       ],
@@ -4263,6 +4284,8 @@
         "是否显示X轴的最小值和最大值"
       ],
       "Bar Values": ["柱状图的值"],
+      "Show the value on top of the bar": ["在柱顶端显示值"],
+      "Stacked Bars": ["堆叠柱"],
       "Reduce X ticks": ["减少X刻度"],
       "Reduces the number of X-axis ticks to be rendered. If true, the x-axis will not overflow and labels may be missing. If false, a minimum width will be applied to columns and the width may overflow into an horizontal scroll.": [
         "减少要渲染的X轴刻度的数量。如果为true，x轴将不会溢出，标签可能会丢失。如果为false，将对列应用最小宽度，该宽度可能会溢出到水平滚动中。"
@@ -4280,7 +4303,6 @@
       "Vehicle Types": ["媒介类型"],
       "Continuous": ["持续的"],
       "nvd3": [""],
-      "Deprecated": ["反对"],
       "X Log Scale": ["X Log 刻度"],
       "Use a log scale for the X-axis": ["X轴使用Log刻度"],
       "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
@@ -4312,15 +4334,6 @@
         "使用相同的x轴将两个指标可视化为直线图。此图表有助于比较同一时间范围内的指标。"
       ],
       "Dual Line Chart": ["双折线图"],
-      "Propagate": ["传播"],
-      "Send range filter events to other charts": [
-        "将范围筛选器事件发送到其他图表"
-      ],
-      "Classic chart that visualizes how metrics change over time.": [
-        "经典图表可视化度量如何随时间变化。"
-      ],
-      "Battery level over time": ["电池电量随时间变化"],
-      "Line Chart": ["折线图"],
       "Prefix metric name with slice name": ["在度量名称前面加上切片名称"],
       "Y Axis Left": ["Y轴左侧"],
       "Left Axis chart(s)": ["左轴图表"],
@@ -4334,10 +4347,6 @@
         "使用相同的x轴时间范围可视化两个不同的时间序列。请注意，每个时间序列可以以不同的方式显示（例如，1个使用条形图，1个使用直线）。"
       ],
       "Multiple Line Charts": ["多线图"],
-      "Whether to display the labels. Note that the label only displays when the the 5% threshold.": [
-        "是否显示标签。请注意，标签仅在设定为5%阈值时显示。"
-      ],
-      "Put the labels outside the pie?": ["是否把标签放在饼图外侧？"],
       "Frequency": ["刷新频率"],
       "The periodicity over which to pivot time. Users can provide\n            \"Pandas\" offset alias.\n            Click on the info bubble for more details on accepted \"freq\" expressions.": [
         "以时间为轴心的周期。用户可以提供\"Pandas\"偏移别名。点击信息气泡，了解更多关于已接受的\"freq\"表达式的详细信息。"

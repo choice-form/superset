@@ -84,6 +84,7 @@
       "2 metrics need to be selected": [""],
       "Pie Chart": [""],
       "Bar Chart": [""],
+      "Line Chart": [""],
       "Table View": [""],
       "You cannot use [Columns] in combination with [Group By]/[Metrics]/[Percentage Metrics]. Please choose one or the other.": [
         ""
@@ -1390,6 +1391,20 @@
       "Time range endpoints": [""],
       "Time range endpoints (SIP-15)": [""],
       "Color Scheme": [""],
+      "Show Label": [""],
+      "Text label of , to explain some data information about graphic item like value, name and so on.": [
+        ""
+      ],
+      "Show Area Chart": [""],
+      "Area fill style. The settings are displayed as an area chart.": [""],
+      "Area Linear Gradient": [""],
+      "Area map with linear gradient effect on.": [""],
+      "Smooth": [""],
+      "Whether to show as smooth curve.": [""],
+      "Stacked": [""],
+      "Show Stacked Precent": [""],
+      "Axis Pointer": [""],
+      "Show Axis Pointer": [""],
       "Bar Background": [""],
       "Enable the background of the bar.": [""],
       "Y Axis Line": [""],
@@ -2796,7 +2811,6 @@
       "2D": [""],
       "Geo": [""],
       "Range": [""],
-      "Stacked": [""],
       "Link Length": [""],
       "Link length in the force layout": [""],
       "Charge": [""],
@@ -3150,12 +3164,6 @@
       "Only show the total value on the stacked chart, and not show on the selected category": [
         ""
       ],
-      "Stacked Bars": [""],
-      "Show Stacked Precent": [""],
-      "Show Bar Values": [""],
-      "Show the value on top of the bar": [""],
-      "Axis Pointer": [""],
-      "Show Axis Pointer": [""],
       "Extra Controls": [""],
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         ""
@@ -3307,6 +3315,14 @@
       "Graph Chart": [""],
       "Structural": [""],
       "Transformable": [""],
+      "Sort Lines": [""],
+      "Sort lines by category axis for label names.": [""],
+      "Evolution": [""],
+      "Broken line chart relates all the data points symbol by broken lines, which is used to show the trend of data changing. It could be used in both rectangular coordinate andpolar coordinate.": [
+        ""
+      ],
+      "Battery level over time": [""],
+      "Deprecated": [""],
       "Series type": [""],
       "Series chart type (line, bar etc)": [""],
       "Area chart": [""],
@@ -3337,7 +3353,6 @@
       "Secondary y-axis format": [""],
       "Secondary y-axis title": [""],
       "Logarithmic scale on secondary y-axis": [""],
-      "Evolution": [""],
       "Visualize two different time series using the same x-axis time range. Note that each time series can be visualized differently (e.g. 1 using bars and 1 using a line).": [
         ""
       ],
@@ -3559,6 +3574,8 @@
       "X bounds": [""],
       "Whether to display the min and max values of the X-axis": [""],
       "Bar Values": [""],
+      "Show the value on top of the bar": [""],
+      "Stacked Bars": [""],
       "Reduce X ticks": [""],
       "Reduces the number of X-axis ticks to be rendered. If true, the x-axis will not overflow and labels may be missing. If false, a minimum width will be applied to columns and the width may overflow into an horizontal scroll.": [
         ""
@@ -3574,7 +3591,6 @@
       "Vehicle Types": [""],
       "Continuous": [""],
       "nvd3": [""],
-      "Deprecated": [""],
       "X Log Scale": [""],
       "Use a log scale for the X-axis": [""],
       "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
@@ -3606,11 +3622,6 @@
         ""
       ],
       "Dual Line Chart": [""],
-      "Propagate": [""],
-      "Send range filter events to other charts": [""],
-      "Classic chart that visualizes how metrics change over time.": [""],
-      "Battery level over time": [""],
-      "Line Chart": [""],
       "Prefix metric name with slice name": [""],
       "Y Axis Left": [""],
       "Left Axis chart(s)": [""],
@@ -3624,10 +3635,6 @@
         ""
       ],
       "Multiple Line Charts": [""],
-      "Whether to display the labels. Note that the label only displays when the the 5% threshold.": [
-        ""
-      ],
-      "Put the labels outside the pie?": [""],
       "Frequency": [""],
       "The periodicity over which to pivot time. Users can provide\n            \"Pandas\" offset alias.\n            Click on the info bubble for more details on accepted \"freq\" expressions.": [
         ""

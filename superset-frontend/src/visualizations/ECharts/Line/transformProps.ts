@@ -17,31 +17,19 @@
  * under the License.
  */
 import { getNumberFormatter } from 'src/core';
-import { EChartsCoreOption } from 'echarts';
-import { sum } from 'lodash';
+import { EChartsCoreOption, graphic } from 'echarts';
 import {
-  BarChartTransformedProps,
-  EchartsBarChartProps,
-  EchartsBarFormData,
+  LineChartTransformedProps,
+  EchartsLineChartProps,
+  EchartsLineFormData,
 } from './types';
 import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { defaultGrid, defaultTooltip } from '../defaults';
 
-// 将值切换为百分比数据
-// @ts-ignore
-const switchPrecent: number[] = (arr: (string | number)[]) => {
-  if (arr.length < 2) return arr;
-  const name: string = arr[0] as string;
-  const tmpArr = arr.slice(1, arr.length) as number[];
-  const total = sum(tmpArr);
-  const newArr = tmpArr.map(o => o / total);
-  return [name, ...newArr];
-};
-
 export default function transformProps(
-  chartProps: EchartsBarChartProps,
-): BarChartTransformedProps {
+  chartProps: EchartsLineChartProps,
+): LineChartTransformedProps {
   const {
     formData,
     height,
@@ -51,10 +39,9 @@ export default function transformProps(
     width,
   } = chartProps;
 
-  // console.log('chartProps:', chartProps);
+  console.log('chartProps:', chartProps);
 
   const {
-    barBackground, // 柱形的背景控制
     chartOrient, // 图表布局方向
     groupby,
     metrics, // 查询指标
@@ -63,10 +50,12 @@ export default function transformProps(
     yAxisLabel, // Y轴名称
     yAxisLine, // 是否显示Y轴的轴线
     yAxisFormat, // Y轴的格式化类
-    orderBars, // 是否按柱子的标签名称排序
+    orderLines, // 是否按标签名称排序
     showLabel, // 是否显示图形上的文本标签
     stacked, // 堆叠
-    stackedPrecent, // 堆叠显示成百分比
+    smooth, // 平滑曲线
+    showAreaChart, // 显示区域面积图
+    areaLinearGradient, // 面积图的线性渐变
     yAxisShowMinmax, // 是否显示Y轴的最大值最小值限制
     yAxisBounds, // Y轴的最小值和最大值数组
     bottomMargin, // X轴距离下方的距离
@@ -76,61 +65,32 @@ export default function transformProps(
     legendOrientation,
     legendType,
     legendMode,
-  }: EchartsBarFormData = {
+  }: EchartsLineFormData = {
     ...DEFAULT_LEGEND_FORM_DATA,
     ...DEFAULT_PIE_FORM_DATA,
     ...formData,
   };
 
-  let rawData = queriesData[0].data;
-  // 如果堆叠百分比
-  if (stacked && stackedPrecent) {
-    const tmpArr = rawData.slice(1, rawData.length);
-    // @ts-ignore
-    rawData = [rawData[0], ...tmpArr.map(switchPrecent)];
-  }
-  // console.log('rawData:', rawData);
+  const rawData = queriesData[0].data;
 
   const { setDataMask = () => {} } = hooks;
 
-  // console.log('metrics:', metrics);
-  // console.log('barStacked:', barStacked);
-  // console.log('chartOrient:', chartOrient);
   // 标签位置，默认顶部
   let labelPosition = { position: 'top' };
   // 旋转角度
-  let labelRotate = { rotate: 0 };
-  if (metrics.length > 1) {
-    // 横向布局的时候，显示
-    if (chartOrient === 'horizontal') {
-      if (stacked) {
-        // 多个放在内部显示
-        labelPosition = { position: 'inside' };
-      }
-    } else {
-      // 纵向布局的时候，也就是类目轴是竖着的时候
-      labelPosition = { position: 'right' };
-      if (stacked) {
-        labelPosition = { position: 'inside' };
-        labelRotate = { rotate: -90 };
-      }
-    }
-  } else {
-    // 横向布局的时候，显示
-    // eslint-disable-next-line no-lonely-if
-    if (chartOrient !== 'horizontal') {
-      labelPosition = { position: 'right' };
-    }
+  const labelRotate = { rotate: 0 };
+  if (metrics.length > 1 && chartOrient !== 'horizontal') {
+    // 纵向布局的时候，显示在右侧
+    labelPosition = { position: 'right' };
   }
 
-  // Y轴的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
-  const numberFormatter = getNumberFormatter(
-    stacked && stackedPrecent ? '.0%' : yAxisFormat,
-  );
+  // Y轴的格式化方法
+  const numberFormatter = getNumberFormatter(yAxisFormat);
 
-  // 柱状图的通用配置
-  const barSeries = {
-    type: 'bar', // 柱状图
+  // 折线图的通用配置
+  const lineSeries = {
+    type: 'line', // 折线图
+    smooth, // 平滑曲线
     animation: true, // 开启动画
     // 标签的统一布局配置。
     labelLayout: {
@@ -138,7 +98,7 @@ export default function transformProps(
       hideOverlap: true,
     },
     label: {
-      // 是否显示图形上的文本标签
+      // 在柱子上显示值
       show: showLabel,
       // 标签的位置
       ...labelPosition,
@@ -148,30 +108,11 @@ export default function transformProps(
       formatter({ value, encode }: any) {
         const idx = chartOrient === 'horizontal' ? encode.y[0] : encode.x[0];
         const row = value[idx];
-        if (stacked && stackedPrecent) {
-          return numberFormatter(row);
-        }
         return typeof row === 'number' ? `${row.toFixed(2)}` : row;
       },
     },
     stack: stacked && 'total', // 这个值相同的柱子，会堆叠起来。值是什么都行，但最好是有意义的值。
   };
-
-  // const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
-  // 这里只是生成相应数据的系列值
-  const series = Array.from({ length: rawData[0].length - 1 }).map(
-    (_, idx) => ({
-      ...barSeries,
-      showBackground: barBackground,
-      backgroundStyle: {
-        color: 'rgba(180, 180, 180, 0.2)',
-      },
-      // itemStyle: {
-      //   color: colorFn(idx),
-      //   opacity: OpacityEnum.NonTransparent,
-      // },
-    }),
-  );
 
   // 暂时还用不到这个，保留做参考
   // const selectedValues = (filterState.selectedValues || []).reduce(
@@ -187,12 +128,7 @@ export default function transformProps(
 
   // Y轴的最大值和最小值
   let yMinMax = {};
-  if (stacked && stackedPrecent) {
-    yMinMax = {
-      min: 0,
-      max: 1,
-    };
-  } else if (yAxisShowMinmax && yAxisBounds.length === 2) {
+  if (yAxisShowMinmax && yAxisBounds.length === 2) {
     yMinMax = {
       min: yAxisBounds[0],
       max: yAxisBounds[1],
@@ -257,7 +193,7 @@ export default function transformProps(
 
   // 计算数据集的数据（排序）
   let sourceData = rawData;
-  if (orderBars) {
+  if (orderLines) {
     const dataArr = rawData.slice(1, rawData.length);
     // 第一个元素是x轴的标签，肯定是字符串，所以使用字符串的比较方法来处理
     const arr: any[] = dataArr.sort((a, b) => a[0].localeCompare(b[0]));
@@ -312,12 +248,8 @@ export default function transformProps(
       ...defaultTooltip,
       ...axisPointer,
       // 提示的值格式化
-      valueFormatter: (value: any) => {
-        if (stacked && stackedPrecent) {
-          return numberFormatter(value);
-        }
-        return typeof value === 'number' ? `${value.toFixed(2)}` : value;
-      },
+      valueFormatter: (value: any) =>
+        typeof value === 'number' ? `${value.toFixed(2)}` : value,
     },
     legend: {
       show: showLegend,
@@ -330,7 +262,29 @@ export default function transformProps(
     },
     xAxis,
     yAxis,
-    series,
+    series: metrics.map(() => {
+      if (showAreaChart) {
+        return {
+          ...lineSeries,
+          areaStyle: areaLinearGradient
+            ? {
+                opacity: 0.8,
+                color: new graphic.LinearGradient(0, 0, 0, 1, [
+                  {
+                    offset: 0,
+                    color: 'rgb(255, 191, 0)',
+                  },
+                  {
+                    offset: 1,
+                    color: 'rgb(224, 62, 76)',
+                  },
+                ]),
+              }
+            : {},
+        };
+      }
+      return lineSeries;
+    }),
   };
 
   // console.log('echartOptions', echartOptions);

@@ -1,11 +1,85 @@
 import { t } from 'src/core';
-import { SharedControlConfig } from '../types';
+import {
+  ControlPanelsContainerProps,
+  CustomControlItem,
+  SharedControlConfig,
+} from '../types';
 import {
   D3_FORMAT_DOCS,
   D3_FORMAT_OPTIONS,
   DEFAULT_NUMBER_FORMAT,
   formatSelectOptions,
 } from '../utils';
+
+// 显示图形上的文本标签
+export const showLabel: SharedControlConfig<'CheckboxControl'> = {
+  type: 'CheckboxControl',
+  label: t('Show Label'),
+  default: true,
+  renderTrigger: true,
+  description: t(
+    'Text label of , to explain some data information about graphic item like value, name and so on.',
+  ),
+};
+
+// 显示面积图
+export const showAreaChart: SharedControlConfig<'CheckboxControl'> = {
+  type: 'CheckboxControl',
+  label: t('Show Area Chart'),
+  renderTrigger: true,
+  default: false,
+  description: t(
+    'Area fill style. The settings are displayed as an area chart.',
+  ),
+};
+// 面积图的线性渐变
+export const areaLinearGradient: SharedControlConfig<'CheckboxControl'> = {
+  type: 'CheckboxControl',
+  label: t('Area Linear Gradient'),
+  renderTrigger: true,
+  default: false,
+  description: t('Area map with linear gradient effect on.'),
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.showAreaChart?.value),
+};
+
+// 平滑, 折线图
+export const smooth: SharedControlConfig<'CheckboxControl'> = {
+  type: 'CheckboxControl',
+  label: t('Smooth'),
+  renderTrigger: true,
+  default: true,
+  description: t('Whether to show as smooth curve.'),
+};
+
+export const stacked: SharedControlConfig<'CheckboxControl'> = {
+  type: 'CheckboxControl',
+  label: t('Stacked'),
+  renderTrigger: true,
+  default: false,
+  description: null,
+};
+
+export const stackedPrecent: CustomControlItem = {
+  name: 'stacked_precent',
+  config: {
+    type: 'CheckboxControl',
+    label: t('Show Stacked Precent'),
+    renderTrigger: true,
+    default: false,
+    description: null,
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.stacked?.value),
+  },
+};
+
+export const showAxisPointer: SharedControlConfig<'CheckboxControl'> = {
+  type: 'CheckboxControl',
+  label: t('Axis Pointer'), // 坐标轴指示器
+  default: true,
+  renderTrigger: true,
+  description: t('Show Axis Pointer'),
+};
 
 export const barBackground: SharedControlConfig<'CheckboxControl'> = {
   type: 'CheckboxControl',

@@ -16,27 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-// eslint-disable-next-line import/no-extraneous-dependencies
-import {
-  t,
-  ChartMetadata,
-  ChartPlugin,
-  AnnotationType,
-  Behavior,
-} from 'src/core';
+import { Behavior, ChartMetadata, ChartPlugin, t } from 'src/core';
 import buildQuery from './buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from './transformProps';
+import example1 from './images/demo1.png';
+import example2 from './images/demo2.png';
+import example3 from './images/demo3.png';
+import example4 from './images/demo4.png';
 import thumbnail from './images/thumbnail.png';
-import {
-  EchartsTimeseriesChartProps,
-  EchartsTimeseriesFormData,
-} from './types';
-import example from './images/Time-series_Chart.jpg';
+import { EchartsLineChartProps, EchartsLineFormData } from './types';
 
-export default class EchartsTimeseriesChartPlugin extends ChartPlugin<
-  EchartsTimeseriesFormData,
-  EchartsTimeseriesChartProps
+export default class LineChartPlugin extends ChartPlugin<
+  EchartsLineFormData,
+  EchartsLineChartProps
 > {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
@@ -52,30 +45,24 @@ export default class EchartsTimeseriesChartPlugin extends ChartPlugin<
     super({
       buildQuery,
       controlPanel,
-      loadChart: () => import('./EchartsTimeseries'),
+      loadChart: () => import('./EchartsBar'),
       metadata: new ChartMetadata({
-        behaviors: [Behavior.INTERACTIVE_CHART],
+        behaviors: [Behavior.INTERACTIVE_CHART], // INTERACTIVE_CHART 表示创建图表，搜索图表的时候，可以搜索到。
         category: t('Evolution'),
         credits: ['https://echarts.apache.org'],
         description: t(
-          'Swiss army knife for visualizing time series data. Choose between  step, line, scatter, and bar charts. This viz type has many customization options as well.',
+          'Broken line chart relates all the data points symbol by broken lines, which is used to show the trend of data changing. It could be used in both rectangular coordinate andpolar coordinate.',
         ),
-        exampleGallery: [{ url: example }],
-        supportedAnnotationTypes: [
-          AnnotationType.Event,
-          AnnotationType.Formula,
-          AnnotationType.Interval,
-          AnnotationType.Timeseries,
+        exampleGallery: [
+          { url: example1 },
+          { url: example3 },
+          { url: example2 },
+          { url: example4 },
         ],
-        name: t('Time-series Chart'),
-        tags: [
-          t('Advanced-Analytics'),
-          t('Aesthetic'),
-          t('Predictive'),
-          t('Time'),
-          t('Transformable'),
-        ],
+        name: t('Line Chart'),
+        tags: [t('ECharts'), t('Line'), t('Aesthetic'), t('Legacy')],
         thumbnail,
+        useLegacyApi: true,
       }),
       transformProps,
     });

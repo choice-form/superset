@@ -51,6 +51,7 @@ import EchartsBarLineChartPlugin from '../ECharts/Advanced/BarLine';
 
 // 柱状图
 import EchartsBarChartPlugin from '../ECharts/Bar';
+import LineChartPlugin from '../ECharts/Line';
 
 // 筛选器
 import FilterBoxChartPlugin from '../FilterBox';
@@ -80,7 +81,6 @@ import {
   BulletChartPlugin,
   CompareChartPlugin,
   DualLineChartPlugin,
-  LineChartPlugin,
   LineMultiChartPlugin,
   TimePivotChartPlugin,
 } from '../NVD3';
@@ -112,15 +112,17 @@ export default class MainPreset extends Preset {
         new BulletChartPlugin().configure({ key: 'bullet' }),
         new CompareChartPlugin().configure({ key: 'compare' }),
         new DualLineChartPlugin().configure({ key: 'dual_line' }),
-        new LineChartPlugin().configure({ key: 'line' }),
+
         new LineMultiChartPlugin().configure({ key: 'line_multi' }),
         new TimePivotChartPlugin().configure({ key: 'time_pivot' }),
 
         // 基础柱状&基础折线组合图
         new EchartsBarLineChartPlugin().configure({ key: 'bar_line' }),
 
-        // 基础柱状图
+        // 柱状图
         new EchartsBarChartPlugin().configure({ key: 'bar' }),
+        // 折线图
+        new LineChartPlugin().configure({ key: 'line' }),
 
         new BigNumberChartPlugin().configure({ key: 'big_number' }),
         new BigNumberTotalChartPlugin().configure({ key: 'big_number_total' }),

@@ -16,26 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t, ChartMetadata, ChartPlugin } from 'src/core';
-import transformProps from '../transformProps';
-import thumbnail from './images/thumbnail.png';
-import controlPanel from './controlPanel';
+import { buildQueryContext, QueryFormData } from 'src/core';
 
-const metadata = new ChartMetadata({
-  credits: ['http://nvd3.org'],
-  description: '',
-  name: t('Pie Chart'),
-  thumbnail,
-  useLegacyApi: true,
-});
-
-export default class PieChartPlugin extends ChartPlugin {
-  constructor() {
-    super({
-      loadChart: () => import('../ReactNVD3'),
-      metadata,
-      transformProps,
-      controlPanel,
-    });
-  }
+export default function buildQuery(formData: QueryFormData) {
+  const { metric, sort_by_metric } = formData;
+  return buildQueryContext(formData, baseQueryObject => [
+    {
+      ...baseQueryObject,
+      ...(sort_by_metric && { orderby: [[metric, false]] }),
+    },
+  ]);
 }
