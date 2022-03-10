@@ -17,8 +17,15 @@
  * under the License.
  */
 import { t, validateNonEmpty } from 'src/core';
-import { ControlPanelConfig } from 'src/chartConntrols';
-import { bottomMargin, chartOrientControl, legendSection } from '../controls';
+import { ControlPanelConfig, sharedControls } from 'src/chartConntrols';
+import {
+  chartOrientControl,
+  legendModeControl,
+  legendOrientationControl,
+  legendPaddingControl,
+  legendTypeControl,
+  showLegendControl,
+} from '../controls';
 
 // @ts-ignore
 const config: ControlPanelConfig = {
@@ -38,12 +45,14 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         [chartOrientControl],
-        ...legendSection,
         ['showLabel'],
         ['stacked'],
         ['showAreaChart'],
         ['areaLinearGradient'],
         ['smooth'],
+        ['symbol'],
+        ['symbolSize'],
+        ['symbolRotate'],
         [
           {
             name: 'order_lines',
@@ -57,12 +66,31 @@ const config: ControlPanelConfig = {
           },
         ],
         ['showAxisPointer'],
-        [bottomMargin],
+        [
+          {
+            name: 'tooltipFormat',
+            config: {
+              ...sharedControls.yAxisFormat,
+              label: t('Tooltip Format'),
+            },
+          },
+        ],
+      ],
+    },
+    {
+      label: t('Legend'),
+      expanded: false,
+      controlSetRows: [
+        [showLegendControl],
+        [legendModeControl],
+        [legendTypeControl],
+        [legendOrientationControl],
+        [legendPaddingControl],
       ],
     },
     {
       label: t('Value Axis'),
-      expanded: true,
+      expanded: false,
       controlSetRows: [
         ['yAxisLine'],
         ['yAxisFormat'],
@@ -73,7 +101,7 @@ const config: ControlPanelConfig = {
     },
     {
       label: t('Category Axis'),
-      expanded: true,
+      expanded: false,
       controlSetRows: [['xAxisLabel'], ['xLabelLayout']],
     },
   ],

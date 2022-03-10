@@ -69,8 +69,8 @@ export default function transformProps(
     stackedPrecent, // 堆叠显示成百分比
     yAxisShowMinmax, // 是否显示Y轴的最大值最小值限制
     yAxisBounds, // Y轴的最小值和最大值数组
-    bottomMargin, // X轴距离下方的距离
     xLabelLayout, // X轴布局：标签旋转角度
+    tooltipFormat,
     showLegend,
     legendPadding,
     legendOrientation,
@@ -89,13 +89,9 @@ export default function transformProps(
     // @ts-ignore
     rawData = [rawData[0], ...tmpArr.map(switchPrecent)];
   }
-  // console.log('rawData:', rawData);
 
   const { setDataMask = () => {} } = hooks;
 
-  // console.log('metrics:', metrics);
-  // console.log('barStacked:', barStacked);
-  // console.log('chartOrient:', chartOrient);
   // 标签位置，默认顶部
   let labelPosition = { position: 'top' };
   // 旋转角度
@@ -123,6 +119,11 @@ export default function transformProps(
     }
   }
 
+  // tooltip的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
+  const tooltipFormatter = getNumberFormatter(
+    stacked && stackedPrecent ? '.0%' : tooltipFormat,
+  );
+
   // Y轴的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
   const numberFormatter = getNumberFormatter(
     stacked && stackedPrecent ? '.0%' : yAxisFormat,
@@ -148,30 +149,20 @@ export default function transformProps(
       formatter({ value, encode }: any) {
         const idx = chartOrient === 'horizontal' ? encode.y[0] : encode.x[0];
         const row = value[idx];
-        if (stacked && stackedPrecent) {
-          return numberFormatter(row);
-        }
-        return typeof row === 'number' ? `${row.toFixed(2)}` : row;
+        return numberFormatter(row);
       },
     },
     stack: stacked && 'total', // 这个值相同的柱子，会堆叠起来。值是什么都行，但最好是有意义的值。
   };
 
-  // const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
   // 这里只是生成相应数据的系列值
-  const series = Array.from({ length: rawData[0].length - 1 }).map(
-    (_, idx) => ({
-      ...barSeries,
-      showBackground: barBackground,
-      backgroundStyle: {
-        color: 'rgba(180, 180, 180, 0.2)',
-      },
-      // itemStyle: {
-      //   color: colorFn(idx),
-      //   opacity: OpacityEnum.NonTransparent,
-      // },
-    }),
-  );
+  const series = Array.from({ length: rawData[0].length - 1 }).map(() => ({
+    ...barSeries,
+    showBackground: barBackground,
+    backgroundStyle: {
+      color: 'rgba(180, 180, 180, 0.2)',
+    },
+  }));
 
   // 暂时还用不到这个，保留做参考
   // const selectedValues = (filterState.selectedValues || []).reduce(
@@ -199,14 +190,6 @@ export default function transformProps(
     };
   }
 
-  // 位置计算
-  const gridBottom =
-    bottomMargin !== 'auto'
-      ? {
-          bottom: parseInt(bottomMargin, 10),
-        }
-      : {};
-
   // X轴标签布局: 旋转角度
   const getRotate = (rotate: string): number => {
     switch (rotate) {
@@ -224,15 +207,6 @@ export default function transformProps(
         return chartOrient === 'horizontal' ? -45 : 0;
     }
   };
-
-  const axisPointer = showAxisPointer
-    ? {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'cross',
-        },
-      }
-    : {};
 
   // 图例的位置布局方式
   let legendPosition = {};
@@ -252,7 +226,7 @@ export default function transformProps(
   }
   // 图例的内边距
   if (typeof legendPadding === 'number') {
-    legendPosition = { ...legendPosition, padding: legendPadding };
+    legendPosition = { ...legendPosition, padding: [5, legendPadding] };
   }
 
   // 计算数据集的数据（排序）
@@ -264,16 +238,25 @@ export default function transformProps(
     sourceData = [rawData[0], ...arr];
   }
 
-  // 默认：一般横向，数组直接用就行，第一个分类是X，第二个值就是Y。如果是纵向的布局，就倒过来。
-  const axisData = [
-    {
-      type: 'category', // 类目轴
+  // 类目轴的名称
+  let xLabelGap = {};
+  if (xAxisLabel) {
+    xLabelGap = {
       name: xAxisLabel, // X 表示类目轴
+      nameGap: getRotate(xLabelLayout) === 0 ? 32 : 64,
       nameLocation: 'center',
       nameTextStyle: {
         fontWeight: 'bold',
         fontSize: 16,
       },
+    };
+  }
+
+  // 默认：一般横向，数组直接用就行，第一个分类是X，第二个值就是Y。如果是纵向的布局，就倒过来。
+  const axisData = [
+    {
+      type: 'category', // 类目轴
+      ...xLabelGap,
       axisLabel: {
         hideOverlap: true, // 是否隐藏重叠的标签
         rotate: getRotate(xLabelLayout), // 标签旋转角度
@@ -294,30 +277,48 @@ export default function transformProps(
         show: yAxisLine,
       },
       axisLabel: {
-        formatter(val: number) {
-          return numberFormatter(val);
-        },
+        formatter: numberFormatter,
       },
     },
   ];
   const xAxis = chartOrient === 'horizontal' ? axisData[0] : axisData[1];
   const yAxis = chartOrient === 'horizontal' ? axisData[1] : axisData[0];
 
+  // 图形grid位置计算
+  const gridLayout = {};
+  if (xAxisLabel) {
+    if (getRotate(xLabelLayout) === 0) {
+      gridLayout['bottom'] = 28;
+    } else {
+      gridLayout['bottom'] = 15;
+    }
+  } else {
+    gridLayout['bottom'] = 'auto';
+  }
+  if (showLegend) {
+    gridLayout['top'] = '5%';
+  }
+
+  let axisPointer = {};
+  if (showAxisPointer) {
+    axisPointer = {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+      },
+    };
+  }
+
   const echartOptions: EChartsCoreOption = {
     grid: {
       ...defaultGrid,
-      ...gridBottom,
+      ...gridLayout,
     },
     tooltip: {
       ...defaultTooltip,
       ...axisPointer,
       // 提示的值格式化
-      valueFormatter: (value: any) => {
-        if (stacked && stackedPrecent) {
-          return numberFormatter(value);
-        }
-        return typeof value === 'number' ? `${value.toFixed(2)}` : value;
-      },
+      valueFormatter: tooltipFormatter,
     },
     legend: {
       show: showLegend,

@@ -17,8 +17,15 @@
  * under the License.
  */
 import { t, validateNonEmpty } from 'src/core';
-import { ControlPanelConfig } from 'src/chartConntrols';
-import { bottomMargin, chartOrientControl, legendSection } from '../controls';
+import { ControlPanelConfig, sharedControls } from 'src/chartConntrols';
+import {
+  chartOrientControl,
+  showLegendControl,
+  legendModeControl,
+  legendTypeControl,
+  legendOrientationControl,
+  legendPaddingControl,
+} from '../controls';
 
 // @ts-ignore
 const config: ControlPanelConfig = {
@@ -37,12 +44,12 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
-        ['barBackground'],
         [chartOrientControl],
-        ...legendSection,
         ['showLabel'],
+        ['barBackground'],
         ['stacked'],
         ['stackedPrecent'],
+        ['showAxisPointer'],
         [
           {
             name: 'order_bars',
@@ -55,13 +62,31 @@ const config: ControlPanelConfig = {
             },
           },
         ],
-        ['showAxisPointer'],
-        [bottomMargin],
+        [
+          {
+            name: 'tooltipFormat',
+            config: {
+              ...sharedControls.yAxisFormat,
+              label: t('Tooltip Format'),
+            },
+          },
+        ],
+      ],
+    },
+    {
+      label: t('Legend'),
+      expanded: false,
+      controlSetRows: [
+        [showLegendControl],
+        [legendModeControl],
+        [legendTypeControl],
+        [legendOrientationControl],
+        [legendPaddingControl],
       ],
     },
     {
       label: t('Value Axis'),
-      expanded: true,
+      expanded: false,
       controlSetRows: [
         ['yAxisLine'],
         ['yAxisFormat'],
@@ -72,7 +97,7 @@ const config: ControlPanelConfig = {
     },
     {
       label: t('Category Axis'),
-      expanded: true,
+      expanded: false,
       controlSetRows: [['xAxisLabel'], ['xLabelLayout']],
     },
   ],
@@ -111,9 +136,6 @@ const config: ControlPanelConfig = {
     },
     groupby: {
       validators: [validateNonEmpty], // 非空校验
-    },
-    color_scheme: {
-      default: 'echarts5Colors', // 默认使用echarts5配色
     },
   },
 };

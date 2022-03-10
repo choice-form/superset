@@ -360,7 +360,7 @@ export default function transformProps(
   // );
 
   // 图形grid位置计算
-  let gridLayout = {};
+  const gridLayout = {};
   if (xAxisLabel) {
     if (getRotate(xLabelLayout) === 0) {
       gridLayout['bottom'] = 28;
@@ -371,14 +371,14 @@ export default function transformProps(
     gridLayout['bottom'] = 'auto';
   }
   if (showLegend) {
-    gridLayout['top'] = '13%';
+    gridLayout['top'] = '8%';
   }
 
   // 图例的位置布局方式
   let legendPosition = {};
   // 图例的内边距
   if (typeof legendPadding === 'number') {
-    legendPosition = { padding: legendPadding };
+    legendPosition = { padding: [5, legendPadding] };
   }
 
   let axisPointer = {};

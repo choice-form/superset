@@ -1,9 +1,5 @@
 import { t } from 'src/core';
-import {
-  ControlPanelsContainerProps,
-  CustomControlItem,
-  SharedControlConfig,
-} from '../types';
+import { ControlPanelsContainerProps, SharedControlConfig } from '../types';
 import {
   D3_FORMAT_DOCS,
   D3_FORMAT_OPTIONS,
@@ -108,17 +104,14 @@ export const stacked: SharedControlConfig<'CheckboxControl'> = {
   description: null,
 };
 
-export const stackedPrecent: CustomControlItem = {
-  name: 'stacked_precent',
-  config: {
-    type: 'CheckboxControl',
-    label: t('Show Stacked Precent'),
-    renderTrigger: true,
-    default: false,
-    description: null,
-    visibility: ({ controls }: ControlPanelsContainerProps) =>
-      Boolean(controls?.stacked?.value),
-  },
+export const stackedPrecent: SharedControlConfig<'CheckboxControl'> = {
+  type: 'CheckboxControl',
+  label: t('Show Stacked Precent'),
+  renderTrigger: true,
+  default: false,
+  description: null,
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.stacked?.value),
 };
 
 export const showAxisPointer: SharedControlConfig<'CheckboxControl'> = {

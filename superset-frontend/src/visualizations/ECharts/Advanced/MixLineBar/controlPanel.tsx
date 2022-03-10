@@ -144,9 +144,9 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['groupby'],
-        [<p className="section-header">{t('Bar Chart')}</p>],
+        [<h1 className="section-header">{t('Bar Chart')}</h1>],
         ...createQuerySection(''),
-        [<p className="section-header">{t('Line Chart')}</p>],
+        [<h1 className="section-header">{t('Line Chart')}</h1>],
         ...createQuerySection('B'),
       ],
     },
@@ -154,11 +154,6 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
-        [<h1 className="section-header">{t('Legend')}</h1>],
-        [showLegendControl],
-        [legendModeControl],
-        [legendTypeControl],
-        [legendPaddingControl],
         [
           {
             name: 'tooltipFormat',
@@ -169,10 +164,27 @@ const config: ControlPanelConfig = {
           },
         ],
         ['showAxisPointer'],
-        [<h1 className="section-header">{t('Bar Chart')}</h1>],
-        ['barBackground'],
-        ...createCustomizeSection(''),
-        [<h1 className="section-header">{t('Line Chart')}</h1>],
+      ],
+    },
+    {
+      label: t('Legend'),
+      expanded: false,
+      controlSetRows: [
+        [showLegendControl],
+        [legendModeControl],
+        [legendTypeControl],
+        [legendPaddingControl],
+      ],
+    },
+    {
+      label: t('Bar Chart'),
+      expanded: false,
+      controlSetRows: [['barBackground'], ...createCustomizeSection('')],
+    },
+    {
+      label: t('Line Chart'),
+      expanded: false,
+      controlSetRows: [
         ['smooth'],
         ['symbol'],
         ['symbolSize'],
@@ -182,7 +194,7 @@ const config: ControlPanelConfig = {
     },
     {
       label: t('X Axis'),
-      expanded: true,
+      expanded: false,
       controlSetRows: [['xAxisLabel'], ['xLabelLayout']],
     },
   ],

@@ -39,7 +39,7 @@ export default function transformProps(
     width,
   } = chartProps;
 
-  console.log('chartProps:', chartProps);
+  // console.log('chartProps:', chartProps);
 
   const {
     chartOrient, // 图表布局方向
@@ -54,12 +54,15 @@ export default function transformProps(
     showLabel, // 是否显示图形上的文本标签
     stacked, // 堆叠
     smooth, // 平滑曲线
+    symbol, // 折线图节点上的标记类型
+    symbolSize, // 标记的大小
+    symbolRotate, // 标记的旋转角度
     showAreaChart, // 显示区域面积图
     areaLinearGradient, // 面积图的线性渐变
     yAxisShowMinmax, // 是否显示Y轴的最大值最小值限制
     yAxisBounds, // Y轴的最小值和最大值数组
-    bottomMargin, // X轴距离下方的距离
     xLabelLayout, // X轴布局：标签旋转角度
+    tooltipFormat,
     showLegend,
     legendPadding,
     legendOrientation,
@@ -84,6 +87,9 @@ export default function transformProps(
     labelPosition = { position: 'right' };
   }
 
+  // tooltip的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
+  const tooltipFormatter = getNumberFormatter(tooltipFormat);
+
   // Y轴的格式化方法
   const numberFormatter = getNumberFormatter(yAxisFormat);
 
@@ -91,6 +97,9 @@ export default function transformProps(
   const lineSeries = {
     type: 'line', // 折线图
     smooth, // 平滑曲线
+    symbol, // 标记
+    symbolSize,
+    symbolRotate,
     animation: true, // 开启动画
     // 标签的统一布局配置。
     labelLayout: {
@@ -108,7 +117,7 @@ export default function transformProps(
       formatter({ value, encode }: any) {
         const idx = chartOrient === 'horizontal' ? encode.y[0] : encode.x[0];
         const row = value[idx];
-        return typeof row === 'number' ? `${row.toFixed(2)}` : row;
+        return numberFormatter(row);
       },
     },
     stack: stacked && 'total', // 这个值相同的柱子，会堆叠起来。值是什么都行，但最好是有意义的值。
@@ -135,14 +144,6 @@ export default function transformProps(
     };
   }
 
-  // 位置计算
-  const gridBottom =
-    bottomMargin !== 'auto'
-      ? {
-          bottom: parseInt(bottomMargin, 10),
-        }
-      : {};
-
   // X轴标签布局: 旋转角度
   const getRotate = (rotate: string): number => {
     switch (rotate) {
@@ -160,15 +161,6 @@ export default function transformProps(
         return chartOrient === 'horizontal' ? -45 : 0;
     }
   };
-
-  const axisPointer = showAxisPointer
-    ? {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'cross',
-        },
-      }
-    : {};
 
   // 图例的位置布局方式
   let legendPosition = {};
@@ -188,7 +180,7 @@ export default function transformProps(
   }
   // 图例的内边距
   if (typeof legendPadding === 'number') {
-    legendPosition = { ...legendPosition, padding: legendPadding };
+    legendPosition = { ...legendPosition, padding: [5, legendPadding] };
   }
 
   // 计算数据集的数据（排序）
@@ -200,16 +192,25 @@ export default function transformProps(
     sourceData = [rawData[0], ...arr];
   }
 
-  // 默认：一般横向，数组直接用就行，第一个分类是X，第二个值就是Y。如果是纵向的布局，就倒过来。
-  const axisData = [
-    {
-      type: 'category', // 类目轴
+  // 类目轴的名称
+  let xLabelGap = {};
+  if (xAxisLabel) {
+    xLabelGap = {
       name: xAxisLabel, // X 表示类目轴
+      nameGap: getRotate(xLabelLayout) === 0 ? 32 : 64,
       nameLocation: 'center',
       nameTextStyle: {
         fontWeight: 'bold',
         fontSize: 16,
       },
+    };
+  }
+
+  // 默认：一般横向，数组直接用就行，第一个分类是X，第二个值就是Y。如果是纵向的布局，就倒过来。
+  const axisData = [
+    {
+      type: 'category', // 类目轴
+      ...xLabelGap,
       axisLabel: {
         hideOverlap: true, // 是否隐藏重叠的标签
         rotate: getRotate(xLabelLayout), // 标签旋转角度
@@ -230,26 +231,48 @@ export default function transformProps(
         show: yAxisLine,
       },
       axisLabel: {
-        formatter(val: number) {
-          return numberFormatter(val);
-        },
+        formatter: numberFormatter,
       },
     },
   ];
   const xAxis = chartOrient === 'horizontal' ? axisData[0] : axisData[1];
   const yAxis = chartOrient === 'horizontal' ? axisData[1] : axisData[0];
 
+  // 图形grid位置计算
+  const gridLayout = {};
+  if (xAxisLabel) {
+    if (getRotate(xLabelLayout) === 0) {
+      gridLayout['bottom'] = 28;
+    } else {
+      gridLayout['bottom'] = 15;
+    }
+  } else {
+    gridLayout['bottom'] = 'auto';
+  }
+  if (showLegend) {
+    gridLayout['top'] = '5%';
+  }
+
+  let axisPointer = {};
+  if (showAxisPointer) {
+    axisPointer = {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+      },
+    };
+  }
+
   const echartOptions: EChartsCoreOption = {
     grid: {
       ...defaultGrid,
-      ...gridBottom,
+      ...gridLayout,
     },
     tooltip: {
       ...defaultTooltip,
       ...axisPointer,
       // 提示的值格式化
-      valueFormatter: (value: any) =>
-        typeof value === 'number' ? `${value.toFixed(2)}` : value,
+      valueFormatter: tooltipFormatter,
     },
     legend: {
       show: showLegend,
