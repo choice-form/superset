@@ -31,7 +31,10 @@ import {
   shouldUseLegacyApi,
   getChartDataUri,
 } from 'src/explore/exploreUtils';
-import { requiresQuery, ANNOTATION_SOURCE_TYPES } from 'src/modules/AnnotationTypes';
+import {
+  requiresQuery,
+  ANNOTATION_SOURCE_TYPES,
+} from 'src/modules/AnnotationTypes';
 
 import { addDangerToast } from 'src/components/MessageToasts/actions';
 import { logEvent } from 'src/logger/actions';
@@ -99,7 +102,10 @@ export function annotationQueryFailed(annotation, queryResponse, key) {
 export const DYNAMIC_PLUGIN_CONTROLS_READY = 'DYNAMIC_PLUGIN_CONTROLS_READY';
 export const dynamicPluginControlsReady = () => (dispatch, getState) => {
   const state = getState();
-  const controlsState = getControlsState(state.explore, state.explore.form_data);
+  const controlsState = getControlsState(
+    state.explore,
+    state.explore.form_data,
+  );
   dispatch({
     type: DYNAMIC_PLUGIN_CONTROLS_READY,
     key: controlsState.slice_id.value,
@@ -126,13 +132,18 @@ const legacyChartDataRequest = async (
     force,
     allowDomainSharding,
     method,
-    requestParams: requestParams.dashboard_id ? { dashboard_id: requestParams.dashboard_id } : {},
+    requestParams: requestParams.dashboard_id
+      ? { dashboard_id: requestParams.dashboard_id }
+      : {},
   });
 
   const drillPayload = formData.drilldown
     ? {
         groupby: [DrillDown.getColumn(ownState.drilldown, formData.groupby)],
-        filters: [...(formData.filters || []), ...DrillDown.getFilters(ownState.drilldown, formData.groupby)],
+        filters: [
+          ...(formData.filters || []),
+          ...DrillDown.getFilters(ownState.drilldown, formData.groupby),
+        ],
       }
     : {};
 
@@ -142,7 +153,10 @@ const legacyChartDataRequest = async (
     postPayload: { form_data: { ...formData, ...drillPayload } },
   };
 
-  const clientMethod = 'GET' && isFeatureEnabled(FeatureFlag.CLIENT_CACHE) ? SupersetClient.get : SupersetClient.post;
+  const clientMethod =
+    'GET' && isFeatureEnabled(FeatureFlag.CLIENT_CACHE)
+      ? SupersetClient.get
+      : SupersetClient.post;
   return clientMethod(querySettings).then(({ json, response }) =>
     // Make the legacy endpoint return a payload that corresponds to the
     // V1 chart data endpoint response signature.
@@ -153,7 +167,16 @@ const legacyChartDataRequest = async (
   );
 };
 
-const v1ChartDataRequest = async (formData, resultFormat, resultType, force, requestParams, setDataMask, ownState) => {
+// 图表发送数据的地方（新接口）
+const v1ChartDataRequest = async (
+  formData,
+  resultFormat,
+  resultType,
+  force,
+  requestParams,
+  setDataMask,
+  ownState,
+) => {
   const payload = buildV1ChartDataPayload({
     formData,
     resultType,
@@ -163,12 +186,18 @@ const v1ChartDataRequest = async (formData, resultFormat, resultType, force, req
     ownState,
   });
 
+  console.log('189:v1ChartDataRequest', formData);
+
   // The dashboard id is added to query params for tracking purposes
   const { slice_id: sliceId } = formData;
   const { dashboard_id: dashboardId } = requestParams;
 
   const qs = {};
-  if (sliceId !== undefined) qs.form_data = `{"slice_id":${sliceId}}`;
+  if (sliceId !== undefined) {
+    qs.form_data = `{"slice_id":${sliceId}}`;
+    // 添加图标类型到后台，用于返回数据格式的判断
+    qs.viz_type = formData.viz_type;
+  }
   if (dashboardId !== undefined) qs.dashboard_id = dashboardId;
   if (force !== false) qs.force = force;
 
@@ -215,10 +244,26 @@ export async function getChartDataRequest({
 
   if (shouldUseLegacyApi(formData)) {
     // useLegacyApi: true 走这里
-    return legacyChartDataRequest(formData, resultFormat, resultType, force, method, querySettings, ownState);
+    return legacyChartDataRequest(
+      formData,
+      resultFormat,
+      resultType,
+      force,
+      method,
+      querySettings,
+      ownState,
+    );
   }
   // useLegacyApi: false 走这里
-  return v1ChartDataRequest(formData, resultFormat, resultType, force, querySettings, setDataMask, ownState);
+  return v1ChartDataRequest(
+    formData,
+    resultFormat,
+    resultType,
+    force,
+    querySettings,
+    setDataMask,
+    ownState,
+  );
 }
 
 export function runAnnotationQuery(
@@ -260,11 +305,18 @@ export function runAnnotationQuery(
 
     if (!isDashboardRequest && fd) {
       const hasExtraFilters = fd.extra_filters && fd.extra_filters.length > 0;
-      sliceFormData.extra_filters = hasExtraFilters ? fd.extra_filters : undefined;
+      sliceFormData.extra_filters = hasExtraFilters
+        ? fd.extra_filters
+        : undefined;
     }
 
     const isNative = annotation.sourceType === ANNOTATION_SOURCE_TYPES.NATIVE;
-    const url = getAnnotationJsonUrl(annotation.value, sliceFormData, isNative, force);
+    const url = getAnnotationJsonUrl(
+      annotation.value,
+      sliceFormData,
+      isNative,
+      force,
+    );
     const controller = new AbortController();
     const { signal } = controller;
 
@@ -275,11 +327,19 @@ export function runAnnotationQuery(
       signal,
       timeout: timeout * 1000,
     })
-      .then(({ json }) => dispatch(annotationQuerySuccess(annotation, json, sliceKey)))
+      .then(({ json }) =>
+        dispatch(annotationQuerySuccess(annotation, json, sliceKey)),
+      )
       .catch(response =>
         getClientErrorObject(response).then(err => {
           if (err.statusText === 'timeout') {
-            dispatch(annotationQueryFailed(annotation, { error: 'Query timeout' }, sliceKey));
+            dispatch(
+              annotationQueryFailed(
+                annotation,
+                { error: 'Query timeout' },
+                sliceKey,
+              ),
+            );
           } else if ((err.error || '').toLowerCase().includes('no data')) {
             dispatch(annotationQuerySuccess(annotation, err, sliceKey));
           } else if (err.statusText !== 'abort') {
@@ -318,7 +378,15 @@ export function addChart(chart, key) {
   return { type: ADD_CHART, chart, key };
 }
 
-export function exploreJSON(formData, force = false, timeout = 60, key, method, dashboardId, ownState) {
+export function exploreJSON(
+  formData,
+  force = false,
+  timeout = 60,
+  key,
+  method,
+  dashboardId,
+  ownState,
+) {
   return async dispatch => {
     const logStart = Logger.getTimestamp();
     const controller = new AbortController();
@@ -361,7 +429,9 @@ export function exploreJSON(formData, force = false, timeout = 60, key, method, 
               }
               return waitForAsyncData(result);
             default:
-              throw new Error(`Received unexpected response status (${response.status}) while fetching chart data`);
+              throw new Error(
+                `Received unexpected response status (${response.status}) while fetching chart data`,
+              );
           }
         }
 
@@ -380,9 +450,12 @@ export function exploreJSON(formData, force = false, timeout = 60, key, method, 
               start_offset: logStart,
               ts: new Date().getTime(),
               duration: Logger.getTimestamp() - logStart,
-              has_extra_filters: formData.extra_filters && formData.extra_filters.length > 0,
+              has_extra_filters:
+                formData.extra_filters && formData.extra_filters.length > 0,
               viz_type: formData.viz_type,
-              data_age: resultItem.is_cached ? moment(new Date()).diff(moment.utc(resultItem.cached_dttm)) : null,
+              data_age: resultItem.is_cached
+                ? moment(new Date()).diff(moment.utc(resultItem.cached_dttm))
+                : null,
             }),
           ),
         );
@@ -422,20 +495,40 @@ export function exploreJSON(formData, force = false, timeout = 60, key, method, 
       });
 
     // only retrieve annotations when calling the legacy API
-    const annotationLayers = shouldUseLegacyApi(formData) ? formData.annotation_layers || [] : [];
+    const annotationLayers = shouldUseLegacyApi(formData)
+      ? formData.annotation_layers || []
+      : [];
     const isDashboardRequest = dashboardId > 0;
 
     return Promise.all([
       chartDataRequestCaught,
       dispatch(triggerQuery(false, key)),
       dispatch(updateQueryFormData(formData, key)),
-      ...annotationLayers.map(x => dispatch(runAnnotationQuery(x, timeout, formData, key, isDashboardRequest, force))),
+      ...annotationLayers.map(x =>
+        dispatch(
+          runAnnotationQuery(
+            x,
+            timeout,
+            formData,
+            key,
+            isDashboardRequest,
+            force,
+          ),
+        ),
+      ),
     ]);
   };
 }
 
 export const GET_SAVED_CHART = 'GET_SAVED_CHART';
-export function getSavedChart(formData, force = false, timeout = 60, key, dashboardId, ownState) {
+export function getSavedChart(
+  formData,
+  force = false,
+  timeout = 60,
+  key,
+  dashboardId,
+  ownState,
+) {
   /*
    * Perform a GET request to `/explore_json`.
    *
@@ -446,18 +539,41 @@ export function getSavedChart(formData, force = false, timeout = 60, key, dashbo
    *  GET  /explore_json?{"chart_id":1,"extra_filters":"..."}
    *
    */
-  return exploreJSON(formData, force, timeout, key, 'GET', dashboardId, ownState);
+  return exploreJSON(
+    formData,
+    force,
+    timeout,
+    key,
+    'GET',
+    dashboardId,
+    ownState,
+  );
 }
 
 export const POST_CHART_FORM_DATA = 'POST_CHART_FORM_DATA';
-export function postChartFormData(formData, force = false, timeout = 60, key, dashboardId, ownState) {
+export function postChartFormData(
+  formData,
+  force = false,
+  timeout = 60,
+  key,
+  dashboardId,
+  ownState,
+) {
   /*
    * Perform a POST request to `/explore_json`.
    *
    * This will post the form data to the endpoint, returning a new chart.
    *
    */
-  return exploreJSON(formData, force, timeout, key, 'POST', dashboardId, ownState);
+  return exploreJSON(
+    formData,
+    force,
+    timeout,
+    key,
+    'POST',
+    dashboardId,
+    ownState,
+  );
 }
 
 export function redirectSQLLab(formData) {
@@ -471,16 +587,22 @@ export function redirectSQLLab(formData) {
         };
         postForm(redirectUrl, payload);
       })
-      .catch(() => dispatch(addDangerToast(t('An error occurred while loading the SQL'))));
+      .catch(() =>
+        dispatch(addDangerToast(t('An error occurred while loading the SQL'))),
+      );
   };
 }
 
 export function refreshChart(chartKey, force, dashboardId) {
   return (dispatch, getState) => {
     const chart = (getState().charts || {})[chartKey];
-    const timeout = getState().dashboardInfo.common.conf.SUPERSET_WEBSERVER_TIMEOUT;
+    const timeout = getState().dashboardInfo.common.conf
+      .SUPERSET_WEBSERVER_TIMEOUT;
 
-    if (!chart.latestQueryFormData || Object.keys(chart.latestQueryFormData).length === 0) {
+    if (
+      !chart.latestQueryFormData ||
+      Object.keys(chart.latestQueryFormData).length === 0
+    ) {
       return;
     }
     dispatch(

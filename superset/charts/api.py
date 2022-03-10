@@ -526,6 +526,8 @@ class ChartRestApi(BaseSupersetModelRestApi):
             return CsvResponse(data, headers=generate_download_headers("csv"))
 
         if result_format == ChartDataResultFormat.JSON:
+            # 获取到URL传参
+            # params = dict(request.args)
             response_data = simplejson.dumps(
                 {"result": result["queries"]},
                 default=json_int_dttm_ser,
@@ -654,6 +656,7 @@ class ChartRestApi(BaseSupersetModelRestApi):
 
         return self.get_data_response(command, form_data=form_data)
 
+    # 新的API，图表的数据请求会通过这里
     @expose("/data", methods=["POST"])
     @protect()
     @statsd_metrics
