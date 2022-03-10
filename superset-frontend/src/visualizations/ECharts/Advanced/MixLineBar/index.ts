@@ -21,7 +21,9 @@ import buildQuery from './buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
-import demo from './images/demo.png';
+import demo1 from './images/demo1.png';
+import demo2 from './images/demo2.png';
+import demo3 from './images/demo3.png';
 import { EchartsMixedLineBarProps, EchartsMixedLineBarFormData } from './types';
 
 export default class EchartsMixedLineBarChartPlugin extends ChartPlugin<
@@ -50,8 +52,8 @@ export default class EchartsMixedLineBarChartPlugin extends ChartPlugin<
         description: t(
           'Analysis of different indicators in the same dimension.',
         ),
-        exampleGallery: [{ url: demo }],
-        name: t('Mixed Line and Bar'), // 折柱混合图
+        exampleGallery: [{ url: demo1 }, { url: demo2 }, { url: demo3 }],
+        name: t('Mixed Line and Bar'), // 折线柱状混合图
         tags: [
           t('Aesthetic'),
           t('Categorical'),

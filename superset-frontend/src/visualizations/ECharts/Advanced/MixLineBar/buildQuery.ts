@@ -26,38 +26,33 @@ import { pivotOperator } from '../../../../chartConntrols';
 
 export default function buildQuery(formData: QueryFormData) {
   const {
-    adhoc_filters,
-    adhoc_filters_b,
+    adhocFilters,
+    adhocFiltersB,
     groupby,
-    groupby_b,
     limit,
-    limit_b,
-    timeseries_limit_metric,
-    timeseries_limit_metric_b,
+    limitB,
     metrics,
-    metrics_b,
-    order_desc,
-    order_desc_b,
+    metricsB,
+    orderDesc,
+    orderDescB,
     ...baseFormData
   } = formData;
 
   const formData1 = {
     ...baseFormData,
-    adhoc_filters,
+    adhocFilters,
     columns: groupby,
     limit,
-    timeseries_limit_metric,
     metrics,
-    order_desc,
+    orderDesc,
   };
   const formData2 = {
     ...baseFormData,
-    adhoc_filters: adhoc_filters_b,
-    columns: groupby_b,
-    limit: limit_b,
-    timeseries_limit_metric: timeseries_limit_metric_b,
-    metrics: metrics_b,
-    order_desc: order_desc_b,
+    adhoc_filters: adhocFiltersB,
+    columns: groupby,
+    limit: limitB,
+    metrics: metricsB,
+    order_desc: orderDescB,
   };
 
   const queryContextA = buildQueryContext(formData1, baseQueryObject => {

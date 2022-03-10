@@ -129,10 +129,8 @@
       "Columns missing in datasource: %(invalid_columns)s": [
         "数据源中缺少列：%(invalid_columns)s"
       ],
-      "Bar Line Chart": ["柱状折线图"],
-      "Pick at least one metric": ["选择至少一个指标"],
-      "2 metrics need to be selected": ["需要选择2个指标"],
       "Pie Chart": ["饼图"],
+      "Pick at least one metric": ["选择至少一个指标"],
       "Bar Chart": ["柱状图"],
       "Line Chart": ["折线图"],
       "Table View": ["表视图"],
@@ -1734,6 +1732,22 @@
       ],
       "Smooth": ["平滑"],
       "Whether to show as smooth curve.": ["是否平滑曲线显示"],
+      "Node Symbol": ["节点符号"],
+      "emptyCircle": ["空心圆"],
+      "circle": ["圆"],
+      "rect": ["矩形"],
+      "roundRect": ["圆角矩形"],
+      "triangle": ["三角形"],
+      "diamond": ["菱形"],
+      "arrow": ["箭头"],
+      "none": ["空"],
+      "Node symbol of the line.": ["折线上的节点符号"],
+      "Symbol Size": ["符号尺寸"],
+      "Resize of symbols.": ["调整符号的尺寸"],
+      "Symbol Rotate": ["符号旋转"],
+      "Rotate degree of symbol. The negative value represents clockwise. Note that when symbol is set to be arrow in markLine, symbolRotate value will be ignored, and compulsively use tangent angle.": [
+        "符号的旋转角度（而非弧度）。正值表示逆时针旋转。注意: 当符号为箭头时，会忽略符号的旋转角度，强制设置为切线的角度。"
+      ],
       "Stacked": ["堆叠"],
       "Show Stacked Precent": ["按百分比显示堆叠"],
       "Axis Pointer": ["坐标轴指示器"],
@@ -3808,11 +3822,11 @@
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         "是否显示额外控件。额外的控制包括使多柱状图堆叠或并排。"
       ],
-      "Y Axis 1": ["Y轴1"],
-      "Y Axis 2": ["Y轴2"],
-      "Bar chart and Line chart can be displayed in one chart at the same time, with 1 X-axis and 2 Y-axes.": [
-        "柱状图和折线图可以同时显示在一张图表中，有1个X轴和2个Y轴。"
+      "Tooltip Format": ["Tooltip格式化"],
+      "Analysis of different indicators in the same dimension.": [
+        "对同一维度的不同指标进行分析。"
       ],
+      "Mixed Line and Bar": ["折线柱状混合图"],
       "Sort Bars": ["柱排序"],
       "Sort bars by x labels.": ["按x标签对柱进行排序。"],
       "Value Axis": ["数值轴"],
@@ -3983,8 +3997,6 @@
       "Broken line chart relates all the data points symbol by broken lines, which is used to show the trend of data changing. It could be used in both rectangular coordinate andpolar coordinate.": [
         "折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。"
       ],
-      "Battery level over time": ["电池电量随时间变化"],
-      "Deprecated": ["反对"],
       "Series type": ["系列类型"],
       "Series chart type (line, bar etc)": ["系列图表类型（折线，柱 等等）"],
       "Area chart": ["面积图"],
@@ -4303,6 +4315,7 @@
       "Vehicle Types": ["媒介类型"],
       "Continuous": ["持续的"],
       "nvd3": [""],
+      "Deprecated": ["反对"],
       "X Log Scale": ["X Log 刻度"],
       "Use a log scale for the X-axis": ["X轴使用Log刻度"],
       "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
@@ -4327,6 +4340,8 @@
         "在一个图表中可视化许多不同的时间序列对象。此图表已被弃用，建议改用时间序列图。"
       ],
       "Time-series Percent Change": ["时间序列 - 百分比变化"],
+      "Y Axis 1": ["Y轴1"],
+      "Y Axis 2": ["Y轴2"],
       "Left Axis Metric": ["左轴指标"],
       "Choose a metric for left axis": ["为左轴选择一个指标"],
       "Left Axis Format": ["左轴格式化"],

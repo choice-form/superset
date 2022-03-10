@@ -46,7 +46,7 @@ import EchartsFunnelChartPlugin from '../ECharts/Funnel';
 import EchartsMixedTimeseriesChartPlugin from '../ECharts/MixedTimeseries';
 
 // 高级图形
-// 折柱混合图
+// 折线柱状混合图
 import EchartsMixedLineBarChartPlugin from '../ECharts/Advanced/MixLineBar';
 
 // 柱状图
@@ -116,7 +116,7 @@ export default class MainPreset extends Preset {
         new LineMultiChartPlugin().configure({ key: 'line_multi' }),
         new TimePivotChartPlugin().configure({ key: 'time_pivot' }),
 
-        // 基础柱状&基础折线组合图
+        // 折线柱状混合图
         new EchartsMixedLineBarChartPlugin().configure({ key: 'bar_line' }),
 
         // 柱状图

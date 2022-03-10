@@ -74,7 +74,7 @@ export const legendModeControl = {
   },
 };
 
-const legendTypeControl = {
+export const legendTypeControl = {
   name: 'legendType',
   config: {
     type: 'SelectControl',
@@ -91,7 +91,7 @@ const legendTypeControl = {
   },
 };
 
-const legendOrientationControl = {
+export const legendOrientationControl = {
   name: 'legendOrientation',
   config: {
     type: 'SelectControl',
@@ -110,7 +110,7 @@ const legendOrientationControl = {
   },
 };
 
-const legendPaddingControl = {
+export const legendPaddingControl = {
   name: 'legendPadding',
   config: {
     type: 'SliderControl',

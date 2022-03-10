@@ -24,14 +24,13 @@ import {
   emitFilterControl,
   sharedControls,
 } from 'src/chartConntrols';
-import { DEFAULT_FORM_DATA } from '../../MixedTimeseries/types';
-import {
-  bottomMargin,
-  chartOrientControl,
-  legendSection,
-} from '../../controls';
 
-const { orderDesc, rowLimit } = DEFAULT_FORM_DATA;
+import {
+  showLegendControl,
+  legendModeControl,
+  legendTypeControl,
+  legendPaddingControl,
+} from '../../controls';
 
 function createQuerySection(controlSuffix: string) {
   return [
@@ -43,7 +42,7 @@ function createQuerySection(controlSuffix: string) {
     ],
     [
       {
-        name: `adhoc_filters${controlSuffix}`,
+        name: `adhocFilters${controlSuffix}`,
         config: sharedControls.adhoc_filters,
       },
     ],
@@ -51,39 +50,34 @@ function createQuerySection(controlSuffix: string) {
       ? [
           {
             ...emitFilterControl[0],
-            name: `emit_filter${controlSuffix}`,
+            name: `emitFilter${controlSuffix}`,
           },
         ]
       : [],
     [
       {
-        name: `order_desc${controlSuffix}`,
+        name: `orderDesc${controlSuffix}`,
         config: {
           type: 'CheckboxControl',
           label: t('Sort Descending'),
-          default: orderDesc,
+          default: false,
           description: t('Whether to sort descending or ascending'),
         },
       },
     ],
     [
       {
-        name: `row_limit${controlSuffix}`,
+        name: `rowLimit${controlSuffix}`,
         config: {
           ...sharedControls.row_limit,
-          default: rowLimit,
         },
       },
     ],
   ];
 }
 
-function createCustomizeSection(
-  label: string,
-  controlSuffix: string,
-): ControlSetRow[] {
+function createCustomizeSection(controlSuffix: string): ControlSetRow[] {
   return [
-    [<h1 className="section-header">{label}</h1>],
     [
       {
         name: `showLabel${controlSuffix}`,
@@ -153,33 +147,43 @@ const config: ControlPanelConfig = {
         [<p className="section-header">{t('Bar Chart')}</p>],
         ...createQuerySection(''),
         [<p className="section-header">{t('Line Chart')}</p>],
-        ...createQuerySection('_b'),
+        ...createQuerySection('B'),
       ],
     },
     {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
-        [chartOrientControl],
-        ...legendSection,
+        [<h1 className="section-header">{t('Legend')}</h1>],
+        [showLegendControl],
+        [legendModeControl],
+        [legendTypeControl],
+        [legendPaddingControl],
+        [
+          {
+            name: 'tooltipFormat',
+            config: {
+              ...sharedControls.yAxisFormat,
+              label: t('Tooltip Format'),
+            },
+          },
+        ],
         ['showAxisPointer'],
-
-        [<p className="section-header">{t('Bar')}</p>],
+        [<h1 className="section-header">{t('Bar Chart')}</h1>],
         ['barBackground'],
-        ['stackedPrecent'],
-        ...createCustomizeSection(t('Query Bar'), ''),
-
-        [<p className="section-header">{t('Line')}</p>],
-        ['showAreaChart'],
-        ['areaLinearGradient'],
+        ...createCustomizeSection(''),
+        [<h1 className="section-header">{t('Line Chart')}</h1>],
         ['smooth'],
-        ...createCustomizeSection(t('Query Line'), 'B'),
+        ['symbol'],
+        ['symbolSize'],
+        ['symbolRotate'],
+        ...createCustomizeSection('B'),
       ],
     },
     {
-      label: t('Category Axis'),
+      label: t('X Axis'),
       expanded: true,
-      controlSetRows: [['xAxisLabel'], ['xLabelLayout'], [bottomMargin]],
+      controlSetRows: [['xAxisLabel'], ['xLabelLayout']],
     },
   ],
   controlOverrides: {},

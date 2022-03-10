@@ -52,6 +52,54 @@ export const smooth: SharedControlConfig<'CheckboxControl'> = {
   description: t('Whether to show as smooth curve.'),
 };
 
+// 折线图上，线节点的标记
+export const symbol: SharedControlConfig<'SelectControl'> = {
+  type: 'SelectControl',
+  label: t('Node Symbol'),
+  choices: [
+    ['emptyCircle', t('emptyCircle')],
+    ['circle', t('circle')],
+    ['rect', t('rect')],
+    ['roundRect', t('roundRect')],
+    ['triangle', t('triangle')],
+    ['diamond', t('diamond')],
+    ['arrow', t('arrow')],
+    ['none', t('none')],
+  ],
+  default: 'emptyCircle',
+  clearable: false,
+  renderTrigger: true,
+  description: t('Node symbol of the line.'),
+};
+// 标记的大小
+export const symbolSize: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Symbol Size'),
+  renderTrigger: true,
+  min: 4,
+  max: 50,
+  step: 1,
+  default: 4,
+  description: t('Resize of symbols.'),
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.symbol?.value !== 'none'),
+};
+// 标记的旋转角度
+export const symbolRotate: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Symbol Rotate'),
+  renderTrigger: true,
+  min: -180,
+  max: 180,
+  step: 1,
+  default: 0,
+  description: t(
+    'Rotate degree of symbol. The negative value represents clockwise. Note that when symbol is set to be arrow in markLine, symbolRotate value will be ignored, and compulsively use tangent angle.',
+  ),
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.symbol?.value !== 'none'),
+};
+
 export const stacked: SharedControlConfig<'CheckboxControl'> = {
   type: 'CheckboxControl',
   label: t('Stacked'),
@@ -194,7 +242,6 @@ export const yAxis2Bounds: SharedControlConfig<'BoundsControl'> = {
 };
 
 export const xAxisLabel: SharedControlConfig<'TextControl'> = {
-  name: 'x_axis_label',
   type: 'TextControl',
   label: t('X Axis Label'),
   renderTrigger: true,

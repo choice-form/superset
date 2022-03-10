@@ -79,10 +79,8 @@
       "From date cannot be larger than to date": [""],
       "Cached value not found": [""],
       "Columns missing in datasource: %(invalid_columns)s": [""],
-      "Bar Line Chart": [""],
-      "Pick at least one metric": [""],
-      "2 metrics need to be selected": [""],
       "Pie Chart": [""],
+      "Pick at least one metric": [""],
       "Bar Chart": [""],
       "Line Chart": [""],
       "Table View": [""],
@@ -1401,6 +1399,22 @@
       "Area map with linear gradient effect on.": [""],
       "Smooth": [""],
       "Whether to show as smooth curve.": [""],
+      "Node Symbol": [""],
+      "emptyCircle": [""],
+      "circle": [""],
+      "rect": [""],
+      "roundRect": [""],
+      "triangle": [""],
+      "diamond": [""],
+      "arrow": [""],
+      "none": [""],
+      "Node symbol of the line.": [""],
+      "Symbol Size": [""],
+      "Resize of symbols.": [""],
+      "Symbol Rotate": [""],
+      "Rotate degree of symbol. The negative value represents clockwise. Note that when symbol is set to be arrow in markLine, symbolRotate value will be ignored, and compulsively use tangent angle.": [
+        ""
+      ],
       "Stacked": [""],
       "Show Stacked Precent": [""],
       "Axis Pointer": [""],
@@ -3168,11 +3182,9 @@
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         ""
       ],
-      "Y Axis 1": [""],
-      "Y Axis 2": [""],
-      "Bar chart and Line chart can be displayed in one chart at the same time, with 1 X-axis and 2 Y-axes.": [
-        ""
-      ],
+      "Tooltip Format": [""],
+      "Analysis of different indicators in the same dimension.": [""],
+      "Mixed Line and Bar": [""],
       "Sort Bars": [""],
       "Sort bars by x labels.": [""],
       "Value Axis": [""],
@@ -3321,8 +3333,6 @@
       "Broken line chart relates all the data points symbol by broken lines, which is used to show the trend of data changing. It could be used in both rectangular coordinate andpolar coordinate.": [
         ""
       ],
-      "Battery level over time": [""],
-      "Deprecated": [""],
       "Series type": [""],
       "Series chart type (line, bar etc)": [""],
       "Area chart": [""],
@@ -3591,6 +3601,7 @@
       "Vehicle Types": [""],
       "Continuous": [""],
       "nvd3": [""],
+      "Deprecated": [""],
       "X Log Scale": [""],
       "Use a log scale for the X-axis": [""],
       "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
@@ -3615,6 +3626,8 @@
         ""
       ],
       "Time-series Percent Change": [""],
+      "Y Axis 1": [""],
+      "Y Axis 2": [""],
       "Left Axis Metric": [""],
       "Choose a metric for left axis": [""],
       "Left Axis Format": [""],
