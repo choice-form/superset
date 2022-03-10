@@ -22,9 +22,12 @@ import controlPanel from './controlPanel';
 import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
 import demo from './images/demo.png';
-import { EchartsBarChartProps, EchartsBarFormData } from './types';
+import { EchartsMixedLineBarProps, EchartsMixedLineBarFormData } from './types';
 
-export default class EchartsBarLineChartPlugin extends ChartPlugin<EchartsBarFormData, EchartsBarChartProps> {
+export default class EchartsMixedLineBarChartPlugin extends ChartPlugin<
+  EchartsMixedLineBarFormData,
+  EchartsMixedLineBarProps
+> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library
@@ -45,10 +48,10 @@ export default class EchartsBarLineChartPlugin extends ChartPlugin<EchartsBarFor
         category: t('Part of a Whole'),
         credits: ['https://echarts.apache.org'],
         description: t(
-          'Bar chart and Line chart can be displayed in one chart at the same time, with 1 X-axis and 2 Y-axes.',
+          'Analysis of different indicators in the same dimension.',
         ),
         exampleGallery: [{ url: demo }],
-        name: t('Bar Line Chart'),
+        name: t('Mixed Line and Bar'), // 折柱混合图
         tags: [
           t('Aesthetic'),
           t('Categorical'),
@@ -59,7 +62,6 @@ export default class EchartsBarLineChartPlugin extends ChartPlugin<EchartsBarFor
           t('ECharts'),
         ],
         thumbnail,
-        useLegacyApi: true,
       }),
       transformProps,
     });

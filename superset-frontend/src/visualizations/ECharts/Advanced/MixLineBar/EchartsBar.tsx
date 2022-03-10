@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { BarChartTransformedProps } from './types';
+import { EchartsMixedLineBarChartTransformedProps } from './types';
 import Echart from '../../Echart';
 import { EventHandlers } from '../../types';
 
@@ -30,7 +30,7 @@ export default function EchartsBar({
   // groupby,
   selectedValues,
 }: // formData,
-BarChartTransformedProps) {
+EchartsMixedLineBarChartTransformedProps) {
   // const handleChange = useCallback(
   //   (values: string[]) => {
   //     if (!formData.emitFilter) {

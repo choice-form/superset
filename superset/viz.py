@@ -653,76 +653,6 @@ class BaseViz:  # pylint: disable=too-many-public-methods
         security_manager.raise_for_access(viz=self)
 
 
-class BarLineViz(BaseViz):
-    """A bar chart where the x axis is time"""
-
-    viz_type = "bar_line"
-    verbose_name = _("Bar Line Chart")
-    is_timeseries = False
-
-    def query_obj(self) -> QueryObjectDict:
-        query_obj = super().query_obj()
-
-        # 指标不能为空
-        if not self.form_data.get("metrics"):
-            raise QueryObjectValidationError(_("Pick at least one metric"))
-
-        # 只能有2个指标
-        if isinstance(self.form_data["metrics"], list) and len(self.form_data["metrics"]) != 2:
-            raise QueryObjectValidationError(_("2 metrics need to be selected"))
-
-        return query_obj
-
-    def get_data(self, df: pd.DataFrame) -> VizData:
-        if df.empty:
-            return None
-
-        metrics = self.metric_labels
-        df = df.copy()
-        df[self.groupby] = df[self.groupby].fillna(value=NULL_STRING)
-        pt = df.pivot_table(index=self.groupby, columns=[], values=metrics)
-
-        # Re-order the columns adhering to the metric ordering.
-        pt = pt[metrics]
-        chart_data = []
-        for name, ys in pt.items():
-            if isinstance(name, (tuple, list)):
-                name = name[0]
-            else:
-                name = str(name)
-
-            values = []
-            for x, v in ys.items():
-                # 多个group的情况下，x的值会是元组或者列表，所以必须处理一下。
-                if isinstance(x, (tuple, list)):
-                    x = ", ".join([str(s) for s in x])
-                else:
-                    x = str(x)
-                values.append((x,  0 if math.isnan(v) else v))
-
-            chart_data.append({"key": name, "values": dict(values)})
-
-        # 合并key，将key相同的value进行合并
-        handle = {}
-        for item in chart_data:
-            if item["key"] in handle:
-                handle[item["key"]].append(item['values'])
-            else:
-                handle[item["key"]] = [item['values']]
-
-        # key 相同的值进行合并
-        result = {}
-        for k, v in handle.items():
-            # 将对象变成可计算值（相同的key, value求和）
-            v = map(lambda n: Counter(n), v)
-            res = Counter()
-            for i in v:
-                res += i
-            result[k] = res
-
-        return result
-
-
 class PieViz(BaseViz):
 
     viz_type = "pie"
@@ -836,7 +766,6 @@ class BarViz(BaseViz):
 
         # Re-order the columns adhering to the metric ordering.
         pt = pt[metrics]
-        print('metrics:', metrics)
         chart_data = []
         for name, ys in pt.items():
             if pt[name].dtype.kind not in "biufc" or name in self.groupby:

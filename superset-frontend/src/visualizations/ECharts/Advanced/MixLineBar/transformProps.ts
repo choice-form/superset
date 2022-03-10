@@ -18,18 +18,27 @@
  */
 import { getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
-import { BarChartTransformedProps, EchartsBarChartProps, EchartsBarFormData } from './types';
+import {
+  EchartsMixedLineBarChartTransformedProps,
+  EchartsMixedLineBarProps,
+  EchartsMixedLineBarFormData,
+} from './types';
 import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA } from '../../types';
 import { defaultGrid, defaultTooltip } from '../../defaults';
 
-export default function transformProps(chartProps: EchartsBarChartProps): BarChartTransformedProps {
+export default function transformProps(
+  chartProps: EchartsMixedLineBarProps,
+): EchartsMixedLineBarChartTransformedProps {
   const { formData, height, hooks, queriesData, width } = chartProps;
 
-  // console.log('chartProps:', chartProps);
+  console.log('chartProps:', chartProps);
 
   const {
     groupby,
+    groupbyB,
+    emitFilter,
+
     xAxisLabel, // X轴名称
     showBarValue, // 是否将值显示在柱子上
     showLegend, // 是否显示图例
@@ -47,7 +56,7 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
 
     bottomMargin, // X轴距离下方的距离
     xLabelLayout, // X轴布局：标签旋转角度
-  }: EchartsBarFormData = {
+  }: EchartsMixedLineBarFormData = {
     ...DEFAULT_LEGEND_FORM_DATA,
     ...DEFAULT_PIE_FORM_DATA,
     ...formData,
@@ -171,7 +180,8 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
       ...defaultTooltip,
       ...axisPointer,
       // 提示的值格式化
-      valueFormatter: (value: any) => (typeof value === 'number' ? `${value.toFixed(2)}` : value),
+      valueFormatter: (value: any) =>
+        typeof value === 'number' ? `${value.toFixed(2)}` : value,
     },
     xAxis: {
       type: 'category',
@@ -207,7 +217,7 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
         ...y2MinMax,
         axisLabel: {
           formatter(val: number) {
-            return val === 0 ? null : numberFormatter2(val);
+            return numberFormatter2(val);
           },
         },
       },
@@ -236,6 +246,11 @@ export default function transformProps(chartProps: EchartsBarChartProps): BarCha
     echartOptions,
     setDataMask,
     groupby,
+    groupbyB,
     selectedValues: [],
+    emitFilter,
+    emitFilterB: false,
+    labelMap: {},
+    labelMapB: {},
   };
 }
