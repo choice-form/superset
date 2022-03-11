@@ -242,7 +242,7 @@ const config: ControlPanelConfig = {
         ...richTooltipSection,
         // eslint-disable-next-line react/jsx-key
         [<h1 className="section-header">{t('Y Axis')}</h1>],
-        ['y_axis_format'],
+        ['yAxisFormat'],
         [
           {
             name: 'logAxis',

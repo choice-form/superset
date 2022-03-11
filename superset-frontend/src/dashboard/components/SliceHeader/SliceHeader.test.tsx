@@ -39,14 +39,26 @@ jest.mock('src/dashboard/components/SliceHeaderControls', () => ({
       data-is-full-size={props.isFullSize}
       data-chart-status={props.chartStatus}
     >
-      <button type="button" data-test="toggleExpandSlice" onClick={props.toggleExpandSlice}>
+      <button
+        type="button"
+        data-test="toggleExpandSlice"
+        onClick={props.toggleExpandSlice}
+      >
         toggleExpandSlice
       </button>
-      <button type="button" data-test="forceRefresh" onClick={props.forceRefresh}>
+      <button
+        type="button"
+        data-test="forceRefresh"
+        onClick={props.forceRefresh}
+      >
         forceRefresh
       </button>
 
-      <button type="button" data-test="exploreChart" onClick={props.logExploreChart}>
+      <button
+        type="button"
+        data-test="exploreChart"
+        onClick={props.logExploreChart}
+      >
         exploreChart
       </button>
 
@@ -54,15 +66,27 @@ jest.mock('src/dashboard/components/SliceHeaderControls', () => ({
         exportCSV
       </button>
 
-      <button type="button" data-test="handleToggleFullSize" onClick={props.handleToggleFullSize}>
+      <button
+        type="button"
+        data-test="handleToggleFullSize"
+        onClick={props.handleToggleFullSize}
+      >
         handleToggleFullSize
       </button>
 
-      <button type="button" data-test="addSuccessToast" onClick={props.addSuccessToast}>
+      <button
+        type="button"
+        data-test="addSuccessToast"
+        onClick={props.addSuccessToast}
+      >
         addSuccessToast
       </button>
 
-      <button type="button" data-test="addDangerToast" onClick={props.addDangerToast}>
+      <button
+        type="button"
+        data-test="addDangerToast"
+        onClick={props.addDangerToast}
+      >
         addDangerToast
       </button>
     </div>
@@ -71,7 +95,9 @@ jest.mock('src/dashboard/components/SliceHeaderControls', () => ({
 
 jest.mock('src/dashboard/components/FiltersBadge', () => ({
   __esModule: true,
-  default: (props: any) => <div data-test="FiltersBadge" data-chart-id={props.chartId} />,
+  default: (props: any) => (
+    <div data-test="FiltersBadge" data-chart-id={props.chartId} />
+  ),
 }));
 
 const createProps = () => ({
@@ -107,7 +133,7 @@ const createProps = () => ({
       url_params: {},
       viz_type: 'dist_bar',
       x_ticks_layout: 'auto',
-      y_axis_format: 'SMART_NUMBER',
+      yAxisFormat: 'SMART_NUMBER',
       slice_id: 312,
     },
     viz_type: 'dist_bar',
@@ -277,25 +303,67 @@ test('Should not render "annotationsError" and "annotationsLoading"', () => {
 test('Correct props to "FiltersBadge"', () => {
   const props = createProps();
   render(<SliceHeader {...props} />, { useRedux: true });
-  expect(screen.getByTestId('FiltersBadge')).toHaveAttribute('data-chart-id', '312');
+  expect(screen.getByTestId('FiltersBadge')).toHaveAttribute(
+    'data-chart-id',
+    '312',
+  );
 });
 
 test('Correct props to "SliceHeaderControls"', () => {
   const props = createProps();
   render(<SliceHeader {...props} />, { useRedux: true });
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-cached-dttm', '');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-chart-status', 'rendered');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-component-id', 'CHART-aGfmWtliqA');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-dashboard-id', '26');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-is-cached', 'false');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-is-expanded', 'false');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-is-full-size', 'false');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-slice-can-edit', 'false');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-superset-can-csv', 'true');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-superset-can-explore', 'true');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-test', 'SliceHeaderControls');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-updated-dttm', '1617207718004');
-  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute('data-slice', JSON.stringify(props.slice));
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-cached-dttm',
+    '',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-chart-status',
+    'rendered',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-component-id',
+    'CHART-aGfmWtliqA',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-dashboard-id',
+    '26',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-is-cached',
+    'false',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-is-expanded',
+    'false',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-is-full-size',
+    'false',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-slice-can-edit',
+    'false',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-superset-can-csv',
+    'true',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-superset-can-explore',
+    'true',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-test',
+    'SliceHeaderControls',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-updated-dttm',
+    '1617207718004',
+  );
+  expect(screen.getByTestId('SliceHeaderControls')).toHaveAttribute(
+    'data-slice',
+    JSON.stringify(props.slice),
+  );
 });
 
 test('Correct actions to "SliceHeaderControls"', () => {

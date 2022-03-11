@@ -365,7 +365,7 @@ const config: ControlPanelConfig = {
         ],
         [
           {
-            name: `y_axis_format`,
+            name: `yAxisFormat`,
             config: {
               ...sharedControls.yAxisFormat,
               label: t('Primary y-axis format'),
@@ -386,7 +386,7 @@ const config: ControlPanelConfig = {
         ],
         [
           {
-            name: `y_axis_format_secondary`,
+            name: `yAxisFormat_secondary`,
             config: {
               ...sharedControls.yAxisFormat,
               label: t('Secondary y-axis format'),

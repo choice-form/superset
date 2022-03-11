@@ -47,7 +47,9 @@ const config: ControlPanelConfig = {
               type: 'TextControl',
               label: t('Comparison Period Lag'),
               isInt: true,
-              description: t('Based on granularity, number of time periods to compare against'),
+              description: t(
+                'Based on granularity, number of time periods to compare against',
+              ),
             },
           },
         ],
@@ -61,7 +63,7 @@ const config: ControlPanelConfig = {
             },
           },
         ],
-        ['y_axis_format'],
+        ['yAxisFormat'],
         [
           {
             name: 'time_format',
@@ -107,7 +109,9 @@ const config: ControlPanelConfig = {
               label: t('Start y-axis at 0'),
               renderTrigger: true,
               default: true,
-              description: t('Start y-axis at zero. Uncheck to start y-axis at minimum value in the data.'),
+              description: t(
+                'Start y-axis at zero. Uncheck to start y-axis at minimum value in the data.',
+              ),
             },
           },
         ],
@@ -134,7 +138,11 @@ const config: ControlPanelConfig = {
     {
       label: t('Chart Options'),
       expanded: true,
-      controlSetRows: [['color_picker', null], [headerFontSize], [subheaderFontSize]],
+      controlSetRows: [
+        ['color_picker', null],
+        [headerFontSize],
+        [subheaderFontSize],
+      ],
     },
     {
       label: t('Advanced Analytics'),
@@ -149,9 +157,16 @@ const config: ControlPanelConfig = {
               type: 'SelectControl',
               label: t('Rolling Function'),
               default: 'None',
-              choices: formatSelectOptions(['None', 'mean', 'sum', 'std', 'cumsum']),
+              choices: formatSelectOptions([
+                'None',
+                'mean',
+                'sum',
+                'std',
+                'cumsum',
+              ]),
               description: t(
-                'Defines a rolling window function to apply, works along ' + 'with the [Periods] text box',
+                'Defines a rolling window function to apply, works along ' +
+                  'with the [Periods] text box',
               ),
             },
           },
@@ -164,7 +179,8 @@ const config: ControlPanelConfig = {
               label: t('Periods'),
               isInt: true,
               description: t(
-                'Defines the size of the rolling window function, ' + 'relative to the time granularity selected',
+                'Defines the size of the rolling window function, ' +
+                  'relative to the time granularity selected',
               ),
             },
           },
@@ -190,7 +206,7 @@ const config: ControlPanelConfig = {
     },
   ],
   controlOverrides: {
-    y_axis_format: {
+    yAxisFormat: {
       label: t('Number format'),
     },
   },

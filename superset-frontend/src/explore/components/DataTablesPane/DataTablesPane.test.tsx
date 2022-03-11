@@ -23,7 +23,10 @@ import { render, screen } from 'spec/helpers/testing-library';
 import fetchMock from 'fetch-mock';
 import { DataTablesPane } from '.';
 
-fetchMock.post('http://api/v1/chart/data?form_data=%7B%22slice_id%22%3A456%7D', { body: {} });
+fetchMock.post(
+  'http://api/v1/chart/data?form_data=%7B%22slice_id%22%3A456%7D',
+  { body: {} },
+);
 
 const createProps = () => ({
   queryFormData: {
@@ -46,7 +49,7 @@ const createProps = () => ({
     left_margin: 'auto',
     bottom_margin: 'auto',
     y_axis_bounds: [null, null],
-    y_axis_format: 'SMART_NUMBER',
+    yAxisFormat: 'SMART_NUMBER',
     show_perc: true,
     sort_x_axis: 'alpha_asc',
     sort_y_axis: 'alpha_asc',
