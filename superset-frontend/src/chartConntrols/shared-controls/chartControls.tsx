@@ -6,6 +6,59 @@ import {
   DEFAULT_NUMBER_FORMAT,
   formatSelectOptions,
 } from '../utils';
+import { hexToRgba } from 'src/utils/colorUtils';
+
+// 图表标题文本
+export const titleText: SharedControlConfig<'TextControl'> = {
+  type: 'TextControl',
+  label: t('Title Text'),
+  description: t('Set the text of the title'),
+  renderTrigger: true,
+  default: '',
+};
+// 图表的标题字体大小
+export const TitleFontSize: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Title Font Size'),
+  description: t('Set the font size of the title'),
+  renderTrigger: true,
+  min: 16,
+  max: 100,
+  default: 22,
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.titleText?.value),
+};
+// 图表的标题字体颜色
+export const TitleFontColor: SharedControlConfig<'ColorPickerControl'> = {
+  type: 'ColorPickerControl',
+  label: t('Title Font Color'),
+  description: t('Set the font color of the title'),
+  renderTrigger: true,
+  default: hexToRgba('#333'),
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.titleText?.value),
+};
+
+// 显示环形百分比
+export const ringPercent: SharedControlConfig<'CheckboxControl'> = {
+  type: 'CheckboxControl',
+  label: t('Ring Percent'),
+  default: false,
+  renderTrigger: true,
+  description: t('Ring Percent'),
+}
+// 环形宽度: 仪表盘进度条的宽度
+export const ringWidth: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Ring Width'),
+  description: t('Ring Width'),
+  renderTrigger: true,
+  min: 20,
+  max: 200,
+  default: 20,
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.ringPercent?.value),
+};
 
 // 显示图形上的文本标签
 export const showLabel: SharedControlConfig<'CheckboxControl'> = {

@@ -48,3 +48,31 @@ export function rgbToHex(red: number, green: number, blue: number) {
 
   return `#${r}${g}${b}`;
 }
+
+export function hexToRgba(
+  h: string,
+): { r: number; g: number; b: number; a: number } {
+  let r = '0';
+  let g = '0';
+  let b = '0';
+
+  // 3 digits
+  if (h.length === 4) {
+    r = `0x${h[1]}${h[1]}`;
+    g = `0x${h[2]}${h[2]}`;
+    b = `0x${h[3]}${h[3]}`;
+
+    // 6 digits
+  } else if (h.length === 7) {
+    r = `0x${h[1]}${h[2]}`;
+    g = `0x${h[3]}${h[4]}`;
+    b = `0x${h[5]}${h[6]}`;
+  }
+
+  return {
+    r: +r,
+    g: +g,
+    b: +b,
+    a: 1,
+  };
+}

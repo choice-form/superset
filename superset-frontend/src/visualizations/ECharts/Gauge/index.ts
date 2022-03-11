@@ -22,6 +22,8 @@ import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
 import buildQuery from './buildQuery';
 import { EchartsGaugeChartProps, EchartsGaugeFormData } from './types';
+import demo1 from './images/demo1.png';
+import demo2 from './images/demo2.png';
 
 export default class EchartsGaugeChartPlugin extends ChartPlugin<
   EchartsGaugeFormData,
@@ -39,6 +41,7 @@ export default class EchartsGaugeChartPlugin extends ChartPlugin<
         description: t(
           'Uses a gauge to showcase progress of a metric towards a target. The position of the dial represents the progress and the terminal value in the gauge represents the target value.',
         ),
+        exampleGallery: [{ url: demo1 }, { url: demo2 }],
         name: t('Gauge Chart'),
         tags: [t('ECharts')],
         thumbnail,

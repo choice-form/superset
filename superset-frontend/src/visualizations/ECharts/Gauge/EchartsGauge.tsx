@@ -20,6 +20,7 @@ import React, { useCallback } from 'react';
 import Echart from 'src/visualizations/ECharts/Echart';
 import { GaugeChartTransformedProps } from './types';
 import { EventHandlers } from '../types';
+import { getChartDataMask } from '../utils/datamask';
 
 export default function EchartsGauge({
   height,
@@ -36,34 +37,9 @@ export default function EchartsGauge({
       if (!emitFilter) {
         return;
       }
-
       const groupbyValues = values.map(value => labelMap[value]);
-
-      setDataMask({
-        extraFormData: {
-          filters:
-            values.length === 0
-              ? []
-              : groupby.map((col: any, idx: string | number) => {
-                  const val = groupbyValues.map(v => v[idx]);
-                  if (val === null || val === undefined) {
-                    return {
-                      col,
-                      op: 'IS NULL',
-                    };
-                  }
-                  return {
-                    col,
-                    op: 'IN',
-                    val: val as (string | number | boolean)[],
-                  };
-                }),
-        },
-        filterState: {
-          value: groupbyValues.length ? groupbyValues : null,
-          selectedValues: values.length ? values : null,
-        },
-      });
+      const dataMask = getChartDataMask(values, groupby, groupbyValues);
+      setDataMask(dataMask);
     },
     [groupby, labelMap, setDataMask, selectedValues],
   );
@@ -73,7 +49,6 @@ export default function EchartsGauge({
       const { name } = props;
       const values = Object.values(selectedValues);
       if (values.includes(name)) {
-        // @ts-ignore
         handleChange(values.filter(v => v !== name));
       } else {
         handleChange([name]);

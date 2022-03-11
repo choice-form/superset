@@ -37,7 +37,7 @@ export enum AppSection {
 export type FilterState = { value?: any; [key: string]: any };
 
 export type DataMask = {
-  extraFormData?: { extraFormData: { filter: [] } } & ExtraFormData;
+  extraFormData?: any & ExtraFormData;
   filterState?: FilterState;
   ownState?: OwnState;
 };

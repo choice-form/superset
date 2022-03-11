@@ -1718,6 +1718,14 @@
       "Time range endpoints": ["时间范围端点"],
       "Time range endpoints (SIP-15)": ["时间范围端点 (SIP-15)"],
       "Color Scheme": ["配色方案"],
+      "Title Text": ["标题内容"],
+      "Set the text of the title": ["设置标题的内容"],
+      "Title Font Size": ["标题字体大小"],
+      "Set the font size of the title": ["设置标题的字体大小"],
+      "Title Font Color": ["标题字体颜色"],
+      "Set the font color of the title": ["设置标题的字体颜色"],
+      "Ring Percent": ["环形百分比"],
+      "Ring Width": ["环形宽度"],
       "Show Label": ["显示标签"],
       "Text label of , to explain some data information about graphic item like value, name and so on.": [
         "图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等。"
@@ -2735,11 +2743,11 @@
       "aggregate": ["合计"],
       "Time series columns": ["时间序列的列"],
       "Other": ["其他"],
-      "Popular": ["流行的"],
       "ECharts": [""],
-      "Advanced-Analytics": ["高级分析"],
+      "Filter box": ["过滤器"],
+      "Map": ["地图"],
+      "Word Cloud": ["词云"],
       "Recommended tags": ["推荐标签"],
-      "Category": ["分类"],
       "Tags": ["标签"],
       "Search all charts": ["搜索所有图表"],
       "No description available.": ["没有可用的描述。"],
@@ -3382,12 +3390,7 @@
       "Visualizes how a metric has changed over a time using a color scale and a calendar view. Gray values are used to indicate missing values and the linear color scheme is used to encode the magnitude of each day's value.": [
         "使用色标和日历视图可视化度量在一段时间内的变化。灰度值用于指示缺失值，线性颜色方案用于编码每天值的大小。"
       ],
-      "Business": ["商务"],
-      "Comparison": ["比较"],
-      "Intensity": ["强度"],
-      "Pattern": ["模型"],
-      "Report": ["报告"],
-      "Trend": ["趋势"],
+      "D3": [""],
       "Sort by metric": ["排序指标"],
       "Whether to sort results by the selected metric in descending order.": [
         "是否按所选指标按降序对结果排序。"
@@ -3402,11 +3405,6 @@
       ],
       "Relationships between community channels": ["社区渠道之间的关系"],
       "Chord Diagram": ["和弦图"],
-      "Aesthetic": ["美感"],
-      "Circular": ["圆形"],
-      "Legacy": ["传统的"],
-      "Proportional": ["比例"],
-      "Relational": ["相关联的"],
       "Country": ["国家"],
       "Which country to plot the map for?": ["该为哪个国家绘制地图？"],
       "ISO 3166-2 Codes": [""],
@@ -3414,13 +3412,9 @@
         "表中包含ISO 3166-2地区/省/部门代码的列。"
       ],
       "Metric to display bottom title": ["显示底部标题的度量"],
-      "Map": ["地图"],
       "Visualizes how a single metric varies across a country's principal subdivisions (states, provinces, etc) on a chloropleth map. Each subdivision's value is elevated when you hover over the corresponding geographic boundary.": [
         "在叶绿体地图上，可视化一个国家的主要分区（州、省等）中单个指标的变化。将鼠标悬停在相应的地理边界上时，每个细分的值都会升高。"
       ],
-      "2D": [""],
-      "Geo": ["地域"],
-      "Range": ["范围"],
       "Link Length": ["链接长度"],
       "Link length in the force layout": ["力布局中的链接长度"],
       "Charge": ["费用"],
@@ -3428,9 +3422,6 @@
       "Source / Target": ["源 / 目标"],
       "Choose a source and a target": ["选择数据源和目标"],
       "Force-directed Graph": ["力引导布局"],
-      "Categorical": ["明确的"],
-      "Density": ["密度"],
-      "Single Metric": ["单指标"],
       "Axis ascending": ["升序轴"],
       "Axis descending": ["降序轴"],
       "Metric ascending": ["升序指标"],
@@ -3481,7 +3472,6 @@
       ],
       "Sizes of vehicles": ["载具尺寸"],
       "Employment and education": ["就业和教育"],
-      "Predictive": ["预测型"],
       "Sort Descending": ["降序"],
       "Series Height": ["系列高度"],
       "Pixel height of each series": [""],
@@ -3503,8 +3493,6 @@
       "Plots the individual metrics for each row in the data vertically and links them together as a line. This chart is useful for comparing multiple metrics across all of the samples or rows in the data.": [
         "垂直绘制数据中每一行的单独指标，并将它们链接为一条线。此图表可用于比较数据中所有样本或行的多个指标。"
       ],
-      "Coordinates": ["平行坐标"],
-      "Directional": ["方向"],
       "Time Series Options": ["时间序列选项"],
       "Not Time Series": ["没有时间序列"],
       "Ignore time": ["忽略时间"],
@@ -3567,7 +3555,6 @@
         "一种极坐标图，其中圆被分成等角的楔块，任何楔块所代表的值由其面积而不是半径或扫掠角来表示。"
       ],
       "Nightingale Rose Chart": ["南丁格尔玫瑰图"],
-      "Multi-Layers": ["多层次"],
       "Limiting rows may result in incomplete data and misleading charts. Consider filtering or grouping source/target names instead.": [
         "限制行可能会导致数据和误导性的图表。考虑过滤或分组源/目标名称。"
       ],
@@ -3577,7 +3564,6 @@
       "Demographics": ["人口统计"],
       "Survey Responses": ["调查反馈"],
       "Sankey Diagram": ["桑基图"],
-      "Percentages": ["百分比"],
       "Sankey Diagram with Loops": ["循环桑基图"],
       "Primary Metric": ["主要指标"],
       "The primary metric is used to define the arc segment sizes": [
@@ -3599,7 +3585,6 @@
         "使用圆圈来可视化通过系统不同阶段的数据流。将鼠标悬停在可视化中的各个路径上，以了解值所处的阶段。用于多阶段、多组可视化漏斗和管道。"
       ],
       "Sunburst Chart": ["旭日图"],
-      "Multi-Levels": ["多等级"],
       "search.num_records": [""],
       "page_size.show": [""],
       "page_size.entries": [""],
@@ -3650,16 +3635,11 @@
       "Classic row-by-column spreadsheet like view of a dataset. Use tables to showcase a view into the underlying data or to show aggregated metrics.": [
         "数据集的典型逐列电子表格视图。使用表来展示底层数据的视图或显示聚合的度量"
       ],
-      "Additive": ["增加条件"],
-      "Formattable": ["格式化"],
-      "Sequential": ["按次序"],
-      "Tabular": ["表格，列表"],
       "Ratio": ["比率"],
       "Target aspect ratio for treemap tiles.": ["树映射图块的目标纵横比。"],
       "Shows the composition of a dataset by segmenting a given rectangle as smaller rectangles with areas proportional to their value or contribution to the whole. Those rectangles may also, in turn, be further segmented hierarchically.": [
         "通过将给定矩形分割为面积与其值或对整体的贡献成比例的较小矩形，显示数据集的组成。反过来，这些矩形也可以进一步分层分割。"
       ],
-      "Word Cloud": ["词云"],
       "Minimum Font Size": ["最小字体大小"],
       "Font size for the smallest value in the list": [
         "列表中最小值的字体大小"
@@ -3690,9 +3670,6 @@
       "A map of the world, that can indicate values in different countries.": [
         "一张世界地图，可以显示不同国家的值。"
       ],
-      "Multi-Dimensions": ["多维度"],
-      "Multi-Variables": ["多变量"],
-      "Scatter": ["分散的"],
       "Big Number Font Size": ["大数字的字体大小"],
       "Tiny": ["极小的"],
       "Normal": ["普通的"],
@@ -3731,7 +3708,7 @@
       "Showcases a single number accompanied by a simple line chart, to call attention to an important metric along with its change over time or other dimension.": [
         "用简单的折线图展示一个数字，以引起人们对一个重要指标及其随时间或其他维度的变化的注意。"
       ],
-      "Line": ["折线图"],
+      "Data UI": [""],
       "Subheader": ["副标题"],
       "Description text that shows up below your Big Number": [
         "显示在大数字下方的说明文字"
@@ -3770,12 +3747,10 @@
         "比较不同活动在共享时间轴视图中的时间长度。"
       ],
       "Event Flow": ["事件流"],
-      "Progressive": ["进度"],
       "Time-series Table": ["时间序列-表格"],
       "Compare multiple time series charts (as sparklines) and related metrics quickly.": [
         "快速比较多个时间序列图（如迷你图）和相关指标。"
       ],
-      "Text": ["文本"],
       "Show legend": ["显示图例"],
       "Whether to display a legend for the chart": ["是否显示图表的图例"],
       "drill-down": ["下钻"],
@@ -3865,7 +3840,6 @@
         "这种可视化也被称为“盒须图”，它比较了一个相关指标在多个组中的分布。中间的盒子强调平均、中值和内2个四分位数。每个盒子周围的触须显示最小值、最大值、范围和外部2个四分位数。"
       ],
       "Box Plot": ["盒须图"],
-      "Statistical": ["统计的"],
       "Labels": ["标签"],
       "Label Type": ["标签类型"],
       "What should be shown on the label?": ["标签上应该显示什么？"],
@@ -3875,56 +3849,31 @@
         "展示指标如何随着漏斗的推进而变化。这个经典图表对于可视化管道或生命周期中各个阶段之间的下降非常有用。"
       ],
       "Funnel Chart": ["漏斗图"],
-      "Columns to group by": ["要分组的列"],
-      "General": ["全体的"],
-      "Minimum value on the gauge axis": ["仪表轴上的最小值"],
-      "Maximum value on the gauge axis": ["仪表轴上的最大值"],
-      "Start angle": ["开始角度"],
-      "Angle at which to start progress axis": ["开始进度轴的角度"],
-      "End angle": ["结束角度"],
-      "Angle at which to end progress axis": ["结束进度轴的角度"],
-      "Font size": ["字体大小"],
-      "Font size for axis labels, detail value and other text elements": [
-        "轴标签、细节值和其他文本元素的字体大小"
-      ],
+      "Value Font size": ["值字体大小"],
+      "Font size for detail value": ["值的字体大小"],
+      "Label Font size": ["标签字体大小"],
+      "Font size for axis labels": ["轴标签的字体大小"],
       "Value format": ["值格式"],
       "Additional text to add before or after the value, e.g. unit": [
         "在值之前或之后添加的附加文本，例如单位"
       ],
       "Show pointer": ["显示指针"],
       "Whether to show the pointer": ["是否显示指针"],
-      "Animation": ["动画"],
-      "Whether to animate the progress and the value or just display them": [
-        "是为进度和值设置动画，还是仅显示它们"
+      "Value Animation": ["值动画"],
+      "Whether to animate the value or just display it.": [
+        "是否对值进行动画处理，或只是显示它。"
       ],
-      "Axis": ["坐标系"],
       "Show axis line ticks": ["显示轴线刻度"],
       "Whether to show minor ticks on the axis": ["是否在轴上显示小刻度"],
       "Show split lines": ["显示分割线"],
       "Whether to show the split lines on the axis": [
         "是否在坐标轴上显示分割线"
       ],
-      "Split number": ["切割数字"],
-      "Number of split segments on the axis": ["轴上拆分的段数"],
-      "Progress": ["进度条"],
       "Show progress": ["显示进度条"],
       "Whether to show the progress of gauge chart": ["是否显示仪表图的进度"],
-      "Overlap": ["重叠"],
-      "Whether the progress bar overlaps when there are multiple groups of data": [
-        "当存在多组数据时，进度条是否重叠"
-      ],
       "Round cap": ["圆形盖"],
       "Style the ends of the progress bar with a round cap": [
         "用圆形盖设计进度条末端的样式"
-      ],
-      "Intervals": ["间隔"],
-      "Interval bounds": ["间隔界限"],
-      "Comma-separated interval bounds, e.g. 2,4,5 for intervals 0-2, 2-4 and 4-5. Last number should match the value provided for MAX.": [
-        "逗号分隔的区间界限，例如区间0-2,2-4和4-5的2,4,5。最后一个数字应与为最大值提供的值匹配。"
-      ],
-      "Interval colors": ["间隙颜色"],
-      "Comma-separated color picks for the intervals, e.g. 1,2,4. Integers denote colors from the chosen color scheme and are 1-indexed. Length must be matching that of interval bounds.": [
-        "以逗号分隔的颜色选择间隔，例如1,2,4。整数表示所选配色方案中的颜色，且为1索引。长度必须与区间界限的长度相匹配。"
       ],
       "Uses a gauge to showcase progress of a metric towards a target. The position of the dial represents the progress and the terminal value in the gauge represents the target value.": [
         "使用量表显示指标向目标的进度。刻度盘的位置代表进度，仪表中的终端值代表目标值。"
@@ -3942,6 +3891,7 @@
       "Layout": ["布局"],
       "Graph layout": ["图形布局"],
       "Force": ["强制"],
+      "Circular": ["圆形"],
       "Layout type of graph": ["图形的布局类型"],
       "Edge symbols": ["边缘符号"],
       "Symbol of two ends of edge line": ["边缘线两端的符号"],
@@ -3987,8 +3937,6 @@
         "显示图形结构中实体之间的连接。用于映射关系和显示网络中哪些节点很重要。图表可以配置为强制引导或循环。如果数据包含地理空间组件，请尝试使用deck。gl圆弧图。"
       ],
       "Graph Chart": ["图表"],
-      "Structural": ["结构"],
-      "Transformable": ["可变形的"],
       "Sort Lines": ["折线排序"],
       "Sort lines by category axis for label names.": [
         "按类目轴的标签名称排序折线。"
@@ -4086,7 +4034,6 @@
         "在多个组中可视化一组并行的指标。每个组都使用自己的点线进行可视化，每个度量在图表中表示为一条边。"
       ],
       "Radar Chart": ["雷达图"],
-      "Web": [""],
       "Contribution Mode": ["贡献模式"],
       "Calculate contribution per series or total": ["计算对总数的贡献值"],
       "Series Style": ["系列样式"],
@@ -4111,8 +4058,6 @@
         "时间序列柱状图用于将指标随时间的变化显示为一系列柱状图。"
       ],
       "Time-series Bar Chart v2": ["时间序列 - 柱状图 v2"],
-      "Vertical": ["虚拟的"],
-      "Bar": ["柱状"],
       "Time-series line chart is used to visualize repeated measurements taken over regular time intervals. Line chart is a type of chart which displays information as a series of data points connected by straight line segments. It is a basic type of chart common in many fields.": [
         "时间序列折线图用于显示定期进行的重复测量。折线图是一种以直线段连接的一系列数据点的形式显示信息的图表。这是一种基本类型的图表，在许多领域都很常见。"
       ],
@@ -4220,7 +4165,6 @@
         "这些过滤器应用于下拉列表中的可用值"
       ],
       "Tools": ["工具"],
-      "Filter box": ["过滤器"],
       "Chart component that lets you add a custom filter UI in your dashboard. When added to dashboard, a filter box lets users specify specific values or ranges to filter charts by. The charts that each filter box is applied to can be fine tuned as well in the dashboard view.\n\n    Note that this plugin is being replaced with the new Filters feature that lives in the dashboard view itself. It's easier to use and has more capabilities!": [
         "图表组件，用于在仪表板中添加自定义过滤器UI。当添加到仪表板时，过滤框允许用户指定特定的值或范围来过滤图表。每个过滤器框应用到的图表也可以在仪表板视图中进行微调。请注意，这个插件正在被仪表板视图本身的新过滤器功能所取代。它更易于使用，功能更强！"
       ],
@@ -4313,9 +4257,7 @@
       "Stacked style": ["堆叠样式"],
       "Video game consoles": ["视频游戏控制台"],
       "Vehicle Types": ["媒介类型"],
-      "Continuous": ["持续的"],
       "nvd3": [""],
-      "Deprecated": ["反对"],
       "X Log Scale": ["X Log 刻度"],
       "Use a log scale for the X-axis": ["X轴使用Log刻度"],
       "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [

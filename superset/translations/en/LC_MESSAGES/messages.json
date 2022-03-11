@@ -1389,6 +1389,14 @@
       "Time range endpoints": [""],
       "Time range endpoints (SIP-15)": [""],
       "Color Scheme": [""],
+      "Title Text": [""],
+      "Set the text of the title": [""],
+      "Title Font Size": [""],
+      "Set the font size of the title": [""],
+      "Title Font Color": [""],
+      "Set the font color of the title": [""],
+      "Ring Percent": [""],
+      "Ring Width": [""],
       "Show Label": [""],
       "Text label of , to explain some data information about graphic item like value, name and so on.": [
         ""
@@ -2283,11 +2291,11 @@
       "aggregate": [""],
       "Time series columns": [""],
       "Other": [""],
-      "Popular": [""],
       "ECharts": [""],
-      "Advanced-Analytics": [""],
+      "Filter box": [""],
+      "Map": [""],
+      "Word Cloud": [""],
       "Recommended tags": [""],
-      "Category": [""],
       "Tags": [""],
       "Search all charts": [""],
       "No description available.": [""],
@@ -2786,12 +2794,7 @@
       "Visualizes how a metric has changed over a time using a color scale and a calendar view. Gray values are used to indicate missing values and the linear color scheme is used to encode the magnitude of each day's value.": [
         ""
       ],
-      "Business": [""],
-      "Comparison": [""],
-      "Intensity": [""],
-      "Pattern": [""],
-      "Report": [""],
-      "Trend": [""],
+      "D3": [""],
       "Sort by metric": [""],
       "Whether to sort results by the selected metric in descending order.": [
         ""
@@ -2806,11 +2809,6 @@
       ],
       "Relationships between community channels": [""],
       "Chord Diagram": [""],
-      "Aesthetic": [""],
-      "Circular": [""],
-      "Legacy": [""],
-      "Proportional": [""],
-      "Relational": [""],
       "Country": [""],
       "Which country to plot the map for?": [""],
       "ISO 3166-2 Codes": [""],
@@ -2818,13 +2816,9 @@
         ""
       ],
       "Metric to display bottom title": [""],
-      "Map": [""],
       "Visualizes how a single metric varies across a country's principal subdivisions (states, provinces, etc) on a chloropleth map. Each subdivision's value is elevated when you hover over the corresponding geographic boundary.": [
         ""
       ],
-      "2D": [""],
-      "Geo": [""],
-      "Range": [""],
       "Link Length": [""],
       "Link length in the force layout": [""],
       "Charge": [""],
@@ -2832,9 +2826,6 @@
       "Source / Target": [""],
       "Choose a source and a target": [""],
       "Force-directed Graph": [""],
-      "Categorical": [""],
-      "Density": [""],
-      "Single Metric": [""],
       "Axis ascending": [""],
       "Axis descending": [""],
       "Metric ascending": [""],
@@ -2875,7 +2866,6 @@
       ],
       "Sizes of vehicles": [""],
       "Employment and education": [""],
-      "Predictive": [""],
       "Sort Descending": [""],
       "Series Height": [""],
       "Pixel height of each series": [""],
@@ -2897,8 +2887,6 @@
       "Plots the individual metrics for each row in the data vertically and links them together as a line. This chart is useful for comparing multiple metrics across all of the samples or rows in the data.": [
         ""
       ],
-      "Coordinates": [""],
-      "Directional": [""],
       "Time Series Options": [""],
       "Not Time Series": [""],
       "Ignore time": [""],
@@ -2951,7 +2939,6 @@
         ""
       ],
       "Nightingale Rose Chart": [""],
-      "Multi-Layers": [""],
       "Limiting rows may result in incomplete data and misleading charts. Consider filtering or grouping source/target names instead.": [
         ""
       ],
@@ -2961,7 +2948,6 @@
       "Demographics": [""],
       "Survey Responses": [""],
       "Sankey Diagram": [""],
-      "Percentages": [""],
       "Sankey Diagram with Loops": [""],
       "Primary Metric": [""],
       "The primary metric is used to define the arc segment sizes": [""],
@@ -2981,7 +2967,6 @@
         ""
       ],
       "Sunburst Chart": [""],
-      "Multi-Levels": [""],
       "search.num_records": [""],
       "page_size.show": [""],
       "page_size.entries": [""],
@@ -3024,16 +3009,11 @@
       "Classic row-by-column spreadsheet like view of a dataset. Use tables to showcase a view into the underlying data or to show aggregated metrics.": [
         ""
       ],
-      "Additive": [""],
-      "Formattable": [""],
-      "Sequential": [""],
-      "Tabular": [""],
       "Ratio": [""],
       "Target aspect ratio for treemap tiles.": [""],
       "Shows the composition of a dataset by segmenting a given rectangle as smaller rectangles with areas proportional to their value or contribution to the whole. Those rectangles may also, in turn, be further segmented hierarchically.": [
         ""
       ],
-      "Word Cloud": [""],
       "Minimum Font Size": [""],
       "Font size for the smallest value in the list": [""],
       "Maximum Font Size": [""],
@@ -3060,9 +3040,6 @@
       "A map of the world, that can indicate values in different countries.": [
         ""
       ],
-      "Multi-Dimensions": [""],
-      "Multi-Variables": [""],
-      "Scatter": [""],
       "Big Number Font Size": [""],
       "Tiny": [""],
       "Normal": [""],
@@ -3097,7 +3074,7 @@
       "Showcases a single number accompanied by a simple line chart, to call attention to an important metric along with its change over time or other dimension.": [
         ""
       ],
-      "Line": [""],
+      "Data UI": [""],
       "Subheader": [""],
       "Description text that shows up below your Big Number": [""],
       "Timestamp Format": [""],
@@ -3132,12 +3109,10 @@
         ""
       ],
       "Event Flow": [""],
-      "Progressive": [""],
       "Time-series Table": [""],
       "Compare multiple time series charts (as sparklines) and related metrics quickly.": [
         ""
       ],
-      "Text": [""],
       "Show legend": [""],
       "Whether to display a legend for the chart": [""],
       "drill-down": [""],
@@ -3217,7 +3192,6 @@
         ""
       ],
       "Box Plot": [""],
-      "Statistical": [""],
       "Labels": [""],
       "Label Type": [""],
       "What should be shown on the label?": [""],
@@ -3227,49 +3201,24 @@
         ""
       ],
       "Funnel Chart": [""],
-      "Columns to group by": [""],
-      "General": [""],
-      "Minimum value on the gauge axis": [""],
-      "Maximum value on the gauge axis": [""],
-      "Start angle": [""],
-      "Angle at which to start progress axis": [""],
-      "End angle": [""],
-      "Angle at which to end progress axis": [""],
-      "Font size": [""],
-      "Font size for axis labels, detail value and other text elements": [""],
+      "Value Font size": [""],
+      "Font size for detail value": [""],
+      "Label Font size": [""],
+      "Font size for axis labels": [""],
       "Value format": [""],
       "Additional text to add before or after the value, e.g. unit": [""],
       "Show pointer": [""],
       "Whether to show the pointer": [""],
-      "Animation": [""],
-      "Whether to animate the progress and the value or just display them": [
-        ""
-      ],
-      "Axis": [""],
+      "Value Animation": [""],
+      "Whether to animate the value or just display it.": [""],
       "Show axis line ticks": [""],
       "Whether to show minor ticks on the axis": [""],
       "Show split lines": [""],
       "Whether to show the split lines on the axis": [""],
-      "Split number": [""],
-      "Number of split segments on the axis": [""],
-      "Progress": [""],
       "Show progress": [""],
       "Whether to show the progress of gauge chart": [""],
-      "Overlap": [""],
-      "Whether the progress bar overlaps when there are multiple groups of data": [
-        ""
-      ],
       "Round cap": [""],
       "Style the ends of the progress bar with a round cap": [""],
-      "Intervals": [""],
-      "Interval bounds": [""],
-      "Comma-separated interval bounds, e.g. 2,4,5 for intervals 0-2, 2-4 and 4-5. Last number should match the value provided for MAX.": [
-        ""
-      ],
-      "Interval colors": [""],
-      "Comma-separated color picks for the intervals, e.g. 1,2,4. Integers denote colors from the chosen color scheme and are 1-indexed. Length must be matching that of interval bounds.": [
-        ""
-      ],
       "Uses a gauge to showcase progress of a metric towards a target. The position of the dial represents the progress and the terminal value in the gauge represents the target value.": [
         ""
       ],
@@ -3286,6 +3235,7 @@
       "Layout": [""],
       "Graph layout": [""],
       "Force": [""],
+      "Circular": [""],
       "Layout type of graph": [""],
       "Edge symbols": [""],
       "Symbol of two ends of edge line": [""],
@@ -3325,8 +3275,6 @@
         ""
       ],
       "Graph Chart": [""],
-      "Structural": [""],
-      "Transformable": [""],
       "Sort Lines": [""],
       "Sort lines by category axis for label names.": [""],
       "Evolution": [""],
@@ -3402,7 +3350,6 @@
         ""
       ],
       "Radar Chart": [""],
-      "Web": [""],
       "Contribution Mode": [""],
       "Calculate contribution per series or total": [""],
       "Series Style": [""],
@@ -3423,8 +3370,6 @@
         ""
       ],
       "Time-series Bar Chart v2": [""],
-      "Vertical": [""],
-      "Bar": [""],
       "Time-series line chart is used to visualize repeated measurements taken over regular time intervals. Line chart is a type of chart which displays information as a series of data points connected by straight line segments. It is a basic type of chart common in many fields.": [
         ""
       ],
@@ -3520,7 +3465,6 @@
       "Limit selector values": [""],
       "These filters apply to the values available in the dropdowns": [""],
       "Tools": [""],
-      "Filter box": [""],
       "Chart component that lets you add a custom filter UI in your dashboard. When added to dashboard, a filter box lets users specify specific values or ranges to filter charts by. The charts that each filter box is applied to can be fine tuned as well in the dashboard view.\n\n    Note that this plugin is being replaced with the new Filters feature that lives in the dashboard view itself. It's easier to use and has more capabilities!": [
         ""
       ],
@@ -3599,9 +3543,7 @@
       "Stacked style": [""],
       "Video game consoles": [""],
       "Vehicle Types": [""],
-      "Continuous": [""],
       "nvd3": [""],
-      "Deprecated": [""],
       "X Log Scale": [""],
       "Use a log scale for the X-axis": [""],
       "Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.": [
