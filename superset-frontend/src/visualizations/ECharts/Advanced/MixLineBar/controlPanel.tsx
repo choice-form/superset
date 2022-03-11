@@ -17,7 +17,7 @@
  * under the License.
  */
 import React from 'react';
-import { t } from 'src/core';
+import { t, validateNonEmpty } from 'src/core';
 import {
   ControlPanelConfig,
   ControlSetRow,
@@ -198,7 +198,11 @@ const config: ControlPanelConfig = {
       controlSetRows: [['xAxisLabel'], ['xLabelLayout']],
     },
   ],
-  controlOverrides: {},
+  controlOverrides: {
+    groupby: {
+      validators: [validateNonEmpty],
+    },
+  },
 };
 
 export default config;
