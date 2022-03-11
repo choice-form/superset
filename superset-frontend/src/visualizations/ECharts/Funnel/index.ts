@@ -23,7 +23,10 @@ import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
 import { EchartsFunnelChartProps, EchartsFunnelFormData } from './types';
 
-export default class EchartsFunnelChartPlugin extends ChartPlugin<EchartsFunnelFormData, EchartsFunnelChartProps> {
+export default class EchartsFunnelChartPlugin extends ChartPlugin<
+  EchartsFunnelFormData,
+  EchartsFunnelChartProps
+> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library
@@ -47,7 +50,7 @@ export default class EchartsFunnelChartPlugin extends ChartPlugin<EchartsFunnelF
           'Showcases how a metric changes as the funnel progresses. This classic chart is useful for visualizing drop-off between stages in a pipeline or lifecycle.',
         ),
         name: t('Funnel Chart'),
-        tags: [t('Business'), t('ECharts'), t('Progressive'), t('Report'), t('Sequential'), t('Trend')],
+        tags: [t('ECharts')],
         thumbnail,
       }),
       transformProps,

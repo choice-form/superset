@@ -16,12 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t, ChartMetadata, ChartPlugin, AnnotationType, Behavior } from 'src/core';
+import {
+  t,
+  ChartMetadata,
+  ChartPlugin,
+  AnnotationType,
+  Behavior,
+} from 'src/core';
 import buildQuery from '../buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from '../transformProps';
 import thumbnail from './images/thumbnail.png';
-import { EchartsTimeseriesChartProps, EchartsTimeseriesFormData } from '../types';
+import {
+  EchartsTimeseriesChartProps,
+  EchartsTimeseriesFormData,
+} from '../types';
 import example1 from './images/Area1.png';
 
 const areaTransformProps = (chartProps: EchartsTimeseriesChartProps) =>
@@ -64,17 +73,7 @@ export default class EchartsAreaChartPlugin extends ChartPlugin<
           AnnotationType.Timeseries,
         ],
         name: t('Time-series Area Chart'),
-        tags: [
-          t('ECharts'),
-          t('Predictive'),
-          t('Advanced-Analytics'),
-          t('Aesthetic'),
-          t('Time'),
-          t('Line'),
-          t('Transformable'),
-          t('Stacked'),
-          t('Popular'),
-        ],
+        tags: [t('ECharts')],
         thumbnail,
       }),
       transformProps: areaTransformProps,

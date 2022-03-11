@@ -24,6 +24,7 @@ const metadata = new ChartMetadata({
   credits: ['http://nvd3.org'],
   description: '',
   name: t('Box Plot'),
+  tags: [t('nvd3')],
   thumbnail,
   useLegacyApi: true,
 });

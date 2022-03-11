@@ -24,7 +24,10 @@ import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
 import { EchartsRadarChartProps, EchartsRadarFormData } from './types';
 
-export default class EchartsRadarChartPlugin extends ChartPlugin<EchartsRadarFormData, EchartsRadarChartProps> {
+export default class EchartsRadarChartPlugin extends ChartPlugin<
+  EchartsRadarFormData,
+  EchartsRadarChartProps
+> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library
@@ -48,15 +51,7 @@ export default class EchartsRadarChartPlugin extends ChartPlugin<EchartsRadarFor
           'Visualize a parallel set of metrics across multiple groups. Each group is visualized using its own line of points and each metric is represented as an edge in the chart.',
         ),
         name: t('Radar Chart'),
-        tags: [
-          t('Business'),
-          t('Comparison'),
-          t('Coordinates'),
-          t('Multi-Variables'),
-          t('Report'),
-          t('Web'),
-          t('ECharts'),
-        ],
+        tags: [t('ECharts')],
         thumbnail,
       }),
       transformProps,

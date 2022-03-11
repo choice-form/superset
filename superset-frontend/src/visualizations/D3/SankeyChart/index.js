@@ -34,7 +34,7 @@ const metadata = new ChartMetadata({
     { url: example2, description: t('Survey Responses') },
   ],
   name: t('Sankey Diagram'),
-  tags: [t('Categorical'), t('Directional'), t('Legacy'), t('Percentages'), t('Proportional'), t('Relational')],
+  tags: [t('D3')],
   thumbnail,
   useLegacyApi: true,
 });

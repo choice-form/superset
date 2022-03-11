@@ -23,9 +23,11 @@ import controlPanel from './controlPanel';
 const metadata = new ChartMetadata({
   category: t('Flow'),
   credits: ['https://github.com/williaster/data-ui'],
-  description: t('Compares the lengths of time different activities take in a shared timeline view.'),
+  description: t(
+    'Compares the lengths of time different activities take in a shared timeline view.',
+  ),
   name: t('Event Flow'),
-  tags: [t('Legacy'), t('Progressive')],
+  tags: [t('Data UI')],
   thumbnail,
   useLegacyApi: true,
 });

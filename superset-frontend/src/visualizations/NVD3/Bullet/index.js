@@ -28,7 +28,7 @@ const metadata = new ChartMetadata({
     'Showcases the progress of a single metric against a given target. The higher the fill, the closer the metric is to the target.',
   ),
   name: t('Bullet Chart'),
-  tags: [t('Business'), t('Legacy'), t('Report'), t('nvd3')],
+  tags: [t('nvd3')],
   thumbnail,
   useLegacyApi: true,
 });

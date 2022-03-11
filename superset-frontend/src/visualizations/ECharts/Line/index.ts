@@ -60,7 +60,7 @@ export default class LineChartPlugin extends ChartPlugin<
           { url: example4 },
         ],
         name: t('Line Chart'),
-        tags: [t('ECharts'), t('Line'), t('Aesthetic'), t('Legacy')],
+        tags: [t('ECharts')],
         thumbnail,
         useLegacyApi: true,
       }),

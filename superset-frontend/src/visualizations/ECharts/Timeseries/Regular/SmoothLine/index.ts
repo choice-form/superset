@@ -17,12 +17,22 @@
  * under the License.
  */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { t, ChartMetadata, ChartPlugin, AnnotationType, Behavior } from 'src/core';
+import {
+  t,
+  ChartMetadata,
+  ChartPlugin,
+  AnnotationType,
+  Behavior,
+} from 'src/core';
 import buildQuery from '../../buildQuery';
 import controlPanel from '../controlPanel';
 import transformProps from '../../transformProps';
 import thumbnail from './images/thumbnail.png';
-import { EchartsTimeseriesChartProps, EchartsTimeseriesFormData, EchartsTimeseriesSeriesType } from '../../types';
+import {
+  EchartsTimeseriesChartProps,
+  EchartsTimeseriesFormData,
+  EchartsTimeseriesSeriesType,
+} from '../../types';
 import example1 from './images/SmoothLine1.png';
 
 const smoothTransformProps = (chartProps: EchartsTimeseriesChartProps) =>
@@ -58,15 +68,7 @@ export default class EchartsTimeseriesSmoothLineChartPlugin extends ChartPlugin<
           AnnotationType.Timeseries,
         ],
         name: t('Time-series Smooth Line'),
-        tags: [
-          t('ECharts'),
-          t('Predictive'),
-          t('Advanced-Analytics'),
-          t('Aesthetic'),
-          t('Time'),
-          t('Line'),
-          t('Transformable'),
-        ],
+        tags: [t('ECharts')],
         thumbnail,
       }),
       transformProps: smoothTransformProps,

@@ -31,7 +31,7 @@ const metadata = new ChartMetadata({
     { url: example2, description: t('Dark mode') },
   ],
   name: t('MapBox'),
-  tags: [t('Business'), t('Intensity'), t('Legacy'), t('Density'), t('Scatter'), t('Transformable')],
+  tags: [t('MapBox')],
   thumbnail,
   useLegacyApi: true,
 });

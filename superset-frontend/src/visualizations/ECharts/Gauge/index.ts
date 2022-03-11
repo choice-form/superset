@@ -23,7 +23,10 @@ import thumbnail from './images/thumbnail.png';
 import buildQuery from './buildQuery';
 import { EchartsGaugeChartProps, EchartsGaugeFormData } from './types';
 
-export default class EchartsGaugeChartPlugin extends ChartPlugin<EchartsGaugeFormData, EchartsGaugeChartProps> {
+export default class EchartsGaugeChartPlugin extends ChartPlugin<
+  EchartsGaugeFormData,
+  EchartsGaugeChartProps
+> {
   constructor() {
     super({
       buildQuery,
@@ -37,7 +40,7 @@ export default class EchartsGaugeChartPlugin extends ChartPlugin<EchartsGaugeFor
           'Uses a gauge to showcase progress of a metric towards a target. The position of the dial represents the progress and the terminal value in the gauge represents the target value.',
         ),
         name: t('Gauge Chart'),
-        tags: [t('Multi-Variables'), t('Business'), t('Comparison'), t('ECharts'), t('Report')],
+        tags: [t('ECharts')],
         thumbnail,
       }),
       transformProps,

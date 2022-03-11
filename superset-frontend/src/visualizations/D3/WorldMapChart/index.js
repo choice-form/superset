@@ -26,21 +26,12 @@ import controlPanel from './controlPanel';
 const metadata = new ChartMetadata({
   category: t('Map'),
   credits: ['http://datamaps.github.io/'],
-  description: t('A map of the world, that can indicate values in different countries.'),
+  description: t(
+    'A map of the world, that can indicate values in different countries.',
+  ),
   exampleGallery: [{ url: example1 }, { url: example2 }],
   name: t('World Map'),
-  tags: [
-    t('2D'),
-    t('Aesthetic'),
-    t('Comparison'),
-    t('Intensity'),
-    t('Legacy'),
-    t('Multi-Dimensions'),
-    t('Multi-Layers'),
-    t('Multi-Variables'),
-    t('Scatter'),
-    t('Popular'),
-  ],
+  tags: [t('Map'), t('D3')],
   thumbnail,
   useLegacyApi: true,
 });

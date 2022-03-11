@@ -25,7 +25,7 @@ const metadata = new ChartMetadata({
   category: t('Part of a Whole'),
   description: t('Compare the same summarized metric across multiple groups.'),
   name: t('Partition Chart'),
-  tags: [t('Categorical'), t('Comparison'), t('Legacy'), t('Proportional')],
+  tags: [t('D3')],
   thumbnail,
   useLegacyApi: true,
 });

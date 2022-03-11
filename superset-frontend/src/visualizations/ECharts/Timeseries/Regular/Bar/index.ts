@@ -17,12 +17,22 @@
  * under the License.
  */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { t, ChartMetadata, ChartPlugin, AnnotationType, Behavior } from 'src/core';
+import {
+  t,
+  ChartMetadata,
+  ChartPlugin,
+  AnnotationType,
+  Behavior,
+} from 'src/core';
 import buildQuery from '../../buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from '../../transformProps';
 import thumbnail from './images/thumbnail.png';
-import { EchartsTimeseriesChartProps, EchartsTimeseriesFormData, EchartsTimeseriesSeriesType } from '../../types';
+import {
+  EchartsTimeseriesChartProps,
+  EchartsTimeseriesFormData,
+  EchartsTimeseriesSeriesType,
+} from '../../types';
 import example1 from './images/Bar1.png';
 import example2 from './images/Bar2.png';
 import example3 from './images/Bar3.png';
@@ -52,7 +62,11 @@ export default class EchartsTimeseriesBarChartPlugin extends ChartPlugin<
         description: t(
           'Time-series Bar Charts are used to show the changes in a metric over time as a series of bars.',
         ),
-        exampleGallery: [{ url: example1 }, { url: example2 }, { url: example3 }],
+        exampleGallery: [
+          { url: example1 },
+          { url: example2 },
+          { url: example3 },
+        ],
         supportedAnnotationTypes: [
           AnnotationType.Event,
           AnnotationType.Formula,
@@ -60,18 +74,7 @@ export default class EchartsTimeseriesBarChartPlugin extends ChartPlugin<
           AnnotationType.Timeseries,
         ],
         name: t('Time-series Bar Chart v2'),
-        tags: [
-          t('ECharts'),
-          t('Predictive'),
-          t('Advanced-Analytics'),
-          t('Aesthetic'),
-          t('Time'),
-          t('Transformable'),
-          t('Stacked'),
-          t('Vertical'),
-          t('Bar'),
-          t('Popular'),
-        ],
+        tags: [t('ECharts')],
         thumbnail,
       }),
       transformProps: barTransformProps,

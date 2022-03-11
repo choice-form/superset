@@ -24,7 +24,10 @@ import example from './images/BoxPlot.jpg';
 import thumbnail from './images/thumbnail.png';
 import { BoxPlotQueryFormData, EchartsBoxPlotChartProps } from './types';
 
-export default class EchartsBoxPlotChartPlugin extends ChartPlugin<BoxPlotQueryFormData, EchartsBoxPlotChartProps> {
+export default class EchartsBoxPlotChartPlugin extends ChartPlugin<
+  BoxPlotQueryFormData,
+  EchartsBoxPlotChartProps
+> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library
@@ -49,7 +52,7 @@ export default class EchartsBoxPlotChartPlugin extends ChartPlugin<BoxPlotQueryF
         ),
         exampleGallery: [{ url: example }],
         name: t('Box Plot'),
-        tags: [t('ECharts'), t('Range'), t('Statistical')],
+        tags: [t('ECharts')],
         thumbnail,
       }),
       transformProps,

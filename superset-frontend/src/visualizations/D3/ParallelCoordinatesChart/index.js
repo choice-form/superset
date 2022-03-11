@@ -28,7 +28,7 @@ const metadata = new ChartMetadata({
     'Plots the individual metrics for each row in the data vertically and links them together as a line. This chart is useful for comparing multiple metrics across all of the samples or rows in the data.',
   ),
   name: t('Parallel Coordinates'),
-  tags: [t('Coordinates'), t('Directional'), t('Legacy'), t('Relational')],
+  tags: [t('D3')],
   thumbnail,
   useLegacyApi: true,
 });

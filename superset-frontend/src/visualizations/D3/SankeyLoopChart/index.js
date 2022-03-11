@@ -25,6 +25,7 @@ const metadata = new ChartMetadata({
   credits: ['https://github.com/ricklupton/d3-sankey-diagram'],
   description: '',
   name: t('Sankey Diagram with Loops'),
+  tags: [t('D3')],
   thumbnail,
   useLegacyApi: true,
 });

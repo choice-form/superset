@@ -32,10 +32,12 @@ export default class EchartsTreeChartPlugin extends ChartPlugin {
       metadata: new ChartMetadata({
         category: t('Part of a Whole'),
         credits: ['https://echarts.apache.org'],
-        description: t('Visualize multiple levels of hierarchy using a familiar tree-like structure.'),
+        description: t(
+          'Visualize multiple levels of hierarchy using a familiar tree-like structure.',
+        ),
         exampleGallery: [{ url: example }],
         name: t('Tree Chart'),
-        tags: [t('Categorical'), t('ECharts'), t('Multi-Levels'), t('Relational'), t('Structural')],
+        tags: [t('ECharts')],
         thumbnail,
       }),
       transformProps,

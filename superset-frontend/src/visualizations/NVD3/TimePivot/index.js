@@ -26,7 +26,7 @@ const metadata = new ChartMetadata({
   credits: ['http://nvd3.org'],
   description: '',
   name: t('Time-series Period Pivot'),
-  tags: [t('Legacy'), t('Time'), t('nvd3')],
+  tags: [t('nvd3')],
   thumbnail,
   useLegacyApi: true,
 });

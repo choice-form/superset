@@ -30,7 +30,7 @@ const metadata = new ChartMetadata({
   ),
   exampleGallery: [{ url: example }],
   name: t('Sunburst Chart'),
-  tags: [t('Aesthetic'), t('Legacy'), t('Multi-Levels'), t('Proportional')],
+  tags: [t('D3')],
   thumbnail,
   useLegacyApi: true,
 });

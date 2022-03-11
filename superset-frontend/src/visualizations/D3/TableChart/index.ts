@@ -39,21 +39,14 @@ const metadata = new ChartMetadata({
   ),
   exampleGallery: [{ url: example1 }, { url: example2 }, { url: example3 }],
   name: t('Table'),
-  tags: [
-    t('Additive'),
-    t('Business'),
-    t('Formattable'),
-    t('Pattern'),
-    t('Popular'),
-    t('Report'),
-    t('Sequential'),
-    t('Tabular'),
-    t('Description'),
-  ],
+  tags: [t('Table'), t('D3')],
   thumbnail,
 });
 
-export default class TableChartPlugin extends ChartPlugin<TableChartFormData, TableChartProps> {
+export default class TableChartPlugin extends ChartPlugin<
+  TableChartFormData,
+  TableChartProps
+> {
   constructor() {
     super({
       loadChart: () => import('./TableChart'),

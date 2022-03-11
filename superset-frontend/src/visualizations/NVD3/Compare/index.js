@@ -28,17 +28,7 @@ const metadata = new ChartMetadata({
     'Visualizes many different time-series objects in a single chart. This chart is being deprecated and we recommend using the Time-series Chart instead.',
   ),
   name: t('Time-series Percent Change'),
-  tags: [
-    t('Legacy'),
-    t('Time'),
-    t('nvd3'),
-    t('Advanced-Analytics'),
-    t('Comparison'),
-    t('Line'),
-    t('Percentages'),
-    t('Predictive'),
-    t('Trend'),
-  ],
+  tags: [t('nvd3')],
   thumbnail,
   useLegacyApi: true,
 });

@@ -27,7 +27,7 @@ const metadata = new ChartMetadata({
     'A polar coordinate chart where the circle is broken into wedges of equal angle, and the value represented by any wedge is illustrated by its area, rather than its radius or sweep angle.',
   ),
   name: t('Nightingale Rose Chart'),
-  tags: [t('Legacy'), t('Advanced-Analytics'), t('Circular'), t('Multi-Layers'), t('Pattern'), t('Time'), t('Trend')],
+  tags: [t('D3')],
   thumbnail,
   useLegacyApi: true,
 });

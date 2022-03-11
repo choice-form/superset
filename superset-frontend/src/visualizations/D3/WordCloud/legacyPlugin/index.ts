@@ -27,6 +27,7 @@ const metadata = new ChartMetadata({
   credits: ['https://github.com/jasondavies/d3-cloud'],
   description: '',
   name: t('Word Cloud'),
+  tags: [t('D3')],
   thumbnail,
   useLegacyApi: true,
 });

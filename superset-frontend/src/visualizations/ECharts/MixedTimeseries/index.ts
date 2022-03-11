@@ -16,12 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t, ChartMetadata, ChartPlugin, AnnotationType, Behavior } from 'src/core';
+import {
+  t,
+  ChartMetadata,
+  ChartPlugin,
+  AnnotationType,
+  Behavior,
+} from 'src/core';
 import buildQuery from './buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
-import { EchartsMixedTimeseriesProps, EchartsMixedTimeseriesFormData } from './types';
+import {
+  EchartsMixedTimeseriesProps,
+  EchartsMixedTimeseriesFormData,
+} from './types';
 
 export default class EchartsTimeseriesChartPlugin extends ChartPlugin<
   EchartsMixedTimeseriesFormData,
@@ -57,16 +66,7 @@ export default class EchartsTimeseriesChartPlugin extends ChartPlugin<
         ],
         name: t('Mixed Time-Series'),
         thumbnail,
-        tags: [
-          t('Aesthetic'),
-          t('ECharts'),
-          t('Experimental'),
-          t('Line'),
-          t('Multi-Variables'),
-          t('Predictive'),
-          t('Time'),
-          t('Transformable'),
-        ],
+        tags: [t('ECharts')],
       }),
       // @ts-ignore
       transformProps,

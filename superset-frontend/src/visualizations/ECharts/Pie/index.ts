@@ -27,7 +27,10 @@ import example3 from './images/Pie3.jpg';
 import example4 from './images/Pie4.jpg';
 import { EchartsPieChartProps, EchartsPieFormData } from './types';
 
-export default class EchartsPieChartPlugin extends ChartPlugin<EchartsPieFormData, EchartsPieChartProps> {
+export default class EchartsPieChartPlugin extends ChartPlugin<
+  EchartsPieFormData,
+  EchartsPieChartProps
+> {
   /**
    * The constructor is used to pass relevant metadata and callbacks that get
    * registered in respective registries that are used throughout the library
@@ -51,18 +54,14 @@ export default class EchartsPieChartPlugin extends ChartPlugin<EchartsPieFormDat
           'The pie chart is mainly used for showing proportion of different' +
             ' categories. Each arc length represents the proportion of data quantity. ',
         ),
-        exampleGallery: [{ url: example1 }, { url: example2 }, { url: example3 }, { url: example4 }],
-        name: t('Pie Chart'),
-        tags: [
-          t('Aesthetic'),
-          t('Categorical'),
-          t('Circular'),
-          t('Comparison'),
-          t('Percentages'),
-          t('Popular'),
-          t('Proportional'),
-          t('ECharts'),
+        exampleGallery: [
+          { url: example1 },
+          { url: example2 },
+          { url: example3 },
+          { url: example4 },
         ],
+        name: t('Pie Chart'),
+        tags: [t('ECharts')],
         thumbnail,
         useLegacyApi: true,
       }),

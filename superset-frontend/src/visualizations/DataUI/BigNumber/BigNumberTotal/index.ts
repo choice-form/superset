@@ -18,7 +18,10 @@
  */
 import { t, ChartMetadata, ChartPlugin } from 'src/core';
 import controlPanel from './controlPanel';
-import transformProps, { BigNumberChartProps, BigNumberFormData } from '../BigNumber/transformProps';
+import transformProps, {
+  BigNumberChartProps,
+  BigNumberFormData,
+} from '../BigNumber/transformProps';
 import example1 from './images/BigNumber.jpg';
 import example2 from './images/BigNumber2.jpg';
 import thumbnail from './images/thumbnail.png';
@@ -33,21 +36,15 @@ const metadata = new ChartMetadata({
     { url: example2, caption: t('With a subheader') },
   ],
   name: t('Big Number'),
-  tags: [
-    t('Additive'),
-    t('Business'),
-    t('Formattable'),
-    t('Legacy'),
-    t('Percentages'),
-    t('Popular'),
-    t('Report'),
-    t('Description'),
-  ],
+  tags: [t('Data UI')],
   thumbnail,
   useLegacyApi: true,
 });
 
-export default class BigNumberTotalChartPlugin extends ChartPlugin<BigNumberFormData, BigNumberChartProps> {
+export default class BigNumberTotalChartPlugin extends ChartPlugin<
+  BigNumberFormData,
+  BigNumberChartProps
+> {
   constructor() {
     super({
       loadChart: () => import('../BigNumber/BigNumber'),

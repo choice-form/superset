@@ -54,15 +54,7 @@ export default class EchartsMixedLineBarChartPlugin extends ChartPlugin<
         ),
         exampleGallery: [{ url: demo1 }, { url: demo2 }, { url: demo3 }],
         name: t('Mixed Line and Bar'), // 折线柱状混合图
-        tags: [
-          t('Aesthetic'),
-          t('Categorical'),
-          t('Comparison'),
-          t('Percentages'),
-          t('Popular'),
-          t('Proportional'),
-          t('ECharts'),
-        ],
+        tags: [t('ECharts')],
         thumbnail,
       }),
       transformProps,

@@ -121,7 +121,13 @@ const OTHER_CATEGORY = t('Other');
 
 const ALL_CHARTS = t('All charts');
 
-const RECOMMENDED_TAGS = [t('Popular'), t('ECharts'), t('Advanced-Analytics')];
+const RECOMMENDED_TAGS = [
+  t('ECharts'),
+  t('Filter box'),
+  t('Map'),
+  t('Table'),
+  t('Word Cloud'),
+];
 
 export const VIZ_TYPE_CONTROL_TEST_ID = 'viz-type-control';
 
@@ -477,17 +483,17 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
     return result;
   }, [chartMetadata]);
 
-  const categories = useMemo(
-    () =>
-      Object.keys(chartsByCategory).sort((a, b) => {
-        // make sure Other goes at the end
-        if (a === OTHER_CATEGORY) return 1;
-        if (b === OTHER_CATEGORY) return -1;
-        // sort alphabetically
-        return a.localeCompare(b);
-      }),
-    [chartsByCategory],
-  );
+  // const categories = useMemo(
+  //   () =>
+  //     Object.keys(chartsByCategory).sort((a, b) => {
+  //       // make sure Other goes at the end
+  //       if (a === OTHER_CATEGORY) return 1;
+  //       if (b === OTHER_CATEGORY) return -1;
+  //       // sort alphabetically
+  //       return a.localeCompare(b);
+  //     }),
+  //   [chartsByCategory],
+  // );
 
   const chartsByTags = useMemo(() => {
     const result: Record<string, VizEntry[]> = {};
@@ -598,18 +604,18 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
         icon: <Icons.Tags />,
         selectors: RECOMMENDED_TAGS,
       },
-      [SECTIONS.CATEGORY]: {
-        title: t('Category'),
-        icon: <Icons.Category />,
-        selectors: categories,
-      },
+      // [SECTIONS.CATEGORY]: {
+      //   title: t('Category'),
+      //   icon: <Icons.Category />,
+      //   selectors: categories,
+      // },
       [SECTIONS.TAGS]: {
         title: t('Tags'),
         icon: <Icons.Tags />,
         selectors: tags,
       },
     }),
-    [categories, tags],
+    [tags],
   );
 
   const getVizEntriesToDisplay = () => {
@@ -643,6 +649,7 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
       className={className}
       isSelectedVizMetadata={Boolean(selectedVizMetadata)}
     >
+      {/* 左侧展示列表 */}
       <LeftPane>
         <Selector
           css={({ gridUnit }) =>
@@ -695,6 +702,7 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
         </Collapse>
       </LeftPane>
 
+      {/* 图表搜索 */}
       <SearchWrapper>
         <Input
           type="text"
@@ -719,6 +727,7 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
         />
       </SearchWrapper>
 
+      {/* 图表显示 */}
       <RightPane>
         <ThumbnailGallery
           vizEntries={getVizEntriesToDisplay()}
@@ -727,6 +736,7 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
         />
       </RightPane>
 
+      {/* 图表的源数据展示 */}
       {selectedVizMetadata ? (
         <div
           css={(theme: SupersetTheme) => [

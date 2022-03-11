@@ -30,7 +30,7 @@ const metadata = new ChartMetadata({
   ),
   exampleGallery: [{ url: example }],
   name: t('Horizon Chart'),
-  tags: [t('Legacy')],
+  tags: [t('D3')],
   thumbnail,
   useLegacyApi: true,
 });

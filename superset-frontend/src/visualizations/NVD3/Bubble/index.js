@@ -28,16 +28,7 @@ const metadata = new ChartMetadata({
     'Visualizes a metric across three dimensions of data in a single chart (X axis, Y axis, and bubble size). Bubbles from the same group can be showcased using bubble color.',
   ),
   name: t('Bubble Chart'),
-  tags: [
-    t('Multi-Dimensions'),
-    t('Aesthetic'),
-    t('Comparison'),
-    t('Legacy'),
-    t('Scatter'),
-    t('Time'),
-    t('Trend'),
-    t('nvd3'),
-  ],
+  tags: [t('nvd3')],
   thumbnail,
   useLegacyApi: true,
 });
