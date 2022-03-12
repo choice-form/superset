@@ -21,9 +21,8 @@ import {
   sharedControls,
   ControlPanelConfig,
   emitFilterControl,
-  ControlPanelsContainerProps,
 } from 'src/chartConntrols';
-import { DEFAULT_FORM_DATA } from './types';
+import { DEFAULT_FORM_DATA } from '../types';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -53,30 +52,7 @@ const config: ControlPanelConfig = {
         ['titleText'],
         ['TitleFontSize'],
         ['TitleFontColor'],
-        [
-          {
-            name: 'labelFormat',
-            config: {
-              ...sharedControls.yAxisFormat,
-              label: t('Label Format'),
-              default: 'PRECENT',
-            },
-          },
-        ],
-        [
-          {
-            name: 'label_font_size',
-            config: {
-              type: 'SliderControl',
-              label: t('Label Font size'),
-              description: t('Font size for axis labels'),
-              renderTrigger: true,
-              min: 12,
-              max: 20,
-              default: 16,
-            },
-          },
-        ],
+        ['ringWidth'],
         ['yAxisFormat'],
         ['valueFontColor'],
         [
@@ -109,68 +85,6 @@ const config: ControlPanelConfig = {
         ],
         [
           {
-            name: 'show_pointer',
-            config: {
-              type: 'CheckboxControl',
-              label: t('Show pointer'),
-              description: t('Whether to show the pointer'),
-              renderTrigger: true,
-              default: true,
-            },
-          },
-        ],
-        [
-          {
-            name: 'show_axis_tick',
-            config: {
-              type: 'CheckboxControl',
-              label: t('Show axis line ticks'),
-              description: t('Whether to show minor ticks on the axis'),
-              renderTrigger: true,
-              default: true,
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(
-                  ['circle', 'digital'].includes(
-                    controls?.chartType?.value as string,
-                  ),
-                ),
-            },
-          },
-        ],
-        [
-          {
-            name: 'show_split_line',
-            config: {
-              type: 'CheckboxControl',
-              label: t('Show split lines'),
-              description: t('Whether to show the split lines on the axis'),
-              renderTrigger: true,
-              default: true,
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(
-                  ['circle', 'digital'].includes(
-                    controls?.chartType?.value as string,
-                  ),
-                ),
-            },
-          },
-        ],
-        [
-          {
-            name: 'show_progress',
-            config: {
-              type: 'CheckboxControl',
-              label: t('Show progress'),
-              description: t('Whether to show the progress of gauge chart'),
-              renderTrigger: true,
-              default: true,
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(controls?.chartType?.value === 'digital'),
-            },
-          },
-        ],
-        [
-          {
             name: 'round_cap',
             config: {
               type: 'CheckboxControl',
@@ -180,8 +94,6 @@ const config: ControlPanelConfig = {
               ),
               renderTrigger: true,
               default: DEFAULT_FORM_DATA.roundCap,
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(controls?.chartType?.value === 'digital'),
             },
           },
         ],

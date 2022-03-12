@@ -39,20 +39,6 @@ export const TitleFontColor: SharedControlConfig<'ColorPickerControl'> = {
     Boolean(controls?.titleText?.value),
 };
 
-// 显示环形百分比
-export const chartType: SharedControlConfig<'SelectControl'> = {
-  type: 'SelectControl',
-  label: t('Chart Type'),
-  choices: [
-    ['gauge', t('Gauge Chart')],
-    ['circle', t('Circle Ring Chart')],
-    ['digital', t('Digital Chart')],
-  ],
-  default: 'gauge',
-  clearable: false,
-  renderTrigger: true,
-  description: t('Chart Type'),
-};
 // 环形宽度: 仪表盘进度条的宽度
 export const ringWidth: SharedControlConfig<'SliderControl'> = {
   type: 'SliderControl',
@@ -62,8 +48,6 @@ export const ringWidth: SharedControlConfig<'SliderControl'> = {
   min: 20,
   max: 200,
   default: 20,
-  visibility: ({ controls }: ControlPanelsContainerProps) =>
-    Boolean(controls?.chartType?.value === 'circle'),
 };
 // 值颜色
 export const valueFontColor: SharedControlConfig<'ColorPickerControl'> = {

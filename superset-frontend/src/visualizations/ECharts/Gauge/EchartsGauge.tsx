@@ -41,7 +41,7 @@ export default function EchartsGauge({
       const dataMask = getChartDataMask(values, groupby, groupbyValues);
       setDataMask(dataMask);
     },
-    [groupby, labelMap, setDataMask, selectedValues],
+    [emitFilter, groupby, setDataMask, labelMap],
   );
 
   const eventHandlers: EventHandlers = {

@@ -25,7 +25,7 @@ import {
   EchartsGaugeFormData,
   GaugeChartTransformedProps,
   EchartsGaugeChartProps,
-} from './types';
+} from '../types';
 
 export default function transformProps(
   chartProps: EchartsGaugeChartProps,
@@ -42,19 +42,12 @@ export default function transformProps(
   const {
     // metric,
     valueFontSize,
-    labelFontSize,
     fontAnimation,
-    showProgress,
     titleText,
     titleFontSize,
     titleFontColor,
-    roundCap,
-    showAxisTick,
-    showSplitLine,
-    showPointer,
     yAxisFormat,
     valueFontColor,
-    labelFormat,
     emitFilter,
   }: EchartsGaugeFormData = { ...DEFAULT_GAUGE_FORM_DATA, ...formData };
 
@@ -71,57 +64,31 @@ export default function transformProps(
 
   // Y轴的格式化方法
   const numberFormatter = getNumberFormatter(yAxisFormat);
-  const labelFormatter = getNumberFormatter(labelFormat);
 
   const series = {
+    // 基于仪表图做的改进，所以这里的图表类型还是仪表图的类型
     type: 'gauge',
-    // 开始角度, 这个角度是固定的，很少需要配置，所以不提供自定义了。
-    startAngle: 225,
-    // 结束角度
-    endAngle: -45,
-    min: 0,
-    max: 100,
     // 仪表盘边缘线
-    axisLine: {
-      lineStyle: {
-        // 仪表盘的边线宽度，必须和进度条的宽度一致
-        width: 15,
-      },
-    },
-    progress: {
-      // 进度条两边是否显示小圆盖
-      roundCap,
-      // 超出上限是否截断图形
-      clip: true,
-      // 是否显示
-      show: showProgress,
-      // 进度条的宽度，必须和线的宽度保持一致
-      width: 15,
-    },
+    axisLine: { show: false },
+    // 进度条
+    progress: { show: false },
     // 指针
-    pointer: {
-      show: showPointer,
-      showAbove: false,
-    },
+    pointer: { show: false },
     // 短刻度
-    axisTick: {
-      show: showAxisTick,
-      distance: 0,
-      length: 8,
-    },
+    axisTick: { show: false },
     // 长刻度
-    splitLine: {
-      show: showSplitLine,
-      distance: 0,
-      length: 20,
-    },
+    splitLine: { show: false },
     // 文字标签
-    axisLabel: {
-      show: true,
-      distance: 20,
-      fontSize: labelFontSize,
-      formatter: labelFormatter,
-    },
+    axisLabel: { show: false },
+    // 中间数据
+    data: [
+      {
+        value,
+        detail: {
+          offsetCenter: ['0%', '0%'],
+        },
+      },
+    ],
     // 中间文字
     detail: {
       // 字体动画
@@ -132,15 +99,6 @@ export default function transformProps(
         valueFontColor &&
         rgbToHex(valueFontColor?.r, valueFontColor?.g, valueFontColor?.b),
     },
-    // 中间数据
-    data: [
-      {
-        value,
-        detail: {
-          offsetCenter: ['0%', '30%'],
-        },
-      },
-    ],
   };
 
   const echartOptions: EChartsCoreOption = {

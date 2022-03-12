@@ -20,12 +20,10 @@ import { t, ChartMetadata, ChartPlugin, Behavior } from 'src/core';
 import controlPanel from './controlPanel';
 import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';
-import buildQuery from './buildQuery';
-import { EchartsGaugeChartProps, EchartsGaugeFormData } from './types';
-// import demo1 from './images/demo1.png';
-// import demo2 from './images/demo2.png';
+import buildQuery from '../buildQuery';
+import { EchartsGaugeChartProps, EchartsGaugeFormData } from '../types';
 
-export default class EchartsGaugeChartPlugin extends ChartPlugin<
+export default class EchartsDigitalChartPlugin extends ChartPlugin<
   EchartsGaugeFormData,
   EchartsGaugeChartProps
 > {
@@ -33,14 +31,16 @@ export default class EchartsGaugeChartPlugin extends ChartPlugin<
     super({
       buildQuery,
       controlPanel,
-      loadChart: () => import('./EchartsGauge'),
+      loadChart: () => import('../EchartsGauge'),
       metadata: new ChartMetadata({
         behaviors: [Behavior.INTERACTIVE_CHART],
         category: t('KPI'),
         credits: ['https://echarts.apache.org'],
-        description: t('Gauge chart indicate the progress of the target.'),
+        description: t(
+          'The Digital chart is used for formatting the display of the digital and setting the style of the digital.',
+        ),
         // exampleGallery: [{ url: demo1 }, { url: demo2 }],
-        name: t('Gauge Chart'),
+        name: t('Digital Chart'),
         tags: [t('ECharts'), t('Choiceform')],
         thumbnail,
       }),

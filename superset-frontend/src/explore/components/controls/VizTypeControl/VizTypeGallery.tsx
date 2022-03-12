@@ -122,6 +122,7 @@ const OTHER_CATEGORY = t('Other');
 const ALL_CHARTS = t('All charts');
 
 const RECOMMENDED_TAGS = [
+  t('Choiceform'),
   t('ECharts'),
   t('Filter box'),
   t('Map'),

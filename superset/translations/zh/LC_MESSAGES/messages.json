@@ -1724,10 +1724,6 @@
       "Set the font size of the title": ["设置标题的字体大小"],
       "Title Font Color": ["标题字体颜色"],
       "Set the font color of the title": ["设置标题的字体颜色"],
-      "Chart Type": ["图表类型"],
-      "Gauge Chart": ["仪表图"],
-      "Circle Ring Chart": ["圆环图"],
-      "Digital Chart": ["数字图"],
       "Ring Width": ["环形宽度"],
       "Value Font Color": ["值字体颜色"],
       "Set the font color of the value.": ["设置值的字体颜色"],
@@ -2750,6 +2746,7 @@
       "aggregate": ["合计"],
       "Time series columns": ["时间序列的列"],
       "Other": ["其他"],
+      "Choiceform": ["巧思科技"],
       "ECharts": [""],
       "Filter box": ["过滤器"],
       "Map": ["地图"],
@@ -3883,9 +3880,18 @@
       "Additional text to add before or after the value, e.g. unit": [
         "在值之前或之后添加的附加文本，例如单位"
       ],
-      "Gauge chart and Circle ring chart indicate the progress of the target. The Digital chart is used for formatting the display of the digital and setting the style of the digital.": [
-        "仪表图和圆环图表示目标的进度。数字图用于格式化数字的显示和设置数字的风格。"
+      "Gauge chart indicate the progress of the target.": [
+        "使用仪表图来显示目标的进展程度。"
       ],
+      "Gauge Chart": ["仪表图"],
+      "Circle ring chart indicate the progress of the target.": [
+        "使用圆环图来展示目标的进程程度。"
+      ],
+      "Circle Ring Chart": ["圆环图"],
+      "The Digital chart is used for formatting the display of the digital and setting the style of the digital.": [
+        "数字图用于格式化数字的显示，以及设置数字的样式。"
+      ],
+      "Digital Chart": ["数字图"],
       "Name of the source nodes": ["源节点的名称"],
       "Name of the target nodes": ["目标节点的名称"],
       "Source category": ["源类别"],

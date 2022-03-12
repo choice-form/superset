@@ -40,7 +40,6 @@ import EchartsPieChartPlugin from '../ECharts/Pie';
 import EchartsTreeChartPlugin from '../ECharts/Tree';
 import EchartsTreemapChartPlugin from '../ECharts/Treemap';
 import EchartsGraphChartPlugin from '../ECharts/Graph';
-import EchartsGaugeChartPlugin from '../ECharts/Gauge';
 import EchartsRadarChartPlugin from '../ECharts/Radar';
 import EchartsFunnelChartPlugin from '../ECharts/Funnel';
 import EchartsMixedTimeseriesChartPlugin from '../ECharts/MixedTimeseries';
@@ -51,7 +50,14 @@ import EchartsMixedLineBarChartPlugin from '../ECharts/Advanced/MixLineBar';
 
 // 柱状图
 import EchartsBarChartPlugin from '../ECharts/Bar';
+// 折线图
 import LineChartPlugin from '../ECharts/Line';
+// 仪表图
+import EchartsGaugeChartPlugin from '../ECharts/Gauge';
+// 环形图
+import EchartsCircleChartPlugin from '../ECharts/Gauge/Circle';
+// 数字图
+import EchartsDigitalChartPlugin from '../ECharts/Gauge/Digital';
 
 // 筛选器
 import FilterBoxChartPlugin from '../FilterBox';
@@ -123,6 +129,12 @@ export default class MainPreset extends Preset {
         new EchartsBarChartPlugin().configure({ key: 'bar' }),
         // 折线图
         new LineChartPlugin().configure({ key: 'line' }),
+        // 仪表图
+        new EchartsGaugeChartPlugin().configure({ key: 'gauge_chart' }),
+        // 环形图
+        new EchartsCircleChartPlugin().configure({ key: 'circle_chart' }),
+        // 数字图
+        new EchartsDigitalChartPlugin().configure({ key: 'digital_chart' }),
 
         new BigNumberChartPlugin().configure({ key: 'big_number' }),
         new BigNumberTotalChartPlugin().configure({ key: 'big_number_total' }),
@@ -135,7 +147,6 @@ export default class MainPreset extends Preset {
         new EchartsFunnelChartPlugin().configure({ key: 'funnel' }),
         new EchartsTreeChartPlugin().configure({ key: 'tree_chart' }),
         new EchartsTreemapChartPlugin().configure({ key: 'treemap_v2' }),
-        new EchartsGaugeChartPlugin().configure({ key: 'gauge_chart' }),
         new EchartsGraphChartPlugin().configure({ key: 'graph_chart' }),
         new EchartsRadarChartPlugin().configure({ key: 'radar' }),
         new EchartsMixedTimeseriesChartPlugin().configure({

@@ -61,7 +61,7 @@ export default class EchartsPieChartPlugin extends ChartPlugin<
           { url: example4 },
         ],
         name: t('Pie Chart'),
-        tags: [t('ECharts')],
+        tags: [t('ECharts'), t('Choiceform')],
         thumbnail,
         useLegacyApi: true,
       }),
