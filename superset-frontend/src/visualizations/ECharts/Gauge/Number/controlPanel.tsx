@@ -137,7 +137,7 @@ const config: ControlPanelConfig = {
   ],
   controlOverrides: {
     yAxisFormat: {
-      label: t('Value format'),
+      label: t('Number format'),
       default: 'PRECENT',
       description: t(
         'Additional text to add before or after the value, e.g. unit',
