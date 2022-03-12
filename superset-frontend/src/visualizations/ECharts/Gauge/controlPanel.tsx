@@ -34,16 +34,7 @@ const config: ControlPanelConfig = {
         ['metric'],
         ['adhoc_filters'],
         emitFilterControl,
-        [
-          {
-            name: 'row_limit',
-            config: {
-              ...sharedControls.row_limit,
-              choices: [...Array(10).keys()].map(n => n + 1),
-              default: DEFAULT_FORM_DATA.rowLimit,
-            },
-          },
-        ],
+        ['row_limit'],
       ],
     },
     {

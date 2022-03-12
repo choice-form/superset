@@ -17,11 +17,7 @@
  * under the License.
  */
 import { t } from 'src/core';
-import {
-  sharedControls,
-  ControlPanelConfig,
-  emitFilterControl,
-} from 'src/chartConntrols';
+import { ControlPanelConfig, emitFilterControl } from 'src/chartConntrols';
 import { DEFAULT_FORM_DATA } from '../types';
 
 const config: ControlPanelConfig = {
@@ -33,16 +29,7 @@ const config: ControlPanelConfig = {
         ['metric'],
         ['adhoc_filters'],
         emitFilterControl,
-        [
-          {
-            name: 'row_limit',
-            config: {
-              ...sharedControls.row_limit,
-              choices: [...Array(10).keys()].map(n => n + 1),
-              default: DEFAULT_FORM_DATA.rowLimit,
-            },
-          },
-        ],
+        ['row_limit'],
       ],
     },
     {

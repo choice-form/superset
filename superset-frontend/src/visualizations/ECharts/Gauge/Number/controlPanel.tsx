@@ -33,6 +33,7 @@ const config: ControlPanelConfig = {
         ['metric'],
         ['adhoc_filters'],
         emitFilterControl,
+        ['row_limit'],
         [
           {
             name: 'description',

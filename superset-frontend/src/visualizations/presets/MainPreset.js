@@ -93,10 +93,7 @@ import {
 
 import EventFlowChartPlugin from '../DataUI/EventFlowChart';
 import TimeTableChartPlugin from '../DataUI/TimeTable';
-import {
-  BigNumberChartPlugin,
-  BigNumberTotalChartPlugin,
-} from '../DataUI/BigNumber';
+import { BigNumberChartPlugin } from '../DataUI/BigNumber';
 
 import { PivotTableChartPlugin } from '../PivotTable';
 
@@ -137,7 +134,6 @@ export default class MainPreset extends Preset {
         new EchartsNumberChartPlugin().configure({ key: 'number_chart' }),
 
         new BigNumberChartPlugin().configure({ key: 'big_number' }),
-        new BigNumberTotalChartPlugin().configure({ key: 'big_number_total' }),
         new EchartsBoxPlotChartPlugin().configure({ key: 'box_plot' }),
         new CalendarChartPlugin().configure({ key: 'cal_heatmap' }),
         new ChordChartPlugin().configure({ key: 'chord' }),

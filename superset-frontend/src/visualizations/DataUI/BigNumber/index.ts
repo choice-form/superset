@@ -17,6 +17,5 @@
  * under the License.
  */
 
-export { default as BigNumberChartPlugin } from './BigNumber/index';
-export { default as BigNumberTotalChartPlugin } from './BigNumberTotal/index';
+export { default as BigNumberChartPlugin } from './BigNumber';
 export { default as BigNumberChartPreset } from './preset';
