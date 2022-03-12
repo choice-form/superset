@@ -1724,8 +1724,13 @@
       "Set the font size of the title": ["设置标题的字体大小"],
       "Title Font Color": ["标题字体颜色"],
       "Set the font color of the title": ["设置标题的字体颜色"],
-      "Ring Percent": ["环形百分比"],
+      "Chart Type": ["图表类型"],
+      "Gauge Chart": ["仪表图"],
+      "Circle Ring Chart": ["圆环图"],
+      "Digital Chart": ["数字图"],
       "Ring Width": ["环形宽度"],
+      "Value Font Color": ["值字体颜色"],
+      "Set the font color of the value.": ["设置值的字体颜色"],
       "Show Label": ["显示标签"],
       "Text label of , to explain some data information about graphic item like value, name and so on.": [
         "图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等。"
@@ -1897,6 +1902,8 @@
         "D3 标准语法：https://github.com/d3/d3-format"
       ],
       "Adaptative formating": ["适应格式"],
+      "Precent (66 => 66%)": ["百分比 (66 => 66%)"],
+      "Thousand Separator (12345 => 12,345)": ["千位分隔符 (12345 => 12,345)"],
       "Duration in s (66000 => 1m 6s)": ["持续时间（秒）(66000 => 1m 6s)"],
       "Duration in ns (1.40008 => 1ms 400µs 80ns)": [
         "持续时间（纳秒）(1.40008 => 1ms 400µs 80ns)"
@@ -3849,20 +3856,17 @@
         "展示指标如何随着漏斗的推进而变化。这个经典图表对于可视化管道或生命周期中各个阶段之间的下降非常有用。"
       ],
       "Funnel Chart": ["漏斗图"],
-      "Value Font size": ["值字体大小"],
-      "Font size for detail value": ["值的字体大小"],
+      "Label Format": ["标签格式化"],
       "Label Font size": ["标签字体大小"],
       "Font size for axis labels": ["轴标签的字体大小"],
-      "Value format": ["值格式"],
-      "Additional text to add before or after the value, e.g. unit": [
-        "在值之前或之后添加的附加文本，例如单位"
-      ],
-      "Show pointer": ["显示指针"],
-      "Whether to show the pointer": ["是否显示指针"],
+      "Value Font size": ["值字体大小"],
+      "Font size for detail value": ["值的字体大小"],
       "Value Animation": ["值动画"],
       "Whether to animate the value or just display it.": [
         "是否对值进行动画处理，或只是显示它。"
       ],
+      "Show pointer": ["显示指针"],
+      "Whether to show the pointer": ["是否显示指针"],
       "Show axis line ticks": ["显示轴线刻度"],
       "Whether to show minor ticks on the axis": ["是否在轴上显示小刻度"],
       "Show split lines": ["显示分割线"],
@@ -3875,10 +3879,13 @@
       "Style the ends of the progress bar with a round cap": [
         "用圆形盖设计进度条末端的样式"
       ],
-      "Uses a gauge to showcase progress of a metric towards a target. The position of the dial represents the progress and the terminal value in the gauge represents the target value.": [
-        "使用量表显示指标向目标的进度。刻度盘的位置代表进度，仪表中的终端值代表目标值。"
+      "Value format": ["值格式"],
+      "Additional text to add before or after the value, e.g. unit": [
+        "在值之前或之后添加的附加文本，例如单位"
       ],
-      "Gauge Chart": ["仪表图"],
+      "Gauge chart and Circle ring chart indicate the progress of the target. The Digital chart is used for formatting the display of the digital and setting the style of the digital.": [
+        "仪表图和圆环图表示目标的进度。数字图用于格式化数字的显示和设置数字的风格。"
+      ],
       "Name of the source nodes": ["源节点的名称"],
       "Name of the target nodes": ["目标节点的名称"],
       "Source category": ["源类别"],

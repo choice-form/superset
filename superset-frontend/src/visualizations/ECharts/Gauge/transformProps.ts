@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { DataRecordValue } from 'src/core';
+import { DataRecordValue, getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
 import { rgbToHex } from 'src/utils/colorUtils';
 
@@ -39,9 +39,10 @@ export default function transformProps(
     hooks,
     filterState,
   } = chartProps;
+
   const {
     // metric,
-    ringPercent,
+    chartType,
     ringWidth,
     valueFontSize,
     labelFontSize,
@@ -54,7 +55,9 @@ export default function transformProps(
     showAxisTick,
     showSplitLine,
     showPointer,
-    valueFormatter,
+    yAxisFormat,
+    valueFontColor,
+    labelFormat,
     emitFilter,
   }: EchartsGaugeFormData = { ...DEFAULT_GAUGE_FORM_DATA, ...formData };
 
@@ -69,7 +72,170 @@ export default function transformProps(
 
   const { setDataMask = () => {} } = hooks;
 
-  const axisLineColor = ringPercent ? { color: '#111' } : {};
+  // Y轴的格式化方法
+  const numberFormatter = getNumberFormatter(yAxisFormat);
+  const labelFormatter = getNumberFormatter(labelFormat);
+
+  let series: any = {
+    type: 'gauge',
+    // 开始角度, 这个角度是固定的，很少需要配置，所以不提供自定义了。
+    startAngle: 225,
+    // 结束角度
+    endAngle: -45,
+    min: 0,
+    max: 100,
+    // 仪表盘边缘线
+    axisLine: {
+      lineStyle: {
+        // 仪表盘的边线宽度，必须和进度条的宽度一致
+        width: 15,
+      },
+    },
+    progress: {
+      // 进度条两边是否显示小圆盖
+      roundCap,
+      // 超出上限是否截断图形
+      clip: true,
+      // 是否显示
+      show: showProgress,
+      // 进度条的宽度，必须和线的宽度保持一致
+      width: 15,
+    },
+    // 指针
+    pointer: {
+      show: showPointer,
+      showAbove: false,
+    },
+    // 短刻度
+    axisTick: {
+      show: showAxisTick,
+      distance: 0,
+      length: 8,
+    },
+    // 长刻度
+    splitLine: {
+      show: showSplitLine,
+      distance: 0,
+      length: 20,
+    },
+    // 文字标签
+    axisLabel: {
+      show: true,
+      distance: 20,
+      fontSize: labelFontSize,
+      formatter: labelFormatter,
+    },
+    // 中间文字
+    detail: {
+      // 字体动画
+      valueAnimation: fontAnimation,
+      fontSize: valueFontSize, // 文字大小：50 - 500
+      formatter: numberFormatter,
+      color:
+        valueFontColor &&
+        rgbToHex(valueFontColor?.r, valueFontColor?.g, valueFontColor?.b),
+    },
+    // 中间数据
+    data: [
+      {
+        value,
+        detail: {
+          offsetCenter: ['0%', '30%'],
+        },
+      },
+    ],
+  };
+
+  // 环形图
+  if (chartType === 'circle') {
+    series = {
+      ...series,
+      // 开始角度
+      startAngle: 90,
+      // 结束角度
+      endAngle: -270,
+      // 仪表盘边缘线
+      axisLine: {
+        lineStyle: {
+          ...series.axisLine.lineStyle,
+          color: '#111',
+        },
+      },
+      // 进度条
+      progress: {
+        ...series.progress,
+        width: ringWidth,
+      },
+      // 指针
+      pointer: {
+        show: false,
+      },
+      // 短刻度
+      axisTick: {
+        show: false,
+      },
+      // 长刻度
+      splitLine: {
+        show: false,
+      },
+      // 文字标签
+      axisLabel: {
+        show: false,
+      },
+      // 中间数据
+      data: [
+        {
+          value,
+          detail: {
+            offsetCenter: ['0%', '0%'],
+          },
+        },
+      ],
+    };
+  }
+  // 数字图
+  if (chartType === 'digital') {
+    series = {
+      ...series,
+      // 仪表盘边缘线
+      axisLine: {
+        show: false,
+      },
+      // 进度条
+      progress: {
+        show: false,
+      },
+      // 指针
+      pointer: {
+        show: false,
+      },
+      // 短刻度
+      axisTick: {
+        show: false,
+      },
+      // 长刻度
+      splitLine: {
+        show: false,
+      },
+      // 文字标签
+      axisLabel: {
+        show: false,
+      },
+      // 中间数据
+      data: [
+        {
+          value,
+          detail: {
+            offsetCenter: ['0%', '0%'],
+          },
+        },
+      ],
+    };
+  }
+
+  const ringPercent = chartType === 'circle';
+
+  const gridLayout = ringPercent ? {} : { grid: defaultGrid };
 
   const echartOptions: EChartsCoreOption = {
     title: {
@@ -81,83 +247,8 @@ export default function transformProps(
           rgbToHex(titleFontColor?.r, titleFontColor?.g, titleFontColor?.b),
       },
     },
-    grid: {
-      ...defaultGrid,
-    },
-    series: {
-      type: 'gauge',
-      // 开始角度, 这个角度是固定的，很少需要配置，所以不提供自定义了。
-      startAngle: ringPercent ? 90 : 225,
-      // 结束角度
-      endAngle: ringPercent ? -270 : -45,
-      min: 0,
-      max: 100,
-      // 仪表盘边缘线
-      axisLine: {
-        lineStyle: {
-          // 仪表盘的边线宽度，必须和进度条的宽度一致
-          width: 15,
-          ...axisLineColor,
-        },
-      },
-      progress: {
-        // 进度条两边是否显示小圆盖
-        roundCap,
-        // 超出上限是否截断图形
-        clip: true,
-        // 是否显示
-        show: showProgress,
-        // 进度条的宽度，必须和线的宽度保持一致
-        width: ringPercent ? ringWidth : 15,
-      },
-      // 指针
-      pointer: {
-        show: ringPercent ? false : showPointer,
-        showAbove: false,
-      },
-      // 短刻度
-      axisTick: {
-        show: ringPercent ? false : showAxisTick,
-        distance: 0,
-        length: 8,
-      },
-      // 长刻度
-      splitLine: {
-        show: ringPercent ? false : showSplitLine,
-        distance: 0,
-        length: 20,
-      },
-      // 文字标签
-      axisLabel: {
-        show: ringPercent ? false : true,
-        distance: 20,
-        fontSize: labelFontSize,
-        formatter: `{value}${valueFormatter}`,
-      },
-      // 中间文字
-      detail: {
-        // 字体动画
-        valueAnimation: fontAnimation,
-        fontSize: valueFontSize, // 文字大小：50 - 120
-        formatter: `{value}${valueFormatter}`,
-      },
-      // 中间数据
-      data: [
-        {
-          value,
-          // name: 'SCORE',
-          itemStyle: {
-            // color: '#ccc'
-          },
-          title: {
-            offsetCenter: ['0%', ringPercent ? '0%' : '20%'],
-          },
-          detail: {
-            offsetCenter: ['0%', ringPercent ? '0%' : '30%'],
-          },
-        },
-      ],
-    },
+    ...gridLayout,
+    series,
   };
 
   // console.log('echartOptions:', echartOptions);

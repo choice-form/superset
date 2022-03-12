@@ -1,4 +1,5 @@
 import { t } from 'src/core';
+import { hexToRgba } from 'src/utils/colorUtils';
 import { ControlPanelsContainerProps, SharedControlConfig } from '../types';
 import {
   D3_FORMAT_DOCS,
@@ -6,7 +7,6 @@ import {
   DEFAULT_NUMBER_FORMAT,
   formatSelectOptions,
 } from '../utils';
-import { hexToRgba } from 'src/utils/colorUtils';
 
 // 图表标题文本
 export const titleText: SharedControlConfig<'TextControl'> = {
@@ -40,13 +40,19 @@ export const TitleFontColor: SharedControlConfig<'ColorPickerControl'> = {
 };
 
 // 显示环形百分比
-export const ringPercent: SharedControlConfig<'CheckboxControl'> = {
-  type: 'CheckboxControl',
-  label: t('Ring Percent'),
-  default: false,
+export const chartType: SharedControlConfig<'SelectControl'> = {
+  type: 'SelectControl',
+  label: t('Chart Type'),
+  choices: [
+    ['gauge', t('Gauge Chart')],
+    ['circle', t('Circle Ring Chart')],
+    ['digital', t('Digital Chart')],
+  ],
+  default: 'gauge',
+  clearable: false,
   renderTrigger: true,
-  description: t('Ring Percent'),
-}
+  description: t('Chart Type'),
+};
 // 环形宽度: 仪表盘进度条的宽度
 export const ringWidth: SharedControlConfig<'SliderControl'> = {
   type: 'SliderControl',
@@ -57,7 +63,16 @@ export const ringWidth: SharedControlConfig<'SliderControl'> = {
   max: 200,
   default: 20,
   visibility: ({ controls }: ControlPanelsContainerProps) =>
-    Boolean(controls?.ringPercent?.value),
+    Boolean(controls?.chartType?.value === 'circle'),
+};
+// 值颜色
+export const valueFontColor: SharedControlConfig<'ColorPickerControl'> = {
+  type: 'ColorPickerControl',
+  label: t('Value Font Color'),
+  description: t('Set the font color of the value.'),
+  renderTrigger: true,
+  default: hexToRgba('#464646'),
+  visibility: () => true,
 };
 
 // 显示图形上的文本标签

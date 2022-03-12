@@ -27,10 +27,11 @@ export const D3_FORMAT_DOCS = t(
 export const D3_FORMAT_OPTIONS: [string, string][] = [
   [NumberFormats.SMART_NUMBER, t('Adaptative formating')],
   ['~g', t('Original value')],
+  ['PRECENT', t('Precent (66 => 66%)')],
+  ['Thousand Separator', t('Thousand Separator (12345 => 12,345)')],
   [',d', ',d (12345.432 => 12,345)'],
   ['.1s', '.1s (12345.432 => 10k)'],
   ['.3s', '.3s (12345.432 => 12.3k)'],
-  ['.0%', '.0% (0.2 => 20%)'],
   [',.1%', ',.1% (12345.432 => 1,234,543.2%)'],
   ['.2%', '.2% (12345.432 => 1234543.20%)'],
   ['.3%', '.3% (12345.432 => 1234543.200%)'],

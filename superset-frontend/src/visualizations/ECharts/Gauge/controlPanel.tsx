@@ -20,7 +20,6 @@ import { t } from 'src/core';
 import {
   sharedControls,
   ControlPanelConfig,
-  sections,
   emitFilterControl,
   ControlPanelsContainerProps,
 } from 'src/chartConntrols';
@@ -28,7 +27,6 @@ import { DEFAULT_FORM_DATA } from './types';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
-    sections.legacyRegularTime,
     {
       label: t('Query'),
       expanded: true,
@@ -55,19 +53,21 @@ const config: ControlPanelConfig = {
         ['titleText'],
         ['TitleFontSize'],
         ['TitleFontColor'],
-        ['ringPercent'],
+        ['chartType'],
         ['ringWidth'],
         [
           {
-            name: 'value_font_size',
+            name: 'labelFormat',
             config: {
-              type: 'SliderControl',
-              label: t('Value Font size'),
-              description: t('Font size for detail value'),
-              renderTrigger: true,
-              min: 50,
-              max: 120,
-              default: 50,
+              ...sharedControls.yAxisFormat,
+              label: t('Label Format'),
+              default: 'PRECENT',
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                !Boolean(
+                  ['circle', 'digital'].includes(
+                    controls?.chartType?.value as string,
+                  ),
+                ),
             },
           },
         ],
@@ -83,35 +83,27 @@ const config: ControlPanelConfig = {
               max: 20,
               default: 16,
               visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(controls?.ringPercent?.value),
+                !Boolean(
+                  ['circle', 'digital'].includes(
+                    controls?.chartType?.value as string,
+                  ),
+                ),
             },
           },
         ],
+        ['yAxisFormat'],
+        ['valueFontColor'],
         [
           {
-            name: 'value_formatter',
+            name: 'value_font_size',
             config: {
-              type: 'TextControl',
-              label: t('Value format'),
-              description: t(
-                'Additional text to add before or after the value, e.g. unit',
-              ),
+              type: 'SliderControl',
+              label: t('Value Font size'),
+              description: t('Font size for detail value'),
               renderTrigger: true,
-              default: '%',
-            },
-          },
-        ],
-        [
-          {
-            name: 'show_pointer',
-            config: {
-              type: 'CheckboxControl',
-              label: t('Show pointer'),
-              description: t('Whether to show the pointer'),
-              renderTrigger: true,
-              default: true,
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(controls?.ringPercent?.value),
+              min: 50,
+              max: 500,
+              default: 50,
             },
           },
         ],
@@ -131,6 +123,24 @@ const config: ControlPanelConfig = {
         ],
         [
           {
+            name: 'show_pointer',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Show pointer'),
+              description: t('Whether to show the pointer'),
+              renderTrigger: true,
+              default: true,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                !Boolean(
+                  ['circle', 'digital'].includes(
+                    controls?.chartType?.value as string,
+                  ),
+                ),
+            },
+          },
+        ],
+        [
+          {
             name: 'show_axis_tick',
             config: {
               type: 'CheckboxControl',
@@ -139,7 +149,11 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: true,
               visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(controls?.ringPercent?.value),
+                !Boolean(
+                  ['circle', 'digital'].includes(
+                    controls?.chartType?.value as string,
+                  ),
+                ),
             },
           },
         ],
@@ -153,7 +167,11 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: true,
               visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(controls?.ringPercent?.value),
+                !Boolean(
+                  ['circle', 'digital'].includes(
+                    controls?.chartType?.value as string,
+                  ),
+                ),
             },
           },
         ],
@@ -166,6 +184,8 @@ const config: ControlPanelConfig = {
               description: t('Whether to show the progress of gauge chart'),
               renderTrigger: true,
               default: true,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                !Boolean(controls?.chartType?.value === 'digital'),
             },
           },
         ],
@@ -180,12 +200,23 @@ const config: ControlPanelConfig = {
               ),
               renderTrigger: true,
               default: DEFAULT_FORM_DATA.roundCap,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                !Boolean(controls?.chartType?.value === 'digital'),
             },
           },
         ],
       ],
     },
   ],
+  controlOverrides: {
+    yAxisFormat: {
+      label: t('Value format'),
+      default: 'PRECENT',
+      description: t(
+        'Additional text to add before or after the value, e.g. unit',
+      ),
+    },
+  },
 };
 
 export default config;

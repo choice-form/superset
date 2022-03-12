@@ -39,7 +39,7 @@ export default class EchartsGaugeChartPlugin extends ChartPlugin<
         category: t('KPI'),
         credits: ['https://echarts.apache.org'],
         description: t(
-          'Uses a gauge to showcase progress of a metric towards a target. The position of the dial represents the progress and the terminal value in the gauge represents the target value.',
+          'Gauge chart and Circle ring chart indicate the progress of the target. The Digital chart is used for formatting the display of the digital and setting the style of the digital.',
         ),
         exampleGallery: [{ url: demo1 }, { url: demo2 }],
         name: t('Gauge Chart'),

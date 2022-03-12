@@ -24,6 +24,7 @@ import {
   getTimeFormatterRegistry,
   smartDateFormatter,
   smartDateVerboseFormatter,
+  createD3NumberFormatter,
 } from 'src/core';
 
 export default function setupFormatters() {
@@ -63,7 +64,34 @@ export default function setupFormatters() {
     .registerValue('$,0f', getNumberFormatter('$,.4f'))
     .registerValue('$,.f', getNumberFormatter('$,.4f'))
     .registerValue('DURATION', createDurationFormatter())
-    .registerValue('DURATION_SUB', createDurationFormatter({ formatSubMilliseconds: true }));
+    .registerValue(
+      'DURATION_SUB',
+      createDurationFormatter({ formatSubMilliseconds: true }),
+    )
+    .registerValue(
+      'PRECENT', // 格式key
+      createD3NumberFormatter({
+        locale: {
+          decimal: '.', // 小数点符号
+          thousands: ',', // 分隔符
+          grouping: [100], // 指定多少位使用分隔符
+          currency: ['', '%'], // 前缀，后缀
+        },
+        formatString: '$,', // 固定格式，不要改！
+      }),
+    )
+    .registerValue(
+      'Thousand Separator',
+      createD3NumberFormatter({
+        locale: {
+          decimal: '.',
+          thousands: ',',
+          grouping: [3],
+          currency: ['', ''],
+        },
+        formatString: '$,',
+      }),
+    );
 
   getTimeFormatterRegistry()
     .registerValue('smart_date', smartDateFormatter)
