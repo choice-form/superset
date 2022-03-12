@@ -56,7 +56,6 @@ export const valueFontColor: SharedControlConfig<'ColorPickerControl'> = {
   description: t('Set the font color of the value.'),
   renderTrigger: true,
   default: hexToRgba('#464646'),
-  visibility: () => true,
 };
 
 // 显示图形上的文本标签
@@ -68,6 +67,17 @@ export const showLabel: SharedControlConfig<'CheckboxControl'> = {
   description: t(
     'Text label of , to explain some data information about graphic item like value, name and so on.',
   ),
+};
+
+// 调整间距的值（一般用于两个元素之间的距离调节, 默认是百分比的计算值）
+export const distance: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Distance'),
+  description: t('Distance'),
+  renderTrigger: true,
+  min: -100,
+  max: 100,
+  default: 0,
 };
 
 // 显示面积图

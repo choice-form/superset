@@ -1402,6 +1402,7 @@
       "Text label of , to explain some data information about graphic item like value, name and so on.": [
         ""
       ],
+      "Distance": [""],
       "Show Area Chart": [""],
       "Area fill style. The settings are displayed as an area chart.": [""],
       "Area Linear Gradient": [""],
@@ -3228,10 +3229,22 @@
       "Gauge Chart": [""],
       "Circle ring chart indicate the progress of the target.": [""],
       "Circle Ring Chart": [""],
-      "The Digital chart is used for formatting the display of the digital and setting the style of the digital.": [
+      "Additional explanation of the displayed number.": [""],
+      "Number Font Color": [""],
+      "Set the text color for displaying number.": [""],
+      "Number Font size": [""],
+      "Set the text size for displaying number.": [""],
+      "Number Distance": [""],
+      "Set the vertical distance of the displayed number.": [""],
+      "Description Font Color": [""],
+      "Font color for description.": [""],
+      "Description Font size": [""],
+      "Font size for description.": [""],
+      "Description Distance": [""],
+      "The number chart is best used to remind people of KPIs or the one thing you want your audience to focus on.": [
         ""
       ],
-      "Digital Chart": [""],
+      "Number Chart": [""],
       "Name of the source nodes": [""],
       "Name of the target nodes": [""],
       "Source category": [""],

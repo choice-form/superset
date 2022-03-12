@@ -23,7 +23,7 @@ import thumbnail from './images/thumbnail.png';
 import buildQuery from '../buildQuery';
 import { EchartsGaugeChartProps, EchartsGaugeFormData } from '../types';
 
-export default class EchartsDigitalChartPlugin extends ChartPlugin<
+export default class EchartsNumberChartPlugin extends ChartPlugin<
   EchartsGaugeFormData,
   EchartsGaugeChartProps
 > {
@@ -36,11 +36,12 @@ export default class EchartsDigitalChartPlugin extends ChartPlugin<
         behaviors: [Behavior.INTERACTIVE_CHART],
         category: t('KPI'),
         credits: ['https://echarts.apache.org'],
+        // 数字图最适合用来, 提醒大家注意KPI或你希望听众关注的一件事。
         description: t(
-          'The Digital chart is used for formatting the display of the digital and setting the style of the digital.',
+          'The number chart is best used to remind people of KPIs or the one thing you want your audience to focus on.',
         ),
         // exampleGallery: [{ url: demo1 }, { url: demo2 }],
-        name: t('Digital Chart'),
+        name: t('Number Chart'),
         tags: [t('ECharts'), t('Choiceform')],
         thumbnail,
       }),

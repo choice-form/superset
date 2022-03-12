@@ -57,7 +57,7 @@ import EchartsGaugeChartPlugin from '../ECharts/Gauge';
 // 环形图
 import EchartsCircleChartPlugin from '../ECharts/Gauge/Circle';
 // 数字图
-import EchartsDigitalChartPlugin from '../ECharts/Gauge/Digital';
+import EchartsNumberChartPlugin from '../ECharts/Gauge/Number';
 
 // 筛选器
 import FilterBoxChartPlugin from '../FilterBox';
@@ -134,7 +134,7 @@ export default class MainPreset extends Preset {
         // 环形图
         new EchartsCircleChartPlugin().configure({ key: 'circle_chart' }),
         // 数字图
-        new EchartsDigitalChartPlugin().configure({ key: 'digital_chart' }),
+        new EchartsNumberChartPlugin().configure({ key: 'number_chart' }),
 
         new BigNumberChartPlugin().configure({ key: 'big_number' }),
         new BigNumberTotalChartPlugin().configure({ key: 'big_number_total' }),

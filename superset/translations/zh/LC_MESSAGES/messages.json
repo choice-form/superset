@@ -1731,6 +1731,7 @@
       "Text label of , to explain some data information about graphic item like value, name and so on.": [
         "图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等。"
       ],
+      "Distance": ["距离"],
       "Show Area Chart": ["显示区域面积图"],
       "Area fill style. The settings are displayed as an area chart.": [
         "区域填充样式，显示为一个区域面积图。"
@@ -3888,10 +3889,26 @@
         "使用圆环图来展示目标的进程程度。"
       ],
       "Circle Ring Chart": ["圆环图"],
-      "The Digital chart is used for formatting the display of the digital and setting the style of the digital.": [
-        "数字图用于格式化数字的显示，以及设置数字的样式。"
+      "Additional explanation of the displayed number.": [
+        "对显示的数字进行补充说明"
       ],
-      "Digital Chart": ["数字图"],
+      "Number Font Color": ["数字字体颜色"],
+      "Set the text color for displaying number.": ["设置显示数字的文本颜色"],
+      "Number Font size": ["数字的字体大小"],
+      "Set the text size for displaying number.": ["设置显示数字的文字大小"],
+      "Number Distance": ["数字的距离"],
+      "Set the vertical distance of the displayed number.": [
+        "设置显示数字的垂直距离"
+      ],
+      "Description Font Color": ["描述的文字颜色"],
+      "Font color for description.": ["描述的文字颜色"],
+      "Description Font size": ["描述的文字大小"],
+      "Font size for description.": ["值的字体大小"],
+      "Description Distance": ["描述的距离"],
+      "The number chart is best used to remind people of KPIs or the one thing you want your audience to focus on.": [
+        "数字图最适合用来, 提醒大家注意KPI或你希望听众关注的一件事。"
+      ],
+      "Number Chart": ["数字图"],
       "Name of the source nodes": ["源节点的名称"],
       "Name of the target nodes": ["目标节点的名称"],
       "Source category": ["源类别"],

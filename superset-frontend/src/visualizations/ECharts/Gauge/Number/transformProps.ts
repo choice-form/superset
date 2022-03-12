@@ -40,18 +40,22 @@ export default function transformProps(
   } = chartProps;
 
   const {
+    emitFilter,
     // metric,
-    valueFontSize,
-    fontAnimation,
+    description,
     titleText,
     titleFontSize,
     titleFontColor,
     yAxisFormat,
-    valueFontColor,
-    emitFilter,
+    numberFontSize,
+    numberFontColor,
+    numberDistance,
+    descriptionFontColor,
+    descriptionFontSize,
+    descriptionDistance,
   }: EchartsGaugeFormData = { ...DEFAULT_GAUGE_FORM_DATA, ...formData };
 
-  // console.log('chartProps:', chartProps);
+  console.log('chartProps:', chartProps);
 
   // 目前只提供一个数的展示
   const obj = queriesData[0].data[0];
@@ -65,42 +69,6 @@ export default function transformProps(
   // Y轴的格式化方法
   const numberFormatter = getNumberFormatter(yAxisFormat);
 
-  const series = {
-    // 基于仪表图做的改进，所以这里的图表类型还是仪表图的类型
-    type: 'gauge',
-    // 仪表盘边缘线
-    axisLine: { show: false },
-    // 进度条
-    progress: { show: false },
-    // 指针
-    pointer: { show: false },
-    // 短刻度
-    axisTick: { show: false },
-    // 长刻度
-    splitLine: { show: false },
-    // 文字标签
-    axisLabel: { show: false },
-    // 中间数据
-    data: [
-      {
-        value,
-        detail: {
-          offsetCenter: ['0%', '0%'],
-        },
-      },
-    ],
-    // 中间文字
-    detail: {
-      // 字体动画
-      valueAnimation: fontAnimation,
-      fontSize: valueFontSize, // 文字大小：50 - 500
-      formatter: numberFormatter,
-      color:
-        valueFontColor &&
-        rgbToHex(valueFontColor?.r, valueFontColor?.g, valueFontColor?.b),
-    },
-  };
-
   const echartOptions: EChartsCoreOption = {
     title: {
       text: titleText,
@@ -111,7 +79,45 @@ export default function transformProps(
           rgbToHex(titleFontColor?.r, titleFontColor?.g, titleFontColor?.b),
       },
     },
-    series,
+    graphic: {
+      elements: [
+        {
+          type: 'text',
+          left: 'left',
+          top: `${(numberDistance ?? 0) + 20}%`,
+          cursor: 'default',
+          style: {
+            text: numberFormatter(value as number),
+            fontSize: numberFontSize,
+            fontWeight: 'bold',
+            fill:
+              numberFontColor &&
+              rgbToHex(
+                numberFontColor?.r,
+                numberFontColor?.g,
+                numberFontColor?.b,
+              ),
+          },
+        },
+        {
+          type: 'text',
+          left: 'left',
+          top: `${(descriptionDistance ?? 0) + 55}%`,
+          cursor: 'default',
+          style: {
+            text: description,
+            fontSize: descriptionFontSize,
+            fill:
+              descriptionFontColor &&
+              rgbToHex(
+                descriptionFontColor?.r,
+                descriptionFontColor?.g,
+                descriptionFontColor?.b,
+              ),
+          },
+        },
+      ],
+    },
   };
 
   // console.log('echartOptions:', echartOptions);
