@@ -19,6 +19,10 @@
 import { DataRecordValue, getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
 import { rgbToHex } from 'src/utils/colorUtils';
+import {
+  getDistance,
+  getFontSize,
+} from 'src/visualizations/ECharts/utils/chart';
 
 import {
   DEFAULT_FORM_DATA as DEFAULT_GAUGE_FORM_DATA,
@@ -73,7 +77,7 @@ export default function transformProps(
     title: {
       text: titleText,
       textStyle: {
-        fontSize: titleFontSize,
+        fontSize: getFontSize(titleFontSize, width),
         color:
           titleFontColor &&
           rgbToHex(titleFontColor?.r, titleFontColor?.g, titleFontColor?.b),
@@ -84,11 +88,11 @@ export default function transformProps(
         {
           type: 'text',
           left: 'left',
-          top: `${(numberDistance ?? 0) + 20}%`,
+          top: `${getDistance(numberDistance ?? 0, height) + 20}%`,
           cursor: 'default',
           style: {
             text: numberFormatter(value as number),
-            fontSize: numberFontSize,
+            fontSize: getFontSize(numberFontSize, width),
             fontWeight: 'bold',
             fill:
               numberFontColor &&
@@ -102,11 +106,11 @@ export default function transformProps(
         {
           type: 'text',
           left: 'left',
-          top: `${(descriptionDistance ?? 0) + 55}%`,
+          top: `${getDistance(descriptionDistance ?? 0, height) + 55}%`,
           cursor: 'default',
           style: {
             text: description,
-            fontSize: descriptionFontSize,
+            fontSize: getFontSize(descriptionFontSize, width),
             fill:
               descriptionFontColor &&
               rgbToHex(

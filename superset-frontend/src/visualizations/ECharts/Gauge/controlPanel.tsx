@@ -79,7 +79,7 @@ const config: ControlPanelConfig = {
               description: t('Font size for detail value'),
               renderTrigger: true,
               min: 50,
-              max: 500,
+              max: 150,
               default: 50,
             },
           },

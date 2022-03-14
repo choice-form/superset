@@ -19,7 +19,7 @@
 import { DataRecordValue, getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
 import { rgbToHex } from 'src/utils/colorUtils';
-
+import { getFontSize } from 'src/visualizations/ECharts/utils/chart';
 import {
   EchartsGaugeFormData,
   GaugeChartTransformedProps,
@@ -102,7 +102,7 @@ export default function transformProps(
     detail: {
       // 字体动画
       valueAnimation: fontAnimation,
-      fontSize: valueFontSize, // 文字大小：50 - 500
+      fontSize: getFontSize(valueFontSize, width), // 文字大小：50 - 500
       formatter: numberFormatter,
       color:
         valueFontColor &&
@@ -123,7 +123,7 @@ export default function transformProps(
     title: {
       text: titleText,
       textStyle: {
-        fontSize: titleFontSize,
+        fontSize: getFontSize(titleFontSize, width),
         color:
           titleFontColor &&
           rgbToHex(titleFontColor?.r, titleFontColor?.g, titleFontColor?.b),

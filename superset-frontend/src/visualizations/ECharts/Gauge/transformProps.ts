@@ -19,6 +19,7 @@
 import { DataRecordValue, getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
 import { rgbToHex } from 'src/utils/colorUtils';
+import { getFontSize } from 'src/visualizations/ECharts/utils/chart';
 
 import {
   DEFAULT_FORM_DATA as DEFAULT_GAUGE_FORM_DATA,
@@ -119,14 +120,20 @@ export default function transformProps(
     axisLabel: {
       show: true,
       distance: 20,
-      fontSize: labelFontSize,
+      fontSize:
+        getFontSize(labelFontSize, width) > 12
+          ? getFontSize(labelFontSize, width)
+          : 12,
       formatter: labelFormatter,
     },
     // 中间文字
     detail: {
       // 字体动画
       valueAnimation: fontAnimation,
-      fontSize: valueFontSize, // 文字大小：50 - 500
+      fontSize:
+        getFontSize(valueFontSize, width) > 18
+          ? getFontSize(valueFontSize, width)
+          : 18, // 文字大小：50 - 500
       formatter: numberFormatter,
       color:
         valueFontColor &&
@@ -147,7 +154,7 @@ export default function transformProps(
     title: {
       text: titleText,
       textStyle: {
-        fontSize: titleFontSize,
+        fontSize: getFontSize(titleFontSize, width),
         color:
           titleFontColor &&
           rgbToHex(titleFontColor?.r, titleFontColor?.g, titleFontColor?.b),
