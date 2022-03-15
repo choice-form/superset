@@ -51,7 +51,7 @@ export default class EchartsRadarChartPlugin extends ChartPlugin<
           'Visualize a parallel set of metrics across multiple groups. Each group is visualized using its own line of points and each metric is represented as an edge in the chart.',
         ),
         name: t('Radar Chart'),
-        tags: [t('ECharts')],
+        tags: [t('ECharts'), t('Choiceform')],
         thumbnail,
       }),
       transformProps,
