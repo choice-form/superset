@@ -153,7 +153,6 @@
       "Pick a metric to display": ["选择一个指标来显示"],
       "Big Number with Trendline": ["数字和趋势线"],
       "Pick a metric!": ["选择一个指标！"],
-      "Big Number": ["数字"],
       "Time Series - Line Chart": ["时间序列-折线图"],
       "Pick a time granularity for your time series": [
         "为您的时间序列选择一个时间粒度"
@@ -3714,18 +3713,6 @@
         "用简单的折线图展示一个数字，以引起人们对一个重要指标及其随时间或其他维度的变化的注意。"
       ],
       "Data UI": [""],
-      "Subheader": ["副标题"],
-      "Description text that shows up below your Big Number": [
-        "显示在大数字下方的说明文字"
-      ],
-      "Timestamp Format": ["时间戳格式"],
-      "Whether to format the timestamp": ["是否格式化时间戳"],
-      "Date format": ["日期格式化"],
-      "Showcases a single metric front-and-center. Big number is best used to call attention to a KPI or the one thing you want your audience to focus on.": [
-        "展示单公制正面和中央。“大数字”最适合用来提醒大家注意KPI或你希望听众关注的一件事。"
-      ],
-      "A Big Number": ["大数字"],
-      "With a subheader": ["用副标题"],
       "Sorry, there appears to be no data": ["抱歉，似乎没有数据"],
       "Event definition": ["事件定义"],
       "Event Names": ["事件名称"],
@@ -3836,6 +3823,7 @@
       ],
       "X Tick Layout": ["X轴刻度布局"],
       "The way the ticks are laid out on the X-axis": ["在X轴上的排列方式"],
+      "Date format": ["日期格式化"],
       "Categories to group by on the x-axis.": ["要在x轴上分组的类别。"],
       "Distribute across": ["分布"],
       "Columns to calculate distribution across. Defaults to temporal column if left empty.": [
@@ -4047,19 +4035,13 @@
       ],
       "drill-up": ["上钻"],
       "Reset drill-down": ["重置下钻"],
-      "The maximum value of metrics. It is an optional configuration": [
-        "度量的最大值。这是一种可选配置"
-      ],
-      "Label position": ["标题位置"],
       "Radar": ["雷达"],
-      "Customize Metrics": ["自定义指标"],
-      "Further customize how to display each metric": [
-        "进一步定制如何显示每个指标"
-      ],
       "Circle radar shape": ["圆形雷达"],
       "Radar render type, whether to display 'circle' shape.": [
         "雷达渲染类型，是否显示“圆形”形状。"
       ],
+      "precent Data": ["百分比数据"],
+      "Percentage type data is used.": ["使用了百分比类型的数据"],
       "Visualize a parallel set of metrics across multiple groups. Each group is visualized using its own line of points and each metric is represented as an edge in the chart.": [
         "在多个组中可视化一组并行的指标。每个组都使用自己的点线进行可视化，每个度量在图表中表示为一条边。"
       ],

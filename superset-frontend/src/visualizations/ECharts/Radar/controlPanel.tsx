@@ -17,39 +17,34 @@
  * under the License.
  */
 import React from 'react';
-import { ChartDataResponseResult, GenericDataType, QueryFormMetric, t, validateNumber } from 'src/core';
+import { t } from 'src/core';
 import {
   ControlPanelConfig,
-  D3_FORMAT_DOCS,
   D3_FORMAT_OPTIONS,
-  D3_TIME_FORMAT_OPTIONS,
-  sections,
-  sharedControls,
   emitFilterControl,
-  ControlFormItemSpec,
 } from 'src/chartConntrols';
-import { LABEL_POSITION } from 'src/visualizations/ECharts/constants';
 import { DEFAULT_FORM_DATA } from './types';
 import { legendSection } from '../controls';
 
-const { labelType, labelPosition, numberFormat, showLabels, isCircle } = DEFAULT_FORM_DATA;
+const { numberFormat, showLabels, isCircle } = DEFAULT_FORM_DATA;
 
-const radarMetricMaxValue: { name: string; config: ControlFormItemSpec } = {
-  name: 'radarMetricMaxValue',
-  config: {
-    controlType: 'InputNumber',
-    label: t('Max'),
-    description: t('The maximum value of metrics. It is an optional configuration'),
-    width: 120,
-    placeholder: 'auto',
-    debounceDelay: 400,
-    validators: [validateNumber],
-  },
-};
+// const radarMetricMaxValue: { name: string; config: ControlFormItemSpec } = {
+//   name: 'radarMetricMaxValue',
+//   config: {
+//     controlType: 'InputNumber',
+//     label: t('Max'),
+//     description: t(
+//       'The maximum value of metrics. It is an optional configuration',
+//     ),
+//     width: 120,
+//     placeholder: 'auto',
+//     debounceDelay: 400,
+//     validators: [validateNumber],
+//   },
+// };
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
-    sections.legacyRegularTime,
     {
       label: t('Query'),
       expanded: true,
@@ -59,24 +54,31 @@ const config: ControlPanelConfig = {
         ['timeseries_limit_metric'],
         ['adhoc_filters'],
         emitFilterControl,
-        [
-          {
-            name: 'row_limit',
-            config: {
-              ...sharedControls.row_limit,
-              default: 10,
-            },
-          },
-        ],
+        ['row_limit'],
       ],
     },
     {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
-        ['color_scheme'],
         ...legendSection,
-        [<h1 className="section-header">{t('Labels')}</h1>],
+        [
+          {
+            name: 'number_format',
+            config: {
+              type: 'SelectControl',
+              freeForm: true,
+              label: t('Number format'),
+              renderTrigger: true,
+              default: numberFormat,
+              choices: D3_FORMAT_OPTIONS,
+              description: `${t(
+                'D3 format syntax: https://github.com/d3/d3-format. ',
+              )} ${t('Only applies when "Label Type" is set to show values.')}`,
+            },
+          },
+        ],
+        [<h1 className="section-header">{t('Radar')}</h1>],
         [
           {
             name: 'show_labels',
@@ -91,101 +93,27 @@ const config: ControlPanelConfig = {
         ],
         [
           {
-            name: 'label_type',
-            config: {
-              type: 'SelectControl',
-              label: t('Label Type'),
-              default: labelType,
-              renderTrigger: true,
-              choices: [
-                ['value', 'Value'],
-                ['key_value', 'Category and Value'],
-              ],
-              description: t('What should be shown on the label?'),
-            },
-          },
-        ],
-        [
-          {
-            name: 'label_position',
-            config: {
-              type: 'SelectControl',
-              freeForm: false,
-              label: t('Label position'),
-              renderTrigger: true,
-              choices: LABEL_POSITION,
-              default: labelPosition,
-              description: D3_FORMAT_DOCS,
-            },
-          },
-        ],
-        [
-          {
-            name: 'number_format',
-            config: {
-              type: 'SelectControl',
-              freeForm: true,
-              label: t('Number format'),
-              renderTrigger: true,
-              default: numberFormat,
-              choices: D3_FORMAT_OPTIONS,
-              description: `${t('D3 format syntax: https://github.com/d3/d3-format. ')} ${t(
-                'Only applies when "Label Type" is set to show values.',
-              )}`,
-            },
-          },
-        ],
-        [
-          {
-            name: 'date_format',
-            config: {
-              type: 'SelectControl',
-              freeForm: true,
-              label: t('Date format'),
-              renderTrigger: true,
-              choices: D3_TIME_FORMAT_OPTIONS,
-              default: 'smart_date',
-              description: D3_FORMAT_DOCS,
-            },
-          },
-        ],
-        [<h1 className="section-header">{t('Radar')}</h1>],
-        [
-          {
-            name: 'column_config',
-            config: {
-              type: 'ColumnConfigControl',
-              label: t('Customize Metrics'),
-              description: t('Further customize how to display each metric'),
-              renderTrigger: true,
-              configFormLayout: {
-                [GenericDataType.NUMERIC]: [[radarMetricMaxValue]],
-              },
-              mapStateToProps(explore, control, chart) {
-                const values = (explore?.controls?.metrics?.value as QueryFormMetric[]) ?? [];
-                const metricColumn = values.map(value => {
-                  if (typeof value === 'string') {
-                    return value;
-                  }
-                  return value.label;
-                });
-                return {
-                  queryResponse: chart?.queriesResponse?.[0] as ChartDataResponseResult | undefined,
-                  appliedColumnNames: metricColumn,
-                };
-              },
-            },
-          },
-        ],
-        [
-          {
             name: 'is_circle',
             config: {
               type: 'CheckboxControl',
               label: t('Circle radar shape'),
               renderTrigger: true,
               default: isCircle,
-              description: t("Radar render type, whether to display 'circle' shape."),
+              description: t(
+                "Radar render type, whether to display 'circle' shape.",
+              ),
+            },
+          },
+        ],
+        [
+          {
+            name: 'percentData',
+            config: {
+              type: 'CheckboxControl',
+              label: t('precent Data'),
+              renderTrigger: true,
+              default: false,
+              description: t('Percentage type data is used.'),
             },
           },
         ],

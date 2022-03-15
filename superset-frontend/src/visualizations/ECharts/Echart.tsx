@@ -27,7 +27,8 @@ import { styled } from 'src/core';
 import { ECharts, init, registerTheme } from 'echarts';
 import { EchartsHandler, EchartsProps, EchartsStylesProps } from './types';
 // @ts-ignore
-import theme from 'src/visualizations/ECharts/themes/choiceform.json';
+// eslint-disable-next-line import/extensions
+import theme from './themes/choiceform.json';
 
 const Styles = styled.div<EchartsStylesProps>`
   height: ${({ height }) => height};
@@ -60,7 +61,7 @@ function Echart(
     if (!divRef.current) return;
     if (!chartRef.current) {
       registerTheme('choiceform', theme);
-      chartRef.current = init(divRef.current);
+      chartRef.current = init(divRef.current, 'choiceform');
     }
 
     Object.entries(eventHandlers || {}).forEach(([name, handler]) => {

@@ -16,20 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  CategoricalColorNamespace,
-  DataRecordValue,
-  ensureIsInt,
-  getColumnLabel,
-  getMetricLabel,
-  getNumberFormatter,
-  getTimeFormatter,
-  NumberFormatter,
-} from 'src/core';
+import { NumberFormatter, getNumberFormatter } from 'src/core';
+import { max } from 'lodash';
 import { CallbackDataParams } from 'echarts/types/src/util/types';
-import { RadarSeriesDataItemOption } from 'echarts/types/src/chart/radar/RadarSeries';
-import { EChartsCoreOption, RadarSeriesOption } from 'echarts';
-import { OpacityEnum } from 'src/visualizations/ECharts/constants';
 import {
   DEFAULT_FORM_DATA as DEFAULT_RADAR_FORM_DATA,
   EchartsRadarChartProps,
@@ -37,9 +26,7 @@ import {
   EchartsRadarLabelType,
   RadarChartTransformedProps,
 } from './types';
-import { DEFAULT_LEGEND_FORM_DATA } from '../types';
-import { extractGroupbyLabel, getChartPadding, getColtypesMapping, getLegendProps } from '../utils/series';
-import { defaultGrid, defaultTooltip } from '../defaults';
+import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 
 export function formatLabel({
   params,
@@ -63,26 +50,30 @@ export function formatLabel({
   }
 }
 
-export default function transformProps(chartProps: EchartsRadarChartProps): RadarChartTransformedProps {
-  const { formData, height, hooks, filterState, queriesData, width } = chartProps;
-  const { data = [] } = queriesData[0];
-  const coltypeMapping = getColtypesMapping(queriesData[0]);
+export default function transformProps(
+  chartProps: EchartsRadarChartProps,
+): RadarChartTransformedProps {
+  const {
+    formData,
+    height,
+    hooks,
+    // filterState,
+    queriesData,
+    width,
+  } = chartProps;
 
   const {
-    colorScheme,
     groupby,
-    labelType,
-    labelPosition,
-    legendOrientation,
-    legendType,
-    legendMargin,
-    metrics = [],
+    // metrics = [],
     numberFormat,
-    dateFormat,
-    showLabels,
-    showLegend,
-    isCircle,
-    columnConfig,
+    showLabels, // 显示标签
+    isCircle, // 雷达形状
+    percentData, // 显示的百分比数据
+    showLegend, // 是否显示图例
+    legendMode, // 图例显示模式
+    legendPadding, // 图例的内边距
+    legendType, // 图例的显示类型：滚动还是平铺
+    legendOrientation,
   }: EchartsRadarFormData = {
     ...DEFAULT_LEGEND_FORM_DATA,
     ...DEFAULT_RADAR_FORM_DATA,
@@ -90,127 +81,130 @@ export default function transformProps(chartProps: EchartsRadarChartProps): Rada
   };
   const { setDataMask = () => {} } = hooks;
 
-  const colorFn = CategoricalColorNamespace.getScale(colorScheme as string);
-  const numberFormatter = getNumberFormatter(numberFormat);
-  const formatter = (params: CallbackDataParams) =>
-    formatLabel({
-      params,
-      numberFormatter,
-      labelType,
-    });
+  // console.log('chartProps:', chartProps);
 
-  const metricLabels = metrics.map(getMetricLabel);
-  const groupbyLabels = groupby.map(getColumnLabel);
-
-  const metricLabelAndMaxValueMap = new Map<string, number>();
-  const columnsLabelMap = new Map<string, DataRecordValue[]>();
-  const transformedData: RadarSeriesDataItemOption[] = [];
-  data.forEach(datum => {
-    const joinedName = extractGroupbyLabel({
-      datum,
-      groupby: groupbyLabels,
-      coltypeMapping,
-      timeFormatter: getTimeFormatter(dateFormat),
-    });
-    // map(joined_name: [columnLabel_1, columnLabel_2, ...])
-    columnsLabelMap.set(
-      joinedName,
-      groupbyLabels.map(col => datum[col]),
-    );
-
-    // put max value of series into metricLabelAndMaxValueMap
-    // eslint-disable-next-line no-restricted-syntax
-    for (const [metricLabel, value] of Object.entries(datum)) {
-      if (metricLabelAndMaxValueMap.has(metricLabel)) {
-        metricLabelAndMaxValueMap.set(
-          metricLabel,
-          Math.max(value as number, ensureIsInt(metricLabelAndMaxValueMap.get(metricLabel), Number.MIN_SAFE_INTEGER)),
-        );
-      } else {
-        metricLabelAndMaxValueMap.set(metricLabel, value as number);
-      }
-    }
-
-    const isFiltered = filterState.selectedValues && !filterState.selectedValues.includes(joinedName);
-
-    // generate transformedData
-    transformedData.push({
-      value: metricLabels.map((metricLabel: string | number) => datum[metricLabel]),
-      name: joinedName,
-      itemStyle: {
-        color: colorFn(joinedName),
-        opacity: isFiltered ? OpacityEnum.Transparent : OpacityEnum.NonTransparent,
-      },
-      lineStyle: {
-        opacity: isFiltered ? OpacityEnum.SemiTransparent : OpacityEnum.NonTransparent,
-      },
-      label: {
-        show: showLabels,
-        position: labelPosition,
-        formatter,
-      },
-    } as RadarSeriesDataItemOption);
-  });
-
-  const selectedValues = (filterState.selectedValues || []).reduce(
-    (acc: Record<string, number>, selectedValue: string) => {
-      const index = transformedData.findIndex(({ name }) => name === selectedValue);
-      return {
-        ...acc,
-        [index]: selectedValue,
-      };
-    },
-    {},
+  const { data, coltypes } = queriesData[0];
+  const firstData = data[0];
+  const colIdx = coltypes.indexOf(0);
+  // 取出指标数组
+  const metrics = Object.keys(firstData).splice(
+    colIdx,
+    Object.keys(firstData).length,
   );
+  const names = Object.keys(firstData).splice(0, colIdx);
+  // console.log('metrics:', metrics, names);
 
-  const indicator = metricLabels.map(metricLabel => {
-    const maxValueInControl = columnConfig?.[metricLabel]?.radarMetricMaxValue;
-    // Ensure that 0 is at the center of the polar coordinates
-    const metricValueAsMax =
-      metricLabelAndMaxValueMap.get(metricLabel) === 0
-        ? Number.MAX_SAFE_INTEGER
-        : metricLabelAndMaxValueMap.get(metricLabel);
-    const max = maxValueInControl === null ? metricValueAsMax : maxValueInControl;
-    return {
-      name: metricLabel,
-      max,
-    };
+  // 最大值列表
+  const indicators: any[] = [];
+  //  最终值
+  const dataList: any[] = [];
+  data.forEach((raw: object, idx) => {
+    // 取最大值
+    const vals: number[] = Object.values(raw).splice(colIdx, metrics.length);
+    let name = '';
+    names.forEach((col, index) => {
+      if (index === 0) {
+        name += raw[col];
+      } else {
+        name += `,${raw[col]}`;
+      }
+    });
+    // 构建雷达的范围
+    indicators.push({
+      name,
+      // @ts-ignore
+      max: percentData ? 100 : max(vals) * 1.25,
+    });
+    // 第一次循环直接添加
+    if (idx === 0) {
+      metrics.forEach(metric => {
+        dataList.push({ name: metric, value: [raw[metric]] });
+      });
+    } else {
+      metrics.forEach(metric => {
+        const obj = dataList.find(d => d.name === metric);
+        obj.value.push(raw[metric]);
+      });
+    }
   });
 
-  const series: RadarSeriesOption[] = [
-    {
-      type: 'radar',
-      ...getChartPadding(showLegend, legendOrientation, legendMargin),
-      animation: false,
-      emphasis: {
-        label: {
-          show: true,
-          fontWeight: 'bold',
-          backgroundColor: 'white',
-        },
-      },
-      data: transformedData,
-    },
-  ];
+  // const coltypeMapping = getColtypesMapping(queriesData[0]);
 
-  const echartOptions: EChartsCoreOption = {
-    grid: {
-      ...defaultGrid,
-    },
-    tooltip: {
-      ...defaultTooltip,
-      trigger: 'item',
-    },
+  // const selectedValues = (filterState.selectedValues || []).reduce(
+  //   (acc: Record<string, number>, selectedValue: string) => {
+  //     const index = transformedData.findIndex(
+  //       ({ name }) => name === selectedValue,
+  //     );
+  //     return {
+  //       ...acc,
+  //       [index]: selectedValue,
+  //     };
+  //   },
+  //   {},
+  // );
+
+  const numberFormatter = getNumberFormatter(numberFormat);
+
+  // 图例的位置布局方式
+  let legendPosition = {};
+  // eslint-disable-next-line default-case
+  switch (legendOrientation) {
+    case LegendOrientation.Right:
+      legendPosition = { orient: 'vertical', top: 'center', right: 'right' };
+      break;
+    case LegendOrientation.Top:
+      legendPosition = { top: 'top' };
+      break;
+    case LegendOrientation.Left:
+      legendPosition = { orient: 'vertical', left: 'left', top: 'center' };
+      break;
+    case LegendOrientation.Bottom:
+      legendPosition = { bottom: 'bottom' };
+  }
+  // 图例的内边距
+  if (typeof legendPadding === 'number') {
+    legendPosition = { ...legendPosition, padding: [5, legendPadding] };
+  }
+
+  const echartOptions = {
     legend: {
-      ...getLegendProps(legendType, legendOrientation, showLegend),
-      data: Array.from(columnsLabelMap.keys()),
+      show: showLegend,
+      type: legendType === 'scroll' ? 'scroll' : 'plain',
+      selectedMode: legendMode,
+      ...legendPosition,
     },
-    series,
     radar: {
       shape: isCircle ? 'circle' : 'polygon',
-      indicator,
+      indicator: indicators,
     },
+    tooltip: {
+      confine: true,
+      valueFormatter: numberFormatter,
+    },
+    series: [
+      {
+        type: 'radar',
+        emphasis: {
+          label: {
+            show: showLabels,
+            fontWeight: 'bold',
+          },
+        },
+        label: {
+          show: showLabels,
+          formatter: ({ value }: any) => numberFormatter(value),
+        },
+        // 标签的统一布局配置。
+        labelLayout: {
+          // 是否隐藏重叠的标签
+          hideOverlap: true,
+        },
+        data: dataList,
+      },
+    ],
   };
+
+  // console.log('echartOptions:', echartOptions);
 
   return {
     formData,
@@ -218,8 +212,8 @@ export default function transformProps(chartProps: EchartsRadarChartProps): Rada
     height,
     echartOptions,
     setDataMask,
-    labelMap: Object.fromEntries(columnsLabelMap),
+    labelMap: {},
     groupby,
-    selectedValues,
+    selectedValues: [],
   };
 }

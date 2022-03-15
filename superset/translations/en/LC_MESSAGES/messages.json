@@ -99,7 +99,6 @@
       "Pick a metric to display": [""],
       "Big Number with Trendline": [""],
       "Pick a metric!": [""],
-      "Big Number": [""],
       "Time Series - Line Chart": [""],
       "Pick a time granularity for your time series": [""],
       "An enclosed time range (both start and end) must be specified when using a Time Comparison.": [
@@ -3080,16 +3079,6 @@
         ""
       ],
       "Data UI": [""],
-      "Subheader": [""],
-      "Description text that shows up below your Big Number": [""],
-      "Timestamp Format": [""],
-      "Whether to format the timestamp": [""],
-      "Date format": [""],
-      "Showcases a single metric front-and-center. Big number is best used to call attention to a KPI or the one thing you want your audience to focus on.": [
-        ""
-      ],
-      "A Big Number": [""],
-      "With a subheader": [""],
       "Sorry, there appears to be no data": [""],
       "Event definition": [""],
       "Event Names": [""],
@@ -3188,6 +3177,7 @@
       "Determines how whiskers and outliers are calculated.": [""],
       "X Tick Layout": [""],
       "The way the ticks are laid out on the X-axis": [""],
+      "Date format": [""],
       "Categories to group by on the x-axis.": [""],
       "Distribute across": [""],
       "Columns to calculate distribution across. Defaults to temporal column if left empty.": [
@@ -3361,13 +3351,11 @@
       ],
       "drill-up": [""],
       "Reset drill-down": [""],
-      "The maximum value of metrics. It is an optional configuration": [""],
-      "Label position": [""],
       "Radar": [""],
-      "Customize Metrics": [""],
-      "Further customize how to display each metric": [""],
       "Circle radar shape": [""],
       "Radar render type, whether to display 'circle' shape.": [""],
+      "precent Data": [""],
+      "Percentage type data is used.": [""],
       "Visualize a parallel set of metrics across multiple groups. Each group is visualized using its own line of points and each metric is represented as an edge in the chart.": [
         ""
       ],

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-13 01:11+0800\n"
+"POT-Creation-Date: 2022-03-15 15:22+0800\n"
 "PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -349,90 +349,85 @@ msgstr "选择一个指标来显示"
 msgid "Big Number with Trendline"
 msgstr "数字和趋势线"
 
-#: superset/viz.py:1246 superset/viz.py:1280
+#: superset/viz.py:1246
 msgid "Pick a metric!"
 msgstr "选择一个指标！"
 
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:38
 #: superset/viz.py:1272
-msgid "Big Number"
-msgstr "数字"
-
-#: superset/viz.py:1294
 msgid "Time Series - Line Chart"
 msgstr "时间序列-折线图"
 
-#: superset/viz.py:1376 superset/viz.py:1639
+#: superset/viz.py:1354 superset/viz.py:1617
 msgid "Pick a time granularity for your time series"
 msgstr "为您的时间序列选择一个时间粒度"
 
-#: superset/common/query_context.py:151 superset/viz.py:1433
+#: superset/common/query_context.py:151 superset/viz.py:1411
 msgid ""
 "An enclosed time range (both start and end) must be specified when using "
 "a Time Comparison."
 msgstr "使用时间比较时，必须指定封闭的时间范围（有开始和结束）。"
 
-#: superset/viz.py:1504
+#: superset/viz.py:1482
 msgid "Time Series - Multiple Line Charts"
 msgstr "时间序列-多线图"
 
-#: superset/viz.py:1582
+#: superset/viz.py:1560
 msgid "Time Series - Dual Axis Line Chart"
 msgstr "时间序列-双轴线图"
 
-#: superset/viz.py:1591
+#: superset/viz.py:1569
 msgid "Pick a metric for left axis!"
 msgstr "为左轴选择一个指标！"
 
-#: superset/viz.py:1593
+#: superset/viz.py:1571
 msgid "Pick a metric for right axis!"
 msgstr "为右轴选择一个指标！"
 
-#: superset/viz.py:1596
+#: superset/viz.py:1574
 msgid "Please choose different metrics on left and right axis"
 msgstr "请在左右轴上选择不同的指标"
 
-#: superset/viz.py:1656
+#: superset/viz.py:1634
 msgid "Time Series - Period Pivot"
 msgstr "时间序列 - 周期透视表"
 
-#: superset/viz.py:1702
+#: superset/viz.py:1680
 msgid "Time Series - Percent Change"
 msgstr "时间序列 - 百分比变化"
 
-#: superset/viz.py:1710
+#: superset/viz.py:1688
 msgid "Time Series - Stacked"
 msgstr "时间序列 - 堆积图"
 
-#: superset/viz.py:1720
+#: superset/viz.py:1698
 msgid "Sunburst"
 msgstr "环状层次图"
 
-#: superset/viz.py:1767
+#: superset/viz.py:1745
 msgid "Sankey"
 msgstr "蛇形图"
 
-#: superset/viz.py:1775
+#: superset/viz.py:1753
 msgid "Pick exactly 2 columns as [Source / Target]"
 msgstr "为 [来源 / 目标] 选择两个列"
 
-#: superset/viz.py:1819
+#: superset/viz.py:1797
 msgid ""
 "There's a loop in your Sankey, please provide a tree. Here's a faulty "
 "link: {}"
 msgstr "桑基图里面有一个循环，请提供一棵树。这是一个错误的链接：{}"
 
-#: superset/viz.py:1832
+#: superset/viz.py:1810
 msgid "Directed Force Layout"
 msgstr "有向图"
 
 #: superset-frontend/src/visualizations/D3/CountryMapChart/index.js:30
-#: superset/viz.py:1871
+#: superset/viz.py:1849
 msgid "Country Map"
 msgstr "国家地图"
 
 #: superset-frontend/src/visualizations/D3/WorldMapChart/index.js:33
-#: superset/viz.py:1906
+#: superset/viz.py:1884
 msgid "World Map"
 msgstr "世界地图"
 
@@ -440,117 +435,117 @@ msgstr "世界地图"
 #: superset-frontend/src/chartConntrols/shared-controls/index.tsx:426
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Header/index.tsx:97
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FilterTabs.tsx:210
-#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:1968
+#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:1946
 msgid "Filters"
 msgstr "过滤"
 
-#: superset/viz.py:1989
+#: superset/viz.py:1967
 msgid "Invalid filter configuration, please select a column"
 msgstr "过滤器配置无效，请选择一个列"
 
 #: superset-frontend/src/visualizations/D3/ParallelCoordinatesChart/index.js:30
-#: superset/viz.py:2040
+#: superset/viz.py:2018
 msgid "Parallel Coordinates"
 msgstr "平行坐标"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/index.js:38
-#: superset/viz.py:2070
+#: superset/viz.py:2048
 msgid "Heatmap"
 msgstr "热力图"
 
-#: superset/viz.py:2131
+#: superset/viz.py:2109
 msgid "Horizon Charts"
 msgstr "水平图"
 
-#: superset/viz.py:2143
+#: superset/viz.py:2121
 msgid "Mapbox"
 msgstr "箱图"
 
-#: superset/viz.py:2157
+#: superset/viz.py:2135
 msgid "[Longitude] and [Latitude] must be set"
 msgstr "[经度] 和 [纬度] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2167
+#: superset/viz.py:2145
 msgid "Must have a [Group By] column to have 'count' as the [Label]"
 msgstr "[Group By] 列必须要有 ‘count’字段作为 [标签]"
 
-#: superset/viz.py:2191
+#: superset/viz.py:2169
 msgid "Choice of [Label] must be present in [Group By]"
 msgstr "[标签] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2199
+#: superset/viz.py:2177
 msgid "Choice of [Point Radius] must be present in [Group By]"
 msgstr "[点半径] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2207
+#: superset/viz.py:2185
 msgid "[Longitude] and [Latitude] columns must be present in [Group By]"
 msgstr "[经度] 和 [纬度] 的选择项必须出现在 [Group By]"
 
-#: superset/viz.py:2289
+#: superset/viz.py:2267
 msgid "Deck.gl - Multiple Layers"
 msgstr "多图层"
 
-#: superset/viz.py:2330 superset/viz.py:2366
+#: superset/viz.py:2308 superset/viz.py:2344
 msgid "Bad spatial key"
 msgstr "错误的空间字段"
 
-#: superset/viz.py:2351
+#: superset/viz.py:2329
 #, python-format
 msgid "Invalid spatial point encountered: %s"
 msgstr "遇到无效的空间点：%s"
 
-#: superset/viz.py:2388
+#: superset/viz.py:2366
 msgid ""
 "Encountered invalid NULL spatial entry,"
 "                                        please consider filtering those "
 "out"
 msgstr "遇到无效的为 NULL 的空间条目，请考虑将其过滤掉"
 
-#: superset/viz.py:2483
+#: superset/viz.py:2461
 msgid "Deck.gl - Scatter plot"
 msgstr "Deck.gl - 散点图"
 
-#: superset/viz.py:2535
+#: superset/viz.py:2513
 msgid "Deck.gl - Screen Grid"
 msgstr "Deck.gl - 屏幕网格"
 
-#: superset/viz.py:2564
+#: superset/viz.py:2542
 msgid "Deck.gl - 3D Grid"
 msgstr "Deck.gl - 3D网格"
 
-#: superset/viz.py:2596
+#: superset/viz.py:2574
 msgid "Deck.gl - Paths"
 msgstr "Deck.gl - 路径"
 
-#: superset/viz.py:2647
+#: superset/viz.py:2625
 msgid "Deck.gl - Polygon"
 msgstr "Deck.gl - 多角形"
 
-#: superset/viz.py:2680
+#: superset/viz.py:2658
 msgid "Deck.gl - 3D HEX"
 msgstr "Deck.gl - 3D六角曲面"
 
-#: superset/viz.py:2701
+#: superset/viz.py:2679
 msgid "Deck.gl - GeoJSON"
 msgstr "Deck.gl - GeoJson"
 
-#: superset/viz.py:2720
+#: superset/viz.py:2698
 msgid "Deck.gl - Arc"
 msgstr "Deck.gl - 弧度"
 
-#: superset/viz.py:2754
+#: superset/viz.py:2732
 msgid "Event flow"
 msgstr "事件流"
 
-#: superset/viz.py:2786
+#: superset/viz.py:2764
 msgid "Time Series - Paired t-test"
 msgstr "时间序列 - 配对t检验"
 
-#: superset/viz.py:2858
+#: superset/viz.py:2836
 msgid "Time Series - Nightingale Rose Chart"
 msgstr "时间序列 - 南丁格尔玫瑰图"
 
-#: superset/viz.py:2893
+#: superset/viz.py:2871
 msgid "Partition Diagram"
 msgstr "分区图"
 
@@ -953,7 +948,7 @@ msgstr "指标"
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1003
 #: superset-frontend/src/views/CRUD/annotation/AnnotationList.tsx:128
 #: superset-frontend/src/views/CRUD/annotationlayers/AnnotationLayersList.tsx:127
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:41
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:42
 #: superset/connectors/druid/views.py:188
 #: superset/connectors/druid/views.py:345 superset/connectors/sqla/views.py:145
 #: superset/connectors/sqla/views.py:256 superset/connectors/sqla/views.py:502
@@ -8220,7 +8215,6 @@ msgid "Min"
 msgstr "最小值"
 
 #: superset-frontend/src/explore/components/controls/BoundsControl.jsx:118
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:41
 msgid "Max"
 msgstr "最大值"
 
@@ -9075,19 +9069,18 @@ msgstr "把您的代码放在这里"
 #: superset-frontend/src/visualizations/D3/WordCloud/plugin/controlPanel.ts:26
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:26
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:34
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:27
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:89
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:143
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:34
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:30
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:26
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:30
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:31
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:40
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:41
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:54
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:50
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:60
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:57
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:53
@@ -11009,18 +11002,17 @@ msgstr "每个区块的时间单位。应该是比域粒度更小的单位。应
 #: superset-frontend/src/visualizations/D3/SunburstChart/controlPanel.ts:47
 #: superset-frontend/src/visualizations/D3/TreemapChart/controlPanel.ts:48
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:139
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:81
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:154
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:44
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:62
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:49
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:51
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:50
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:36
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:52
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:44
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:279
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:66
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:74
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:70
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:101
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:81
@@ -11119,11 +11111,11 @@ msgstr "是否将度量名称显示为标题"
 #: superset-frontend/src/visualizations/D3/RoseChart/controlPanel.tsx:75
 #: superset-frontend/src/visualizations/D3/TreemapChart/controlPanel.ts:72
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:210
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:88
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:86
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:104
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:141
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:117
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:128
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:80
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:110
 msgid "Number format"
 msgstr "数字格式化"
@@ -11488,7 +11480,6 @@ msgstr "水平图"
 #: superset-frontend/src/visualizations/D3/WordCloud/plugin/controlPanel.ts:46
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:65
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:39
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:32
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:116
 msgid "Options"
 msgstr "选项"
@@ -12147,7 +12138,6 @@ msgid ""
 msgstr "将趋势线固定到指定的完整时间范围，以防筛选结果不包括开始或结束日期"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/index.ts:29
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:30
 #: superset-frontend/src/visualizations/ECharts/Funnel/index.ts:47
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/index.ts:37
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/index.ts:37
@@ -12164,50 +12154,10 @@ msgid ""
 msgstr "用简单的折线图展示一个数字，以引起人们对一个重要指标及其随时间或其他维度的变化的注意。"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/index.ts:35
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:39
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/index.ts:30
 #: superset-frontend/src/visualizations/DataUI/TimeTable/index.js:29
 msgid "Data UI"
 msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:41
-msgid "Subheader"
-msgstr "副标题"
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:43
-msgid "Description text that shows up below your Big Number"
-msgstr "显示在大数字下方的说明文字"
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:53
-msgid "Timestamp Format"
-msgstr "时间戳格式"
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:56
-msgid "Whether to format the timestamp"
-msgstr "是否格式化时间戳"
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:66
-#: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:102
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:144
-#: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:126
-#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:227
-msgid "Date format"
-msgstr "日期格式化"
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:31
-msgid ""
-"Showcases a single metric front-and-center. Big number is best used to "
-"call attention to a KPI or the one thing you want your audience to focus "
-"on."
-msgstr "展示单公制正面和中央。“大数字”最适合用来提醒大家注意KPI或你希望听众关注的一件事。"
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:35
-msgid "A Big Number"
-msgstr "大数字"
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:36
-msgid "With a subheader"
-msgstr "用副标题"
 
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/EventFlow.tsx:45
 msgid "Sorry, there appears to be no data"
@@ -12562,6 +12512,12 @@ msgstr "X轴刻度布局"
 msgid "The way the ticks are laid out on the X-axis"
 msgstr "在X轴上的排列方式"
 
+#: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:102
+#: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:126
+#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:227
+msgid "Date format"
+msgstr "日期格式化"
+
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:116
 msgid "Categories to group by on the x-axis."
 msgstr "要在x轴上分组的类别。"
@@ -12592,35 +12548,32 @@ msgstr "盒须图"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:77
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:90
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:79
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:62
 msgid "Labels"
 msgstr "标签"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:83
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:96
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:97
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:92
 msgid "Label Type"
 msgstr "标签类型"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:94
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:107
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:100
 msgid "What should be shown on the label?"
 msgstr "标签上应该显示什么？"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:119
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:132
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:85
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:96
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:68
 msgid "Show Labels"
 msgstr "显示标签"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:122
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:135
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:88
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:99
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:71
 msgid "Whether to display the labels."
 msgstr "是否显示标签。"
@@ -12636,90 +12589,89 @@ msgstr "展示指标如何随着漏斗的推进而变化。这个经典图表对
 msgid "Funnel Chart"
 msgstr "漏斗图"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:61
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:52
 msgid "Label Format"
 msgstr "标签格式化"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:71
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:62
 msgid "Label Font size"
 msgstr "标签字体大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:72
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:63
 msgid "Font size for axis labels"
 msgstr "轴标签的字体大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:63
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:87
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:50
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:78
 msgid "Value Font size"
 msgstr "值字体大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:64
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:88
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:51
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:79
 msgid "Font size for detail value"
 msgstr "值的字体大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:77
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:101
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:64
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:92
 msgid "Value Animation"
 msgstr "值动画"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:78
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:102
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:65
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:93
 msgid "Whether to animate the value or just display it."
 msgstr "是否对值进行动画处理，或只是显示它。"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:115
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:106
 msgid "Show pointer"
 msgstr "显示指针"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:116
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:107
 msgid "Whether to show the pointer"
 msgstr "是否显示指针"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:127
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:118
 msgid "Show axis line ticks"
 msgstr "显示轴线刻度"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:128
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:119
 msgid "Whether to show minor ticks on the axis"
 msgstr "是否在轴上显示小刻度"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:145
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:136
 msgid "Show split lines"
 msgstr "显示分割线"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:146
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:137
 msgid "Whether to show the split lines on the axis"
 msgstr "是否在坐标轴上显示分割线"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:163
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:154
 msgid "Show progress"
 msgstr "显示进度条"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:164
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:155
 msgid "Whether to show the progress of gauge chart"
 msgstr "是否显示仪表图的进度"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:91
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:177
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:78
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:168
 msgid "Round cap"
 msgstr "圆形盖"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:92
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:178
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:79
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:169
 msgid "Style the ends of the progress bar with a round cap"
 msgstr "用圆形盖设计进度条末端的样式"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:105
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:140
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:193
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:92
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:184
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:217
 msgid "Value format"
 msgstr "值格式"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:107
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:142
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:195
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:94
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:143
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:186
 msgid "Additional text to add before or after the value, e.g. unit"
 msgstr "在值之前或之后添加的附加文本，例如单位"
 
@@ -12739,51 +12691,51 @@ msgstr "使用圆环图来展示目标的进程程度。"
 msgid "Circle Ring Chart"
 msgstr "圆环图"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:44
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:45
 msgid "Additional explanation of the displayed number."
 msgstr "对显示的数字进行补充说明"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:63
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:64
 msgid "Number Font Color"
 msgstr "数字字体颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:64
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:65
 msgid "Set the text color for displaying number."
 msgstr "设置显示数字的文本颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:74
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:75
 msgid "Number Font size"
 msgstr "数字的字体大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:76
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:77
 msgid "Set the text size for displaying number."
 msgstr "设置显示数字的文字大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:89
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:90
 msgid "Number Distance"
 msgstr "数字的距离"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:91
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:92
 msgid "Set the vertical distance of the displayed number."
 msgstr "设置显示数字的垂直距离"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:104
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:105
 msgid "Description Font Color"
 msgstr "描述的文字颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:105
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:106
 msgid "Font color for description."
 msgstr "描述的文字颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:115
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:116
 msgid "Description Font size"
 msgstr "描述的文字大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:116
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:117
 msgid "Font size for description."
 msgstr "值的字体大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:129
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:130
 msgid "Description Distance"
 msgstr "描述的距离"
 
@@ -13322,33 +13274,25 @@ msgstr "上钻"
 msgid "Reset drill-down"
 msgstr "重置下钻"
 
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:42
-msgid "The maximum value of metrics. It is an optional configuration"
-msgstr "度量的最大值。这是一种可选配置"
-
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:114
-msgid "Label position"
-msgstr "标题位置"
-
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:152
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:90
 msgid "Radar"
 msgstr "雷达"
 
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:158
-msgid "Customize Metrics"
-msgstr "自定义指标"
-
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:159
-msgid "Further customize how to display each metric"
-msgstr "进一步定制如何显示每个指标"
-
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:185
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:108
 msgid "Circle radar shape"
 msgstr "圆形雷达"
 
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:188
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:111
 msgid "Radar render type, whether to display 'circle' shape."
 msgstr "雷达渲染类型，是否显示“圆形”形状。"
+
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:122
+msgid "precent Data"
+msgstr "百分比数据"
+
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:125
+msgid "Percentage type data is used."
+msgstr "使用了百分比类型的数据"
 
 #: superset-frontend/src/visualizations/ECharts/Radar/index.ts:50
 msgid ""

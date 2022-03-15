@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-13 01:11+0800\n"
+"POT-Creation-Date: 2022-03-15 15:22+0800\n"
 "PO-Revision-Date: 2016-05-02 08:49-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -342,90 +342,85 @@ msgstr ""
 msgid "Big Number with Trendline"
 msgstr ""
 
-#: superset/viz.py:1246 superset/viz.py:1280
+#: superset/viz.py:1246
 msgid "Pick a metric!"
 msgstr ""
 
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:38
 #: superset/viz.py:1272
-msgid "Big Number"
-msgstr ""
-
-#: superset/viz.py:1294
 msgid "Time Series - Line Chart"
 msgstr ""
 
-#: superset/viz.py:1376 superset/viz.py:1639
+#: superset/viz.py:1354 superset/viz.py:1617
 msgid "Pick a time granularity for your time series"
 msgstr ""
 
-#: superset/common/query_context.py:151 superset/viz.py:1433
+#: superset/common/query_context.py:151 superset/viz.py:1411
 msgid ""
 "An enclosed time range (both start and end) must be specified when using "
 "a Time Comparison."
 msgstr ""
 
-#: superset/viz.py:1504
+#: superset/viz.py:1482
 msgid "Time Series - Multiple Line Charts"
 msgstr ""
 
-#: superset/viz.py:1582
+#: superset/viz.py:1560
 msgid "Time Series - Dual Axis Line Chart"
 msgstr ""
 
-#: superset/viz.py:1591
+#: superset/viz.py:1569
 msgid "Pick a metric for left axis!"
 msgstr ""
 
-#: superset/viz.py:1593
+#: superset/viz.py:1571
 msgid "Pick a metric for right axis!"
 msgstr ""
 
-#: superset/viz.py:1596
+#: superset/viz.py:1574
 msgid "Please choose different metrics on left and right axis"
 msgstr ""
 
-#: superset/viz.py:1656
+#: superset/viz.py:1634
 msgid "Time Series - Period Pivot"
 msgstr ""
 
-#: superset/viz.py:1702
+#: superset/viz.py:1680
 msgid "Time Series - Percent Change"
 msgstr ""
 
-#: superset/viz.py:1710
+#: superset/viz.py:1688
 msgid "Time Series - Stacked"
 msgstr ""
 
-#: superset/viz.py:1720
+#: superset/viz.py:1698
 msgid "Sunburst"
 msgstr ""
 
-#: superset/viz.py:1767
+#: superset/viz.py:1745
 msgid "Sankey"
 msgstr ""
 
-#: superset/viz.py:1775
+#: superset/viz.py:1753
 msgid "Pick exactly 2 columns as [Source / Target]"
 msgstr ""
 
-#: superset/viz.py:1819
+#: superset/viz.py:1797
 msgid ""
 "There's a loop in your Sankey, please provide a tree. Here's a faulty "
 "link: {}"
 msgstr ""
 
-#: superset/viz.py:1832
+#: superset/viz.py:1810
 msgid "Directed Force Layout"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/CountryMapChart/index.js:30
-#: superset/viz.py:1871
+#: superset/viz.py:1849
 msgid "Country Map"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/WorldMapChart/index.js:33
-#: superset/viz.py:1906
+#: superset/viz.py:1884
 msgid "World Map"
 msgstr ""
 
@@ -433,117 +428,117 @@ msgstr ""
 #: superset-frontend/src/chartConntrols/shared-controls/index.tsx:426
 #: superset-frontend/src/dashboard/components/nativeFilters/FilterBar/Header/index.tsx:97
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FilterTabs.tsx:210
-#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:1968
+#: superset-frontend/src/explore/controls.jsx:443 superset/viz.py:1946
 msgid "Filters"
 msgstr ""
 
-#: superset/viz.py:1989
+#: superset/viz.py:1967
 msgid "Invalid filter configuration, please select a column"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/ParallelCoordinatesChart/index.js:30
-#: superset/viz.py:2040
+#: superset/viz.py:2018
 msgid "Parallel Coordinates"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/index.js:38
-#: superset/viz.py:2070
+#: superset/viz.py:2048
 msgid "Heatmap"
 msgstr ""
 
-#: superset/viz.py:2131
+#: superset/viz.py:2109
 msgid "Horizon Charts"
 msgstr ""
 
-#: superset/viz.py:2143
+#: superset/viz.py:2121
 msgid "Mapbox"
 msgstr ""
 
-#: superset/viz.py:2157
+#: superset/viz.py:2135
 msgid "[Longitude] and [Latitude] must be set"
 msgstr ""
 
-#: superset/viz.py:2167
+#: superset/viz.py:2145
 msgid "Must have a [Group By] column to have 'count' as the [Label]"
 msgstr ""
 
-#: superset/viz.py:2191
+#: superset/viz.py:2169
 msgid "Choice of [Label] must be present in [Group By]"
 msgstr ""
 
-#: superset/viz.py:2199
+#: superset/viz.py:2177
 msgid "Choice of [Point Radius] must be present in [Group By]"
 msgstr ""
 
-#: superset/viz.py:2207
+#: superset/viz.py:2185
 msgid "[Longitude] and [Latitude] columns must be present in [Group By]"
 msgstr ""
 
-#: superset/viz.py:2289
+#: superset/viz.py:2267
 msgid "Deck.gl - Multiple Layers"
 msgstr ""
 
-#: superset/viz.py:2330 superset/viz.py:2366
+#: superset/viz.py:2308 superset/viz.py:2344
 msgid "Bad spatial key"
 msgstr ""
 
-#: superset/viz.py:2351
+#: superset/viz.py:2329
 #, python-format
 msgid "Invalid spatial point encountered: %s"
 msgstr ""
 
-#: superset/viz.py:2388
+#: superset/viz.py:2366
 msgid ""
 "Encountered invalid NULL spatial entry,"
 "                                        please consider filtering those "
 "out"
 msgstr ""
 
-#: superset/viz.py:2483
+#: superset/viz.py:2461
 msgid "Deck.gl - Scatter plot"
 msgstr ""
 
-#: superset/viz.py:2535
+#: superset/viz.py:2513
 msgid "Deck.gl - Screen Grid"
 msgstr ""
 
-#: superset/viz.py:2564
+#: superset/viz.py:2542
 msgid "Deck.gl - 3D Grid"
 msgstr ""
 
-#: superset/viz.py:2596
+#: superset/viz.py:2574
 msgid "Deck.gl - Paths"
 msgstr ""
 
-#: superset/viz.py:2647
+#: superset/viz.py:2625
 msgid "Deck.gl - Polygon"
 msgstr ""
 
-#: superset/viz.py:2680
+#: superset/viz.py:2658
 msgid "Deck.gl - 3D HEX"
 msgstr ""
 
-#: superset/viz.py:2701
+#: superset/viz.py:2679
 msgid "Deck.gl - GeoJSON"
 msgstr ""
 
-#: superset/viz.py:2720
+#: superset/viz.py:2698
 msgid "Deck.gl - Arc"
 msgstr ""
 
-#: superset/viz.py:2754
+#: superset/viz.py:2732
 msgid "Event flow"
 msgstr ""
 
-#: superset/viz.py:2786
+#: superset/viz.py:2764
 msgid "Time Series - Paired t-test"
 msgstr ""
 
-#: superset/viz.py:2858
+#: superset/viz.py:2836
 msgid "Time Series - Nightingale Rose Chart"
 msgstr ""
 
-#: superset/viz.py:2893
+#: superset/viz.py:2871
 msgid "Partition Diagram"
 msgstr ""
 
@@ -949,7 +944,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1003
 #: superset-frontend/src/views/CRUD/annotation/AnnotationList.tsx:128
 #: superset-frontend/src/views/CRUD/annotationlayers/AnnotationLayersList.tsx:127
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:41
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:42
 #: superset/connectors/druid/views.py:188
 #: superset/connectors/druid/views.py:345 superset/connectors/sqla/views.py:145
 #: superset/connectors/sqla/views.py:256 superset/connectors/sqla/views.py:502
@@ -8139,7 +8134,6 @@ msgid "Min"
 msgstr ""
 
 #: superset-frontend/src/explore/components/controls/BoundsControl.jsx:118
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:41
 msgid "Max"
 msgstr ""
 
@@ -8990,19 +8984,18 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/WordCloud/plugin/controlPanel.ts:26
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:26
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:34
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:27
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:89
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:143
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:34
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:30
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:26
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:30
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:31
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:40
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:41
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:54
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:50
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:60
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:57
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:53
@@ -10909,18 +10902,17 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/SunburstChart/controlPanel.ts:47
 #: superset-frontend/src/visualizations/D3/TreemapChart/controlPanel.ts:48
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:139
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:81
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:154
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:44
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:62
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:49
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:51
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:50
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:36
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:52
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:44
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:279
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:66
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:74
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:70
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:101
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:81
@@ -11019,11 +11011,11 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/RoseChart/controlPanel.tsx:75
 #: superset-frontend/src/visualizations/D3/TreemapChart/controlPanel.ts:72
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:210
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:88
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:86
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:104
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:141
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:117
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:128
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:80
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:110
 msgid "Number format"
 msgstr ""
@@ -11388,7 +11380,6 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/WordCloud/plugin/controlPanel.ts:46
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:65
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:39
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:32
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:116
 msgid "Options"
 msgstr ""
@@ -12047,7 +12038,6 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/index.ts:29
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:30
 #: superset-frontend/src/visualizations/ECharts/Funnel/index.ts:47
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/index.ts:37
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/index.ts:37
@@ -12064,49 +12054,9 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/index.ts:35
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:39
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/index.ts:30
 #: superset-frontend/src/visualizations/DataUI/TimeTable/index.js:29
 msgid "Data UI"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:41
-msgid "Subheader"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:43
-msgid "Description text that shows up below your Big Number"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:53
-msgid "Timestamp Format"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:56
-msgid "Whether to format the timestamp"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/controlPanel.ts:66
-#: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:102
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:144
-#: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:126
-#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:227
-msgid "Date format"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:31
-msgid ""
-"Showcases a single metric front-and-center. Big number is best used to "
-"call attention to a KPI or the one thing you want your audience to focus "
-"on."
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:35
-msgid "A Big Number"
-msgstr ""
-
-#: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumberTotal/index.ts:36
-msgid "With a subheader"
 msgstr ""
 
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/EventFlow.tsx:45
@@ -12462,6 +12412,12 @@ msgstr ""
 msgid "The way the ticks are laid out on the X-axis"
 msgstr ""
 
+#: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:102
+#: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:126
+#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:227
+msgid "Date format"
+msgstr ""
+
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:116
 msgid "Categories to group by on the x-axis."
 msgstr ""
@@ -12492,35 +12448,32 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:77
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:90
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:79
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:62
 msgid "Labels"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:83
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:96
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:97
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:92
 msgid "Label Type"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:94
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:107
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:100
 msgid "What should be shown on the label?"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:119
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:132
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:85
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:96
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:68
 msgid "Show Labels"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:122
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:135
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:88
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:99
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:71
 msgid "Whether to display the labels."
 msgstr ""
@@ -12536,90 +12489,89 @@ msgstr ""
 msgid "Funnel Chart"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:61
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:52
 msgid "Label Format"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:71
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:62
 msgid "Label Font size"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:72
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:63
 msgid "Font size for axis labels"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:63
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:87
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:50
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:78
 msgid "Value Font size"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:64
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:88
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:51
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:79
 msgid "Font size for detail value"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:77
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:101
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:64
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:92
 msgid "Value Animation"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:78
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:102
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:65
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:93
 msgid "Whether to animate the value or just display it."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:115
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:106
 msgid "Show pointer"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:116
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:107
 msgid "Whether to show the pointer"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:127
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:118
 msgid "Show axis line ticks"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:128
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:119
 msgid "Whether to show minor ticks on the axis"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:145
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:136
 msgid "Show split lines"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:146
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:137
 msgid "Whether to show the split lines on the axis"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:163
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:154
 msgid "Show progress"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:164
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:155
 msgid "Whether to show the progress of gauge chart"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:91
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:177
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:78
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:168
 msgid "Round cap"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:92
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:178
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:79
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:169
 msgid "Style the ends of the progress bar with a round cap"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:105
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:140
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:193
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:92
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:184
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:217
 msgid "Value format"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:107
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:142
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:195
+#: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:94
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:143
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:186
 msgid "Additional text to add before or after the value, e.g. unit"
 msgstr ""
 
@@ -12639,51 +12591,51 @@ msgstr ""
 msgid "Circle Ring Chart"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:44
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:45
 msgid "Additional explanation of the displayed number."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:63
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:64
 msgid "Number Font Color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:64
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:65
 msgid "Set the text color for displaying number."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:74
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:75
 msgid "Number Font size"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:76
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:77
 msgid "Set the text size for displaying number."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:89
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:90
 msgid "Number Distance"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:91
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:92
 msgid "Set the vertical distance of the displayed number."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:104
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:105
 msgid "Description Font Color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:105
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:106
 msgid "Font color for description."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:115
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:116
 msgid "Description Font size"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:116
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:117
 msgid "Font size for description."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:129
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:130
 msgid "Description Distance"
 msgstr ""
 
@@ -13222,32 +13174,24 @@ msgstr ""
 msgid "Reset drill-down"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:42
-msgid "The maximum value of metrics. It is an optional configuration"
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:114
-msgid "Label position"
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:152
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:90
 msgid "Radar"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:158
-msgid "Customize Metrics"
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:159
-msgid "Further customize how to display each metric"
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:185
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:108
 msgid "Circle radar shape"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:188
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:111
 msgid "Radar render type, whether to display 'circle' shape."
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:122
+msgid "precent Data"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:125
+msgid "Percentage type data is used."
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Radar/index.ts:50
