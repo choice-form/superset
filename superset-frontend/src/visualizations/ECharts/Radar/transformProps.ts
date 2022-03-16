@@ -175,6 +175,14 @@ export default function transformProps(
     },
     radar: {
       shape: isCircle ? 'circle' : 'polygon',
+      name: {
+        show: true,
+        fontSize: 16,
+        fontWeight: 600,
+        textStyle: {
+          color: '#333',
+        },
+      },
       indicator: indicators,
     },
     tooltip: {
