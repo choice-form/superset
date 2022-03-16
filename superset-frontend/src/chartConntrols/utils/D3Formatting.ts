@@ -28,6 +28,7 @@ export const D3_FORMAT_OPTIONS: [string, string][] = [
   [NumberFormats.SMART_NUMBER, t('Adaptative formating')],
   ['~g', t('Original value')],
   ['PRECENT', t('Precent (66 => 66%)')],
+  ['Not Decimal Precent', t('Not Decimal Precent (66.6 => 67%)')],
   ['Thousand Separator', t('Thousand Separator (12345 => 12,345)')],
   [',d', ',d (12345.432 => 12,345)'],
   ['.1s', '.1s (12345.432 => 10k)'],

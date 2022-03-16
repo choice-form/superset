@@ -1903,6 +1903,7 @@
       ],
       "Adaptative formating": ["适应格式"],
       "Precent (66 => 66%)": ["百分比 (66 => 66%)"],
+      "Not Decimal Precent (66.6 => 67%)": ["非小数百分比 (66 => 66%)"],
       "Thousand Separator (12345 => 12,345)": ["千位分隔符 (12345 => 12,345)"],
       "Duration in s (66000 => 1m 6s)": ["持续时间（秒）(66000 => 1m 6s)"],
       "Duration in ns (1.40008 => 1ms 400µs 80ns)": [

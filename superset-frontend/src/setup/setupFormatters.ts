@@ -81,6 +81,18 @@ export default function setupFormatters() {
       }),
     )
     .registerValue(
+      'Not Decimal Precent', // 非小数百分比，一般用于整数显示成百分比
+      createD3NumberFormatter({
+        locale: {
+          decimal: '.', // 小数点符号
+          thousands: ',', // 分隔符
+          grouping: [100], // 指定多少位使用分隔符
+          currency: ['', '%'], // 前缀，后缀
+        },
+        formatString: '$,.0f', // 固定格式，不要改！
+      }),
+    )
+    .registerValue(
       'Thousand Separator',
       createD3NumberFormatter({
         locale: {

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-16 20:56+0800\n"
+"POT-Creation-Date: 2022-03-16 21:35+0800\n"
 "PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -5966,7 +5966,7 @@ msgid "D3 format syntax: https://github.com/d3/d3-format"
 msgstr "D3 标准语法：https://github.com/d3/d3-format"
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:28
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:51
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:52
 msgid "Adaptative formating"
 msgstr "适应格式"
 
@@ -5975,18 +5975,22 @@ msgid "Precent (66 => 66%)"
 msgstr "百分比 (66 => 66%)"
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:31
+msgid "Not Decimal Precent (66.6 => 67%)"
+msgstr "非小数百分比 (66 => 66%)"
+
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:32
 msgid "Thousand Separator (12345 => 12,345)"
 msgstr "千位分隔符 (12345 => 12,345)"
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:42
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:43
 msgid "Duration in s (66000 => 1m 6s)"
 msgstr "持续时间（秒）(66000 => 1m 6s)"
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:43
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:44
 msgid "Duration in ns (1.40008 => 1ms 400µs 80ns)"
 msgstr "持续时间（纳秒）(1.40008 => 1ms 400µs 80ns)"
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:46
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:47
 msgid "D3 time format syntax: https://github.com/d3/d3-time-format"
 msgstr "D3 时间格式语法：https://github.com/d3/d3-time-format"
 

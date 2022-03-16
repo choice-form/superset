@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-16 20:56+0800\n"
+"POT-Creation-Date: 2022-03-16 21:35+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5884,7 +5884,7 @@ msgid "D3 format syntax: https://github.com/d3/d3-format"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:28
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:51
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:52
 msgid "Adaptative formating"
 msgstr ""
 
@@ -5893,18 +5893,22 @@ msgid "Precent (66 => 66%)"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:31
+msgid "Not Decimal Precent (66.6 => 67%)"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:32
 msgid "Thousand Separator (12345 => 12,345)"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:42
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:43
 msgid "Duration in s (66000 => 1m 6s)"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:43
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:44
 msgid "Duration in ns (1.40008 => 1ms 400µs 80ns)"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:46
+#: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:47
 msgid "D3 time format syntax: https://github.com/d3/d3-time-format"
 msgstr ""
 
