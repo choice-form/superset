@@ -85,7 +85,7 @@ export default function transformProps(
   };
   const { setDataMask = () => {} } = hooks;
 
-  console.log('chartProps:', chartProps);
+  // console.log('chartProps:', chartProps);
 
   const { data, coltypes } = queriesData[0];
 
@@ -97,7 +97,7 @@ export default function transformProps(
     Object.keys(firstData).length,
   );
   const names = Object.keys(firstData).splice(0, colIdx);
-  console.log('metrics:', metrics, names);
+  // console.log('metrics:', metrics, names);
 
   // 气泡列表
   const list: any[] = [];
@@ -120,8 +120,8 @@ export default function transformProps(
     labels[vals.join(',')] = name;
   });
 
-  console.log('labels:', labels);
-  console.log('list:', list);
+  // console.log('labels:', labels);
+  // console.log('list:', list);
   // const coltypeMapping = getColtypesMapping(queriesData[0]);
 
   // const selectedValues = (filterState.selectedValues || []).reduce(
