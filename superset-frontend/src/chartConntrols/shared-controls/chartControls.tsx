@@ -296,6 +296,15 @@ export const yAxis2Bounds: SharedControlConfig<'BoundsControl'> = {
   ),
 };
 
+export const xAxisFormat: SharedControlConfig<'SelectControl'> = {
+  type: 'SelectControl',
+  label: t('X Axis Format'),
+  renderTrigger: true,
+  default: DEFAULT_NUMBER_FORMAT,
+  choices: D3_FORMAT_OPTIONS,
+  description: D3_FORMAT_DOCS,
+};
+
 export const xAxisLabel: SharedControlConfig<'TextControl'> = {
   type: 'TextControl',
   label: t('X Axis Label'),

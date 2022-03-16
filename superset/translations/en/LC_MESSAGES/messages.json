@@ -1454,6 +1454,7 @@
       "Bounds for the Y-axis 2. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
         ""
       ],
+      "X Axis Format": [""],
       "X Axis Label": [""],
       "X Axis Label Rotate": [""],
       "Rotation degree of axis label, which is especially useful when there is no enough space for category axis.": [
@@ -3360,6 +3361,21 @@
         ""
       ],
       "Radar Chart": [""],
+      "Show average line": [""],
+      "Y-Axis average line label": [""],
+      "Value suffix for Y-axis": [""],
+      "X-Axis average line label": [""],
+      "Value suffix for X-axis": [""],
+      "y axis label font color": [""],
+      "Font color of Y-axis labels": [""],
+      "x axis label distance": [""],
+      "Distance between X-axis label and boundary": [""],
+      "x axis label font color": [""],
+      "Font color of X-axis labels": [""],
+      "The scatter chart in rectangular coordinate could be used to present the relation between x and y.": [
+        ""
+      ],
+      "Scatter Chart": [""],
       "Contribution Mode": [""],
       "Calculate contribution per series or total": [""],
       "Series Style": [""],
@@ -3532,7 +3548,6 @@
       "Line interpolation as defined by d3.js": [""],
       "Show Range Filter": [""],
       "Whether to display the time range interactive selector": [""],
-      "X Axis Format": [""],
       "Y Log Scale": [""],
       "Use a log scale for the Y-axis": [""],
       "X bounds": [""],

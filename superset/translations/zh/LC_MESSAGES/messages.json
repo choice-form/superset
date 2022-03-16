@@ -1788,6 +1788,7 @@
       "Bounds for the Y-axis 2. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
         "Y轴2的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
       ],
+      "X Axis Format": ["X 轴格式化"],
       "X Axis Label": ["X轴标题"],
       "X Axis Label Rotate": ["X轴标签旋转"],
       "Rotation degree of axis label, which is especially useful when there is no enough space for category axis.": [
@@ -4046,6 +4047,21 @@
         "在多个组中可视化一组并行的指标。每个组都使用自己的点线进行可视化，每个度量在图表中表示为一条边。"
       ],
       "Radar Chart": ["雷达图"],
+      "Show average line": ["显示平均线"],
+      "Y-Axis average line label": ["Y轴平均线标签"],
+      "Value suffix for Y-axis": ["Y轴的数值后缀"],
+      "X-Axis average line label": ["X轴平均线标签"],
+      "Value suffix for X-axis": ["X轴的数值后缀"],
+      "y axis label font color": ["Y轴标签的字体颜色"],
+      "Font color of Y-axis labels": ["Y轴标签的字体颜色"],
+      "x axis label distance": ["X轴标签的边距"],
+      "Distance between X-axis label and boundary": ["X轴标签与边界之间的距离"],
+      "x axis label font color": ["X轴标签的字体颜色"],
+      "Font color of X-axis labels": ["X轴标签的字体颜色"],
+      "The scatter chart in rectangular coordinate could be used to present the relation between x and y.": [
+        "直角坐标系上的散点图，可以用来展现数据的 x，y 之间的关系"
+      ],
+      "Scatter Chart": ["散点图"],
       "Contribution Mode": ["贡献模式"],
       "Calculate contribution per series or total": ["计算对总数的贡献值"],
       "Series Style": ["系列样式"],
@@ -4244,7 +4260,6 @@
       "Whether to display the time range interactive selector": [
         "是否显示时间范围交互式选择器"
       ],
-      "X Axis Format": ["X 轴格式化"],
       "Y Log Scale": ["Y对数刻度"],
       "Use a log scale for the Y-axis": ["Y轴使用对数刻度"],
       "X bounds": ["X 边界"],
