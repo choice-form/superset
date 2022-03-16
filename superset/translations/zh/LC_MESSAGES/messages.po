@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-16 21:35+0800\n"
+"POT-Creation-Date: 2022-03-17 03:11+0800\n"
 "PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -5976,7 +5976,7 @@ msgstr "百分比 (66 => 66%)"
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:31
 msgid "Not Decimal Precent (66.6 => 67%)"
-msgstr "非小数百分比 (66 => 66%)"
+msgstr "非小数百分比 (66.6 => 67%)"
 
 #: superset-frontend/src/chartConntrols/utils/D3Formatting.ts:32
 msgid "Thousand Separator (12345 => 12,345)"
@@ -9101,7 +9101,7 @@ msgstr "把您的代码放在这里"
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:89
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:143
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:34
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:38
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:34
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:26
@@ -11034,7 +11034,7 @@ msgstr "每个区块的时间单位。应该是比域粒度更小的单位。应
 #: superset-frontend/src/visualizations/D3/TreemapChart/controlPanel.ts:48
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:139
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:154
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:44
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:62
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:36
@@ -11103,7 +11103,7 @@ msgstr "时间格式"
 #: superset-frontend/src/visualizations/D3/CalendarChart/controlPanel.ts:142
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:240
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:170
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:77
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:81
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:81
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:130
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:140
@@ -12430,7 +12430,7 @@ msgid ""
 msgstr "是否显示额外控件。额外的控制包括使多柱状图堆叠或并排。"
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:162
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:70
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:74
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:74
 msgid "Tooltip Format"
 msgstr "Tooltip格式化"
@@ -12444,61 +12444,110 @@ msgid "Mixed Line and Bar"
 msgstr "折线柱状混合图"
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:58
-msgid "Sort Bars"
-msgstr "柱排序"
+msgid "Ringgit"
+msgstr "环比"
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:61
-msgid "Sort bars by x labels."
-msgstr "按x标签对柱进行排序。"
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:59
+msgid "Show Ringgit"
+msgstr "显示环比"
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:88
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:92
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:92
 msgid "Value Axis"
 msgstr "数值轴"
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:99
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:103
-msgid "Category Axis"
-msgstr "类目轴"
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:103
+msgid "Value axis name font color"
+msgstr "数值轴名称的字体颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:106
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:110
-msgid "Value Axis Format"
-msgstr "数值轴格式化"
-
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:109
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:113
-msgid "Value Axis Line"
-msgstr "数值轴的轴线"
-
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:110
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:114
-msgid "Show or hide the axis of Value-axis."
-msgstr "显示或隐藏数值轴的轴线。"
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:104
+msgid "Font color of Value axis name."
+msgstr "数值轴名称的字体颜色"
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:113
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:114
+msgid "Value Axis Tick"
+msgstr "数值轴的轴线刻度"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:124
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:125
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:117
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:118
 msgid "Value Axis Label"
 msgstr "数值轴的标签"
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:117
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:135
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:136
+msgid "Show Value Axis Split Line"
+msgstr "显示数值轴方向的分割线"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:146
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:103
+msgid "Category Axis"
+msgstr "类目轴"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:157
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:158
+msgid "Category Axis Tick"
+msgstr "类目轴的轴线刻度"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:168
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:169
+msgid "Show Category Axis Label"
+msgstr "显示类目轴标签"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:179
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:180
+msgid "Show Category Axis Split Line"
+msgstr "显示类目轴方向的分割线"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:190
+msgid "Category axis name distance"
+msgstr "类目轴名称的边距"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:191
+msgid "Distance between Category-axis name and boundary"
+msgstr "类目轴名称与边界之间的距离"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:205
+msgid "Category axis name font color"
+msgstr "类目轴名称的字体颜色"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:206
+msgid "Font color of Category-axis name."
+msgstr "类目轴名称的字体颜色"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:215
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:110
+msgid "Value Axis Format"
+msgstr "数值轴格式化"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:218
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:113
+msgid "Value Axis Line"
+msgstr "数值轴的轴线"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:219
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:114
+msgid "Show or hide the axis of Value-axis."
+msgstr "显示或隐藏数值轴的轴线。"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:222
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:121
 msgid "Maximum and minimum values for the Value axis"
 msgstr "数值轴的最大值和最小值"
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:118
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:223
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:122
 msgid "Whether to display the min and max values of the Value-axis"
 msgstr "是否显示数值轴的最小值和最大值"
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:123
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:228
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:127
 msgid "Value Axis Bounds"
 msgstr "数值轴的边界"
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:124
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:229
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:128
 msgid ""
 "Bounds for the Value-axis. When left empty, the bounds are dynamically "
@@ -12506,12 +12555,7 @@ msgid ""
 "only expand the axis range. It won't narrow the data's extent."
 msgstr "数值轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:132
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:136
-msgid "Category Axis Label"
-msgstr "类目轴的标签"
-
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:135
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:237
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:139
 msgid "Category Axis Label Rotate"
 msgstr "类目轴的标签旋转"
@@ -12988,6 +13032,10 @@ msgstr "折线排序"
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:64
 msgid "Sort lines by category axis for label names."
 msgstr "按类目轴的标签名称排序折线。"
+
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:136
+msgid "Category Axis Label"
+msgstr "类目轴标签"
 
 #: superset-frontend/src/visualizations/ECharts/Line/index.ts:51
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/index.ts:56

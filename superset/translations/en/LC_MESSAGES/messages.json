@@ -3159,21 +3159,31 @@
       "Tooltip Format": [""],
       "Analysis of different indicators in the same dimension.": [""],
       "Mixed Line and Bar": [""],
-      "Sort Bars": [""],
-      "Sort bars by x labels.": [""],
+      "Ringgit": [""],
+      "Show Ringgit": [""],
       "Value Axis": [""],
+      "Value axis name font color": [""],
+      "Font color of Value axis name.": [""],
+      "Value Axis Tick": [""],
+      "Value Axis Label": [""],
+      "Show Value Axis Split Line": [""],
       "Category Axis": [""],
+      "Category Axis Tick": [""],
+      "Show Category Axis Label": [""],
+      "Show Category Axis Split Line": [""],
+      "Category axis name distance": [""],
+      "Distance between Category-axis name and boundary": [""],
+      "Category axis name font color": [""],
+      "Font color of Category-axis name.": [""],
       "Value Axis Format": [""],
       "Value Axis Line": [""],
       "Show or hide the axis of Value-axis.": [""],
-      "Value Axis Label": [""],
       "Maximum and minimum values for the Value axis": [""],
       "Whether to display the min and max values of the Value-axis": [""],
       "Value Axis Bounds": [""],
       "Bounds for the Value-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
         ""
       ],
-      "Category Axis Label": [""],
       "Category Axis Label Rotate": [""],
       "Bar chart shows different data through the height of a bar, which is used in rectangular coordinate with at least 1 category axis.": [
         ""
@@ -3294,6 +3304,7 @@
       "Graph Chart": [""],
       "Sort Lines": [""],
       "Sort lines by category axis for label names.": [""],
+      "Category Axis Label": [""],
       "Evolution": [""],
       "Broken line chart relates all the data points symbol by broken lines, which is used to show the trend of data changing. It could be used in both rectangular coordinate andpolar coordinate.": [
         ""

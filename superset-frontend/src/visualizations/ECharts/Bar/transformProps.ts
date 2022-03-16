@@ -18,7 +18,7 @@
  */
 import { getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
-import { sum } from 'lodash';
+import { sum, max } from 'lodash';
 import {
   BarChartTransformedProps,
   EchartsBarChartProps,
@@ -27,6 +27,7 @@ import {
 import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { defaultGrid, defaultTooltip } from '../defaults';
+import { rgbToHex } from '../../../utils/colorUtils';
 
 // 将值切换为百分比数据
 // @ts-ignore
@@ -59,17 +60,31 @@ export default function transformProps(
     groupby,
     metrics, // 查询指标
     showAxisPointer, // 是否显示坐标轴指示器
-    xAxisLabel, // X轴名称
-    yAxisLabel, // Y轴名称
+    ringgit, // 是否显示环比
+
     yAxisLine, // 是否显示Y轴的轴线
     yAxisFormat, // Y轴的格式化类
-    orderBars, // 是否按柱子的标签名称排序
+    yAxisName, // Y轴名称
+    yNameFontColor, // 名称颜色
+    yAxisTick, // 轴线上的刻度
+    ySplitLine, // Y轴方向的内部分割线
+    yAxisLabel, // 是否显示Y轴标签
+    yAxisShowMinmax, // 是否显示Y轴的最大值最小值限制
+    yAxisBounds, // Y轴的最小值和最大值数组
+
+    xAxisName, // X轴名称
+    xNameFontColor, // 名称颜色
+    xAxisLine, // X轴的轴线是否显示
+    xAxisLabel, // X轴标签是否显示
+    xLabelLayout, // X轴布局：标签旋转角度
+    xAxisTick, // X轴是否显示刻度
+    xSplitLine, // X轴方向的内部分割线
+    xDistance, // X轴名称的距离
+
     showLabel, // 是否显示图形上的文本标签
     stacked, // 堆叠
     stackedPrecent, // 堆叠显示成百分比
-    yAxisShowMinmax, // 是否显示Y轴的最大值最小值限制
-    yAxisBounds, // Y轴的最小值和最大值数组
-    xLabelLayout, // X轴布局：标签旋转角度
+
     tooltipFormat,
     showLegend,
     legendPadding,
@@ -125,9 +140,105 @@ export default function transformProps(
   );
 
   // Y轴的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
-  const numberFormatter = getNumberFormatter(
+  const yFormatter = getNumberFormatter(
     stacked && stackedPrecent ? '.0%' : yAxisFormat,
   );
+
+  // console.log('rawData:', rawData);
+
+  let markPoint = {};
+  if (ringgit) {
+    const hbList: string[] = [];
+    const mpList: object[] = [];
+    // 一个维度，直接取值
+    if (metrics.length === 1) {
+      // 第一个值
+      const raw1 = rawData[1][1];
+      // 第二个值
+      const raw2 = rawData[2][1];
+      // 计算环比（环比只会有两个数据比较）
+      let val: any = Math.round(((raw2 - raw1) / raw1) * 100);
+      if (val === 0) {
+        val = (((raw2 - raw1) / raw1) * 100).toFixed(1);
+      }
+      const maxVal = max([raw1, raw2]);
+      mpList.push({
+        value: maxVal,
+        xAxis: [raw1, raw2].indexOf(maxVal) + 1,
+        yAxis: maxVal,
+      });
+      hbList.push(`${val}%`);
+    }
+
+    rawData.forEach((raw, idx) => {
+      if (idx > 0) {
+        // 计算环比（环比只会有两个数据比较）
+        let val: any = Math.round(((raw[2] - raw[1]) / raw[1]) * 100);
+        // 如果是0，就显示小数
+        if (val === 0) {
+          val = (((raw[2] - raw[1]) / raw[1]) * 100).toFixed(1);
+        }
+        const maxVal = max([raw[1], raw[2]]);
+        mpList.push({
+          value: maxVal,
+          xAxis: idx - 1,
+          yAxis: maxVal,
+        });
+        hbList.push(`${val}%`);
+      }
+    });
+    markPoint = {
+      symbolSize: 0,
+      silent: true, // 不响应和触发鼠标事件
+      label: {
+        fontSize: 12,
+        color: 'red',
+        fontWeight: 'bold',
+        show: true,
+        position: 'top',
+        distance: 30,
+        formatter: (params: any) => {
+          // console.log('params:', params);
+          if (metrics.length === 1) {
+            // 第一个值
+            const raw1 = rawData[1][1];
+            // 第二个值
+            const raw2 = rawData[2][1];
+            const maxVal = max([raw1, raw2]);
+            if (maxVal === raw1 && params.dataIndex === 0) {
+              return `{a|${hbList[0]}}`;
+            }
+            if (maxVal === raw2 && params.dataIndex === 1) {
+              return `{a|${hbList[0]}}`;
+            }
+            return '';
+          }
+          if (params.seriesIndex === 0) {
+            return `{a|${hbList[params.dataIndex]}}`;
+          }
+          return '';
+        },
+        rich: {
+          a: {
+            align: 'center',
+            fontSize: 18,
+            textShadowBlur: 2,
+            textShadowColor: '#000',
+            textShadowOffsetX: 0,
+            textShadowOffsetY: 1,
+            backgroundColor: 'rgb(242,242,242)',
+            borderColor: '#aaa',
+            borderWidth: 1,
+            borderRadius: 4,
+            padding: [10, 10],
+            lineHeight: 26,
+            color: '#ff8811',
+          },
+        },
+      },
+      data: mpList,
+    };
+  }
 
   // 柱状图的通用配置
   const barSeries = {
@@ -149,10 +260,11 @@ export default function transformProps(
       formatter({ value, encode }: any) {
         const idx = chartOrient === 'horizontal' ? encode.y[0] : encode.x[0];
         const row = value[idx];
-        return numberFormatter(row);
+        return yFormatter(row);
       },
     },
     stack: stacked && 'total', // 这个值相同的柱子，会堆叠起来。值是什么都行，但最好是有意义的值。
+    markPoint,
   };
 
   // 这里只是生成相应数据的系列值
@@ -229,23 +341,17 @@ export default function transformProps(
     legendPosition = { ...legendPosition, padding: [5, legendPadding] };
   }
 
-  // 计算数据集的数据（排序）
-  let sourceData = rawData;
-  if (orderBars) {
-    const dataArr = rawData.slice(1, rawData.length);
-    // 第一个元素是x轴的标签，肯定是字符串，所以使用字符串的比较方法来处理
-    const arr: any[] = dataArr.sort((a, b) => a[0].localeCompare(b[0]));
-    sourceData = [rawData[0], ...arr];
-  }
-
   // 类目轴的名称
   let xLabelGap = {};
-  if (xAxisLabel) {
+  if (xAxisName) {
     xLabelGap = {
-      name: xAxisLabel, // X 表示类目轴
-      nameGap: getRotate(xLabelLayout) === 0 ? 32 : 64,
+      name: xAxisName, // X 表示类目轴
+      nameGap: xDistance,
       nameLocation: 'center',
       nameTextStyle: {
+        color:
+          xNameFontColor &&
+          rgbToHex(xNameFontColor?.r, xNameFontColor?.g, xNameFontColor?.b),
         fontWeight: 'bold',
         fontSize: 16,
       },
@@ -257,27 +363,53 @@ export default function transformProps(
     {
       type: 'category', // 类目轴
       ...xLabelGap,
+      // 轴线
+      axisLine: {
+        show: xAxisLine,
+      },
+      // 轴线上的刻度
+      axisTick: {
+        show: xAxisTick,
+      },
+      // 内部分割线
+      splitLine: {
+        show: xSplitLine,
+      },
       axisLabel: {
+        show: xAxisLabel,
         hideOverlap: true, // 是否隐藏重叠的标签
         rotate: getRotate(xLabelLayout), // 标签旋转角度
       },
     },
     {
       type: 'value', // 数值轴
-      name: yAxisLabel, // Y表示数值轴
+      name: yAxisName, // Y表示数值轴
       nameLocation: 'center',
       nameGap: 32,
       nameTextStyle: {
         fontWeight: 'bold',
         fontSize: 16,
+        color:
+          yNameFontColor &&
+          rgbToHex(yNameFontColor?.r, yNameFontColor?.g, yNameFontColor?.b),
       },
       ...yMinMax,
       axisLine: {
         // 是否显示数值轴的轴线
         show: yAxisLine,
       },
+      // 轴线上的刻度
+      axisTick: {
+        show: yAxisTick,
+      },
+      // 内部分割线
+      splitLine: {
+        show: ySplitLine,
+      },
       axisLabel: {
-        formatter: numberFormatter,
+        show: yAxisLabel,
+        hideOverlap: true, // 是否隐藏重叠的标签
+        formatter: yFormatter,
       },
     },
   ];
@@ -286,17 +418,21 @@ export default function transformProps(
 
   // 图形grid位置计算
   const gridLayout = {};
-  if (xAxisLabel) {
+  if (xAxisName) {
     if (getRotate(xLabelLayout) === 0) {
-      gridLayout['bottom'] = 28;
+      gridLayout['bottom'] = 64;
     } else {
-      gridLayout['bottom'] = 15;
+      gridLayout['bottom'] = 32;
     }
   } else {
     gridLayout['bottom'] = 'auto';
   }
   if (showLegend) {
     gridLayout['top'] = '5%';
+  }
+
+  if (chartOrient !== 'horizontal') {
+    gridLayout['right'] = '12%';
   }
 
   let axisPointer = {};
@@ -327,7 +463,7 @@ export default function transformProps(
       ...legendPosition,
     },
     dataset: {
-      source: sourceData,
+      source: rawData,
     },
     xAxis,
     yAxis,

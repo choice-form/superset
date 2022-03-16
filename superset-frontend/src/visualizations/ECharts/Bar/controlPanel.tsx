@@ -17,7 +17,11 @@
  * under the License.
  */
 import { t, validateNonEmpty } from 'src/core';
-import { ControlPanelConfig, sharedControls } from 'src/chartConntrols';
+import {
+  ControlPanelConfig,
+  legacySortBy,
+  sharedControls,
+} from 'src/chartConntrols';
 import {
   chartOrientControl,
   showLegendControl,
@@ -34,10 +38,11 @@ const config: ControlPanelConfig = {
       label: t('Query'),
       expanded: true,
       controlSetRows: [
+        ['groupby'],
         ['metrics'],
         ['adhoc_filters'],
         ['row_limit'],
-        ['groupby'],
+        ...legacySortBy,
       ],
     },
     {
@@ -45,23 +50,22 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         [chartOrientControl],
+        [
+          {
+            name: 'ringgit',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Ringgit'),
+              description: t('Show Ringgit'),
+              default: false,
+            },
+          },
+        ],
         ['showLabel'],
         ['barBackground'],
         ['stacked'],
         ['stackedPrecent'],
         ['showAxisPointer'],
-        [
-          {
-            name: 'order_bars',
-            config: {
-              type: 'CheckboxControl',
-              label: t('Sort Bars'),
-              default: false,
-              renderTrigger: true,
-              description: t('Sort bars by x labels.'),
-            },
-          },
-        ],
         [
           {
             name: 'tooltipFormat',
@@ -90,7 +94,50 @@ const config: ControlPanelConfig = {
       controlSetRows: [
         ['yAxisLine'],
         ['yAxisFormat'],
-        ['yAxisLabel'],
+        ['yAxisName'],
+        [
+          {
+            name: 'yNameFontColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Value axis name font color'),
+              description: t('Font color of Value axis name.'),
+            },
+          },
+        ],
+        [
+          {
+            name: 'yAxisTick',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Value Axis Tick'),
+              description: t('Value Axis Tick'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'yAxisLabel',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Value Axis Label'),
+              description: t('Value Axis Label'),
+              default: true,
+            },
+          },
+        ],
+        [
+          {
+            name: 'ySplitLine',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show Value Axis Split Line'),
+              description: t('Show Value Axis Split Line'),
+              default: false,
+            },
+          },
+        ],
         ['yAxisShowMinmax'],
         ['yAxisBounds'],
       ],
@@ -98,7 +145,69 @@ const config: ControlPanelConfig = {
     {
       label: t('Category Axis'),
       expanded: false,
-      controlSetRows: [['xAxisLabel'], ['xLabelLayout']],
+      controlSetRows: [
+        ['xLabelLayout'],
+        ['xAxisLine'],
+        ['xAxisName'],
+        [
+          {
+            name: 'xAxisTick',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Category Axis Tick'),
+              description: t('Category Axis Tick'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xAxisLabel',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show Category Axis Label'),
+              description: t('Show Category Axis Label'),
+              default: true,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xSplitLine',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show Category Axis Split Line'),
+              description: t('Show Category Axis Split Line'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xDistance',
+            config: {
+              ...sharedControls.distance,
+              label: t('Category axis name distance'),
+              description: t(
+                'Distance between Category-axis name and boundary',
+              ),
+              min: 0,
+              max: 100,
+              default: 0,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xNameFontColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Category axis name font color'),
+              description: t('Font color of Category-axis name.'),
+            },
+          },
+        ],
+      ],
     },
   ],
   controlOverrides: {
@@ -108,10 +217,6 @@ const config: ControlPanelConfig = {
     yAxisLine: {
       label: t('Value Axis Line'),
       description: t('Show or hide the axis of Value-axis.'),
-    },
-    yAxisLabel: {
-      label: t('Value Axis Label'),
-      description: t('Value Axis Label'),
     },
     yAxisShowMinmax: {
       label: t('Maximum and minimum values for the Value axis'),
@@ -127,9 +232,6 @@ const config: ControlPanelConfig = {
           "this feature will only expand the axis range. It won't " +
           "narrow the data's extent.",
       ),
-    },
-    xAxisLabel: {
-      label: t('Category Axis Label'),
     },
     xLabelLayout: {
       label: t('Category Axis Label Rotate'),
