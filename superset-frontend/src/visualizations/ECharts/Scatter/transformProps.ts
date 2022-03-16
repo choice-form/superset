@@ -17,40 +17,17 @@
  * under the License.
  */
 
-import { NumberFormatter, getNumberFormatter } from 'src/core';
-import { CallbackDataParams } from 'echarts/types/src/util/types';
+import { getNumberFormatter } from 'src/core';
 import {
+  ChartTransformedProps,
   DEFAULT_FORM_DATA as DEFAULT_RADAR_FORM_DATA,
   EchartsChartProps,
   EchartsFormData,
-  ChartTransformedProps,
 } from './types';
-import { EchartsLabelType } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA } from '../types';
 import { rgbToHex } from '../../../utils/colorUtils';
 import { getFontSize } from '../utils/chart';
-
-export function formatLabel({
-  params,
-  labelType,
-  numberFormatter,
-}: {
-  params: CallbackDataParams;
-  labelType: EchartsLabelType;
-  numberFormatter: NumberFormatter;
-}): string {
-  const { name = '', value } = params;
-  const formattedValue = numberFormatter(value as number);
-
-  switch (labelType) {
-    case EchartsLabelType.Value:
-      return formattedValue;
-    case EchartsLabelType.KeyValue:
-      return `${name}: ${formattedValue}`;
-    default:
-      return name;
-  }
-}
+import { EchartsLabelType } from './constants';
 
 export default function transformProps(
   chartProps: EchartsChartProps,
@@ -70,23 +47,37 @@ export default function transformProps(
     titleFontColor,
     groupby,
     // metrics = [],
-    numberFormat,
+    labelType,
+
     showLabels, // 显示标签
     averageLine, // 平均线
+    averageLineColor, // 平均线颜色
     yAverageLineTitle,
+    yAverageLineLabel,
     yValueSuffix,
     xAverageLineTitle,
     xValueSuffix,
+    xAverageLineLabel,
 
-    yAxisLabel, // Y轴名称
+    yAxisLabel, // 是否显示Y轴标签
+    yAxisName, // Y轴名称
     yAxisLine, // 是否显示Y轴的轴线
+    yAxisArrow, // Y轴轴线是否显示箭头
     yAxisFormat, // Y轴的格式化类
-    yLabelFontColor,
+    yNameFontColor,
+    ySplitLine, // 内部分割线
+    yAxisTick, // Y轴刻度
 
-    xAxisFormat, // X轴的格式化类
-    xAxisLabel, // X轴名称
+    xAxisLine, // 是否显示X轴的轴线
+    xAxisArrow, // X轴线显示箭头
+    xAxisFormat, // X轴的格式化
+    xAxisName, // X轴名称
+    xAxisTick, // 显示x轴刻度
+    xAxisLabel, // 显示x轴标签
+    xSplitLine, // X轴内部分割线
+
     xDistance,
-    xLabelFontColor,
+    xNameFontColor,
   }: EchartsFormData = {
     ...DEFAULT_LEGEND_FORM_DATA,
     ...DEFAULT_RADAR_FORM_DATA,
@@ -146,7 +137,6 @@ export default function transformProps(
   //   {},
   // );
 
-  const numberFormatter = getNumberFormatter(numberFormat);
   const yFormatter = getNumberFormatter(yAxisFormat);
   const xFormatter = getNumberFormatter(xAxisFormat);
 
@@ -160,10 +150,10 @@ export default function transformProps(
           type: 'average',
           valueIndex: 0,
           label: {
-            show: true,
+            show: xAverageLineLabel,
             formatter: `{b}\n{c|{c}${xValueSuffix ?? ''}}`,
             position: 'start',
-            distance: 15,
+            distance: xAxisLabel ? 32 : 15,
             rich: {
               c: {
                 align: 'center',
@@ -177,10 +167,10 @@ export default function transformProps(
           type: 'average',
           valueIndex: 1,
           label: {
-            show: true,
+            show: yAverageLineLabel,
             formatter: `{b}\n{c|{c}${yValueSuffix ?? ''}}`,
             position: 'start',
-            distance: 15,
+            distance: yAxisLabel ? 32 : 15,
             rich: {
               c: {
                 align: 'center',
@@ -208,21 +198,19 @@ export default function transformProps(
     tooltip: {
       confine: true,
       formatter: (params: any) => {
-        // console.log('params:', params);
         const key = params.value.join(',');
         return labels[key];
       },
-      valueFormatter: numberFormatter,
     },
     xAxis: {
       type: 'value', // 类目轴
-      name: xAxisLabel, // X 表示类目轴
+      name: xAxisName, // X 表示类目轴
       nameGap: 32,
       nameLocation: 'end',
       nameTextStyle: {
         color:
-          xLabelFontColor &&
-          rgbToHex(xLabelFontColor?.r, xLabelFontColor?.g, xLabelFontColor?.b),
+          xNameFontColor &&
+          rgbToHex(xNameFontColor?.r, xNameFontColor?.g, xNameFontColor?.b),
         fontWeight: 'bold',
         fontSize: 16,
         padding: [0, 0, -40, 0 - (50 + xDistance)],
@@ -230,53 +218,53 @@ export default function transformProps(
       },
       // 轴线
       axisLine: {
-        show: true,
-        symbol: ['none', 'arrow'],
+        show: xAxisLine,
+        symbol: xAxisArrow ? ['none', 'arrow'] : 'none',
       },
       // 轴线上的刻度
       axisTick: {
-        show: false,
+        show: xAxisTick,
       },
       // 内部分割线
       splitLine: {
-        show: false,
+        show: xSplitLine,
       },
       // 轴线上的文字
       axisLabel: {
-        show: false,
+        show: xAxisLabel,
         hideOverlap: true, // 是否隐藏重叠的标签
         formatter: xFormatter,
       },
     },
     yAxis: {
       type: 'value', // 数值轴
-      name: yAxisLabel, // Y表示数值轴
+      name: yAxisName, // Y表示数值轴
       nameLocation: 'end',
-      nameGap: 10,
+      nameGap: 15,
       nameTextStyle: {
         fontWeight: 'bold',
         fontSize: 16,
         color:
-          yLabelFontColor &&
-          rgbToHex(yLabelFontColor?.r, yLabelFontColor?.g, yLabelFontColor?.b),
+          yNameFontColor &&
+          rgbToHex(yNameFontColor?.r, yNameFontColor?.g, yNameFontColor?.b),
       },
       // 轴线
       axisLine: {
         // 是否显示数值轴的轴线
         show: yAxisLine,
-        symbol: ['none', 'arrow'],
+        symbol: yAxisArrow ? ['none', yAxisTick ? 'none' : 'arrow'] : 'none',
       },
       // 轴线上的刻度
       axisTick: {
-        show: false,
+        show: yAxisTick,
       },
       // 内部分割线
       splitLine: {
-        show: false,
+        show: ySplitLine,
       },
       // 轴线上的文字
       axisLabel: {
-        show: false,
+        show: yAxisLabel,
         hideOverlap: true, // 是否隐藏重叠的标签
         formatter: yFormatter,
       },
@@ -289,9 +277,16 @@ export default function transformProps(
           position: 'right',
           formatter: (params: any) => {
             const key = params.value.join(',');
-            return labels[key];
+            const [x, y] = params.value;
+            switch (labelType) {
+              case EchartsLabelType.Key:
+                return labels[key];
+              case EchartsLabelType.Value:
+                return [xFormatter(x), yFormatter(y)];
+              default:
+                return `${labels[key]}: ${[xFormatter(x), yFormatter(y)]}`;
+            }
           },
-          valueFormatter: xFormatter,
         },
         // 标签的统一布局配置。
         labelLayout: {
@@ -302,6 +297,16 @@ export default function transformProps(
           // 不响应事件
           silent: true,
           symbol: 'none',
+          lineStyle: {
+            type: 'solid',
+            color:
+              averageLineColor &&
+              rgbToHex(
+                averageLineColor?.r,
+                averageLineColor?.g,
+                averageLineColor?.b,
+              ),
+          },
           ...averageData,
         },
         symbolSize: 20,

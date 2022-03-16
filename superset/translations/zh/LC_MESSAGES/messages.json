@@ -1765,8 +1765,9 @@
       "Enable the background of the bar.": ["启用柱形的背景"],
       "Y Axis Line": ["Y轴的轴线"],
       "Show or hide the axis of Y-axis.": ["显示或隐藏Y轴的轴线"],
-      "Y Axis Label": ["Y轴的标题"],
-      "Y Axis 2 Label": ["Y轴2的标题"],
+      "Y Axis Name": ["Y轴的名称"],
+      "Y Axis Label": ["Y轴的标签"],
+      "Y Axis 2 Label": ["Y轴2的标签"],
       "Maximum and minimum values for the Y axis": ["Y轴的最大值和最小值"],
       "Whether to display the min and max values of the Y-axis": [
         "是否显示Y轴的最小值和最大值"
@@ -1788,8 +1789,10 @@
       "Bounds for the Y-axis 2. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
         "Y轴2的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
       ],
+      "X Axis Line": ["X轴的轴线"],
+      "Show or hide the axis of X-axis.": ["显示或隐藏X轴的轴线"],
       "X Axis Format": ["X 轴格式化"],
-      "X Axis Label": ["X轴标题"],
+      "X Axis Label": ["X轴标签"],
       "X Axis Label Rotate": ["X轴标签旋转"],
       "Rotation degree of axis label, which is especially useful when there is no enough space for category axis.": [
         "刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。"
@@ -4012,7 +4015,7 @@
       ],
       "Category Name": ["类别名称"],
       "Percentage": ["百分比"],
-      "Category and Value": ["百分比和值"],
+      "Category and Value": ["类别名称和值"],
       "Category and Percentage": ["分类名称和百分比"],
       "Category, Value and Percentage": ["分类名称，值和百分比"],
       "Format the displayed value in the selected format": [
@@ -4048,16 +4051,27 @@
       ],
       "Radar Chart": ["雷达图"],
       "Show average line": ["显示平均线"],
+      "Average Line Color": ["平均线颜色"],
+      "Y-Axis average line title": ["Y轴平均线标题"],
       "Y-Axis average line label": ["Y轴平均线标签"],
       "Value suffix for Y-axis": ["Y轴的数值后缀"],
+      "X-Axis average line title": ["Y轴平均线标题"],
       "X-Axis average line label": ["X轴平均线标签"],
       "Value suffix for X-axis": ["X轴的数值后缀"],
-      "y axis label font color": ["Y轴标签的字体颜色"],
-      "Font color of Y-axis labels": ["Y轴标签的字体颜色"],
-      "x axis label distance": ["X轴标签的边距"],
-      "Distance between X-axis label and boundary": ["X轴标签与边界之间的距离"],
-      "x axis label font color": ["X轴标签的字体颜色"],
-      "Font color of X-axis labels": ["X轴标签的字体颜色"],
+      "Show Y Axis Arrow": ["显示Y轴轴线箭头"],
+      "y axis name font color": ["Y轴名称的字体颜色"],
+      "Font color of Y-axis name.": ["Y轴名称的字体颜色"],
+      "Y Axis Tick": ["Y轴轴线刻度"],
+      "Show Y Axis Label": ["显示Y轴标签"],
+      "Show Y Axis Split Line": ["显示Y轴方向的分割线"],
+      "Show X Axis Arrow": ["显示X轴轴线箭头"],
+      "X Axis Tick": ["X轴轴线刻度"],
+      "Show X Axis Label": ["显示x轴标签"],
+      "Show X Axis Split Line": ["显示X轴方向的分割线"],
+      "x axis name distance": ["X轴名称的边距"],
+      "Distance between X-axis name and boundary": ["X轴名称与边界之间的距离"],
+      "x axis name font color": ["X轴名称的字体颜色"],
+      "Font color of X-axis name.": ["X轴名称的字体颜色"],
       "The scatter chart in rectangular coordinate could be used to present the relation between x and y.": [
         "直角坐标系上的散点图，可以用来展现数据的 x，y 之间的关系"
       ],

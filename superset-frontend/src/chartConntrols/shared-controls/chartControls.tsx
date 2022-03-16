@@ -201,6 +201,15 @@ export const yAxisLine: SharedControlConfig<'CheckboxControl'> = {
   description: t('Show or hide the axis of Y-axis.'),
 };
 
+export const yAxisName: SharedControlConfig<'TextControl'> = {
+  name: 'y_axis_name',
+  type: 'TextControl',
+  label: t('Y Axis Name'),
+  renderTrigger: true,
+  default: '',
+  description: t('Y Axis Name'),
+};
+
 export const yAxisLabel: SharedControlConfig<'TextControl'> = {
   name: 'y_axis_label',
   type: 'TextControl',
@@ -296,6 +305,15 @@ export const yAxis2Bounds: SharedControlConfig<'BoundsControl'> = {
   ),
 };
 
+export const xAxisLine: SharedControlConfig<'CheckboxControl'> = {
+  name: 'x_axis_line',
+  type: 'CheckboxControl',
+  label: t('X Axis Line'),
+  renderTrigger: true,
+  default: true,
+  description: t('Show or hide the axis of X-axis.'),
+};
+
 export const xAxisFormat: SharedControlConfig<'SelectControl'> = {
   type: 'SelectControl',
   label: t('X Axis Format'),
@@ -303,6 +321,13 @@ export const xAxisFormat: SharedControlConfig<'SelectControl'> = {
   default: DEFAULT_NUMBER_FORMAT,
   choices: D3_FORMAT_OPTIONS,
   description: D3_FORMAT_DOCS,
+};
+
+export const xAxisName: SharedControlConfig<'TextControl'> = {
+  type: 'TextControl',
+  label: t('X Axis Label'),
+  renderTrigger: true,
+  default: t('X Axis Label'),
 };
 
 export const xAxisLabel: SharedControlConfig<'TextControl'> = {

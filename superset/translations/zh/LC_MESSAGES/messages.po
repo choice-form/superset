@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-16 11:57+0800\n"
+"POT-Creation-Date: 2022-03-16 20:56+0800\n"
 "PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -5155,7 +5155,7 @@ msgstr "图表标题"
 #: superset-frontend/src/explore/controls.jsx:403
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:196
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:298
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:177
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:264
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:190
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:151
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:131
@@ -5184,7 +5184,7 @@ msgstr "X轴标题底部边距"
 #: superset-frontend/src/explore/controls.jsx:410
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:241
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:322
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:156
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:200
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:225
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:187
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:168
@@ -5488,56 +5488,61 @@ msgstr "显示或隐藏Y轴的轴线"
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:207
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:210
-#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
-msgid "Y Axis Label"
-msgstr "Y轴的标题"
+msgid "Y Axis Name"
+msgstr "Y轴的名称"
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:216
-msgid "Y Axis 2 Label"
-msgstr "Y轴2的标题"
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:219
+#: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
+msgid "Y Axis Label"
+msgstr "Y轴的标签"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:222
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:225
+msgid "Y Axis 2 Label"
+msgstr "Y轴2的标签"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:231
 msgid "Maximum and minimum values for the Y axis"
 msgstr "Y轴的最大值和最小值"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:225
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:234
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:92
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:103
 msgid "Whether to display the min and max values of the Y-axis"
 msgstr "是否显示Y轴的最小值和最大值"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:231
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:240
 msgid "Maximum and minimum values for the Y axis 2"
 msgstr "Y轴2的最大值和最小值"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:232
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:241
 msgid "Whether to display the min and max values of the Y-axis 2"
 msgstr "是否显示Y轴的最小值和最大值"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:237
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:246
 #: superset-frontend/src/explore/controls.jsx:424
 msgid "Y Axis Format"
 msgstr "Y轴格式化"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:246
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:255
 #: superset-frontend/src/explore/controls.jsx:434
 msgid ""
 "When `Calculation type` is set to \"Percentage change\", the Y Axis "
 "Format is forced to `.1%`"
 msgstr "当设置“周期比”时，y轴格式强制为“1%”"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:258
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:267
 msgid "Y Axis 2 Format"
 msgstr "Y轴2格式化"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:263
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:272
 #, fuzzy
 msgid ""
 "When `Calculation type` is set to \"Percentage change\", the Y Axis 2 "
 "Format is forced to `.1%`"
 msgstr "当设置“周期比”时，y轴格式强制为“1%”"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:276
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:285
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:354
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:270
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:233
@@ -5549,7 +5554,7 @@ msgstr "当设置“周期比”时，y轴格式强制为“1%”"
 msgid "Y Axis Bounds"
 msgstr "Y轴的边界"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:279
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:288
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:357
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:273
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:236
@@ -5565,33 +5570,43 @@ msgid ""
 "only expand the axis range. It won't narrow the data's extent."
 msgstr "Y轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:290
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:299
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:243
 msgid "Y Axis 2 Bounds"
 msgstr "Y轴2的边界"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:291
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:300
 msgid ""
 "Bounds for the Y-axis 2. When left empty, the bounds are dynamically "
 "defined based on the min/max of the data. Note that this feature will "
 "only expand the axis range. It won't narrow the data's extent."
 msgstr "Y轴2的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:301
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:311
+msgid "X Axis Line"
+msgstr "X轴的轴线"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:314
+msgid "Show or hide the axis of X-axis."
+msgstr "显示或隐藏X轴的轴线"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:319
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:204
 msgid "X Axis Format"
 msgstr "X 轴格式化"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:310
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:328
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:330
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:335
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:166
 msgid "X Axis Label"
-msgstr "X轴标题"
+msgstr "X轴标签"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:318
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:343
 msgid "X Axis Label Rotate"
 msgstr "X轴标签旋转"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:323
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:348
 msgid ""
 "Rotation degree of axis label, which is especially useful when there is "
 "no enough space for category axis."
@@ -7400,6 +7415,7 @@ msgstr "选择过滤器"
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1091
 #: superset-frontend/src/views/CRUD/alert/ExecutionLog.tsx:124
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:101
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:91
 msgid "Value"
 msgstr "值"
 
@@ -9091,7 +9107,7 @@ msgstr "把您的代码放在这里"
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:49
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:50
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:51
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:60
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:57
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:53
@@ -11024,7 +11040,7 @@ msgstr "每个区块的时间单位。应该是比域粒度更小的单位。应
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:279
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:66
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:61
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:61
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:62
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:101
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:81
@@ -11128,7 +11144,6 @@ msgstr "是否将度量名称显示为标题"
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:141
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:117
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:71
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:73
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:110
 msgid "Number format"
 msgstr "数字格式化"
@@ -12561,18 +12576,21 @@ msgstr "盒须图"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:77
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:90
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:68
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:62
 msgid "Labels"
 msgstr "标签"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:83
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:96
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:86
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:92
 msgid "Label Type"
 msgstr "标签类型"
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:94
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:107
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:94
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:100
 msgid "What should be shown on the label?"
 msgstr "标签上应该显示什么？"
@@ -12580,7 +12598,7 @@ msgstr "标签上应该显示什么？"
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:119
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:132
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:87
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:88
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:74
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:68
 msgid "Show Labels"
 msgstr "显示标签"
@@ -12588,7 +12606,7 @@ msgstr "显示标签"
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:122
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:135
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:90
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:91
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:77
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:71
 msgid "Whether to display the labels."
 msgstr "是否显示标签。"
@@ -13209,6 +13227,7 @@ msgid "Minimum threshold in percentage points for showing labels."
 msgstr "显示标签的最低百分比阈值。"
 
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:100
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:90
 msgid "Category Name"
 msgstr "类别名称"
 
@@ -13217,8 +13236,9 @@ msgid "Percentage"
 msgstr "百分比"
 
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:103
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:92
 msgid "Category and Value"
-msgstr "百分比和值"
+msgstr "类别名称和值"
 
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:104
 msgid "Category and Percentage"
@@ -13321,54 +13341,107 @@ msgstr "在多个组中可视化一组并行的指标。每个组都使用自己
 msgid "Radar Chart"
 msgstr "雷达图"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:100
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:101
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:105
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:106
 msgid "Show average line"
 msgstr "显示平均线"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:110
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:111
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:115
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:116
+msgid "Average Line Color"
+msgstr "平均线颜色"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:128
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:129
+msgid "Y-Axis average line title"
+msgstr "Y轴平均线标题"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:140
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:141
 msgid "Y-Axis average line label"
 msgstr "Y轴平均线标签"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:122
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:123
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:153
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:154
 msgid "Value suffix for Y-axis"
 msgstr "Y轴的数值后缀"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:134
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:135
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:165
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:166
+msgid "X-Axis average line title"
+msgstr "Y轴平均线标题"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:177
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:178
 msgid "X-Axis average line label"
 msgstr "X轴平均线标签"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:146
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:147
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:190
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:191
 msgid "Value suffix for X-axis"
 msgstr "X轴的数值后缀"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:169
-msgid "y axis label font color"
-msgstr "Y轴标签的字体颜色"
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:209
+msgid "Show Y Axis Arrow"
+msgstr "显示Y轴轴线箭头"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:170
-msgid "Font color of Y-axis labels"
-msgstr "Y轴标签的字体颜色"
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:223
+msgid "y axis name font color"
+msgstr "Y轴名称的字体颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:187
-msgid "x axis label distance"
-msgstr "X轴标签的边距"
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:224
+msgid "Font color of Y-axis name."
+msgstr "Y轴名称的字体颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:188
-msgid "Distance between X-axis label and boundary"
-msgstr "X轴标签与边界之间的距离"
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:233
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:234
+msgid "Y Axis Tick"
+msgstr "Y轴轴线刻度"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:200
-msgid "x axis label font color"
-msgstr "X轴标签的字体颜色"
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:244
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:245
+msgid "Show Y Axis Label"
+msgstr "显示Y轴标签"
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:201
-msgid "Font color of X-axis labels"
-msgstr "X轴标签的字体颜色"
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:255
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:256
+msgid "Show Y Axis Split Line"
+msgstr "显示Y轴方向的分割线"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:273
+msgid "Show X Axis Arrow"
+msgstr "显示X轴轴线箭头"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:287
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:288
+msgid "X Axis Tick"
+msgstr "X轴轴线刻度"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:298
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:299
+msgid "Show X Axis Label"
+msgstr "显示x轴标签"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:309
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:310
+msgid "Show X Axis Split Line"
+msgstr "显示X轴方向的分割线"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:320
+msgid "x axis name distance"
+msgstr "X轴名称的边距"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:321
+msgid "Distance between X-axis name and boundary"
+msgstr "X轴名称与边界之间的距离"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:333
+msgid "x axis name font color"
+msgstr "X轴名称的字体颜色"
+
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:334
+msgid "Font color of X-axis name."
+msgstr "X轴名称的字体颜色"
 
 #: superset-frontend/src/visualizations/ECharts/Scatter/index.ts:49
 msgid ""

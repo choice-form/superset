@@ -21,13 +21,14 @@ import { t, validateNonEmpty } from 'src/core';
 import {
   ControlPanelConfig,
   ControlPanelsContainerProps,
-  D3_FORMAT_OPTIONS,
   emitFilterControl,
   sharedControls,
 } from 'src/chartConntrols';
+import React from 'react';
 import { DEFAULT_FORM_DATA } from './types';
+import { hexToRgba } from '../../../utils/colorUtils';
 
-const { numberFormat, showLabels } = DEFAULT_FORM_DATA;
+const { showLabels } = DEFAULT_FORM_DATA;
 
 // const radarMetricMaxValue: { name: string; config: ControlFormItemSpec } = {
 //   name: 'radarMetricMaxValue',
@@ -64,22 +65,7 @@ const config: ControlPanelConfig = {
         ['titleText'],
         ['TitleFontSize'],
         ['TitleFontColor'],
-        [
-          {
-            name: 'number_format',
-            config: {
-              type: 'SelectControl',
-              freeForm: true,
-              label: t('Number format'),
-              renderTrigger: true,
-              default: numberFormat,
-              choices: D3_FORMAT_OPTIONS,
-              description: `${t(
-                'D3 format syntax: https://github.com/d3/d3-format. ',
-              )} ${t('Only applies when "Label Type" is set to show values.')}`,
-            },
-          },
-        ],
+        [<h1 className="section-header">{t('Labels')}</h1>],
         [
           {
             name: 'show_labels',
@@ -89,6 +75,25 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: showLabels,
               description: t('Whether to display the labels.'),
+            },
+          },
+        ],
+        [
+          {
+            name: 'label_type',
+            config: {
+              type: 'SelectControl',
+              label: t('Label Type'),
+              default: 'value',
+              renderTrigger: true,
+              choices: [
+                ['key', t('Category Name')], // 类型
+                ['value', t('Value')], // 值
+                ['key_value', t('Category and Value')], // 类型 和 值
+              ],
+              description: t('What should be shown on the label?'),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.show_labels?.value),
             },
           },
         ],
@@ -104,11 +109,37 @@ const config: ControlPanelConfig = {
         ],
         [
           {
+            name: 'averageLineColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Average Line Color'),
+              description: t('Average Line Color'),
+              default: hexToRgba('#FF7F44'),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.averageLine?.value),
+            },
+          },
+        ],
+        [
+          {
             name: 'yAverageLineTitle',
             config: {
               ...sharedControls.yAxisLabel,
+              label: t('Y-Axis average line title'),
+              description: t('Y-Axis average line title'),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.averageLine?.value),
+            },
+          },
+        ],
+        [
+          {
+            name: 'yAverageLineLabel',
+            config: {
+              ...sharedControls.yAxisLine,
               label: t('Y-Axis average line label'),
               description: t('Y-Axis average line label'),
+              default: true,
               visibility: ({ controls }: ControlPanelsContainerProps) =>
                 Boolean(controls?.averageLine?.value),
             },
@@ -131,8 +162,21 @@ const config: ControlPanelConfig = {
             name: 'xAverageLineTitle',
             config: {
               ...sharedControls.yAxisLabel,
+              label: t('X-Axis average line title'),
+              description: t('X-Axis average line title'),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.averageLine?.value),
+            },
+          },
+        ],
+        [
+          {
+            name: 'xAverageLineLabel',
+            config: {
+              ...sharedControls.yAxisLine,
               label: t('X-Axis average line label'),
               description: t('X-Axis average line label'),
+              default: true,
               visibility: ({ controls }: ControlPanelsContainerProps) =>
                 Boolean(controls?.averageLine?.value),
             },
@@ -157,15 +201,60 @@ const config: ControlPanelConfig = {
       expanded: false,
       controlSetRows: [
         ['yAxisLine'],
-        ['yAxisFormat'],
-        ['yAxisLabel'],
         [
           {
-            name: 'yLabelFontColor',
+            name: 'yAxisArrow',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Show Y Axis Arrow'),
+              renderTrigger: true,
+              default: false,
+              description: '',
+            },
+          },
+        ],
+        ['yAxisFormat'],
+        ['yAxisName'],
+        [
+          {
+            name: 'yNameFontColor',
             config: {
               ...sharedControls.valueFontColor,
-              label: t('y axis label font color'),
-              description: t('Font color of Y-axis labels'),
+              label: t('y axis name font color'),
+              description: t('Font color of Y-axis name.'),
+            },
+          },
+        ],
+        [
+          {
+            name: 'yAxisTick',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Y Axis Tick'),
+              description: t('Y Axis Tick'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'yAxisLabel',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show Y Axis Label'),
+              description: t('Show Y Axis Label'),
+              default: true,
+            },
+          },
+        ],
+        [
+          {
+            name: 'ySplitLine',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show Y Axis Split Line'),
+              description: t('Show Y Axis Split Line'),
+              default: false,
             },
           },
         ],
@@ -175,15 +264,61 @@ const config: ControlPanelConfig = {
       label: t('X Axis'),
       expanded: false,
       controlSetRows: [
+        ['xAxisLine'],
+        [
+          {
+            name: 'xAxisArrow',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Show X Axis Arrow'),
+              renderTrigger: true,
+              default: false,
+              description: '',
+            },
+          },
+        ],
         ['xAxisFormat'],
-        ['xAxisLabel'],
+        ['xAxisName'],
+        [
+          {
+            name: 'xAxisTick',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('X Axis Tick'),
+              description: t('X Axis Tick'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xAxisLabel',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show X Axis Label'),
+              description: t('Show X Axis Label'),
+              default: true,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xSplitLine',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show X Axis Split Line'),
+              description: t('Show X Axis Split Line'),
+              default: false,
+            },
+          },
+        ],
         [
           {
             name: 'xDistance',
             config: {
               ...sharedControls.distance,
-              label: t('x axis label distance'),
-              description: t('Distance between X-axis label and boundary'),
+              label: t('x axis name distance'),
+              description: t('Distance between X-axis name and boundary'),
               min: 0,
               max: 1000,
               default: 0,
@@ -192,11 +327,11 @@ const config: ControlPanelConfig = {
         ],
         [
           {
-            name: 'xLabelFontColor',
+            name: 'xNameFontColor',
             config: {
               ...sharedControls.valueFontColor,
-              label: t('x axis label font color'),
-              description: t('Font color of X-axis labels'),
+              label: t('x axis name font color'),
+              description: t('Font color of X-axis name.'),
             },
           },
         ],

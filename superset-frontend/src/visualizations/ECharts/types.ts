@@ -104,6 +104,15 @@ export enum LabelPositionEnum {
   InsideBottomRight = 'insideBottomRight',
 }
 
+export enum EchartsLabelType {
+  Key = 'key',
+  Value = 'value',
+  Percent = 'percent',
+  KeyValue = 'key_value',
+  KeyPercent = 'key_percent',
+  KeyValuePercent = 'key_value_percent',
+}
+
 export interface EChartTransformedProps<F> {
   formData: F;
   height: number;
