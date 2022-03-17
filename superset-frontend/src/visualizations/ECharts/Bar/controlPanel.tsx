@@ -81,15 +81,6 @@ const config: ControlPanelConfig = {
         ['stacked'],
         ['stackedPrecent'],
         ['showAxisPointer'],
-        [
-          {
-            name: 'tooltipFormat',
-            config: {
-              ...sharedControls.yAxisFormat,
-              label: t('Tooltip Format'),
-            },
-          },
-        ],
       ],
     },
     {

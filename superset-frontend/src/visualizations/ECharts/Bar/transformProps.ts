@@ -18,7 +18,7 @@
  */
 import { getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
-import { sum, max } from 'lodash';
+import { sum } from 'lodash';
 import {
   BarChartTransformedProps,
   EchartsBarChartProps,
@@ -86,7 +86,6 @@ export default function transformProps(
     stacked, // 堆叠
     stackedPrecent, // 堆叠显示成百分比
 
-    tooltipFormat,
     showLegend,
     legendPadding,
     legendOrientation,
@@ -135,17 +134,13 @@ export default function transformProps(
     }
   }
 
-  // tooltip的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
-  const tooltipFormatter = getNumberFormatter(
-    stacked && stackedPrecent ? '.0%' : tooltipFormat,
-  );
-
   // Y轴的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
   const yFormatter = getNumberFormatter(
     stacked && stackedPrecent ? '.0%' : yAxisFormat,
   );
 
   // console.log('rawData:', rawData);
+  // console.log('metrics:', metrics);
 
   let markPoint = {};
   if (ringgit) {
@@ -162,32 +157,33 @@ export default function transformProps(
       if (val === 0) {
         val = (((raw2 - raw1) / raw1) * 100).toFixed(1);
       }
-      const maxVal = max([raw1, raw2]);
+      // 显示在第二个柱子上
       mpList.push({
-        value: maxVal,
-        xAxis: [raw1, raw2].indexOf(maxVal) + 1,
-        yAxis: maxVal,
+        value: raw2,
+        xAxis: 1,
+        yAxis: raw2,
       });
       hbList.push(`${val}%`);
+    } else {
+      rawData.forEach((raw, idx) => {
+        if (idx > 0) {
+          // 计算环比（环比只会有两个数据比较）
+          let val: any = Math.round(((raw[2] - raw[1]) / raw[1]) * 100);
+          // 如果是0，就显示小数
+          if (val === 0) {
+            val = (((raw[2] - raw[1]) / raw[1]) * 100).toFixed(1);
+          }
+          // 显示在第二个柱子上
+          mpList.push({
+            value: raw[2],
+            xAxis: idx - 1, // 值索引
+            yAxis: raw[2],
+          });
+          hbList.push(`${val}%`);
+        }
+      });
     }
 
-    rawData.forEach((raw, idx) => {
-      if (idx > 0) {
-        // 计算环比（环比只会有两个数据比较）
-        let val: any = Math.round(((raw[2] - raw[1]) / raw[1]) * 100);
-        // 如果是0，就显示小数
-        if (val === 0) {
-          val = (((raw[2] - raw[1]) / raw[1]) * 100).toFixed(1);
-        }
-        const maxVal = max([raw[1], raw[2]]);
-        mpList.push({
-          value: maxVal,
-          xAxis: idx - 1,
-          yAxis: maxVal,
-        });
-        hbList.push(`${val}%`);
-      }
-    });
     markPoint = {
       symbolSize: 0,
       silent: true, // 不响应和触发鼠标事件
@@ -199,22 +195,16 @@ export default function transformProps(
         position: 'top',
         distance: 30,
         formatter: (params: any) => {
-          // console.log('params:', params);
+          // console.log('params-----:', params);
           if (metrics.length === 1) {
-            // 第一个值
-            const raw1 = rawData[1][1];
-            // 第二个值
-            const raw2 = rawData[2][1];
-            const maxVal = max([raw1, raw2]);
-            if (maxVal === raw1 && params.dataIndex === 0) {
-              return `{a|${hbList[0]}}`;
-            }
-            if (maxVal === raw2 && params.dataIndex === 1) {
+            // 只在第二个柱子上显示
+            if (params.value === rawData[2][1]) {
               return `{a|${hbList[0]}}`;
             }
             return '';
           }
-          if (params.seriesIndex === 0) {
+          // 系列索引1就是第2个柱子
+          if (params.seriesIndex === 1) {
             return `{a|${hbList[params.dataIndex]}}`;
           }
           return '';
@@ -251,6 +241,10 @@ export default function transformProps(
     labelLayout: {
       // 是否隐藏重叠的标签
       hideOverlap: true,
+    },
+    tooltip: {
+      // 提示的值格式化
+      valueFormatter: yFormatter,
     },
     label: {
       // 是否显示图形上的文本标签
@@ -460,8 +454,6 @@ export default function transformProps(
     tooltip: {
       ...defaultTooltip,
       ...axisPointer,
-      // 提示的值格式化
-      valueFormatter: tooltipFormatter,
     },
     legend: {
       show: showLegend,
