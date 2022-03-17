@@ -17,10 +17,13 @@
  * under the License.
  */
 import React, { ReactNode } from 'react';
+// eslint-disable-next-line no-restricted-imports
 import { Slider, InputNumber, Input } from 'antd';
 import Checkbox, { CheckboxProps } from 'antd/lib/checkbox';
 import Select, { SelectOption } from '../Select';
-import RadioButtonControl, { RadioButtonOption } from '../../shared-controls/components/RadioButtonControl';
+import RadioButtonControl, {
+  RadioButtonOption,
+} from '../../shared-controls/components/RadioButtonControl';
 
 export const ControlFormItemComponents = {
   Slider,
@@ -29,7 +32,9 @@ export const ControlFormItemComponents = {
   Select,
   // Directly export Checkbox will result in "using name from external module" error
   // ref: https://stackoverflow.com/questions/43900035/ts4023-exported-variable-x-has-or-is-using-name-y-from-external-module-but
-  Checkbox: Checkbox as React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>>,
+  Checkbox: Checkbox as React.ForwardRefExoticComponent<
+    CheckboxProps & React.RefAttributes<HTMLInputElement>
+  >,
   RadioButtonControl,
 };
 

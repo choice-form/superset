@@ -60,6 +60,7 @@ export default function transformProps(
     groupby,
     metrics, // 查询指标
     showAxisPointer, // 是否显示坐标轴指示器
+    barWidth, // 柱子宽度
     ringgit, // 是否显示环比
     ringgitFontColor, // 环比的字体颜色
 
@@ -246,6 +247,8 @@ export default function transformProps(
       // 提示的值格式化
       valueFormatter: yFormatter,
     },
+    // 柱子宽度
+    barWidth,
     label: {
       // 是否显示图形上的文本标签
       show: showLabel,

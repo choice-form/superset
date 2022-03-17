@@ -81,6 +81,20 @@ const config: ControlPanelConfig = {
         ['stacked'],
         ['stackedPrecent'],
         ['showAxisPointer'],
+        [
+          {
+            name: 'barWidth',
+            config: {
+              ...sharedControls.distance,
+              label: t('Bar Width'),
+              description: '',
+              renderTrigger: true,
+              min: 0,
+              max: 500,
+              default: 30,
+            },
+          },
+        ],
       ],
     },
     {
