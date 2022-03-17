@@ -16,14 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import {
-  // CategoricalColorNamespace,
-  getNumberFormatter,
-  NumberFormats,
-  NumberFormatter,
-  DrillDown,
-  t,
-} from 'src/core';
+import { getNumberFormatter, NumberFormatter, DrillDown, t } from 'src/core';
 import { CallbackDataParams } from 'echarts/types/src/util/types';
 import { EChartsCoreOption } from 'echarts';
 import {
@@ -37,8 +30,6 @@ import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { sanitizeHtml } from '../utils/series';
 import { defaultGrid, defaultTooltip } from '../defaults';
 
-const percentFormatter = getNumberFormatter(NumberFormats.PERCENT_2_POINT);
-
 export function formatPieLabel({
   params,
   labelType,
@@ -50,24 +41,17 @@ export function formatPieLabel({
   numberFormatter: NumberFormatter;
   sanitizeName?: boolean;
 }): string {
-  const { name: rawName = '', value, percent } = params;
+  const { name: rawName = '', value } = params;
   const name = sanitizeName ? sanitizeHtml(rawName) : rawName;
   const formattedValue = numberFormatter(value as number);
-  const formattedPercent = percentFormatter((percent as number) / 100);
 
   switch (labelType) {
     case EchartsPieLabelType.Key:
       return name;
     case EchartsPieLabelType.Value:
       return formattedValue;
-    case EchartsPieLabelType.Percent:
-      return formattedPercent;
     case EchartsPieLabelType.KeyValue:
       return `${name}: ${formattedValue}`;
-    case EchartsPieLabelType.KeyValuePercent:
-      return `${name}: ${formattedValue} (${formattedPercent})`;
-    case EchartsPieLabelType.KeyPercent:
-      return `${name}: ${formattedPercent}`;
     default:
       return name;
   }

@@ -47,19 +47,6 @@ const config: ControlPanelConfig = {
         ['adhoc_filters'],
         emitFilterControl,
         ['row_limit'],
-        [
-          {
-            name: 'sort_by_metric',
-            config: {
-              default: true,
-              type: 'CheckboxControl',
-              label: t('Sort by metric'),
-              description: t(
-                'Whether to sort results by the selected metric in descending order.',
-              ),
-            },
-          },
-        ],
       ],
     },
     {
@@ -99,10 +86,7 @@ const config: ControlPanelConfig = {
               choices: [
                 ['key', t('Category Name')], // 类型
                 ['value', t('Value')], // 值
-                ['percent', t('Percentage')], // 百分比
                 ['key_value', t('Category and Value')], // 类型 和 值
-                ['key_percent', t('Category and Percentage')], // 类型 和 百分比
-                ['key_value_percent', t('Category, Value and Percentage')], // 类型，值 和 百分比
               ],
               description: t('What should be shown on the label?'),
             },
