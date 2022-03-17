@@ -225,7 +225,7 @@ PROXY_FIX_CONFIG = {"x_for": 1, "x_proto": 1, "x_host": 1, "x_port": 1, "x_prefi
 APP_NAME = "Choiceform DI"
 
 # Specify the App icon
-APP_ICON = "/static/assets/images/choiceform-logo-horiz.png"
+APP_ICON = "/static/assets/images/choiceform-logo-horiz.svg"
 APP_ICON_WIDTH = 126
 
 # Specify where clicking the logo would take the user

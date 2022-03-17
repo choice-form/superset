@@ -81,10 +81,19 @@ export interface MenuObjectProps extends MenuObjectChildProps {
 }
 
 const StyledHeader = styled.header`
-  background-color: white;
+  background-color: #000;
+  color: #fff;
   margin-bottom: 2px;
   &:nth-last-of-type(2) nav {
     margin-bottom: 2px;
+  }
+
+  .ant-row {
+    .ant-col {
+      .ant-menu {
+        background: #000;
+      }
+    }
   }
 
   .caret {
@@ -119,6 +128,9 @@ const StyledHeader = styled.header`
       display: none;
     }
   }
+  .main-nav .ant-menu-submenu-title {
+    color: #fff;
+  }
   .main-nav .ant-menu-submenu-title > svg {
     top: ${({ theme }) => theme.gridUnit * 5.25}px;
   }
@@ -132,6 +144,7 @@ const StyledHeader = styled.header`
     line-height: inherit;
   }
   .ant-menu > .ant-menu-item > a {
+    color: #fff;
     padding: ${({ theme }) => theme.gridUnit * 4}px;
   }
   @media (max-width: 767px) {
