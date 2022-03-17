@@ -56,17 +56,6 @@ function createQuerySection(controlSuffix: string) {
       : [],
     [
       {
-        name: `orderDesc${controlSuffix}`,
-        config: {
-          type: 'CheckboxControl',
-          label: t('Sort Descending'),
-          default: false,
-          description: t('Whether to sort descending or ascending'),
-        },
-      },
-    ],
-    [
-      {
         name: `rowLimit${controlSuffix}`,
         config: {
           ...sharedControls.row_limit,
@@ -112,9 +101,50 @@ function createCustomizeSection(controlSuffix: string): ControlSetRow[] {
     ],
     [
       {
+        name: `yAxisName${controlSuffix}`,
+        config: {
+          ...sharedControls.yAxisName,
+        },
+      },
+    ],
+    [
+      {
+        name: `yNameFontColor${controlSuffix}`,
+        config: {
+          ...sharedControls.valueFontColor,
+        },
+      },
+    ],
+    [
+      {
+        name: `yAxisTick${controlSuffix}`,
+        config: {
+          ...sharedControls.yAxisLine,
+          label: t('Y Axis Tick'),
+          description: t('Y Axis Tick'),
+          default: false,
+        },
+      },
+    ],
+    [
+      {
         name: `yAxisLabel${controlSuffix}`,
         config: {
-          ...sharedControls.yAxisLabel,
+          ...sharedControls.yAxisLine,
+          label: t('Y Axis Label'),
+          description: t('Y Axis Label'),
+          default: true,
+        },
+      },
+    ],
+    [
+      {
+        name: `ySplitLine${controlSuffix}`,
+        config: {
+          ...sharedControls.yAxisLine,
+          label: t('Show Y Axis Split Line'),
+          description: t('Show Y Axis Split Line'),
+          default: false,
         },
       },
     ],
@@ -153,18 +183,7 @@ const config: ControlPanelConfig = {
     {
       label: t('Chart Options'),
       expanded: true,
-      controlSetRows: [
-        [
-          {
-            name: 'tooltipFormat',
-            config: {
-              ...sharedControls.yAxisFormat,
-              label: t('Tooltip Format'),
-            },
-          },
-        ],
-        ['showAxisPointer'],
-      ],
+      controlSetRows: [['showAxisPointer']],
     },
     {
       label: t('Legend'),
@@ -195,7 +214,67 @@ const config: ControlPanelConfig = {
     {
       label: t('X Axis'),
       expanded: false,
-      controlSetRows: [['xAxisLabel'], ['xLabelLayout']],
+      controlSetRows: [
+        ['xLabelLayout'],
+        ['xAxisLine'],
+        ['xAxisName'],
+        [
+          {
+            name: 'xAxisTick',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('X Axis Tick'),
+              description: t('X Axis Tick'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xAxisLabel',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show X Axis Label'),
+              description: t('Show X Axis Label'),
+              default: true,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xSplitLine',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show X Axis Split Line'),
+              description: t('Show X Axis Split Line'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xDistance',
+            config: {
+              ...sharedControls.distance,
+              label: t('X axis name distance'),
+              description: t('Distance between X-axis name and boundary'),
+              min: 0,
+              max: 100,
+              default: 0,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xNameFontColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('X axis name font color'),
+              description: t('Font color of X-axis name.'),
+            },
+          },
+        ],
+      ],
     },
   ],
   controlOverrides: {

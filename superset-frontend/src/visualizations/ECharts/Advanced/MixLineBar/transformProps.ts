@@ -24,6 +24,7 @@ import {
   EchartsMixedLineBarFormData,
 } from './types';
 import { defaultGrid, defaultTooltip } from '../../defaults';
+import { rgbToHex } from '../../../../utils/colorUtils';
 
 const lineConfig = (
   stacked: boolean,
@@ -182,10 +183,6 @@ export default function transformProps(
     symbol, // 折线图节点上的标记类型
     symbolSize, // 标记的大小
     symbolRotate, // 标记的旋转角度
-    // 类目轴配置
-    xAxisLabel, // X轴名称
-    xLabelLayout, // X轴布局：标签旋转角度
-    tooltipFormat, // tooltip的格式化方法
     // 不同的配置
     emitFilter, // 全局筛选会用到
     emitFilterB,
@@ -195,16 +192,35 @@ export default function transformProps(
     showLabelB,
     stacked, // 堆叠
     stackedB,
+
+    yAxisTick, // 刻度
+    yAxisTickB,
+
+    ySplitLine, // 内部分割
+    ySplitLineB,
+
+    yAxisLabel, // 标签
+    yAxisLabelB,
+
     yAxisFormat, // Y轴1的格式化类
     yAxisFormatB, // Y轴2的格式化类
-    yAxisLabel, // Y轴1名称
-    yAxisLabelB, // Y轴2名称
+    yAxisName, // Y轴1名称
+    yAxisNameB, // Y轴2名称
     yAxisLine, // Y轴1是否显示数值轴的线
     yAxisLineB, // Y轴2是否显示数值轴的线
     yAxisShowMinmax, // 是否显示Y1轴的最大值最小值限制
     yAxisShowMinmaxB, // 是否显示Y2轴的最大值最小值限制
     yAxisBounds, // Y轴1的最小值和最大值数组
     yAxisBoundsB, // Y轴2的最小值和最大值数组
+
+    xAxisName, // X轴名称
+    xNameFontColor, // 名称颜色
+    xAxisLine, // X轴的轴线是否显示
+    xAxisLabel, // X轴标签是否显示
+    xLabelLayout, // X轴布局：标签旋转角度
+    xAxisTick, // X轴是否显示刻度
+    xSplitLine, // X轴方向的内部分割线
+    xDistance, // X轴名称的距离
   }: EchartsMixedLineBarFormData = formData;
 
   // 这里必然是多个返回数据
@@ -289,12 +305,15 @@ export default function transformProps(
 
   // X轴的名称
   let xLabelGap = {};
-  if (xAxisLabel) {
+  if (xAxisName) {
     xLabelGap = {
-      name: xAxisLabel, // X 表示类目轴
-      nameGap: getRotate(xLabelLayout) === 0 ? 32 : 64,
+      name: xAxisName, // X 表示类目轴
+      nameGap: xDistance,
       nameLocation: 'center',
       nameTextStyle: {
+        color:
+          xNameFontColor &&
+          rgbToHex(xNameFontColor?.r, xNameFontColor?.g, xNameFontColor?.b),
         fontWeight: 'bold',
         fontSize: 16,
       },
@@ -303,14 +322,27 @@ export default function transformProps(
   const xAxis = {
     type: 'category', // 类目轴
     ...xLabelGap,
+    // 轴线
+    axisLine: {
+      show: xAxisLine,
+    },
+    // 轴线上的刻度
+    axisTick: {
+      show: xAxisTick,
+    },
+    // 内部分割线
+    splitLine: {
+      show: xSplitLine,
+    },
     axisLabel: {
+      show: xAxisLabel,
       hideOverlap: true, // 是否隐藏重叠的标签
       rotate: getRotate(xLabelLayout), // 标签旋转角度
     },
   };
   const y1Axis = {
     type: 'value', // 数值轴
-    name: yAxisLabel, // Y表示数值轴
+    name: yAxisName, // Y表示数值轴
     nameGap: 24,
     nameTextStyle: {
       fontWeight: 'bold',
@@ -321,7 +353,18 @@ export default function transformProps(
       // 是否显示数值轴的轴线
       show: yAxisLine,
     },
+    // 轴线上的刻度
+    axisTick: {
+      show: yAxisTick,
+    },
+    // 内部分割线
+    splitLine: {
+      show: ySplitLine,
+    },
+    // 轴线上的标签
     axisLabel: {
+      show: yAxisLabel,
+      hideOverlap: true, // 是否隐藏重叠的标签
       formatter(val: number) {
         return bConfig.numberFormatter(val);
       },
@@ -329,7 +372,7 @@ export default function transformProps(
   };
   const y2Axis = {
     type: 'value', // 数值轴
-    name: yAxisLabelB, // Y表示数值轴
+    name: yAxisNameB, // Y表示数值轴
     nameGap: 24,
     nameTextStyle: {
       fontWeight: 'bold',
@@ -340,7 +383,17 @@ export default function transformProps(
       // 是否显示数值轴的轴线
       show: yAxisLineB,
     },
+    // 轴线上的刻度
+    axisTick: {
+      show: yAxisTickB,
+    },
+    // 内部分割线
+    splitLine: {
+      show: ySplitLineB,
+    },
+    // 轴线上的标签
     axisLabel: {
+      show: yAxisLabelB,
       formatter(val: number) {
         return lConfig.numberFormatter(val);
       },
@@ -361,17 +414,17 @@ export default function transformProps(
 
   // 图形grid位置计算
   const gridLayout = {};
-  if (xAxisLabel) {
+  if (xAxisName) {
     if (getRotate(xLabelLayout) === 0) {
-      gridLayout['bottom'] = 28;
+      gridLayout['bottom'] = 64;
     } else {
-      gridLayout['bottom'] = 15;
+      gridLayout['bottom'] = 32;
     }
   } else {
     gridLayout['bottom'] = 'auto';
   }
   if (showLegend) {
-    gridLayout['top'] = '8%';
+    gridLayout['top'] = '10%';
   }
 
   // 图例的位置布局方式
@@ -391,9 +444,6 @@ export default function transformProps(
     };
   }
 
-  // tooltip的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
-  const tooltipFormatter = getNumberFormatter(tooltipFormat);
-
   const echartOptions: EChartsCoreOption = {
     grid: {
       ...defaultGrid,
@@ -409,8 +459,6 @@ export default function transformProps(
     tooltip: {
       ...defaultTooltip,
       ...axisPointer,
-      // 提示的值格式化
-      valueFormatter: (value: any) => tooltipFormatter(value),
     },
     dataset: {
       source: sourceData,
@@ -421,6 +469,10 @@ export default function transformProps(
       ...Array.from({ length: barNumbers }).map(_ => ({
         yAxisIndex: 0,
         ...bConfig.barSeries,
+        tooltip: {
+          // 提示的值格式化
+          valueFormatter: (val: any) => bConfig.numberFormatter(val),
+        },
       })),
       ...Array.from({ length: lineNumbers }).map(_ => ({
         yAxisIndex: 1,
@@ -429,6 +481,10 @@ export default function transformProps(
         symbolSize,
         symbolRotate,
         ...lConfig.lineSeries,
+        tooltip: {
+          // 提示的值格式化
+          valueFormatter: (val: any) => lConfig.numberFormatter(val),
+        },
       })),
     ],
   };
