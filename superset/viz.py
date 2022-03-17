@@ -673,7 +673,6 @@ class PieViz(BaseViz):
             return None
 
         metrics = self.metric_labels
-        print('metrics:', metrics)
         df = df.copy()
         df[self.groupby] = df[self.groupby].fillna(value=NULL_STRING)
         pt = df.pivot_table(index=self.groupby, columns=[], values=metrics)
@@ -756,8 +755,10 @@ class BarViz(BaseViz):
             self.form_data.get("timeseries_limit_metric") or metrics[0]
         )
         row = df.groupby(self.groupby).sum()[sortby].copy()
-        is_asc = not self.form_data.get("order_desc")
-        row.sort_values(ascending=is_asc, inplace=True)
+        no_sort = self.form_data.get("noSort")
+        if not no_sort:
+            is_asc = not self.form_data.get("order_desc")
+            row.sort_values(ascending=is_asc, inplace=True)
         pt = df.pivot_table(index=self.groupby, columns=columns, values=metrics)
         if self.form_data.get("contribution"):
             pt = pt.T

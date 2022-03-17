@@ -17,10 +17,21 @@
  * under the License.
  */
 import { t } from 'src/core';
-import { ControlSetRow } from '../types';
+import { ControlPanelsContainerProps, ControlSetRow } from '../types';
 
 export const legacySortBy: ControlSetRow[] = [
   ['legacy_order_by'],
+  [
+    {
+      name: 'noSort',
+      config: {
+        type: 'CheckboxControl',
+        label: t('No Sort'),
+        default: true,
+        description: t('Not using sorting operations'), // 不使用排序操作
+      },
+    },
+  ],
   [
     {
       name: 'order_desc',
@@ -28,7 +39,11 @@ export const legacySortBy: ControlSetRow[] = [
         type: 'CheckboxControl',
         label: t('Sort descending'),
         default: true,
-        description: t('Whether to sort descending or ascending. Takes effect only when "Sort by" is set'),
+        description: t(
+          'Whether to sort descending or ascending. Takes effect only when "Sort by" is set',
+        ),
+        visibility: ({ controls }: ControlPanelsContainerProps) =>
+          !Boolean(controls?.noSort?.value),
       },
     },
   ],
