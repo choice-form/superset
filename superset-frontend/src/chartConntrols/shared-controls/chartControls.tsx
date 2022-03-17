@@ -327,7 +327,8 @@ export const xAxisName: SharedControlConfig<'TextControl'> = {
   type: 'TextControl',
   label: t('X Axis Label'),
   renderTrigger: true,
-  default: t('X Axis Label'),
+  description: t('X Axis Label'),
+  default: '',
 };
 
 export const xAxisLabel: SharedControlConfig<'TextControl'> = {
