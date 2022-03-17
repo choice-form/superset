@@ -61,6 +61,7 @@ export default function transformProps(
     metrics, // 查询指标
     showAxisPointer, // 是否显示坐标轴指示器
     ringgit, // 是否显示环比
+    ringgitFontColor, // 环比的字体颜色
 
     yAxisLine, // 是否显示Y轴的轴线
     yAxisFormat, // Y轴的格式化类
@@ -221,18 +222,19 @@ export default function transformProps(
         rich: {
           a: {
             align: 'center',
-            fontSize: 18,
-            textShadowBlur: 2,
-            textShadowColor: '#000',
-            textShadowOffsetX: 0,
-            textShadowOffsetY: 1,
-            backgroundColor: 'rgb(242,242,242)',
+            fontSize: 14,
+            fontWeight: 'bold',
             borderColor: '#aaa',
             borderWidth: 1,
             borderRadius: 4,
             padding: [10, 10],
-            lineHeight: 26,
-            color: '#ff8811',
+            color:
+              ringgitFontColor &&
+              rgbToHex(
+                ringgitFontColor?.r,
+                ringgitFontColor?.g,
+                ringgitFontColor?.b,
+              ),
           },
         },
       },

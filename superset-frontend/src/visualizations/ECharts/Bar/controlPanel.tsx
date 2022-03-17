@@ -19,6 +19,7 @@
 import { t, validateNonEmpty } from 'src/core';
 import {
   ControlPanelConfig,
+  ControlPanelsContainerProps,
   legacySortBy,
   sharedControls,
 } from 'src/chartConntrols';
@@ -30,6 +31,7 @@ import {
   legendOrientationControl,
   legendPaddingControl,
 } from '../controls';
+import { hexToRgba } from '../../../utils/colorUtils';
 
 // @ts-ignore
 const config: ControlPanelConfig = {
@@ -58,6 +60,19 @@ const config: ControlPanelConfig = {
               label: t('Ringgit'),
               description: t('Show Ringgit'),
               default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'ringgitFontColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Ringgit Font Color'),
+              description: t('Ringgit Font Color'),
+              default: hexToRgba('#1FA8C9'),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.ringgit?.value),
             },
           },
         ],
