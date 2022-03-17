@@ -30,7 +30,10 @@ import { Global } from '@emotion/react';
 import { Tooltip } from 'src/components/Tooltip';
 import { usePrevious } from 'src/common/hooks/usePrevious';
 import Icons from 'src/components/Icons';
-import { getFromLocalStorage, setInLocalStorage } from 'src/utils/localStorageHelpers';
+import {
+  getFromLocalStorage,
+  setInLocalStorage,
+} from 'src/utils/localStorageHelpers';
 import { URL_PARAMS } from 'src/constants';
 import cx from 'classnames';
 import * as chartActions from 'src/chart/chartAction';
@@ -48,7 +51,10 @@ import { getFormDataFromControls } from '../controlUtils';
 import * as exploreActions from '../actions/exploreActions';
 import * as saveModalActions from '../actions/saveModalActions';
 import * as logActions from '../../logger/actions';
-import { LOG_ACTIONS_MOUNT_EXPLORER, LOG_ACTIONS_CHANGE_EXPLORE_CONTROLS } from '../../logger/LogUtils';
+import {
+  LOG_ACTIONS_MOUNT_EXPLORER,
+  LOG_ACTIONS_CHANGE_EXPLORE_CONTROLS,
+} from '../../logger/LogUtils';
 
 const propTypes = {
   ...ExploreChartPanel.propTypes,
@@ -161,7 +167,9 @@ function ExploreViewContainer(props) {
   /** the state of controls in the previous render */
   const previousControls = usePrevious(props.controls);
   /** the state of controls last time a query was triggered */
-  const [lastQueriedControls, setLastQueriedControls] = useState(props.controls);
+  const [lastQueriedControls, setLastQueriedControls] = useState(
+    props.controls,
+  );
   const windowSize = useWindowSize();
 
   const [showingModal, setShowingModal] = useState(false);
@@ -170,7 +178,9 @@ function ExploreViewContainer(props) {
   const theme = useTheme();
   const width = `${windowSize.width}px`;
   const navHeight = props.standalone ? 0 : 90;
-  const height = props.forcedHeight ? `${props.forcedHeight}px` : `${windowSize.height - navHeight}px`;
+  const height = props.forcedHeight
+    ? `${props.forcedHeight}px`
+    : `${windowSize.height - navHeight}px`;
 
   const storageKeys = {
     controlsWidth: 'controls_width',
@@ -185,7 +195,11 @@ function ExploreViewContainer(props) {
   const addHistory = useCallback(
     ({ isReplace = false, title } = {}) => {
       const payload = { ...props.form_data };
-      const longUrl = getExploreLongUrl(props.form_data, props.standalone ? URL_PARAMS.standalone.name : null, false);
+      const longUrl = getExploreLongUrl(
+        props.form_data,
+        props.standalone ? URL_PARAMS.standalone.name : null,
+        false,
+      );
       try {
         if (isReplace) {
           window.history.replaceState(payload, title, longUrl);
@@ -194,7 +208,12 @@ function ExploreViewContainer(props) {
         }
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.warn('Failed at altering browser history', payload, title, longUrl);
+        console.warn(
+          'Failed at altering browser history',
+          payload,
+          title,
+          longUrl,
+        );
       }
     },
     [props.form_data, props.standalone],
@@ -204,7 +223,12 @@ function ExploreViewContainer(props) {
     const formData = window.history.state;
     if (formData && Object.keys(formData).length) {
       props.actions.setExploreControls(formData);
-      props.actions.postChartFormData(formData, false, props.timeout, props.chart.id);
+      props.actions.postChartFormData(
+        formData,
+        false,
+        props.timeout,
+        props.chart.id,
+      );
     }
   }
   const onQuery = useCallback(() => {
@@ -273,7 +297,8 @@ function ExploreViewContainer(props) {
 
   useEffect(() => {
     const hasError = Object.values(props.controls).some(
-      control => control.validationErrors && control.validationErrors.length > 0,
+      control =>
+        control.validationErrors && control.validationErrors.length > 0,
     );
     if (!hasError) {
       props.actions.triggerQuery(true, props.chart.id);
@@ -281,7 +306,10 @@ function ExploreViewContainer(props) {
   }, []);
 
   const reRenderChart = () => {
-    props.actions.updateQueryFormData(getFormDataFromControls(props.controls), props.chart.id);
+    props.actions.updateQueryFormData(
+      getFormDataFromControls(props.controls),
+      props.chart.id,
+    );
     props.actions.renderTriggered(new Date().getTime(), props.chart.id);
     addHistory();
   };
@@ -291,7 +319,8 @@ function ExploreViewContainer(props) {
     if (previousControls) {
       if (
         props.controls.datasource &&
-        (previousControls.datasource == null || props.controls.datasource.value !== previousControls.datasource.value)
+        (previousControls.datasource == null ||
+          props.controls.datasource.value !== previousControls.datasource.value)
       ) {
         // this should really be handled by actions
         fetchDatasourceMetadata(props.form_data.datasource, true);
@@ -300,11 +329,16 @@ function ExploreViewContainer(props) {
       const changedControlKeys = Object.keys(props.controls).filter(
         key =>
           typeof previousControls[key] !== 'undefined' &&
-          !areObjectsEqual(props.controls[key].value, previousControls[key].value),
+          !areObjectsEqual(
+            props.controls[key].value,
+            previousControls[key].value,
+          ),
       );
 
       // this should also be handled by the actions that are actually changing the controls
-      const hasDisplayControlChanged = changedControlKeys.some(key => props.controls[key].renderTrigger);
+      const hasDisplayControlChanged = changedControlKeys.some(
+        key => props.controls[key].renderTrigger,
+      );
       if (hasDisplayControlChanged) {
         reRenderChart();
       }
@@ -316,11 +350,16 @@ function ExploreViewContainer(props) {
       const changedControlKeys = Object.keys(props.controls).filter(
         key =>
           typeof lastQueriedControls[key] !== 'undefined' &&
-          !areObjectsEqual(props.controls[key].value, lastQueriedControls[key].value),
+          !areObjectsEqual(
+            props.controls[key].value,
+            lastQueriedControls[key].value,
+          ),
       );
 
       return changedControlKeys.some(
-        key => !props.controls[key].renderTrigger && !props.controls[key].dontRefreshOnChange,
+        key =>
+          !props.controls[key].renderTrigger &&
+          !props.controls[key].dontRefreshOnChange,
       );
     }
     return false;
@@ -340,13 +379,16 @@ function ExploreViewContainer(props) {
   function renderErrorMessage() {
     // Returns an error message as a node if any errors are in the store
     const controlsWithErrors = Object.values(props.controls).filter(
-      control => control.validationErrors && control.validationErrors.length > 0,
+      control =>
+        control.validationErrors && control.validationErrors.length > 0,
     );
     if (controlsWithErrors.length === 0) {
       return null;
     }
 
-    const errorMessages = controlsWithErrors.map(control => control.validationErrors);
+    const errorMessages = controlsWithErrors.map(
+      control => control.validationErrors,
+    );
     const uniqueErrorMessages = [...new Set(errorMessages.flat())];
 
     const errors = uniqueErrorMessages
@@ -434,7 +476,9 @@ function ExploreViewContainer(props) {
         />
       )}
       <Resizable
-        onResizeStop={(evt, direction, ref, d) => setSidebarWidths(storageKeys.dataSourceWidth, d)}
+        onResizeStop={(evt, direction, ref, d) =>
+          setSidebarWidths(storageKeys.dataSourceWidth, d)
+        }
         defaultSize={{
           width: getSidebarWidths(storageKeys.dataSourceWidth),
           height: '100%',
@@ -442,21 +486,46 @@ function ExploreViewContainer(props) {
         minWidth={defaultSidebarsWidth[storageKeys.dataSourceWidth]}
         maxWidth="33%"
         enable={{ right: true }}
-        className={isCollapsed ? 'no-show' : 'explore-column data-source-selection'}
+        className={
+          isCollapsed ? 'no-show' : 'explore-column data-source-selection'
+        }
       >
         <div className="title-container">
           <span className="horizont al-text">{t('Dataset')}</span>
-          <span role="button" tabIndex={0} className="action-button" onClick={toggleCollapse}>
-            <Icons.Expand className="collapse-icon" iconColor={theme.colors.primary.base} iconSize="l" />
+          <span
+            role="button"
+            tabIndex={0}
+            className="action-button"
+            onClick={toggleCollapse}
+          >
+            <Icons.Expand
+              className="collapse-icon"
+              iconColor={theme.colors.primary.base}
+              iconSize="l"
+            />
           </span>
         </div>
-        <DataSourcePanel datasource={props.datasource} controls={props.controls} actions={props.actions} />
+        <DataSourcePanel
+          datasource={props.datasource}
+          controls={props.controls}
+          actions={props.actions}
+        />
       </Resizable>
       {isCollapsed ? (
-        <div className="sidebar" onClick={toggleCollapse} data-test="open-datasource-tab" role="button" tabIndex={0}>
+        <div
+          className="sidebar"
+          onClick={toggleCollapse}
+          data-test="open-datasource-tab"
+          role="button"
+          tabIndex={0}
+        >
           <span role="button" tabIndex={0} className="action-button">
             <Tooltip title={t('Open Datasource tab')}>
-              <Icons.Collapse className="collapse-icon" iconColor={theme.colors.primary.base} iconSize="l" />
+              <Icons.Collapse
+                className="collapse-icon"
+                iconColor={theme.colors.primary.base}
+                iconSize="l"
+              />
             </Tooltip>
           </span>
           <Icons.DatasetPhysical
@@ -467,7 +536,9 @@ function ExploreViewContainer(props) {
         </div>
       ) : null}
       <Resizable
-        onResizeStop={(evt, direction, ref, d) => setSidebarWidths(storageKeys.controlsWidth, d)}
+        onResizeStop={(evt, direction, ref, d) =>
+          setSidebarWidths(storageKeys.controlsWidth, d)
+        }
         defaultSize={{
           width: getSidebarWidths(storageKeys.controlsWidth),
           height: '100%',
@@ -495,7 +566,14 @@ function ExploreViewContainer(props) {
           isDatasourceMetaLoading={props.isDatasourceMetaLoading}
         />
       </Resizable>
-      <div className={cx('main-explore-content', isCollapsed ? 'col-sm-9' : 'col-sm-7')}>{renderChartContainer()}</div>
+      <div
+        className={cx(
+          'main-explore-content',
+          isCollapsed ? 'col-sm-9' : 'col-sm-7',
+        )}
+      >
+        {renderChartContainer()}
+      </div>
     </Styles>
   );
 }
@@ -524,8 +602,12 @@ function mapStateToProps(state) {
     can_overwrite: !!explore.can_overwrite,
     can_add: !!explore.can_add,
     can_download: !!explore.can_download,
-    column_formats: explore.datasource ? explore.datasource.column_formats : null,
-    containerId: explore.slice ? `slice-container-${explore.slice.slice_id}` : 'slice-container',
+    column_formats: explore.datasource
+      ? explore.datasource.column_formats
+      : null,
+    containerId: explore.slice
+      ? `slice-container-${explore.slice.slice_id}`
+      : 'slice-container',
     isStarred: explore.isStarred,
     slice: explore.slice,
     sliceName: explore.sliceName,
@@ -556,4 +638,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExploreViewContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ExploreViewContainer);

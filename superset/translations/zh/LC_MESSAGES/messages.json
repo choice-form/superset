@@ -1858,6 +1858,8 @@
       ],
       "Time format": ["时间格式"],
       "The color scheme for rendering chart": ["绘制图表的配色方案"],
+      "No Sort": ["不排序"],
+      "Not using sorting operations": ["不使用排序"],
       "Sort descending": ["降序"],
       "Whether to sort descending or ascending. Takes effect only when \"Sort by\" is set": [
         "是降序排序还是升序排序。仅当设置了“排序依据”时生效"
@@ -3794,13 +3796,23 @@
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         "是否显示额外控件。额外的控制包括使多柱状图堆叠或并排。"
       ],
-      "Tooltip Format": ["Tooltip格式化"],
+      "Y Axis Tick": ["Y轴轴线刻度"],
+      "Show Y Axis Split Line": ["显示Y轴方向的分割线"],
+      "X Axis Tick": ["X轴轴线刻度"],
+      "Show X Axis Label": ["显示x轴标签"],
+      "Show X Axis Split Line": ["显示X轴方向的分割线"],
+      "X axis name distance": ["X轴名称的边距"],
+      "Distance between X-axis name and boundary": ["X轴名称与边界之间的距离"],
+      "X axis name font color": ["X轴名称的字体颜色"],
+      "Font color of X-axis name.": ["X轴名称的字体颜色"],
       "Analysis of different indicators in the same dimension.": [
         "对同一维度的不同指标进行分析。"
       ],
       "Mixed Line and Bar": ["折线柱状混合图"],
       "Ringgit": ["环比"],
       "Show Ringgit": ["显示环比"],
+      "Ringgit Font Color": ["环比的字体颜色"],
+      "Bar Width": ["柱宽"],
       "Value Axis": ["数值轴"],
       "Value axis name font color": ["数值轴名称的字体颜色"],
       "Font color of Value axis name.": ["数值轴名称的字体颜色"],
@@ -3976,6 +3988,7 @@
       "Sort lines by category axis for label names.": [
         "按类目轴的标签名称排序折线。"
       ],
+      "Tooltip Format": ["Tooltip格式化"],
       "Category Axis Label": ["类目轴标签"],
       "Evolution": ["演化"],
       "Broken line chart relates all the data points symbol by broken lines, which is used to show the trend of data changing. It could be used in both rectangular coordinate andpolar coordinate.": [
@@ -4028,10 +4041,7 @@
         "显示标签的最低百分比阈值。"
       ],
       "Category Name": ["类别名称"],
-      "Percentage": ["百分比"],
       "Category and Value": ["类别名称和值"],
-      "Category and Percentage": ["分类名称和百分比"],
-      "Category, Value and Percentage": ["分类名称，值和百分比"],
       "Format the displayed value in the selected format": [
         "以选定的格式，来格式化展示的值"
       ],
@@ -4075,17 +4085,10 @@
       "Show Y Axis Arrow": ["显示Y轴轴线箭头"],
       "y axis name font color": ["Y轴名称的字体颜色"],
       "Font color of Y-axis name.": ["Y轴名称的字体颜色"],
-      "Y Axis Tick": ["Y轴轴线刻度"],
       "Show Y Axis Label": ["显示Y轴标签"],
-      "Show Y Axis Split Line": ["显示Y轴方向的分割线"],
       "Show X Axis Arrow": ["显示X轴轴线箭头"],
-      "X Axis Tick": ["X轴轴线刻度"],
-      "Show X Axis Label": ["显示x轴标签"],
-      "Show X Axis Split Line": ["显示X轴方向的分割线"],
       "x axis name distance": ["X轴名称的边距"],
-      "Distance between X-axis name and boundary": ["X轴名称与边界之间的距离"],
       "x axis name font color": ["X轴名称的字体颜色"],
-      "Font color of X-axis name.": ["X轴名称的字体颜色"],
       "The scatter chart in rectangular coordinate could be used to present the relation between x and y.": [
         "直角坐标系上的散点图，可以用来展现数据的 x，y 之间的关系"
       ],
