@@ -60,8 +60,8 @@ function Echart(
   useEffect(() => {
     if (!divRef.current) return;
     if (!chartRef.current) {
-      registerTheme('choiceform', theme);
-      chartRef.current = init(divRef.current, 'choiceform');
+      registerTheme(theme.themeName, theme.theme);
+      chartRef.current = init(divRef.current, theme.themeName);
     }
 
     Object.entries(eventHandlers || {}).forEach(([name, handler]) => {

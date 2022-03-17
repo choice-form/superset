@@ -53,7 +53,6 @@ const config: ControlPanelConfig = {
         ['showLabel'],
         ['stacked'],
         ['showAreaChart'],
-        ['areaLinearGradient'],
         ['smooth'],
         ['symbol'],
         ['symbolSize'],
