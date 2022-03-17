@@ -224,6 +224,7 @@ export default function transformProps(
             align: 'center',
             fontSize: 14,
             fontWeight: 'bold',
+            backgroundColor: '#fff',
             borderColor: '#aaa',
             borderWidth: 1,
             borderRadius: 4,
@@ -430,7 +431,11 @@ export default function transformProps(
     gridLayout['bottom'] = 'auto';
   }
   if (showLegend) {
-    gridLayout['top'] = '5%';
+    if (ringgit) {
+      gridLayout['top'] = '12%';
+    } else {
+      gridLayout['top'] = '10%';
+    }
   }
 
   if (chartOrient !== 'horizontal') {

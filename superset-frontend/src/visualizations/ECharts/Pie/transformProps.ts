@@ -281,9 +281,16 @@ export default function transformProps(
         }
       : {};
 
+  // 图形grid位置计算
+  const gridLayout = {};
+  if (showLegend) {
+    gridLayout['top'] = '10%';
+  }
+
   const echartOptions: EChartsCoreOption = {
     grid: {
       ...defaultGrid,
+      ...gridLayout,
     },
     tooltip: {
       ...defaultTooltip,
