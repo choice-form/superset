@@ -71,7 +71,7 @@ from superset.errors import ErrorLevel, SupersetError, SupersetErrorType
 from superset.exceptions import InvalidPayloadFormatError
 from superset.extensions import security_manager
 from superset.models.core import Database
-from superset.typing import FlaskResponse
+from superset.typing_local import FlaskResponse
 from superset.utils.core import error_msg_from_exception
 from superset.views.base_api import BaseSupersetModelRestApi, statsd_metrics
 

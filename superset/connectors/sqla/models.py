@@ -87,7 +87,7 @@ from superset.models.annotations import Annotation
 from superset.models.core import Database
 from superset.models.helpers import AuditMixinNullable, CertificationMixin, QueryResult
 from superset.sql_parse import ParsedQuery
-from superset.typing import AdhocMetric, Metric, OrderBy, QueryObjectDict
+from superset.typing_local import AdhocMetric, Metric, OrderBy, QueryObjectDict
 from superset.utils import core as utils
 from superset.utils.core import (
     GenericDataType,
