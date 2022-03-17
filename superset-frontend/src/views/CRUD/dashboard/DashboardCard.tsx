@@ -164,7 +164,13 @@ function DashboardCard({
         description={t('Modified %s', dashboard.changed_on_delta_humanized)}
         coverLeft={<FacePile users={dashboard.owners || []} />}
         actions={
-          <ListViewCard.Actions
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: canDelete || canEdit || canExport ? 64 : 'unset',
+            }}
             onClick={e => {
               e.stopPropagation();
               e.preventDefault();
@@ -180,7 +186,7 @@ function DashboardCard({
                 <Icons.MoreVert iconColor={theme.colors.grayscale.base} />
               </Dropdown>
             )}
-          </ListViewCard.Actions>
+          </div>
         }
       />
     </CardStyles>

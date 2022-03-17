@@ -23,19 +23,14 @@ import { Tooltip } from 'src/components/Tooltip';
 import ImageLoader, { BackgroundPosition } from './ImageLoader';
 import CertifiedIcon from '../CertifiedIcon';
 
-const ActionsWrapper = styled.div`
-  width: 64px;
-  display: flex;
-  justify-content: space-between;
-`;
-
 const StyledCard = styled(AntdCard)`
   border: 1px solid #d9dbe4;
   border-radius: ${({ theme }) => theme.gridUnit}px;
   overflow: hidden;
 
   .ant-card-body {
-    padding: ${({ theme }) => theme.gridUnit * 4}px ${({ theme }) => theme.gridUnit * 2}px;
+    padding: ${({ theme }) => theme.gridUnit * 4}px
+      ${({ theme }) => theme.gridUnit * 2}px;
   }
   .ant-card-meta-detail > div:not(:last-child) {
     margin-bottom: 0;
@@ -63,7 +58,8 @@ const StyledCard = styled(AntdCard)`
         rgba(0, 0, 0, 0.5) 100%
       );
 
-      transition: background ${({ theme }) => theme.transitionTiming}s ease-in-out;
+      transition: background ${({ theme }) => theme.transitionTiming}s
+        ease-in-out;
     }
 
     .cover-footer {
@@ -140,7 +136,9 @@ interface LinkProps {
   to: string;
 }
 
-const AnchorLink: React.FC<LinkProps> = ({ to, children }) => <a href={to}>{children}</a>;
+const AnchorLink: React.FC<LinkProps> = ({ to, children }) => (
+  <a href={to}>{children}</a>
+);
 
 interface CardProps {
   title?: React.ReactNode;
@@ -199,8 +197,12 @@ function ListViewCard({
               </div>
             </Link>
             <CoverFooter className="cover-footer">
-              {!loading && coverLeft && <CoverFooterLeft>{coverLeft}</CoverFooterLeft>}
-              {!loading && coverRight && <CoverFooterRight>{coverRight}</CoverFooterRight>}
+              {!loading && coverLeft && (
+                <CoverFooterLeft>{coverLeft}</CoverFooterLeft>
+              )}
+              {!loading && coverRight && (
+                <CoverFooterRight>{coverRight}</CoverFooterRight>
+              )}
             </CoverFooter>
           </Cover>
         )
@@ -230,7 +232,14 @@ function ListViewCard({
               </TitleContainer>
             </>
           }
-          description={<ThinSkeleton round active title={false} paragraph={paragraphConfig} />}
+          description={
+            <ThinSkeleton
+              round
+              active
+              title={false}
+              paragraph={paragraphConfig}
+            />
+          }
         />
       )}
       {!loading && (
@@ -242,7 +251,10 @@ function ListViewCard({
                   <Link to={url!}>
                     {certifiedBy && (
                       <>
-                        <CertifiedIcon certifiedBy={certifiedBy} details={certificationDetails} />{' '}
+                        <CertifiedIcon
+                          certifiedBy={certifiedBy}
+                          details={certificationDetails}
+                        />{' '}
                       </>
                     )}
                     {title}
@@ -262,7 +274,5 @@ function ListViewCard({
     </StyledCard>
   );
 }
-
-ListViewCard.Actions = ActionsWrapper;
 
 export default ListViewCard;
