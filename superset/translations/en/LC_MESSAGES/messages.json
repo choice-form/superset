@@ -562,7 +562,16 @@
       "%(object)s does not exist in this database.": [""],
       "We can't seem to resolve the column \"%(column_name)s\"": [""],
       "Home": [""],
+      "Row level security": [""],
+      "Import Dashboards": [""],
+      "SQL Editor": [""],
+      "SQL Lab": [""],
+      "Saved Queries": [""],
+      "Query History": [""],
+      "Upload a CSV": [""],
+      "Upload Excel": [""],
       "Data": [""],
+      "Action Log": [""],
       "Security": [""],
       "Dashboard Emails": [""],
       "Manage": [""],
@@ -1686,9 +1695,8 @@
       "Type a value": [""],
       "Filter": [""],
       "Select or type a value": [""],
+      "SQL query": [""],
       "Settings": [""],
-      "About": [""],
-      "Powered by Choiceform": [""],
       "Documentation": [""],
       "Report a bug": [""],
       "OK": [""],
@@ -2112,6 +2120,7 @@
       "Show Less...": [""],
       "New chart": [""],
       "Edit properties": [""],
+      "Run in SQL Lab": [""],
       "You do not have permission to edit this chart": [""],
       "The description can be displayed as widget headers in the dashboard view. Supports markdown.": [
         ""
@@ -2552,6 +2561,7 @@
       "An error occurred while fetching dashboard owner values: %s": [""],
       "An error occurred while fetching dashboard created by values: %s": [""],
       "Are you sure you want to delete the selected dashboards?": [""],
+      "Saved queries": [""],
       "SQL Copied!": [""],
       "The passwords for the databases below are needed in order to import them. Please note that the \"Secure Extra\" and \"Certificate\" sections of the database configuration are not present in export files, and should be added manually after the import if they are needed.": [
         ""
@@ -2733,7 +2743,6 @@
       "You are importing one or more saved queries that already exist. Overwriting might cause you to lose some of your work. Are you sure you want to overwrite?": [
         ""
       ],
-      "Saved queries": [""],
       "There was an issue previewing the selected query %s": [""],
       "Import queries": [""],
       "There was an issue deleting the selected queries: %s": [""],
@@ -2763,7 +2772,6 @@
       "Recently edited charts, dashboards, and saved queries will appear here": [
         ""
       ],
-      "SQL query": [""],
       "${tableName\n                      .split('')\n                      .slice(0, tableName.length - 1)\n                      .join('')}\n                    ": [
         ""
       ],

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-17 18:33+0800\n"
+"POT-Creation-Date: 2022-03-18 02:40+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -962,7 +962,7 @@ msgid "Warning Message"
 msgstr ""
 
 #: superset/connectors/druid/views.py:213
-#: superset/initialization/__init__.py:518
+#: superset/initialization/__init__.py:520
 msgid "Druid Clusters"
 msgstr ""
 
@@ -1028,7 +1028,7 @@ msgid ""
 msgstr ""
 
 #: superset/connectors/druid/views.py:277
-#: superset/initialization/__init__.py:509
+#: superset/initialization/__init__.py:511
 msgid "Druid Datasources"
 msgstr ""
 
@@ -2121,59 +2121,95 @@ msgid "We can't seem to resolve the column \"%(column_name)s\""
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/welcome/Welcome.tsx:251
-#: superset/initialization/__init__.py:219
+#: superset/initialization/__init__.py:220
 msgid "Home"
+msgstr ""
+
+#: superset/initialization/__init__.py:275
+msgid "Row level security"
+msgstr ""
+
+#: superset/initialization/__init__.py:316
+msgid "Import Dashboards"
+msgstr ""
+
+#: superset/initialization/__init__.py:328
+msgid "SQL Editor"
+msgstr ""
+
+#: superset/initialization/__init__.py:333
+msgid "SQL Lab"
+msgstr ""
+
+#: superset/initialization/__init__.py:337
+msgid "Saved Queries"
+msgstr ""
+
+#: superset/initialization/__init__.py:344
+msgid "Query History"
+msgstr ""
+
+#: superset/initialization/__init__.py:371
+msgid "Upload a CSV"
+msgstr ""
+
+#: superset/initialization/__init__.py:403
+msgid "Upload Excel"
 msgstr ""
 
 #: superset-frontend/src/explore/components/ControlPanelsContainer.tsx:346
 #: superset-frontend/src/explore/components/DataTablesPane/index.tsx:330
 #: superset-frontend/src/views/CRUD/data/common.ts:22
-#: superset/initialization/__init__.py:406
-#: superset/initialization/__init__.py:511
-#: superset/initialization/__init__.py:521
-#: superset/initialization/__init__.py:534
-#: superset/initialization/__init__.py:547
+#: superset/initialization/__init__.py:407
+#: superset/initialization/__init__.py:513
+#: superset/initialization/__init__.py:523
+#: superset/initialization/__init__.py:536
+#: superset/initialization/__init__.py:549
 msgid "Data"
 msgstr ""
 
-#: superset/initialization/__init__.py:423
-#: superset/initialization/__init__.py:495
+#: superset/initialization/__init__.py:422
+msgid "Action Log"
+msgstr ""
+
+#: superset/initialization/__init__.py:424
+#: superset/initialization/__init__.py:497
 msgid "Security"
 msgstr ""
 
-#: superset/initialization/__init__.py:446
+#: superset/initialization/__init__.py:447
 msgid "Dashboard Emails"
 msgstr ""
 
-#: superset/initialization/__init__.py:448
-#: superset/initialization/__init__.py:457
-#: superset/initialization/__init__.py:472
-#: superset/initialization/__init__.py:484
+#: superset/initialization/__init__.py:449
+#: superset/initialization/__init__.py:458
+#: superset/initialization/__init__.py:473
+#: superset/initialization/__init__.py:485
 msgid "Manage"
 msgstr ""
 
-#: superset/initialization/__init__.py:455
+#: superset/initialization/__init__.py:456
 msgid "Chart Email Schedules"
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/alert/AlertList.tsx:365
-#: superset/initialization/__init__.py:470
+#: superset/initialization/__init__.py:471
 msgid "Alerts"
 msgstr ""
 
-#: superset/initialization/__init__.py:482
+#: superset/initialization/__init__.py:483
 msgid "Alerts & Reports"
 msgstr ""
 
-#: superset/initialization/__init__.py:493
+#: superset/initialization/__init__.py:495
 msgid "Access requests"
 msgstr ""
 
-#: superset/initialization/__init__.py:531
+#: superset/initialization/__init__.py:533
 msgid "Scan New Datasources"
 msgstr ""
 
-#: superset/initialization/__init__.py:544
+#: superset/initialization/__init__.py:546
 msgid "Refresh Druid Metadata"
 msgstr ""
 
@@ -2523,22 +2559,22 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:124
+#: superset-frontend/src/components/Menu/MenuRight.tsx:111
 #: superset/templates/appbuilder/navbar_right.html:109
 msgid "Profile"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:129
+#: superset-frontend/src/components/Menu/MenuRight.tsx:116
 #: superset/templates/appbuilder/navbar_right.html:110
 msgid "Info"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:133
+#: superset-frontend/src/components/Menu/MenuRight.tsx:120
 #: superset/templates/appbuilder/navbar_right.html:111
 msgid "Logout"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:167
+#: superset-frontend/src/components/Menu/MenuRight.tsx:156
 #: superset/templates/appbuilder/navbar_right.html:126
 msgid "Login"
 msgstr ""
@@ -2770,7 +2806,7 @@ msgid ""
 " first is lower than the second value"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:121
+#: superset-frontend/src/components/Menu/MenuRight.tsx:108
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:237
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:321
 #: superset/views/access_requests.py:41 superset/views/log/__init__.py:30
@@ -2954,7 +2990,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:293
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:529
 #: superset-frontend/src/views/CRUD/csstemplates/CssTemplatesList.tsx:291
-#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:121
+#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:131
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:310
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:515
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:297
@@ -3459,7 +3495,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/chart/ChartCard.tsx:103
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:308
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:537
-#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:96
+#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:98
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:319
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:523
 #: superset-frontend/src/views/CRUD/data/database/DatabaseList.tsx:299
@@ -4350,7 +4386,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/alert/AlertList.tsx:253
 #: superset-frontend/src/views/CRUD/chart/ChartCard.tsx:110
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:315
-#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:83
+#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:85
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:326
 #: superset-frontend/src/views/CRUD/data/database/DatabaseList.tsx:306
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:311
@@ -4627,6 +4663,7 @@ msgid "Results"
 msgstr ""
 
 #: superset-frontend/src/SqlLab/components/SouthPane/index.tsx:181
+#: superset-frontend/src/views/CRUD/data/common.ts:44
 #: superset-frontend/src/views/CRUD/data/query/QueryList.tsx:78
 msgid "Query history"
 msgstr ""
@@ -6426,24 +6463,21 @@ msgstr ""
 msgid "Select or type a value"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:98
+#: superset-frontend/src/components/Menu/MenuRight.tsx:29
+#: superset-frontend/src/views/CRUD/welcome/EmptyState.tsx:99
+msgid "SQL query"
+msgstr ""
+
+#: superset-frontend/src/components/Menu/MenuRight.tsx:83
 #: superset-frontend/src/datasource/DatasourceEditor.jsx:1041
 msgid "Settings"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:139
-msgid "About"
-msgstr ""
-
-#: superset-frontend/src/components/Menu/MenuRight.tsx:141
-msgid "Powered by Choiceform"
-msgstr ""
-
-#: superset-frontend/src/components/Menu/MenuRight.tsx:154
+#: superset-frontend/src/components/Menu/MenuRight.tsx:137
 msgid "Documentation"
 msgstr ""
 
-#: superset-frontend/src/components/Menu/MenuRight.tsx:160
+#: superset-frontend/src/components/Menu/MenuRight.tsx:148
 msgid "Report a bug"
 msgstr ""
 
@@ -8129,6 +8163,10 @@ msgstr ""
 msgid "Edit properties"
 msgstr ""
 
+#: superset-frontend/src/explore/components/ExploreAdditionalActionsMenu/index.jsx:90
+msgid "Run in SQL Lab"
+msgstr ""
+
 #: superset-frontend/src/explore/components/PropertiesModal/index.tsx:59
 msgid "You do not have permission to edit this chart"
 msgstr ""
@@ -9529,7 +9567,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:284
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:520
 #: superset-frontend/src/views/CRUD/csstemplates/CssTemplatesList.tsx:282
-#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:103
+#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:105
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:301
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:506
 #: superset-frontend/src/views/CRUD/data/dataset/DatasetList.tsx:509
@@ -9907,13 +9945,13 @@ msgstr ""
 
 #: superset-frontend/src/views/CRUD/chart/ChartCard.tsx:79
 #: superset-frontend/src/views/CRUD/chart/ChartList.tsx:287
-#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:106
+#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:108
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:304
 msgid "Are you sure you want to delete"
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/chart/ChartCard.tsx:133
-#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:148
+#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:164
 #, python-format
 msgid "Modified %s"
 msgstr ""
@@ -10082,11 +10120,11 @@ msgstr ""
 msgid "Are you sure you want to delete the selected templates?"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:142
+#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:153
 msgid "published"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:142
+#: superset-frontend/src/views/CRUD/dashboard/DashboardCard.tsx:153
 msgid "draft"
 msgstr ""
 
@@ -10128,6 +10166,12 @@ msgstr ""
 
 #: superset-frontend/src/views/CRUD/dashboard/DashboardList.tsx:507
 msgid "Are you sure you want to delete the selected dashboards?"
+msgstr ""
+
+#: superset-frontend/src/views/CRUD/data/common.ts:38
+#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:86
+#: superset-frontend/src/views/CRUD/welcome/Welcome.tsx:294
+msgid "Saved queries"
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/data/components/SyntaxHighlighterCopy/index.tsx:71
@@ -10732,11 +10776,6 @@ msgid ""
 "want to overwrite?"
 msgstr ""
 
-#: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:86
-#: superset-frontend/src/views/CRUD/welcome/Welcome.tsx:294
-msgid "Saved queries"
-msgstr ""
-
 #: superset-frontend/src/views/CRUD/data/savedquery/SavedQueryList.tsx:123
 #, python-format
 msgid "There was an issue previewing the selected query %s"
@@ -10835,10 +10874,6 @@ msgstr ""
 
 #: superset-frontend/src/views/CRUD/welcome/EmptyState.tsx:75
 msgid "Recently edited charts, dashboards, and saved queries will appear here"
-msgstr ""
-
-#: superset-frontend/src/views/CRUD/welcome/EmptyState.tsx:99
-msgid "SQL query"
 msgstr ""
 
 #: superset-frontend/src/views/CRUD/welcome/EmptyState.tsx:100
@@ -11000,7 +11035,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:240
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:189
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:101
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:86
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:85
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:130
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:140
 msgid "Legend"
@@ -12401,7 +12436,7 @@ msgid "Bar Width"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:112
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:97
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:96
 msgid "Value Axis"
 msgstr ""
 
@@ -12420,8 +12455,8 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:144
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:145
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:121
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:122
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:123
 msgid "Value Axis Label"
 msgstr ""
 
@@ -12431,7 +12466,7 @@ msgid "Show Value Axis Split Line"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:166
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:108
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:107
 msgid "Category Axis"
 msgstr ""
 
@@ -12467,37 +12502,37 @@ msgid "Font color of Category-axis name."
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:235
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:115
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:114
 msgid "Value Axis Format"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:238
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:118
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:117
 msgid "Value Axis Line"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:239
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:119
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:118
 msgid "Show or hide the axis of Value-axis."
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:242
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:126
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:125
 msgid "Maximum and minimum values for the Value axis"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:243
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:127
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:126
 msgid "Whether to display the min and max values of the Value-axis"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:248
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:132
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:131
 msgid "Value Axis Bounds"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:249
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:133
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:132
 msgid ""
 "Bounds for the Value-axis. When left empty, the bounds are dynamically "
 "defined based on the min/max of the data. Note that this feature will "
@@ -12505,7 +12540,7 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:257
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:144
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:143
 msgid "Category Axis Label Rotate"
 msgstr ""
 
@@ -12974,19 +13009,19 @@ msgstr ""
 msgid "Graph Chart"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:66
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:65
 msgid "Sort Lines"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:69
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:68
 msgid "Sort lines by category axis for label names."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:79
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:78
 msgid "Tooltip Format"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:141
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:140
 msgid "Category Axis Label"
 msgstr ""
 

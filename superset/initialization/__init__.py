@@ -272,7 +272,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             RowLevelSecurityFiltersModelView,
             "Row Level Security",
-            label="Row level security",
+            label=__("Row level security"),
             category="Security",
             category_label="Security",
             icon="fa-lock",
@@ -313,7 +313,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         # 导入看板
         appbuilder.add_link(
             "Import Dashboards",
-            label="Import Dashboards",
+            label=__("Import Dashboards"),
             href="/import_dashboards/",
             icon="fa-cloud-upload",
             category="Manage",
@@ -325,27 +325,27 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         )
         appbuilder.add_link(
             "SQL Editor",
-            label="SQL Editor",
+            label=__("SQL Editor"),
             href="/sqllab/",
             category_icon="fa-flask",
             icon="fa-flask",
             category="SQL Lab",
-            category_label="SQL Lab",
+            category_label=__("SQL Lab"),
         )
         appbuilder.add_link(
             "Saved Queries",
+            label=__("Saved Queries"),
             href="/savedqueryview/list/",
             icon="fa-save",
             category="SQL Lab",
         )
         appbuilder.add_link(
             "Query Search",
-            label="Query History",
+            label=__("Query History"),
             href="/sqllab/history/",
             icon="fa-search",
             category_icon="fa-flask",
             category="SQL Lab",
-            category_label="SQL Lab",
         )
         appbuilder.add_view(
             DatabaseView,
@@ -368,7 +368,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_separator("Data")
         appbuilder.add_link(
             "Upload a CSV",
-            label="Upload a CSV",
+            label=__("Upload a CSV"),
             href="/csvtodatabaseview/form",
             icon="fa-upload",
             category="Data",
@@ -400,7 +400,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 
             appbuilder.add_link(
                 "Upload Excel",
-                label="Upload Excel",
+                label=__("Upload Excel"),
                 href="/exceltodatabaseview/form",
                 icon="fa-upload",
                 category="Data",
@@ -419,7 +419,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             LogModelView,
             "Action Log",
-            label="Action Log",
+            label=__("Action Log"),
             category="Security",
             category_label=__("Security"),
             icon="fa-list-ol",
