@@ -17,7 +17,11 @@
  * under the License.
  */
 import { t, validateNonEmpty } from 'src/core';
-import { ControlPanelConfig, sharedControls } from 'src/chartConntrols';
+import {
+  ControlPanelConfig,
+  legacySortBy,
+  sharedControls,
+} from 'src/chartConntrols';
 import {
   chartOrientControl,
   legendModeControl,
@@ -38,6 +42,7 @@ const config: ControlPanelConfig = {
         ['adhoc_filters'],
         ['row_limit'],
         ['groupby'],
+        ...legacySortBy,
       ],
     },
     {
