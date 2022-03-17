@@ -44,8 +44,8 @@ const MENU_KEYS = {
 
 // 图表右上角的扩展按钮
 const ExploreAdditionalActionsMenu = props => {
-  // const { datasource } = props.latestQueryFormData;
-  // const sqlSupported = datasource && datasource.split('__')[1] === 'table';
+  const { datasource } = props.latestQueryFormData;
+  const sqlSupported = datasource && datasource.split('__')[1] === 'table';
   const handleMenuClick = ({ key, domEvent }) => {
     const { slice, onOpenInEditor, latestQueryFormData } = props;
     switch (key) {
@@ -87,7 +87,7 @@ const ExploreAdditionalActionsMenu = props => {
               responsive
             />
           </Menu.Item>
-          {/* {sqlSupported && <Menu.Item key={MENU_KEYS.RUN_IN_SQL_LAB}>{t('Run in SQL Lab')}</Menu.Item>} */}
+          {sqlSupported && <Menu.Item key={MENU_KEYS.RUN_IN_SQL_LAB}>{t('Run in SQL Lab')}</Menu.Item>}
           <Menu.Item key={MENU_KEYS.DOWNLOAD_AS_IMAGE}>{t('Download as image')}</Menu.Item>
         </Menu>
       }

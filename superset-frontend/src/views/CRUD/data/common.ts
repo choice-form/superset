@@ -33,17 +33,17 @@ export const commonMenuData = {
       url: '/tablemodelview/list/',
       usesRouter: true,
     },
-    // {
-    //   name: 'Saved queries',
-    //   label: t('Saved queries'),
-    //   url: '/savedqueryview/list/',
-    //   usesRouter: true,
-    // },
-    // {
-    //   name: 'Query history',
-    //   label: t('Query history'),
-    //   url: '/sqllab/history/',
-    //   usesRouter: true,
-    // },
+    {
+      name: 'Saved queries',
+      label: t('Saved queries'),
+      url: '/savedqueryview/list/',
+      usesRouter: true,
+    },
+    {
+      name: 'Query history',
+      label: t('Query history'),
+      url: '/sqllab/history/',
+      usesRouter: true,
+    },
   ],
 };

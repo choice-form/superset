@@ -67,7 +67,8 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         self.config = app.config
         self.manifest: Dict[Any, Any] = {}
 
-    @deprecated(details="use self.superset_app instead of self.flask_app")  # type: ignore   # pylint: disable=line-too-long,useless-suppression
+    # type: ignore   # pylint: disable=line-too-long,useless-suppression
+    @deprecated(details="use self.superset_app instead of self.flask_app")
     @property
     def flask_app(self) -> SupersetApp:
         return self.superset_app
@@ -268,17 +269,17 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         #     category_icon="",
         # )
         # 行级安全
-        # appbuilder.add_view(
-        #     RowLevelSecurityFiltersModelView,
-        #     "Row Level Security",
-        #     label=__("Row level security"),
-        #     category="Security",
-        #     category_label=__("Security"),
-        #     icon="fa-lock",
-        #     menu_cond=lambda: feature_flag_manager.is_feature_enabled(
-        #         "ROW_LEVEL_SECURITY"
-        #     ),
-        # )
+        appbuilder.add_view(
+            RowLevelSecurityFiltersModelView,
+            "Row Level Security",
+            label="Row level security",
+            category="Security",
+            category_label="Security",
+            icon="fa-lock",
+            menu_cond=lambda: feature_flag_manager.is_feature_enabled(
+                "ROW_LEVEL_SECURITY"
+            ),
+        )
 
         #
         # Setup views with no menu
@@ -322,30 +323,30 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
                 "VERSIONED_EXPORT"
             ),
         )
-        # appbuilder.add_link(
-        #     "SQL Editor",
-        #     label=_("SQL Editor"),
-        #     href="/sqllab/",
-        #     category_icon="fa-flask",
-        #     icon="fa-flask",
-        #     category="SQL Lab",
-        #     category_label=__("SQL Lab"),
-        # )
-        # appbuilder.add_link(
-        #     __("Saved Queries"),
-        #     href="/savedqueryview/list/",
-        #     icon="fa-save",
-        #     category="SQL Lab",
-        # )
-        # appbuilder.add_link(
-        #     "Query Search",
-        #     label=_("Query History"),
-        #     href="/sqllab/history/",
-        #     icon="fa-search",
-        #     category_icon="fa-flask",
-        #     category="SQL Lab",
-        #     category_label=__("SQL Lab"),
-        # )
+        appbuilder.add_link(
+            "SQL Editor",
+            label="SQL Editor",
+            href="/sqllab/",
+            category_icon="fa-flask",
+            icon="fa-flask",
+            category="SQL Lab",
+            category_label="SQL Lab",
+        )
+        appbuilder.add_link(
+            "Saved Queries",
+            href="/savedqueryview/list/",
+            icon="fa-save",
+            category="SQL Lab",
+        )
+        appbuilder.add_link(
+            "Query Search",
+            label="Query History",
+            href="/sqllab/history/",
+            icon="fa-search",
+            category_icon="fa-flask",
+            category="SQL Lab",
+            category_label="SQL Lab",
+        )
         appbuilder.add_view(
             DatabaseView,
             "Databases",
@@ -483,7 +484,8 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             category="Manage",
             category_label=__("Manage"),
             icon="fa-exclamation-triangle",
-            menu_cond=lambda: feature_flag_manager.is_feature_enabled("ALERT_REPORTS"),
+            menu_cond=lambda: feature_flag_manager.is_feature_enabled(
+                "ALERT_REPORTS"),
         )
         appbuilder.add_view_no_menu(ReportView)
 
@@ -714,7 +716,8 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         Compress(self.superset_app)
 
         if self.config["TALISMAN_ENABLED"]:
-            talisman.init_app(self.superset_app, **self.config["TALISMAN_CONFIG"])
+            talisman.init_app(self.superset_app, **
+                              self.config["TALISMAN_CONFIG"])
 
     def configure_logging(self) -> None:
         self.config["LOGGING_CONFIGURATOR"].configure_logging(
@@ -730,7 +733,8 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         with self.superset_app.app_context():
             pessimistic_connection_handling(db.engine)
 
-        migrate.init_app(self.superset_app, db=db, directory=APP_DIR + "/migrations")
+        migrate.init_app(self.superset_app, db=db,
+                         directory=APP_DIR + "/migrations")
 
     def configure_wtf(self) -> None:
         if self.config["WTF_CSRF_ENABLED"]:

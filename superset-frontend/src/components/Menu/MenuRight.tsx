@@ -18,18 +18,18 @@
  */
 import React from 'react';
 import { MainNav as Menu } from 'src/common/components';
-import { t, styled, css, SupersetTheme } from 'src/core';
+import { t, styled } from 'src/core';
 import { Link } from 'react-router-dom';
 import Icons from 'src/components/Icons';
 import LanguagePicker from './LanguagePicker';
 import { NavBarProps, MenuObjectProps } from './Menu';
 
 export const dropdownItems = [
-  // {
-  //   label: t('SQL query'),
-  //   url: '/sqllab?new=true',
-  //   icon: 'fa-fw fa-search',
-  // },
+  {
+    label: t('SQL query'),
+    url: '/sqllab?new=true',
+    icon: 'fa-fw fa-search',
+  },
   {
     label: t('Chart'),
     url: '/chart/add',
@@ -41,14 +41,6 @@ export const dropdownItems = [
     icon: 'fa-fw fa-dashboard',
   },
 ];
-
-const versionInfoStyles = (theme: SupersetTheme) => css`
-  padding: ${theme.gridUnit * 1.5}px ${theme.gridUnit * 4}px
-    ${theme.gridUnit * 4}px ${theme.gridUnit * 7}px;
-  color: ${theme.colors.grayscale.base};
-  font-size: ${theme.typography.sizes.xs}px;
-  white-space: nowrap;
-`;
 
 const StyledDiv = styled.div<{ align: string }>`
   display: flex;
@@ -127,33 +119,6 @@ const RightMenu = ({
             <Menu.Item key="logout">
               <a href={navbarRight.user_logout_url}>{t('Logout')}</a>
             </Menu.Item>
-          </Menu.ItemGroup>,
-        ]}
-        {(navbarRight.version_string ||
-          navbarRight.version_sha ||
-          navbarRight.build_number) && [
-          <Menu.Divider key="version-info-divider" />,
-          <Menu.ItemGroup key="about-section" title={t('About')}>
-            <div className="about-section">
-              {navbarRight.show_watermark && (
-                <div css={versionInfoStyles}>{t('Powered by Choiceform')}</div>
-              )}
-              {navbarRight.version_string && (
-                <div css={versionInfoStyles}>
-                  Version: {navbarRight.version_string}
-                </div>
-              )}
-              {navbarRight.version_sha && (
-                <div css={versionInfoStyles}>
-                  SHA: {navbarRight.version_sha}
-                </div>
-              )}
-              {navbarRight.build_number && (
-                <div css={versionInfoStyles}>
-                  Build: {navbarRight.build_number}
-                </div>
-              )}
-            </div>
           </Menu.ItemGroup>,
         ]}
       </SubMenu>
