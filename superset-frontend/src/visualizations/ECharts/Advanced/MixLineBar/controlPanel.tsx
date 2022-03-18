@@ -176,8 +176,80 @@ const config: ControlPanelConfig = {
         ['groupby'],
         [<h1 className="section-header">{t('Bar Chart')}</h1>],
         ...createQuerySection(''),
+        [
+          {
+            name: 'noSort',
+            config: {
+              type: 'CheckboxControl',
+              label: t('No Sort'),
+              default: true,
+              description: t('Not using sorting operations'), // 不使用排序操作
+            },
+          },
+        ],
+        [
+          {
+            name: 'legacy_order_by',
+            config: {
+              ...sharedControls.legacy_order_by,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                !Boolean(controls?.noSort?.value),
+            },
+          },
+        ],
+        [
+          {
+            name: 'order_desc',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Sort descending'),
+              default: true,
+              description: t(
+                'Whether to sort descending or ascending. Takes effect only when "Sort by" is set',
+              ),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                !Boolean(controls?.noSort?.value),
+            },
+          },
+        ],
         [<h1 className="section-header">{t('Line Chart')}</h1>],
         ...createQuerySection('B'),
+        [
+          {
+            name: 'noSortB',
+            config: {
+              type: 'CheckboxControl',
+              label: t('No Sort'),
+              default: true,
+              description: t('Not using sorting operations'), // 不使用排序操作
+            },
+          },
+        ],
+        [
+          {
+            name: 'legacy_order_by_b',
+            config: {
+              ...sharedControls.legacy_order_by,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                !Boolean(controls?.noSortB?.value),
+            },
+          },
+        ],
+        [
+          {
+            name: 'order_desc_b',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Sort descending'),
+              default: true,
+              description: t(
+                'Whether to sort descending or ascending. Takes effect only when "Sort by" is set',
+              ),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                !Boolean(controls?.noSortB?.value),
+            },
+          },
+        ],
       ],
     },
     {

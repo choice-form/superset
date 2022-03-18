@@ -18,7 +18,13 @@
  */
 
 /* eslint-disable camelcase */
-import { AdhocFilter, QueryFieldAliases, QueryFormData, QueryObject, QueryObjectFilterClause } from './types';
+import {
+  AdhocFilter,
+  QueryFieldAliases,
+  QueryFormData,
+  QueryObject,
+  QueryObjectFilterClause,
+} from './types';
 import processFilters from './processFilters';
 import extractExtras from './extractExtras';
 import extractQueryFields from './extractQueryFields';
@@ -52,14 +58,22 @@ export default function buildQueryObject<T extends QueryFormData>(
     series_columns,
     series_limit,
     series_limit_metric,
+    legacy_order_by,
     ...residualFormData
   } = formData;
-  const { adhoc_filters: appendAdhocFilters = [], filters: appendFilters = [], custom_form_data = {}, ...overrides } =
-    extra_form_data || {};
+  const {
+    adhoc_filters: appendAdhocFilters = [],
+    filters: appendFilters = [],
+    custom_form_data = {},
+    ...overrides
+  } = extra_form_data || {};
 
   const numericRowLimit = Number(row_limit);
   const numericRowOffset = Number(row_offset);
-  const { metrics, columns, orderby } = extractQueryFields(residualFormData, queryFields);
+  const { metrics, columns, orderby } = extractQueryFields(
+    residualFormData,
+    queryFields,
+  );
 
   // collect all filters for conversion to simple filters/freeform clauses
   const extras = extractExtras(formData);
@@ -90,8 +104,14 @@ export default function buildQueryObject<T extends QueryFormData>(
     metrics,
     orderby,
     annotation_layers,
-    row_limit: row_limit == null || Number.isNaN(numericRowLimit) ? undefined : numericRowLimit,
-    row_offset: row_offset == null || Number.isNaN(numericRowOffset) ? undefined : numericRowOffset,
+    row_limit:
+      row_limit == null || Number.isNaN(numericRowLimit)
+        ? undefined
+        : numericRowLimit,
+    row_offset:
+      row_offset == null || Number.isNaN(numericRowOffset)
+        ? undefined
+        : numericRowOffset,
     series_columns,
     series_limit,
     series_limit_metric,
@@ -100,6 +120,7 @@ export default function buildQueryObject<T extends QueryFormData>(
     order_desc: typeof order_desc === 'undefined' ? true : order_desc,
     url_params: url_params || undefined,
     custom_params,
+    legacy_order_by,
   };
   // override extra form data used by native and cross filters
   queryObject = overrideExtraFormData(queryObject, overrides);
