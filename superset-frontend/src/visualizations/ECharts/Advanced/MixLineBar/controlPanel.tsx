@@ -20,6 +20,7 @@ import React from 'react';
 import { t, validateNonEmpty } from 'src/core';
 import {
   ControlPanelConfig,
+  ControlPanelsContainerProps,
   ControlSetRow,
   emitFilterControl,
   sharedControls,
