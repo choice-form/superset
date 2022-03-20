@@ -90,6 +90,7 @@ export default function transformProps(
     endAngle: 0,
     min: 0,
     max: 100,
+    center: ['50%', '65%'],
     // 仪表盘边缘线
     axisLine: {
       lineStyle: {
