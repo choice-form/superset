@@ -88,6 +88,7 @@ const barConfig = (
   barBackground: boolean,
   yAxisShowMinmax: boolean,
   yAxisBounds: any[],
+  barWidth: number,
 ) => {
   // 标签位置，默认顶部
   let labelPosition = { position: 'top' };
@@ -108,6 +109,8 @@ const barConfig = (
       // 是否隐藏重叠的标签
       hideOverlap: true,
     },
+    // 柱子宽度
+    barWidth,
     label: {
       // 是否显示图形上的文本标签
       show: showLabel,
@@ -179,6 +182,7 @@ export default function transformProps(
     legendPadding, // 图例的内边距
     legendType, // 图例的显示类型：滚动还是平铺
     barBackground, // 柱形的背景控制
+    barWidth, // 柱子宽度
     smooth, // 平滑曲线
     symbol, // 折线图节点上的标记类型
     symbolSize, // 标记的大小
@@ -293,6 +297,7 @@ export default function transformProps(
     barBackground,
     yAxisShowMinmax,
     yAxisBounds,
+    barWidth,
   );
   const lConfig = lineConfig(
     stackedB,

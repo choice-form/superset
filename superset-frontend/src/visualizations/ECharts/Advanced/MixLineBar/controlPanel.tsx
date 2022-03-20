@@ -271,7 +271,24 @@ const config: ControlPanelConfig = {
     {
       label: t('Bar Chart'),
       expanded: false,
-      controlSetRows: [['barBackground'], ...createCustomizeSection('')],
+      controlSetRows: [
+        ['barBackground'],
+        [
+          {
+            name: 'barWidth',
+            config: {
+              ...sharedControls.distance,
+              label: t('Bar Width'),
+              description: '',
+              renderTrigger: true,
+              min: 0,
+              max: 500,
+              default: 0, // 0就是自动宽度
+            },
+          },
+        ],
+        ...createCustomizeSection(''),
+      ],
     },
     {
       label: t('Line Chart'),
