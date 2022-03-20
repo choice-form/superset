@@ -3879,9 +3879,15 @@
         "展示指标如何随着漏斗的推进而变化。这个经典图表对于可视化管道或生命周期中各个阶段之间的下降非常有用。"
       ],
       "Funnel Chart": ["漏斗图"],
+      "Color Range": ["颜色范围"],
+      "Start Range Color": ["开始颜色范围"],
+      "Start Range": ["开始范围"],
+      "Middle Range Color": ["中间颜色范围"],
+      "Middle Range": ["中间范围"],
+      "End Range Color": ["结束范围颜色"],
       "Label Format": ["标签格式化"],
-      "Label Font size": ["标签字体大小"],
-      "Font size for axis labels": ["轴标签的字体大小"],
+      "Value Title": ["值标题"],
+      "Value Title Size": ["值标题大小"],
       "Value Font size": ["值字体大小"],
       "Font size for detail value": ["值的字体大小"],
       "Value Animation": ["值动画"],
@@ -3896,12 +3902,6 @@
       "Whether to show the split lines on the axis": [
         "是否在坐标轴上显示分割线"
       ],
-      "Show progress": ["显示进度条"],
-      "Whether to show the progress of gauge chart": ["是否显示仪表图的进度"],
-      "Round cap": ["圆形盖"],
-      "Style the ends of the progress bar with a round cap": [
-        "用圆形盖设计进度条末端的样式"
-      ],
       "Value format": ["值格式"],
       "Additional text to add before or after the value, e.g. unit": [
         "在值之前或之后添加的附加文本，例如单位"
@@ -3910,6 +3910,10 @@
         "使用仪表图来显示目标的进展程度。"
       ],
       "Gauge Chart": ["仪表图"],
+      "Round cap": ["圆形盖"],
+      "Style the ends of the progress bar with a round cap": [
+        "用圆形盖设计进度条末端的样式"
+      ],
       "Circle ring chart indicate the progress of the target.": [
         "使用圆环图来展示目标的进程程度。"
       ],
@@ -4001,8 +4005,6 @@
       "Sort lines by category axis for label names.": [
         "按类目轴的标签名称排序折线。"
       ],
-      "Tooltip Format": ["Tooltip格式化"],
-      "Category Axis Label": ["类目轴标签"],
       "Evolution": ["演化"],
       "Broken line chart relates all the data points symbol by broken lines, which is used to show the trend of data changing. It could be used in both rectangular coordinate andpolar coordinate.": [
         "折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。"

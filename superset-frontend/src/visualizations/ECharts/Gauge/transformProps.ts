@@ -19,7 +19,10 @@
 import { DataRecordValue, getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
 import { rgbToHex } from 'src/utils/colorUtils';
-import { getFontSize } from 'src/visualizations/ECharts/utils/chart';
+import {
+  getDistance,
+  getFontSize,
+} from 'src/visualizations/ECharts/utils/chart';
 
 import {
   DEFAULT_FORM_DATA as DEFAULT_GAUGE_FORM_DATA,
@@ -47,7 +50,7 @@ export default function transformProps(
     titleText,
     titleFontSize,
     titleFontColor,
-
+    numberDistance,
     startRange,
     startRangeColor,
     middleRange,
@@ -116,7 +119,7 @@ export default function transformProps(
     pointer: {
       show: showPointer,
       icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-      length: '15%',
+      length: '12%',
       width: 20,
       offsetCenter: [0, '-60%'],
       itemStyle: {
@@ -144,8 +147,8 @@ export default function transformProps(
     // 文字标签
     axisLabel: {
       show: showLabel,
-      distance: -80,
-      fontSize: 18,
+      distance: -70,
+      fontSize: 14,
       formatter: labelFormatter,
     },
     title: {
@@ -157,7 +160,7 @@ export default function transformProps(
     detail: {
       // 字体动画
       valueAnimation: fontAnimation,
-      offsetCenter: [0, '0%'],
+      offsetCenter: [0, `${getDistance(numberDistance ?? 0, height)}%`],
       fontSize: getFontSize(valueFontSize, width, 50), // 文字大小：50 - 500
       formatter: numberFormatter,
       color: 'auto',

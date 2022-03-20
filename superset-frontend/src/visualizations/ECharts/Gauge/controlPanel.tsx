@@ -156,6 +156,22 @@ const config: ControlPanelConfig = {
         ],
         [
           {
+            name: 'numberDistance',
+            config: {
+              ...sharedControls.distance,
+              label: t('Number Distance'),
+              // 设置显示数字的垂直距离
+              description: t(
+                'Set the vertical distance of the displayed number.',
+              ),
+              min: -100,
+              max: 100,
+              default: 0,
+            },
+          },
+        ],
+        [
+          {
             name: 'valueAnimation',
             config: {
               type: 'CheckboxControl',
