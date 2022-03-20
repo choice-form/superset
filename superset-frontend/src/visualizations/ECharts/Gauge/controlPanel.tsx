@@ -23,7 +23,7 @@ import {
   emitFilterControl,
   ControlPanelsContainerProps,
 } from 'src/chartConntrols';
-import { DEFAULT_FORM_DATA } from './types';
+import { hexToRgba } from '../../../utils/colorUtils';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -44,6 +44,67 @@ const config: ControlPanelConfig = {
         ['titleText'],
         ['TitleFontSize'],
         ['TitleFontColor'],
+        // eslint-disable-next-line react/react-in-jsx-scope
+        [<h1 className="section-header">{t('Color Range')}</h1>],
+        [
+          {
+            name: 'startRangeColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Start Range Color'),
+              description: '',
+              default: hexToRgba('#58AAC3'),
+            },
+          },
+          {
+            name: 'startRange',
+            config: {
+              type: 'SliderControl',
+              label: t('Start Range'),
+              description: '',
+              renderTrigger: true,
+              min: 0,
+              max: 100,
+              default: 50,
+            },
+          },
+        ],
+        [
+          {
+            name: 'middleRangeColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Middle Range Color'),
+              description: '',
+              default: hexToRgba('#E59B4D'),
+            },
+          },
+          {
+            name: 'middleRange',
+            config: {
+              type: 'SliderControl',
+              label: t('Middle Range'),
+              description: '',
+              renderTrigger: true,
+              min: 0,
+              max: 100,
+              default: 80,
+            },
+          },
+        ],
+        [
+          {
+            name: 'endRangeColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('End Range Color'),
+              description: '',
+              default: hexToRgba('#D75D78'),
+            },
+          },
+        ],
+
+        ['showLabel'],
         [
           {
             name: 'labelFormat',
@@ -51,25 +112,34 @@ const config: ControlPanelConfig = {
               ...sharedControls.yAxisFormat,
               label: t('Label Format'),
               default: 'PRECENT',
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.showLabel?.value),
             },
           },
         ],
         [
           {
-            name: 'label_font_size',
+            name: 'yAxisName',
             config: {
-              type: 'SliderControl',
-              label: t('Label Font size'),
-              description: t('Font size for axis labels'),
-              renderTrigger: true,
-              min: 12,
-              max: 20,
-              default: 16,
+              ...sharedControls.yAxisName,
+              label: t('Value Title'),
+              description: '',
             },
           },
         ],
+        [
+          {
+            name: 'yAxisNameSize',
+            config: {
+              ...sharedControls.TitleFontSize,
+              label: t('Value Title Size'),
+              description: '',
+              default: 30,
+            },
+          },
+        ],
+
         ['yAxisFormat'],
-        ['valueFontColor'],
         [
           {
             name: 'value_font_size',
@@ -143,36 +213,6 @@ const config: ControlPanelConfig = {
                     controls?.chartType?.value as string,
                   ),
                 ),
-            },
-          },
-        ],
-        [
-          {
-            name: 'show_progress',
-            config: {
-              type: 'CheckboxControl',
-              label: t('Show progress'),
-              description: t('Whether to show the progress of gauge chart'),
-              renderTrigger: true,
-              default: true,
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(controls?.chartType?.value === 'digital'),
-            },
-          },
-        ],
-        [
-          {
-            name: 'round_cap',
-            config: {
-              type: 'CheckboxControl',
-              label: t('Round cap'),
-              description: t(
-                'Style the ends of the progress bar with a round cap',
-              ),
-              renderTrigger: true,
-              default: DEFAULT_FORM_DATA.roundCap,
-              visibility: ({ controls }: ControlPanelsContainerProps) =>
-                !Boolean(controls?.chartType?.value === 'digital'),
             },
           },
         ],

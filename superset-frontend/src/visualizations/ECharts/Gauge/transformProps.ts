@@ -43,18 +43,23 @@ export default function transformProps(
   const {
     // metric,
     valueFontSize,
-    labelFontSize,
     fontAnimation,
-    showProgress,
     titleText,
     titleFontSize,
     titleFontColor,
-    roundCap,
+
+    startRange,
+    startRangeColor,
+    middleRange,
+    middleRangeColor,
+    endRangeColor,
+    showLabel,
     showAxisTick,
     showSplitLine,
     showPointer,
     yAxisFormat,
-    valueFontColor,
+    yAxisName,
+    yAxisNameSize,
     labelFormat,
     emitFilter,
   }: EchartsGaugeFormData = { ...DEFAULT_GAUGE_FORM_DATA, ...formData };
@@ -77,75 +82,91 @@ export default function transformProps(
   const series = {
     type: 'gauge',
     // 开始角度, 这个角度是固定的，很少需要配置，所以不提供自定义了。
-    startAngle: 225,
+    startAngle: 180,
     // 结束角度
-    endAngle: -45,
+    endAngle: 0,
     min: 0,
     max: 100,
     // 仪表盘边缘线
     axisLine: {
       lineStyle: {
-        // 仪表盘的边线宽度，必须和进度条的宽度一致
-        width: 15,
+        width: 6,
+        color: [
+          [
+            startRange / 100,
+            rgbToHex(
+              startRangeColor?.r,
+              startRangeColor?.g,
+              startRangeColor?.b,
+            ),
+          ],
+          [
+            middleRange / 100,
+            rgbToHex(
+              middleRangeColor?.r,
+              middleRangeColor?.g,
+              middleRangeColor?.b,
+            ),
+          ],
+          [1, rgbToHex(endRangeColor?.r, endRangeColor?.g, endRangeColor?.b)],
+        ],
       },
-    },
-    progress: {
-      // 进度条两边是否显示小圆盖
-      roundCap,
-      // 超出上限是否截断图形
-      clip: true,
-      // 是否显示
-      show: showProgress,
-      // 进度条的宽度，必须和线的宽度保持一致
-      width: 15,
     },
     // 指针
     pointer: {
       show: showPointer,
-      showAbove: false,
+      icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
+      length: '15%',
+      width: 20,
+      offsetCenter: [0, '-60%'],
+      itemStyle: {
+        color: 'auto',
+      },
     },
     // 短刻度
     axisTick: {
       show: showAxisTick,
-      distance: 0,
       length: 8,
+      lineStyle: {
+        color: 'auto',
+        width: 2,
+      },
     },
     // 长刻度
     splitLine: {
       show: showSplitLine,
-      distance: 0,
       length: 20,
+      lineStyle: {
+        color: 'auto',
+        width: 5,
+      },
     },
     // 文字标签
     axisLabel: {
-      show: true,
-      distance: 20,
-      fontSize:
-        getFontSize(labelFontSize, width) > 12
-          ? getFontSize(labelFontSize, width)
-          : 12,
+      show: showLabel,
+      distance: -80,
+      fontSize: 18,
       formatter: labelFormatter,
+    },
+    title: {
+      offsetCenter: [0, '-20%'],
+      fontSize: yAxisNameSize,
+      // color: 'auto',
     },
     // 中间文字
     detail: {
       // 字体动画
       valueAnimation: fontAnimation,
-      fontSize:
-        getFontSize(valueFontSize, width) > 18
-          ? getFontSize(valueFontSize, width)
-          : 18, // 文字大小：50 - 500
+      offsetCenter: [0, '0%'],
+      fontSize: getFontSize(valueFontSize, width, 50), // 文字大小：50 - 500
       formatter: numberFormatter,
-      color:
-        valueFontColor &&
-        rgbToHex(valueFontColor?.r, valueFontColor?.g, valueFontColor?.b),
+      color: 'auto',
     },
     // 中间数据
     data: [
       {
         value,
-        detail: {
-          offsetCenter: ['0%', '30%'],
-        },
+        name: yAxisName,
       },
     ],
   };
