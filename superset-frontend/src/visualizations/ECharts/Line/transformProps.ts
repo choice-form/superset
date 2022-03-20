@@ -26,6 +26,7 @@ import {
 import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { defaultGrid, defaultTooltip } from '../defaults';
+import { rgbToHex } from '../../../utils/colorUtils';
 
 export default function transformProps(
   chartProps: EchartsLineChartProps,
@@ -46,10 +47,26 @@ export default function transformProps(
     groupby,
     metrics, // 查询指标
     showAxisPointer, // 是否显示坐标轴指示器
-    xAxisLabel, // X轴名称
-    yAxisLabel, // Y轴名称
+
     yAxisLine, // 是否显示Y轴的轴线
     yAxisFormat, // Y轴的格式化类
+    yAxisName, // Y轴名称
+    yNameFontColor, // 名称颜色
+    yAxisTick, // 轴线上的刻度
+    ySplitLine, // Y轴方向的内部分割线
+    yAxisLabel, // 是否显示Y轴标签
+    yAxisShowMinmax, // 是否显示Y轴的最大值最小值限制
+    yAxisBounds, // Y轴的最小值和最大值数组
+
+    xAxisName, // X轴名称
+    xNameFontColor, // 名称颜色
+    xAxisLine, // X轴的轴线是否显示
+    xAxisLabel, // X轴标签是否显示
+    xLabelLayout, // X轴布局：标签旋转角度
+    xAxisTick, // X轴是否显示刻度
+    xSplitLine, // X轴方向的内部分割线
+    xDistance, // X轴名称的距离
+
     orderLines, // 是否按标签名称排序
     showLabel, // 是否显示图形上的文本标签
     stacked, // 堆叠
@@ -58,10 +75,7 @@ export default function transformProps(
     symbolSize, // 标记的大小
     symbolRotate, // 标记的旋转角度
     showAreaChart, // 显示区域面积图
-    yAxisShowMinmax, // 是否显示Y轴的最大值最小值限制
-    yAxisBounds, // Y轴的最小值和最大值数组
-    xLabelLayout, // X轴布局：标签旋转角度
-    tooltipFormat,
+
     showLegend,
     legendPadding,
     legendOrientation,
@@ -86,9 +100,6 @@ export default function transformProps(
     labelPosition = { position: 'right' };
   }
 
-  // tooltip的格式化方法, 堆叠百分比的时候，自动显示百分比格式化类型
-  const tooltipFormatter = getNumberFormatter(tooltipFormat);
-
   // Y轴的格式化方法
   const numberFormatter = getNumberFormatter(yAxisFormat);
 
@@ -104,6 +115,10 @@ export default function transformProps(
     labelLayout: {
       // 是否隐藏重叠的标签
       hideOverlap: true,
+    },
+    tooltip: {
+      // 提示的值格式化
+      valueFormatter: numberFormatter,
     },
     label: {
       // 在柱子上显示值
@@ -193,14 +208,17 @@ export default function transformProps(
 
   // 类目轴的名称
   let xLabelGap = {};
-  if (xAxisLabel) {
+  if (xAxisName) {
     xLabelGap = {
-      name: xAxisLabel, // X 表示类目轴
-      nameGap: getRotate(xLabelLayout) === 0 ? 32 : 64,
+      name: xAxisName, // X 表示类目轴
+      nameGap: xDistance,
       nameLocation: 'center',
       nameTextStyle: {
         fontWeight: 'bold',
         fontSize: 16,
+        color:
+          xNameFontColor &&
+          rgbToHex(xNameFontColor?.r, xNameFontColor?.g, xNameFontColor?.b),
       },
     };
   }
@@ -210,26 +228,52 @@ export default function transformProps(
     {
       type: 'category', // 类目轴
       ...xLabelGap,
+      // 轴线
+      axisLine: {
+        show: xAxisLine,
+      },
+      // 轴线上的刻度
+      axisTick: {
+        show: xAxisTick,
+      },
+      // 内部分割线
+      splitLine: {
+        show: xSplitLine,
+      },
       axisLabel: {
+        show: xAxisLabel,
         hideOverlap: true, // 是否隐藏重叠的标签
         rotate: getRotate(xLabelLayout), // 标签旋转角度
       },
     },
     {
       type: 'value', // 数值轴
-      name: yAxisLabel, // Y表示数值轴
+      name: yAxisName, // Y表示数值轴
       nameLocation: 'center',
       nameGap: 32,
       nameTextStyle: {
         fontWeight: 'bold',
         fontSize: 16,
+        color:
+          yNameFontColor &&
+          rgbToHex(yNameFontColor?.r, yNameFontColor?.g, yNameFontColor?.b),
       },
       ...yMinMax,
       axisLine: {
         // 是否显示数值轴的轴线
         show: yAxisLine,
       },
+      // 轴线上的刻度
+      axisTick: {
+        show: yAxisTick,
+      },
+      // 内部分割线
+      splitLine: {
+        show: ySplitLine,
+      },
       axisLabel: {
+        show: yAxisLabel,
+        hideOverlap: true, // 是否隐藏重叠的标签
         formatter: numberFormatter,
       },
     },
@@ -239,17 +283,17 @@ export default function transformProps(
 
   // 图形grid位置计算
   const gridLayout = {};
-  if (xAxisLabel) {
+  if (xAxisName) {
     if (getRotate(xLabelLayout) === 0) {
-      gridLayout['bottom'] = 28;
+      gridLayout['bottom'] = 64;
     } else {
-      gridLayout['bottom'] = 15;
+      gridLayout['bottom'] = 32;
     }
   } else {
     gridLayout['bottom'] = 'auto';
   }
   if (showLegend) {
-    gridLayout['top'] = '5%';
+    gridLayout['top'] = '10%';
   }
 
   let axisPointer = {};
@@ -270,8 +314,6 @@ export default function transformProps(
     tooltip: {
       ...defaultTooltip,
       ...axisPointer,
-      // 提示的值格式化
-      valueFormatter: tooltipFormatter,
     },
     legend: {
       show: showLegend,

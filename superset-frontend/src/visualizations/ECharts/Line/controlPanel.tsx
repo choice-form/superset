@@ -70,15 +70,6 @@ const config: ControlPanelConfig = {
           },
         ],
         ['showAxisPointer'],
-        [
-          {
-            name: 'tooltipFormat',
-            config: {
-              ...sharedControls.yAxisFormat,
-              label: t('Tooltip Format'),
-            },
-          },
-        ],
       ],
     },
     {
@@ -98,7 +89,50 @@ const config: ControlPanelConfig = {
       controlSetRows: [
         ['yAxisLine'],
         ['yAxisFormat'],
-        ['yAxisLabel'],
+        ['yAxisName'],
+        [
+          {
+            name: 'yNameFontColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Value axis name font color'),
+              description: t('Font color of Value axis name.'),
+            },
+          },
+        ],
+        [
+          {
+            name: 'yAxisTick',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Value Axis Tick'),
+              description: t('Value Axis Tick'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'yAxisLabel',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Value Axis Label'),
+              description: t('Value Axis Label'),
+              default: true,
+            },
+          },
+        ],
+        [
+          {
+            name: 'ySplitLine',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show Value Axis Split Line'),
+              description: t('Show Value Axis Split Line'),
+              default: false,
+            },
+          },
+        ],
         ['yAxisShowMinmax'],
         ['yAxisBounds'],
       ],
@@ -106,7 +140,69 @@ const config: ControlPanelConfig = {
     {
       label: t('Category Axis'),
       expanded: false,
-      controlSetRows: [['xAxisLabel'], ['xLabelLayout']],
+      controlSetRows: [
+        ['xLabelLayout'],
+        ['xAxisLine'],
+        ['xAxisName'],
+        [
+          {
+            name: 'xAxisTick',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Category Axis Tick'),
+              description: t('Category Axis Tick'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xAxisLabel',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show Category Axis Label'),
+              description: t('Show Category Axis Label'),
+              default: true,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xSplitLine',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Show Category Axis Split Line'),
+              description: t('Show Category Axis Split Line'),
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xDistance',
+            config: {
+              ...sharedControls.distance,
+              label: t('Category axis name distance'),
+              description: t(
+                'Distance between Category-axis name and boundary',
+              ),
+              min: 0,
+              max: 100,
+              default: 0,
+            },
+          },
+        ],
+        [
+          {
+            name: 'xNameFontColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Category axis name font color'),
+              description: t('Font color of Category-axis name.'),
+            },
+          },
+        ],
+      ],
     },
   ],
   controlOverrides: {
@@ -136,17 +232,11 @@ const config: ControlPanelConfig = {
           "narrow the data's extent.",
       ),
     },
-    xAxisLabel: {
-      label: t('Category Axis Label'),
-    },
     xLabelLayout: {
       label: t('Category Axis Label Rotate'),
     },
     groupby: {
       validators: [validateNonEmpty], // 非空校验
-    },
-    color_scheme: {
-      default: 'echarts5Colors', // 默认使用echarts5配色
     },
     showAxisPointer: {
       default: true,
