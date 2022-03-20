@@ -54,9 +54,11 @@ export default function transformProps(
     numberFontSize,
     numberFontColor,
     numberDistance,
+    horizontalDistance,
     descriptionFontColor,
     descriptionFontSize,
     descriptionDistance,
+    descriptionHorizontalDistance,
   }: EchartsGaugeFormData = { ...DEFAULT_GAUGE_FORM_DATA, ...formData };
 
   console.log('chartProps:', chartProps);
@@ -87,7 +89,7 @@ export default function transformProps(
       elements: [
         {
           type: 'text',
-          left: 'left',
+          left: `${getDistance(horizontalDistance ?? 0, width)}%`,
           top: `${getDistance(numberDistance ?? 0, height) + 20}%`,
           cursor: 'default',
           style: {
@@ -105,7 +107,7 @@ export default function transformProps(
         },
         {
           type: 'text',
-          left: 'left',
+          left: `${getDistance(descriptionHorizontalDistance ?? 0, width)}%`,
           top: `${getDistance(descriptionDistance ?? 0, height) + 55}%`,
           cursor: 'default',
           style: {

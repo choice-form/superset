@@ -99,6 +99,22 @@ const config: ControlPanelConfig = {
         ],
         [
           {
+            name: 'horizontalDistance',
+            config: {
+              ...sharedControls.distance,
+              label: t('Horizontal Distance'),
+              // 设置显示数字的横向距离
+              description: t(
+                'Set the horizontal distance of the displayed number.',
+              ),
+              min: 0,
+              max: 100, // 百分比
+              default: 0,
+            },
+          },
+        ],
+        [
+          {
             name: 'descriptionFontColor',
             config: {
               ...sharedControls.valueFontColor,
@@ -130,6 +146,18 @@ const config: ControlPanelConfig = {
               label: t('Description Distance'),
               min: -55,
               max: 40,
+            },
+          },
+        ],
+        [
+          {
+            name: 'descriptionHorizontalDistance',
+            config: {
+              ...sharedControls.distance,
+              label: t('Description Horizontal Distance'),
+              min: 0,
+              max: 100, // 百分比
+              default: 0,
             },
           },
         ],
