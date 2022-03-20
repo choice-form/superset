@@ -121,8 +121,8 @@ export default function transformProps(
       show: showPointer,
       icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
       length: '12%',
-      width: 20,
-      offsetCenter: [0, '-60%'],
+      width: 12,
+      offsetCenter: [0, '-55%'],
       itemStyle: {
         color: 'auto',
       },
