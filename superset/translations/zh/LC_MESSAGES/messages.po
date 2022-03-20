@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-18 02:40+0800\n"
+"POT-Creation-Date: 2022-03-20 15:48+0800\n"
 "PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -275,15 +275,15 @@ msgstr "饼图"
 msgid "Pick at least one metric"
 msgstr "选择至少一个指标"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:177
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:199
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:178
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:272
 #: superset-frontend/src/visualizations/ECharts/Bar/index.ts:64
 #: superset/viz.py:729
 msgid "Bar Chart"
 msgstr "柱状图"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:179
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:204
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:216
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:294
 #: superset-frontend/src/visualizations/ECharts/Line/index.ts:62
 #: superset-frontend/src/visualizations/XYCharts/Line/createMetadata.ts:26
 #: superset/viz.py:822
@@ -5190,7 +5190,7 @@ msgstr "图表标题"
 #: superset-frontend/src/chartConntrols/shared-controls/dndControls.tsx:139
 #: superset-frontend/src/chartConntrols/shared-controls/index.tsx:395
 #: superset-frontend/src/explore/controls.jsx:403
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:215
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:305
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:298
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:264
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:190
@@ -5530,8 +5530,8 @@ msgstr "Y轴的名称"
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:216
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:219
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:134
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:135
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:136
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
 msgid "Y Axis Label"
 msgstr "Y轴的标签"
@@ -5884,10 +5884,14 @@ msgid "The color scheme for rendering chart"
 msgstr "绘制图表的配色方案"
 
 #: superset-frontend/src/chartConntrols/shared-controls/legacySortBy.tsx:29
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:185
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:223
 msgid "No Sort"
 msgstr "不排序"
 
 #: superset-frontend/src/chartConntrols/shared-controls/legacySortBy.tsx:31
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:187
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:225
 msgid "Not using sorting operations"
 msgstr "不使用排序"
 
@@ -5895,10 +5899,14 @@ msgstr "不使用排序"
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:976
 #: superset-frontend/src/explore/controlPanels/sections.tsx:125
 #: superset-frontend/src/visualizations/D3/TableChart/controlPanel.tsx:304
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:206
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:244
 msgid "Sort descending"
 msgstr "降序"
 
 #: superset-frontend/src/chartConntrols/shared-controls/legacySortBy.tsx:42
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:208
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:246
 msgid ""
 "Whether to sort descending or ascending. Takes effect only when \"Sort "
 "by\" is set"
@@ -9148,7 +9156,7 @@ msgstr "把您的代码放在这里"
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:26
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:89
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:173
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:174
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:40
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:34
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
@@ -11077,7 +11085,7 @@ msgstr "每个区块的时间单位。应该是比域粒度更小的单位。应
 #: superset-frontend/src/visualizations/D3/SunburstChart/controlPanel.ts:47
 #: superset-frontend/src/visualizations/D3/TreemapChart/controlPanel.ts:48
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:139
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:184
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:257
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:51
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:62
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
@@ -11146,7 +11154,7 @@ msgstr "时间格式"
 
 #: superset-frontend/src/visualizations/D3/CalendarChart/controlPanel.ts:142
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:240
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:189
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:262
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:101
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:85
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:130
@@ -11189,7 +11197,7 @@ msgstr "是否将度量名称显示为标题"
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:210
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:86
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:104
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:141
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:169
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:101
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:71
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:110
@@ -12470,55 +12478,60 @@ msgid ""
 " making mulitBar charts stacked or side by side."
 msgstr "是否显示额外控件。额外的控制包括使多柱状图堆叠或并排。"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:123
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:124
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:125
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:233
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:234
 msgid "Y Axis Tick"
 msgstr "Y轴轴线刻度"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:145
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:146
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:147
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:255
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:256
 msgid "Show Y Axis Split Line"
 msgstr "显示Y轴方向的分割线"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:226
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:227
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:281
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:89
+msgid "Bar Width"
+msgstr "柱宽"
+
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:316
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:317
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:287
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:288
 msgid "X Axis Tick"
 msgstr "X轴轴线刻度"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:237
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:238
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:327
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:328
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:298
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:299
 msgid "Show X Axis Label"
 msgstr "显示x轴标签"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:248
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:249
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:338
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:339
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:309
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:310
 msgid "Show X Axis Split Line"
 msgstr "显示X轴方向的分割线"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:259
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:349
 msgid "X axis name distance"
 msgstr "X轴名称的边距"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:260
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:350
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:321
 msgid "Distance between X-axis name and boundary"
 msgstr "X轴名称与边界之间的距离"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:272
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:362
 msgid "X axis name font color"
 msgstr "X轴名称的字体颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:273
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:363
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:334
 msgid "Font color of X-axis name."
 msgstr "X轴名称的字体颜色"
@@ -12543,10 +12556,6 @@ msgstr "显示环比"
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:72
 msgid "Ringgit Font Color"
 msgstr "环比的字体颜色"
-
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:89
-msgid "Bar Width"
-msgstr "柱宽"
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:112
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:96
@@ -12848,7 +12857,7 @@ msgid "Value format"
 msgstr "值格式"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:94
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:143
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:171
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:186
 msgid "Additional text to add before or after the value, e.g. unit"
 msgstr "在值之前或之后添加的附加文本，例如单位"
@@ -12898,24 +12907,36 @@ msgid "Set the vertical distance of the displayed number."
 msgstr "设置显示数字的垂直距离"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:105
+msgid "Horizontal Distance"
+msgstr "横向距离"
+
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:107
+msgid "Set the horizontal distance of the displayed number."
+msgstr "设置数字的横向距离"
+
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:121
 msgid "Description Font Color"
 msgstr "描述的文字颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:106
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:122
 msgid "Font color for description."
 msgstr "描述的文字颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:116
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:132
 msgid "Description Font size"
 msgstr "描述的文字大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:117
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:133
 msgid "Font size for description."
 msgstr "值的字体大小"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:130
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:146
 msgid "Description Distance"
 msgstr "描述的距离"
+
+#: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:157
+msgid "Description Horizontal Distance"
+msgstr "描述文字的横向距离"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/index.ts:40
 msgid ""

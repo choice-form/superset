@@ -3806,6 +3806,7 @@
       ],
       "Y Axis Tick": ["Y轴轴线刻度"],
       "Show Y Axis Split Line": ["显示Y轴方向的分割线"],
+      "Bar Width": ["柱宽"],
       "X Axis Tick": ["X轴轴线刻度"],
       "Show X Axis Label": ["显示x轴标签"],
       "Show X Axis Split Line": ["显示X轴方向的分割线"],
@@ -3820,7 +3821,6 @@
       "Ringgit": ["环比"],
       "Show Ringgit": ["显示环比"],
       "Ringgit Font Color": ["环比的字体颜色"],
-      "Bar Width": ["柱宽"],
       "Value Axis": ["数值轴"],
       "Value axis name font color": ["数值轴名称的字体颜色"],
       "Font color of Value axis name.": ["数值轴名称的字体颜色"],
@@ -3925,11 +3925,16 @@
       "Set the vertical distance of the displayed number.": [
         "设置显示数字的垂直距离"
       ],
+      "Horizontal Distance": ["横向距离"],
+      "Set the horizontal distance of the displayed number.": [
+        "设置数字的横向距离"
+      ],
       "Description Font Color": ["描述的文字颜色"],
       "Font color for description.": ["描述的文字颜色"],
       "Description Font size": ["描述的文字大小"],
       "Font size for description.": ["值的字体大小"],
       "Description Distance": ["描述的距离"],
+      "Description Horizontal Distance": ["描述文字的横向距离"],
       "The number chart is best used to remind people of KPIs or the one thing you want your audience to focus on.": [
         "数字图最适合用来, 提醒大家注意KPI或你希望听众关注的一件事。"
       ],
