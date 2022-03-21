@@ -74,7 +74,23 @@ function Echart(
       chartRef.current?.getZr().on(name, handler);
     });
 
-    chartRef.current.setOption(echartOptions, true);
+    const { toolbox = {}, ...baseOptions } = echartOptions;
+
+    const options = {
+      ...baseOptions,
+      toolbox: {
+        // @ts-ignore
+        ...toolbox,
+        show: true,
+        feature: {
+          // @ts-ignore
+          ...toolbox.feature,
+          dataView: { readOnly: true },
+        },
+      },
+    };
+
+    chartRef.current.setOption(options, true);
   }, [echartOptions, eventHandlers, zrEventHandlers]);
 
   // highlighting
