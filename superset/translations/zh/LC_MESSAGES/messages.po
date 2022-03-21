@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-21 15:50+0800\n"
+"POT-Creation-Date: 2022-03-21 16:09+0800\n"
 "PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -12819,81 +12819,85 @@ msgstr "中间范围"
 msgid "End Range Color"
 msgstr "结束范围颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:113
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:111
+msgid "Axis Line Width"
+msgstr "轴线宽度"
+
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:127
 msgid "Label Format"
 msgstr "标签格式化"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:125
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:139
 msgid "Value Title"
 msgstr "值标题"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:135
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:149
 msgid "Value Title Size"
 msgstr "值标题大小"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:50
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:148
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:162
 msgid "Value Font size"
 msgstr "值字体大小"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:51
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:149
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:163
 msgid "Font size for detail value"
 msgstr "值的字体大小"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:90
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:162
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:176
 msgid "Number Distance"
 msgstr "数字的距离"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:92
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:164
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:178
 msgid "Set the vertical distance of the displayed number."
 msgstr "设置显示数字的垂直距离"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:64
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:178
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:192
 msgid "Value Animation"
 msgstr "值动画"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:65
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:179
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:193
 msgid "Whether to animate the value or just display it."
 msgstr "是否对值进行动画处理，或只是显示它。"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:192
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:206
 msgid "Show pointer"
 msgstr "显示指针"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:193
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:207
 msgid "Whether to show the pointer"
 msgstr "是否显示指针"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:204
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:218
 msgid "Show axis line ticks"
 msgstr "显示轴线刻度"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:205
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:219
 msgid "Whether to show minor ticks on the axis"
 msgstr "是否在轴上显示小刻度"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:222
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:236
 msgid "Show split lines"
 msgstr "显示分割线"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:223
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:237
 msgid "Whether to show the split lines on the axis"
 msgstr "是否在坐标轴上显示分割线"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:92
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:240
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:254
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:217
 msgid "Value format"
 msgstr "值格式"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:94
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:171
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:242
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:256
 msgid "Additional text to add before or after the value, e.g. unit"
 msgstr "在值之前或之后添加的附加文本，例如单位"
 
