@@ -51,7 +51,13 @@ export default function transformProps(
 
     showLabels, // 显示标签
     averageLine, // 平均线
+    averageLineType, // 线类型
     averageLineColor, // 平均线颜色
+
+    bubbles, // 是否显示气泡
+    scaling, // 气泡缩放
+    pointSize, // 非气泡时散点大小
+
     yAverageLineTitle,
     yAverageLineLabel,
     yValueSuffix,
@@ -272,6 +278,15 @@ export default function transformProps(
     series: [
       {
         type: 'scatter',
+        symbolSize: (data: any) => {
+          if (bubbles) {
+            return data[1] / scaling;
+          }
+          return pointSize;
+        },
+        itemStyle: {
+          color: 'auto',
+        },
         label: {
           show: showLabels,
           position: 'right',
@@ -298,7 +313,7 @@ export default function transformProps(
           silent: true,
           symbol: 'none',
           lineStyle: {
-            type: 'solid',
+            type: averageLineType,
             color:
               averageLineColor &&
               rgbToHex(
@@ -309,7 +324,6 @@ export default function transformProps(
           },
           ...averageData,
         },
-        symbolSize: 20,
         data: list,
       },
     ],

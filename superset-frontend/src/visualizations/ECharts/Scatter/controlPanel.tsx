@@ -65,6 +65,48 @@ const config: ControlPanelConfig = {
         ['titleText'],
         ['TitleFontSize'],
         ['TitleFontColor'],
+        [
+          {
+            name: 'bubbles',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Show Bubbles'),
+              renderTrigger: true,
+              default: true,
+              description: '',
+            },
+          },
+        ],
+        [
+          {
+            name: 'scaling',
+            config: {
+              ...sharedControls.symbolSize,
+              label: t('Bubbles Scaling'),
+              description: '',
+              default: 5,
+              min: 1, // 1 就是不缩放
+              max: 100, // 最大缩小几倍
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.bubbles?.value),
+            },
+          },
+        ],
+        [
+          {
+            name: 'pointSize',
+            config: {
+              ...sharedControls.symbolSize,
+              label: t('Point Size'),
+              description: '',
+              default: 20,
+              min: 10,
+              max: 100,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                !Boolean(controls?.bubbles?.value),
+            },
+          },
+        ],
         [<h1 className="section-header">{t('Labels')}</h1>],
         [
           {
@@ -104,6 +146,25 @@ const config: ControlPanelConfig = {
               ...sharedControls.stacked,
               label: t('Show average line'),
               description: t('Show average line'),
+            },
+          },
+        ],
+        [
+          {
+            name: 'averageLineType',
+            config: {
+              type: 'SelectControl',
+              label: t('Average Line Type'),
+              default: 'solid',
+              renderTrigger: true,
+              choices: [
+                ['solid', t('Solid')], // 实线
+                ['dashed', t('Dashed')], // 虚线
+                ['dotted', t('Dotted')], // 点状线
+              ],
+              description: t('Set the display type of the average line.'),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.averageLine?.value),
             },
           },
         ],
