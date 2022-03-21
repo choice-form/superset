@@ -3890,6 +3890,10 @@
       "Value Title Size": ["值标题大小"],
       "Value Font size": ["值字体大小"],
       "Font size for detail value": ["值的字体大小"],
+      "Number Distance": ["数字的距离"],
+      "Set the vertical distance of the displayed number.": [
+        "设置显示数字的垂直距离"
+      ],
       "Value Animation": ["值动画"],
       "Whether to animate the value or just display it.": [
         "是否对值进行动画处理，或只是显示它。"
@@ -3925,10 +3929,6 @@
       "Set the text color for displaying number.": ["设置显示数字的文本颜色"],
       "Number Font size": ["数字的字体大小"],
       "Set the text size for displaying number.": ["设置显示数字的文字大小"],
-      "Number Distance": ["数字的距离"],
-      "Set the vertical distance of the displayed number.": [
-        "设置显示数字的垂直距离"
-      ],
       "Horizontal Distance": ["横向距离"],
       "Set the horizontal distance of the displayed number.": [
         "设置数字的横向距离"
@@ -4089,7 +4089,14 @@
         "在多个组中可视化一组并行的指标。每个组都使用自己的点线进行可视化，每个度量在图表中表示为一条边。"
       ],
       "Radar Chart": ["雷达图"],
+      "Bubbles Scaling": ["气泡缩放"],
+      "Point Size": ["散点大小"],
       "Show average line": ["显示平均线"],
+      "Average Line Type": ["平均线类型"],
+      "Solid": ["实线"],
+      "Dashed": ["虚线"],
+      "Dotted": ["点状线"],
+      "Set the display type of the average line.": ["设置平均线的显示类型"],
       "Average Line Color": ["平均线颜色"],
       "Y-Axis average line title": ["Y轴平均线标题"],
       "Y-Axis average line label": ["Y轴平均线标签"],
