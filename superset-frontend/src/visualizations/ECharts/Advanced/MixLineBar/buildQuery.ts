@@ -30,11 +30,11 @@ export default function buildQuery(formData: QueryFormData) {
     metrics,
     metricsB,
     noSort,
-    noSortB,
+    // noSortB,
     order_desc,
-    order_desc_b,
+    // order_desc_b,
     legacy_order_by,
-    legacy_order_by_b,
+    // legacy_order_by_b,
     ...baseFormData
   } = formData;
 
@@ -56,12 +56,13 @@ export default function buildQuery(formData: QueryFormData) {
     columns: groupby,
     limit: limitB,
     metrics: metricsB,
-    order_desc: order_desc_b,
-    legacy_order_by: legacy_order_by_b,
+    // order_desc: order_desc_b,
+    // legacy_order_by: legacy_order_by_b,
   };
 
   const queryContextA = getQueryContext(formData1, noSort);
-  const queryContextB = getQueryContext(formData2, noSortB);
+  // 第二个查询不排序
+  const queryContextB = getQueryContext(formData2, true);
 
   return {
     ...queryContextA,
