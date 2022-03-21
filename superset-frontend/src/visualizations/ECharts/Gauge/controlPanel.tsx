@@ -103,6 +103,20 @@ const config: ControlPanelConfig = {
             },
           },
         ],
+        [
+          {
+            name: 'axisLineWidth',
+            config: {
+              type: 'SliderControl',
+              label: t('Axis Line Width'),
+              description: '',
+              renderTrigger: true,
+              min: 1,
+              max: 100,
+              default: 20,
+            },
+          },
+        ],
 
         ['showLabel'],
         [

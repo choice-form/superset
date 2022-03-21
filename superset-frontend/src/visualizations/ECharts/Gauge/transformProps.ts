@@ -45,6 +45,7 @@ export default function transformProps(
 
   const {
     // metric,
+    axisLineWidth, // 仪表轴线宽度
     valueFontSize,
     fontAnimation,
     titleText,
@@ -94,7 +95,7 @@ export default function transformProps(
     // 仪表盘边缘线
     axisLine: {
       lineStyle: {
-        width: 6,
+        width: axisLineWidth,
         color: [
           [
             startRange / 100,
