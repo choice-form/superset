@@ -17,7 +17,7 @@
  * under the License.
  */
 import { Behavior, ChartMetadata, ChartPlugin, t } from 'src/core';
-import buildQuery from '../buildQuery';
+import buildQuery from './buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from './transformProps';
 import thumbnail from './images/thumbnail.png';

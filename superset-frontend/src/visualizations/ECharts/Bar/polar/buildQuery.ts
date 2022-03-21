@@ -16,55 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 import { QueryFormData } from 'src/core';
 import { getQueryContext } from '../../utils/query';
 
 export default function buildQuery(formData: QueryFormData) {
-  const {
-    adhocFilters,
-    adhocFiltersB,
-    groupby,
-    limit,
-    limitB,
-    metrics,
-    metricsB,
-    noSort,
-    noSortB,
-    order_desc,
-    order_desc_b,
-    legacy_order_by,
-    legacy_order_by_b,
-    ...baseFormData
-  } = formData;
+  const { noSort } = formData;
 
-  // console.log('formData:', formData);
-
-  const formData1 = {
-    ...baseFormData,
-    adhoc_filters: adhocFilters,
-    columns: groupby,
-    limit,
-    metrics,
-    order_desc,
-    legacy_order_by,
-  };
-
-  const formData2 = {
-    ...baseFormData,
-    adhoc_filters: adhocFiltersB,
-    columns: groupby,
-    limit: limitB,
-    metrics: metricsB,
-    order_desc: order_desc_b,
-    legacy_order_by: legacy_order_by_b,
-  };
-
-  const queryContextA = getQueryContext(formData1, noSort);
-  const queryContextB = getQueryContext(formData2, noSortB);
-
-  return {
-    ...queryContextA,
-    queries: [...queryContextA.queries, ...queryContextB.queries],
-  };
+  return getQueryContext(formData, noSort);
 }
