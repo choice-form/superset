@@ -39,7 +39,7 @@ export default function buildQuery(formData: QueryFormData) {
     order_desc,
     order_desc_b,
     legacy_order_by,
-    legacy_order_by_b
+    legacy_order_by_b,
     ...baseFormData
   } = formData;
 
@@ -52,7 +52,7 @@ export default function buildQuery(formData: QueryFormData) {
     limit,
     metrics,
     order_desc,
-    legacy_order_by
+    legacy_order_by,
   };
 
   const formData2 = {
@@ -62,7 +62,7 @@ export default function buildQuery(formData: QueryFormData) {
     limit: limitB,
     metrics: metricsB,
     order_desc: order_desc_b,
-    legacy_order_by: legacy_order_by_b
+    legacy_order_by: legacy_order_by_b,
   };
 
   const queryContextA = getQueryContext(formData1, noSort);
@@ -88,17 +88,20 @@ function normalizeQueryOrderBy(queryObject: QueryObject): QueryObject {
 
   // 时间序列排序
   if (
+    // @ts-ignore
     ![undefined, null].includes(timeseries_limit_metric) &&
     !isEmpty(legacy_order_by)
   ) {
     return {
       ...baseQueryObject,
+      // @ts-ignore
       orderby: [[timeseries_limit_metric, isAsc]],
     };
   }
 
   // 指标排序
   if (
+    // @ts-ignore
     ![undefined, null].includes(legacy_order_by) &&
     !isEmpty(legacy_order_by)
   ) {
@@ -140,6 +143,7 @@ function getQueryContext(formData: QueryFormData, noSort: boolean) {
   // 不用改以前的逻辑，只要在这里把最终的值处理一下就可以了。
   let query = normalizeQueryOrderBy(queryObj2);
   if (noSort) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { orderby, ...res } = normalizeQueryOrderBy(queryObj2);
     query = res;
   }
