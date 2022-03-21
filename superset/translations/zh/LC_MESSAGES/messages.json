@@ -3854,6 +3854,24 @@
       "Bar chart shows different data through the height of a bar, which is used in rectangular coordinate with at least 1 category axis.": [
         "柱状图（或称条形图）是一种通过柱形的高度（横向的情况下则是宽度）来表现数据大小的一种常用图表类型。"
       ],
+      "Label Format": ["标签格式化"],
+      "Out Axis": ["外部轴"],
+      "Out Axis Line": ["外部轴轴线"],
+      "Out Axis Tick": ["外部轴刻度"],
+      "Out Axis Label": ["外部轴标签"],
+      "Out Axis Split Line": ["外部轴分割线"],
+      "Out Axis Label Font Size": ["外部轴标签文字大小"],
+      "Out Axis Label Font Color": ["外部轴标签文字颜色"],
+      "In Axis": ["内部轴"],
+      "In Axis Line": ["内部轴轴线"],
+      "In Axis Format": ["内部轴标签格式化"],
+      "In Axis Tick": ["内部轴刻度"],
+      "In Axis Label": ["内部轴标签"],
+      "In Axis Split Line": ["内部轴分割线"],
+      "Polar chart, using a polar coordinate system to display stacked data.": [
+        "花瓣图，使用极坐标系来展示堆叠数据。"
+      ],
+      "Polar Chart": ["花瓣图"],
       "Whisker/outlier options": ["盒须/异常值选项"],
       "Determines how whiskers and outliers are calculated.": [
         "确定如何计算盒须和异常值。"
@@ -3886,7 +3904,6 @@
       "Middle Range": ["中间范围"],
       "End Range Color": ["结束范围颜色"],
       "Axis Line Width": ["轴线宽度"],
-      "Label Format": ["标签格式化"],
       "Value Title": ["值标题"],
       "Value Title Size": ["值标题大小"],
       "Value Font size": ["值字体大小"],

@@ -3208,6 +3208,24 @@
       "Bar chart shows different data through the height of a bar, which is used in rectangular coordinate with at least 1 category axis.": [
         ""
       ],
+      "Label Format": [""],
+      "Out Axis": [""],
+      "Out Axis Line": [""],
+      "Out Axis Tick": [""],
+      "Out Axis Label": [""],
+      "Out Axis Split Line": [""],
+      "Out Axis Label Font Size": [""],
+      "Out Axis Label Font Color": [""],
+      "In Axis": [""],
+      "In Axis Line": [""],
+      "In Axis Format": [""],
+      "In Axis Tick": [""],
+      "In Axis Label": [""],
+      "In Axis Split Line": [""],
+      "Polar chart, using a polar coordinate system to display stacked data.": [
+        ""
+      ],
+      "Polar Chart": [""],
       "Whisker/outlier options": [""],
       "Determines how whiskers and outliers are calculated.": [""],
       "X Tick Layout": [""],
@@ -3238,7 +3256,6 @@
       "Middle Range": [""],
       "End Range Color": [""],
       "Axis Line Width": [""],
-      "Label Format": [""],
       "Value Title": [""],
       "Value Title Size": [""],
       "Value Font size": [""],

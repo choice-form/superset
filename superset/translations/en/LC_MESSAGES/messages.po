@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-21 16:09+0800\n"
+"POT-Creation-Date: 2022-03-21 20:40+0800\n"
 "PO-Revision-Date: 2016-05-02 08:49-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -8928,6 +8928,7 @@ msgstr ""
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:125
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/index.ts:57
 #: superset-frontend/src/visualizations/ECharts/Bar/index.ts:65
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:54
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/index.ts:44
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/index.ts:45
 #: superset-frontend/src/visualizations/ECharts/Gauge/index.ts:44
@@ -8942,6 +8943,7 @@ msgstr ""
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:126
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/index.ts:57
 #: superset-frontend/src/visualizations/ECharts/Bar/index.ts:65
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:54
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/index.ts:55
 #: superset-frontend/src/visualizations/ECharts/Funnel/index.ts:53
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/index.ts:44
@@ -9073,6 +9075,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:89
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:174
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:40
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:38
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:34
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:26
@@ -10987,6 +10990,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:139
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:257
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:51
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:62
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:36
@@ -11668,6 +11672,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/TreemapChart/index.js:29
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/index.ts:50
 #: superset-frontend/src/visualizations/ECharts/Bar/index.ts:52
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:47
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:51
 #: superset-frontend/src/visualizations/ECharts/Tree/index.ts:33
 #: superset-frontend/src/visualizations/ECharts/Treemap/index.ts:50
@@ -12591,6 +12596,71 @@ msgid ""
 " in rectangular coordinate with at least 1 category axis."
 msgstr ""
 
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:63
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:127
+msgid "Label Format"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:71
+msgid "Out Axis"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:79
+msgid "Out Axis Line"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:90
+msgid "Out Axis Tick"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:101
+msgid "Out Axis Label"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:112
+msgid "Out Axis Split Line"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:123
+msgid "Out Axis Label Font Size"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:136
+msgid "Out Axis Label Font Color"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:145
+msgid "In Axis"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:153
+msgid "In Axis Line"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:164
+msgid "In Axis Format"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:174
+msgid "In Axis Tick"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:185
+msgid "In Axis Label"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:196
+msgid "In Axis Split Line"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:49
+msgid "Polar chart, using a polar coordinate system to display stacked data."
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:53
+msgid "Polar Chart"
+msgstr ""
+
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:51
 #: superset-frontend/src/visualizations/XYCharts/BoxPlot/controlPanel.ts:41
 msgid "Whisker/outlier options"
@@ -12721,10 +12791,6 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:111
 msgid "Axis Line Width"
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:127
-msgid "Label Format"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:139

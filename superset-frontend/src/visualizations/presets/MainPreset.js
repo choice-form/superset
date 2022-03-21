@@ -50,6 +50,8 @@ import EchartsMixedLineBarChartPlugin from '../ECharts/Advanced/MixLineBar';
 
 // 柱状图
 import EchartsBarChartPlugin from '../ECharts/Bar';
+// 花瓣图
+import EchartsPolarChartPlugin from '../ECharts/Bar/polar';
 // 折线图
 import LineChartPlugin from '../ECharts/Line';
 // 仪表图
@@ -126,6 +128,8 @@ export default class MainPreset extends Preset {
 
         // 柱状图
         new EchartsBarChartPlugin().configure({ key: 'bar' }),
+        // 花瓣图
+        new EchartsPolarChartPlugin().configure({ key: 'bar_polar' }),
         // 折线图
         new LineChartPlugin().configure({ key: 'line' }),
         // 仪表图

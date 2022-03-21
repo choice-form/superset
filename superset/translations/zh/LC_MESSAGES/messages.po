@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-21 16:09+0800\n"
+"POT-Creation-Date: 2022-03-21 20:40+0800\n"
 "PO-Revision-Date: 2022-02-16 17:00+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -9013,6 +9013,7 @@ msgstr "其他"
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:125
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/index.ts:57
 #: superset-frontend/src/visualizations/ECharts/Bar/index.ts:65
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:54
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/index.ts:44
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/index.ts:45
 #: superset-frontend/src/visualizations/ECharts/Gauge/index.ts:44
@@ -9027,6 +9028,7 @@ msgstr "巧思科技"
 #: superset-frontend/src/explore/components/controls/VizTypeControl/VizTypeGallery.tsx:126
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/index.ts:57
 #: superset-frontend/src/visualizations/ECharts/Bar/index.ts:65
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:54
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/index.ts:55
 #: superset-frontend/src/visualizations/ECharts/Funnel/index.ts:53
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/index.ts:44
@@ -9158,6 +9160,7 @@ msgstr "把您的代码放在这里"
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:89
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:174
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:40
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:38
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:34
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:26
@@ -11087,6 +11090,7 @@ msgstr "每个区块的时间单位。应该是比域粒度更小的单位。应
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:139
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:257
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:51
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:62
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:36
@@ -11768,6 +11772,7 @@ msgstr "Python函数"
 #: superset-frontend/src/visualizations/D3/TreemapChart/index.js:29
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/index.ts:50
 #: superset-frontend/src/visualizations/ECharts/Bar/index.ts:52
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:47
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:51
 #: superset-frontend/src/visualizations/ECharts/Tree/index.ts:33
 #: superset-frontend/src/visualizations/ECharts/Treemap/index.ts:50
@@ -12691,6 +12696,71 @@ msgid ""
 " in rectangular coordinate with at least 1 category axis."
 msgstr "柱状图（或称条形图）是一种通过柱形的高度（横向的情况下则是宽度）来表现数据大小的一种常用图表类型。"
 
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:63
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:127
+msgid "Label Format"
+msgstr "标签格式化"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:71
+msgid "Out Axis"
+msgstr "外部轴"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:79
+msgid "Out Axis Line"
+msgstr "外部轴轴线"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:90
+msgid "Out Axis Tick"
+msgstr "外部轴刻度"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:101
+msgid "Out Axis Label"
+msgstr "外部轴标签"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:112
+msgid "Out Axis Split Line"
+msgstr "外部轴分割线"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:123
+msgid "Out Axis Label Font Size"
+msgstr "外部轴标签文字大小"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:136
+msgid "Out Axis Label Font Color"
+msgstr "外部轴标签文字颜色"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:145
+msgid "In Axis"
+msgstr "内部轴"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:153
+msgid "In Axis Line"
+msgstr "内部轴轴线"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:164
+msgid "In Axis Format"
+msgstr "内部轴标签格式化"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:174
+msgid "In Axis Tick"
+msgstr "内部轴刻度"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:185
+msgid "In Axis Label"
+msgstr "内部轴标签"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:196
+msgid "In Axis Split Line"
+msgstr "内部轴分割线"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:49
+msgid "Polar chart, using a polar coordinate system to display stacked data."
+msgstr "花瓣图，使用极坐标系来展示堆叠数据。"
+
+#: superset-frontend/src/visualizations/ECharts/Bar/polar/index.ts:53
+msgid "Polar Chart"
+msgstr "花瓣图"
+
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:51
 #: superset-frontend/src/visualizations/XYCharts/BoxPlot/controlPanel.ts:41
 msgid "Whisker/outlier options"
@@ -12822,10 +12892,6 @@ msgstr "结束范围颜色"
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:111
 msgid "Axis Line Width"
 msgstr "轴线宽度"
-
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:127
-msgid "Label Format"
-msgstr "标签格式化"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:139
 msgid "Value Title"
