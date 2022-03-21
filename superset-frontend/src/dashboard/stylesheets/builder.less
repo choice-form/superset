@@ -46,13 +46,18 @@
 
 // 解决看板中图表无法对齐的问题
 .dashboard--editing .dashboard-component-tabs-content .dragdroppable-row {
-  padding-top: 0;
+  padding-top: 0 !important;
 }
-
-.background--transparent {
-  background-color: transparent;
+// 行加上间距
+.grid-row {
   // 看板每个行的间距
   margin: 15px 0;
+}
+// 列中的行没有间距
+.grid-column {
+  .grid-row {
+    margin: 0;
+  }
 }
 
 .background--white {
