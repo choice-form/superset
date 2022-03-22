@@ -26,14 +26,17 @@ import {
 import {
   chartOrientControl,
   showLegendControl,
+  labelRotateControl,
   legendModeControl,
   legendTypeControl,
   legendOrientationControl,
   legendPaddingControl,
+  hAlignLabelControl,
+  vAlignLabelControl,
+  labelDistanceControl,
 } from '../controls';
 import { hexToRgba } from '../../../utils/colorUtils';
 
-// @ts-ignore
 const config: ControlPanelConfig = {
   controlPanelSections: [
     {
@@ -77,6 +80,8 @@ const config: ControlPanelConfig = {
           },
         ],
         ['showLabel'],
+        [labelRotateControl, labelDistanceControl],
+        [hAlignLabelControl, vAlignLabelControl],
         ['barBackground'],
         ['stacked'],
         ['stackedPrecent'],

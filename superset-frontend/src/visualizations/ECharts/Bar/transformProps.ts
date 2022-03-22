@@ -84,6 +84,10 @@ export default function transformProps(
     xDistance, // X轴名称的距离
 
     showLabel, // 是否显示图形上的文本标签
+    hAlignLabel, // 水平对齐文本标签
+    vAlignLabel, // 垂直对齐文本标签
+    labelRotate, // 文本标签旋转角度
+    labelDistance, // 文本标签和图形的距离
     stacked, // 堆叠
     stackedPrecent, // 堆叠显示成百分比
 
@@ -110,8 +114,6 @@ export default function transformProps(
 
   // 标签位置，默认顶部
   let labelPosition = { position: 'top' };
-  // 旋转角度
-  let labelRotate = { rotate: 0 };
   if (metrics.length > 1) {
     // 横向布局的时候，显示
     if (chartOrient === 'horizontal') {
@@ -124,7 +126,6 @@ export default function transformProps(
       labelPosition = { position: 'right' };
       if (stacked) {
         labelPosition = { position: 'inside' };
-        labelRotate = { rotate: -90 };
       }
     }
   } else {
@@ -250,12 +251,18 @@ export default function transformProps(
     // 柱子宽度
     barWidth,
     label: {
+      // 水平对齐
+      align: hAlignLabel,
+      // 垂直对齐
+      verticalAlign: vAlignLabel,
       // 是否显示图形上的文本标签
       show: showLabel,
       // 标签的位置
       ...labelPosition,
       // 旋转
-      ...labelRotate,
+      rotate: labelRotate,
+      // 距离
+      distance: labelDistance,
       // 格式化值(标准数据集的取值格式化，非数据集才可以直接格式化)
       formatter({ value, encode }: any) {
         const idx = chartOrient === 'horizontal' ? encode.y[0] : encode.x[0];
@@ -471,8 +478,6 @@ export default function transformProps(
     yAxis,
     series,
   };
-
-  // console.log('echartOptions', echartOptions);
 
   return {
     formData,

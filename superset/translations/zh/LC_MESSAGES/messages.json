@@ -3809,6 +3809,17 @@
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         "是否显示额外控件。额外的控制包括使多柱状图堆叠或并排。"
       ],
+      "Rotate Label": ["旋转文本标签"],
+      "Set the label's rotation angle.": ["设置文本标签的旋转角度。"],
+      "Horizontal Align": ["水平对齐"],
+      "Horizontal label alignment": ["文本标签沿水平方向对齐"],
+      "Vertical Align": ["垂直对齐"],
+      "Vertical label alignment": ["文本标签沿垂直方向对齐"],
+      "Middle": ["居中"],
+      "Label Distance": ["标签距离"],
+      "Set the distance between label and shape.": [
+        "设置文本标签和图形之间的距离。"
+      ],
       "Y Axis Tick": ["Y轴轴线刻度"],
       "Show Y Axis Split Line": ["显示Y轴方向的分割线"],
       "Bar Width": ["柱宽"],

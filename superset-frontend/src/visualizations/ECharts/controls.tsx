@@ -269,3 +269,73 @@ export const showControls: CustomControlItem = {
     ),
   },
 };
+
+export const labelRotateControl = {
+  name: 'labelRotate',
+  config: {
+    type: 'SliderControl',
+    label: t('Rotate Label'),
+    description: t("Set the label's rotation angle."),
+    renderTrigger: true,
+    min: -90,
+    max: 90,
+    default: 0,
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.showLabel.value),
+  },
+};
+
+export const hAlignLabelControl = {
+  name: 'hAlignLabel',
+  config: {
+    type: 'SelectControl',
+    clearable: false,
+    freeForm: true,
+    renderTrigger: true,
+    label: t('Horizontal Align'),
+    description: t('Horizontal label alignment'),
+    choices: [
+      ['left', t('Left')],
+      ['center', t('Center')],
+      ['right', t('Right')],
+    ],
+    default: 'center',
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.showLabel.value),
+  },
+};
+
+export const vAlignLabelControl = {
+  name: 'vAlignLabel',
+  config: {
+    type: 'SelectControl',
+    clearable: false,
+    freeForm: false,
+    renderTrigger: true,
+    label: t('Vertical Align'),
+    description: t('Vertical label alignment'),
+    choices: [
+      ['top', t('Top')],
+      ['middle', t('Middle')],
+      ['bottom', t('Bottom')],
+    ],
+    default: 'middle',
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.showLabel.value),
+  },
+};
+
+export const labelDistanceControl = {
+  name: 'labelDistance',
+  config: {
+    type: 'SliderControl',
+    renderTrigger: true,
+    label: t('Label Distance'),
+    description: t('Set the distance between label and shape.'),
+    min: 0,
+    max: 100,
+    default: 10,
+    visibility: ({ controls }: ControlPanelsContainerProps) =>
+      Boolean(controls?.showLabel.value),
+  },
+};

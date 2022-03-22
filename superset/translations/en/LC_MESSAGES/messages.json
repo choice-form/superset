@@ -3166,6 +3166,15 @@
       "Whether to show extra controls or not. Extra controls include things like making mulitBar charts stacked or side by side.": [
         ""
       ],
+      "Rotate Label": [""],
+      "Set the label's rotation angle.": [""],
+      "Horizontal Align": [""],
+      "Horizontal label alignment": [""],
+      "Vertical Align": [""],
+      "Vertical label alignment": [""],
+      "Middle": [""],
+      "Label Distance": [""],
+      "Set the distance between label and shape.": [""],
       "Y Axis Tick": [""],
       "Show Y Axis Split Line": [""],
       "Bar Width": [""],
