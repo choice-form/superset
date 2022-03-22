@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-23 02:11+0800\n"
+"POT-Creation-Date: 2022-03-23 02:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7474,6 +7474,22 @@ msgid "Filter has default value"
 msgstr ""
 
 #: superset-frontend/src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FiltersConfigForm.tsx:749
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:278
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:291
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:317
+#: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:330
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:100
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:113
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:139
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:152
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:73
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:86
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:112
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:125
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:85
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:98
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:124
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:137
 msgid "Default Value"
 msgstr ""
 
