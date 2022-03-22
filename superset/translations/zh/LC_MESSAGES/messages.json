@@ -4019,6 +4019,8 @@
         "显示图形结构中实体之间的连接。用于映射关系和显示网络中哪些节点很重要。图表可以配置为强制引导或循环。如果数据包含地理空间组件，请尝试使用deck。gl圆弧图。"
       ],
       "Graph Chart": ["图表"],
+      "Start Color": ["开始颜色"],
+      "End Color": ["结束颜色"],
       "Sort Lines": ["折线排序"],
       "Sort lines by category axis for label names.": [
         "按类目轴的标签名称排序折线。"

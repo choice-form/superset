@@ -3347,6 +3347,8 @@
         ""
       ],
       "Graph Chart": [""],
+      "Start Color": [""],
+      "End Color": [""],
       "Sort Lines": [""],
       "Sort lines by category axis for label names.": [""],
       "Evolution": [""],
