@@ -4,7 +4,7 @@
     "superset": {
       "": {
         "domain": "superset",
-        "plural_forms": "nplurals=1; plural=0",
+        "plural_forms": "nplurals=1; plural=0;",
         "lang": "zh"
       },
       "The datasource is too large to query.": ["数据源太大，无法查询。"],
@@ -111,7 +111,7 @@
         "此数据库只允许使用 `SELECT` 语句。"
       ],
       "The query was killed after %(sqllab_timeout)s seconds. It might be too complex, or the database might be under heavy load.": [
-        "查询在 %(sqllab_timeout)s 秒后会被终止。它可能完成或者数据库负载过大"
+        "查询在 %(sqllab_timeout)s 秒后会被终止。它可能完成或者数据库负载过大。"
       ],
       "Results backend is not configured.": ["没有配置结果后端。"],
       "CTAS (create table as select) can only be run with a query where the last statement is a SELECT. Please make sure your query has a SELECT as its last statement. Then, try running your query again.": [
@@ -303,7 +303,7 @@
         "重复的列/指标标签 %(labels)s。请确保所有列和指标都有唯一的标签。"
       ],
       "The following entries in `series_columns` are missing in `columns`: %(columns)s. ": [
-        "`columns`中缺少`series_columns`中的以下条目：%(columns)s。"
+        "`columns`中缺少`series_columns`中的以下条目：%(columns)s。 "
       ],
       "`operation` property of post processing object undefined": [
         "后处理必须指定操作类型（`operation`）"
@@ -411,7 +411,7 @@
       "Empty query?": ["查询为空？"],
       "Metric '%(metric)s' does not exist": ["指标 '%(metric)s' 不存在"],
       "Unknown column used in orderby: %(col)s": [
-        "orderby 中使用了未知列：%(col)s。"
+        "orderby 中使用了未知列：%(col)s"
       ],
       "Time column \"%(col)s\" does not exist in dataset": [
         "数据集中不存在时间列\"%(col)s\""
@@ -671,7 +671,7 @@
         "表 \"%(schema)s\" 不存在。必须使用有效的表来运行此查询。"
       ],
       "Please check your query for syntax errors near \"%(server_error)s\". Then, try running your query again.": [
-        "请检查\\“%（服务器错误）s\\”附近的语法错误。请修改后再次尝试运行查询。"
+        "请检查“%(server_error)s”附近的语法错误。请修改后再次尝试运行查询。"
       ],
       "Either the username \"%(username)s\", password, or database name \"%(database)s\" is incorrect.": [
         "用户名\"%(username)s\"、密码或数据库名称\"%(database)s\"不正确。"
@@ -823,7 +823,9 @@
       "Report schedule unexpected error": ["报告计划意外错误"],
       "Changing this report is forbidden": ["禁止更改此报告"],
       "An error occurred while pruning logs ": ["精简日志时出错 "],
-      "\n            Error: %(text)s\n            ": ["错误：%(text)s"],
+      "\n            Error: %(text)s\n            ": [
+        "\n            错误：%(text)s\n            "
+      ],
       "Explore in Superset": ["探索superset"],
       "%(name)s.csv": [""],
       "%(prefix)s %(title)s": [""],
@@ -1509,7 +1511,7 @@
       "Copy to Clipboard": ["复制到剪贴板"],
       "Filter results": ["过滤结果"],
       "The number of results displayed is limited to %(rows)d by the configuration DISPLAY_MAX_ROWS. ": [
-        "显示结果数量受配置DISPLAY_MAX_ROWS限制"
+        "显示结果数量受配置DISPLAY_MAX_ROWS限制到%(rows)d行。 "
       ],
       "Please add additional limits/filters or download to csv to see more rows up to ": [
         "请添加其他限制/过滤器，或下载到csv以查看最多的更多行"
@@ -1790,6 +1792,9 @@
         "当设置“周期比”时，y轴格式强制为“1%”"
       ],
       "Y Axis 2 Format": ["Y轴2格式化"],
+      "When `Calculation type` is set to \"Percentage change\", the Y Axis 2 Format is forced to `.1%`": [
+        "当 `计算类型` 设置为“百分比变化”时，Y轴格式强制为 `.1%`"
+      ],
       "Y Axis Bounds": ["Y轴的边界"],
       "Bounds for the Y-axis. When left empty, the bounds are dynamically defined based on the min/max of the data. Note that this feature will only expand the axis range. It won't narrow the data's extent.": [
         "Y轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
@@ -3944,9 +3949,9 @@
         "对显示的数字进行补充说明"
       ],
       "Number Font Color": ["数字字体颜色"],
-      "Set the text color for displaying number.": ["设置显示数字的文本颜色"],
+      "Set the text color for displaying number.": ["设置显示数字的文本颜色。"],
       "Number Font size": ["数字的字体大小"],
-      "Set the text size for displaying number.": ["设置显示数字的文字大小"],
+      "Set the text size for displaying number.": ["设置显示数字的文字大小。"],
       "Horizontal Distance": ["横向距离"],
       "Set the horizontal distance of the displayed number.": [
         "设置数字的横向距离"
@@ -4135,6 +4140,18 @@
         "直角坐标系上的散点图，可以用来展现数据的 x，y 之间的关系"
       ],
       "Scatter Chart": ["散点图"],
+      "Set the text color of displaying label.": ["设置显示数字的文本颜色。"],
+      "Label Color": ["标签颜色"],
+      "Main Title": ["主标题"],
+      "Sub Title": ["副标题"],
+      "Title Size": ["标题尺寸"],
+      "Set the text size for displaying title.": ["设置显示标题的文字大小。"],
+      "Show a floating tooltip for displaying label and value.": [
+        "显示一个浮动的信息提示框来强调标签和值。"
+      ],
+      "Show Tooltip": ["显示信息提示框"],
+      "Dimension Options": ["维度选项"],
+      "Measure Options": ["度量选项"],
       "Contribution Mode": ["贡献模式"],
       "Calculate contribution per series or total": ["计算对总数的贡献值"],
       "Series Style": ["系列样式"],

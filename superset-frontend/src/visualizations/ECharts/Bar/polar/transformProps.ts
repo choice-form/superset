@@ -87,9 +87,7 @@ export default function transformProps(
     },
     label: {
       show: showLabel,
-      formatter: (params: any) => {
-        return labelFormatter(params.value);
-      },
+      formatter: (params: any) => labelFormatter(params.value),
     },
     // 花瓣图必须要堆叠的
     stack: 'total', // 这个值相同的柱子，会堆叠起来。值是什么都行，但最好是有意义的值。

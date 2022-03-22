@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-22 18:10+0800\n"
+"POT-Creation-Date: 2022-03-22 19:59+0800\n"
 "PO-Revision-Date: 2016-05-02 08:49-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -4861,7 +4861,7 @@ msgstr ""
 msgid "Create new chart"
 msgstr ""
 
-#: superset-frontend/src/chart/chartAction.js:591
+#: superset-frontend/src/chart/chartAction.js:589
 msgid "An error occurred while loading the SQL"
 msgstr ""
 
@@ -8932,6 +8932,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:64
 #: superset-frontend/src/visualizations/ECharts/Radar/index.ts:54
 #: superset-frontend/src/visualizations/ECharts/Scatter/index.ts:59
+#: superset-frontend/src/visualizations/ECharts/Sunburst/index.ts:35
 #: superset-frontend/src/visualizations/PivotTable/plugin/index.ts:55
 msgid "Choiceform"
 msgstr ""
@@ -8951,6 +8952,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:64
 #: superset-frontend/src/visualizations/ECharts/Radar/index.ts:54
 #: superset-frontend/src/visualizations/ECharts/Scatter/index.ts:59
+#: superset-frontend/src/visualizations/ECharts/Sunburst/index.ts:35
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/index.ts:76
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/index.ts:77
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Line/index.ts:72
@@ -9082,6 +9084,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:51
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:84
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:60
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:57
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:53
@@ -10997,6 +11000,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:53
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:61
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:62
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:95
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:101
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:81
@@ -11778,6 +11782,7 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/SunburstChart/index.js:32
+#: superset-frontend/src/visualizations/ECharts/Sunburst/index.ts:34
 msgid "Sunburst Chart"
 msgstr ""
 
@@ -12594,6 +12599,7 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:63
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:127
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:47
 msgid "Label Format"
 msgstr ""
 
@@ -13609,6 +13615,46 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Scatter/index.ts:58
 msgid "Scatter Chart"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:37
+msgid "Set the text color of displaying label."
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:38
+msgid "Label Color"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:55
+msgid "Main Title"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:55
+msgid "Sub Title"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:63
+msgid "Title Size"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:64
+msgid "Set the text size for displaying title."
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:76
+msgid "Show a floating tooltip for displaying label and value."
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:77
+msgid "Show Tooltip"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:106
+msgid "Dimension Options"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:111
+msgid "Measure Options"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:70
