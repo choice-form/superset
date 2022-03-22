@@ -67,6 +67,84 @@ const config: ControlPanelConfig = {
         ['TitleFontColor'],
         [
           {
+            name: 'showDataZoomY',
+            config: {
+              ...sharedControls.stacked,
+              label: t('Data Zoom Y'),
+              description: '',
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'zoomStartY',
+            config: {
+              ...sharedControls.symbolSize,
+              label: t('Range Start'),
+              description: '',
+              default: 0,
+              min: 0,
+              max: 100,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.showDataZoomY?.value),
+            },
+          },
+          {
+            name: 'zoomEndY',
+            config: {
+              ...sharedControls.symbolSize,
+              label: t('Range End'),
+              description: '',
+              default: 100,
+              min: 0,
+              max: 100,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.showDataZoomY?.value),
+            },
+          },
+        ],
+        [
+          {
+            name: 'showDataZoomX',
+            config: {
+              ...sharedControls.stacked,
+              label: t('Data Zoom X'),
+              description: '',
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'zoomStartX',
+            config: {
+              ...sharedControls.symbolSize,
+              label: t('Range Start'),
+              description: '',
+              default: 0,
+              min: 0,
+              max: 100,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.showDataZoomX?.value),
+            },
+          },
+          {
+            name: 'zoomEndX',
+            config: {
+              ...sharedControls.symbolSize,
+              label: t('Range End'),
+              description: '',
+              default: 50,
+              min: 0,
+              max: 100,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.showDataZoomX?.value),
+            },
+          },
+        ],
+        [
+          {
             name: 'bubbles',
             config: {
               type: 'CheckboxControl',

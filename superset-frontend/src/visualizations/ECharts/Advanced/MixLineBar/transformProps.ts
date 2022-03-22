@@ -175,6 +175,12 @@ export default function transformProps(
 
   const {
     // 通用配置
+    showDataZoomY,
+    zoomStartY,
+    zoomEndY,
+    showDataZoomX,
+    zoomStartX,
+    zoomEndX,
     groupby, // 分组条件
     showAxisPointer, // 是否显示坐标轴指示器
     showLegend, // 是否显示图例
@@ -419,7 +425,7 @@ export default function transformProps(
 
   // 图形grid位置计算
   const gridLayout = {};
-  if (xAxisName) {
+  if (xAxisName || showDataZoomX) {
     if (getRotate(xLabelLayout) === 0) {
       gridLayout['bottom'] = 64;
     } else {
@@ -449,11 +455,42 @@ export default function transformProps(
     };
   }
 
+  // 数据缩放
+  let dataZoom = {};
+  if (showDataZoomX || showDataZoomY) {
+    const zoomX = {
+      type: 'slider',
+      show: true,
+      xAxisIndex: [0],
+      start: zoomStartX,
+      end: zoomEndX,
+    };
+    const zoomY = {
+      type: 'slider',
+      show: true,
+      yAxisIndex: [0],
+      left: '93%',
+      start: zoomStartY,
+      end: zoomEndY,
+    };
+    const list = [];
+    if (showDataZoomX) {
+      list.push(zoomX);
+    }
+    if (showDataZoomY) {
+      list.push(zoomY);
+    }
+    dataZoom = {
+      dataZoom: list,
+    };
+  }
+
   const echartOptions: EChartsCoreOption = {
     grid: {
       ...defaultGrid,
       ...gridLayout,
     },
+    ...dataZoom,
     legend: {
       show: showLegend,
       type: legendType === 'scroll' ? 'scroll' : 'plain',

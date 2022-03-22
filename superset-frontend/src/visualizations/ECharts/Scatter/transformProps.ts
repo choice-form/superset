@@ -28,6 +28,7 @@ import { DEFAULT_LEGEND_FORM_DATA } from '../types';
 import { rgbToHex } from '../../../utils/colorUtils';
 import { getFontSize } from '../utils/chart';
 import { EchartsLabelType } from './constants';
+import { defaultGrid } from '../defaults';
 
 export default function transformProps(
   chartProps: EchartsChartProps,
@@ -45,6 +46,13 @@ export default function transformProps(
     titleText,
     titleFontSize,
     titleFontColor,
+    showDataZoomY,
+    zoomStartY,
+    zoomEndY,
+    showDataZoomX,
+    zoomStartX,
+    zoomEndX,
+
     groupby,
     // metrics = [],
     labelType,
@@ -189,7 +197,50 @@ export default function transformProps(
     };
   }
 
+  // 图形grid位置计算
+  const gridLayout = {};
+  if (xAxisName || showDataZoomX) {
+    gridLayout['bottom'] = 64;
+  } else {
+    gridLayout['bottom'] = 'auto';
+  }
+
+  // 数据缩放
+  let dataZoom = {};
+  if (showDataZoomX || showDataZoomY) {
+    const zoomX = {
+      type: 'slider',
+      show: true,
+      xAxisIndex: [0],
+      start: zoomStartX,
+      end: zoomEndX,
+    };
+    const zoomY = {
+      type: 'slider',
+      show: true,
+      yAxisIndex: [0],
+      left: '93%',
+      start: zoomStartY,
+      end: zoomEndY,
+    };
+    const list = [];
+    if (showDataZoomX) {
+      list.push(zoomX);
+    }
+    if (showDataZoomY) {
+      list.push(zoomY);
+    }
+    dataZoom = {
+      dataZoom: list,
+    };
+  }
+
   const echartOptions = {
+    grid: {
+      ...defaultGrid,
+      ...gridLayout,
+    },
+    ...dataZoom,
     title: {
       text: titleText,
       textAlign: 'right',

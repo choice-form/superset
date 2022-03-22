@@ -4,7 +4,7 @@
     "superset": {
       "": {
         "domain": "superset",
-        "plural_forms": "nplurals=1; plural=0;",
+        "plural_forms": "nplurals=1; plural=0",
         "lang": "zh"
       },
       "The datasource is too large to query.": ["数据源太大，无法查询。"],
@@ -3822,6 +3822,10 @@
       ],
       "Y Axis Tick": ["Y轴轴线刻度"],
       "Show Y Axis Split Line": ["显示Y轴方向的分割线"],
+      "Data Zoom Y": ["Y轴数据缩放"],
+      "Range Start": ["起始点"],
+      "Range End": ["结束值"],
+      "Data Zoom X": ["X轴数据缩放"],
       "Bar Width": ["柱宽"],
       "X Axis Tick": ["X轴轴线刻度"],
       "Show X Axis Label": ["显示x轴标签"],
