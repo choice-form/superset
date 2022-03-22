@@ -468,8 +468,8 @@ export default function transformProps(
     const zoomY = {
       type: 'slider',
       show: true,
-      yAxisIndex: [0],
-      left: '93%',
+      yAxisIndex: [0, 1],
+      left: showLabelB ? '96%' : '93%',
       start: zoomStartY,
       end: zoomEndY,
     };

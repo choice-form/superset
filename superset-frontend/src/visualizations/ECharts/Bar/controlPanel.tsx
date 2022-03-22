@@ -97,7 +97,7 @@ const config: ControlPanelConfig = {
             config: {
               ...sharedControls.symbolSize,
               label: t('Start Value'),
-              description: '',
+              description: t('Default Value'),
               default: 0,
               min: 0,
               max: 100,
@@ -110,7 +110,7 @@ const config: ControlPanelConfig = {
             config: {
               ...sharedControls.symbolSize,
               label: t('End Value'),
-              description: '',
+              description: t('Default Value'),
               default: 100,
               min: 0,
               max: 100,
@@ -136,7 +136,7 @@ const config: ControlPanelConfig = {
             config: {
               ...sharedControls.symbolSize,
               label: t('Start Value'),
-              description: '',
+              description: t('Default Value'),
               default: 0,
               min: 0,
               max: 100,
@@ -149,7 +149,7 @@ const config: ControlPanelConfig = {
             config: {
               ...sharedControls.symbolSize,
               label: t('End Value'),
-              description: '',
+              description: t('Default Value'),
               default: 50,
               min: 0,
               max: 100,
