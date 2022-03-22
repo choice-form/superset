@@ -17,7 +17,7 @@
  * under the License.
  */
 import { getNumberFormatter } from 'src/core';
-import { EChartsCoreOption } from 'echarts';
+import { EChartsCoreOption, graphic } from 'echarts';
 import {
   LineChartTransformedProps,
   EchartsLineChartProps,
@@ -75,6 +75,9 @@ export default function transformProps(
     symbolSize, // 标记的大小
     symbolRotate, // 标记的旋转角度
     showAreaChart, // 显示区域面积图
+    areaLinearGradient, // 线性渐变
+    startColor, // 渐变起始色
+    endColor, // 渐变结束色
 
     showLegend,
     legendPadding,
@@ -330,7 +333,21 @@ export default function transformProps(
       if (showAreaChart) {
         return {
           ...lineSeries,
-          areaStyle: {},
+          areaStyle: areaLinearGradient
+            ? {
+                opacity: 1,
+                color: new graphic.LinearGradient(0, 0, 0, 1, [
+                  {
+                    offset: 0,
+                    color: `rgba(${startColor?.r},${startColor?.g},${startColor?.b},${startColor?.a})`,
+                  },
+                  {
+                    offset: 1,
+                    color: `rgba(${endColor?.r},${endColor?.g},${endColor?.b},${endColor?.a})`,
+                  },
+                ]),
+              }
+            : {},
         };
       }
       return lineSeries;

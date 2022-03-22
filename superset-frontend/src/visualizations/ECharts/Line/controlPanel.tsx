@@ -19,6 +19,7 @@
 import { t, validateNonEmpty } from 'src/core';
 import {
   ControlPanelConfig,
+  ControlPanelsContainerProps,
   legacySortBy,
   sharedControls,
 } from 'src/chartConntrols';
@@ -30,6 +31,7 @@ import {
   legendTypeControl,
   showLegendControl,
 } from '../controls';
+import { hexToRgba } from '../../../utils/colorUtils';
 
 // @ts-ignore
 const config: ControlPanelConfig = {
@@ -53,6 +55,33 @@ const config: ControlPanelConfig = {
         ['showLabel'],
         ['stacked'],
         ['showAreaChart'],
+        ['areaLinearGradient'],
+        [
+          {
+            name: 'startColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Start Color'),
+              description: '',
+              default: hexToRgba('#1FA8C9'),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.showAreaChart?.value) &&
+                Boolean(controls?.areaLinearGradient?.value),
+            },
+          },
+          {
+            name: 'endColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('End Color'),
+              description: '',
+              default: hexToRgba('#1FA8C9'),
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.showAreaChart?.value) &&
+                Boolean(controls?.areaLinearGradient?.value),
+            },
+          },
+        ],
         ['smooth'],
         ['symbol'],
         ['symbolSize'],

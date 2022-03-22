@@ -74,7 +74,7 @@ function Echart(
       chartRef.current?.getZr().on(name, handler);
     });
 
-    const { toolbox = {}, ...baseOptions } = echartOptions;
+    const { toolbox = { feature: {} }, ...baseOptions } = echartOptions;
 
     const options = {
       ...baseOptions,
