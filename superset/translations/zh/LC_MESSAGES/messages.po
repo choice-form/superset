@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-23 01:51+0800\n"
+"POT-Creation-Date: 2022-03-23 02:11+0800\n"
 "PO-Revision-Date: 2022-03-23 00:24+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -12557,8 +12557,8 @@ msgstr "Y轴数据缩放"
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:111
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:84
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:123
-msgid "Range Start"
-msgstr "起始点"
+msgid "Start Value"
+msgstr "起始值"
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:290
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:329
@@ -12568,7 +12568,7 @@ msgstr "起始点"
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:124
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:97
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:136
-msgid "Range End"
+msgid "End Value"
 msgstr "结束值"
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:305

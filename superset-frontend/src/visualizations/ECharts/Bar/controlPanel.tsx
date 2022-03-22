@@ -96,7 +96,7 @@ const config: ControlPanelConfig = {
             name: 'zoomStartY',
             config: {
               ...sharedControls.symbolSize,
-              label: t('Range Start'),
+              label: t('Start Value'),
               description: '',
               default: 0,
               min: 0,
@@ -109,7 +109,7 @@ const config: ControlPanelConfig = {
             name: 'zoomEndY',
             config: {
               ...sharedControls.symbolSize,
-              label: t('Range End'),
+              label: t('End Value'),
               description: '',
               default: 100,
               min: 0,
@@ -135,7 +135,7 @@ const config: ControlPanelConfig = {
             name: 'zoomStartX',
             config: {
               ...sharedControls.symbolSize,
-              label: t('Range Start'),
+              label: t('Start Value'),
               description: '',
               default: 0,
               min: 0,
@@ -148,7 +148,7 @@ const config: ControlPanelConfig = {
             name: 'zoomEndX',
             config: {
               ...sharedControls.symbolSize,
-              label: t('Range End'),
+              label: t('End Value'),
               description: '',
               default: 50,
               min: 0,

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-23 01:51+0800\n"
+"POT-Creation-Date: 2022-03-23 02:11+0800\n"
 "PO-Revision-Date: 2016-05-02 08:49-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -12455,7 +12455,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:111
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:84
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:123
-msgid "Range Start"
+msgid "Start Value"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:290
@@ -12466,7 +12466,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:124
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:97
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:136
-msgid "Range End"
+msgid "End Value"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:305
