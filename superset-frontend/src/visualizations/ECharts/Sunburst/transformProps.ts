@@ -19,7 +19,7 @@
 import { groups as D3Groups } from 'd3-array';
 import type { EChartsCoreOption } from 'echarts';
 import { getNumberFormatter, QueryFormMetric } from 'src/core';
-import { rgbToHex } from 'src/utils/colorUtils';
+import { getFontSize } from '../utils/chart';
 import { toRGBA } from '../utils/colors';
 import type {
   EChartsSunburstChartProps,
@@ -124,9 +124,9 @@ export default function transformProps(
     title: {
       show: formData.mainTitle || formData.subTitle,
       text: formData.mainTitle,
-      textStyle: { fontSize: formData.mainTitleSize },
+      textStyle: { fontSize: getFontSize(formData.mainTitleSize, width, 50) },
       subtext: formData.subTitle,
-      subtextStyle: { fontSize: formData.subTitleSize },
+      subtextStyle: { fontSize: getFontSize(formData.subTitleSize, width, 50) },
     },
     tooltip: {
       show: formData.showTooltip,

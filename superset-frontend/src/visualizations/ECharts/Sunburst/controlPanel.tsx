@@ -65,8 +65,8 @@ const titleSizeOf = (type: string, size?: number) => ({
     description: t('Set the text size for displaying title.'),
     renderTrigger: true,
     min: 16,
-    max: 32,
-    default: size ?? 20,
+    max: 300,
+    default: size ?? 22,
   },
 });
 

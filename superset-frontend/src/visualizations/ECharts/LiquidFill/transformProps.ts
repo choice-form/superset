@@ -18,6 +18,7 @@
  */
 
 import { ChartProps, getNumberFormatter } from 'src/core';
+import { getFontSize } from '../utils/chart';
 import { toRGBA } from '../utils/colors';
 
 // {
@@ -83,7 +84,7 @@ export default function (props: ChartProps) {
       direction: formData.waveDirection,
       itemStyle: { opacity: formData.waveOpacity, shadowBlur: 0 },
       label: {
-        fontSize: formData.textFontSize,
+        fontSize: getFontSize(formData.textFontSize, width, 50),
         fontWeight: formData.textFontWeight,
         formatter: (params: any) => {
           const prefix = (formData.prefixText ?? '')
@@ -115,13 +116,13 @@ export default function (props: ChartProps) {
       text: formData.mainTitle,
       textStyle: {
         color: toRGBA(formData.mainTitleTextColor),
-        fontSize: formData.mainTitleFontSize,
+        fontSize: getFontSize(formData.mainTitleFontSize, width, 50),
         fontWeight: formData.mainTitleFontWeight,
       },
       subtext: formData.subTitle,
       subtextStyle: {
         color: toRGBA(formData.subTitleTextColor),
-        fontSize: formData.subTitleFontSize,
+        fontSize: getFontSize(formData.subTitleFontSize, width, 50),
         fontWeight: formData.subTitleFontWeight,
       },
     },
