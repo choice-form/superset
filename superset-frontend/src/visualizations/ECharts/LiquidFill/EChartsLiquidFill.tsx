@@ -22,10 +22,11 @@ import 'echarts-liquidfill';
 
 export default function EChartsLiquidFill(props: any) {
   const eventHandlers = {} as const;
-  const { echartOptions, height, width } = props;
+  const { echartOptions, height, width, formData } = props;
 
   return (
     <Echart
+      themeType={formData.themeType}
       echartOptions={echartOptions}
       eventHandlers={eventHandlers}
       height={height}

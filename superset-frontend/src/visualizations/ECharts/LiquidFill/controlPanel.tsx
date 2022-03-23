@@ -21,6 +21,7 @@ import type { ControlPanelConfig, CustomControlItem } from 'src/chartConntrols';
 import { D3_FORMAT_OPTIONS } from 'src/chartConntrols';
 import { t } from 'src/core';
 import { hexToRgba } from 'src/utils/colorUtils';
+import { themeType } from '../controls';
 
 const showTitle: CustomControlItem = {
   name: 'showTitle',
@@ -339,6 +340,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: false,
       controlSetRows: [
+        [themeType],
         [showTitle],
         [mainTitle, mainTitleTextColor],
         [mainTitleFontSize, mainTitleFontWeight],
