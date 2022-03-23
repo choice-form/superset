@@ -12,6 +12,22 @@ import { DEFAULT_LEGEND_FORM_DATA } from './types';
 
 const { legendOrientation, legendType, showLegend } = DEFAULT_LEGEND_FORM_DATA;
 
+export const themeType = {
+  name: 'themeType',
+  config: {
+    type: 'SelectControl',
+    label: t('Theme Type'),
+    choices: [
+      ['choiceform', t('Primary')],
+      ['ringPie', t('ringPie')],
+    ],
+    default: 'choiceform',
+    clearable: false,
+    renderTrigger: true,
+    description: '',
+  },
+};
+
 export const showLegendControl = {
   name: 'show_legend',
   config: {

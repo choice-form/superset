@@ -26,7 +26,7 @@ export default function EChartsSunburst(
 ) {
   const {
     echartOptions,
-    // formData,
+    formData,
     // groupby,
     height,
     // labelMap,
@@ -38,6 +38,7 @@ export default function EChartsSunburst(
 
   return (
     <Echart
+      themeType={formData.themeType}
       echartOptions={echartOptions}
       eventHandlers={eventHandlers}
       height={height}

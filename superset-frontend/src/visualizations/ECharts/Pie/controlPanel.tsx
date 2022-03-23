@@ -25,7 +25,7 @@ import {
   emitFilterControl,
 } from 'src/chartConntrols';
 import { DEFAULT_FORM_DATA } from './types';
-import { legendSection, drilldown } from '../controls';
+import { legendSection, drilldown, themeType } from '../controls';
 
 const {
   labelsOutside,
@@ -53,6 +53,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
+        [themeType],
         ['titleText'],
         ['titleFontSize'],
         ['titleFontColor'],

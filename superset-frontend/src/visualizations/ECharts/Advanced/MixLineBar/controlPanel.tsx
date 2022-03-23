@@ -31,6 +31,7 @@ import {
   legendModeControl,
   legendTypeControl,
   legendPaddingControl,
+  themeType,
 } from '../../controls';
 
 function createQuerySection(controlSuffix: string) {
@@ -257,6 +258,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
+        [themeType],
         ['titleText'],
         ['titleFontSize'],
         ['titleFontColor'],

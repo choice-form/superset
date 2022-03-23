@@ -24,7 +24,7 @@ import {
   emitFilterControl,
 } from 'src/chartConntrols';
 import { DEFAULT_FORM_DATA } from './types';
-import { legendSection } from '../controls';
+import { legendSection, themeType } from '../controls';
 
 const { numberFormat, showLabels, isCircle } = DEFAULT_FORM_DATA;
 
@@ -61,6 +61,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
+        [themeType],
         ['titleText'],
         ['titleFontSize'],
         ['titleFontColor'],

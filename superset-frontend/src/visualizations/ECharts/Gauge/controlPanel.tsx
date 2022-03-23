@@ -168,7 +168,7 @@ const config: ControlPanelConfig = {
               label: t('Value Font size'),
               description: t('Font size for detail value'),
               renderTrigger: true,
-              min: 50,
+              min: 12,
               max: 150,
               default: 50,
             },

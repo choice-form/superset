@@ -60,6 +60,7 @@ export default function EchartsRadar({
 
   return (
     <Echart
+      themeType={formData.themeType}
       height={height}
       width={width}
       echartOptions={echartOptions}

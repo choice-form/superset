@@ -27,6 +27,7 @@ import {
 import React from 'react';
 import { DEFAULT_FORM_DATA } from './types';
 import { hexToRgba } from '../../../utils/colorUtils';
+import { themeType } from '../controls';
 
 const { showLabels } = DEFAULT_FORM_DATA;
 
@@ -62,6 +63,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
+        [themeType],
         ['titleText'],
         ['titleFontSize'],
         ['titleFontColor'],

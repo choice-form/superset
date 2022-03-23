@@ -79,14 +79,7 @@ module.exports = {
         'func-names': 0,
         'guard-for-in': 0,
         'import/no-cycle': 0, // re-enable up for discussion, might require some major refactors
-        'import/extensions': [
-          'error',
-          {
-            '.ts': 'always',
-            '.tsx': 'always',
-            '.json': 'always',
-          },
-        ],
+        'import/extensions': 0,
         'import/no-named-as-default-member': 0,
         'import/prefer-default-export': 0,
         indent: 0,
@@ -179,16 +172,7 @@ module.exports = {
     curly: 1,
     'func-names': 0,
     'guard-for-in': 0,
-    'import/extensions': [
-      'error',
-      {
-        '.js': 'always',
-        '.jsx': 'always',
-        '.ts': 'always',
-        '.tsx': 'always',
-        '.json': 'always',
-      },
-    ],
+    'import/extensions': 0,
     'import/no-cycle': 0, // re-enable up for discussion, might require some major refactors
     'import/prefer-default-export': 0,
     indent: 0,

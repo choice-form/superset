@@ -27,6 +27,7 @@ export type EchartsStylesProps = {
 };
 
 export interface EchartsProps {
+  themeType?: string;
   height: number;
   width: number;
   echartOptions: EChartsCoreOption;

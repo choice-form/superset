@@ -3132,6 +3132,9 @@
       "Compare multiple time series charts (as sparklines) and related metrics quickly.": [
         ""
       ],
+      "Theme Type": [""],
+      "Primary": [""],
+      "ringPie": [""],
       "Show legend": [""],
       "Whether to display a legend for the chart": [""],
       "drill-down": [""],
@@ -3424,7 +3427,6 @@
       "Draw a marker on data points. Only applicable for line types.": [""],
       "Marker size": [""],
       "Size of marker. Also applies to forecast observations.": [""],
-      "Primary": [""],
       "Secondary": [""],
       "Primary or secondary y-axis": [""],
       "Query A": [""],

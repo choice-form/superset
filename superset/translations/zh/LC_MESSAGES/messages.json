@@ -3773,6 +3773,9 @@
       "Compare multiple time series charts (as sparklines) and related metrics quickly.": [
         "快速比较多个时间序列图（如迷你图）和相关指标。"
       ],
+      "Theme Type": ["主题类型"],
+      "Primary": ["默认主题"],
+      "ringPie": ["环形饼图"],
       "Show legend": ["显示图例"],
       "Whether to display a legend for the chart": ["是否显示图表的图例"],
       "drill-down": ["下钻"],
@@ -4111,7 +4114,6 @@
       "Size of marker. Also applies to forecast observations.": [
         "标记的大小。也适用于预测观测。"
       ],
-      "Primary": ["主要的"],
       "Secondary": ["次要的"],
       "Primary or secondary y-axis": ["主y轴或副y轴"],
       "Query A": ["查询 A"],

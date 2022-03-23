@@ -34,6 +34,7 @@ import {
   hAlignLabelControl,
   vAlignLabelControl,
   labelDistanceControl,
+  themeType,
 } from '../controls';
 import { hexToRgba } from '../../../utils/colorUtils';
 
@@ -54,6 +55,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
+        [themeType],
         ['titleText'],
         ['titleFontSize'],
         ['titleFontColor'],

@@ -17,18 +17,17 @@
  * under the License.
  */
 import React, {
-  useRef,
-  useEffect,
-  useMemo,
   forwardRef,
+  useEffect,
   useImperativeHandle,
+  useMemo,
+  useRef,
 } from 'react';
 import { styled } from 'src/core';
 import { ECharts, init, registerTheme } from 'echarts';
 import { EchartsHandler, EchartsProps, EchartsStylesProps } from './types';
-// @ts-ignore
-// eslint-disable-next-line import/extensions
-import theme from './themes/choiceform.json';
+import choiceForm from './themes/choiceform.json';
+import ringPie from './themes/ringPie.json';
 
 const Styles = styled.div<EchartsStylesProps>`
   height: ${({ height }) => height};
@@ -39,6 +38,7 @@ function Echart(
   {
     width,
     height,
+    themeType = choiceForm.themeName,
     echartOptions,
     eventHandlers,
     zrEventHandlers,
@@ -52,31 +52,21 @@ function Echart(
     selectedValues,
   ]);
   const previousSelection = useRef<string[]>([]);
+  const lastTheme = useRef<string>();
 
   useImperativeHandle(ref, () => ({
     getEchartInstance: () => chartRef.current,
   }));
 
   useEffect(() => {
-    if (!divRef.current) return;
-    if (!chartRef.current) {
-      registerTheme(theme.themeName, theme.theme);
-      chartRef.current = init(divRef.current, theme.themeName);
-    }
+    // 注册多种主题
+    registerTheme(choiceForm.themeName, choiceForm.theme);
+    registerTheme(ringPie.themeName, ringPie.theme);
+  }, []);
 
-    Object.entries(eventHandlers || {}).forEach(([name, handler]) => {
-      chartRef.current?.off(name);
-      chartRef.current?.on(name, handler);
-    });
-
-    Object.entries(zrEventHandlers || {}).forEach(([name, handler]) => {
-      chartRef.current?.getZr().off(name);
-      chartRef.current?.getZr().on(name, handler);
-    });
-
+  const options = useMemo(() => {
     const { toolbox = { feature: {} }, ...baseOptions } = echartOptions;
-
-    const options = {
+    return {
       ...baseOptions,
       toolbox: {
         // @ts-ignore
@@ -89,9 +79,40 @@ function Echart(
         },
       },
     };
+  }, [echartOptions]);
 
-    chartRef.current.setOption(options, true);
-  }, [echartOptions, eventHandlers, zrEventHandlers]);
+  useEffect(() => {
+    if (!divRef.current) return;
+    if (!chartRef.current) {
+      lastTheme.current = themeType;
+      // 初始化
+      chartRef.current = init(divRef.current, themeType);
+    }
+
+    Object.entries(eventHandlers || {}).forEach(([name, handler]) => {
+      chartRef.current?.off(name);
+      chartRef.current?.on(name, handler);
+    });
+
+    Object.entries(zrEventHandlers || {}).forEach(([name, handler]) => {
+      chartRef.current?.getZr().off(name);
+      chartRef.current?.getZr().on(name, handler);
+    });
+
+    chartRef.current?.setOption(options, true, true);
+  }, [options, eventHandlers, zrEventHandlers, themeType]);
+
+  useEffect(() => {
+    // 只有主题变化才会触发更新
+    if (chartRef.current && divRef.current && lastTheme.current !== themeType) {
+      lastTheme.current = themeType;
+      chartRef.current?.clear();
+      chartRef.current?.dispose();
+      chartRef.current = init(divRef.current, themeType);
+      chartRef.current.setOption(options, true, true);
+      chartRef.current.resize({ width, height });
+    }
+  }, [height, options, themeType, width]);
 
   // highlighting
   useEffect(() => {

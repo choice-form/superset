@@ -19,6 +19,7 @@
 import { t } from 'src/core';
 import { ControlPanelConfig, emitFilterControl } from 'src/chartConntrols';
 import { DEFAULT_FORM_DATA } from '../types';
+import { themeType } from '../../controls';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [
@@ -36,6 +37,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
+        [themeType],
         ['titleText'],
         ['titleFontSize'],
         ['titleFontColor'],
@@ -55,7 +57,7 @@ const config: ControlPanelConfig = {
               label: t('Value Font size'),
               description: t('Font size for detail value'),
               renderTrigger: true,
-              min: 50,
+              min: 12,
               max: 500,
               default: 50,
             },

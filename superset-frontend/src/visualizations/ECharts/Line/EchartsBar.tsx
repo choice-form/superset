@@ -25,12 +25,12 @@ export default function EchartsBar({
   height,
   width,
   echartOptions,
+  formData,
   // setDataMask,
   // labelMap,
   // groupby,
   selectedValues,
-}: // formData,
-LineChartTransformedProps) {
+}: LineChartTransformedProps) {
   // const handleChange = useCallback(
   //   (values: string[]) => {
   //     if (!formData.emitFilter) {
@@ -84,6 +84,7 @@ LineChartTransformedProps) {
 
   return (
     <Echart
+      themeType={formData.themeType}
       height={height}
       width={width}
       echartOptions={echartOptions}

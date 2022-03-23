@@ -6,6 +6,7 @@
     "esModuleInterop": false,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": false,
+    "resolveJsonModule": true,
     "jsx": "preserve",
     "lib": ["dom",  "dom.iterable", "esnext"],
     "module": "esnext",

@@ -23,6 +23,7 @@ import {
   sharedControls,
 } from 'src/chartConntrols';
 import { hexToRgba } from '../../../utils/colorUtils';
+import { themeType } from '../controls';
 
 const showLabelOf = (type: string) => ({
   name: `${type}ShowLabel`,
@@ -95,6 +96,7 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
+        [themeType],
         [titleOf('main')],
         [titleSizeOf('main')],
         [titleOf('sub')],

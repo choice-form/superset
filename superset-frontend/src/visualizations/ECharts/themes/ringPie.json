@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "themeName": "choiceForm",
+    "themeName": "ringPie",
     "theme": {
         "seriesCnt": "5",
         "backgroundColor": "rgba(0, 0, 0, 0)",
@@ -10,11 +10,11 @@
         "textColor": "#333",
         "markTextColor": "#eee",
         "color": [
-            "#0055ff",
-            "#33cc59",
-            "#ffbf00",
-            "#df2020",
             "#aa00ff",
+            "#df2020",
+            "#ffbf00",
+            "#33cc59",
+            "#0055ff",
             "#cccccc",
             "#fc8452",
             "#9a60b4",
