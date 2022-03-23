@@ -30,7 +30,7 @@ import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { sanitizeHtml } from '../utils/series';
 import { defaultGrid, defaultTooltip } from '../defaults';
 import { getFontSize } from '../utils/chart';
-import { rgbToHex } from '../../../utils/colorUtils';
+import { toRGBA } from '../utils/colors';
 
 export function formatPieLabel({
   params,
@@ -287,21 +287,13 @@ export default function transformProps(
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
         fontWeight: titleFontWeight,
-        color: rgbToHex(
-          titleFontColor?.r,
-          titleFontColor?.g,
-          titleFontColor?.b,
-        ),
+        color: toRGBA(titleFontColor),
       },
       subtext: subTitleText,
       subtextStyle: {
         fontSize: getFontSize(subTitleFontSize, width),
         fontWeight: subTitleFontWeight,
-        color: rgbToHex(
-          subTitleFontColor?.r,
-          subTitleFontColor?.g,
-          subTitleFontColor?.b,
-        ),
+        color: toRGBA(subTitleFontColor),
       },
     },
     grid: {

@@ -25,8 +25,8 @@ import {
 } from '../types';
 import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from '../constants';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../../types';
-import { rgbToHex } from '../../../../utils/colorUtils';
 import { getFontSize } from '../../utils/chart';
+import { toRGBA } from '../../utils/colors';
 
 export default function transformProps(
   chartProps: EchartsBarChartProps,
@@ -196,21 +196,13 @@ export default function transformProps(
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
         fontWeight: titleFontWeight,
-        color: rgbToHex(
-          titleFontColor?.r,
-          titleFontColor?.g,
-          titleFontColor?.b,
-        ),
+        color: toRGBA(titleFontColor),
       },
       subtext: subTitleText,
       subtextStyle: {
         fontSize: getFontSize(subTitleFontSize, width),
         fontWeight: subTitleFontWeight,
-        color: rgbToHex(
-          subTitleFontColor?.r,
-          subTitleFontColor?.g,
-          subTitleFontColor?.b,
-        ),
+        color: toRGBA(subTitleFontColor),
       },
     },
     legend: {
@@ -240,11 +232,7 @@ export default function transformProps(
         show: outAxisLabel,
         fontSize: outLabelFontSize,
         fontWeight: 'bold',
-        color: rgbToHex(
-          outLabelFontColor?.r,
-          outLabelFontColor?.g,
-          outLabelFontColor?.b,
-        ),
+        color: toRGBA(outLabelFontColor),
         hideOverlap: true, // 是否隐藏重叠的标签
       },
       data: angleAxisData,

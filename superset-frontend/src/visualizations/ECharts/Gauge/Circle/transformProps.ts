@@ -18,13 +18,13 @@
  */
 import { DataRecordValue, getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
-import { rgbToHex } from 'src/utils/colorUtils';
 import { getFontSize } from 'src/visualizations/ECharts/utils/chart';
 import {
   EchartsGaugeFormData,
   GaugeChartTransformedProps,
   EchartsGaugeChartProps,
 } from '../types';
+import { toRGBA } from '../../utils/colors';
 
 export default function transformProps(
   chartProps: EchartsGaugeChartProps,
@@ -110,9 +110,7 @@ export default function transformProps(
       valueAnimation: fontAnimation,
       fontSize: getFontSize(valueFontSize, width), // 文字大小：50 - 500
       formatter: numberFormatter,
-      color:
-        valueFontColor &&
-        rgbToHex(valueFontColor?.r, valueFontColor?.g, valueFontColor?.b),
+      color: toRGBA(valueFontColor),
     },
     // 中间数据
     data: [
@@ -131,21 +129,13 @@ export default function transformProps(
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
         fontWeight: titleFontWeight,
-        color: rgbToHex(
-          titleFontColor?.r,
-          titleFontColor?.g,
-          titleFontColor?.b,
-        ),
+        color: toRGBA(titleFontColor),
       },
       subtext: subTitleText,
       subtextStyle: {
         fontSize: getFontSize(subTitleFontSize, width),
         fontWeight: subTitleFontWeight,
-        color: rgbToHex(
-          subTitleFontColor?.r,
-          subTitleFontColor?.g,
-          subTitleFontColor?.b,
-        ),
+        color: toRGBA(subTitleFontColor),
       },
     },
     series,

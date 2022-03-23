@@ -24,8 +24,8 @@ import {
   EchartsMixedLineBarFormData,
 } from './types';
 import { defaultGrid, defaultTooltip } from '../../defaults';
-import { rgbToHex } from '../../../../utils/colorUtils';
 import { getFontSize } from '../../utils/chart';
+import { toRGBA } from '../../utils/colors';
 
 const lineConfig = (
   stacked: boolean,
@@ -332,9 +332,7 @@ export default function transformProps(
       nameGap: xDistance,
       nameLocation: 'center',
       nameTextStyle: {
-        color:
-          xNameFontColor &&
-          rgbToHex(xNameFontColor?.r, xNameFontColor?.g, xNameFontColor?.b),
+        color: toRGBA(xNameFontColor),
         fontWeight: 'bold',
         fontSize: 16,
       },
@@ -501,21 +499,13 @@ export default function transformProps(
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
         fontWeight: titleFontWeight,
-        color: rgbToHex(
-          titleFontColor?.r,
-          titleFontColor?.g,
-          titleFontColor?.b,
-        ),
+        color: toRGBA(titleFontColor),
       },
       subtext: subTitleText,
       subtextStyle: {
         fontSize: getFontSize(subTitleFontSize, width),
         fontWeight: subTitleFontWeight,
-        color: rgbToHex(
-          subTitleFontColor?.r,
-          subTitleFontColor?.g,
-          subTitleFontColor?.b,
-        ),
+        color: toRGBA(subTitleFontColor),
       },
     },
     grid: {

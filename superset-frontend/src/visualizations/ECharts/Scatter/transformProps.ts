@@ -25,10 +25,10 @@ import {
   EchartsFormData,
 } from './types';
 import { DEFAULT_LEGEND_FORM_DATA } from '../types';
-import { rgbToHex } from '../../../utils/colorUtils';
 import { getFontSize } from '../utils/chart';
 import { EchartsLabelType } from './constants';
 import { defaultGrid } from '../defaults';
+import { toRGBA } from '../utils/colors';
 
 export default function transformProps(
   chartProps: EchartsChartProps,
@@ -252,21 +252,13 @@ export default function transformProps(
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
         fontWeight: titleFontWeight,
-        color: rgbToHex(
-          titleFontColor?.r,
-          titleFontColor?.g,
-          titleFontColor?.b,
-        ),
+        color: toRGBA(titleFontColor),
       },
       subtext: subTitleText,
       subtextStyle: {
         fontSize: getFontSize(subTitleFontSize, width),
         fontWeight: subTitleFontWeight,
-        color: rgbToHex(
-          subTitleFontColor?.r,
-          subTitleFontColor?.g,
-          subTitleFontColor?.b,
-        ),
+        color: toRGBA(subTitleFontColor),
       },
     },
     tooltip: {
@@ -282,9 +274,7 @@ export default function transformProps(
       nameGap: 32,
       nameLocation: 'end',
       nameTextStyle: {
-        color:
-          xNameFontColor &&
-          rgbToHex(xNameFontColor?.r, xNameFontColor?.g, xNameFontColor?.b),
+        color: toRGBA(xNameFontColor),
         fontWeight: 'bold',
         fontSize: 16,
         padding: [0, 0, -40, 0 - (50 + xDistance)],
@@ -318,9 +308,7 @@ export default function transformProps(
       nameTextStyle: {
         fontWeight: 'bold',
         fontSize: 16,
-        color:
-          yNameFontColor &&
-          rgbToHex(yNameFontColor?.r, yNameFontColor?.g, yNameFontColor?.b),
+        color: toRGBA(yNameFontColor),
       },
       // 轴线
       axisLine: {
@@ -382,13 +370,7 @@ export default function transformProps(
           symbol: 'none',
           lineStyle: {
             type: averageLineType,
-            color:
-              averageLineColor &&
-              rgbToHex(
-                averageLineColor?.r,
-                averageLineColor?.g,
-                averageLineColor?.b,
-              ),
+            color: toRGBA(averageLineColor),
           },
           ...averageData,
         },

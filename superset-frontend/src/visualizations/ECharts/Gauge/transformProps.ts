@@ -18,7 +18,6 @@
  */
 import { DataRecordValue, getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
-import { rgbToHex } from 'src/utils/colorUtils';
 import {
   getDistance,
   getFontSize,
@@ -30,6 +29,7 @@ import {
   GaugeChartTransformedProps,
   EchartsGaugeChartProps,
 } from './types';
+import { toRGBA } from '../utils/colors';
 
 export default function transformProps(
   chartProps: EchartsGaugeChartProps,
@@ -104,23 +104,9 @@ export default function transformProps(
       lineStyle: {
         width: axisLineWidth,
         color: [
-          [
-            startRange / 100,
-            rgbToHex(
-              startRangeColor?.r,
-              startRangeColor?.g,
-              startRangeColor?.b,
-            ),
-          ],
-          [
-            middleRange / 100,
-            rgbToHex(
-              middleRangeColor?.r,
-              middleRangeColor?.g,
-              middleRangeColor?.b,
-            ),
-          ],
-          [1, rgbToHex(endRangeColor?.r, endRangeColor?.g, endRangeColor?.b)],
+          [startRange / 100, toRGBA(startRangeColor)],
+          [middleRange / 100, toRGBA(middleRangeColor)],
+          [1, toRGBA(endRangeColor)],
         ],
       },
     },
@@ -189,21 +175,13 @@ export default function transformProps(
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
         fontWeight: titleFontWeight,
-        color: rgbToHex(
-          titleFontColor?.r,
-          titleFontColor?.g,
-          titleFontColor?.b,
-        ),
+        color: toRGBA(titleFontColor),
       },
       subtext: subTitleText,
       subtextStyle: {
         fontSize: getFontSize(subTitleFontSize, width),
         fontWeight: subTitleFontWeight,
-        color: rgbToHex(
-          subTitleFontColor?.r,
-          subTitleFontColor?.g,
-          subTitleFontColor?.b,
-        ),
+        color: toRGBA(subTitleFontColor),
       },
     },
     series,

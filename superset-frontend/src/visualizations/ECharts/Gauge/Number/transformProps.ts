@@ -18,7 +18,6 @@
  */
 import { DataRecordValue, getNumberFormatter } from 'src/core';
 import { EChartsCoreOption } from 'echarts';
-import { rgbToHex } from 'src/utils/colorUtils';
 import {
   getDistance,
   getFontSize,
@@ -30,6 +29,7 @@ import {
   GaugeChartTransformedProps,
   EchartsGaugeChartProps,
 } from '../types';
+import { toRGBA } from '../../utils/colors';
 
 export default function transformProps(
   chartProps: EchartsGaugeChartProps,
@@ -88,21 +88,13 @@ export default function transformProps(
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
         fontWeight: titleFontWeight,
-        color: rgbToHex(
-          titleFontColor?.r,
-          titleFontColor?.g,
-          titleFontColor?.b,
-        ),
+        color: toRGBA(titleFontColor),
       },
       subtext: subTitleText,
       subtextStyle: {
         fontSize: getFontSize(subTitleFontSize, width),
         fontWeight: subTitleFontWeight,
-        color: rgbToHex(
-          subTitleFontColor?.r,
-          subTitleFontColor?.g,
-          subTitleFontColor?.b,
-        ),
+        color: toRGBA(subTitleFontColor),
       },
     },
     graphic: {
@@ -116,13 +108,7 @@ export default function transformProps(
             text: numberFormatter(value as number),
             fontSize: getFontSize(numberFontSize, width),
             fontWeight: 'bold',
-            fill:
-              numberFontColor &&
-              rgbToHex(
-                numberFontColor?.r,
-                numberFontColor?.g,
-                numberFontColor?.b,
-              ),
+            fill: toRGBA(numberFontColor),
           },
         },
         {
@@ -133,13 +119,7 @@ export default function transformProps(
           style: {
             text: description,
             fontSize: getFontSize(descriptionFontSize, width),
-            fill:
-              descriptionFontColor &&
-              rgbToHex(
-                descriptionFontColor?.r,
-                descriptionFontColor?.g,
-                descriptionFontColor?.b,
-              ),
+            fill: toRGBA(descriptionFontColor),
           },
         },
       ],

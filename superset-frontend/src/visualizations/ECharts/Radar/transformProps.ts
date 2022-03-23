@@ -16,41 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { NumberFormatter, getNumberFormatter } from 'src/core';
+import { getNumberFormatter } from 'src/core';
 import { max } from 'lodash';
-import { CallbackDataParams } from 'echarts/types/src/util/types';
 import {
   DEFAULT_FORM_DATA as DEFAULT_RADAR_FORM_DATA,
   EchartsRadarChartProps,
   EchartsRadarFormData,
-  EchartsRadarLabelType,
   RadarChartTransformedProps,
 } from './types';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { getFontSize } from '../utils/chart';
-import { rgbToHex } from '../../../utils/colorUtils';
-
-export function formatLabel({
-  params,
-  labelType,
-  numberFormatter,
-}: {
-  params: CallbackDataParams;
-  labelType: EchartsRadarLabelType;
-  numberFormatter: NumberFormatter;
-}): string {
-  const { name = '', value } = params;
-  const formattedValue = numberFormatter(value as number);
-
-  switch (labelType) {
-    case EchartsRadarLabelType.Value:
-      return formattedValue;
-    case EchartsRadarLabelType.KeyValue:
-      return `${name}: ${formattedValue}`;
-    default:
-      return name;
-  }
-}
+import { toRGBA } from '../utils/colors';
 
 export default function transformProps(
   chartProps: EchartsRadarChartProps,
@@ -183,21 +159,13 @@ export default function transformProps(
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
         fontWeight: titleFontWeight,
-        color: rgbToHex(
-          titleFontColor?.r,
-          titleFontColor?.g,
-          titleFontColor?.b,
-        ),
+        color: toRGBA(titleFontColor),
       },
       subtext: subTitleText,
       subtextStyle: {
         fontSize: getFontSize(subTitleFontSize, width),
         fontWeight: subTitleFontWeight,
-        color: rgbToHex(
-          subTitleFontColor?.r,
-          subTitleFontColor?.g,
-          subTitleFontColor?.b,
-        ),
+        color: toRGBA(subTitleFontColor),
       },
     },
     legend: {
