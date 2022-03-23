@@ -18,13 +18,7 @@
  */
 
 import { ChartProps, getNumberFormatter } from 'src/core';
-import { rgbToHex } from 'src/utils/colorUtils';
-
-function convertColor(color: Record<PropertyKey, number> | string): string {
-  return typeof color === 'string'
-    ? color
-    : rgbToHex(color.r, color.g, color.b);
-}
+import { toRGBA } from '../utils/colors';
 
 // {
 //   center: ['50%', '50%'],
@@ -82,9 +76,9 @@ export default function (props: ChartProps) {
   const echartOptions = {
     series: {
       backgroundStyle: {
-        color: convertColor(formData.backgroundColor),
+        color: toRGBA(formData.backgroundColor),
       },
-      color: [convertColor(formData.waveColor)],
+      color: [toRGBA(formData.waveColor)],
       data,
       direction: formData.waveDirection,
       itemStyle: { opacity: formData.waveOpacity, shadowBlur: 0 },
@@ -101,12 +95,12 @@ export default function (props: ChartProps) {
             .replaceAll('{label}', params.name);
           return prefix + value + suffix;
         },
-        insideColor: convertColor(formData.textFontColor),
+        insideColor: toRGBA(formData.textFontColor),
       },
       outline: {
         borderDistance: formData.borderDistance,
         itemStyle: {
-          borderColor: convertColor(formData.borderColor),
+          borderColor: toRGBA(formData.borderColor),
           shadowBlur: 0,
         },
         show: formData.showOutline,
@@ -120,13 +114,13 @@ export default function (props: ChartProps) {
       show: formData.showTitle,
       text: formData.mainTitle,
       textStyle: {
-        color: convertColor(formData.mainTitleTextColor),
+        color: toRGBA(formData.mainTitleTextColor),
         fontSize: formData.mainTitleFontSize,
         fontWeight: formData.mainTitleFontWeight,
       },
       subtext: formData.subTitle,
       subtextStyle: {
-        color: convertColor(formData.subTitleTextColor),
+        color: toRGBA(formData.subTitleTextColor),
         fontSize: formData.subTitleFontSize,
         fontWeight: formData.subTitleFontWeight,
       },

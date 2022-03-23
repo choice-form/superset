@@ -20,6 +20,7 @@ import { groups as D3Groups } from 'd3-array';
 import type { EChartsCoreOption } from 'echarts';
 import { getNumberFormatter, QueryFormMetric } from 'src/core';
 import { rgbToHex } from 'src/utils/colorUtils';
+import { toRGBA } from '../utils/colors';
 import type {
   EChartsSunburstChartProps,
   EchartsSunburstTransformedProps,
@@ -83,7 +84,6 @@ export default function transformProps(
   const valueKey =
     typeof metric === 'string' ? metric : (metric.label as string);
 
-  const { r, g, b } = formData.measureLabelColor;
   const formatValue = getNumberFormatter(formData.measureLabelFormat);
   const echartOptions: EChartsCoreOption = {
     series: {
@@ -92,7 +92,7 @@ export default function transformProps(
       itemStyle: { borderWidth: 1 },
       label: {
         show: formData.dimensionShowLabel,
-        color: rgbToHex(r, g, b),
+        color: toRGBA(formData.measureLabelColor),
         formatter: ({ data, name, value }: any) =>
           Array.isArray(data.children) ? name : `${formatValue(value)}`,
         rotate: 'radial',
@@ -110,7 +110,7 @@ export default function transformProps(
         // 最后一层
         return {
           label: {
-            color: rgbToHex(r, g, b),
+            color: toRGBA(formData.measureLabelColor),
             fontWeight: 'bold',
             rotate: 'tangential',
             show: formData.measureShowLabel,
