@@ -24,7 +24,7 @@ x-superset-volumes: &superset-volumes
   - ./docker:/app/docker
   - ./superset:/app/superset
   - ./superset-frontend:/app/superset-frontend
-  - superset_home:/app/superset_home
+  - txdi_bi:/data/txdi_bi
   - ./tests:/app/tests
 
 version: "3.7"
@@ -149,7 +149,7 @@ services:
     volumes: *superset-volumes
 
 volumes:
-  superset_home:
+  txdi_bi:
     external: false
   db_home:
     external: false
