@@ -107,8 +107,6 @@ export default function transformProps(
           return {}; // 其他中间层
         }
 
-        const { r, g, b } = formData.measureLabelColor;
-
         // 最后一层
         return {
           label: {

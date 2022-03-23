@@ -64,6 +64,8 @@ import EchartsNumberChartPlugin from '../ECharts/Gauge/Number';
 import EchartsScatterChartPlugin from '../ECharts/Scatter';
 // 旭日图
 import EChartsSunburstChartPlugin from '../ECharts/Sunburst';
+// 水滴图
+import EChartsLiquidFillChartPlugin from '../ECharts/LiquidFill';
 
 // 筛选器
 import FilterBoxChartPlugin from '../FilterBox';
@@ -144,6 +146,8 @@ export default class MainPreset extends Preset {
         new EchartsScatterChartPlugin().configure({ key: 'scatter' }),
         // 旭日图
         new EChartsSunburstChartPlugin().configure({ key: 'echarts-sunburst' }),
+        // 水滴图
+        new EChartsLiquidFillChartPlugin().configure({ key: 'liquidfill' }),
 
         new BigNumberChartPlugin().configure({ key: 'big_number' }),
         new EchartsBoxPlotChartPlugin().configure({ key: 'box_plot' }),

@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-23 12:06+0800\n"
-"PO-Revision-Date: 2022-03-23 00:24+0800\n"
+"POT-Creation-Date: 2022-03-23 16:39+0800\n"
+"PO-Revision-Date: 2022-03-23 16:41+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
 "Language-Team: zh <benedictjin2016@gmail.com>\n"
@@ -5400,6 +5400,7 @@ msgid "Set the text of the sub title"
 msgstr "设置副标题的内容"
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:75
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:130
 msgid "Sub Title Font Size"
 msgstr "副标题字体大小"
 
@@ -5416,6 +5417,7 @@ msgid "Set the font color of the sub title"
 msgstr "设置副标题的字体颜色"
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:89
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:113
 msgid "Sub Title Font Weight"
 msgstr "副标题字体粗细"
 
@@ -6001,6 +6003,7 @@ msgid "Horizontal alignment"
 msgstr "水平对齐"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:104
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:256
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:102
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:298
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:299
@@ -6013,6 +6016,7 @@ msgid "Center"
 msgstr "中间"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:106
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:257
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:103
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:300
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:300
@@ -9075,6 +9079,7 @@ msgstr "其他"
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/index.ts:45
 #: superset-frontend/src/visualizations/ECharts/Gauge/index.ts:44
 #: superset-frontend/src/visualizations/ECharts/Line/index.ts:63
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/index.ts:35
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:64
 #: superset-frontend/src/visualizations/ECharts/Radar/index.ts:54
 #: superset-frontend/src/visualizations/ECharts/Scatter/index.ts:59
@@ -9094,6 +9099,7 @@ msgstr "巧思科技"
 #: superset-frontend/src/visualizations/ECharts/Gauge/index.ts:44
 #: superset-frontend/src/visualizations/ECharts/Graph/index.ts:38
 #: superset-frontend/src/visualizations/ECharts/Line/index.ts:63
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/index.ts:35
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/index.ts:69
 #: superset-frontend/src/visualizations/ECharts/Pie/index.ts:64
 #: superset-frontend/src/visualizations/ECharts/Radar/index.ts:54
@@ -9227,6 +9233,7 @@ msgstr "把您的代码放在这里"
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:31
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:40
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:40
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:337
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:51
@@ -11157,6 +11164,7 @@ msgstr "每个区块的时间单位。应该是比域粒度更小的单位。应
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:52
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:51
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:342
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:279
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:53
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:61
@@ -11549,6 +11557,7 @@ msgid "Whether to apply a normal distribution based on rank on the color scale"
 msgstr "是否应用基于色阶等级的正态分布"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:288
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:269
 msgid "Value Format"
 msgstr "值格式"
 
@@ -12197,17 +12206,20 @@ msgstr "大数字的字体大小"
 #: superset-frontend/src/visualizations/DataUI/BigNumber/sharedControls.ts:35
 #: superset-frontend/src/visualizations/DataUI/BigNumber/sharedControls.ts:69
 msgid "Tiny"
-msgstr "极小的"
+msgstr "极小"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/sharedControls.ts:43
 #: superset-frontend/src/visualizations/DataUI/BigNumber/sharedControls.ts:77
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:64
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:116
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:313
 msgid "Normal"
-msgstr "普通的"
+msgstr "正常"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/sharedControls.ts:51
 #: superset-frontend/src/visualizations/DataUI/BigNumber/sharedControls.ts:85
 msgid "Huge"
-msgstr "巨大的"
+msgstr "巨大"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/sharedControls.ts:62
 msgid "Subheader Font Size"
@@ -13426,6 +13438,166 @@ msgid ""
 "both rectangular coordinate andpolar coordinate."
 msgstr "折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。"
 
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:29
+msgid "Show Title"
+msgstr "显示标题"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:39
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:55
+msgid "Main Title"
+msgstr "主标题"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:50
+msgid "Main Title Text Color"
+msgstr "主标题文字颜色"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:61
+msgid "Main Title Font Weight"
+msgstr "主标题字体粗细"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:63
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:115
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:312
+msgid "Lighter"
+msgstr "细体"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:65
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:117
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:314
+msgid "Bold"
+msgstr "粗体"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:66
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:118
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:315
+msgid "Bolder"
+msgstr "厚体"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:78
+msgid "Main Title Font Size"
+msgstr "主标题字体大小"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:91
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:55
+msgid "Sub Title"
+msgstr "副标题"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:102
+msgid "Sub Title Text Color"
+msgstr "副标题字体颜色"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:143
+msgid "Radius"
+msgstr "半径"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:155
+msgid "Liquid Shape"
+msgstr "形状"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:157
+#: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:230
+msgid "Arrow"
+msgstr "箭头"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:158
+#: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:210
+msgid "Circle"
+msgstr "圆"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:159
+msgid "Fit"
+msgstr "自适应"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:160
+#: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:222
+msgid "Diamond"
+msgstr "菱形"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:161
+msgid "Liquid Pin"
+msgstr "大头钉"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:162
+msgid "Rect"
+msgstr "矩形"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:163
+msgid "Round Rect"
+msgstr "圆角矩形"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:164
+#: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:218
+msgid "Triangle"
+msgstr "三角形"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:177
+msgid "Show Outline"
+msgstr "显示轮廓"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:187
+msgid "Border Color"
+msgstr "边框颜色"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:198
+msgid "Border Distance"
+msgstr "边框距离"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:211
+msgid "Background Color"
+msgstr "背景颜色"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:221
+msgid "Wave Color"
+msgstr "波纹颜色"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:231
+msgid "Wave Opacity"
+msgstr "波纹透明度"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:244
+msgid "Wave Animation"
+msgstr "波纹动画"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:254
+msgid "Wave Direction"
+msgstr "运动方向"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:280
+msgid "Prefix Text"
+msgstr "前置文字"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:290
+msgid "Suffix Text"
+msgstr "后缀文字"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:300
+msgid "Font Color"
+msgstr "字体颜色"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:310
+msgid "Font Weight"
+msgstr "字体粗细"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:326
+msgid "Font Size"
+msgstr "字体大小"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:353
+msgid "Liquid Fill Options"
+msgstr "水滴图选项"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:363
+msgid "Wave Options"
+msgstr "波纹选项"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:371
+msgid "Text Options"
+msgstr "文本选项"
+
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/index.ts:34
+msgid "Liquid Fill"
+msgstr "水滴图"
+
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:135
 msgid "Series type"
 msgstr "系列类型"
@@ -13860,14 +14032,6 @@ msgstr "设置显示数字的文本颜色。"
 msgid "Label Color"
 msgstr "标签颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:55
-msgid "Main Title"
-msgstr "主标题"
-
-#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:55
-msgid "Sub Title"
-msgstr "副标题"
-
 #: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:63
 msgid "Title Size"
 msgstr "标题尺寸"
@@ -14164,29 +14328,13 @@ msgstr "记号"
 msgid "Empty circle"
 msgstr "空圆"
 
-#: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:210
-msgid "Circle"
-msgstr "圆"
-
 #: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:214
 msgid "Rectangle"
 msgstr "长方形"
 
-#: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:218
-msgid "Triangle"
-msgstr "三角形"
-
-#: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:222
-msgid "Diamond"
-msgstr "菱形"
-
 #: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:226
 msgid "Pin"
 msgstr "固定"
-
-#: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:230
-msgid "Arrow"
-msgstr "箭头"
 
 #: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:247
 msgid "Symbol size"
