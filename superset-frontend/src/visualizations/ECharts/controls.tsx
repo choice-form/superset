@@ -21,7 +21,7 @@ export const themeType = {
       ['choiceForm', t('Primary')],
       ['ringPie', t('ringPie')],
     ],
-    default: 'choiceform',
+    default: 'choiceForm',
     clearable: false,
     renderTrigger: true,
     description: '',
