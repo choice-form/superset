@@ -123,7 +123,20 @@ const config: ControlPanelConfig = {
             },
           },
         ],
-
+        [
+          {
+            name: 'gaugeRadius',
+            config: {
+              type: 'SliderControl',
+              label: t('Radius'),
+              description: '',
+              renderTrigger: true,
+              min: 1,
+              max: 120,
+              default: 90,
+            },
+          },
+        ],
         ['showLabel'],
         [
           {
@@ -169,7 +182,7 @@ const config: ControlPanelConfig = {
               description: t('Font size for detail value'),
               renderTrigger: true,
               min: 12,
-              max: 150,
+              max: 300,
               default: 50,
             },
           },

@@ -58,6 +58,7 @@ export default function transformProps(
     valueFontSize,
     fontAnimation,
 
+    gaugeRadius,
     numberDistance,
     startRange,
     startRangeColor,
@@ -93,12 +94,13 @@ export default function transformProps(
   const series = {
     type: 'gauge',
     // 开始角度, 这个角度是固定的，很少需要配置，所以不提供自定义了。
-    startAngle: 180,
+    startAngle: 180 + 10,
     // 结束角度
-    endAngle: 0,
+    endAngle: 0 - 10,
     min: 0,
     max: 100,
     center: ['50%', '65%'],
+    radius: `${gaugeRadius}%`,
     // 仪表盘边缘线
     axisLine: {
       lineStyle: {
@@ -170,6 +172,7 @@ export default function transformProps(
   };
 
   const echartOptions: EChartsCoreOption = {
+    series,
     title: {
       text: titleText,
       textStyle: {
@@ -184,7 +187,6 @@ export default function transformProps(
         color: toRGBA(subTitleFontColor),
       },
     },
-    series,
   };
 
   // console.log('echartOptions:', echartOptions);
