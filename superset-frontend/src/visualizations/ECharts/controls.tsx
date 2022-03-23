@@ -18,7 +18,7 @@ export const themeType = {
     type: 'SelectControl',
     label: t('Theme Type'),
     choices: [
-      ['choiceform', t('Primary')],
+      ['choiceForm', t('Primary')],
       ['ringPie', t('ringPie')],
     ],
     default: 'choiceform',
