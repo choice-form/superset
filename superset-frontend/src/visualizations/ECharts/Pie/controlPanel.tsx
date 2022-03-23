@@ -53,7 +53,14 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
-        // ['color_scheme'],
+        ['titleText'],
+        ['titleFontSize'],
+        ['titleFontColor'],
+        ['titleFontWeight'],
+        ['subTitleText'],
+        ['subTitleFontSize'],
+        ['subTitleFontColor'],
+        ['subTitleFontWeight'],
         [
           {
             name: 'show_labels_threshold',

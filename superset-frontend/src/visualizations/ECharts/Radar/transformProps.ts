@@ -27,6 +27,8 @@ import {
   RadarChartTransformedProps,
 } from './types';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
+import { getFontSize } from '../utils/chart';
+import { rgbToHex } from '../../../utils/colorUtils';
 
 export function formatLabel({
   params,
@@ -63,6 +65,15 @@ export default function transformProps(
   } = chartProps;
 
   const {
+    titleText,
+    titleFontSize,
+    titleFontColor,
+    titleFontWeight,
+    subTitleText,
+    subTitleFontSize,
+    subTitleFontColor,
+    subTitleFontWeight,
+
     groupby,
     // metrics = [],
     numberFormat,
@@ -167,6 +178,28 @@ export default function transformProps(
   }
 
   const echartOptions = {
+    title: {
+      text: titleText,
+      textStyle: {
+        fontSize: getFontSize(titleFontSize, width),
+        fontWeight: titleFontWeight,
+        color: rgbToHex(
+          titleFontColor?.r,
+          titleFontColor?.g,
+          titleFontColor?.b,
+        ),
+      },
+      subtext: subTitleText,
+      subtextStyle: {
+        fontSize: getFontSize(subTitleFontSize, width),
+        fontWeight: subTitleFontWeight,
+        color: rgbToHex(
+          subTitleFontColor?.r,
+          subTitleFontColor?.g,
+          subTitleFontColor?.b,
+        ),
+      },
+    },
     legend: {
       show: showLegend,
       type: legendType === 'scroll' ? 'scroll' : 'plain',

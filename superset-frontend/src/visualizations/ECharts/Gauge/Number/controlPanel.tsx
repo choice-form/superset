@@ -53,8 +53,13 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['titleText'],
-        ['TitleFontSize'],
-        ['TitleFontColor'],
+        ['titleFontSize'],
+        ['titleFontColor'],
+        ['titleFontWeight'],
+        ['subTitleText'],
+        ['subTitleFontSize'],
+        ['subTitleFontColor'],
+        ['subTitleFontWeight'],
         ['yAxisFormat'],
         [
           {
@@ -76,8 +81,8 @@ const config: ControlPanelConfig = {
               // 设置显示数字的文字大小
               description: t('Set the text size for displaying number.'),
               renderTrigger: true,
-              min: 50,
-              max: 320,
+              min: 12,
+              max: 500,
               default: 220,
             },
           },
@@ -92,8 +97,8 @@ const config: ControlPanelConfig = {
               description: t(
                 'Set the vertical distance of the displayed number.',
               ),
-              min: -20,
-              max: 60,
+              min: -100,
+              max: 100,
             },
           },
         ],
@@ -144,8 +149,8 @@ const config: ControlPanelConfig = {
             config: {
               ...sharedControls.distance,
               label: t('Description Distance'),
-              min: -55,
-              max: 40,
+              min: -100,
+              max: 100,
             },
           },
         ],

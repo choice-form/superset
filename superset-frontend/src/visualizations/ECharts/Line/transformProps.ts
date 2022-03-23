@@ -27,6 +27,7 @@ import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { defaultGrid, defaultTooltip } from '../defaults';
 import { rgbToHex } from '../../../utils/colorUtils';
+import { getFontSize } from '../utils/chart';
 
 export default function transformProps(
   chartProps: EchartsLineChartProps,
@@ -43,6 +44,15 @@ export default function transformProps(
   // console.log('chartProps:', chartProps);
 
   const {
+    titleText,
+    titleFontSize,
+    titleFontColor,
+    titleFontWeight,
+    subTitleText,
+    subTitleFontSize,
+    subTitleFontColor,
+    subTitleFontWeight,
+
     chartOrient, // 图表布局方向
     groupby,
     metrics, // 查询指标
@@ -346,6 +356,28 @@ export default function transformProps(
   }
 
   const echartOptions: EChartsCoreOption = {
+    title: {
+      text: titleText,
+      textStyle: {
+        fontSize: getFontSize(titleFontSize, width),
+        fontWeight: titleFontWeight,
+        color: rgbToHex(
+          titleFontColor?.r,
+          titleFontColor?.g,
+          titleFontColor?.b,
+        ),
+      },
+      subtext: subTitleText,
+      subtextStyle: {
+        fontSize: getFontSize(subTitleFontSize, width),
+        fontWeight: subTitleFontWeight,
+        color: rgbToHex(
+          subTitleFontColor?.r,
+          subTitleFontColor?.g,
+          subTitleFontColor?.b,
+        ),
+      },
+    },
     grid: {
       ...defaultGrid,
       ...gridLayout,

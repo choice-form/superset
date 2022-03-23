@@ -28,6 +28,7 @@ import { DEFAULT_FORM_DATA as DEFAULT_PIE_FORM_DATA } from './constants';
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { defaultGrid, defaultTooltip } from '../defaults';
 import { rgbToHex } from '../../../utils/colorUtils';
+import { getFontSize } from '../utils/chart';
 
 // 将值切换为百分比数据
 // @ts-ignore
@@ -55,6 +56,15 @@ export default function transformProps(
   // console.log('chartProps:', chartProps);
 
   const {
+    titleText,
+    titleFontSize,
+    titleFontColor,
+    titleFontWeight,
+    subTitleText,
+    subTitleFontSize,
+    subTitleFontColor,
+    subTitleFontWeight,
+
     showDataZoomY,
     zoomStartY,
     zoomEndY,
@@ -493,6 +503,28 @@ export default function transformProps(
   }
 
   const echartOptions: EChartsCoreOption = {
+    title: {
+      text: titleText,
+      textStyle: {
+        fontSize: getFontSize(titleFontSize, width),
+        fontWeight: titleFontWeight,
+        color: rgbToHex(
+          titleFontColor?.r,
+          titleFontColor?.g,
+          titleFontColor?.b,
+        ),
+      },
+      subtext: subTitleText,
+      subtextStyle: {
+        fontSize: getFontSize(subTitleFontSize, width),
+        fontWeight: subTitleFontWeight,
+        color: rgbToHex(
+          subTitleFontColor?.r,
+          subTitleFontColor?.g,
+          subTitleFontColor?.b,
+        ),
+      },
+    },
     grid: {
       ...defaultGrid,
       ...gridLayout,

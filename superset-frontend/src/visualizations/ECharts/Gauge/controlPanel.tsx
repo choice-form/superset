@@ -42,8 +42,14 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['titleText'],
-        ['TitleFontSize'],
-        ['TitleFontColor'],
+        ['titleFontSize'],
+        ['titleFontColor'],
+        ['titleFontWeight'],
+        ['subTitleText'],
+        ['subTitleFontSize'],
+        ['subTitleFontColor'],
+        ['subTitleFontWeight'],
+
         // eslint-disable-next-line react/react-in-jsx-scope
         [<h1 className="section-header">{t('Color Range')}</h1>],
         [
@@ -145,7 +151,7 @@ const config: ControlPanelConfig = {
           {
             name: 'yAxisNameSize',
             config: {
-              ...sharedControls.TitleFontSize,
+              ...sharedControls.titleFontSize,
               label: t('Value Title Size'),
               description: '',
               default: 30,

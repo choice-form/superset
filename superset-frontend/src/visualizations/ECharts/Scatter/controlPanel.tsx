@@ -63,8 +63,13 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['titleText'],
-        ['TitleFontSize'],
-        ['TitleFontColor'],
+        ['titleFontSize'],
+        ['titleFontColor'],
+        ['titleFontWeight'],
+        ['subTitleText'],
+        ['subTitleFontSize'],
+        ['subTitleFontColor'],
+        ['subTitleFontWeight'],
         [
           {
             name: 'showDataZoomY',

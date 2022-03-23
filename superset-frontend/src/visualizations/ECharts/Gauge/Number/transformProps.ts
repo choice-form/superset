@@ -47,9 +47,16 @@ export default function transformProps(
     emitFilter,
     // metric,
     description,
+
     titleText,
     titleFontSize,
     titleFontColor,
+    titleFontWeight,
+    subTitleText,
+    subTitleFontSize,
+    subTitleFontColor,
+    subTitleFontWeight,
+
     yAxisFormat,
     numberFontSize,
     numberFontColor,
@@ -61,7 +68,7 @@ export default function transformProps(
     descriptionHorizontalDistance,
   }: EchartsGaugeFormData = { ...DEFAULT_GAUGE_FORM_DATA, ...formData };
 
-  console.log('chartProps:', chartProps);
+  // console.log('chartProps:', chartProps);
 
   // 目前只提供一个数的展示
   const obj = queriesData[0].data[0];
@@ -80,9 +87,22 @@ export default function transformProps(
       text: titleText,
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
-        color:
-          titleFontColor &&
-          rgbToHex(titleFontColor?.r, titleFontColor?.g, titleFontColor?.b),
+        fontWeight: titleFontWeight,
+        color: rgbToHex(
+          titleFontColor?.r,
+          titleFontColor?.g,
+          titleFontColor?.b,
+        ),
+      },
+      subtext: subTitleText,
+      subtextStyle: {
+        fontSize: getFontSize(subTitleFontSize, width),
+        fontWeight: subTitleFontWeight,
+        color: rgbToHex(
+          subTitleFontColor?.r,
+          subTitleFontColor?.g,
+          subTitleFontColor?.b,
+        ),
       },
     },
     graphic: {

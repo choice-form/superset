@@ -25,6 +25,7 @@ import {
 } from './types';
 import { defaultGrid, defaultTooltip } from '../../defaults';
 import { rgbToHex } from '../../../../utils/colorUtils';
+import { getFontSize } from '../../utils/chart';
 
 const lineConfig = (
   stacked: boolean,
@@ -174,6 +175,15 @@ export default function transformProps(
   // console.log('chartProps:', chartProps);
 
   const {
+    titleText,
+    titleFontSize,
+    titleFontColor,
+    titleFontWeight,
+    subTitleText,
+    subTitleFontSize,
+    subTitleFontColor,
+    subTitleFontWeight,
+
     // 通用配置
     showDataZoomY,
     zoomStartY,
@@ -486,6 +496,28 @@ export default function transformProps(
   }
 
   const echartOptions: EChartsCoreOption = {
+    title: {
+      text: titleText,
+      textStyle: {
+        fontSize: getFontSize(titleFontSize, width),
+        fontWeight: titleFontWeight,
+        color: rgbToHex(
+          titleFontColor?.r,
+          titleFontColor?.g,
+          titleFontColor?.b,
+        ),
+      },
+      subtext: subTitleText,
+      subtextStyle: {
+        fontSize: getFontSize(subTitleFontSize, width),
+        fontWeight: subTitleFontWeight,
+        color: rgbToHex(
+          subTitleFontColor?.r,
+          subTitleFontColor?.g,
+          subTitleFontColor?.b,
+        ),
+      },
+    },
     grid: {
       ...defaultGrid,
       ...gridLayout,

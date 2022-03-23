@@ -51,6 +51,14 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
+        ['titleText'],
+        ['titleFontSize'],
+        ['titleFontColor'],
+        ['titleFontWeight'],
+        ['subTitleText'],
+        ['subTitleFontSize'],
+        ['subTitleFontColor'],
+        ['subTitleFontWeight'],
         [chartOrientControl],
         ['showLabel'],
         [

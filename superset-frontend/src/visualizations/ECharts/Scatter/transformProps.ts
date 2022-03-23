@@ -46,6 +46,12 @@ export default function transformProps(
     titleText,
     titleFontSize,
     titleFontColor,
+    titleFontWeight,
+    subTitleText,
+    subTitleFontSize,
+    subTitleFontColor,
+    subTitleFontWeight,
+
     showDataZoomY,
     zoomStartY,
     zoomEndY,
@@ -243,13 +249,24 @@ export default function transformProps(
     ...dataZoom,
     title: {
       text: titleText,
-      textAlign: 'right',
-      right: 0,
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
-        color:
-          titleFontColor &&
-          rgbToHex(titleFontColor?.r, titleFontColor?.g, titleFontColor?.b),
+        fontWeight: titleFontWeight,
+        color: rgbToHex(
+          titleFontColor?.r,
+          titleFontColor?.g,
+          titleFontColor?.b,
+        ),
+      },
+      subtext: subTitleText,
+      subtextStyle: {
+        fontSize: getFontSize(subTitleFontSize, width),
+        fontWeight: subTitleFontWeight,
+        color: rgbToHex(
+          subTitleFontColor?.r,
+          subTitleFontColor?.g,
+          subTitleFontColor?.b,
+        ),
       },
     },
     tooltip: {

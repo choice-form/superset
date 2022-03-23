@@ -29,6 +29,8 @@ import {
 import { DEFAULT_LEGEND_FORM_DATA, LegendOrientation } from '../types';
 import { sanitizeHtml } from '../utils/series';
 import { defaultGrid, defaultTooltip } from '../defaults';
+import { getFontSize } from '../utils/chart';
+import { rgbToHex } from '../../../utils/colorUtils';
 
 export function formatPieLabel({
   params,
@@ -71,7 +73,15 @@ export default function transformProps(
   } = chartProps;
 
   const {
-    // colorScheme, // echarts 图表不使用自定义配色
+    titleText,
+    titleFontSize,
+    titleFontColor,
+    titleFontWeight,
+    subTitleText,
+    subTitleFontSize,
+    subTitleFontColor,
+    subTitleFontWeight,
+
     donut,
     groupby: hierarchyOrColumns,
     drilldown,
@@ -272,6 +282,28 @@ export default function transformProps(
   }
 
   const echartOptions: EChartsCoreOption = {
+    title: {
+      text: titleText,
+      textStyle: {
+        fontSize: getFontSize(titleFontSize, width),
+        fontWeight: titleFontWeight,
+        color: rgbToHex(
+          titleFontColor?.r,
+          titleFontColor?.g,
+          titleFontColor?.b,
+        ),
+      },
+      subtext: subTitleText,
+      subtextStyle: {
+        fontSize: getFontSize(subTitleFontSize, width),
+        fontWeight: subTitleFontWeight,
+        color: rgbToHex(
+          subTitleFontColor?.r,
+          subTitleFontColor?.g,
+          subTitleFontColor?.b,
+        ),
+      },
+    },
     grid: {
       ...defaultGrid,
       ...gridLayout,

@@ -44,13 +44,20 @@ export default function transformProps(
   } = chartProps;
 
   const {
+    titleText,
+    titleFontSize,
+    titleFontColor,
+    titleFontWeight,
+    subTitleText,
+    subTitleFontSize,
+    subTitleFontColor,
+    subTitleFontWeight,
+
     // metric,
     axisLineWidth, // 仪表轴线宽度
     valueFontSize,
     fontAnimation,
-    titleText,
-    titleFontSize,
-    titleFontColor,
+
     numberDistance,
     startRange,
     startRangeColor,
@@ -181,9 +188,22 @@ export default function transformProps(
       text: titleText,
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),
-        color:
-          titleFontColor &&
-          rgbToHex(titleFontColor?.r, titleFontColor?.g, titleFontColor?.b),
+        fontWeight: titleFontWeight,
+        color: rgbToHex(
+          titleFontColor?.r,
+          titleFontColor?.g,
+          titleFontColor?.b,
+        ),
+      },
+      subtext: subTitleText,
+      subtextStyle: {
+        fontSize: getFontSize(subTitleFontSize, width),
+        fontWeight: subTitleFontWeight,
+        color: rgbToHex(
+          subTitleFontColor?.r,
+          subTitleFontColor?.g,
+          subTitleFontColor?.b,
+        ),
       },
     },
     series,

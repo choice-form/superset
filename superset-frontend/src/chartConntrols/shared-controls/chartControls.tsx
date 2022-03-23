@@ -17,19 +17,19 @@ export const titleText: SharedControlConfig<'TextControl'> = {
   default: '',
 };
 // 图表的标题字体大小
-export const TitleFontSize: SharedControlConfig<'SliderControl'> = {
+export const titleFontSize: SharedControlConfig<'SliderControl'> = {
   type: 'SliderControl',
   label: t('Title Font Size'),
   description: t('Set the font size of the title'),
   renderTrigger: true,
   min: 16,
-  max: 100,
+  max: 300,
   default: 22,
   visibility: ({ controls }: ControlPanelsContainerProps) =>
     Boolean(controls?.titleText?.value),
 };
 // 图表的标题字体颜色
-export const TitleFontColor: SharedControlConfig<'ColorPickerControl'> = {
+export const titleFontColor: SharedControlConfig<'ColorPickerControl'> = {
   type: 'ColorPickerControl',
   label: t('Title Font Color'),
   description: t('Set the font color of the title'),
@@ -37,6 +37,59 @@ export const TitleFontColor: SharedControlConfig<'ColorPickerControl'> = {
   default: hexToRgba('#333'),
   visibility: ({ controls }: ControlPanelsContainerProps) =>
     Boolean(controls?.titleText?.value),
+};
+export const titleFontWeight: SharedControlConfig<'SelectControl'> = {
+  type: 'SelectControl',
+  label: t('Title Font Weight'),
+  choices: [
+    ['normal'],
+    ['bold'],
+    ['bolder'],
+    ['lighter'],
+    [100],
+    [200],
+    [300],
+    [400],
+    [500],
+    [600],
+    [700],
+    [800],
+    [900],
+    [1000],
+  ],
+  default: 'normal',
+  clearable: false,
+  renderTrigger: true,
+  description: t('Set the font weight of the title.'),
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.titleText?.value),
+};
+export const subTitleText: SharedControlConfig<'TextControl'> = {
+  ...titleText,
+  label: t('Sub Title Text'),
+  description: t('Set the text of the sub title'),
+};
+// 图表的标题字体大小
+export const subTitleFontSize: SharedControlConfig<'SliderControl'> = {
+  ...titleFontSize,
+  label: t('Sub Title Font Size'),
+  description: t('Set the font size of the sub title'),
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.subTitleText?.value),
+};
+export const subTitleFontColor: SharedControlConfig<'ColorPickerControl'> = {
+  ...titleFontColor,
+  label: t('Sub Title Font Color'),
+  description: t('Set the font color of the sub title'),
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.subTitleText?.value),
+};
+export const subTitleFontWeight: SharedControlConfig<'SelectControl'> = {
+  ...titleFontWeight,
+  label: t('Sub Title Font Weight'),
+  description: t('Set the font weight of the sub title.'),
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls?.subTitleText?.value),
 };
 
 // 环形宽度: 仪表盘进度条的宽度
