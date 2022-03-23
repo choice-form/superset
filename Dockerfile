@@ -81,7 +81,7 @@ ENV LANG=C.UTF-8 \
     FLASK_ENV=production \
     FLASK_APP="superset.app:create_app()" \
     PYTHONPATH="/app/pythonpath" \
-    SUPERSET_HOME="/app/superset_home" \
+    SUPERSET_HOME="/data/txdi_bi" \
     SUPERSET_PORT=8088
 
 RUN mkdir -p ${PYTHONPATH} \
@@ -163,6 +163,6 @@ COPY --chown=superset ./docker/docker-ci.sh /app/docker/
 
 RUN chmod a+x /app/docker/*.sh
 
-VOLUME [ "/app/superset_home" ]
+VOLUME [ "/data/txdi_bi" ]
 
 CMD /app/docker/docker-ci.sh

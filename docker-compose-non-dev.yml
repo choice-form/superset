@@ -21,7 +21,7 @@ x-superset-depends-on: &superset-depends-on
 x-superset-volumes: &superset-volumes
   # /app/pythonpath_docker will be appended to the PYTHONPATH in the final container
   - ./docker:/app/docker
-  - superset_home:/app/superset_home
+  - txdi_bi:/data/txdi_bi
 
 version: "3.7"
 services:
@@ -82,7 +82,7 @@ services:
     volumes: *superset-volumes
 
 volumes:
-  superset_home:
+  txdi_bi:
     external: false
   db_home:
     external: false

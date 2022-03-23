@@ -115,12 +115,12 @@ const plugins = [
   }),
 
   // runs type checking on a separate process to speed up the build
-  new ForkTsCheckerWebpackPlugin({
-    eslint: {
-      files: './src/**/*.{ts,tsx,js,jsx}',
-      memoryLimit: 4096,
-    },
-  }),
+  // new ForkTsCheckerWebpackPlugin({
+  //   eslint: {
+  //     files: './src/**/*.{ts,tsx,js,jsx}',
+  //     memoryLimit: 4096,
+  //   },
+  // }),
 
   new CopyPlugin({
     patterns: [
