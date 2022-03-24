@@ -3834,6 +3834,8 @@
       "Set the distance between label and shape.": [
         "设置文本标签和图形之间的距离。"
       ],
+      "Use Auto Layout": ["使用自动边距"],
+      "Uncheck to allow adjust padding manually.": [""],
       "Y Axis Tick": ["Y轴轴线刻度"],
       "Show Y Axis Split Line": ["显示Y轴方向的分割线"],
       "Data Zoom Y": ["Y轴数据缩放"],
@@ -3855,6 +3857,7 @@
       "Ringgit": ["环比"],
       "Show Ringgit": ["显示环比"],
       "Ringgit Font Color": ["环比的字体颜色"],
+      "Auto Padding": ["自动边距"],
       "Value Axis": ["数值轴"],
       "Value axis name font color": ["数值轴名称的字体颜色"],
       "Font color of Value axis name.": ["数值轴名称的字体颜色"],
@@ -3889,6 +3892,7 @@
         "柱状图（或称条形图）是一种通过柱形的高度（横向的情况下则是宽度）来表现数据大小的一种常用图表类型。"
       ],
       "Label Format": ["标签格式化"],
+      "Polar Radius": ["花瓣半径"],
       "Out Axis": ["外部轴"],
       "Out Axis Line": ["外部轴轴线"],
       "Out Axis Tick": ["外部轴刻度"],

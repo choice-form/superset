@@ -35,6 +35,11 @@ import {
   vAlignLabelControl,
   labelDistanceControl,
   themeType,
+  useAutoPadding,
+  paddingTop,
+  paddingRight,
+  paddingLeft,
+  paddingBottom,
 } from '../controls';
 import { hexToRgba } from '../../../utils/colorUtils';
 
@@ -188,6 +193,17 @@ const config: ControlPanelConfig = {
             },
           },
         ],
+      ],
+    },
+    {
+      label: t('Auto Padding'),
+      expanded: false,
+      controlSetRows: [
+        [useAutoPadding],
+        [paddingTop],
+        [paddingRight],
+        [paddingBottom],
+        [paddingLeft],
       ],
     },
     {

@@ -53,6 +53,12 @@ export default function transformProps(
     subTitleFontColor,
     subTitleFontWeight,
 
+    useAutoPadding,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+
     chartOrient, // 图表布局方向
     groupby,
     metrics, // 查询指标
@@ -298,17 +304,24 @@ export default function transformProps(
 
   // 图形grid位置计算
   const gridLayout = {};
-  if (xAxisName || showDataZoomX) {
-    if (getRotate(xLabelLayout) === 0) {
-      gridLayout['bottom'] = 64;
+  if (useAutoPadding) {
+    if (xAxisName || showDataZoomX) {
+      if (getRotate(xLabelLayout) === 0) {
+        gridLayout['bottom'] = 64;
+      } else {
+        gridLayout['bottom'] = 32;
+      }
     } else {
-      gridLayout['bottom'] = 32;
+      gridLayout['bottom'] = 'auto';
+    }
+    if (showLegend) {
+      gridLayout['top'] = '10%';
     }
   } else {
-    gridLayout['bottom'] = 'auto';
-  }
-  if (showLegend) {
-    gridLayout['top'] = '10%';
+    gridLayout['top'] = `${paddingTop}%`;
+    gridLayout['right'] = `${paddingRight}%`;
+    gridLayout['bottom'] = `${paddingBottom}%`;
+    gridLayout['left'] = `${paddingLeft}%`;
   }
 
   let axisPointer = {};

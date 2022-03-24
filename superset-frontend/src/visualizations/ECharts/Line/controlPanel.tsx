@@ -29,8 +29,13 @@ import {
   legendOrientationControl,
   legendPaddingControl,
   legendTypeControl,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
   showLegendControl,
   themeType,
+  useAutoPadding,
 } from '../controls';
 import { hexToRgba } from '../../../utils/colorUtils';
 
@@ -187,6 +192,17 @@ const config: ControlPanelConfig = {
           },
         ],
         ['showAxisPointer'],
+      ],
+    },
+    {
+      label: t('Auto Padding'),
+      expanded: false,
+      controlSetRows: [
+        [useAutoPadding],
+        [paddingTop],
+        [paddingRight],
+        [paddingBottom],
+        [paddingLeft],
       ],
     },
     {

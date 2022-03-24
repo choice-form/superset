@@ -65,6 +65,12 @@ export default function transformProps(
     subTitleFontColor,
     subTitleFontWeight,
 
+    useAutoPadding,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+
     showDataZoomY,
     zoomStartY,
     zoomEndY,
@@ -431,25 +437,32 @@ export default function transformProps(
 
   // 图形grid位置计算
   const gridLayout = {};
-  if (xAxisName || showDataZoomX) {
-    if (getRotate(xLabelLayout) === 0) {
-      gridLayout['bottom'] = 64;
+  if (useAutoPadding) {
+    if (xAxisName || showDataZoomX) {
+      if (getRotate(xLabelLayout) === 0) {
+        gridLayout['bottom'] = 64;
+      } else {
+        gridLayout['bottom'] = 32;
+      }
     } else {
-      gridLayout['bottom'] = 32;
+      gridLayout['bottom'] = 'auto';
+    }
+    if (showLegend) {
+      if (ringgit) {
+        gridLayout['top'] = '12%';
+      } else {
+        gridLayout['top'] = '10%';
+      }
+    }
+
+    if (chartOrient !== 'horizontal') {
+      gridLayout['right'] = '12%';
     }
   } else {
-    gridLayout['bottom'] = 'auto';
-  }
-  if (showLegend) {
-    if (ringgit) {
-      gridLayout['top'] = '12%';
-    } else {
-      gridLayout['top'] = '10%';
-    }
-  }
-
-  if (chartOrient !== 'horizontal') {
-    gridLayout['right'] = '12%';
+    gridLayout['top'] = `${paddingTop}%`;
+    gridLayout['left'] = `${paddingLeft}%`;
+    gridLayout['right'] = `${paddingRight}%`;
+    gridLayout['bottom'] = `${paddingBottom}%`;
   }
 
   let axisPointer = {};

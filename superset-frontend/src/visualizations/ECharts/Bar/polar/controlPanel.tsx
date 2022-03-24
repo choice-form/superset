@@ -75,6 +75,19 @@ const config: ControlPanelConfig = {
             },
           },
         ],
+        [
+          {
+            name: 'polarRadius',
+            config: {
+              type: 'SliderControl',
+              label: t('Polar Radius'),
+              min: 0,
+              max: 100,
+              value: 90,
+              renderTrigger: true,
+            },
+          },
+        ],
       ],
     },
     {

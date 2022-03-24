@@ -52,6 +52,8 @@ export default function transformProps(
     subTitleFontColor,
     subTitleFontWeight,
 
+    polarRadius,
+
     groupby,
     showLabel,
     labelFormat,
@@ -258,7 +260,9 @@ export default function transformProps(
         formatter: inFormatter,
       },
     },
-    polar: {},
+    polar: {
+      radius: `${polarRadius}%`,
+    },
     series,
   };
 
