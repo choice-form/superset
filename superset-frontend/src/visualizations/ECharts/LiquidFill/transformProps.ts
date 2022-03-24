@@ -116,13 +116,13 @@ export default function (props: ChartProps) {
       text: formData.mainTitle,
       textStyle: {
         color: toRGBA(formData.mainTitleTextColor),
-        fontSize: getFontSize(formData.mainTitleFontSize, width, 50),
+        fontSize: getFontSize(formData.mainTitleFontSize, width),
         fontWeight: formData.mainTitleFontWeight,
       },
       subtext: formData.subTitle,
       subtextStyle: {
         color: toRGBA(formData.subTitleTextColor),
-        fontSize: getFontSize(formData.subTitleFontSize, width, 50),
+        fontSize: getFontSize(formData.subTitleFontSize, width),
         fontWeight: formData.subTitleFontWeight,
       },
     },
