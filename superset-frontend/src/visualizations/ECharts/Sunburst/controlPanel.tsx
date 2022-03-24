@@ -70,15 +70,6 @@ const titleSizeOf = (type: string, size?: number) => ({
   },
 });
 
-const showTooltip = {
-  name: 'showTooltip',
-  config: {
-    ...sharedControls.showLabel,
-    description: t('Show a floating tooltip for displaying label and value.'),
-    label: t('Show Tooltip'),
-  },
-};
-
 const config: ControlPanelConfig = {
   controlPanelSections: [
     {
@@ -101,7 +92,6 @@ const config: ControlPanelConfig = {
         [titleSizeOf('main')],
         [titleOf('sub')],
         [titleSizeOf('sub', 18)],
-        [showTooltip],
       ],
     },
     {

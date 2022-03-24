@@ -41,17 +41,17 @@ function attachValues(data: any, valueKey: string) {
     if (datum.children) {
       attachValues(datum.children, valueKey);
       // eslint-disable-next-line no-param-reassign
-      datum.value = datum.children.reduce(
-        (final: number, child: any) => final + child.value,
+      datum._value = datum.children.reduce(
+        (final: number, child: any) => final + child._value,
         0,
       );
     } else {
       // eslint-disable-next-line no-param-reassign
-      datum.value = datum[valueKey];
+      datum.value = 1;
+      // eslint-disable-next-line no-param-reassign
+      datum._value = datum[valueKey];
     }
     return datum;
-    // const value = datum.children ? datum.children.reduce((sum, child) => sum + child.value, 0) : datum.value;
-    // return { ...datum, value };
   });
 }
 
@@ -84,25 +84,29 @@ export default function transformProps(
   const valueKey =
     typeof metric === 'string' ? metric : (metric.label as string);
 
+  const data = groups(queriesData[0].data, groupKeys, valueKey);
   const formatValue = getNumberFormatter(formData.measureLabelFormat);
   const echartOptions: EChartsCoreOption = {
     series: {
-      data: groups(queriesData[0].data, groupKeys, valueKey),
-      emphasis: { focus: 'ancestor' },
+      data,
+      emphasis: { focus: 'none' },
       itemStyle: { borderWidth: 1 },
       label: {
+        color: toRGBA(formData.dimensionLabelColor),
+        fontWeight: 'bold',
+        formatter: ({ data: { children, _value }, name }: any) =>
+          Array.isArray(children) ? name : `${formatValue(_value)}`,
+        rotate: 'tangential',
         show: formData.dimensionShowLabel,
-        color: toRGBA(formData.measureLabelColor),
-        formatter: ({ data, name, value }: any) =>
-          Array.isArray(data.children) ? name : `${formatValue(value)}`,
-        rotate: 'radial',
+        textBorderColor: 'transparent',
+        textBorderWidth: 1,
       },
       levels: [null, ...groupKeys, metric].map((level, index, levels) => {
         if (level === null) return {}; // 为下钻点预留的层
 
         if (index !== levels.length - 1) {
           if (index === levels.length - 2) {
-            return { r: '90%' }; // 倒数第二层
+            return { label: { rotate: 'radial' }, r: '90%' }; // 倒数第二层
           }
           return {}; // 其他中间层
         }
@@ -111,8 +115,6 @@ export default function transformProps(
         return {
           label: {
             color: toRGBA(formData.measureLabelColor),
-            fontWeight: 'bold',
-            rotate: 'tangential',
             show: formData.measureShowLabel,
           },
           r0: '90%',
@@ -127,11 +129,6 @@ export default function transformProps(
       textStyle: { fontSize: getFontSize(formData.mainTitleSize, width, 50) },
       subtext: formData.subTitle,
       subtextStyle: { fontSize: getFontSize(formData.subTitleSize, width, 50) },
-    },
-    tooltip: {
-      show: formData.showTooltip,
-      trigger: 'item',
-      valueFormatter: (value: number) => formatValue(value),
     },
   };
 
