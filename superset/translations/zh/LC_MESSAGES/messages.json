@@ -1744,6 +1744,7 @@
       "Set the font color of the sub title": ["设置副标题的字体颜色"],
       "Sub Title Font Weight": ["副标题字体粗细"],
       "Set the font weight of the sub title.": ["设置副标题的字体粗细"],
+      "Radius": ["半径"],
       "Ring Width": ["环形宽度"],
       "Value Font Color": ["值字体颜色"],
       "Set the font color of the value.": ["设置值的字体颜色"],
@@ -3939,8 +3940,10 @@
       "Axis Line Width": ["轴线宽度"],
       "Value Title": ["值标题"],
       "Value Title Size": ["值标题大小"],
+      "Value Title Font Weight": ["值标题字重"],
       "Value Font size": ["值字体大小"],
       "Font size for detail value": ["值的字体大小"],
+      "Value Font Weight": ["值字重"],
       "Number Distance": ["数字的距离"],
       "Set the vertical distance of the displayed number.": [
         "设置显示数字的垂直距离"
@@ -4071,7 +4074,6 @@
       "Main Title Font Size": ["主标题字体大小"],
       "Sub Title": ["副标题"],
       "Sub Title Text Color": ["副标题字体颜色"],
-      "Radius": ["半径"],
       "Liquid Shape": ["形状"],
       "Arrow": ["箭头"],
       "Circle": ["圆"],

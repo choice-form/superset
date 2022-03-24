@@ -34,7 +34,7 @@ export const titleFontColor: SharedControlConfig<'ColorPickerControl'> = {
   label: t('Title Font Color'),
   description: t('Set the font color of the title'),
   renderTrigger: true,
-  default: hexToRgba('#333'),
+  default: hexToRgba('#666666'),
   visibility: ({ controls }: ControlPanelsContainerProps) =>
     Boolean(controls?.titleText?.value),
 };
@@ -90,6 +90,17 @@ export const subTitleFontWeight: SharedControlConfig<'SelectControl'> = {
   description: t('Set the font weight of the sub title.'),
   visibility: ({ controls }: ControlPanelsContainerProps) =>
     Boolean(controls?.subTitleText?.value),
+};
+
+// 半径
+export const radius: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Radius'),
+  description: '',
+  renderTrigger: true,
+  min: 0,
+  max: 120,
+  default: 100, // 百分比
 };
 
 // 环形宽度: 仪表盘进度条的宽度

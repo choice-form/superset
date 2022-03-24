@@ -4,10 +4,10 @@ export function getFontSize(res: number, max: number, min = 12): number {
     window.innerWidth ||
     document.documentElement.clientWidth ||
     document.body.clientWidth ||
-    1920;
+    1440;
   const maxWidth = max > clientWidth ? clientWidth : max;
-  const width = maxWidth >= 1920 ? 1920 : maxWidth;
-  const precent = width / 1920;
+  const width = maxWidth >= 1440 ? 1440 : maxWidth;
+  const precent = width / 1440;
   const result = Math.round(res * precent);
   return result > min ? result : min;
 }
@@ -18,9 +18,9 @@ export function getDistance(res: number, max: number): number {
     window.innerHeight ||
     document.documentElement.clientHeight ||
     document.body.clientHeight ||
-    1080;
+    900;
   const maxHeight = max > clientHeight ? clientHeight : max;
-  const height = maxHeight >= 1080 ? 1080 : maxHeight;
-  const precent = height / 1080;
+  const height = maxHeight >= 900 ? 900 : maxHeight;
+  const precent = height / 900;
   return Math.round(res * precent);
 }

@@ -49,6 +49,7 @@ const config: ControlPanelConfig = {
         ['subTitleFontSize'],
         ['subTitleFontColor'],
         ['subTitleFontWeight'],
+        ['radius'],
 
         // eslint-disable-next-line react/react-in-jsx-scope
         [<h1 className="section-header">{t('Color Range')}</h1>],
@@ -123,20 +124,6 @@ const config: ControlPanelConfig = {
             },
           },
         ],
-        [
-          {
-            name: 'gaugeRadius',
-            config: {
-              type: 'SliderControl',
-              label: t('Radius'),
-              description: '',
-              renderTrigger: true,
-              min: 1,
-              max: 120,
-              default: 90,
-            },
-          },
-        ],
         ['showLabel'],
         [
           {
@@ -168,6 +155,20 @@ const config: ControlPanelConfig = {
               label: t('Value Title Size'),
               description: '',
               default: 30,
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.yAxisName?.value),
+            },
+          },
+        ],
+        [
+          {
+            name: 'valueTitleFontWeight',
+            config: {
+              ...sharedControls.titleFontWeight,
+              label: t('Value Title Font Weight'),
+              description: '',
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.yAxisName?.value),
             },
           },
         ],
@@ -184,6 +185,17 @@ const config: ControlPanelConfig = {
               min: 12,
               max: 300,
               default: 50,
+            },
+          },
+        ],
+        [
+          {
+            name: 'valueFontWeight',
+            config: {
+              ...sharedControls.titleFontWeight,
+              label: t('Value Font Weight'),
+              description: '',
+              visibility: () => true,
             },
           },
         ],

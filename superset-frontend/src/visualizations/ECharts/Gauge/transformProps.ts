@@ -54,11 +54,12 @@ export default function transformProps(
     subTitleFontWeight,
 
     // metric,
+    radius, // 半径
     axisLineWidth, // 仪表轴线宽度
     valueFontSize,
-    fontAnimation,
+    valueFontWeight, // 值字重
+    valueAnimation, // 值动画
 
-    gaugeRadius,
     numberDistance,
     startRange,
     startRangeColor,
@@ -72,6 +73,8 @@ export default function transformProps(
     yAxisFormat,
     yAxisName,
     yAxisNameSize,
+    valueTitleFontWeight, // 值标题字重
+
     labelFormat,
     emitFilter,
   }: EchartsGaugeFormData = { ...DEFAULT_GAUGE_FORM_DATA, ...formData };
@@ -94,17 +97,18 @@ export default function transformProps(
   const series = {
     type: 'gauge',
     // 开始角度, 这个角度是固定的，很少需要配置，所以不提供自定义了。
-    startAngle: 180 + 10,
+    startAngle: 180,
     // 结束角度
-    endAngle: 0 - 10,
+    endAngle: 0,
     min: 0,
     max: 100,
-    center: ['50%', '65%'],
-    radius: `${gaugeRadius}%`,
+    radius: `${radius}%`,
+    center: ['50%', '75%'],
+    splitNumber: 10,
     // 仪表盘边缘线
     axisLine: {
       lineStyle: {
-        width: axisLineWidth,
+        width: getFontSize(axisLineWidth, width),
         color: [
           [startRange / 100, toRGBA(startRangeColor)],
           [middleRange / 100, toRGBA(middleRangeColor)],
@@ -150,15 +154,17 @@ export default function transformProps(
     },
     title: {
       offsetCenter: [0, '-20%'],
-      fontSize: yAxisNameSize,
+      fontSize: getFontSize(yAxisNameSize, width),
+      fontWeight: valueTitleFontWeight,
       // color: 'auto',
     },
     // 中间文字
     detail: {
       // 字体动画
-      valueAnimation: fontAnimation,
+      valueAnimation,
       offsetCenter: [0, `${getDistance(numberDistance ?? 0, height)}%`],
-      fontSize: getFontSize(valueFontSize, width, 50), // 文字大小：50 - 500
+      fontSize: getFontSize(valueFontSize, width),
+      fontWeight: valueFontWeight,
       formatter: numberFormatter,
       color: 'auto',
     },
@@ -172,7 +178,6 @@ export default function transformProps(
   };
 
   const echartOptions: EChartsCoreOption = {
-    series,
     title: {
       text: titleText,
       textStyle: {
@@ -187,6 +192,7 @@ export default function transformProps(
         color: toRGBA(subTitleFontColor),
       },
     },
+    series,
   };
 
   // console.log('echartOptions:', echartOptions);

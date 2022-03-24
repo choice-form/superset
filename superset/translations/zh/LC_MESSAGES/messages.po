@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apache Superset 0.22.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-23 16:58+0800\n"
+"POT-Creation-Date: 2022-03-24 11:33+0800\n"
 "PO-Revision-Date: 2022-03-23 16:41+0800\n"
 "Last-Translator: cdmikechen\n"
 "Language: zh\n"
@@ -5400,7 +5400,7 @@ msgid "Set the text of the sub title"
 msgstr "设置副标题的内容"
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:75
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:128
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:129
 msgid "Sub Title Font Size"
 msgstr "副标题字体大小"
 
@@ -5417,7 +5417,7 @@ msgid "Set the font color of the sub title"
 msgstr "设置副标题的字体颜色"
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:89
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:112
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:113
 msgid "Sub Title Font Weight"
 msgstr "副标题字体粗细"
 
@@ -5426,206 +5426,211 @@ msgid "Set the font weight of the sub title."
 msgstr "设置副标题的字体粗细"
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:98
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:99
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:142
+msgid "Radius"
+msgstr "半径"
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:109
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:110
 msgid "Ring Width"
 msgstr "环形宽度"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:108
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:119
 msgid "Value Font Color"
 msgstr "值字体颜色"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:109
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:120
 msgid "Set the font color of the value."
 msgstr "设置值的字体颜色"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:117
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:128
 msgid "Show Label"
 msgstr "显示标签"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:120
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:131
 msgid ""
 "Text label of , to explain some data information about graphic item like "
 "value, name and so on."
 msgstr "图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:128
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:129
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:139
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:140
 msgid "Distance"
 msgstr "距离"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:139
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:150
 msgid "Show Area Chart"
 msgstr "显示区域面积图"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:142
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:153
 msgid "Area fill style. The settings are displayed as an area chart."
 msgstr "区域填充样式，显示为一个区域面积图。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:149
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:160
 msgid "Area Linear Gradient"
 msgstr "区域线性渐变"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:152
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:163
 msgid "Area map with linear gradient effect on."
 msgstr "具有线性渐变效果的区域面积图。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:160
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:171
 msgid "Smooth"
 msgstr "平滑"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:163
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:174
 msgid "Whether to show as smooth curve."
 msgstr "是否平滑曲线显示"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:169
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:180
 msgid "Node Symbol"
 msgstr "节点符号"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:171
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:182
 msgid "emptyCircle"
 msgstr "空心圆"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:172
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:183
 msgid "circle"
 msgstr "圆"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:173
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:184
 msgid "rect"
 msgstr "矩形"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:174
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:185
 msgid "roundRect"
 msgstr "圆角矩形"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:175
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:186
 msgid "triangle"
 msgstr "三角形"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:176
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:187
 msgid "diamond"
 msgstr "菱形"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:177
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:188
 msgid "arrow"
 msgstr "箭头"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:178
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:189
 msgid "none"
 msgstr "空"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:183
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:194
 msgid "Node symbol of the line."
 msgstr "折线上的节点符号"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:188
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:199
 msgid "Symbol Size"
 msgstr "符号尺寸"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:194
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:205
 msgid "Resize of symbols."
 msgstr "调整符号的尺寸"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:201
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:212
 msgid "Symbol Rotate"
 msgstr "符号旋转"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:207
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:218
 msgid ""
 "Rotate degree of symbol. The negative value represents clockwise. Note "
 "that when symbol is set to be arrow in markLine, symbolRotate value will "
 "be ignored, and compulsively use tangent angle."
 msgstr "符号的旋转角度（而非弧度）。正值表示逆时针旋转。注意: 当符号为箭头时，会忽略符号的旋转角度，强制设置为切线的角度。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:216
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:227
 msgid "Stacked"
 msgstr "堆叠"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:224
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:235
 msgid "Show Stacked Precent"
 msgstr "按百分比显示堆叠"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:234
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:245
 msgid "Axis Pointer"
 msgstr "坐标轴指示器"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:237
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:248
 msgid "Show Axis Pointer"
 msgstr "显示坐标轴指示器"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:242
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:253
 msgid "Bar Background"
 msgstr "柱形背景"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:245
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:256
 msgid "Enable the background of the bar."
 msgstr "启用柱形的背景"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:251
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:262
 msgid "Y Axis Line"
 msgstr "Y轴的轴线"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:254
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:265
 msgid "Show or hide the axis of Y-axis."
 msgstr "显示或隐藏Y轴的轴线"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:260
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:263
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:271
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:274
 msgid "Y Axis Name"
 msgstr "Y轴的名称"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:269
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:272
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:280
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:283
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:136
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:137
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
 msgid "Y Axis Label"
 msgstr "Y轴的标签"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:278
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:289
 msgid "Y Axis 2 Label"
 msgstr "Y轴2的标签"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:284
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:295
 msgid "Maximum and minimum values for the Y axis"
 msgstr "Y轴的最大值和最小值"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:287
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:298
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:92
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:103
 msgid "Whether to display the min and max values of the Y-axis"
 msgstr "是否显示Y轴的最小值和最大值"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:293
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:304
 msgid "Maximum and minimum values for the Y axis 2"
 msgstr "Y轴2的最大值和最小值"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:294
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:305
 msgid "Whether to display the min and max values of the Y-axis 2"
 msgstr "是否显示Y轴的最小值和最大值"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:299
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:310
 #: superset-frontend/src/explore/controls.jsx:424
 msgid "Y Axis Format"
 msgstr "Y轴格式化"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:308
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:319
 #: superset-frontend/src/explore/controls.jsx:434
 msgid ""
 "When `Calculation type` is set to \"Percentage change\", the Y Axis "
 "Format is forced to `.1%`"
 msgstr "当设置“周期比”时，y轴格式强制为“1%”"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:320
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:331
 msgid "Y Axis 2 Format"
 msgstr "Y轴2格式化"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:325
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:336
 msgid ""
 "When `Calculation type` is set to \"Percentage change\", the Y Axis 2 "
 "Format is forced to `.1%`"
 msgstr "当 `计算类型` 设置为“百分比变化”时，Y轴格式强制为 `.1%`"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:338
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:349
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:354
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:270
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:233
@@ -5637,7 +5642,7 @@ msgstr "当 `计算类型` 设置为“百分比变化”时，Y轴格式强制�
 msgid "Y Axis Bounds"
 msgstr "Y轴的边界"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:341
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:352
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:357
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:273
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:236
@@ -5653,43 +5658,43 @@ msgid ""
 "only expand the axis range. It won't narrow the data's extent."
 msgstr "Y轴的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:352
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:363
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:243
 msgid "Y Axis 2 Bounds"
 msgstr "Y轴2的边界"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:353
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:364
 msgid ""
 "Bounds for the Y-axis 2. When left empty, the bounds are dynamically "
 "defined based on the min/max of the data. Note that this feature will "
 "only expand the axis range. It won't narrow the data's extent."
 msgstr "Y轴2的边界。如果留空，边界将根据数据的最小/最大值动态定义。请注意，此功能只会扩展轴范围。它不会缩小数据的范围。"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:364
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:375
 msgid "X Axis Line"
 msgstr "X轴的轴线"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:367
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:378
 msgid "Show or hide the axis of X-axis."
 msgstr "显示或隐藏X轴的轴线"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:372
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:383
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:204
 msgid "X Axis Format"
 msgstr "X 轴格式化"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:381
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:383
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:389
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:392
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:394
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:400
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:166
 msgid "X Axis Label"
 msgstr "X轴标签"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:397
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:408
 msgid "X Axis Label Rotate"
 msgstr "X轴标签旋转"
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:402
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:413
 msgid ""
 "Rotation degree of axis label, which is especially useful when there is "
 "no enough space for category axis."
@@ -6003,7 +6008,7 @@ msgid "Horizontal alignment"
 msgstr "水平对齐"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:104
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:254
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:255
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:118
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:314
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:299
@@ -6016,7 +6021,7 @@ msgid "Center"
 msgstr "中间"
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:106
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:255
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:256
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:119
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:316
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:300
@@ -9233,7 +9238,7 @@ msgstr "把您的代码放在这里"
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:31
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:40
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:41
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:334
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:335
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:52
@@ -11164,7 +11169,7 @@ msgstr "每个区块的时间单位。应该是比域粒度更小的单位。应
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:52
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:52
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:339
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:340
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:279
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:53
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:61
@@ -11557,7 +11562,7 @@ msgid "Whether to apply a normal distribution based on rank on the color scale"
 msgstr "是否应用基于色阶等级的正态分布"
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:288
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:267
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:268
 msgid "Value Format"
 msgstr "值格式"
 
@@ -12210,9 +12215,9 @@ msgstr "极小"
 
 #: superset-frontend/src/visualizations/DataUI/BigNumber/sharedControls.ts:43
 #: superset-frontend/src/visualizations/DataUI/BigNumber/sharedControls.ts:77
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:64
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:115
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:311
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:65
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:116
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:312
 msgid "Normal"
 msgstr "正常"
 
@@ -13027,31 +13032,31 @@ msgstr "展示指标如何随着漏斗的推进而变化。这个经典图表对
 msgid "Funnel Chart"
 msgstr "漏斗图"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:54
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:55
 msgid "Color Range"
 msgstr "颜色范围"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:60
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:61
 msgid "Start Range Color"
 msgstr "开始颜色范围"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:69
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:70
 msgid "Start Range"
 msgstr "开始范围"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:83
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:84
 msgid "Middle Range Color"
 msgstr "中间颜色范围"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:92
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:93
 msgid "Middle Range"
 msgstr "中间范围"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:106
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:107
 msgid "End Range Color"
 msgstr "结束范围颜色"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:117
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:118
 msgid "Axis Line Width"
 msgstr "轴线宽度"
 
@@ -13063,69 +13068,77 @@ msgstr "值标题"
 msgid "Value Title Size"
 msgstr "值标题大小"
 
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:166
+msgid "Value Title Font Weight"
+msgstr "值标题字重"
+
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:57
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:168
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:179
 msgid "Value Font size"
 msgstr "值字体大小"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:58
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:169
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:180
 msgid "Font size for detail value"
 msgstr "值的字体大小"
 
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:193
+msgid "Value Font Weight"
+msgstr "值字重"
+
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:95
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:182
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:204
 msgid "Number Distance"
 msgstr "数字的距离"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:97
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:184
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:206
 msgid "Set the vertical distance of the displayed number."
 msgstr "设置显示数字的垂直距离"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:71
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:198
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:220
 msgid "Value Animation"
 msgstr "值动画"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:72
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:199
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:221
 msgid "Whether to animate the value or just display it."
 msgstr "是否对值进行动画处理，或只是显示它。"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:212
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:234
 msgid "Show pointer"
 msgstr "显示指针"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:213
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:235
 msgid "Whether to show the pointer"
 msgstr "是否显示指针"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:224
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:246
 msgid "Show axis line ticks"
 msgstr "显示轴线刻度"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:225
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:247
 msgid "Whether to show minor ticks on the axis"
 msgstr "是否在轴上显示小刻度"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:242
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:264
 msgid "Show split lines"
 msgstr "显示分割线"
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:243
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:265
 msgid "Whether to show the split lines on the axis"
 msgstr "是否在坐标轴上显示分割线"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:99
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:260
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:282
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:217
 msgid "Value format"
 msgstr "值格式"
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:101
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:176
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:262
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:284
 msgid "Additional text to add before or after the value, e.g. unit"
 msgstr "在值之前或之后添加的附加文本，例如单位"
 
@@ -13451,153 +13464,149 @@ msgid ""
 "both rectangular coordinate andpolar coordinate."
 msgstr "折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势。可用于直角坐标系和极坐标系上。"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:29
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:30
 msgid "Show Title"
 msgstr "显示标题"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:39
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:40
 #: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:56
 msgid "Main Title"
 msgstr "主标题"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:50
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:51
 msgid "Main Title Text Color"
 msgstr "主标题文字颜色"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:61
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:62
 msgid "Main Title Font Weight"
 msgstr "主标题字体粗细"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:63
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:114
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:310
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:64
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:115
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:311
 msgid "Lighter"
 msgstr "细体"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:65
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:116
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:312
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:66
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:117
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:313
 msgid "Bold"
 msgstr "粗体"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:77
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:78
 msgid "Main Title Font Size"
 msgstr "主标题字体大小"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:90
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:91
 #: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:56
 msgid "Sub Title"
 msgstr "副标题"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:101
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:102
 msgid "Sub Title Text Color"
 msgstr "副标题字体颜色"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:141
-msgid "Radius"
-msgstr "半径"
-
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:153
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:154
 msgid "Liquid Shape"
 msgstr "形状"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:155
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:156
 #: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:230
 msgid "Arrow"
 msgstr "箭头"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:156
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:157
 #: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:210
 msgid "Circle"
 msgstr "圆"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:157
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:158
 msgid "Fit"
 msgstr "自适应"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:158
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:159
 #: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:222
 msgid "Diamond"
 msgstr "菱形"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:159
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:160
 msgid "Liquid Pin"
 msgstr "大头钉"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:160
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:161
 msgid "Rect"
 msgstr "矩形"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:161
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:162
 msgid "Round Rect"
 msgstr "圆角矩形"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:162
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:163
 #: superset-frontend/src/visualizations/ECharts/Tree/controlPanel.tsx:218
 msgid "Triangle"
 msgstr "三角形"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:175
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:176
 msgid "Show Outline"
 msgstr "显示轮廓"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:185
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:186
 msgid "Border Color"
 msgstr "边框颜色"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:196
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:197
 msgid "Border Distance"
 msgstr "边框距离"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:209
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:210
 msgid "Background Color"
 msgstr "背景颜色"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:219
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:220
 msgid "Wave Color"
 msgstr "波纹颜色"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:229
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:230
 msgid "Wave Opacity"
 msgstr "波纹透明度"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:242
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:243
 msgid "Wave Animation"
 msgstr "波纹动画"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:252
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:253
 msgid "Wave Direction"
 msgstr "运动方向"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:278
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:279
 msgid "Prefix Text"
 msgstr "前置文字"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:288
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:289
 msgid "Suffix Text"
 msgstr "后缀文字"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:298
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:299
 msgid "Font Color"
 msgstr "字体颜色"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:308
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:309
 msgid "Font Weight"
 msgstr "字体粗细"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:323
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:324
 msgid "Font Size"
 msgstr "字体大小"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:350
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:352
 msgid "Liquid Fill Options"
 msgstr "水滴图选项"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:360
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:362
 msgid "Wave Options"
 msgstr "波纹选项"
 
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:368
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:370
 msgid "Text Options"
 msgstr "文本选项"
 
