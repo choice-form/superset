@@ -29,6 +29,7 @@ import { getFontSize } from '../utils/chart';
 import { EchartsLabelType } from './constants';
 import { defaultGrid } from '../defaults';
 import { toRGBA } from '../utils/colors';
+import { graphic } from 'echarts';
 
 export default function transformProps(
   chartProps: EchartsChartProps,
@@ -71,6 +72,9 @@ export default function transformProps(
     bubbles, // 是否显示气泡
     scaling, // 气泡缩放
     pointSize, // 非气泡时散点大小
+    gradientColor, // 渐变色开关
+    startColor, // 渐变起始色
+    endColor, // 渐变结束色
 
     yAverageLineTitle,
     yAverageLineLabel,
@@ -341,7 +345,18 @@ export default function transformProps(
           return pointSize;
         },
         itemStyle: {
-          color: 'auto',
+          color: gradientColor
+            ? new graphic.LinearGradient(0, 0, 1, 1, [
+                {
+                  offset: 0,
+                  color: toRGBA(startColor),
+                },
+                {
+                  offset: 1,
+                  color: toRGBA(endColor),
+                },
+              ])
+            : 'auto',
         },
         label: {
           show: showLabels,

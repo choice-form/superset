@@ -409,11 +409,11 @@ export default function transformProps(
                 color: new graphic.LinearGradient(0, 0, 0, 1, [
                   {
                     offset: 0,
-                    color: `rgba(${startColor?.r},${startColor?.g},${startColor?.b},${startColor?.a})`,
+                    color: toRGBA(startColor),
                   },
                   {
                     offset: 1,
-                    color: `rgba(${endColor?.r},${endColor?.g},${endColor?.b},${endColor?.a})`,
+                    color: toRGBA(endColor),
                   },
                 ]),
               }

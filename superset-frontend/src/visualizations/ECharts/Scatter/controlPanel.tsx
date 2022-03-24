@@ -27,7 +27,6 @@ import {
 import React from 'react';
 import { DEFAULT_FORM_DATA } from './types';
 import { hexToRgba } from '../../../utils/colorUtils';
-import { themeType } from '../controls';
 
 const { showLabels } = DEFAULT_FORM_DATA;
 
@@ -63,7 +62,6 @@ const config: ControlPanelConfig = {
       label: t('Chart Options'),
       expanded: true,
       controlSetRows: [
-        [themeType],
         ['titleText'],
         ['titleFontSize'],
         ['titleFontColor'],
@@ -174,6 +172,46 @@ const config: ControlPanelConfig = {
               max: 100, // 最大缩小几倍
               visibility: ({ controls }: ControlPanelsContainerProps) =>
                 Boolean(controls?.bubbles?.value),
+            },
+          },
+        ],
+        [
+          {
+            name: 'gradientColor',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Gradient Color'),
+              renderTrigger: true,
+              default: true,
+              description: '',
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.bubbles?.value),
+            },
+          },
+        ],
+        [
+          {
+            name: 'startColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Start Color'),
+              description: '',
+              default: 'rgba(51,204,89,50)',
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.bubbles?.value) &&
+                Boolean(controls?.gradientColor?.value),
+            },
+          },
+          {
+            name: 'endColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('End Color'),
+              description: '',
+              default: 'rgba(0,85,255,50)',
+              visibility: ({ controls }: ControlPanelsContainerProps) =>
+                Boolean(controls?.bubbles?.value) &&
+                Boolean(controls?.gradientColor?.value),
             },
           },
         ],

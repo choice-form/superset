@@ -58,9 +58,10 @@ export default function EchartsRadar({
     },
   };
 
+  // 气泡图设置主题后有异常，暂时不使用主题配置
   return (
     <Echart
-      themeType={formData.themeType}
+      themeType=""
       height={height}
       width={width}
       echartOptions={echartOptions}
