@@ -334,7 +334,7 @@ const config: ControlPanelConfig = {
     {
       label: t('Query'),
       expanded: true,
-      controlSetRows: [['metrics']],
+      controlSetRows: [['metric'], ['adhoc_filters']],
     },
     {
       label: t('Chart Options'),
@@ -378,6 +378,7 @@ const config: ControlPanelConfig = {
       ],
     },
   ],
+  controlOverrides: {},
 };
 
 export default config;
