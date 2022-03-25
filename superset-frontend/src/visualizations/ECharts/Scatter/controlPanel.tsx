@@ -63,6 +63,7 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['titleText'],
+        ['titleTextAlign'],
         ['titleFontSize'],
         ['titleFontColor'],
         ['titleFontWeight'],
@@ -378,6 +379,17 @@ const config: ControlPanelConfig = {
             },
           },
         ],
+      ],
+    },
+    {
+      label: t('Auto Padding'),
+      expanded: false,
+      controlSetRows: [
+        ['useAutoPadding'],
+        ['paddingTop'],
+        ['paddingLeft'],
+        ['paddingRight'],
+        ['paddingBottom'],
       ],
     },
     {

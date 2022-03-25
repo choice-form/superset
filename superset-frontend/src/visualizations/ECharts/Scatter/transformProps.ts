@@ -18,6 +18,7 @@
  */
 
 import { getNumberFormatter } from 'src/core';
+import { graphic } from 'echarts';
 import {
   ChartTransformedProps,
   DEFAULT_FORM_DATA as DEFAULT_RADAR_FORM_DATA,
@@ -29,7 +30,6 @@ import { getFontSize } from '../utils/chart';
 import { EchartsLabelType } from './constants';
 import { defaultGrid } from '../defaults';
 import { toRGBA } from '../utils/colors';
-import { graphic } from 'echarts';
 
 export default function transformProps(
   chartProps: EchartsChartProps,
@@ -45,6 +45,9 @@ export default function transformProps(
 
   const {
     titleText,
+    titleTextAlign,
+    titleTextAlignLeft,
+    titleTextAlignRight,
     titleFontSize,
     titleFontColor,
     titleFontWeight,
@@ -52,6 +55,12 @@ export default function transformProps(
     subTitleFontSize,
     subTitleFontColor,
     subTitleFontWeight,
+
+    useAutoPadding,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
 
     showDataZoomY,
     zoomStartY,
@@ -127,7 +136,7 @@ export default function transformProps(
   const list: any[] = [];
   // 气泡对应的标签
   const labels: object = {};
-  data.forEach((raw: object, idx) => {
+  data.forEach((raw: object) => {
     // 取最大值
     const vals: number[] = Object.values(raw).splice(colIdx, metrics.length);
     let name = '';
@@ -209,10 +218,17 @@ export default function transformProps(
 
   // 图形grid位置计算
   const gridLayout = {};
-  if (xAxisName || showDataZoomX) {
-    gridLayout['bottom'] = 64;
+  if (useAutoPadding) {
+    if (xAxisName || showDataZoomX) {
+      gridLayout['bottom'] = 64;
+    } else {
+      gridLayout['bottom'] = 'auto';
+    }
   } else {
-    gridLayout['bottom'] = 'auto';
+    gridLayout['top'] = `${paddingTop}%`;
+    gridLayout['left'] = `${paddingLeft}%`;
+    gridLayout['right'] = `${paddingRight}%`;
+    gridLayout['bottom'] = `${paddingBottom}%`;
   }
 
   // 数据缩放
@@ -245,6 +261,19 @@ export default function transformProps(
     };
   }
 
+  // 标题对齐
+  const alignment = {
+    textAlign: titleTextAlign,
+    left:
+      titleTextAlign === 'left'
+        ? '0%'
+        : titleTextAlign === 'right'
+        ? '95%' // 留白以避免遮盖「数据视图」按钮
+        : titleTextAlign === 'center'
+        ? '50%'
+        : 'auto',
+  };
+
   const echartOptions = {
     grid: {
       ...defaultGrid,
@@ -252,6 +281,7 @@ export default function transformProps(
     },
     ...dataZoom,
     title: {
+      ...alignment,
       text: titleText,
       textStyle: {
         fontSize: getFontSize(titleFontSize, width),

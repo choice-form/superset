@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-24 17:55+0800\n"
+"POT-Creation-Date: 2022-03-25 14:04+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5113,7 +5113,7 @@ msgstr ""
 #: superset-frontend/src/explore/controls.jsx:403
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:395
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:298
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:448
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:460
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:190
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:151
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:131
@@ -5142,7 +5142,7 @@ msgstr ""
 #: superset-frontend/src/explore/controls.jsx:410
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:241
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:322
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:384
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:396
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:225
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:187
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:168
@@ -5286,269 +5286,329 @@ msgid "Set the text of the title"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:22
-msgid "Title Font Size"
+msgid "Title Text Align"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:23
+msgid "Select the alignment of the title text."
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:26
+msgid "Auto"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:27
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:135
+#: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:104
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:255
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:118
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:314
+#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:299
+msgid "Left"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:28
+#: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:105
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:315
+msgid "Center"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:29
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:147
+#: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:106
+#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:256
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:119
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:316
+#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:300
+msgid "Right"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:38
+msgid "Title Font Size"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:39
 msgid "Set the font size of the title"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:34
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:50
 msgid "Title Font Color"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:35
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:51
 msgid "Set the font color of the title"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:43
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:59
 msgid "Title Font Weight"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:63
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:79
 msgid "Set the font weight of the title."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:69
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:85
 msgid "Sub Title Text"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:70
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:86
 msgid "Set the text of the sub title"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:75
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:91
 #: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:129
 msgid "Sub Title Font Size"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:76
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:92
 msgid "Set the font size of the sub title"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:82
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:98
 msgid "Sub Title Font Color"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:83
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:99
 msgid "Set the font color of the sub title"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:89
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:105
 #: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:113
 msgid "Sub Title Font Weight"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:90
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:106
 msgid "Set the font weight of the sub title."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:98
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:114
+msgid "Use Auto Layout"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:115
+msgid "Uncheck to allow adjust padding manually."
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:123
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:116
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:334
+#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:282
+msgid "Top"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:159
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:117
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:336
+#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:283
+msgid "Bottom"
+msgstr ""
+
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:171
 #: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:142
 msgid "Radius"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:109
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:110
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:182
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:183
 msgid "Ring Width"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:119
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:192
 msgid "Value Font Color"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:120
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:193
 msgid "Set the font color of the value."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:128
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:201
 msgid "Show Label"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:131
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:204
 msgid ""
 "Text label of , to explain some data information about graphic item like "
 "value, name and so on."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:139
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:140
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:212
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:213
 msgid "Distance"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:150
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:223
 msgid "Show Area Chart"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:153
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:226
 msgid "Area fill style. The settings are displayed as an area chart."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:160
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:233
 msgid "Area Linear Gradient"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:163
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:236
 msgid "Area map with linear gradient effect on."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:171
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:244
 msgid "Smooth"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:174
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:247
 msgid "Whether to show as smooth curve."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:180
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:253
 msgid "Node Symbol"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:182
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:255
 msgid "emptyCircle"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:183
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:256
 msgid "circle"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:184
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:257
 msgid "rect"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:185
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:258
 msgid "roundRect"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:186
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:259
 msgid "triangle"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:187
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:260
 msgid "diamond"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:188
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:261
 msgid "arrow"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:189
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:262
 msgid "none"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:194
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:267
 msgid "Node symbol of the line."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:199
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:272
 msgid "Symbol Size"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:205
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:278
 msgid "Resize of symbols."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:212
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:285
 msgid "Symbol Rotate"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:218
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:291
 msgid ""
 "Rotate degree of symbol. The negative value represents clockwise. Note "
 "that when symbol is set to be arrow in markLine, symbolRotate value will "
 "be ignored, and compulsively use tangent angle."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:227
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:300
 msgid "Stacked"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:235
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:308
 msgid "Show Stacked Precent"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:245
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:318
 msgid "Axis Pointer"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:248
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:321
 msgid "Show Axis Pointer"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:253
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:326
 msgid "Bar Background"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:256
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:329
 msgid "Enable the background of the bar."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:262
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:335
 msgid "Y Axis Line"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:265
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:338
 msgid "Show or hide the axis of Y-axis."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:271
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:274
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:344
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:347
 msgid "Y Axis Name"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:280
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:283
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:353
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:356
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:136
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:137
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:320
 msgid "Y Axis Label"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:289
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:362
 msgid "Y Axis 2 Label"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:295
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:368
 msgid "Maximum and minimum values for the Y axis"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:298
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:371
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:92
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:103
 msgid "Whether to display the min and max values of the Y-axis"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:304
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:377
 msgid "Maximum and minimum values for the Y axis 2"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:305
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:378
 msgid "Whether to display the min and max values of the Y-axis 2"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:310
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:383
 #: superset-frontend/src/explore/controls.jsx:424
 msgid "Y Axis Format"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:319
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:392
 #: superset-frontend/src/explore/controls.jsx:434
 msgid ""
 "When `Calculation type` is set to \"Percentage change\", the Y Axis "
 "Format is forced to `.1%`"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:331
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:404
 msgid "Y Axis 2 Format"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:336
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:409
 msgid ""
 "When `Calculation type` is set to \"Percentage change\", the Y Axis 2 "
 "Format is forced to `.1%`"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:349
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:422
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:354
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:270
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:233
@@ -5560,7 +5620,7 @@ msgstr ""
 msgid "Y Axis Bounds"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:352
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:425
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:357
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:273
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:236
@@ -5576,43 +5636,43 @@ msgid ""
 "only expand the axis range. It won't narrow the data's extent."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:363
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:436
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:243
 msgid "Y Axis 2 Bounds"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:364
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:437
 msgid ""
 "Bounds for the Y-axis 2. When left empty, the bounds are dynamically "
 "defined based on the min/max of the data. Note that this feature will "
 "only expand the axis range. It won't narrow the data's extent."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:375
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:448
 msgid "X Axis Line"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:378
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:451
 msgid "Show or hide the axis of X-axis."
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:383
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:456
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:204
 msgid "X Axis Format"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:392
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:394
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:400
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:465
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:467
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:473
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:166
 msgid "X Axis Label"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:408
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:481
 msgid "X Axis Label Rotate"
 msgstr ""
 
-#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:413
+#: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:486
 msgid ""
 "Rotation degree of axis label, which is especially useful when there is "
 "no enough space for category axis."
@@ -5921,29 +5981,6 @@ msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:99
 msgid "Horizontal alignment"
-msgstr ""
-
-#: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:104
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:255
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:118
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:314
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:416
-#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:299
-msgid "Left"
-msgstr ""
-
-#: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:105
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:315
-msgid "Center"
-msgstr ""
-
-#: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:106
-#: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:256
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:119
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:316
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:388
-#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:300
-msgid "Right"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:112
@@ -7439,7 +7476,7 @@ msgstr ""
 #: superset-frontend/src/views/CRUD/alert/AlertReportModal.tsx:1091
 #: superset-frontend/src/views/CRUD/alert/ExecutionLog.tsx:124
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:96
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:256
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:257
 msgid "Value"
 msgstr ""
 
@@ -7529,18 +7566,18 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:301
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:327
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:340
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:115
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:128
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:154
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:167
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:88
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:101
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:127
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:140
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:90
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:103
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:129
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:142
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:110
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:123
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:149
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:162
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:83
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:96
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:122
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:135
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:91
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:104
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:130
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:143
 msgid "Default Value"
 msgstr ""
 
@@ -9131,7 +9168,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:34
 #: superset-frontend/src/visualizations/DataUI/EventFlowChart/controlPanel.tsx:89
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:175
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:49
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:44
 #: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:39
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:34
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:41
@@ -9139,12 +9176,12 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:30
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:31
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:40
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:46
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:335
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:41
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:49
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:51
-#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:85
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:76
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:60
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:57
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:53
@@ -11048,20 +11085,20 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/TreemapChart/controlPanel.ts:48
 #: superset-frontend/src/visualizations/DataUI/BigNumber/BigNumber/controlPanel.tsx:139
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:258
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:60
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:55
 #: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:50
 #: superset-frontend/src/visualizations/ECharts/BoxPlot/controlPanel.ts:62
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:71
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:37
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:52
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:41
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:57
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:52
 #: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:340
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:279
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:53
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:61
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:62
-#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:96
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:87
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Area/controlPanel.tsx:104
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Bar/controlPanel.tsx:101
 #: superset-frontend/src/visualizations/ECharts/Timeseries/Regular/Scatter/controlPanel.tsx:81
@@ -11120,8 +11157,8 @@ msgstr ""
 #: superset-frontend/src/visualizations/D3/CalendarChart/controlPanel.ts:142
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:240
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:352
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:210
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:209
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:205
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:204
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:146
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:140
 msgid "Legend"
@@ -12046,7 +12083,7 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/WorldMapChart/controlPanel.ts:73
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:156
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:157
 msgid "Show Bubbles"
 msgstr ""
 
@@ -12377,20 +12414,6 @@ msgstr ""
 msgid "Legend Orientation"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:116
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:334
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:374
-#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:282
-msgid "Top"
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:117
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:336
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:402
-#: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:283
-msgid "Bottom"
-msgstr ""
-
 #: superset-frontend/src/visualizations/ECharts/controls.tsx:123
 msgid "Choose the orientation of the legend"
 msgstr ""
@@ -12503,87 +12526,79 @@ msgstr ""
 msgid "Set the distance between label and shape."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:363
-msgid "Use Auto Layout"
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:364
-msgid "Uncheck to allow adjust padding manually."
-msgstr ""
-
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:125
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:126
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:417
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:418
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:429
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:430
 msgid "Y Axis Tick"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:147
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:148
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:439
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:440
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:451
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:452
 msgid "Show Y Axis Split Line"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:276
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:103
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:76
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:78
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:98
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:71
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:79
 msgid "Data Zoom Y"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:287
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:326
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:114
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:153
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:87
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:126
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:89
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:128
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:109
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:148
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:82
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:121
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:90
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:129
 msgid "Start Value"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:300
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:339
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:127
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:166
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:100
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:139
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:102
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:141
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:122
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:161
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:95
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:134
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:103
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:142
 msgid "End Value"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:315
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:142
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:115
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:117
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:137
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:110
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:118
 msgid "Data Zoom X"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:371
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:187
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:182
 msgid "Bar Width"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:406
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:407
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:471
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:472
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:483
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:484
 msgid "X Axis Tick"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:417
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:418
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:482
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:483
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:494
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:495
 msgid "Show X Axis Label"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:428
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:429
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:493
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:494
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:505
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:506
 msgid "Show X Axis Split Line"
 msgstr ""
 
@@ -12592,7 +12607,7 @@ msgid "X axis name distance"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:440
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:505
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:517
 msgid "Distance between X-axis name and boundary"
 msgstr ""
 
@@ -12601,7 +12616,7 @@ msgid "X axis name font color"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:453
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:518
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:530
 msgid "Font color of X-axis name."
 msgstr ""
 
@@ -12613,148 +12628,149 @@ msgstr ""
 msgid "Mixed Line and Bar"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:78
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:73
 msgid "Ringgit"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:79
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:74
 msgid "Show Ringgit"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:89
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:90
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:84
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:85
 msgid "Ringgit Font Color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:199
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:198
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:194
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:193
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:385
 msgid "Auto Padding"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:221
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:220
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:216
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:215
 msgid "Value Axis"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:232
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:231
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:227
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:226
 msgid "Value axis name font color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:233
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:232
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:228
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:227
 msgid "Font color of Value axis name."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:242
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:243
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:241
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:242
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:237
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:238
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:236
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:237
 msgid "Value Axis Tick"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:253
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:254
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:252
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:253
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:350
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:351
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:248
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:249
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:247
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:248
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:345
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:346
 msgid "Value Axis Label"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:264
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:265
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:263
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:264
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:259
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:260
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:258
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:259
 msgid "Show Value Axis Split Line"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:275
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:274
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:270
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:269
 msgid "Category Axis"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:286
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:287
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:285
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:286
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:281
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:282
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:280
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:281
 msgid "Category Axis Tick"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:297
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:298
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:296
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:297
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:292
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:293
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:291
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:292
 msgid "Show Category Axis Label"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:308
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:309
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:307
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:308
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:303
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:304
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:302
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:303
 msgid "Show Category Axis Split Line"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:319
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:318
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:314
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:313
 msgid "Category axis name distance"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:320
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:319
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:315
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:314
 msgid "Distance between Category-axis name and boundary"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:334
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:333
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:329
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:328
 msgid "Category axis name font color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:335
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:334
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:330
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:329
 msgid "Font color of Category-axis name."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:344
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:343
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:339
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:338
 msgid "Value Axis Format"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:347
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:346
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:342
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:341
 msgid "Value Axis Line"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:348
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:347
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:343
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:342
 msgid "Show or hide the axis of Value-axis."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:351
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:354
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:346
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:349
 msgid "Maximum and minimum values for the Value axis"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:347
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:350
+msgid "Whether to display the min and max values of the Value-axis"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:352
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:355
-msgid "Whether to display the min and max values of the Value-axis"
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:357
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:360
 msgid "Value Axis Bounds"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:358
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:361
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:353
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:356
 msgid ""
 "Bounds for the Value-axis. When left empty, the bounds are dynamically "
 "defined based on the min/max of the data. Note that this feature will "
 "only expand the axis range. It won't narrow the data's extent."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:366
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:369
+#: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:361
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:364
 msgid "Category Axis Label Rotate"
 msgstr ""
 
@@ -12892,21 +12908,21 @@ msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:77
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:85
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:233
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:234
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:62
 msgid "Labels"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:83
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:91
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:251
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:252
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:92
 msgid "Label Type"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:94
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:99
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:259
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:260
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:100
 msgid "What should be shown on the label?"
 msgstr ""
@@ -12914,7 +12930,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:119
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:124
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:97
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:239
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:240
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:68
 msgid "Show Labels"
 msgstr ""
@@ -12922,7 +12938,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Funnel/controlPanel.tsx:122
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:127
 #: superset-frontend/src/visualizations/ECharts/Radar/controlPanel.tsx:100
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:242
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:243
 #: superset-frontend/src/visualizations/ECharts/Treemap/controlPanel.tsx:71
 msgid "Whether to display the labels."
 msgstr ""
@@ -13329,21 +13345,21 @@ msgstr ""
 msgid "Graph Chart"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:157
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:197
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:152
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:198
 msgid "Start Color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:169
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:209
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:164
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:210
 msgid "End Color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:187
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:182
 msgid "Sort Lines"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:190
+#: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:185
 msgid "Sort lines by category axis for label names."
 msgstr ""
 
@@ -13735,12 +13751,12 @@ msgid "Minimum threshold in percentage points for showing labels."
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:95
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:255
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:256
 msgid "Category Name"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Pie/controlPanel.tsx:97
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:257
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:258
 msgid "Category and Value"
 msgstr ""
 
@@ -13837,104 +13853,104 @@ msgstr ""
 msgid "Radar Chart"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:168
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:169
 msgid "Bubbles Scaling"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:183
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:184
 msgid "Gradient Color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:223
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:224
 msgid "Point Size"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:270
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:271
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:272
 msgid "Show average line"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:280
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:281
 msgid "Average Line Type"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:284
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:285
 msgid "Solid"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:285
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:286
 msgid "Dashed"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:286
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:287
 msgid "Dotted"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:288
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:289
 msgid "Set the display type of the average line."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:299
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:300
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:301
 msgid "Average Line Color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:312
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:313
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:314
 msgid "Y-Axis average line title"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:324
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:325
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:326
 msgid "Y-Axis average line label"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:337
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:338
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:339
 msgid "Value suffix for Y-axis"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:349
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:350
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:351
 msgid "X-Axis average line title"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:361
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:362
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:363
 msgid "X-Axis average line label"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:374
 #: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:375
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:376
 msgid "Value suffix for X-axis"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:393
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:405
 msgid "Show Y Axis Arrow"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:407
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:419
 msgid "y axis name font color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:408
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:420
 msgid "Font color of Y-axis name."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:428
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:429
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:440
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:441
 msgid "Show Y Axis Label"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:457
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:469
 msgid "Show X Axis Arrow"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:504
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:516
 msgid "x axis name distance"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:517
+#: superset-frontend/src/visualizations/ECharts/Scatter/controlPanel.tsx:529
 msgid "x axis name font color"
 msgstr ""
 
@@ -13964,19 +13980,11 @@ msgstr ""
 msgid "Set the text size for displaying title."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:77
-msgid "Show a floating tooltip for displaying label and value."
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:78
-msgid "Show Tooltip"
-msgstr ""
-
-#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:108
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:98
 msgid "Dimension Options"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:113
+#: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:103
 msgid "Measure Options"
 msgstr ""
 

@@ -1730,6 +1730,12 @@
       "Color Scheme": ["配色方案"],
       "Title Text": ["标题内容"],
       "Set the text of the title": ["设置标题的内容"],
+      "Title Text Align": ["标题文本对齐"],
+      "Select the alignment of the title text.": ["为标题文本选择对齐方式。"],
+      "Auto": ["自动"],
+      "Left": ["左边"],
+      "Center": ["中间"],
+      "Right": ["右边"],
       "Title Font Size": ["标题字体大小"],
       "Set the font size of the title": ["设置标题的字体大小"],
       "Title Font Color": ["标题字体颜色"],
@@ -1744,6 +1750,10 @@
       "Set the font color of the sub title": ["设置副标题的字体颜色"],
       "Sub Title Font Weight": ["副标题字体粗细"],
       "Set the font weight of the sub title.": ["设置副标题的字体粗细"],
+      "Use Auto Layout": ["使用自动边距"],
+      "Uncheck to allow adjust padding manually.": [""],
+      "Top": ["顶部"],
+      "Bottom": ["底部"],
       "Radius": ["半径"],
       "Ring Width": ["环形宽度"],
       "Value Font Color": ["值字体颜色"],
@@ -1906,9 +1916,6 @@
       ],
       "Text align": ["文本对齐"],
       "Horizontal alignment": ["水平对齐"],
-      "Left": ["左边"],
-      "Center": ["中间"],
-      "Right": ["右边"],
       "Show cell bars": ["显示柱单元"],
       "Whether to display a bar chart background in table columns": [
         "是否在表格列中显示柱状图"
@@ -3796,8 +3803,6 @@
       "Plain": ["普通图例"],
       "Show Legend type": ["显示图例类型"],
       "Legend Orientation": ["图例列表的布局朝向"],
-      "Top": ["顶部"],
-      "Bottom": ["底部"],
       "Choose the orientation of the legend": ["选择图例的方向"],
       "Legend Padding": ["图例内边距"],
       "Additional padding for legend.": ["为图例提供额外的填充"],
@@ -3834,8 +3839,6 @@
       "Set the distance between label and shape.": [
         "设置文本标签和图形之间的距离。"
       ],
-      "Use Auto Layout": ["使用自动边距"],
-      "Uncheck to allow adjust padding manually.": [""],
       "Y Axis Tick": ["Y轴轴线刻度"],
       "Show Y Axis Split Line": ["显示Y轴方向的分割线"],
       "Data Zoom Y": ["Y轴数据缩放"],
@@ -4214,10 +4217,6 @@
       "Label Color": ["标签颜色"],
       "Title Size": ["标题尺寸"],
       "Set the text size for displaying title.": ["设置显示标题的文字大小。"],
-      "Show a floating tooltip for displaying label and value.": [
-        "显示一个浮动的信息提示框来强调标签和值。"
-      ],
-      "Show Tooltip": ["显示信息提示框"],
       "Dimension Options": ["维度选项"],
       "Measure Options": ["度量选项"],
       "Contribution Mode": ["贡献模式"],

@@ -16,6 +16,22 @@ export const titleText: SharedControlConfig<'TextControl'> = {
   renderTrigger: true,
   default: '',
 };
+// 图表标题对齐
+export const titleTextAlign: SharedControlConfig<'SelectControl'> = {
+  type: 'SelectControl',
+  label: t('Title Text Align'),
+  description: t('Select the alignment of the title text.'),
+  renderTrigger: true,
+  choices: [
+    ['auto', t('Auto')],
+    ['left', t('Left')],
+    ['center', t('Center')],
+    ['right', t('Right')],
+  ],
+  default: 'auto',
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    Boolean(controls.titleText.value),
+};
 // 图表的标题字体大小
 export const titleFontSize: SharedControlConfig<'SliderControl'> = {
   type: 'SliderControl',
@@ -90,6 +106,63 @@ export const subTitleFontWeight: SharedControlConfig<'SelectControl'> = {
   description: t('Set the font weight of the sub title.'),
   visibility: ({ controls }: ControlPanelsContainerProps) =>
     Boolean(controls?.subTitleText?.value),
+};
+
+// 自动边距
+export const useAutoPadding: SharedControlConfig<'CheckboxControl'> = {
+  type: 'CheckboxControl',
+  label: t('Use Auto Layout'),
+  description: t('Uncheck to allow adjust padding manually.'),
+  default: true,
+  renderTrigger: true,
+};
+
+// 手动上边距
+export const paddingTop: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Top'),
+  min: 0,
+  max: 100,
+  default: 0,
+  renderTrigger: true,
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    !controls.useAutoPadding.value,
+};
+
+// 手动左边距
+export const paddingLeft: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Left'),
+  min: 0,
+  max: 100,
+  default: 0,
+  renderTrigger: true,
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    !controls.useAutoPadding.value,
+};
+
+// 手动右边距
+export const paddingRight: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Right'),
+  min: 0,
+  max: 100,
+  default: 0,
+  renderTrigger: true,
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    !controls.useAutoPadding.value,
+};
+
+// 手动下边距
+export const paddingBottom: SharedControlConfig<'SliderControl'> = {
+  type: 'SliderControl',
+  label: t('Bottom'),
+  min: 0,
+  max: 100,
+  default: 0,
+  renderTrigger: true,
+  visibility: ({ controls }: ControlPanelsContainerProps) =>
+    !controls.useAutoPadding.value,
 };
 
 // 半径
