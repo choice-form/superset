@@ -30,6 +30,7 @@ export const D3_FORMAT_OPTIONS: [string, string][] = [
   ['PRECENT', t('Precent (66 => 66%)')],
   ['Not Decimal Precent', t('Not Decimal Precent (66.6 => 67%)')],
   ['Thousand Separator', t('Thousand Separator (12345 => 12,345)')],
+  ['.0%', '.0% (0.2432 => 24%)'],
   [',d', ',d (12345.432 => 12,345)'],
   ['.1s', '.1s (12345.432 => 10k)'],
   ['.3s', '.3s (12345.432 => 12.3k)'],
