@@ -103,7 +103,7 @@ export default function transformProps(
     // 结束角度
     endAngle: 0,
     min: 0,
-    max: 100,
+    max: (value as number) > 1 ? 100 : 1, // 支持真实数据（小数点）和演示数据（大于1）的展示
     radius: `${radius}%`,
     center: ['50%', '75%'],
     splitNumber: 10,
