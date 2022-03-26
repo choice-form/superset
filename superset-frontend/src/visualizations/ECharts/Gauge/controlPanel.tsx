@@ -147,6 +147,17 @@ const config: ControlPanelConfig = {
             },
           },
         ],
+        [
+          {
+            name: 'showLegend',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Show legend'),
+              renderTrigger: true,
+              default: true,
+            },
+          },
+        ],
         ['showLabel'],
         [
           {

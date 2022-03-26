@@ -21,17 +21,28 @@ import Echart from 'src/visualizations/ECharts/Echart';
 import { GaugeChartTransformedProps } from './types';
 import { EventHandlers } from '../types';
 import { getChartDataMask } from '../utils/datamask';
+import './EchartsGauge.less';
+import { toRGBA } from '../utils/colors';
 
-export default function EchartsGauge({
-  height,
-  width,
-  echartOptions,
-  setDataMask,
-  labelMap,
-  groupby,
-  selectedValues,
-  formData: { emitFilter },
-}: GaugeChartTransformedProps) {
+export default function EchartsGauge(props: GaugeChartTransformedProps) {
+  const {
+    height,
+    width,
+    echartOptions,
+    setDataMask,
+    labelMap,
+    groupby,
+    selectedValues,
+    formData: {
+      showLegend,
+      startRangeColor,
+      secondRangeColor,
+      thirdRangeColor,
+      endRangeColor,
+      emitFilter,
+    },
+  } = props;
+
   const handleChange = useCallback(
     (values: string[]) => {
       if (!emitFilter) {
@@ -56,13 +67,50 @@ export default function EchartsGauge({
     },
   };
 
+  let legends: any[] = [];
+  if (showLegend) {
+    legends = [
+      startRangeColor,
+      secondRangeColor,
+      thirdRangeColor,
+      endRangeColor,
+    ].map((value, index) => {
+      const color = toRGBA(value);
+      const label =
+        index === 1
+          ? '保底目标'
+          : index === 2
+          ? '尖叫目标'
+          : index === 3
+          ? '嚎叫目标'
+          : '？？目标';
+      return { color, label };
+    });
+  }
+
   return (
-    <Echart
-      height={height}
-      width={width}
-      echartOptions={echartOptions}
-      eventHandlers={eventHandlers}
-      selectedValues={selectedValues}
-    />
+    <>
+      {showLegend && (
+        <ul className="gauge-legend">
+          {legends.map(({ color, label }) => (
+            <li className="legend-item">
+              <span
+                className="legend-color"
+                style={{ backgroundColor: color }}
+              />
+              <span className="legend-label">{label}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <Echart
+        height={height}
+        width={width}
+        echartOptions={echartOptions}
+        eventHandlers={eventHandlers}
+        selectedValues={selectedValues}
+      />
+    </>
   );
 }
