@@ -28,6 +28,7 @@ import { ECharts, init, registerTheme } from 'echarts';
 import { EchartsHandler, EchartsProps, EchartsStylesProps } from './types';
 import choiceForm from './themes/choiceform.json';
 import ringPie from './themes/ringPie.json';
+import customBar from './themes/customBar.json';
 
 const Styles = styled.div<EchartsStylesProps>`
   height: ${({ height }) => height};
@@ -62,6 +63,7 @@ function Echart(
     // 注册多种主题
     registerTheme(choiceForm.themeName, choiceForm.theme);
     registerTheme(ringPie.themeName, ringPie.theme);
+    registerTheme(customBar.themeName, customBar.theme);
   }, []);
 
   const options = useMemo(() => {

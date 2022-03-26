@@ -20,6 +20,7 @@ export const themeType = {
     choices: [
       ['choiceForm', t('Primary')],
       ['ringPie', t('ringPie')],
+      ['customBar', t('customBar')],
     ],
     default: 'choiceForm',
     clearable: false,

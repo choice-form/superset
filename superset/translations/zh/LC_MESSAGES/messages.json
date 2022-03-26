@@ -3786,6 +3786,7 @@
       "Theme Type": ["主题类型"],
       "Primary": ["默认主题"],
       "ringPie": ["环形饼图"],
+      "customBar": ["定制柱状图"],
       "Show legend": ["显示图例"],
       "Whether to display a legend for the chart": ["是否显示图表的图例"],
       "drill-down": ["下钻"],

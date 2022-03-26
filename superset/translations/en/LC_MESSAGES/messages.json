@@ -3145,6 +3145,7 @@
       "Theme Type": [""],
       "Primary": [""],
       "ringPie": [""],
+      "customBar": [""],
       "Show legend": [""],
       "Whether to display a legend for the chart": [""],
       "drill-down": [""],

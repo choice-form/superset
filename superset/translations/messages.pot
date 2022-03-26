@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-26 17:51+0800\n"
+"POT-Creation-Date: 2022-03-26 18:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5301,15 +5301,15 @@ msgstr ""
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:135
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:104
 #: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:255
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:118
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:314
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:119
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:315
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:299
 msgid "Left"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:28
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:105
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:315
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:316
 msgid "Center"
 msgstr ""
 
@@ -5317,8 +5317,8 @@ msgstr ""
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:147
 #: superset-frontend/src/chartConntrols/shared-controls/components/ColumnConfigControl/constants.tsx:106
 #: superset-frontend/src/visualizations/ECharts/LiquidFill/controlPanel.tsx:256
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:119
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:316
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:120
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:317
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:300
 msgid "Right"
 msgstr ""
@@ -5390,15 +5390,15 @@ msgid "Uncheck to allow adjust padding manually."
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:123
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:116
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:334
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:117
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:335
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:282
 msgid "Top"
 msgstr ""
 
 #: superset-frontend/src/chartConntrols/shared-controls/chartControls.tsx:159
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:117
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:336
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:118
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:337
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:283
 msgid "Bottom"
 msgstr ""
@@ -11167,7 +11167,7 @@ msgstr ""
 #: superset-frontend/src/visualizations/ECharts/Advanced/MixLineBar/controlPanel.tsx:352
 #: superset-frontend/src/visualizations/ECharts/Bar/controlPanel.tsx:205
 #: superset-frontend/src/visualizations/ECharts/Line/controlPanel.tsx:204
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:146
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:147
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:140
 msgid "Legend"
 msgstr ""
@@ -11448,13 +11448,13 @@ msgid "Left margin, in pixels, allowing for more room for axis labels"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:187
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:248
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:249
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:178
 msgid "Bottom Margin"
 msgstr ""
 
 #: superset-frontend/src/visualizations/D3/HeatmapChart/controlPanel.ts:191
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:268
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:269
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:182
 msgid "Bottom margin, in pixels, allowing for more room for axis labels"
 msgstr ""
@@ -12350,187 +12350,191 @@ msgstr ""
 msgid "ringPie"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:35
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:23
+msgid "customBar"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:36
 msgid "Show legend"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:38
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:39
 msgid "Whether to display a legend for the chart"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:46
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:47
 msgid "drill-down"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:48
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:49
 msgid "Enable drill-down query."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:63
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:64
 msgid "Layout direction"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:65
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:66
 msgid "horizontal"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:66
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:67
 msgid "vertical"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:70
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:71
 msgid "Select the layout direction of the chart."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:78
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:79
 msgid "Select mode of legend"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:176
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:80
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:81
 msgid "Multiple"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Graph/controlPanel.tsx:175
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:81
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:82
 msgid "Single"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:85
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:86
 msgid ""
 "Selected mode of legend, which controls whether series can be toggled "
 "displaying by clicking legends."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:97
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:98
 msgid "Legend Type"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:99
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:100
 msgid "Scroll"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:100
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:101
 msgid "Plain"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:104
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:105
 msgid "Show Legend type"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:114
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:115
 msgid "Legend Orientation"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:123
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:124
 msgid "Choose the orientation of the legend"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:133
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:134
 msgid "Legend Padding"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:139
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:140
 msgid "Additional padding for legend."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:158
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:159
 msgid "Rich tooltip"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:161
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:162
 msgid "Shows a list of all series available at that point in time"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:171
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:172
 msgid "Tooltip sort by metric"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:174
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:175
 msgid "Whether to sort tooltip by the selected metric in descending order."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:186
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:187
 msgid "Tooltip time format"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:193
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:194
 msgid "Tooltip"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:203
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:204
 msgid "Show Value"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:206
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:207
 msgid "Show series values on the chart"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:156
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:214
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:215
 msgid "Stack series"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/MixedTimeseries/controlPanel.tsx:159
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:217
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:218
 msgid "Stack series on top of each other"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:225
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:226
 msgid "Only Total"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:228
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:229
 msgid ""
 "Only show the total value on the stacked chart, and not show on the "
 "selected category"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:278
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:279
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:151
 msgid "Extra Controls"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:281
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:282
 #: superset-frontend/src/visualizations/NVD3/NVD3Controls.tsx:154
 msgid ""
 "Whether to show extra controls or not. Extra controls include things like"
 " making mulitBar charts stacked or side by side."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:293
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:294
 msgid "Rotate Label"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:294
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:295
 msgid "Set the label's rotation angle."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:311
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:312
 msgid "Horizontal Align"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:312
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:313
 msgid "Horizontal label alignment"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:331
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:332
 msgid "Vertical Align"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:332
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:333
 msgid "Vertical label alignment"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:335
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:336
 msgid "Middle"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:349
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:350
 msgid "Label Distance"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/controls.tsx:350
+#: superset-frontend/src/visualizations/ECharts/controls.tsx:351
 msgid "Set the distance between label and shape."
 msgstr ""
 
