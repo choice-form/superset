@@ -93,6 +93,30 @@ export default function setupFormatters() {
       }),
     )
     .registerValue(
+      '1 Decimal Precent', // 1位小数点
+      createD3NumberFormatter({
+        locale: {
+          decimal: '.', // 小数点符号
+          thousands: ',', // 分隔符
+          grouping: [100], // 指定多少位使用分隔符
+          currency: ['', '%'], // 前缀，后缀
+        },
+        formatString: '$,.1f', // 固定格式，不要改！
+      }),
+    )
+    .registerValue(
+      '2 Decimal Precent', // 2位小数点
+      createD3NumberFormatter({
+        locale: {
+          decimal: '.', // 小数点符号
+          thousands: ',', // 分隔符
+          grouping: [100], // 指定多少位使用分隔符
+          currency: ['', '%'], // 前缀，后缀
+        },
+        formatString: '$,.2f', // 固定格式，不要改！
+      }),
+    )
+    .registerValue(
       'Thousand Separator',
       createD3NumberFormatter({
         locale: {

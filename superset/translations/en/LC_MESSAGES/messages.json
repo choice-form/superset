@@ -1590,6 +1590,8 @@
       "Precent (66 => 66%)": [""],
       "Not Decimal Precent (66.6 => 67%)": [""],
       "Thousand Separator (12345 => 12,345)": [""],
+      "1 Decimal Precent (2.432 => 2.4%)": [""],
+      "2 Decimal Precent (2.432 => 2.43%)": [""],
       "Duration in s (66000 => 1m 6s)": [""],
       "Duration in ns (1.40008 => 1ms 400µs 80ns)": [""],
       "D3 time format syntax: https://github.com/d3/d3-time-format": [""],
