@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-26 18:18+0800\n"
+"POT-Creation-Date: 2022-03-26 19:08+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12793,7 +12793,7 @@ msgid ""
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Bar/polar/controlPanel.tsx:73
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:133
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:156
 #: superset-frontend/src/visualizations/ECharts/Sunburst/controlPanel.tsx:48
 msgid "Label Format"
 msgstr ""
@@ -12979,100 +12979,108 @@ msgid "Start Range"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:84
-msgid "Middle Range Color"
+msgid "Second Range Color"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:93
-msgid "Middle Range"
+msgid "Second Range"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:107
+msgid "Third Range Color"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:116
+msgid "Third Range"
+msgstr ""
+
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:130
 msgid "End Range Color"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:118
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:141
 msgid "Axis Line Width"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:145
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:168
 msgid "Value Title"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:155
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:178
 msgid "Value Title Size"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:168
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:191
 msgid "Value Title Font Weight"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:57
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:182
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:205
 msgid "Value Font size"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:58
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:183
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:206
 msgid "Font size for detail value"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:196
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:219
 msgid "Value Font Weight"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:95
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:207
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:230
 msgid "Number Distance"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:97
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:209
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:232
 msgid "Set the vertical distance of the displayed number."
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:71
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:223
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:246
 msgid "Value Animation"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:72
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:224
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:247
 msgid "Whether to animate the value or just display it."
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:237
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:260
 msgid "Show pointer"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:238
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:261
 msgid "Whether to show the pointer"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:249
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:272
 msgid "Show axis line ticks"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:250
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:273
 msgid "Whether to show minor ticks on the axis"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:267
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:290
 msgid "Show split lines"
 msgstr ""
 
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:268
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:291
 msgid "Whether to show the split lines on the axis"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:99
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:285
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:308
 #: superset-frontend/src/visualizations/PivotTable/plugin/controlPanel.ts:217
 msgid "Value format"
 msgstr ""
 
 #: superset-frontend/src/visualizations/ECharts/Gauge/Circle/controlPanel.tsx:101
 #: superset-frontend/src/visualizations/ECharts/Gauge/Number/controlPanel.tsx:176
-#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:287
+#: superset-frontend/src/visualizations/ECharts/Gauge/controlPanel.tsx:310
 msgid "Additional text to add before or after the value, e.g. unit"
 msgstr ""
 

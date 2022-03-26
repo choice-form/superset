@@ -60,7 +60,7 @@ const config: ControlPanelConfig = {
               ...sharedControls.valueFontColor,
               label: t('Start Range Color'),
               description: '',
-              default: hexToRgba('#58AAC3'),
+              default: hexToRgba('#DF2020'),
             },
           },
           {
@@ -72,25 +72,25 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               min: 0,
               max: 100,
-              default: 50,
+              default: 75,
             },
           },
         ],
         [
           {
-            name: 'middleRangeColor',
+            name: 'secondRangeColor',
             config: {
               ...sharedControls.valueFontColor,
-              label: t('Middle Range Color'),
+              label: t('Second Range Color'),
               description: '',
-              default: hexToRgba('#E59B4D'),
+              default: hexToRgba('#FFBF00'),
             },
           },
           {
-            name: 'middleRange',
+            name: 'secondRange',
             config: {
               type: 'SliderControl',
-              label: t('Middle Range'),
+              label: t('Second Range'),
               description: '',
               renderTrigger: true,
               min: 0,
@@ -101,12 +101,35 @@ const config: ControlPanelConfig = {
         ],
         [
           {
+            name: 'thirdRangeColor',
+            config: {
+              ...sharedControls.valueFontColor,
+              label: t('Third Range Color'),
+              description: '',
+              default: hexToRgba('#33CC59'),
+            },
+          },
+          {
+            name: 'thirdRange',
+            config: {
+              type: 'SliderControl',
+              label: t('Third Range'),
+              description: '',
+              renderTrigger: true,
+              min: 0,
+              max: 100,
+              default: 85,
+            },
+          },
+        ],
+        [
+          {
             name: 'endRangeColor',
             config: {
               ...sharedControls.valueFontColor,
               label: t('End Range Color'),
               description: '',
-              default: hexToRgba('#D75D78'),
+              default: hexToRgba('#0055FF'),
             },
           },
         ],
