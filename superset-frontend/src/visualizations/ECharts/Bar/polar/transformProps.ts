@@ -260,9 +260,11 @@ export default function transformProps(
         formatter: inFormatter,
       },
     },
-    polar: {
-      radius: `${polarRadius}%`,
-    },
+    polar: polarRadius
+      ? {
+          radius: `${polarRadius}%`,
+        }
+      : {},
     series,
   };
 
