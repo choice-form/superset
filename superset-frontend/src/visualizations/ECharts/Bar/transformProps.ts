@@ -64,6 +64,7 @@ export default function transformProps(
     subTitleFontSize,
     subTitleFontColor,
     subTitleFontWeight,
+    dateNameReplace, // 替换月份指标名称
 
     useAutoPadding,
     paddingTop,
@@ -125,6 +126,17 @@ export default function transformProps(
   };
 
   let rawData = queriesData[0].data;
+
+  // 替换名称
+  if (dateNameReplace) {
+    rawData[0][1] = `${new Date().getFullYear()}-${String(
+      new Date().getMonth(),
+    ).padStart(2, '0')}`;
+    rawData[0][2] = `${new Date().getFullYear()}-${String(
+      new Date().getMonth() + 1,
+    ).padStart(2, '0')}`;
+  }
+
   // 如果堆叠百分比
   if (stacked && stackedPrecent) {
     const tmpArr = rawData.slice(1, rawData.length);

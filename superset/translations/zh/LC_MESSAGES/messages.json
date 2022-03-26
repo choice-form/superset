@@ -3860,6 +3860,10 @@
         "对同一维度的不同指标进行分析。"
       ],
       "Mixed Line and Bar": ["折线柱状混合图"],
+      "Date Name Replace": ["日期名称替换"],
+      "Replace the description text of last month and this month with the real month, and when canceling, you need to retrieve the data to recover.": [
+        "将上个月和这个月的描述文字替换为真实的月份，取消时，需要重新查询数据来恢复。"
+      ],
       "Ringgit": ["环比"],
       "Show Ringgit": ["显示环比"],
       "Ringgit Font Color": ["环比的字体颜色"],

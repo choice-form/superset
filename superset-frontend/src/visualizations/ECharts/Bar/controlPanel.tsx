@@ -67,6 +67,23 @@ const config: ControlPanelConfig = {
         [chartOrientControl],
         [
           {
+            name: 'dateNameReplace',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Date Name Replace'),
+              description: t(
+                'Replace the description text of last month and this month with the real month, and when canceling, you need to retrieve the data to recover.',
+              ),
+              default: false,
+              visibility: ({ controls }: ControlPanelsContainerProps) => {
+                const list: string[] = controls?.metrics?.value as string[];
+                return Boolean(list.length === 2);
+              },
+            },
+          },
+        ],
+        [
+          {
             name: 'ringgit',
             config: {
               ...sharedControls.yAxisLine,

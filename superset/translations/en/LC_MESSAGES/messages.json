@@ -3213,6 +3213,10 @@
       "Font color of X-axis name.": [""],
       "Analysis of different indicators in the same dimension.": [""],
       "Mixed Line and Bar": [""],
+      "Date Name Replace": [""],
+      "Replace the description text of last month and this month with the real month, and when canceling, you need to retrieve the data to recover.": [
+        ""
+      ],
       "Ringgit": [""],
       "Show Ringgit": [""],
       "Ringgit Font Color": [""],
