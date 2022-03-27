@@ -2,6 +2,7 @@
   position: absolute;
   bottom: 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 0;
   padding: 0;
@@ -10,16 +11,25 @@
   font-size: 13px;
 
   .legend-item {
+    flex: 1 0 50%;
     display: flex;
     align-items: center;
-    margin-right: 10px;
+    justify-content: center;
   }
 
   .legend-color {
-    margin-right: 5px;
-    width: 12px;
-    height: 12px;
+    width: 24px;
+    height: 13px;
     border-radius: 3px;
     background-color: rgb(224, 67, 85);
+  }
+
+  .legend-label {
+    margin: 0 5px;
+  }
+
+  .legend-value {
+    display: inline-block;
+    width: 21px;
   }
 }

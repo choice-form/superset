@@ -35,8 +35,11 @@ export default function EchartsGauge(props: GaugeChartTransformedProps) {
     selectedValues,
     formData: {
       showLegend,
+      startRange,
       startRangeColor,
+      secondRange,
       secondRangeColor,
+      thirdRange,
       thirdRangeColor,
       endRangeColor,
       emitFilter,
@@ -68,6 +71,7 @@ export default function EchartsGauge(props: GaugeChartTransformedProps) {
   };
 
   let legends: any[] = [];
+  const legendValues = [null, startRange, secondRange, thirdRange];
   if (showLegend) {
     legends = [
       startRangeColor,
@@ -83,8 +87,9 @@ export default function EchartsGauge(props: GaugeChartTransformedProps) {
           ? '尖叫目标'
           : index === 3
           ? '嚎叫目标'
-          : '？？目标';
-      return { color, label };
+          : '未达目标';
+      const _value = legendValues[index];
+      return { color, label, value: _value ? `${_value}%` : _value };
     });
   }
 
@@ -92,13 +97,14 @@ export default function EchartsGauge(props: GaugeChartTransformedProps) {
     <>
       {showLegend && (
         <ul className="gauge-legend">
-          {legends.map(({ color, label }) => (
+          {legends.map(({ color, label, value }) => (
             <li className="legend-item">
               <span
                 className="legend-color"
                 style={{ backgroundColor: color }}
               />
               <span className="legend-label">{label}</span>
+              <span className="legend-value">{value}</span>
             </li>
           ))}
         </ul>
