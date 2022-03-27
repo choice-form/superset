@@ -71,6 +71,7 @@ export default function transformProps(
     inAxisLabel, // 标签
     inSplitLine, // 分割线
 
+    dateNameReplace, // 替换月份指标名称
     showLegend,
     legendPadding,
     legendOrientation,
@@ -146,13 +147,26 @@ export default function transformProps(
     angleAxisData.push(keys.join(','));
   });
 
-  Object.entries(dataSet).forEach(([k, v]) => {
+  Object.entries(dataSet).forEach(([k, v], idx) => {
+    let name = k;
+    if (dateNameReplace) {
+      if (idx === 0) {
+        name = `${new Date().getFullYear()}-${String(
+          new Date().getMonth(),
+        ).padStart(2, '0')}`;
+      } else {
+        name = `${new Date().getFullYear()}-${String(
+          new Date().getMonth() + 1,
+        ).padStart(2, '0')}`;
+      }
+    }
+
     // 添加图例
-    legendData.push(k);
+    legendData.push(name);
     // 添加系列
     series.push({
       ...barSeries,
-      name: k,
+      name,
       data: v,
     });
   });

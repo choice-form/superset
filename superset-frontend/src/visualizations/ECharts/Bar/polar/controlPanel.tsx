@@ -19,6 +19,7 @@
 import { t, validateNonEmpty } from 'src/core';
 import {
   ControlPanelConfig,
+  ControlPanelsContainerProps,
   legacySortBy,
   sharedControls,
 } from 'src/chartConntrols';
@@ -59,6 +60,23 @@ const config: ControlPanelConfig = {
         ['subTitleFontSize'],
         ['subTitleFontColor'],
         ['subTitleFontWeight'],
+        [
+          {
+            name: 'dateNameReplace',
+            config: {
+              ...sharedControls.yAxisLine,
+              label: t('Date Name Replace'),
+              description: t(
+                'Replace the description text of last month and this month with the real month, and when canceling, you need to retrieve the data to recover.',
+              ),
+              default: false,
+              visibility: ({ controls }: ControlPanelsContainerProps) => {
+                const list: string[] = controls?.metrics?.value as string[];
+                return Boolean(list.length === 2);
+              },
+            },
+          },
+        ],
         [showLegendControl],
         [legendModeControl],
         [legendTypeControl],
