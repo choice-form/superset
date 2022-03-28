@@ -23,6 +23,7 @@ import {
   legacySortBy,
   sharedControls,
 } from 'src/chartConntrols';
+import { isArray } from 'lodash';
 import {
   chartOrientControl,
   showLegendControl,
@@ -76,8 +77,11 @@ const config: ControlPanelConfig = {
               ),
               default: false,
               visibility: ({ controls }: ControlPanelsContainerProps) => {
-                const list: string[] = controls?.metrics?.value as string[];
-                return Boolean(list.length === 2);
+                if (isArray(controls?.metrics)) {
+                  const list: string[] = controls?.metrics?.value as string[];
+                  return Boolean(list.length === 2);
+                }
+                return false;
               },
             },
           },

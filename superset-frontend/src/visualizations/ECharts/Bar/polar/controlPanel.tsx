@@ -17,6 +17,7 @@
  * under the License.
  */
 import { t, validateNonEmpty } from 'src/core';
+import { isArray } from 'lodash';
 import {
   ControlPanelConfig,
   ControlPanelsContainerProps,
@@ -71,8 +72,11 @@ const config: ControlPanelConfig = {
               ),
               default: false,
               visibility: ({ controls }: ControlPanelsContainerProps) => {
-                const list: string[] = controls?.metrics?.value as string[];
-                return Boolean(list.length === 2);
+                if (isArray(controls?.metrics)) {
+                  const list: string[] = controls?.metrics?.value as string[];
+                  return Boolean(list.length === 2);
+                }
+                return false;
               },
             },
           },
