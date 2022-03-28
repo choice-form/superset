@@ -16,14 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { t, validateNonEmpty } from 'src/core';
+import { t } from 'src/core';
 import {
   ControlPanelConfig,
   ControlPanelsContainerProps,
   legacySortBy,
   sharedControls,
 } from 'src/chartConntrols';
-import { isArray } from 'lodash';
 import {
   chartOrientControl,
   showLegendControl,
@@ -76,13 +75,6 @@ const config: ControlPanelConfig = {
                 'Replace the description text of last month and this month with the real month, and when canceling, you need to retrieve the data to recover.',
               ),
               default: false,
-              visibility: ({ controls }: ControlPanelsContainerProps) => {
-                if (isArray(controls?.metrics)) {
-                  const list: string[] = controls?.metrics?.value as string[];
-                  return Boolean(list.length === 2);
-                }
-                return false;
-              },
             },
           },
         ],
@@ -418,9 +410,6 @@ const config: ControlPanelConfig = {
     },
     xLabelLayout: {
       label: t('Category Axis Label Rotate'),
-    },
-    groupby: {
-      validators: [validateNonEmpty], // 非空校验
     },
   },
 };

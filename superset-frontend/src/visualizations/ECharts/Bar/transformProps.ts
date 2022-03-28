@@ -129,17 +129,83 @@ export default function transformProps(
     ...formData,
   };
 
-  let rawData = queriesData[0].data;
+  const { data, colnames } = queriesData[0];
 
-  // 替换名称
-  if (dateNameReplace) {
-    rawData[0][1] = `${new Date().getFullYear()}-${String(
-      new Date().getMonth(),
-    ).padStart(2, '0')}`;
-    rawData[0][2] = `${new Date().getFullYear()}-${String(
-      new Date().getMonth() + 1,
-    ).padStart(2, '0')}`;
+  // 这里必然是多个返回数据
+  const dataSet: { [key: string]: any[] } = {};
+  if (groupby.length > 0) {
+    data.forEach(row => {
+      const keys: any[] = [];
+      const values: number[] = [];
+      Object.entries(row).forEach(([k, v]) => {
+        if (groupby.includes(k)) {
+          // @ts-ignore
+          if ([undefined, null].includes(v)) {
+            keys.push('null');
+          } else {
+            keys.push(v);
+          }
+        } else {
+          // 避免值不是数值，造成图表渲染出现异常
+          // @ts-ignore
+          const value = [undefined, null].includes(v) ? 0 : v;
+          values.push(value);
+        }
+      });
+      // 生成存储key
+      const key = keys.join(',');
+      if (Object.keys(dataSet).includes(key)) {
+        dataSet[key] = dataSet[key].concat(values);
+      } else {
+        dataSet[key] = values;
+      }
+    });
+  } else {
+    data.forEach(row => {
+      Object.entries(row).forEach(([k, v], idx) => {
+        let name = k;
+        if (dateNameReplace) {
+          if (idx === 0) {
+            name = `${new Date().getFullYear()}-${String(
+              new Date().getMonth(),
+            ).padStart(2, '0')}`;
+          } else {
+            name = `${new Date().getFullYear()}-${String(
+              new Date().getMonth() + 1,
+            ).padStart(2, '0')}`;
+          }
+        }
+        dataSet[name] = [v];
+      });
+    });
   }
+
+  // 取出当前的指标名称数组
+  let colNames: string[] = colnames.filter(col => !groupby.includes(col));
+  if (groupby.length > 0) {
+    if (dateNameReplace) {
+      colNames = [
+        `${new Date().getFullYear()}-${String(new Date().getMonth()).padStart(
+          2,
+          '0',
+        )}`,
+        `${new Date().getFullYear()}-${String(
+          new Date().getMonth() + 1,
+        ).padStart(2, '0')}`,
+      ];
+    }
+  }
+
+  // 指标分类标题
+  const title: string[] = groupby.length
+    ? ['product'].concat(colNames)
+    : ['product'];
+
+  // 生成数据集数据
+  let rawData = [title];
+  Object.entries(dataSet).forEach(([k, v]) => {
+    rawData.push([k, ...v]);
+  });
 
   // 如果堆叠百分比
   if (stacked && stackedPrecent) {
@@ -189,9 +255,9 @@ export default function transformProps(
     // 一个维度，直接取值
     if (metrics.length === 1) {
       // 第一个值
-      const raw1 = rawData[1][1];
+      const raw1 = (rawData[1][1] as unknown) as number;
       // 第二个值
-      const raw2 = rawData[2][1];
+      const raw2: number = (rawData[2][1] as unknown) as number;
       // 计算环比（环比只会有两个数据比较）
       let val: any = Math.round(((raw2 - raw1) / raw1) * 100);
       if (val === 0) {
@@ -208,9 +274,11 @@ export default function transformProps(
       rawData.forEach((raw, idx) => {
         if (idx > 0) {
           // 计算环比（环比只会有两个数据比较）
+          // @ts-ignore
           let val: any = Math.round(((raw[2] - raw[1]) / raw[1]) * 100);
           // 如果是0，就显示小数
           if (val === 0) {
+            // @ts-ignore
             val = (((raw[2] - raw[1]) / raw[1]) * 100).toFixed(1);
           }
           // 显示在第二个柱子上
@@ -322,7 +390,9 @@ export default function transformProps(
   };
 
   // 这里只是生成相应数据的系列值
-  const series = Array.from({ length: rawData[0].length - 1 }).map(() => ({
+  const series = Array.from({
+    length: groupby.length > 0 ? rawData[0].length - 1 : 1,
+  }).map(() => ({
     ...barSeries,
     showBackground: barBackground,
     backgroundStyle: {

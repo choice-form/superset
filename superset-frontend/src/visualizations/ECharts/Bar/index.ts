@@ -64,7 +64,6 @@ export default class EchartsBarChartPlugin extends ChartPlugin<
         name: t('Bar Chart'),
         tags: [t('ECharts'), t('Choiceform')],
         thumbnail,
-        useLegacyApi: true,
       }),
       transformProps,
     });

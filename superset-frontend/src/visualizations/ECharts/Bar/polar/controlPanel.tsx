@@ -17,10 +17,8 @@
  * under the License.
  */
 import { t, validateNonEmpty } from 'src/core';
-import { isArray } from 'lodash';
 import {
   ControlPanelConfig,
-  ControlPanelsContainerProps,
   legacySortBy,
   sharedControls,
 } from 'src/chartConntrols';
@@ -71,13 +69,6 @@ const config: ControlPanelConfig = {
                 'Replace the description text of last month and this month with the real month, and when canceling, you need to retrieve the data to recover.',
               ),
               default: false,
-              visibility: ({ controls }: ControlPanelsContainerProps) => {
-                if (isArray(controls?.metrics)) {
-                  const list: string[] = controls?.metrics?.value as string[];
-                  return Boolean(list.length === 2);
-                }
-                return false;
-              },
             },
           },
         ],
