@@ -2,6 +2,7 @@ import React, { createRef, forwardRef } from 'react';
 import { styled } from 'src/core';
 import type { CustomFunnelProps, CustomFunnelStylesProps } from './types';
 import './CustomFunnel.less';
+import { toRGBA } from '../ECharts/utils/colors';
 
 const Styles = styled.div<CustomFunnelStylesProps>`
   height: ${({ height }) => height};
@@ -107,7 +108,16 @@ const FunnelSVG = ({ model }: any) => (
 );
 export const CustomFunnel = forwardRef((props: CustomFunnelProps) => {
   const rootElem = createRef<HTMLDivElement>();
-  const { model, radius, height, width } = props;
+  const {
+    model,
+    radius,
+    titleText,
+    titleFontColor,
+    titleFontSize,
+    titleFontWeight,
+    height,
+    width,
+  } = props;
 
   // const config = useMemo(
   //   () => ({
@@ -129,6 +139,17 @@ export const CustomFunnel = forwardRef((props: CustomFunnelProps) => {
 
   return (
     <Styles ref={rootElem} height={height} width={width}>
+      {titleText && (
+        <p
+          style={{
+            color: toRGBA(titleFontColor),
+            fontSize: `${titleFontSize}px`,
+            fontWeight: titleFontWeight,
+          }}
+        >
+          {titleText}
+        </p>
+      )}
       <div style={{ height, width, padding: `${radius / 2}%` }}>
         <FunnelSVG model={model} />
       </div>

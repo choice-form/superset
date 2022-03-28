@@ -29,6 +29,10 @@ export type CustomFunnelProps<
   CustomFunnelStylesProps & {
     radius: number;
     shape: string;
+    titleText: string;
+    titleFontColor: string;
+    titleFontSize: number;
+    titleFontWeight: 'bolder' | 'lighter';
     metricName: string;
     percentage: number;
     model: string[];

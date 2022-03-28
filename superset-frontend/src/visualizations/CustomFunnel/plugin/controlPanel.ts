@@ -43,11 +43,18 @@ const config: ControlPanelConfig = {
     {
       label: t('Chart Options'),
       expanded: true,
-      controlSetRows: [['radius'], ...layers],
+      controlSetRows: [
+        ['titleText'],
+        ['titleFontSize'],
+        ['titleFontColor'],
+        ['titleFontWeight'],
+        ['radius'],
+        ...layers,
+      ],
     },
   ],
   controlOverrides: {
-    radius: { max: 100, default: 20 },
+    radius: { label: t('Zoom'), max: 100, default: 20 },
   },
 };
 

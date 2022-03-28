@@ -4,7 +4,7 @@
     "superset": {
       "": {
         "domain": "superset",
-        "plural_forms": "nplurals=1; plural=0",
+        "plural_forms": "nplurals=1; plural=0;",
         "lang": "zh"
       },
       "The datasource is too large to query.": ["数据源太大，无法查询。"],
@@ -3401,7 +3401,7 @@
       "Recents": ["最近"],
       "Layer Text": ["分层文本"],
       "Chart Options": ["图表选项"],
-      "Custom Funnel": [""],
+      "Custom Funnel": ["定制漏斗"],
       "Domain": ["领域"],
       "The time unit used for the grouping of blocks": ["用于块分组的时间单位"],
       "Subdomain": ["子域"],

@@ -26,14 +26,29 @@ export default function transformProps(chartProps: CustomFunnelProps) {
   const metricName = getMetricLabel(formData.metric);
   const shape = formData.shape || 'rect';
   const percentage = data[0][metricName];
-  const { radius, layer1, layer2, layer3, layer4, layer5 } = formData;
+  const {
+    radius,
+    titleText,
+    titleFontColor,
+    titleFontSize,
+    titleFontWeight,
+    layer1,
+    layer2,
+    layer3,
+    layer4,
+    layer5,
+  } = formData;
   const model = [layer1, layer2, layer3, layer4, layer5].map(text =>
-    text.split('\\n'),
+    (text ?? '').split('\\n'),
   );
 
   return {
     model,
     radius,
+    titleText,
+    titleFontColor,
+    titleFontSize,
+    titleFontWeight,
     width,
     height,
     metricName,
