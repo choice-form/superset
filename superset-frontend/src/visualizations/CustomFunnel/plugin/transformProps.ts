@@ -28,6 +28,7 @@ export default function transformProps(chartProps: CustomFunnelProps) {
   const percentage = data[0][metricName];
   const {
     radius,
+    layerShadow,
     titleText,
     titleFontColor,
     titleFontSize,
@@ -45,6 +46,7 @@ export default function transformProps(chartProps: CustomFunnelProps) {
   return {
     model,
     radius,
+    layerShadow,
     titleText,
     titleFontColor,
     titleFontSize,

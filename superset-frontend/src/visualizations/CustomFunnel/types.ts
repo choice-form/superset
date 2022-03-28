@@ -29,6 +29,7 @@ export type CustomFunnelProps<
   CustomFunnelStylesProps & {
     radius: number;
     shape: string;
+    layerShadow: boolean;
     titleText: string;
     titleFontColor: string;
     titleFontSize: number;

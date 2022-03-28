@@ -50,6 +50,17 @@ const config: ControlPanelConfig = {
         ['titleFontWeight'],
         ['radius'],
         ...layers,
+        [
+          {
+            name: 'layerTextShadow',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Text Shadow'),
+              default: false,
+              renderTrigger: true,
+            },
+          },
+        ],
       ],
     },
   ],
