@@ -87,6 +87,10 @@ export default function transformProps(
     ringgit, // 是否显示环比
     ringgitFontColor, // 环比的字体颜色
 
+    showAverageLine,
+    averageLineColor,
+    averageLineType,
+
     yAxisLine, // 是否显示Y轴的轴线
     yAxisFormat, // Y轴的格式化类
     yAxisName, // Y轴名称
@@ -263,6 +267,20 @@ export default function transformProps(
     };
   }
 
+  const markLine = {
+    animation: false,
+    data: [] as any[],
+    lineStyle: {
+      color: toRGBA(averageLineColor),
+      type: averageLineType,
+    },
+    silent: true,
+    symbol: 'none',
+  };
+  if (showAverageLine) {
+    markLine.data.push({ name: '平均值', type: 'average' });
+  }
+
   // 柱状图的通用配置
   const barSeries = {
     type: 'bar', // 柱状图
@@ -300,6 +318,7 @@ export default function transformProps(
     },
     stack: stacked && 'total', // 这个值相同的柱子，会堆叠起来。值是什么都行，但最好是有意义的值。
     markPoint,
+    markLine,
   };
 
   // 这里只是生成相应数据的系列值

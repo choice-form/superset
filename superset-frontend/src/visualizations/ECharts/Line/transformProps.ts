@@ -70,6 +70,10 @@ export default function transformProps(
     zoomStartX,
     zoomEndX,
 
+    showAverageLine,
+    averageLineColor,
+    averageLineType,
+
     yAxisLine, // 是否显示Y轴的轴线
     yAxisFormat, // Y轴的格式化类
     yAxisName, // Y轴名称
@@ -128,6 +132,20 @@ export default function transformProps(
   // Y轴的格式化方法
   const numberFormatter = getNumberFormatter(yAxisFormat);
 
+  const markLine = {
+    animation: false,
+    data: [] as any[],
+    lineStyle: {
+      color: toRGBA(averageLineColor),
+      type: averageLineType,
+    },
+    silent: true,
+    symbol: 'none',
+  };
+  if (showAverageLine) {
+    markLine.data.push({ name: '平均值', type: 'average' });
+  }
+
   // 折线图的通用配置
   const lineSeries = {
     type: 'line', // 折线图
@@ -159,6 +177,7 @@ export default function transformProps(
         return numberFormatter(row);
       },
     },
+    markLine,
     stack: stacked && 'total', // 这个值相同的柱子，会堆叠起来。值是什么都行，但最好是有意义的值。
   };
 

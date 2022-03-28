@@ -187,6 +187,44 @@ const config: ControlPanelConfig = {
           },
         ],
         ['showAxisPointer'],
+        [
+          {
+            name: 'showAverageLine',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Show Average Line'),
+              renderTrigger: true,
+              default: false,
+            },
+          },
+        ],
+        [
+          {
+            name: 'averageLineColor',
+            config: {
+              type: 'ColorPickerControl',
+              label: t('Average Line Color'),
+              renderTrigger: true,
+              default: hexToRgba('0055FF'),
+            },
+          },
+        ],
+        [
+          {
+            name: 'averageLineType',
+            config: {
+              type: 'SelectControl',
+              label: t('Average Line Type'),
+              renderTrigger: true,
+              choices: [
+                ['solid', t('Solid')],
+                ['dashed', t('Dashed')],
+                ['dotted', t('Dotted')],
+              ],
+              default: 'dashed',
+            },
+          },
+        ],
       ],
     },
     {
