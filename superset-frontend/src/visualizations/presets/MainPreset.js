@@ -105,6 +105,8 @@ import { BigNumberChartPlugin } from '../DataUI/BigNumber';
 
 import { PivotTableChartPlugin } from '../PivotTable';
 
+import { CustomFunnelChartPlugin } from '../CustomFunnel';
+
 export default class MainPreset extends Preset {
   constructor() {
     const experimentalplugins = isFeatureEnabled(
@@ -212,6 +214,8 @@ export default class MainPreset extends Preset {
         new TimeColumnFilterPlugin().configure({ key: 'filter_timecolumn' }),
         new TimeGrainFilterPlugin().configure({ key: 'filter_timegrain' }),
         ...experimentalplugins,
+
+        new CustomFunnelChartPlugin().configure({ key: 'custom_funnel' }),
       ],
     });
   }
