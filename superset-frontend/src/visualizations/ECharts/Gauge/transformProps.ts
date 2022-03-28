@@ -105,7 +105,7 @@ export default function transformProps(
     min: 0,
     max: 1, // 图表的数据都按最大值1来处理。
     radius: `${radius}%`,
-    center: ['50%', '75%'],
+    center: ['50%', '70%'],
     splitNumber: 10,
     // 仪表盘边缘线
     axisLine: {
