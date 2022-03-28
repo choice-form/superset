@@ -76,87 +76,76 @@ const RightMenu = ({
   settings,
   navbarRight,
   isFrontendRoute,
-}: RightMenuProps) => (
-  <StyledDiv align={align}>
-    <Menu mode="horizontal">
-      <SubMenu
-        title={t('Settings')}
-        icon={<Icons.TriangleDown iconSize="xl" />}
-      >
-        {settings.map((section, index) => [
-          <Menu.ItemGroup key={`${section.label}`} title={section.label}>
-            {section.childs?.map(child => {
-              if (typeof child !== 'string') {
-                return (
-                  <Menu.Item key={`${child.label}`}>
-                    {isFrontendRoute(child.url) ? (
-                      <Link to={child.url || ''}>{child.label}</Link>
-                    ) : (
-                      <a href={child.url}>{child.label}</a>
-                    )}
-                  </Menu.Item>
-                );
-              }
-              return null;
-            })}
-          </Menu.ItemGroup>,
-          index < settings.length - 1 && <Menu.Divider />,
-        ])}
+}: RightMenuProps) => {
+  const renderSubMenu = () => {
+    if (settings.length > 0 && !navbarRight.user_is_anonymous) {
+      return (
+        <SubMenu
+          title={t('Settings')}
+          icon={<Icons.TriangleDown iconSize="xl" />}
+        >
+          {settings.map((section, index) => [
+            <Menu.ItemGroup key={`${section.label}`} title={section.label}>
+              {section.childs?.map(child => {
+                if (typeof child !== 'string') {
+                  return (
+                    <Menu.Item key={`${child.label}`}>
+                      {isFrontendRoute(child.url) ? (
+                        <Link to={child.url || ''}>{child.label}</Link>
+                      ) : (
+                        <a href={child.url}>{child.label}</a>
+                      )}
+                    </Menu.Item>
+                  );
+                }
+                return null;
+              })}
+            </Menu.ItemGroup>,
+            index < settings.length - 1 && <Menu.Divider />,
+          ])}
+          {!navbarRight.user_is_anonymous && [
+            <Menu.Divider key="user-divider" />,
+            <Menu.ItemGroup key="user-section" title={t('User')}>
+              {navbarRight.user_profile_url && (
+                <Menu.Item key="profile">
+                  <a href={navbarRight.user_profile_url}>{t('Profile')}</a>
+                </Menu.Item>
+              )}
+              {navbarRight.user_info_url && (
+                <Menu.Item key="info">
+                  <a href={navbarRight.user_info_url}>{t('Info')}</a>
+                </Menu.Item>
+              )}
+              <Menu.Item key="logout">
+                <a href={navbarRight.user_logout_url}>{t('Logout')}</a>
+              </Menu.Item>
+            </Menu.ItemGroup>,
+          ]}
+        </SubMenu>
+      );
+    }
+    return null;
+  };
 
-        {!navbarRight.user_is_anonymous && [
-          <Menu.Divider key="user-divider" />,
-          <Menu.ItemGroup key="user-section" title={t('User')}>
-            {navbarRight.user_profile_url && (
-              <Menu.Item key="profile">
-                <a href={navbarRight.user_profile_url}>{t('Profile')}</a>
-              </Menu.Item>
-            )}
-            {navbarRight.user_info_url && (
-              <Menu.Item key="info">
-                <a href={navbarRight.user_info_url}>{t('Info')}</a>
-              </Menu.Item>
-            )}
-            <Menu.Item key="logout">
-              <a href={navbarRight.user_logout_url}>{t('Logout')}</a>
-            </Menu.Item>
-          </Menu.ItemGroup>,
-        ]}
-      </SubMenu>
-      {navbarRight.show_language_picker && (
-        <LanguagePicker
-          locale={navbarRight.locale}
-          languages={navbarRight.languages}
-        />
-      )}
-    </Menu>
-    {navbarRight.documentation_url && (
-      <StyledAnchor
-        href={navbarRight.documentation_url}
-        target="_blank"
-        rel="noreferrer"
-        title={t('Documentation')}
-      >
-        <i className="fa fa-question" />
-        &nbsp;
-      </StyledAnchor>
-    )}
-    {navbarRight.bug_report_url && (
-      <StyledAnchor
-        href={navbarRight.bug_report_url}
-        target="_blank"
-        rel="noreferrer"
-        title={t('Report a bug')}
-      >
-        <i className="fa fa-bug" />
-      </StyledAnchor>
-    )}
-    {navbarRight.user_is_anonymous && (
-      <StyledAnchor href={navbarRight.user_login_url}>
-        <i className="fa fa-fw fa-sign-in" />
-        {t('Login')}
-      </StyledAnchor>
-    )}
-  </StyledDiv>
-);
+  return (
+    <StyledDiv align={align}>
+      <Menu mode="horizontal">
+        {renderSubMenu()}
+        {navbarRight.show_language_picker && (
+          <LanguagePicker
+            locale={navbarRight.locale}
+            languages={navbarRight.languages}
+          />
+        )}
+        {navbarRight.user_is_anonymous && (
+          <StyledAnchor href={navbarRight.user_login_url}>
+            <i className="fa fa-fw fa-sign-in" />
+            {t('Login')}
+          </StyledAnchor>
+        )}
+      </Menu>
+    </StyledDiv>
+  );
+};
 
 export default RightMenu;
