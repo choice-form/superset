@@ -341,7 +341,8 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     # SUPERSET_WEBSERVER_DOMAINS for list of domains
     "ALLOW_DASHBOARD_DOMAIN_SHARDING": True,
     # Experimental feature introducing a client (browser) cache
-    "CLIENT_CACHE": False,
+    # 开启客户端缓存
+    "CLIENT_CACHE": True,
     "DISABLE_DATASET_SOURCE_EDIT": False,
     # When using a recent version of Druid that supports JOINs turn this on
     "DRUID_JOINS": False,
@@ -363,7 +364,8 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     "PRESTO_EXPAND_DATA": False,
     # Exposes API endpoint to compute thumbnails
     "THUMBNAILS": False,
-    "DASHBOARD_CACHE": False,
+    # 看板缓存
+    "DASHBOARD_CACHE": True,
     "REMOVE_SLICE_LEVEL_LABEL_COLORS": False,
     "SHARE_QUERIES_VIA_KV_STORE": False,
     "TAGGING_SYSTEM": False,
