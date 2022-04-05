@@ -48,7 +48,14 @@ class Divider extends React.PureComponent {
   }
 
   render() {
-    const { component, depth, parentComponent, index, handleComponentDrop, editMode } = this.props;
+    const {
+      component,
+      depth,
+      parentComponent,
+      index,
+      handleComponentDrop,
+      editMode,
+    } = this.props;
 
     return (
       <DragDroppable

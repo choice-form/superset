@@ -20,7 +20,9 @@ import React from 'react';
 import { GenericDataType } from 'src/core';
 import { render, screen } from 'spec/helpers/testing-library';
 import AdhocMetric from 'src/explore/components/controls/MetricControl/AdhocMetric';
-import AdhocFilter, { EXPRESSION_TYPES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, {
+  EXPRESSION_TYPES,
+} from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import {
   DndFilterSelect,
   DndFilterSelectProps,

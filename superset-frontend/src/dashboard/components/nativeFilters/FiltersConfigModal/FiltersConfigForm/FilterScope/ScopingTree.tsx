@@ -35,7 +35,11 @@ type ScopingTreeProps = {
   initiallyExcludedCharts?: number[];
 };
 
-const buildTreeLeafTitle = (label: string, hasTooltip: boolean, tooltipTitle?: string) => {
+const buildTreeLeafTitle = (
+  label: string,
+  hasTooltip: boolean,
+  tooltipTitle?: string,
+) => {
   let title = <span>{label}</span>;
   if (hasTooltip) {
     title = (
@@ -58,9 +62,15 @@ const ScopingTree: FC<ScopingTreeProps> = ({
   chartId,
   initiallyExcludedCharts = [],
 }) => {
-  const [expandedKeys, setExpandedKeys] = useState<string[]>([DASHBOARD_ROOT_ID]);
+  const [expandedKeys, setExpandedKeys] = useState<string[]>([
+    DASHBOARD_ROOT_ID,
+  ]);
 
-  const { treeData, layout } = useFilterScopeTree(chartId, initiallyExcludedCharts, buildTreeLeafTitle);
+  const { treeData, layout } = useFilterScopeTree(
+    chartId,
+    initiallyExcludedCharts,
+    buildTreeLeafTitle,
+  );
   const [autoExpandParent, setAutoExpandParent] = useState<boolean>(true);
 
   const handleExpand = (expandedKeys: string[]) => {
@@ -79,11 +89,10 @@ const ScopingTree: FC<ScopingTreeProps> = ({
     });
   };
 
-  const checkedKeys = useMemo(() => getTreeCheckedItems({ ...(formScope || initialScope) }, layout), [
-    formScope,
-    initialScope,
-    layout,
-  ]);
+  const checkedKeys = useMemo(
+    () => getTreeCheckedItems({ ...(formScope || initialScope) }, layout),
+    [formScope, initialScope, layout],
+  );
 
   return (
     <Tree

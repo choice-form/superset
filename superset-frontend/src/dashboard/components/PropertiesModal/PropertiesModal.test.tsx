@@ -26,55 +26,66 @@ import * as SupersetCore from 'src/core';
 import PropertiesModal from '.';
 
 const spyIsFeatureEnabled = jest.spyOn(FF, 'isFeatureEnabled');
-const spyColorSchemeControlWrapper = jest.spyOn(ColorSchemeControlWrapper, 'default');
+const spyColorSchemeControlWrapper = jest.spyOn(
+  ColorSchemeControlWrapper,
+  'default',
+);
 const mockedJsonMetadata =
   '{"timed_refresh_immune_slices": [], "expanded_slices": {}, "refresh_frequency": 0, "default_filters": "{}", "color_scheme": "supersetColors", "label_colors": {"0": "#D3B3DA", "1": "#9EE5E5", "0. Pre-clinical": "#1FA8C9", "2. Phase II or Combined I/II": "#454E7C", "1. Phase I": "#5AC189", "3. Phase III": "#FF7F44", "4. Authorized": "#666666", "root": "#1FA8C9", "Protein subunit": "#454E7C", "Phase II": "#5AC189", "Pre-clinical": "#FF7F44", "Phase III": "#666666", "Phase I": "#E04355", "Phase I/II": "#FCC700", "Inactivated virus": "#A868B7", "Virus-like particle": "#3CCCCB", "Replicating bacterial vector": "#A38F79", "DNA-based": "#8FD3E4", "RNA-based vaccine": "#A1A6BD", "Authorized": "#ACE1C4", "Non-replicating viral vector": "#FEC0A1", "Replicating viral vector": "#B2B2B2", "Unknown": "#EFA1AA", "Live attenuated virus": "#FDE380", "COUNT(*)": "#D1C6BC"}, "filter_scopes": {"358": {"Country_Name": {"scope": ["ROOT_ID"], "immune": []}, "Product_Category": {"scope": ["ROOT_ID"], "immune": []}, "Clinical Stage": {"scope": ["ROOT_ID"], "immune": []}}}}';
 
-spyColorSchemeControlWrapper.mockImplementation(() => (<div>ColorSchemeControlWrapper</div>) as any);
+spyColorSchemeControlWrapper.mockImplementation(
+  () => (<div>ColorSchemeControlWrapper</div>) as any,
+);
 
-fetchMock.get('http://localhost/api/v1/dashboard/related/roles?q=(filter:%27%27)', {
-  body: {
-    count: 6,
-    result: [
-      {
-        text: 'Admin',
-        value: 1,
-      },
-      {
-        text: 'Alpha',
-        value: 3,
-      },
-      {
-        text: 'Gamma',
-        value: 4,
-      },
-      {
-        text: 'granter',
-        value: 5,
-      },
-      {
-        text: 'Public',
-        value: 2,
-      },
-      {
-        text: 'sql_lab',
-        value: 6,
-      },
-    ],
+fetchMock.get(
+  'http://localhost/api/v1/dashboard/related/roles?q=(filter:%27%27)',
+  {
+    body: {
+      count: 6,
+      result: [
+        {
+          text: 'Admin',
+          value: 1,
+        },
+        {
+          text: 'Alpha',
+          value: 3,
+        },
+        {
+          text: 'Gamma',
+          value: 4,
+        },
+        {
+          text: 'granter',
+          value: 5,
+        },
+        {
+          text: 'Public',
+          value: 2,
+        },
+        {
+          text: 'sql_lab',
+          value: 6,
+        },
+      ],
+    },
   },
-});
+);
 
-fetchMock.get('http://localhost/api/v1/dashboard/related/owners?q=(filter:%27%27)', {
-  body: {
-    count: 1,
-    result: [
-      {
-        text: 'Superset Admin',
-        value: 1,
-      },
-    ],
+fetchMock.get(
+  'http://localhost/api/v1/dashboard/related/owners?q=(filter:%27%27)',
+  {
+    body: {
+      count: 1,
+      result: [
+        {
+          text: 'Superset Admin',
+          value: 1,
+        },
+      ],
+    },
   },
-});
+);
 
 fetchMock.get('http://localhost/api/v1/dashboard/26', {
   body: {
@@ -105,7 +116,8 @@ fetchMock.get('http://localhost/api/v1/dashboard/26', {
       published: false,
       roles: [],
       slug: null,
-      thumbnail_url: '/api/v1/dashboard/26/thumbnail/b24805e98d90116da8c0974d24f5c533/',
+      thumbnail_url:
+        '/api/v1/dashboard/26/thumbnail/b24805e98d90116da8c0974d24f5c533/',
       url: '/dashboard/26/',
     },
   },
@@ -136,15 +148,21 @@ test('should render - FeatureFlag disabled', async () => {
   render(<PropertiesModal {...props} />, {
     useRedux: true,
   });
-  expect(await screen.findByTestId('dashboard-edit-properties-form')).toBeInTheDocument();
+  expect(
+    await screen.findByTestId('dashboard-edit-properties-form'),
+  ).toBeInTheDocument();
 
   expect(screen.getByRole('dialog')).toBeInTheDocument();
 
-  expect(screen.getByRole('heading', { name: 'Basic information' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('heading', { name: 'Basic information' }),
+  ).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Access' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Colors' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Advanced' })).toBeInTheDocument();
-  expect(screen.getByRole('heading', { name: 'Certification' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('heading', { name: 'Certification' }),
+  ).toBeInTheDocument();
   expect(screen.getAllByRole('heading')).toHaveLength(5);
 
   expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument();
@@ -156,7 +174,10 @@ test('should render - FeatureFlag disabled', async () => {
   expect(screen.getAllByRole('textbox')).toHaveLength(4);
   expect(screen.getByRole('combobox')).toBeInTheDocument();
 
-  expect(spyColorSchemeControlWrapper).toBeCalledWith(expect.objectContaining({ colorScheme: 'supersetColors' }), {});
+  expect(spyColorSchemeControlWrapper).toBeCalledWith(
+    expect.objectContaining({ colorScheme: 'supersetColors' }),
+    {},
+  );
 });
 
 test('should render - FeatureFlag enabled', async () => {
@@ -165,14 +186,22 @@ test('should render - FeatureFlag enabled', async () => {
   render(<PropertiesModal {...props} />, {
     useRedux: true,
   });
-  expect(await screen.findByTestId('dashboard-edit-properties-form')).toBeInTheDocument();
+  expect(
+    await screen.findByTestId('dashboard-edit-properties-form'),
+  ).toBeInTheDocument();
 
-  expect(screen.getByRole('dialog', { name: 'Dashboard properties' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('dialog', { name: 'Dashboard properties' }),
+  ).toBeInTheDocument();
 
-  expect(screen.getByRole('heading', { name: 'Basic information' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('heading', { name: 'Basic information' }),
+  ).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Access' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Advanced' })).toBeInTheDocument();
-  expect(screen.getByRole('heading', { name: 'Certification' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('heading', { name: 'Certification' }),
+  ).toBeInTheDocument();
   expect(screen.getAllByRole('heading')).toHaveLength(4);
 
   expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument();
@@ -184,7 +213,10 @@ test('should render - FeatureFlag enabled', async () => {
   expect(screen.getAllByRole('textbox')).toHaveLength(4);
   expect(screen.getAllByRole('combobox')).toHaveLength(2);
 
-  expect(spyColorSchemeControlWrapper).toBeCalledWith(expect.objectContaining({ colorScheme: 'supersetColors' }), {});
+  expect(spyColorSchemeControlWrapper).toBeCalledWith(
+    expect.objectContaining({ colorScheme: 'supersetColors' }),
+    {},
+  );
 });
 
 test('should open advance', async () => {
@@ -193,7 +225,9 @@ test('should open advance', async () => {
   render(<PropertiesModal {...props} />, {
     useRedux: true,
   });
-  expect(await screen.findByTestId('dashboard-edit-properties-form')).toBeInTheDocument();
+  expect(
+    await screen.findByTestId('dashboard-edit-properties-form'),
+  ).toBeInTheDocument();
 
   expect(screen.getAllByRole('textbox')).toHaveLength(4);
   expect(screen.getAllByRole('combobox')).toHaveLength(2);
@@ -208,7 +242,9 @@ test('should close modal', async () => {
   render(<PropertiesModal {...props} />, {
     useRedux: true,
   });
-  expect(await screen.findByTestId('dashboard-edit-properties-form')).toBeInTheDocument();
+  expect(
+    await screen.findByTestId('dashboard-edit-properties-form'),
+  ).toBeInTheDocument();
 
   expect(props.onHide).not.toBeCalled();
   userEvent.click(screen.getByRole('button', { name: 'Cancel' }));
@@ -219,7 +255,10 @@ test('should close modal', async () => {
 
 test('submitting with onlyApply:false', async () => {
   const put = jest.spyOn(SupersetCore.SupersetClient, 'put');
-  const spyGetCategoricalSchemeRegistry = jest.spyOn(SupersetCore, 'getCategoricalSchemeRegistry');
+  const spyGetCategoricalSchemeRegistry = jest.spyOn(
+    SupersetCore,
+    'getCategoricalSchemeRegistry',
+  );
   spyGetCategoricalSchemeRegistry.mockReturnValue({
     keys: () => ['supersetColors'],
   } as any);
@@ -240,7 +279,9 @@ test('submitting with onlyApply:false', async () => {
   render(<PropertiesModal {...props} />, {
     useRedux: true,
   });
-  expect(await screen.findByTestId('dashboard-edit-properties-form')).toBeInTheDocument();
+  expect(
+    await screen.findByTestId('dashboard-edit-properties-form'),
+  ).toBeInTheDocument();
 
   expect(props.onHide).not.toBeCalled();
   expect(props.onSubmit).not.toBeCalled();
@@ -264,7 +305,10 @@ test('submitting with onlyApply:false', async () => {
 });
 
 test('submitting with onlyApply:true', async () => {
-  const spyGetCategoricalSchemeRegistry = jest.spyOn(SupersetCore, 'getCategoricalSchemeRegistry');
+  const spyGetCategoricalSchemeRegistry = jest.spyOn(
+    SupersetCore,
+    'getCategoricalSchemeRegistry',
+  );
   spyGetCategoricalSchemeRegistry.mockReturnValue({
     keys: () => ['supersetColors'],
   } as any);
@@ -274,7 +318,9 @@ test('submitting with onlyApply:true', async () => {
   render(<PropertiesModal {...props} />, {
     useRedux: true,
   });
-  expect(await screen.findByTestId('dashboard-edit-properties-form')).toBeInTheDocument();
+  expect(
+    await screen.findByTestId('dashboard-edit-properties-form'),
+  ).toBeInTheDocument();
 
   expect(props.onHide).not.toBeCalled();
   expect(props.onSubmit).not.toBeCalled();
@@ -296,5 +342,7 @@ test('Empty "Certified by" should clear "Certification details"', async () => {
     useRedux: true,
   });
 
-  expect(screen.getByRole('textbox', { name: 'Certification details' })).toHaveValue('');
+  expect(
+    screen.getByRole('textbox', { name: 'Certification details' }),
+  ).toHaveValue('');
 });

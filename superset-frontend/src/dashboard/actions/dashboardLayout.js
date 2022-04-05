@@ -20,7 +20,11 @@ import { ActionCreators as UndoActionCreators } from 'redux-undo';
 import { t } from 'src/core';
 import { addWarningToast } from 'src/components/MessageToasts/actions';
 import { TABS_TYPE, ROW_TYPE } from 'src/dashboard/util/componentTypes';
-import { DASHBOARD_ROOT_ID, NEW_COMPONENTS_SOURCE_ID, DASHBOARD_HEADER_ID } from 'src/dashboard/util/constants';
+import {
+  DASHBOARD_ROOT_ID,
+  NEW_COMPONENTS_SOURCE_ID,
+  DASHBOARD_HEADER_ID,
+} from 'src/dashboard/util/constants';
 import dropOverflowsParent from 'src/dashboard/util/dropOverflowsParent';
 import findParentId from 'src/dashboard/util/findParentId';
 import isInDifferentFilterScopes from 'src/dashboard/util/isInDifferentFilterScopes';
@@ -42,7 +46,10 @@ function setUnsavedChangesAfterAction(action) {
       dispatch(result);
     }
 
-    const isComponentLevelEvent = result.type === UPDATE_COMPONENTS && result.payload && result.payload.nextComponents;
+    const isComponentLevelEvent =
+      result.type === UPDATE_COMPONENTS &&
+      result.payload &&
+      result.payload.nextComponents;
     // trigger dashboardFilters state update if dashboard layout is changed.
     if (!isComponentLevelEvent) {
       const components = getState().dashboardLayout.present;
@@ -55,12 +62,14 @@ function setUnsavedChangesAfterAction(action) {
   };
 }
 
-export const updateComponents = setUnsavedChangesAfterAction(nextComponents => ({
-  type: UPDATE_COMPONENTS,
-  payload: {
-    nextComponents,
-  },
-}));
+export const updateComponents = setUnsavedChangesAfterAction(
+  nextComponents => ({
+    type: UPDATE_COMPONENTS,
+    payload: {
+      nextComponents,
+    },
+  }),
+);
 
 export function updateDashboardTitle(text) {
   return (dispatch, getState) => {
@@ -159,7 +168,10 @@ const moveComponent = setUnsavedChangesAfterAction(dropResult => ({
 export const HANDLE_COMPONENT_DROP = 'HANDLE_COMPONENT_DROP';
 export function handleComponentDrop(dropResult) {
   return (dispatch, getState) => {
-    const overflowsParent = dropOverflowsParent(dropResult, getState().dashboardLayout.present);
+    const overflowsParent = dropOverflowsParent(
+      dropResult,
+      getState().dashboardLayout.present,
+    );
 
     if (overflowsParent) {
       return dispatch(
@@ -175,7 +187,8 @@ export function handleComponentDrop(dropResult) {
     const droppedOnRoot = destination && destination.id === DASHBOARD_ROOT_ID;
     const isNewComponent = source.id === NEW_COMPONENTS_SOURCE_ID;
     const dashboardRoot = getState().dashboardLayout.present[DASHBOARD_ROOT_ID];
-    const rootChildId = dashboardRoot && dashboardRoot.children ? dashboardRoot.children[0] : '';
+    const rootChildId =
+      dashboardRoot && dashboardRoot.children ? dashboardRoot.children[0] : '';
 
     if (droppedOnRoot) {
       dispatch(createTopLevelTabs(dropResult));
@@ -193,7 +206,9 @@ export function handleComponentDrop(dropResult) {
       source.id === rootChildId &&
       destination.id !== rootChildId
     ) {
-      return dispatch(addWarningToast(t(`Can not move top level tab into nested tabs`)));
+      return dispatch(
+        addWarningToast(t(`Can not move top level tab into nested tabs`)),
+      );
     } else if (
       destination &&
       source &&
@@ -215,7 +230,8 @@ export function handleComponentDrop(dropResult) {
       const sourceComponent = layout[source.id] || {};
       const destinationComponent = layout[destination.id] || {};
       if (
-        (sourceComponent.type === TABS_TYPE || sourceComponent.type === ROW_TYPE) &&
+        (sourceComponent.type === TABS_TYPE ||
+          sourceComponent.type === ROW_TYPE) &&
         sourceComponent.children &&
         sourceComponent.children.length === 0
       ) {
@@ -231,10 +247,16 @@ export function handleComponentDrop(dropResult) {
         isInDifferentFilterScopes({
           dashboardFilters,
           source: (sourceComponent.parents || []).concat(source.id),
-          destination: (destinationComponent.parents || []).concat(destination.id),
+          destination: (destinationComponent.parents || []).concat(
+            destination.id,
+          ),
         })
       ) {
-        dispatch(addWarningToast(t('This chart has been moved to a different filter scope.')));
+        dispatch(
+          addWarningToast(
+            t('This chart has been moved to a different filter scope.'),
+          ),
+        );
       }
     }
 
@@ -259,7 +281,9 @@ export function undoLayoutAction() {
   };
 }
 
-export const redoLayoutAction = setUnsavedChangesAfterAction(UndoActionCreators.redo);
+export const redoLayoutAction = setUnsavedChangesAfterAction(
+  UndoActionCreators.redo,
+);
 
 // Update component parents list ----------------------------------------------
 export const UPDATE_COMPONENTS_PARENTS_LIST = 'UPDATE_COMPONENTS_PARENTS_LIST';

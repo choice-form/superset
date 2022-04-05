@@ -64,7 +64,9 @@ export default function dashboardFiltersReducer(dashboardFilters = {}, action) {
         }),
         {},
       );
-      const directPathToFilter = component ? (component.parents || []).slice().concat(component.id) : [];
+      const directPathToFilter = component
+        ? (component.parents || []).slice().concat(component.id)
+        : [];
 
       const newFilter = {
         ...dashboardFilter,
@@ -128,24 +130,27 @@ export default function dashboardFiltersReducer(dashboardFilters = {}, action) {
   if (action.type === UPDATE_DASHBOARD_FILTERS_SCOPE) {
     const allDashboardFiltersScope = action.scopes;
     // update filter scope for each filter field
-    const updatedFilters = Object.entries(allDashboardFiltersScope).reduce((map, entry) => {
-      const [filterKey, { scope, immune }] = entry;
-      const { chartId, column } = getChartIdAndColumnFromFilterKey(filterKey);
-      const scopes = {
-        ...map[chartId].scopes,
-        [column]: {
-          scope,
-          immune,
-        },
-      };
-      return {
-        ...map,
-        [chartId]: {
-          ...map[chartId],
-          scopes,
-        },
-      };
-    }, dashboardFilters);
+    const updatedFilters = Object.entries(allDashboardFiltersScope).reduce(
+      (map, entry) => {
+        const [filterKey, { scope, immune }] = entry;
+        const { chartId, column } = getChartIdAndColumnFromFilterKey(filterKey);
+        const scopes = {
+          ...map[chartId].scopes,
+          [column]: {
+            scope,
+            immune,
+          },
+        };
+        return {
+          ...map,
+          [chartId]: {
+            ...map[chartId],
+            scopes,
+          },
+        };
+      },
+      dashboardFilters,
+    );
 
     buildActiveFilters({ dashboardFilters: updatedFilters });
     return updatedFilters;
@@ -164,7 +169,9 @@ export default function dashboardFiltersReducer(dashboardFilters = {}, action) {
   if (action.type in actionHandlers) {
     const updatedFilters = {
       ...dashboardFilters,
-      [action.chartId]: actionHandlers[action.type](dashboardFilters[action.chartId]),
+      [action.chartId]: actionHandlers[action.type](
+        dashboardFilters[action.chartId],
+      ),
     };
     if (CHANGE_FILTER_VALUE_ACTIONS.includes(action.type)) {
       buildActiveFilters({ dashboardFilters: updatedFilters });

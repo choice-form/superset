@@ -17,7 +17,12 @@
  * under the License.
  */
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from 'spec/helpers/testing-library';
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+} from 'spec/helpers/testing-library';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import {
@@ -77,8 +82,16 @@ test('should display a certification icon if saved metric is certified', async (
 test('triggers onMoveLabel on drop', async () => {
   render(
     <DndProvider backend={HTML5Backend}>
-      <OptionControlLabel {...defaultProps} index={1} label={<span>Label 1</span>} />
-      <OptionControlLabel {...defaultProps} index={2} label={<span>Label 2</span>} />
+      <OptionControlLabel
+        {...defaultProps}
+        index={1}
+        label={<span>Label 1</span>}
+      />
+      <OptionControlLabel
+        {...defaultProps}
+        index={2}
+        label={<span>Label 2</span>}
+      />
     </DndProvider>,
   );
   await waitFor(() => {

@@ -25,7 +25,9 @@ interface PluginFilterSelectCustomizeProps {
   min?: number;
 }
 
-export type PluginFilterRangeQueryFormData = QueryFormData & PluginFilterStylesProps & PluginFilterSelectCustomizeProps;
+export type PluginFilterRangeQueryFormData = QueryFormData &
+  PluginFilterStylesProps &
+  PluginFilterSelectCustomizeProps;
 
 export type PluginFilterRangeProps = PluginFilterStylesProps & {
   data: DataRecord[];

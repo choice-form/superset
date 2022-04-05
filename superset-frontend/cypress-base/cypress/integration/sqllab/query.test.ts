@@ -50,9 +50,14 @@ describe('SqlLab query panel', () => {
     }).as('mockSQLResponse');
 
     cy.get('.TableSelector .Select:eq(0)').click();
-    cy.get('.TableSelector .Select:eq(0) input[type=text]').focus().type('{enter}');
+    cy.get('.TableSelector .Select:eq(0) input[type=text]')
+      .focus()
+      .type('{enter}');
 
-    cy.get('#brace-editor textarea').focus().clear().type(`{selectall}{backspace}SELECT 1`);
+    cy.get('#brace-editor textarea')
+      .focus()
+      .clear()
+      .type(`{selectall}{backspace}SELECT 1`);
 
     cy.get('#js-sql-toolbar button:eq(0)').eq(0).click();
 
@@ -90,7 +95,8 @@ describe('SqlLab query panel', () => {
     cy.intercept('savedqueryviewapi/**').as('getSavedQuery');
     cy.intercept('/tables/**').as('getTables');
 
-    const query = 'SELECT ds, gender, name, num FROM main.birth_names ORDER BY name LIMIT 3';
+    const query =
+      'SELECT ds, gender, name, num FROM main.birth_names ORDER BY name LIMIT 3';
     const savedQueryTitle = `CYPRESS TEST QUERY ${shortid.generate()}`;
 
     // we will assert that the results of the query we save, and the saved query are the same
@@ -118,9 +124,11 @@ describe('SqlLab query panel', () => {
       .click();
 
     // Enter name + save into modal
-    cy.get('.modal-sm input').clear({ force: true }).type(`{selectall}{backspace}${savedQueryTitle}`, {
-      force: true,
-    });
+    cy.get('.modal-sm input')
+      .clear({ force: true })
+      .type(`{selectall}{backspace}${savedQueryTitle}`, {
+        force: true,
+      });
 
     cy.get('.modal-sm .modal-body button')
       .eq(0) // save

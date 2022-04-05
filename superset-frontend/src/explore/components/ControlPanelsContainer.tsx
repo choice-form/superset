@@ -20,7 +20,15 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ensureIsArray, t, styled, getChartControlPanelRegistry, QueryFormData, DatasourceType, css } from 'src/core';
+import {
+  ensureIsArray,
+  t,
+  styled,
+  getChartControlPanelRegistry,
+  QueryFormData,
+  DatasourceType,
+  css,
+} from 'src/core';
 import {
   ControlPanelSectionConfig,
   ControlState,
@@ -37,7 +45,10 @@ import { PluginContext } from 'src/components/DynamicPlugins';
 import Loading from 'src/components/Loading';
 
 import { getSectionsToRender } from 'src/explore/controlUtils';
-import { ExploreActions, exploreActions } from 'src/explore/actions/exploreActions';
+import {
+  ExploreActions,
+  exploreActions,
+} from 'src/explore/actions/exploreActions';
 import { ExplorePageState } from 'src/explore/reducers/getInitialState';
 import { ChartState } from 'src/explore/types';
 
@@ -54,7 +65,10 @@ export type ControlPanelsContainerProps = {
   isDatasourceMetaLoading: boolean;
 };
 
-export type ExpandedControlPanelSectionConfig = Omit<ControlPanelSectionConfig, 'controlSetRows'> & {
+export type ExpandedControlPanelSectionConfig = Omit<
+  ControlPanelSectionConfig,
+  'controlSetRows'
+> & {
   controlSetRows: ExpandedControlItem[][];
 };
 
@@ -109,12 +123,17 @@ type ControlPanelsContainerState = {
 
 const isTimeSection = (section: ControlPanelSectionConfig): boolean =>
   !!section.label &&
-  (sections.legacyRegularTime.label === section.label || sections.legacyTimeseriesTime.label === section.label);
+  (sections.legacyRegularTime.label === section.label ||
+    sections.legacyTimeseriesTime.label === section.label);
 
 const hasTimeColumn = (datasource: DatasourceMeta): boolean =>
-  datasource?.columns?.some(c => c.is_dttm) || datasource.type === DatasourceType.Druid;
+  datasource?.columns?.some(c => c.is_dttm) ||
+  datasource.type === DatasourceType.Druid;
 
-const sectionsToExpand = (sections: ControlPanelSectionConfig[], datasource: DatasourceMeta): string[] =>
+const sectionsToExpand = (
+  sections: ControlPanelSectionConfig[],
+  datasource: DatasourceMeta,
+): string[] =>
   // avoid expanding time section if datasource doesn't include time column
   sections.reduce(
     (acc, section) =>
@@ -124,7 +143,9 @@ const sectionsToExpand = (sections: ControlPanelSectionConfig[], datasource: Dat
     [] as string[],
   );
 
-function getState(props: ControlPanelsContainerProps): ControlPanelsContainerState {
+function getState(
+  props: ControlPanelsContainerProps,
+): ControlPanelsContainerState {
   const {
     exploreState: { datasource },
   } = props;
@@ -132,29 +153,38 @@ function getState(props: ControlPanelsContainerProps): ControlPanelsContainerSta
   const querySections: ControlPanelSectionConfig[] = [];
   const customizeSections: ControlPanelSectionConfig[] = [];
 
-  getSectionsToRender(props.form_data.viz_type, props.datasource_type).forEach(section => {
-    // if at least one control in the section is not `renderTrigger`
-    // or asks to be displayed at the Data tab
-    if (
-      section.tabOverride === 'data' ||
-      section.controlSetRows.some(rows =>
-        rows.some(
-          control =>
-            control &&
-            typeof control === 'object' &&
-            'config' in control &&
-            control.config &&
-            (!control.config.renderTrigger || control.config.tabOverride === 'data'),
-        ),
-      )
-    ) {
-      querySections.push(section);
-    } else {
-      customizeSections.push(section);
-    }
-  });
-  const expandedQuerySections: string[] = sectionsToExpand(querySections, datasource);
-  const expandedCustomizeSections: string[] = sectionsToExpand(customizeSections, datasource);
+  getSectionsToRender(props.form_data.viz_type, props.datasource_type).forEach(
+    section => {
+      // if at least one control in the section is not `renderTrigger`
+      // or asks to be displayed at the Data tab
+      if (
+        section.tabOverride === 'data' ||
+        section.controlSetRows.some(rows =>
+          rows.some(
+            control =>
+              control &&
+              typeof control === 'object' &&
+              'config' in control &&
+              control.config &&
+              (!control.config.renderTrigger ||
+                control.config.tabOverride === 'data'),
+          ),
+        )
+      ) {
+        querySections.push(section);
+      } else {
+        customizeSections.push(section);
+      }
+    },
+  );
+  const expandedQuerySections: string[] = sectionsToExpand(
+    querySections,
+    datasource,
+  );
+  const expandedCustomizeSections: string[] = sectionsToExpand(
+    customizeSections,
+    datasource,
+  );
   return {
     expandedQuerySections,
     expandedCustomizeSections,
@@ -164,7 +194,10 @@ function getState(props: ControlPanelsContainerProps): ControlPanelsContainerSta
   };
 }
 
-export class ControlPanelsContainer extends React.Component<ControlPanelsContainerProps, ControlPanelsContainerState> {
+export class ControlPanelsContainer extends React.Component<
+  ControlPanelsContainerProps,
+  ControlPanelsContainerState
+> {
   // trigger updates to the component when async plugins load
   static contextType = PluginContext;
 
@@ -257,7 +290,12 @@ export class ControlPanelsContainer extends React.Component<ControlPanelsContain
 
     const hasErrors = section.controlSetRows.some(rows =>
       rows.some(item => {
-        const controlName = typeof item === 'string' ? item : item && 'name' in item ? item.name : null;
+        const controlName =
+          typeof item === 'string'
+            ? item
+            : item && 'name' in item
+            ? item.name
+            : null;
         return (
           controlName &&
           controlName in controls &&
@@ -317,7 +355,11 @@ export class ControlPanelsContainer extends React.Component<ControlPanelsContain
                 // When the item is a React element
                 return controlItem;
               }
-              if (controlItem.name && controlItem.config && controlItem.name !== 'datasource') {
+              if (
+                controlItem.name &&
+                controlItem.config &&
+                controlItem.name !== 'datasource'
+              ) {
                 return this.renderControl(controlItem);
               }
               return null;
@@ -327,7 +369,12 @@ export class ControlPanelsContainer extends React.Component<ControlPanelsContain
           if (renderedControls.length === 0) {
             return null;
           }
-          return <ControlRow key={`controlsetrow-${i}`} controls={renderedControls} />;
+          return (
+            <ControlRow
+              key={`controlsetrow-${i}`}
+              controls={renderedControls}
+            />
+          );
         })}
       </Collapse.Panel>
     );
@@ -335,14 +382,22 @@ export class ControlPanelsContainer extends React.Component<ControlPanelsContain
 
   render() {
     const controlPanelRegistry = getChartControlPanelRegistry();
-    if ((!controlPanelRegistry.has(this.props.form_data.viz_type) && this.context.loading) || this.state.loading) {
+    if (
+      (!controlPanelRegistry.has(this.props.form_data.viz_type) &&
+        this.context.loading) ||
+      this.state.loading
+    ) {
       return <Loading />;
     }
 
     const showCustomizeTab = this.state.customizeSections.length > 0;
     return (
       <Styles>
-        <ControlPanelsTabs id="controlSections" data-test="control-tabs" fullWidth={showCustomizeTab}>
+        <ControlPanelsTabs
+          id="controlSections"
+          data-test="control-tabs"
+          fullWidth={showCustomizeTab}
+        >
           <Tabs.TabPane key="query" tab={t('Data')}>
             <Collapse
               bordered
@@ -371,7 +426,9 @@ export class ControlPanelsContainer extends React.Component<ControlPanelsContain
                 }}
                 ghost
               >
-                {this.state.customizeSections.map(this.renderControlPanelSection)}
+                {this.state.customizeSections.map(
+                  this.renderControlPanelSection,
+                )}
               </Collapse>
             </Tabs.TabPane>
           )}

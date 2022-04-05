@@ -40,7 +40,8 @@ interface AnnotationModalProps {
 }
 
 const StyledAnnotationTitle = styled.div`
-  margin: ${({ theme }) => theme.gridUnit * 2}px auto ${({ theme }) => theme.gridUnit * 4}px auto;
+  margin: ${({ theme }) => theme.gridUnit * 2}px auto
+    ${({ theme }) => theme.gridUnit * 4}px auto;
 `;
 
 const StyledJsonEditor = styled(JsonEditor)`
@@ -69,7 +70,8 @@ const AnnotationContainer = styled.div`
 
   textarea,
   input[type='text'] {
-    padding: ${({ theme }) => theme.gridUnit * 1.5}px ${({ theme }) => theme.gridUnit * 2}px;
+    padding: ${({ theme }) => theme.gridUnit * 1.5}px
+      ${({ theme }) => theme.gridUnit * 2}px;
     border: 1px solid ${({ theme }) => theme.colors.grayscale.light2};
     border-radius: ${({ theme }) => theme.gridUnit}px;
   }
@@ -89,7 +91,10 @@ const AnnotationModal: FunctionComponent<AnnotationModalProps> = ({
   show,
 }) => {
   const [disableSave, setDisableSave] = useState<boolean>(true);
-  const [currentAnnotation, setCurrentAnnotation] = useState<AnnotationObject | null>(null);
+  const [
+    currentAnnotation,
+    setCurrentAnnotation,
+  ] = useState<AnnotationObject | null>(null);
   const isEditMode = annotation !== null;
 
   // annotation fetch logic
@@ -168,7 +173,9 @@ const AnnotationModal: FunctionComponent<AnnotationModalProps> = ({
   };
 
   const onAnnotationTextChange = (
-    event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>,
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
   ) => {
     const { target } = event;
 
@@ -197,9 +204,15 @@ const AnnotationModal: FunctionComponent<AnnotationModalProps> = ({
   const onDateChange = (value: any, dateString: Array<string>) => {
     const data = {
       ...currentAnnotation,
-      end_dttm: currentAnnotation && dateString[1].length ? moment(dateString[1]).format('YYYY-MM-DD HH:mm') : '',
+      end_dttm:
+        currentAnnotation && dateString[1].length
+          ? moment(dateString[1]).format('YYYY-MM-DD HH:mm')
+          : '',
       short_descr: currentAnnotation ? currentAnnotation.short_descr : '',
-      start_dttm: currentAnnotation && dateString[0].length ? moment(dateString[0]).format('YYYY-MM-DD HH:mm') : '',
+      start_dttm:
+        currentAnnotation && dateString[0].length
+          ? moment(dateString[0]).format('YYYY-MM-DD HH:mm')
+          : '',
     };
     setCurrentAnnotation(data);
   };
@@ -221,14 +234,20 @@ const AnnotationModal: FunctionComponent<AnnotationModalProps> = ({
   useEffect(() => {
     if (
       isEditMode &&
-      (!currentAnnotation || !currentAnnotation.id || (annotation && annotation.id !== currentAnnotation.id) || show)
+      (!currentAnnotation ||
+        !currentAnnotation.id ||
+        (annotation && annotation.id !== currentAnnotation.id) ||
+        show)
     ) {
       if (annotation && annotation.id !== null && !loading) {
         const id = annotation.id || 0;
 
         fetchResource(id);
       }
-    } else if (!isEditMode && (!currentAnnotation || currentAnnotation.id || show)) {
+    } else if (
+      !isEditMode &&
+      (!currentAnnotation || currentAnnotation.id || show)
+    ) {
       resetAnnotation();
     }
   }, [annotation]);
@@ -258,7 +277,11 @@ const AnnotationModal: FunctionComponent<AnnotationModalProps> = ({
       width="55%"
       title={
         <h4 data-test="annotaion-modal-title">
-          {isEditMode ? <Icons.EditAlt css={StyledIcon} /> : <Icons.PlusLarge css={StyledIcon} />}
+          {isEditMode ? (
+            <Icons.EditAlt css={StyledIcon} />
+          ) : (
+            <Icons.PlusLarge css={StyledIcon} />
+          )}
           {isEditMode ? t('Edit annotation') : t('Add annotation')}
         </h4>
       }
@@ -289,8 +312,12 @@ const AnnotationModal: FunctionComponent<AnnotationModalProps> = ({
           showTime={{ format: 'hh:mm a' }}
           use12Hours
           value={
-            currentAnnotation?.start_dttm?.length || currentAnnotation?.end_dttm?.length
-              ? [moment(currentAnnotation.start_dttm), moment(currentAnnotation.end_dttm)]
+            currentAnnotation?.start_dttm?.length ||
+            currentAnnotation?.end_dttm?.length
+              ? [
+                  moment(currentAnnotation.start_dttm),
+                  moment(currentAnnotation.end_dttm),
+                ]
               : null
           }
         />
@@ -311,7 +338,11 @@ const AnnotationModal: FunctionComponent<AnnotationModalProps> = ({
         <div className="control-label">{t('JSON metadata')}</div>
         <StyledJsonEditor
           onChange={onJsonChange}
-          value={currentAnnotation && currentAnnotation.json_metadata ? currentAnnotation.json_metadata : ''}
+          value={
+            currentAnnotation && currentAnnotation.json_metadata
+              ? currentAnnotation.json_metadata
+              : ''
+          }
           width="100%"
           height="120px"
         />

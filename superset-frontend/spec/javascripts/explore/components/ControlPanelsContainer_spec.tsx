@@ -21,7 +21,10 @@ import { styledShallow as shallow } from 'spec/helpers/theming';
 import { DatasourceType, getChartControlPanelRegistry, t } from 'src/core';
 import { defaultControls } from 'src/explore/store';
 import { getFormDataFromControls } from 'src/explore/controlUtils';
-import { ControlPanelsContainer, ControlPanelsContainerProps } from 'src/explore/components/ControlPanelsContainer';
+import {
+  ControlPanelsContainer,
+  ControlPanelsContainerProps,
+} from 'src/explore/components/ControlPanelsContainer';
 
 describe('ControlPanelsContainer', () => {
   let wrapper;
@@ -31,7 +34,9 @@ describe('ControlPanelsContainer', () => {
       controlPanelSections: [
         {
           label: t('GROUP BY'),
-          description: t('Use this section if you want a query that aggregates'),
+          description: t(
+            'Use this section if you want a query that aggregates',
+          ),
           expanded: true,
           controlSetRows: [
             ['groupby'],
@@ -45,7 +50,11 @@ describe('ControlPanelsContainer', () => {
           label: t('NOT GROUPED BY'),
           description: t('Use this section if you want to query atomic rows'),
           expanded: true,
-          controlSetRows: [['all_columns'], ['order_by_cols'], ['row_limit', null]],
+          controlSetRows: [
+            ['all_columns'],
+            ['order_by_cols'],
+            ['row_limit', null],
+          ],
         },
         {
           label: t('Query'),
@@ -84,6 +93,8 @@ describe('ControlPanelsContainer', () => {
 
   it('renders ControlPanelSections', () => {
     wrapper = shallow(<ControlPanelsContainer {...getDefaultProps()} />);
-    expect(wrapper.find('[data-test="collapsible-control-panel"]')).toHaveLength(5);
+    expect(
+      wrapper.find('[data-test="collapsible-control-panel"]'),
+    ).toHaveLength(5);
   });
 });

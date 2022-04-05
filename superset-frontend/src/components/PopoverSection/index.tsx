@@ -29,7 +29,13 @@ export interface PopoverSectionProps {
   children?: ReactNode;
 }
 
-export default function PopoverSection({ title, isSelected, children, onSelect, info }: PopoverSectionProps) {
+export default function PopoverSection({
+  title,
+  isSelected,
+  children,
+  onSelect,
+  info,
+}: PopoverSectionProps) {
   const theme = useTheme();
   return (
     <div
@@ -51,10 +57,20 @@ export default function PopoverSection({ title, isSelected, children, onSelect, 
         <strong data-test="popover-title">{title}</strong>
         {info && (
           <Tooltip title={info} css={{ marginLeft: theme.gridUnit }}>
-            <Icons.InfoSolidSmall role="img" width={14} height={14} iconColor={theme.colors.grayscale.light1} />
+            <Icons.InfoSolidSmall
+              role="img"
+              width={14}
+              height={14}
+              iconColor={theme.colors.grayscale.light1}
+            />
           </Tooltip>
         )}
-        <Icons.Check role="img" iconColor={isSelected ? theme.colors.primary.base : theme.colors.grayscale.base} />
+        <Icons.Check
+          role="img"
+          iconColor={
+            isSelected ? theme.colors.primary.base : theme.colors.grayscale.base
+          }
+        />
       </div>
       <div
         css={{

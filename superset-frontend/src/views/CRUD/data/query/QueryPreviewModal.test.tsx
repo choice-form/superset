@@ -86,10 +86,15 @@ describe('QueryPreviewModal', () => {
   });
 
   it('toggles between user sql and executed sql', () => {
-    expect(wrapper.find(SyntaxHighlighter).props().children).toMatchInlineSnapshot(`"SELECT 0 FROM table"`);
+    expect(
+      wrapper.find(SyntaxHighlighter).props().children,
+    ).toMatchInlineSnapshot(`"SELECT 0 FROM table"`);
 
     act(() => {
-      const props = wrapper.find('[data-test="toggle-executed-sql"]').first().props();
+      const props = wrapper
+        .find('[data-test="toggle-executed-sql"]')
+        .first()
+        .props();
 
       if (typeof props.onClick === 'function') {
         props.onClick({} as React.MouseEvent);
@@ -98,12 +103,16 @@ describe('QueryPreviewModal', () => {
 
     wrapper.update();
 
-    expect(wrapper.find(SyntaxHighlighter).props().children).toMatchInlineSnapshot(`"SELECT 0 FROM table LIMIT 1000"`);
+    expect(
+      wrapper.find(SyntaxHighlighter).props().children,
+    ).toMatchInlineSnapshot(`"SELECT 0 FROM table LIMIT 1000"`);
   });
 
   describe('Previous button', () => {
     it('disabled when query is the first in list', () => {
-      expect(wrapper.find('[data-test="previous-query"]').first().props().disabled).toBe(true);
+      expect(
+        wrapper.find('[data-test="previous-query"]').first().props().disabled,
+      ).toBe(true);
     });
 
     it('falls fetchData with previous index', () => {
@@ -111,9 +120,14 @@ describe('QueryPreviewModal', () => {
         ...mockedProps,
         query: mockQueries[1],
       };
-      const wrapper2 = mount(<QueryPreviewModal store={store} {...mockedProps2} />);
+      const wrapper2 = mount(
+        <QueryPreviewModal store={store} {...mockedProps2} />,
+      );
       act(() => {
-        const props = wrapper2.find('[data-test="previous-query"]').first().props();
+        const props = wrapper2
+          .find('[data-test="previous-query"]')
+          .first()
+          .props();
         if (typeof props.onClick === 'function') {
           props.onClick({} as React.MouseEvent);
         }
@@ -140,15 +154,22 @@ describe('QueryPreviewModal', () => {
         ...mockedProps,
         query: mockQueries[2],
       };
-      const wrapper2 = mount(<QueryPreviewModal store={store} {...mockedProps2} />);
+      const wrapper2 = mount(
+        <QueryPreviewModal store={store} {...mockedProps2} />,
+      );
 
-      expect(wrapper2.find('[data-test="next-query"]').first().props().disabled).toBe(true);
+      expect(
+        wrapper2.find('[data-test="next-query"]').first().props().disabled,
+      ).toBe(true);
     });
   });
 
   describe('Open in SQL Lab button', () => {
     it('calls openInSqlLab prop', () => {
-      const props = wrapper.find('[data-test="open-in-sql-lab"]').first().props();
+      const props = wrapper
+        .find('[data-test="open-in-sql-lab"]')
+        .first()
+        .props();
 
       if (typeof props.onClick === 'function') {
         props.onClick({} as React.MouseEvent);

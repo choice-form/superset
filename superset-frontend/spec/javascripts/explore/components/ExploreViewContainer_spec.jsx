@@ -47,7 +47,9 @@ describe.skip('ExploreViewContainer', () => {
   // });
 
   beforeAll(() => {
-    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockReturnValue(false);
+    isFeatureEnabledMock = jest
+      .spyOn(featureFlags, 'isFeatureEnabled')
+      .mockReturnValue(false);
 
     const bootstrapData = {
       common: {

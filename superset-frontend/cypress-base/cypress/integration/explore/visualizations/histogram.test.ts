@@ -50,7 +50,10 @@ describe('Visualization > Histogram', () => {
 
   it('should work without groupby', () => {
     verify(HISTOGRAM_FORM_DATA);
-    cy.get('.chart-container svg .vx-bar').should('have.length', HISTOGRAM_FORM_DATA.link_length);
+    cy.get('.chart-container svg .vx-bar').should(
+      'have.length',
+      HISTOGRAM_FORM_DATA.link_length,
+    );
   });
 
   it('should work with group by', () => {
@@ -58,7 +61,10 @@ describe('Visualization > Histogram', () => {
       ...HISTOGRAM_FORM_DATA,
       groupby: ['gender'],
     });
-    cy.get('.chart-container svg .vx-bar').should('have.length', HISTOGRAM_FORM_DATA.link_length * 2);
+    cy.get('.chart-container svg .vx-bar').should(
+      'have.length',
+      HISTOGRAM_FORM_DATA.link_length * 2,
+    );
   });
 
   it('should work with filter and update num bins', () => {

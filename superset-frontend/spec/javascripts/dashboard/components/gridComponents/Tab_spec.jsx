@@ -26,7 +26,10 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import DashboardComponent from 'src/dashboard/containers/DashboardComponent';
 import DragDroppable from 'src/dashboard/components/dnd/DragDroppable';
 import EditableTitle from 'src/components/EditableTitle';
-import Tab, { RENDER_TAB, RENDER_TAB_CONTENT } from 'src/dashboard/components/gridComponents/Tab';
+import Tab, {
+  RENDER_TAB,
+  RENDER_TAB_CONTENT,
+} from 'src/dashboard/components/gridComponents/Tab';
 import { dashboardLayoutWithTabs } from 'spec/fixtures/mockDashboardLayout';
 import { getMockStore } from 'spec/fixtures/mockStore';
 import { initialState } from 'src/SqlLab/fixtures';
@@ -85,7 +88,9 @@ describe('Tabs', () => {
       const wrapper = setup();
       const title = wrapper.find(EditableTitle);
       expect(title).toHaveLength(1);
-      expect(title.find('.editable-title')).toHaveText(props.component.meta.defaultText);
+      expect(title.find('.editable-title')).toHaveText(
+        props.component.meta.defaultText,
+      );
     });
 
     it('should call updateComponents when EditableTitle changes', () => {
@@ -94,7 +99,9 @@ describe('Tabs', () => {
       wrapper.find(EditableTitle).prop('onSaveTitle')('New title');
 
       expect(updateComponents.callCount).toBe(1);
-      expect(updateComponents.getCall(0).args[0].TAB_ID.meta.text).toBe('New title');
+      expect(updateComponents.getCall(0).args[0].TAB_ID.meta.text).toBe(
+        'New title',
+      );
     });
   });
 

@@ -26,8 +26,12 @@ import renderFilterFieldTreeNodes from './renderFilterFieldTreeNodes';
 const propTypes = {
   activeKey: PropTypes.string,
   nodes: PropTypes.arrayOf(filterScopeSelectorTreeNodePropShape).isRequired,
-  checked: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])).isRequired,
-  expanded: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])).isRequired,
+  checked: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  ).isRequired,
+  expanded: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  ).isRequired,
   onCheck: PropTypes.func.isRequired,
   onExpand: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,

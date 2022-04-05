@@ -32,7 +32,9 @@ export default function renderFilterFieldTreeNodes({ nodes, activeKey }) {
       const { label, value } = child;
       return {
         ...child,
-        label: <FilterFieldItem isSelected={value === activeKey} label={label} />,
+        label: (
+          <FilterFieldItem isSelected={value === activeKey} label={label} />
+        ),
       };
     }),
   }));

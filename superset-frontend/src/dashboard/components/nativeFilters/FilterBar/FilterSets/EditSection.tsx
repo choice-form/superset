@@ -66,16 +66,26 @@ export type EditSectionProps = {
   disabled: boolean;
 };
 
-const EditSection: FC<EditSectionProps> = ({ filterSetId, onCancel, dataMaskSelected, disabled }) => {
+const EditSection: FC<EditSectionProps> = ({
+  filterSetId,
+  onCancel,
+  dataMaskSelected,
+  disabled,
+}) => {
   const dataMaskApplied = useNativeFiltersDataMask();
   const dispatch = useDispatch();
   const filterSets = useFilterSets();
   const filters = useFilters();
   const filterSetFilterValues = Object.values(filterSets);
 
-  const [filterSetName, setFilterSetName] = useState(filterSets[filterSetId].name);
+  const [filterSetName, setFilterSetName] = useState(
+    filterSets[filterSetId].name,
+  );
 
-  const isFilterSetNameDuplicated = useFilterSetNameDuplicated(filterSetName, filterSets[filterSetId].name);
+  const isFilterSetNameDuplicated = useFilterSetNameDuplicated(
+    filterSetName,
+    filterSets[filterSetId].name,
+  );
 
   const handleSave = () => {
     dispatch(
@@ -103,9 +113,11 @@ const EditSection: FC<EditSectionProps> = ({ filterSetId, onCancel, dataMaskSele
     [dataMaskSelected, filterSetFilterValues],
   );
 
-  const isDuplicateFilterSet = foundFilterSet && foundFilterSet.id !== filterSetId;
+  const isDuplicateFilterSet =
+    foundFilterSet && foundFilterSet.id !== filterSetId;
 
-  const resultDisabled = disabled || isDuplicateFilterSet || isFilterSetNameDuplicated;
+  const resultDisabled =
+    disabled || isDuplicateFilterSet || isFilterSetNameDuplicated;
 
   return (
     <Wrapper>
@@ -120,13 +132,20 @@ const EditSection: FC<EditSectionProps> = ({ filterSetId, onCancel, dataMaskSele
         {filterSetName}
       </Title>
       <ActionButtons>
-        <Button ghost buttonStyle="tertiary" buttonSize="small" onClick={onCancel} data-test="filter-set-edit-cancel">
+        <Button
+          ghost
+          buttonStyle="tertiary"
+          buttonSize="small"
+          onClick={onCancel}
+          data-test="filter-set-edit-cancel"
+        >
           {t('Cancel')}
         </Button>
         <Tooltip
           placement="right"
           title={
-            (isFilterSetNameDuplicated && t('Filter set with this name already exists')) ||
+            (isFilterSetNameDuplicated &&
+              t('Filter set with this name already exists')) ||
             (isDuplicateFilterSet && t('Filter set already exists')) ||
             (disabled && APPLY_FILTERS_HINT)
           }

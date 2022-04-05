@@ -57,13 +57,23 @@ const IconTooltip = ({
   tooltip = null,
 }: Props) => {
   const iconTooltip = (
-    <StyledSpan onClick={onClick} style={style} className={`IconTooltip ${className}`}>
+    <StyledSpan
+      onClick={onClick}
+      style={style}
+      className={`IconTooltip ${className}`}
+    >
       {children}
     </StyledSpan>
   );
   if (tooltip) {
     return (
-      <Tooltip id="tooltip" title={tooltip} placement={placement} mouseEnterDelay={0.3} mouseLeaveDelay={0.15}>
+      <Tooltip
+        id="tooltip"
+        title={tooltip}
+        placement={placement}
+        mouseEnterDelay={0.3}
+        mouseLeaveDelay={0.15}
+      >
         {iconTooltip}
       </Tooltip>
     );

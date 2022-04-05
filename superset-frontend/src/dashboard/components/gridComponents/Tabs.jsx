@@ -166,8 +166,12 @@ export class Tabs extends React.PureComponent {
     }
 
     if (nextProps.isComponentVisible) {
-      const nextFocusComponent = getLeafComponentIdFromPath(nextProps.directPathToChild);
-      const currentFocusComponent = getLeafComponentIdFromPath(this.props.directPathToChild);
+      const nextFocusComponent = getLeafComponentIdFromPath(
+        nextProps.directPathToChild,
+      );
+      const currentFocusComponent = getLeafComponentIdFromPath(
+        this.props.directPathToChild,
+      );
 
       if (nextFocusComponent !== currentFocusComponent) {
         const nextTabIndex = findTabIndexByComponentId({
@@ -192,8 +196,9 @@ export class Tabs extends React.PureComponent {
       title: t('Delete dashboard tab?'),
       content: (
         <span>
-          Deleting a tab will remove all content within it. You may still reverse this action with the <b>undo</b>{' '}
-          button (cmd + z) until you save your changes.
+          Deleting a tab will remove all content within it. You may still
+          reverse this action with the <b>undo</b> button (cmd + z) until you
+          save your changes.
         </span>
       ),
       onOk: () => {
@@ -301,7 +306,8 @@ export class Tabs extends React.PureComponent {
 
     let tabsToHighlight;
     if (nativeFilters?.focusedFilterId) {
-      tabsToHighlight = nativeFilters.filters[nativeFilters.focusedFilterId].tabsInScope;
+      tabsToHighlight =
+        nativeFilters.filters[nativeFilters.focusedFilterId].tabsInScope;
     }
     return (
       <DragDroppable
@@ -313,7 +319,10 @@ export class Tabs extends React.PureComponent {
         onDrop={this.handleDrop}
         editMode={editMode}
       >
-        {({ dropIndicatorProps: tabsDropIndicatorProps, dragSourceRef: tabsDragSourceRef }) => (
+        {({
+          dropIndicatorProps: tabsDropIndicatorProps,
+          dragSourceRef: tabsDragSourceRef,
+        }) => (
           <StyledTabsContainer
             className="dashboard-component dashboard-component-tabs"
             data-test="dashboard-component-tabs"
@@ -349,7 +358,9 @@ export class Tabs extends React.PureComponent {
                       columnWidth={columnWidth}
                       onDropOnTab={this.handleDropOnTab}
                       isFocused={activeKey === tabId}
-                      isHighlighted={activeKey !== tabId && tabsToHighlight?.includes(tabId)}
+                      isHighlighted={
+                        activeKey !== tabId && tabsToHighlight?.includes(tabId)
+                      }
                     />
                   }
                 >
@@ -366,7 +377,9 @@ export class Tabs extends React.PureComponent {
                       onResize={onResize}
                       onResizeStop={onResizeStop}
                       onDropOnTab={this.handleDropOnTab}
-                      isComponentVisible={selectedTabIndex === tabIndex && isCurrentTabVisible}
+                      isComponentVisible={
+                        selectedTabIndex === tabIndex && isCurrentTabVisible
+                      }
                     />
                   )}
                 </LineEditableTabs.TabPane>
@@ -374,7 +387,10 @@ export class Tabs extends React.PureComponent {
             </LineEditableTabs>
 
             {/* don't indicate that a drop on root is allowed when tabs already exist */}
-            {tabsDropIndicatorProps && parentComponent.id !== DASHBOARD_ROOT_ID && <div {...tabsDropIndicatorProps} />}
+            {tabsDropIndicatorProps &&
+              parentComponent.id !== DASHBOARD_ROOT_ID && (
+                <div {...tabsDropIndicatorProps} />
+              )}
           </StyledTabsContainer>
         )}
       </DragDroppable>

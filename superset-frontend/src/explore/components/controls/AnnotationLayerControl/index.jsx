@@ -76,7 +76,11 @@ class AnnotationLayerControl extends React.PureComponent {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { name, annotationError, validationErrors, value } = nextProps;
     if (Object.keys(annotationError).length && !validationErrors.length) {
-      this.props.actions.setControlValue(name, value, Object.keys(annotationError));
+      this.props.actions.setControlValue(
+        name,
+        value,
+        Object.keys(annotationError),
+      );
     }
     if (!Object.keys(annotationError).length && validationErrors.length) {
       this.props.actions.setControlValue(name, value, []);
@@ -86,7 +90,9 @@ class AnnotationLayerControl extends React.PureComponent {
   addAnnotationLayer(originalAnnotation, newAnnotation) {
     let annotations = this.props.value;
     if (annotations.includes(originalAnnotation)) {
-      annotations = annotations.map(anno => (anno === originalAnnotation ? newAnnotation : anno));
+      annotations = annotations.map(anno =>
+        anno === originalAnnotation ? newAnnotation : anno,
+      );
     } else {
       annotations = [...annotations, newAnnotation];
       this.setState({ addedAnnotationIndex: annotations.length - 1 });
@@ -117,7 +123,9 @@ class AnnotationLayerControl extends React.PureComponent {
           error={error}
           colorScheme={this.props.colorScheme}
           vizType={this.props.vizType}
-          addAnnotationLayer={newAnnotation => this.addAnnotationLayer(annotation, newAnnotation)}
+          addAnnotationLayer={newAnnotation =>
+            this.addAnnotationLayer(annotation, newAnnotation)
+          }
           removeAnnotationLayer={() => this.removeAnnotationLayer(annotation)}
           close={() => {
             this.handleVisibleChange(false, popoverKey);
@@ -131,10 +139,18 @@ class AnnotationLayerControl extends React.PureComponent {
   renderInfo(anno) {
     const { annotationError, annotationQuery } = this.props;
     if (annotationQuery[anno.name]) {
-      return <i className="fa fa-refresh" style={{ color: 'orange' }} aria-hidden />;
+      return (
+        <i className="fa fa-refresh" style={{ color: 'orange' }} aria-hidden />
+      );
     }
     if (annotationError[anno.name]) {
-      return <InfoTooltipWithTrigger label="validation-errors" bsStyle="danger" tooltip={annotationError[anno.name]} />;
+      return (
+        <InfoTooltipWithTrigger
+          label="validation-errors"
+          bsStyle="danger"
+          tooltip={annotationError[anno.name]}
+        />
+      );
     }
     if (!anno.show) {
       return <span style={{ color: 'red' }}> Hidden </span>;
@@ -158,7 +174,11 @@ class AnnotationLayerControl extends React.PureComponent {
             backgroundColor: theme.colors.grayscale.light4,
           },
         })}
-        content={this.renderPopover(i, anno, this.props.annotationError[anno.name])}
+        content={this.renderPopover(
+          i,
+          anno,
+          this.props.annotationError[anno.name],
+        )}
         visible={this.state.popoverVisible[i]}
         onVisibleChange={visible => this.handleVisibleChange(visible, i)}
       >
@@ -181,10 +201,16 @@ class AnnotationLayerControl extends React.PureComponent {
             title={t('Add annotation layer')}
             visible={this.state.popoverVisible[addLayerPopoverKey]}
             destroyTooltipOnHide
-            onVisibleChange={visible => this.handleVisibleChange(visible, addLayerPopoverKey)}
+            onVisibleChange={visible =>
+              this.handleVisibleChange(visible, addLayerPopoverKey)
+            }
           >
             <CustomListItem selectable>
-              <i data-test="add-annotation-layer-button" className="fa fa-plus" /> &nbsp; {t('Add annotation layer')}
+              <i
+                data-test="add-annotation-layer-button"
+                className="fa fa-plus"
+              />{' '}
+              &nbsp; {t('Add annotation layer')}
             </CustomListItem>
           </Popover>
         </List>
@@ -213,10 +239,14 @@ function mapStateToProps({ charts, explore }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    refreshAnnotationData: annotationLayer => dispatch(runAnnotationQuery(annotationLayer)),
+    refreshAnnotationData: annotationLayer =>
+      dispatch(runAnnotationQuery(annotationLayer)),
   };
 }
 
 const themedAnnotationLayerControl = withTheme(AnnotationLayerControl);
 
-export default connect(mapStateToProps, mapDispatchToProps)(themedAnnotationLayerControl);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(themedAnnotationLayerControl);

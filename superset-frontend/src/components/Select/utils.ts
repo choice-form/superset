@@ -16,7 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { OptionTypeBase, ValueType, OptionsType, GroupedOptionsType } from 'react-select';
+import {
+  OptionTypeBase,
+  ValueType,
+  OptionsType,
+  GroupedOptionsType,
+} from 'react-select';
 
 import { OptionsType as AntdOptionsType } from './Select';
 
@@ -42,8 +47,12 @@ export function findValue<OptionType extends OptionTypeBase>(
     : (options as OptionsType<OptionType>);
 
   const find = (val: OptionType) => {
-    const realVal = (value || {}).hasOwnProperty(valueKey) ? val[valueKey] : val;
-    return flatOptions.find(x => x === realVal || x[valueKey] === realVal) || val;
+    const realVal = (value || {}).hasOwnProperty(valueKey)
+      ? val[valueKey]
+      : val;
+    return (
+      flatOptions.find(x => x === realVal || x[valueKey] === realVal) || val
+    );
   };
 
   // If value is a single string, must return an Array so `cleanValue` won't be
@@ -57,6 +66,9 @@ export function hasOption(search: string, options: AntdOptionsType) {
     const { label, value } = opt;
     const labelText = String(label);
     const valueText = String(value);
-    return valueText.toLowerCase() === searchOption || labelText.toLowerCase() === searchOption;
+    return (
+      valueText.toLowerCase() === searchOption ||
+      labelText.toLowerCase() === searchOption
+    );
   });
 }

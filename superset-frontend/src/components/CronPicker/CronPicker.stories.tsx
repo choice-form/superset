@@ -48,7 +48,12 @@ export const InteractiveCronPicker = (props: CronProps) => {
         onChange={e => setValue(e.target.value || '')}
       />
       <Divider />
-      <CronPicker {...props} value={value} setValue={customSetValue} onError={onError} />
+      <CronPicker
+        {...props}
+        value={value}
+        setValue={customSetValue}
+        onError={onError}
+      />
       {error && <p style={{ marginTop: 20 }}>Error: {error.description}</p>}
     </div>
   );

@@ -24,7 +24,10 @@ import Button from 'src/components/Button';
 
 import ErrorBoundary from 'src/components/ErrorBoundary';
 import Tabs from 'src/components/Tabs';
-import AdhocFilter, { EXPRESSION_TYPES, CLAUSES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, {
+  EXPRESSION_TYPES,
+  CLAUSES,
+} from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import { AGGREGATES } from 'src/explore/constants';
 import AdhocFilterEditPopoverSimpleTabContent from 'src/explore/components/controls/FilterControl/AdhocFilterEditPopoverSimpleTabContent';
 import AdhocFilterEditPopoverSqlTabContent from 'src/explore/components/controls/FilterControl/AdhocFilterEditPopoverSqlTabContent';
@@ -90,7 +93,9 @@ describe('AdhocFilterEditPopover', () => {
     expect(wrapper.find(Tabs)).toExist();
     expect(wrapper.find(Tabs.TabPane)).toHaveLength(2);
     expect(wrapper.find(Button)).toHaveLength(2);
-    expect(wrapper.find(AdhocFilterEditPopoverSimpleTabContent)).toHaveLength(1);
+    expect(wrapper.find(AdhocFilterEditPopoverSimpleTabContent)).toHaveLength(
+      1,
+    );
   });
 
   it('renders sql tab content when the adhoc filter expressionType is sql', () => {
@@ -118,7 +123,9 @@ describe('AdhocFilterEditPopover', () => {
   it('prevents saving if the filter is invalid', () => {
     const { wrapper } = setup();
     expect(wrapper.find(Button).find({ disabled: true })).not.toExist();
-    wrapper.instance().onAdhocFilterChange(simpleAdhocFilter.duplicateWith({ operator: null }));
+    wrapper
+      .instance()
+      .onAdhocFilterChange(simpleAdhocFilter.duplicateWith({ operator: null }));
     expect(wrapper.find(Button).find({ disabled: true })).toExist();
     wrapper.instance().onAdhocFilterChange(sqlAdhocFilter);
     expect(wrapper.find(Button).find({ disabled: true })).not.toExist();

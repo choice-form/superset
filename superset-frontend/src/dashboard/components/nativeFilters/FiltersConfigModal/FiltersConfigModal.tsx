@@ -16,7 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { useEffect, useCallback, useMemo, useState, useRef } from 'react';
+import React, {
+  useEffect,
+  useCallback,
+  useMemo,
+  useState,
+  useRef,
+} from 'react';
 import { uniq, isEqual, sortBy, debounce } from 'lodash';
 import { t, styled, SLOW_DEBOUNCE } from 'src/core';
 import { Form } from 'src/common/components';
@@ -26,7 +32,13 @@ import { testWithId } from 'src/utils/testUtils';
 import { useFilterConfigMap, useFilterConfiguration } from '../state';
 import { FilterRemoval, NativeFiltersForm } from './types';
 import { FilterConfiguration } from '../types';
-import { validateForm, createHandleSave, createHandleTabEdit, generateFilterId, getFilterIds } from './utils';
+import {
+  validateForm,
+  createHandleSave,
+  createHandleTabEdit,
+  generateFilterId,
+  getFilterIds,
+} from './utils';
 import Footer from './Footer/Footer';
 import FilterTabs from './FilterTabs';
 import FiltersConfigForm from './FiltersConfigForm/FiltersConfigForm';
@@ -54,7 +66,9 @@ export const StyledForm = styled(Form)`
 `;
 
 export const FILTERS_CONFIG_MODAL_TEST_ID = 'filters-config-modal';
-export const getFiltersConfigModalTestId = testWithId(FILTERS_CONFIG_MODAL_TEST_ID);
+export const getFiltersConfigModalTestId = testWithId(
+  FILTERS_CONFIG_MODAL_TEST_ID,
+);
 
 export interface FiltersConfigModalProps {
   isOpen: boolean;
@@ -95,7 +109,9 @@ export function FiltersConfigModal({
   // store ids of filters that have been removed with the time they were removed
   // so that we can disappear them after a few secs.
   // filters are still kept in state until form is submitted.
-  const [removedFilters, setRemovedFilters] = useState<Record<string, FilterRemoval>>({});
+  const [removedFilters, setRemovedFilters] = useState<
+    Record<string, FilterRemoval>
+  >({});
 
   const [saveAlertVisible, setSaveAlertVisible] = useState<boolean>(false);
 
@@ -112,7 +128,9 @@ export function FiltersConfigModal({
 
   // open the first filter in the list to start
   const initialCurrentFilterId = initialFilterId ?? filterIds[0];
-  const [currentFilterId, setCurrentFilterId] = useState(initialCurrentFilterId);
+  const [currentFilterId, setCurrentFilterId] = useState(
+    initialCurrentFilterId,
+  );
   const [erroredFilters, setErroredFilters] = useState<string[]>([]);
 
   // the form values are managed by the antd form, but we copy them to here
@@ -140,9 +158,18 @@ export function FiltersConfigModal({
 
   useOpenModal(isOpen, addFilter, createNewOnOpen);
 
-  useRemoveCurrentFilter(removedFilters, currentFilterId, filterIds, setCurrentFilterId);
+  useRemoveCurrentFilter(
+    removedFilters,
+    currentFilterId,
+    filterIds,
+    setCurrentFilterId,
+  );
 
-  const handleTabEdit = createHandleTabEdit(setRemovedFilters, setSaveAlertVisible, addFilter);
+  const handleTabEdit = createHandleTabEdit(
+    setRemovedFilters,
+    setSaveAlertVisible,
+    addFilter,
+  );
 
   // After this, it should be as if the modal was just opened fresh.
   // Called when the modal is closed.
@@ -156,7 +183,10 @@ export function FiltersConfigModal({
     setErroredFilters([]);
   };
 
-  const getFilterTitle = (id: string) => formValues.filters[id]?.name || filterConfigMap[id]?.name || t('[untitled]');
+  const getFilterTitle = (id: string) =>
+    formValues.filters[id]?.name ||
+    filterConfigMap[id]?.name ||
+    t('[untitled]');
 
   const getParentFilters = (id: string) =>
     filterIds
@@ -212,7 +242,10 @@ export function FiltersConfigModal({
       return;
     }
     // form validation issues found, sets errored filters
-    if (erroredFiltersIds.length > 0 && !isEqual(sortBy(erroredFilters), sortBy(erroredFiltersIds))) {
+    if (
+      erroredFiltersIds.length > 0 &&
+      !isEqual(sortBy(erroredFilters), sortBy(erroredFiltersIds))
+    ) {
       setErroredFilters(erroredFiltersIds);
     }
   }, [form, erroredFilters]);
@@ -231,7 +264,13 @@ export function FiltersConfigModal({
 
     if (values) {
       cleanDeletedParents(values);
-      createHandleSave(filterConfigMap, filterIds, removedFilters, onSave, values)();
+      createHandleSave(
+        filterConfigMap,
+        filterIds,
+        removedFilters,
+        onSave,
+        values,
+      )();
       resetForm();
     } else {
       configFormRef.current.changeTab('configuration');
@@ -256,7 +295,11 @@ export function FiltersConfigModal({
     () =>
       debounce((changes: any, values: NativeFiltersForm) => {
         if (changes.filters) {
-          if (Object.values(changes.filters).some((filter: any) => filter.name != null)) {
+          if (
+            Object.values(changes.filters).some(
+              (filter: any) => filter.name != null,
+            )
+          ) {
             // we only need to set this if a name changed
             setFormValues(values);
           }
@@ -268,7 +311,9 @@ export function FiltersConfigModal({
   );
 
   useEffect(() => {
-    setErroredFilters(prevErroredFilters => prevErroredFilters.filter(f => !removedFilters[f]));
+    setErroredFilters(prevErroredFilters =>
+      prevErroredFilters.filter(f => !removedFilters[f]),
+    );
   }, [removedFilters]);
 
   return (
@@ -295,7 +340,12 @@ export function FiltersConfigModal({
     >
       <ErrorBoundary>
         <StyledModalBody>
-          <StyledForm preserve={false} form={form} onValuesChange={onValuesChange} layout="vertical">
+          <StyledForm
+            preserve={false}
+            form={form}
+            onValuesChange={onValuesChange}
+            layout="vertical"
+          >
             <FilterTabs
               erroredFilters={erroredFilters}
               onEdit={handleTabEdit}

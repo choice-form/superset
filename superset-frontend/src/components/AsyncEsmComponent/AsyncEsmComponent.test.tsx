@@ -26,7 +26,9 @@ const AsyncComponent = ({ bold }: { bold: boolean }) => (
   <span style={{ fontWeight: bold ? 700 : 400 }}>AsyncComponent</span>
 );
 
-const ComponentPromise = new Promise(resolve => setTimeout(() => resolve(AsyncComponent), 500));
+const ComponentPromise = new Promise(resolve =>
+  setTimeout(() => resolve(AsyncComponent), 500),
+);
 
 test('renders without placeholder', async () => {
   const Component = AsyncEsmComponent(ComponentPromise);

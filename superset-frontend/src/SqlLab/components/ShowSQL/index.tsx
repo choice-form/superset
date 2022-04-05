@@ -31,11 +31,20 @@ interface ShowSQLProps {
   tooltipText: string;
 }
 
-export default function ShowSQL({ tooltipText, title, sql: sqlString }: ShowSQLProps) {
+export default function ShowSQL({
+  tooltipText,
+  title,
+  sql: sqlString,
+}: ShowSQLProps) {
   return (
     <ModalTrigger
       modalTitle={title}
-      triggerNode={<IconTooltip className="fa fa-eye pull-left m-l-2" tooltip={tooltipText} />}
+      triggerNode={
+        <IconTooltip
+          className="fa fa-eye pull-left m-l-2"
+          tooltip={tooltipText}
+        />
+      }
       modalBody={
         <div>
           <SyntaxHighlighter language="sql" style={github}>

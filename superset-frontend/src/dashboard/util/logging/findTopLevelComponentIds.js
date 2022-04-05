@@ -25,7 +25,13 @@ import findNonTabChildChartIds from './findNonTabChildChartIds';
 function findTopLevelComponentIds(layout) {
   const topLevelNodes = [];
 
-  function recurseFromNode({ node, index = null, depth, parentType = null, parentId = null }) {
+  function recurseFromNode({
+    node,
+    index = null,
+    depth,
+    parentType = null,
+    parentId = null,
+  }) {
     if (!node) return;
 
     let nextParentType = parentType;

@@ -105,7 +105,10 @@ const mockOneMoreQuery = [...new Array(mockqueries.length + 1)].map((_, i) => ({
 // Grab the last mocked query, to mock import
 const mockNewImportQuery = mockOneMoreQuery.pop();
 // Create a new file out of mocked import query to mock upload
-const mockImportFile = new File([mockNewImportQuery], 'saved_query_import_mock.json');
+const mockImportFile = new File(
+  [mockNewImportQuery],
+  'saved_query_import_mock.json',
+);
 
 fetchMock.get(queriesInfoEndpoint, {
   permissions: ['can_write', 'can_read'],
@@ -173,7 +176,9 @@ describe('SavedQueryList', () => {
     });
     await waitForComponentToPaint(wrapper);
 
-    expect(wrapper.find(DeleteModal).first().props().description).toMatchInlineSnapshot(
+    expect(
+      wrapper.find(DeleteModal).first().props().description,
+    ).toMatchInlineSnapshot(
       `"This action will permanently delete the saved query."`,
     );
 
@@ -234,7 +239,9 @@ describe('RTL', () => {
 
   let isFeatureEnabledMock;
   beforeEach(async () => {
-    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => true);
+    isFeatureEnabledMock = jest
+      .spyOn(featureFlags, 'isFeatureEnabled')
+      .mockImplementation(() => true);
     await renderAndWait();
   });
 

@@ -17,7 +17,10 @@
  * under the License.
  */
 import findFirstParentContainerId from 'src/dashboard/util/findFirstParentContainer';
-import { DASHBOARD_GRID_ID, DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
+import {
+  DASHBOARD_GRID_ID,
+  DASHBOARD_ROOT_ID,
+} from 'src/dashboard/util/constants';
 
 describe('findFirstParentContainer', () => {
   const mockGridLayout = {

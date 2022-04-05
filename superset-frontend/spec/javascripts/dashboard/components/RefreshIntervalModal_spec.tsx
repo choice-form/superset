@@ -137,7 +137,11 @@ const defaultRefreshIntervalModalProps = {
 
 describe('RefreshIntervalModal - RTL', () => {
   it('is valid', () => {
-    expect(React.isValidElement(<RefreshIntervalModal {...defaultRefreshIntervalModalProps} />)).toBe(true);
+    expect(
+      React.isValidElement(
+        <RefreshIntervalModal {...defaultRefreshIntervalModalProps} />,
+      ),
+    ).toBe(true);
   });
 
   it('renders refresh interval modal', async () => {
@@ -206,7 +210,10 @@ describe('RefreshIntervalModal - RTL', () => {
     userEvent.click(screen.getByRole('button', { name: /save/i }));
 
     expect(editModeOnProps.setRefreshFrequency).toHaveBeenCalled();
-    expect(editModeOnProps.setRefreshFrequency).toHaveBeenCalledWith(10, editModeOnProps.editMode);
+    expect(editModeOnProps.setRefreshFrequency).toHaveBeenCalledWith(
+      10,
+      editModeOnProps.editMode,
+    );
   });
 
   it('should show warning message', async () => {

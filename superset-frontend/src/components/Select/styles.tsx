@@ -89,7 +89,9 @@ export type ThemeConfig = {
 
 export type PartialThemeConfig = RecursivePartial<ThemeConfig>;
 
-export const defaultTheme: (theme: SupersetTheme) => PartialThemeConfig = theme => ({
+export const defaultTheme: (
+  theme: SupersetTheme,
+) => PartialThemeConfig = theme => ({
   borderRadius: theme.borderRadius,
   zIndex: 11,
   colors: colors(theme),
@@ -105,7 +107,10 @@ export const defaultTheme: (theme: SupersetTheme) => PartialThemeConfig = theme 
 
 // let styles accept serialized CSS, too
 type CSSStyles = CSSProperties | SerializedStyles;
-type styleFnWithSerializedStyles = (base: CSSProperties, state: any) => CSSStyles | CSSStyles[];
+type styleFnWithSerializedStyles = (
+  base: CSSProperties,
+  state: any,
+) => CSSStyles | CSSStyles[];
 
 export type StylesConfig = {
   [key in keyof Styles]: styleFnWithSerializedStyles;
@@ -150,7 +155,10 @@ export const DEFAULT_STYLES: PartialStylesConfig = {
       padding: 4px 0 4px 6px;
     `,
   ],
-  control: (provider, { isFocused, menuIsOpen, theme: { borderRadius, colors } }) => {
+  control: (
+    provider,
+    { isFocused, menuIsOpen, theme: { borderRadius, colors } },
+  ) => {
     const isPseudoFocused = isFocused && !menuIsOpen;
     let borderColor = colors.grayBorder;
     if (isPseudoFocused || menuIsOpen) {
@@ -160,8 +168,12 @@ export const DEFAULT_STYLES: PartialStylesConfig = {
       provider,
       css`
         border-color: ${borderColor};
-        box-shadow: ${isPseudoFocused ? 'inset 0 1px 1px rgba(0,0,0,.075), 0 0 0 3px rgba(0,0,0,.1)' : 'none'};
-        border-radius: ${menuIsOpen ? `${borderRadius}px ${borderRadius}px 0 0` : `${borderRadius}px`};
+        box-shadow: ${isPseudoFocused
+          ? 'inset 0 1px 1px rgba(0,0,0,.075), 0 0 0 3px rgba(0,0,0,.1)'
+          : 'none'};
+        border-radius: ${menuIsOpen
+          ? `${borderRadius}px ${borderRadius}px 0 0`
+          : `${borderRadius}px`};
         &:hover {
           border-color: ${borderColor};
           box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -285,7 +297,10 @@ const INPUT_TAG_BASE_STYLES = {
   padding: 0,
 };
 
-export type SelectComponentsType = Omit<SelectComponentsConfig<any>, 'Input'> & {
+export type SelectComponentsType = Omit<
+  SelectComponentsConfig<any>,
+  'Input'
+> & {
   Input: ComponentType<InputProps>;
 };
 
@@ -299,9 +314,13 @@ export type InputProps = ReactSelectInputProps & {
   inputStyle?: object;
 };
 
-const { ClearIndicator, DropdownIndicator, Option, Input, SelectContainer } = defaultComponents as Required<
-  DeepNonNullable<SelectComponentsType>
->;
+const {
+  ClearIndicator,
+  DropdownIndicator,
+  Option,
+  Input,
+  SelectContainer,
+} = defaultComponents as Required<DeepNonNullable<SelectComponentsType>>;
 
 export const DEFAULT_COMPONENTS: SelectComponentsType = {
   SelectContainer: ({ children, ...props }) => {
@@ -326,7 +345,12 @@ export const DEFAULT_COMPONENTS: SelectComponentsType = {
     );
   },
   Option: ({ children, innerProps, data, ...props }) => (
-    <Option {...props} data={data} css={data?.style ? data.style : null} innerProps={innerProps}>
+    <Option
+      {...props}
+      data={data}
+      css={data?.style ? data.style : null}
+      innerProps={innerProps}
+    >
       {children}
     </Option>
   ),
@@ -337,13 +361,22 @@ export const DEFAULT_COMPONENTS: SelectComponentsType = {
   ),
   DropdownIndicator: props => (
     <DropdownIndicator {...props}>
-      <i className={`fa fa-caret-${props.selectProps.menuIsOpen ? 'up' : 'down'}`} />
+      <i
+        className={`fa fa-caret-${
+          props.selectProps.menuIsOpen ? 'up' : 'down'
+        }`}
+      />
     </DropdownIndicator>
   ),
   Input: (props: InputProps) => {
     const { getStyles } = props;
     return (
-      <Input {...props} css={getStyles('input', props)} autoComplete="chrome-off" inputStyle={INPUT_TAG_BASE_STYLES} />
+      <Input
+        {...props}
+        css={getStyles('input', props)}
+        autoComplete="chrome-off"
+        inputStyle={INPUT_TAG_BASE_STYLES}
+      />
     );
   },
 };

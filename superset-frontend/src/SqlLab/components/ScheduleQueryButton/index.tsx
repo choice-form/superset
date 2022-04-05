@@ -37,14 +37,16 @@ const getJSONSchema = () => {
   const jsonSchema = window.featureFlags.SCHEDULED_QUERIES?.JSONSCHEMA;
   // parse date-time into usable value (eg, 'today' => `new Date()`)
   if (jsonSchema) {
-    Object.entries(jsonSchema.properties).forEach(([key, value]: [string, any]) => {
-      if (value.default && value.format === 'date-time') {
-        jsonSchema.properties[key] = {
-          ...value,
-          default: chrono.parseDate(value.default).toISOString(),
-        };
-      }
-    });
+    Object.entries(jsonSchema.properties).forEach(
+      ([key, value]: [string, any]) => {
+        if (value.default && value.format === 'date-time') {
+          jsonSchema.properties[key] = {
+            ...value,
+            default: chrono.parseDate(value.default).toISOString(),
+          };
+        }
+      },
+    );
     return jsonSchema;
   }
   return {};
@@ -52,7 +54,8 @@ const getJSONSchema = () => {
 
 const getUISchema = () => window.featureFlags.SCHEDULED_QUERIES?.UISCHEMA;
 
-const getValidationRules = () => window.featureFlags.SCHEDULED_QUERIES?.VALIDATION || [];
+const getValidationRules = () =>
+  window.featureFlags.SCHEDULED_QUERIES?.VALIDATION || [];
 
 const getValidator = () => {
   const rules: any = getValidationRules();
@@ -117,7 +120,11 @@ const ScheduleQueryButton: FunctionComponent<ScheduleQueryButtonProps> = ({
   const [showSchedule, setShowSchedule] = useState(false);
   let saveModal: ModalTrigger | null;
 
-  const onScheduleSubmit = ({ formData }: { formData: Omit<FormProps<Record<string, any>>, 'schema'> }) => {
+  const onScheduleSubmit = ({
+    formData,
+  }: {
+    formData: Omit<FormProps<Record<string, any>>, 'schema'>;
+  }) => {
     const query = {
       label,
       description,
@@ -139,7 +146,9 @@ const ScheduleQueryButton: FunctionComponent<ScheduleQueryButtonProps> = ({
               type="text"
               placeholder={t('Label for your query')}
               value={label}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => setLabel(event.target.value)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setLabel(event.target.value)
+              }
             />
           </FormItem>
         </Col>
@@ -151,7 +160,9 @@ const ScheduleQueryButton: FunctionComponent<ScheduleQueryButtonProps> = ({
               rows={4}
               placeholder={t('Write a description for your query')}
               value={description}
-              onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(event.target.value)}
+              onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setDescription(event.target.value)
+              }
             />
           </FormItem>
         </Col>
@@ -165,7 +176,11 @@ const ScheduleQueryButton: FunctionComponent<ScheduleQueryButtonProps> = ({
               onSubmit={onScheduleSubmit}
               validate={getValidator()}
             >
-              <Button buttonStyle="primary" htmlType="submit" css={{ float: 'right' }}>
+              <Button
+                buttonStyle="primary"
+                htmlType="submit"
+                css={{ float: 'right' }}
+              >
                 Submit
               </Button>
             </SchemaForm>

@@ -25,7 +25,10 @@ import { usePrevious } from '../usePrevious';
  *
  * Passes the previous and current values to the callback
  */
-export function useChangeEffect<T>(value: T, callback: (previous: T | undefined, current: T) => void) {
+export function useChangeEffect<T>(
+  value: T,
+  callback: (previous: T | undefined, current: T) => void,
+) {
   const previous = usePrevious(value);
   useEffect(() => {
     if (value !== previous) {

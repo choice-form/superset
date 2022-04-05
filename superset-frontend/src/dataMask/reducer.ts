@@ -33,12 +33,21 @@ import {
   SET_DATA_MASK_FOR_FILTER_CONFIG_COMPLETE,
   UPDATE_DATA_MASK,
 } from './actions';
-import { Filter, FilterConfiguration } from '../dashboard/components/nativeFilters/types';
+import {
+  Filter,
+  FilterConfiguration,
+} from '../dashboard/components/nativeFilters/types';
 import { areObjectsEqual } from '../reduxUtils';
 import { Filters } from '../dashboard/reducers/types';
 
-export function getInitialDataMask(id?: string | number, moreProps?: DataMask): DataMask;
-export function getInitialDataMask(id: string | number, moreProps: DataMask = {}): DataMaskWithId {
+export function getInitialDataMask(
+  id?: string | number,
+  moreProps?: DataMask,
+): DataMask;
+export function getInitialDataMask(
+  id: string | number,
+  moreProps: DataMask = {},
+): DataMaskWithId {
   let otherProps = {};
   if (id) {
     otherProps = {
@@ -69,7 +78,11 @@ function fillNativeFilters(
     };
     if (
       currentFilters &&
-      !areObjectsEqual(filter.defaultDataMask, currentFilters[filter.id]?.defaultDataMask, { ignoreUndefined: true })
+      !areObjectsEqual(
+        filter.defaultDataMask,
+        currentFilters[filter.id]?.defaultDataMask,
+        { ignoreUndefined: true },
+      )
     ) {
       mergedDataMask[filter.id] = {
         ...mergedDataMask[filter.id],
@@ -86,45 +99,54 @@ function fillNativeFilters(
   });
 }
 
-const dataMaskReducer = produce((draft: DataMaskStateWithId, action: AnyDataMaskAction) => {
-  const cleanState = {};
-  switch (action.type) {
-    case CLEAR_DATA_MASK_STATE:
-      return cleanState;
-    case UPDATE_DATA_MASK:
-      draft[action.filterId] = {
-        ...getInitialDataMask(action.filterId),
-        ...draft[action.filterId],
-        ...action.dataMask,
-      };
-      return draft;
-    // TODO: update hydrate to .ts
-    // @ts-ignore
-    case HYDRATE_DASHBOARD:
-      if (isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS)) {
-        Object.keys(
+const dataMaskReducer = produce(
+  (draft: DataMaskStateWithId, action: AnyDataMaskAction) => {
+    const cleanState = {};
+    switch (action.type) {
+      case CLEAR_DATA_MASK_STATE:
+        return cleanState;
+      case UPDATE_DATA_MASK:
+        draft[action.filterId] = {
+          ...getInitialDataMask(action.filterId),
+          ...draft[action.filterId],
+          ...action.dataMask,
+        };
+        return draft;
+      // TODO: update hydrate to .ts
+      // @ts-ignore
+      case HYDRATE_DASHBOARD:
+        if (isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS)) {
+          Object.keys(
+            // @ts-ignore
+            action.data.dashboardInfo?.metadata?.chart_configuration,
+          ).forEach(id => {
+            cleanState[id] = {
+              ...getInitialDataMask(id), // take initial data
+            };
+          });
+        }
+        fillNativeFilters(
           // @ts-ignore
-          action.data.dashboardInfo?.metadata?.chart_configuration,
-        ).forEach(id => {
-          cleanState[id] = {
-            ...getInitialDataMask(id), // take initial data
-          };
-        });
-      }
-      fillNativeFilters(
-        // @ts-ignore
-        action.data.dashboardInfo?.metadata?.native_filter_configuration ?? [],
-        cleanState,
-        draft,
-      );
-      return cleanState;
-    case SET_DATA_MASK_FOR_FILTER_CONFIG_COMPLETE:
-      fillNativeFilters(action.filterConfig ?? [], cleanState, draft, action.filters);
-      return cleanState;
+          action.data.dashboardInfo?.metadata?.native_filter_configuration ??
+            [],
+          cleanState,
+          draft,
+        );
+        return cleanState;
+      case SET_DATA_MASK_FOR_FILTER_CONFIG_COMPLETE:
+        fillNativeFilters(
+          action.filterConfig ?? [],
+          cleanState,
+          draft,
+          action.filters,
+        );
+        return cleanState;
 
-    default:
-      return draft;
-  }
-}, {});
+      default:
+        return draft;
+    }
+  },
+  {},
+);
 
 export default dataMaskReducer;

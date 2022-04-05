@@ -51,7 +51,8 @@ export default function MetricDefinitionValue({
   type,
   multi,
 }) {
-  const getSavedMetricByName = metricName => savedMetrics.find(metric => metric.metric_name === metricName);
+  const getSavedMetricByName = metricName =>
+    savedMetrics.find(metric => metric.metric_name === metricName);
 
   let savedMetric;
   if (typeof option === 'string') {
@@ -61,7 +62,8 @@ export default function MetricDefinitionValue({
   }
 
   if (option instanceof AdhocMetric || savedMetric) {
-    const adhocMetric = option instanceof AdhocMetric ? option : new AdhocMetric({ isNew: true });
+    const adhocMetric =
+      option instanceof AdhocMetric ? option : new AdhocMetric({ isNew: true });
 
     const metricOptionProps = {
       onMetricEdit,

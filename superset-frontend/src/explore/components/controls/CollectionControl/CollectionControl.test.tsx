@@ -23,7 +23,12 @@ import CollectionControl from '.';
 
 jest.mock('src/chartConntrols', () => ({
   InfoTooltipWithTrigger: (props: any) => (
-    <button onClick={props.onClick} type="button" data-icon={props.icon} data-tooltip={props.tooltip}>
+    <button
+      onClick={props.onClick}
+      type="button"
+      data-icon={props.icon}
+      data-tooltip={props.tooltip}
+    >
       {props.label}
     </button>
   ),
@@ -33,7 +38,11 @@ jest.mock('..', () => ({
   __esModule: true,
   default: {
     TestControl: (props: any) => (
-      <button type="button" onClick={() => props.onChange(0, 'update')} data-test="TestControl">
+      <button
+        type="button"
+        onClick={() => props.onChange(0, 'update')}
+        data-test="TestControl"
+      >
         TestControl
       </button>
     ),
@@ -86,7 +95,9 @@ test('Should show the button with the label', () => {
   const props = createProps();
   render(<CollectionControl {...props} />);
   expect(screen.getByRole('button', { name: props.label })).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: props.label })).toHaveTextContent(props.label);
+  expect(screen.getByRole('button', { name: props.label })).toHaveTextContent(
+    props.label,
+  );
 });
 
 test('Should have add button', () => {

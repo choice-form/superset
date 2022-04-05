@@ -87,7 +87,8 @@ const StyledHeader = styled.div`
       }
 
       &.no-router a {
-        padding: ${({ theme }) => theme.gridUnit * 2}px ${({ theme }) => theme.gridUnit * 4}px;
+        padding: ${({ theme }) => theme.gridUnit * 2}px
+          ${({ theme }) => theme.gridUnit * 4}px;
       }
     }
     li.active > a,
@@ -131,7 +132,14 @@ export interface ButtonProps {
   name: ReactNode;
   onClick: OnClickHandler;
   'data-test'?: string;
-  buttonStyle: 'primary' | 'secondary' | 'dashed' | 'link' | 'warning' | 'success' | 'tertiary';
+  buttonStyle:
+    | 'primary'
+    | 'secondary'
+    | 'dashed'
+    | 'link'
+    | 'warning'
+    | 'success'
+    | 'tertiary';
 }
 
 export interface SubMenuProps {
@@ -164,9 +172,17 @@ const SubMenuComponent: React.FunctionComponent<SubMenuProps> = props => {
       if (window.innerWidth <= 767) setMenu('inline');
       else setMenu('horizontal');
 
-      if (props.buttons && props.buttons.length >= 3 && window.innerWidth >= 795) {
+      if (
+        props.buttons &&
+        props.buttons.length >= 3 &&
+        window.innerWidth >= 795
+      ) {
         setNavRightStyle('nav-right');
-      } else if (props.buttons && props.buttons.length >= 3 && window.innerWidth <= 795) {
+      } else if (
+        props.buttons &&
+        props.buttons.length >= 3 &&
+        window.innerWidth <= 795
+      ) {
         setNavRightStyle('nav-right-collapse');
       }
     }
@@ -220,7 +236,12 @@ const SubMenuComponent: React.FunctionComponent<SubMenuProps> = props => {
         </Menu>
         <div className={navRightStyle}>
           {props.buttons?.map((btn, i) => (
-            <Button key={i} buttonStyle={btn.buttonStyle} onClick={btn.onClick} data-test={btn['data-test']}>
+            <Button
+              key={i}
+              buttonStyle={btn.buttonStyle}
+              onClick={btn.onClick}
+              data-test={btn['data-test']}
+            >
               {btn.name}
             </Button>
           ))}

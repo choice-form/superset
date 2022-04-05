@@ -40,7 +40,9 @@ test('should render', () => {
 
 test('should render warning icon', () => {
   render(<ErrorAlert {...mockedProps} />);
-  expect(screen.getByRole('img', { name: 'warning-solid' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('img', { name: 'warning-solid' }),
+  ).toBeInTheDocument();
 });
 
 test('should render error icon', () => {

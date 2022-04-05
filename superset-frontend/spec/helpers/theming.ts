@@ -27,7 +27,10 @@ type optionsType = {
   context?: any;
 };
 
-export function styledMount(component: ReactElement, options: optionsType = {}) {
+export function styledMount(
+  component: ReactElement,
+  options: optionsType = {},
+) {
   return enzymeMount(component, {
     ...options,
     wrappingComponent: ProviderWrapper,
@@ -38,7 +41,10 @@ export function styledMount(component: ReactElement, options: optionsType = {}) 
   });
 }
 
-export function styledShallow(component: ReactElement, options: optionsType = {}) {
+export function styledShallow(
+  component: ReactElement,
+  options: optionsType = {},
+) {
   return enzymeShallow(component, {
     ...options,
     wrappingComponent: ProviderWrapper,

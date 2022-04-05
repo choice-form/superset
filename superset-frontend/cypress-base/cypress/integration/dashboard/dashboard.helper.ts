@@ -73,7 +73,9 @@ const toSlicelike = ($chart: JQuery<HTMLElement>): Slice => ({
 });
 
 export function getChartAliasBySpec(chart: ChartSpec) {
-  return getChartGridComponent(chart).then($chart => cy.wrap(getChartAlias(toSlicelike($chart))));
+  return getChartGridComponent(chart).then($chart =>
+    cy.wrap(getChartAlias(toSlicelike($chart))),
+  );
 }
 
 export function getChartAliasesBySpec(charts: readonly ChartSpec[]) {

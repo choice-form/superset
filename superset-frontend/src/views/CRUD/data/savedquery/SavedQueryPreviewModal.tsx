@@ -21,7 +21,9 @@ import { styled, t } from 'src/core';
 import Modal from 'src/components/Modal';
 import Button from 'src/components/Button';
 import SyntaxHighlighterCopy from 'src/views/CRUD/data/components/SyntaxHighlighterCopy';
-import withToasts, { ToastProps } from 'src/components/MessageToasts/withToasts';
+import withToasts, {
+  ToastProps,
+} from 'src/components/MessageToasts/withToasts';
 import { useQueryPreviewState } from 'src/views/CRUD/data/hooks';
 
 const QueryTitle = styled.div`
@@ -79,7 +81,12 @@ const SavedQueryPreviewModal: FunctionComponent<SavedQueryPreviewModalProps> = (
   addDangerToast,
   addSuccessToast,
 }) => {
-  const { handleKeyPress, handleDataChange, disablePrevious, disableNext } = useQueryPreviewState<SavedQueryObject>({
+  const {
+    handleKeyPress,
+    handleDataChange,
+    disablePrevious,
+    disableNext,
+  } = useQueryPreviewState<SavedQueryObject>({
     queries,
     currentQueryId: savedQuery.id,
     fetchData,
@@ -120,7 +127,11 @@ const SavedQueryPreviewModal: FunctionComponent<SavedQueryPreviewModalProps> = (
       >
         <QueryTitle>{t('Query name')}</QueryTitle>
         <QueryLabel>{savedQuery.label}</QueryLabel>
-        <SyntaxHighlighterCopy language="sql" addDangerToast={addDangerToast} addSuccessToast={addSuccessToast}>
+        <SyntaxHighlighterCopy
+          language="sql"
+          addDangerToast={addDangerToast}
+          addSuccessToast={addSuccessToast}
+        >
           {savedQuery.sql || ''}
         </SyntaxHighlighterCopy>
       </StyledModal>

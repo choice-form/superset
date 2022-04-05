@@ -18,7 +18,10 @@
  */
 import updateComponentParentsList from 'src/dashboard/util/updateComponentParentsList';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
-import { dashboardLayout, dashboardLayoutWithTabs } from 'spec/fixtures/mockDashboardLayout';
+import {
+  dashboardLayout,
+  dashboardLayoutWithTabs,
+} from 'spec/fixtures/mockDashboardLayout';
 
 describe('updateComponentParentsList', () => {
   const emptyLayout = {
@@ -65,7 +68,12 @@ describe('updateComponentParentsList', () => {
     });
 
     expect(nextState.GRID_ID.parents).toEqual(['ROOT_ID']);
-    expect(nextState.CHART_ID.parents).toEqual(['ROOT_ID', 'GRID_ID', 'ROW_ID', 'COLUMN_ID']);
+    expect(nextState.CHART_ID.parents).toEqual([
+      'ROOT_ID',
+      'GRID_ID',
+      'ROW_ID',
+      'COLUMN_ID',
+    ]);
   });
 
   it('should handle root level tabs', () => {
@@ -79,6 +87,11 @@ describe('updateComponentParentsList', () => {
     });
 
     expect(nextState.GRID_ID.parents).toEqual(['ROOT_ID']);
-    expect(nextState.CHART_ID2.parents).toEqual(['ROOT_ID', 'TABS_ID', 'TAB_ID2', 'ROW_ID2']);
+    expect(nextState.CHART_ID2.parents).toEqual([
+      'ROOT_ID',
+      'TABS_ID',
+      'TAB_ID2',
+      'ROW_ID2',
+    ]);
   });
 });

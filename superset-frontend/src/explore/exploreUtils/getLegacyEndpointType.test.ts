@@ -28,5 +28,7 @@ test('Should return resultType when resultFormat!=csv', () => {
 });
 
 test('Should return resultFormat when resultFormat:csv', () => {
-  expect(getLegacyEndpointType({ ...createParams(), resultFormat: 'csv' })).toBe('csv');
+  expect(
+    getLegacyEndpointType({ ...createParams(), resultFormat: 'csv' }),
+  ).toBe('csv');
 });

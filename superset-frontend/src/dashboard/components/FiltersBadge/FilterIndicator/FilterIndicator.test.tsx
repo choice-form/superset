@@ -27,7 +27,13 @@ const createProps = () => ({
     column: 'product_category',
     name: 'Vaccine Approach',
     value: [] as any[],
-    path: ['ROOT_ID', 'TABS-wUKya7eQ0Z', 'TAB-BCIJF4NvgQ', 'ROW-xSeNAspgw', 'CHART-eirDduqb1A'],
+    path: [
+      'ROOT_ID',
+      'TABS-wUKya7eQ0Z',
+      'TAB-BCIJF4NvgQ',
+      'ROW-xSeNAspgw',
+      'CHART-eirDduqb1A',
+    ],
   } as Indicator,
   onClick: jest.fn(),
 });
@@ -36,7 +42,9 @@ test('Should render', () => {
   const props = createProps();
   render(<FilterIndicator {...props} />);
 
-  expect(screen.getByRole('button', { name: 'search Vaccine Approach' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'search Vaccine Approach' }),
+  ).toBeInTheDocument();
   expect(screen.getByRole('img', { name: 'search' })).toBeInTheDocument();
 });
 
@@ -45,7 +53,9 @@ test('Should call "onClick"', () => {
   render(<FilterIndicator {...props} />);
 
   expect(props.onClick).toBeCalledTimes(0);
-  userEvent.click(screen.getByRole('button', { name: 'search Vaccine Approach' }));
+  userEvent.click(
+    screen.getByRole('button', { name: 'search Vaccine Approach' }),
+  );
   expect(props.onClick).toBeCalledTimes(1);
 });
 
@@ -66,6 +76,10 @@ test('Should render with default props', () => {
   delete props.indicator.path;
   render(<FilterIndicator indicator={props.indicator} />);
 
-  expect(screen.getByRole('button', { name: 'search Vaccine Approach' })).toBeInTheDocument();
-  userEvent.click(screen.getByRole('button', { name: 'search Vaccine Approach' }));
+  expect(
+    screen.getByRole('button', { name: 'search Vaccine Approach' }),
+  ).toBeInTheDocument();
+  userEvent.click(
+    screen.getByRole('button', { name: 'search Vaccine Approach' }),
+  );
 });

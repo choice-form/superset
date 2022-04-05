@@ -30,14 +30,21 @@ export interface CollapseProps extends AntdCollapseProps {
 
 const Collapse = Object.assign(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  styled(({ light, bigger, bold, animateArrows, ...props }: CollapseProps) => <AntdCollapse {...props} />)`
+  styled(({ light, bigger, bold, animateArrows, ...props }: CollapseProps) => (
+    <AntdCollapse {...props} />
+  ))`
     .ant-collapse-item {
       .ant-collapse-header {
-        font-weight: ${({ bold, theme }) => (bold ? theme.typography.weights.bold : theme.typography.weights.normal)};
-        font-size: ${({ bigger, theme }) => (bigger ? `${theme.gridUnit * 4}px` : 'inherit')};
+        font-weight: ${({ bold, theme }) =>
+          bold
+            ? theme.typography.weights.bold
+            : theme.typography.weights.normal};
+        font-size: ${({ bigger, theme }) =>
+          bigger ? `${theme.gridUnit * 4}px` : 'inherit'};
 
         .ant-collapse-arrow svg {
-          transition: ${({ animateArrows }) => (animateArrows ? 'transform 0.24s' : 'none')};
+          transition: ${({ animateArrows }) =>
+            animateArrows ? 'transform 0.24s' : 'none'};
         }
 
         ${({ expandIconPosition }) =>

@@ -30,7 +30,7 @@ from superset.exceptions import (
     QueryObjectValidationError,
 )
 from superset.sql_parse import sanitize_clause
-from superset.typing_local import Metric, OrderBy
+from superset.typing import Metric, OrderBy
 from superset.utils import pandas_postprocessing
 from superset.utils.core import (
     apply_max_row_limit,

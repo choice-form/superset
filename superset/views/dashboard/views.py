@@ -27,7 +27,7 @@ from flask_babel import gettext as __, lazy_gettext as _
 from superset import db, event_logger, is_feature_enabled
 from superset.constants import MODEL_VIEW_RW_METHOD_PERMISSION_MAP, RouteMethod
 from superset.models.dashboard import Dashboard as DashboardModel
-from superset.typing_local import FlaskResponse
+from superset.typing import FlaskResponse
 from superset.utils import core as utils
 from superset.views.base import (
     BaseSupersetView,

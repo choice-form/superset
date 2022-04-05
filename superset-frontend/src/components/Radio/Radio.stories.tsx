@@ -40,7 +40,11 @@ export default {
 export const SupersetRadio = () => {
   const [{ checked, ...rest }, updateArgs] = useArgs();
   return (
-    <Radio checked={checked} onChange={() => updateArgs({ checked: !checked })} {...rest}>
+    <Radio
+      checked={checked}
+      onChange={() => updateArgs({ checked: !checked })}
+      {...rest}
+    >
       Example
     </Radio>
   );

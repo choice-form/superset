@@ -42,7 +42,8 @@ function registerColorSchemes(
     registry.registerValue(scheme.id, scheme);
   });
 
-  const defaultKey = colorSchemes.find(scheme => scheme.isDefault)?.id || standardDefaultKey;
+  const defaultKey =
+    colorSchemes.find(scheme => scheme.isDefault)?.id || standardDefaultKey;
   registry.setDefaultKey(defaultKey);
 }
 

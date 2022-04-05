@@ -21,7 +21,10 @@ import { useSelector } from 'react-redux';
 import { t } from 'src/core';
 import { Charts, Layout, RootState } from 'src/dashboard/types';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
-import { CHART_TYPE, DASHBOARD_ROOT_TYPE } from 'src/dashboard/util/componentTypes';
+import {
+  CHART_TYPE,
+  DASHBOARD_ROOT_TYPE,
+} from 'src/dashboard/util/componentTypes';
 import { BuildTreeLeafTitle, TreeItem } from './types';
 import { buildTree } from './utils';
 
@@ -34,7 +37,9 @@ export function useFilterScopeTree(
   treeData: [TreeItem];
   layout: Layout;
 } {
-  const layout = useSelector<RootState, Layout>(({ dashboardLayout: { present } }) => present);
+  const layout = useSelector<RootState, Layout>(
+    ({ dashboardLayout: { present } }) => present,
+  );
 
   const charts = useSelector<RootState, Charts>(({ charts }) => charts);
   const tree = {
@@ -58,7 +63,15 @@ export function useFilterScopeTree(
   );
 
   useMemo(() => {
-    buildTree(layout[DASHBOARD_ROOT_ID], tree, layout, charts, validNodes, initiallyExcludedCharts, buildTreeLeafTitle);
+    buildTree(
+      layout[DASHBOARD_ROOT_ID],
+      tree,
+      layout,
+      charts,
+      validNodes,
+      initiallyExcludedCharts,
+      buildTreeLeafTitle,
+    );
   }, [layout, tree, charts, initiallyExcludedCharts, buildTreeLeafTitle]);
 
   return { treeData: [tree], layout };

@@ -67,9 +67,9 @@ export default class EmbedCodeButton extends React.Component {
   }
 
   generateEmbedHTML() {
-    const srcLink = `${window.location.origin + getURIDirectory()}?r=${this.state.shortUrlId}&${
-      URL_PARAMS.standalone.name
-    }=1&height=${this.state.height}`;
+    const srcLink = `${window.location.origin + getURIDirectory()}?r=${
+      this.state.shortUrlId
+    }&${URL_PARAMS.standalone.name}=1&height=${this.state.height}`;
     return (
       '<iframe\n' +
       `  width="${this.state.width}"\n` +
@@ -102,7 +102,9 @@ export default class EmbedCodeButton extends React.Component {
             <CopyToClipboard
               shouldShowText={false}
               text={html}
-              copyNode={<i className="fa fa-clipboard" title={t('Copy to clipboard')} />}
+              copyNode={
+                <i className="fa fa-clipboard" title={t('Copy to clipboard')} />
+              }
             />
           </div>
         </div>
@@ -144,8 +146,18 @@ export default class EmbedCodeButton extends React.Component {
 
   render() {
     return (
-      <Popover trigger="click" placement="left" onClick={this.getCopyUrl} content={this.renderPopoverContent()}>
-        <Tooltip id="embed-code-tooltip" placement="top" title="Embed code" trigger={['hover']}>
+      <Popover
+        trigger="click"
+        placement="left"
+        onClick={this.getCopyUrl}
+        content={this.renderPopoverContent()}
+      >
+        <Tooltip
+          id="embed-code-tooltip"
+          placement="top"
+          title="Embed code"
+          trigger={['hover']}
+        >
           <div
             className="btn btn-default btn-sm"
             data-test="embed-code-button"

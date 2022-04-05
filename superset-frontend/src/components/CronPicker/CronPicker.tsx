@@ -105,7 +105,6 @@ export const LOCALE: Locale = {
 
 export const CronPicker = styled((props: CronProps) => (
   <ConfigProvider
-    // @ts-ignore
     getPopupContainer={trigger => trigger.parentElement as HTMLElement}
   >
     <ReactCronPicker locale={LOCALE} {...props} />
@@ -114,7 +113,8 @@ export const CronPicker = styled((props: CronProps) => (
   .react-js-cron-select:not(.react-js-cron-custom-select) > div:first-of-type,
   .react-js-cron-custom-select {
     border-radius: ${({ theme }) => theme.gridUnit}px;
-    background-color: ${({ theme }) => theme.colors.grayscale.light4} !important;
+    background-color: ${({ theme }) =>
+      theme.colors.grayscale.light4} !important;
   }
   .react-js-cron-custom-select > div:first-of-type {
     border-radius: ${({ theme }) => theme.gridUnit}px;

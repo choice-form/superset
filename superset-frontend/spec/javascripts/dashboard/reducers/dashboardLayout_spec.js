@@ -251,7 +251,8 @@ describe('dashboardLayout reducer', () => {
     });
 
     const newRow = Object.values(result).find(
-      component => ['source', 'destination', 'toMove'].indexOf(component.id) === -1,
+      component =>
+        ['source', 'destination', 'toMove'].indexOf(component.id) === -1,
     );
 
     expect(newRow.children[0]).toBe('toMove');
@@ -290,9 +291,13 @@ describe('dashboardLayout reducer', () => {
       payload: { dropResult },
     });
 
-    const tabComponent = Object.values(result).find(component => component.type === TAB_TYPE);
+    const tabComponent = Object.values(result).find(
+      component => component.type === TAB_TYPE,
+    );
 
-    const tabsComponent = Object.values(result).find(component => component.type === TABS_TYPE);
+    const tabsComponent = Object.values(result).find(
+      component => component.type === TABS_TYPE,
+    );
 
     expect(Object.keys(result)).toHaveLength(5); // initial + Tabs + Tab
     expect(result[DASHBOARD_ROOT_ID].children[0]).toBe(tabsComponent.id);

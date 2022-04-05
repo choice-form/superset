@@ -25,20 +25,26 @@ type MissingChartProps = {
   height: number;
 };
 
-const setup = (overrides?: MissingChartProps) => <MissingChart height={100} {...overrides} />;
+const setup = (overrides?: MissingChartProps) => (
+  <MissingChart height={100} {...overrides} />
+);
 
 describe('MissingChart', () => {
   it('renders a .missing-chart-container', () => {
     const rendered = render(setup());
 
-    const missingChartContainer = rendered.container.querySelector('.missing-chart-container');
+    const missingChartContainer = rendered.container.querySelector(
+      '.missing-chart-container',
+    );
     expect(missingChartContainer).toBeVisible();
   });
 
   it('renders a .missing-chart-body', () => {
     const rendered = render(setup());
 
-    const missingChartBody = rendered.container.querySelector('.missing-chart-body');
+    const missingChartBody = rendered.container.querySelector(
+      '.missing-chart-body',
+    );
     const bodyText =
       'There is no chart definition associated with this component, could it have been deleted?<br><br>Delete this container and save to remove this message.';
 

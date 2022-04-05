@@ -164,13 +164,7 @@ function DashboardCard({
         description={t('Modified %s', dashboard.changed_on_delta_humanized)}
         coverLeft={<FacePile users={dashboard.owners || []} />}
         actions={
-          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: canDelete || canEdit || canExport ? 64 : 'unset',
-            }}
+          <ListViewCard.Actions
             onClick={e => {
               e.stopPropagation();
               e.preventDefault();
@@ -181,12 +175,10 @@ function DashboardCard({
               saveFaveStar={saveFavoriteStatus}
               isStarred={favoriteStatus}
             />
-            {(canDelete || canEdit || canExport) && (
-              <Dropdown overlay={menu}>
-                <Icons.MoreVert iconColor={theme.colors.grayscale.base} />
-              </Dropdown>
-            )}
-          </div>
+            <Dropdown overlay={menu}>
+              <Icons.MoreVert iconColor={theme.colors.grayscale.base} />
+            </Dropdown>
+          </ListViewCard.Actions>
         }
       />
     </CardStyles>

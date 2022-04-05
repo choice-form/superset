@@ -115,7 +115,9 @@ describe('asyncEvent middleware', () => {
     });
 
     it('resolves with chart data on event done status', async () => {
-      await expect(asyncEvent.waitForAsyncData(asyncPendingEvent)).resolves.toEqual([chartData]);
+      await expect(
+        asyncEvent.waitForAsyncData(asyncPendingEvent),
+      ).resolves.toEqual([chartData]);
 
       expect(fetchMock.calls(EVENTS_ENDPOINT)).toHaveLength(1);
       expect(fetchMock.calls(CACHED_DATA_ENDPOINT)).toHaveLength(1);
@@ -128,7 +130,9 @@ describe('asyncEvent middleware', () => {
         body: { result: [asyncErrorEvent] },
       });
       const errorResponse = await parseErrorJson(asyncErrorEvent);
-      await expect(asyncEvent.waitForAsyncData(asyncPendingEvent)).rejects.toEqual(errorResponse);
+      await expect(
+        asyncEvent.waitForAsyncData(asyncPendingEvent),
+      ).rejects.toEqual(errorResponse);
 
       expect(fetchMock.calls(EVENTS_ENDPOINT)).toHaveLength(1);
       expect(fetchMock.calls(CACHED_DATA_ENDPOINT)).toHaveLength(0);
@@ -145,7 +149,9 @@ describe('asyncEvent middleware', () => {
       });
 
       const errorResponse = [{ error: 'Bad Request' }];
-      await expect(asyncEvent.waitForAsyncData(asyncPendingEvent)).rejects.toEqual(errorResponse);
+      await expect(
+        asyncEvent.waitForAsyncData(asyncPendingEvent),
+      ).rejects.toEqual(errorResponse);
 
       expect(fetchMock.calls(EVENTS_ENDPOINT)).toHaveLength(1);
       expect(fetchMock.calls(CACHED_DATA_ENDPOINT)).toHaveLength(1);

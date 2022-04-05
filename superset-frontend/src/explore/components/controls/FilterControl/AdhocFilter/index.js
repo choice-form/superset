@@ -16,7 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { CUSTOM_OPERATORS, Operators, OPERATOR_ENUM_TO_OPERATOR_TYPE } from 'src/explore/constants';
+import {
+  CUSTOM_OPERATORS,
+  Operators,
+  OPERATOR_ENUM_TO_OPERATOR_TYPE,
+} from 'src/explore/constants';
 import { getSimpleSQLExpression } from 'src/explore/exploreUtils';
 
 export const EXPRESSION_TYPES = {
@@ -49,13 +53,16 @@ const OPERATORS_TO_SQL = {
     `= '{{ presto.latest_partition('${datasource.schema}.${datasource.datasource_name}') }}'`,
 };
 
-const CUSTOM_OPERATIONS = [...CUSTOM_OPERATORS].map(op => OPERATOR_ENUM_TO_OPERATOR_TYPE[op].operation);
+const CUSTOM_OPERATIONS = [...CUSTOM_OPERATORS].map(
+  op => OPERATOR_ENUM_TO_OPERATOR_TYPE[op].operation,
+);
 
 function translateToSql(adhocMetric, { useSimple } = {}) {
   if (adhocMetric.expressionType === EXPRESSION_TYPES.SIMPLE || useSimple) {
     const { subject, comparator } = adhocMetric;
     const operator =
-      adhocMetric.operator && CUSTOM_OPERATIONS.indexOf(adhocMetric.operator) >= 0
+      adhocMetric.operator &&
+      CUSTOM_OPERATIONS.indexOf(adhocMetric.operator) >= 0
         ? OPERATORS_TO_SQL[adhocMetric.operator](adhocMetric)
         : OPERATORS_TO_SQL[adhocMetric.operator];
     return getSimpleSQLExpression(subject, operator, comparator);
@@ -74,10 +81,18 @@ export default class AdhocFilter {
       this.operator = adhocFilter.operator?.toUpperCase();
       this.operatorId = adhocFilter.operatorId;
       this.comparator = adhocFilter.comparator;
-      if ([Operators.IS_TRUE, Operators.IS_FALSE].indexOf(adhocFilter.operatorId) >= 0) {
+      if (
+        [Operators.IS_TRUE, Operators.IS_FALSE].indexOf(
+          adhocFilter.operatorId,
+        ) >= 0
+      ) {
         this.comparator = adhocFilter.operatorId === Operators.IS_TRUE;
       }
-      if ([Operators.IS_NULL, Operators.IS_NOT_NULL].indexOf(adhocFilter.operatorId) >= 0) {
+      if (
+        [Operators.IS_NULL, Operators.IS_NOT_NULL].indexOf(
+          adhocFilter.operatorId,
+        ) >= 0
+      ) {
         this.comparator = null;
       }
       this.clause = adhocFilter.clause || CLAUSES.WHERE;
@@ -88,7 +103,10 @@ export default class AdhocFilter {
           ? adhocFilter.sqlExpression
           : translateToSql(adhocFilter, { useSimple: true });
       this.clause = adhocFilter.clause;
-      if (adhocFilter.operator && CUSTOM_OPERATIONS.indexOf(adhocFilter.operator) >= 0) {
+      if (
+        adhocFilter.operator &&
+        CUSTOM_OPERATIONS.indexOf(adhocFilter.operator) >= 0
+      ) {
         this.subject = adhocFilter.subject;
         this.operator = adhocFilter.operator;
         this.operatorId = adhocFilter.operatorId;
@@ -103,7 +121,9 @@ export default class AdhocFilter {
 
     this.filterOptionName =
       adhocFilter.filterOptionName ||
-      `filter_${Math.random().toString(36).substring(2, 15)}_${Math.random().toString(36).substring(2, 15)}`;
+      `filter_${Math.random()
+        .toString(36)
+        .substring(2, 15)}_${Math.random().toString(36).substring(2, 15)}`;
   }
 
   duplicateWith(nextFields) {

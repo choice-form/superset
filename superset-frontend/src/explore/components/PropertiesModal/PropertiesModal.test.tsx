@@ -128,18 +128,21 @@ fetchMock.get('http://localhost/api/v1/chart/318', {
   },
 });
 
-fetchMock.get('http://localhost/api/v1/chart/related/owners?q=(filter:%27%27)', {
-  body: {
-    count: 1,
-    result: [
-      {
-        text: 'Superset Admin',
-        value: 1,
-      },
-    ],
+fetchMock.get(
+  'http://localhost/api/v1/chart/related/owners?q=(filter:%27%27)',
+  {
+    body: {
+      count: 1,
+      result: [
+        {
+          text: 'Superset Admin',
+          value: 1,
+        },
+      ],
+    },
+    sendAsJson: true,
   },
-  sendAsJson: true,
-});
+);
 
 fetchMock.put('http://localhost/api/v1/chart/318', {
   body: {
@@ -166,7 +169,9 @@ test('Should render null when show:false', async () => {
   render(<PropertiesModal {...props} />);
 
   await waitFor(() => {
-    expect(screen.queryByRole('dialog', { name: 'Edit Chart Properties' })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('dialog', { name: 'Edit Chart Properties' }),
+    ).not.toBeInTheDocument();
   });
 });
 
@@ -175,7 +180,9 @@ test('Should render when show:true', async () => {
   render(<PropertiesModal {...props} />);
 
   await waitFor(() => {
-    expect(screen.getByRole('dialog', { name: 'Edit Chart Properties' })).toBeVisible();
+    expect(
+      screen.getByRole('dialog', { name: 'Edit Chart Properties' }),
+    ).toBeVisible();
   });
 });
 
@@ -212,17 +219,23 @@ test('Should render all elements inside modal', async () => {
   await waitFor(() => {
     expect(screen.getAllByRole('textbox')).toHaveLength(5);
     expect(screen.getByRole('combobox')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Basic information' })).toBeVisible();
+    expect(
+      screen.getByRole('heading', { name: 'Basic information' }),
+    ).toBeVisible();
     expect(screen.getByText('Name')).toBeVisible();
     expect(screen.getByText('Description')).toBeVisible();
 
-    expect(screen.getByRole('heading', { name: 'Configuration' })).toBeVisible();
+    expect(
+      screen.getByRole('heading', { name: 'Configuration' }),
+    ).toBeVisible();
     expect(screen.getByText('Cache timeout')).toBeVisible();
 
     expect(screen.getByRole('heading', { name: 'Access' })).toBeVisible();
     expect(screen.getByText('Owners')).toBeVisible();
 
-    expect(screen.getByRole('heading', { name: 'Configuration' })).toBeVisible();
+    expect(
+      screen.getByRole('heading', { name: 'Configuration' }),
+    ).toBeVisible();
     expect(screen.getByText('Certified by')).toBeVisible();
     expect(screen.getByText('Certification details')).toBeVisible();
   });
@@ -286,5 +299,7 @@ test('Empty "Certified by" should clear "Certification details"', async () => {
   };
   render(<PropertiesModal {...noCertifiedByProps} />);
 
-  expect(screen.getByRole('textbox', { name: 'Certification details' })).toHaveValue('');
+  expect(
+    screen.getByRole('textbox', { name: 'Certification details' }),
+  ).toHaveValue('');
 });

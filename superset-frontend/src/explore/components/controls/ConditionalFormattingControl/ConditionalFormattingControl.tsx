@@ -22,8 +22,17 @@ import Icons from 'src/components/Icons';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import { useComponentDidUpdate } from 'src/common/hooks/useComponentDidUpdate';
 import { FormattingPopover } from './FormattingPopover';
-import { COMPARATOR, ConditionalFormattingConfig, ConditionalFormattingControlProps } from './types';
-import { AddControlLabel, CaretContainer, Label, OptionControlContainer } from '../OptionControls';
+import {
+  COMPARATOR,
+  ConditionalFormattingConfig,
+  ConditionalFormattingControlProps,
+} from './types';
+import {
+  AddControlLabel,
+  CaretContainer,
+  Label,
+  OptionControlContainer,
+} from '../OptionControls';
 
 const FormattersContainer = styled.div`
   ${({ theme }) => css`
@@ -65,9 +74,10 @@ const ConditionalFormattingControl = ({
   ...props
 }: ConditionalFormattingControlProps) => {
   const theme = useTheme();
-  const [conditionalFormattingConfigs, setConditionalFormattingConfigs] = useState<ConditionalFormattingConfig[]>(
-    value ?? [],
-  );
+  const [
+    conditionalFormattingConfigs,
+    setConditionalFormattingConfigs,
+  ] = useState<ConditionalFormattingConfig[]>(value ?? []);
 
   useEffect(() => {
     if (onChange) {
@@ -80,7 +90,10 @@ const ConditionalFormattingControl = ({
     const newFormattingConfigs = conditionalFormattingConfigs.filter(config =>
       columnOptions.some(option => option?.value === config?.column),
     );
-    if (newFormattingConfigs.length !== conditionalFormattingConfigs.length && onChange) {
+    if (
+      newFormattingConfigs.length !== conditionalFormattingConfigs.length &&
+      onChange
+    ) {
       setConditionalFormattingConfigs(newFormattingConfigs);
       onChange(newFormattingConfigs);
     }
@@ -88,7 +101,9 @@ const ConditionalFormattingControl = ({
   useComponentDidUpdate(removeFormattersWhenColumnsChange);
 
   const onDelete = (index: number) => {
-    setConditionalFormattingConfigs(prevConfigs => prevConfigs.filter((_, i) => i !== index));
+    setConditionalFormattingConfigs(prevConfigs =>
+      prevConfigs.filter((_, i) => i !== index),
+    );
   };
 
   const onSave = (config: ConditionalFormattingConfig) => {
@@ -138,7 +153,9 @@ const ConditionalFormattingControl = ({
               title={t('Edit formatter')}
               config={config}
               columns={columnOptions}
-              onChange={(newConfig: ConditionalFormattingConfig) => onEdit(newConfig, index)}
+              onChange={(newConfig: ConditionalFormattingConfig) =>
+                onEdit(newConfig, index)
+              }
               destroyTooltipOnHide
             >
               <OptionControlContainer withCaret>

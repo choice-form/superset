@@ -30,12 +30,16 @@ const AntdIconComponent = ({
   iconSize,
   viewBox,
   ...rest
-}: Omit<IconType, 'ref' | 'css'>) => <AntdIcon viewBox={viewBox || '0 0 24 24'} {...rest} />;
+}: Omit<IconType, 'ref' | 'css'>) => (
+  <AntdIcon viewBox={viewBox || '0 0 24 24'} {...rest} />
+);
 
 export const StyledIcon = styled(AntdIconComponent)<IconType>`
   ${({ iconColor }) => iconColor && `color: ${iconColor};`};
   font-size: ${({ iconSize, theme }) =>
-    iconSize ? `${theme.typography.sizes[iconSize] || theme.typography.sizes.m}px` : '24px'};
+    iconSize
+      ? `${theme.typography.sizes[iconSize] || theme.typography.sizes.m}px`
+      : '24px'};
 `;
 
 interface IconProps extends IconType {
@@ -52,7 +56,9 @@ export const Icon = (props: IconProps) => {
     let cancelled = false;
     async function importIcon(): Promise<void> {
       ImportedSVG.current = (
-        await import(`!!@svgr/webpack?-svgo,+titleProp,+ref!src/assets/images/icons/${fileName}.svg`)
+        await import(
+          `!!@svgr/webpack?-svgo,+titleProp,+ref!src/assets/images/icons/${fileName}.svg`
+        )
       ).default;
       if (!cancelled) {
         setLoaded(true);
@@ -64,7 +70,13 @@ export const Icon = (props: IconProps) => {
     };
   }, [fileName, ImportedSVG]);
 
-  return <StyledIcon component={ImportedSVG.current || TransparentIcon} aria-label={name} {...iconProps} />;
+  return (
+    <StyledIcon
+      component={ImportedSVG.current || TransparentIcon}
+      aria-label={name}
+      {...iconProps}
+    />
+  );
 };
 
 export default Icon;

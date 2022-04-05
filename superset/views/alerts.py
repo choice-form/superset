@@ -31,7 +31,7 @@ from superset import is_feature_enabled
 from superset.constants import RouteMethod
 from superset.models.alerts import Alert, AlertLog, SQLObservation
 from superset.tasks.alerts.validator import check_validator
-from superset.typing_local import FlaskResponse
+from superset.typing import FlaskResponse
 from superset.utils import core as utils
 from superset.utils.core import get_email_address_str, markdown
 

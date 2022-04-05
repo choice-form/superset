@@ -98,7 +98,9 @@ describe('Visualization > Area', () => {
       // Make sure data is sorted correctly
       const firstRow = responseBody.data[0].values;
       const secondRow = responseBody.data[1].values;
-      expect(firstRow[firstRow.length - 1].y).to.be.greaterThan(secondRow[secondRow.length - 1].y);
+      expect(firstRow[firstRow.length - 1].y).to.be.greaterThan(
+        secondRow[secondRow.length - 1].y,
+      );
       cy.verifySliceContainer('svg');
     });
     cy.get('.nv-area').should('have.length', 2);

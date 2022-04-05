@@ -24,7 +24,9 @@ export default {
   component: ProgressBar,
 };
 
-export const InteractiveProgressBar = (args: ProgressBarProps) => <ProgressBar {...args} />;
+export const InteractiveProgressBar = (args: ProgressBarProps) => (
+  <ProgressBar {...args} />
+);
 
 InteractiveProgressBar.args = {
   striped: true,

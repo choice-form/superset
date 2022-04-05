@@ -22,7 +22,10 @@ import { t, styled, supersetTheme } from 'src/core';
 import { Menu } from 'src/common/components';
 import Button, { ButtonProps } from 'src/components/Button';
 import Icons from 'src/components/Icons';
-import { DropdownButton, DropdownButtonProps } from 'src/components/DropdownButton';
+import {
+  DropdownButton,
+  DropdownButtonProps,
+} from 'src/components/DropdownButton';
 
 interface Props {
   allowAsync: boolean;
@@ -36,7 +39,10 @@ interface Props {
 
 type QueryButtonProps = DropdownButtonProps | ButtonProps;
 
-const buildText = (shouldShowStopButton: boolean, selectedText: string | undefined): string | JSX.Element => {
+const buildText = (
+  shouldShowStopButton: boolean,
+  selectedText: string | undefined,
+): string | JSX.Element => {
   if (shouldShowStopButton) {
     return (
       <>
@@ -87,19 +93,27 @@ const RunQueryActionButton = ({
   runQuery,
   stopQuery,
 }: Props) => {
-  const shouldShowStopBtn = !!queryState && ['running', 'pending'].indexOf(queryState) > -1;
+  const shouldShowStopBtn =
+    !!queryState && ['running', 'pending'].indexOf(queryState) > -1;
 
-  const ButtonComponent: React.FC<QueryButtonProps> = overlayCreateAsMenu ? (DropdownButton as React.FC) : Button;
+  const ButtonComponent: React.FC<QueryButtonProps> = overlayCreateAsMenu
+    ? (DropdownButton as React.FC)
+    : Button;
 
   const isDisabled = !sql.trim();
 
   return (
     <StyledButton>
       <ButtonComponent
-        onClick={() => onClick(shouldShowStopBtn, allowAsync, runQuery, stopQuery)}
+        onClick={() =>
+          onClick(shouldShowStopBtn, allowAsync, runQuery, stopQuery)
+        }
         disabled={isDisabled}
         tooltip={
-          (!isDisabled && (shouldShowStopBtn ? t('Stop running (Ctrl + x)') : t('Run query (Ctrl + Return)'))) as string
+          (!isDisabled &&
+            (shouldShowStopBtn
+              ? t('Stop running (Ctrl + x)')
+              : t('Run query (Ctrl + Return)'))) as string
         }
         cta
         {...(overlayCreateAsMenu
@@ -107,7 +121,11 @@ const RunQueryActionButton = ({
               overlay: overlayCreateAsMenu,
               icon: (
                 <Icons.CaretDown
-                  iconColor={isDisabled ? supersetTheme.colors.grayscale.base : supersetTheme.colors.grayscale.light5}
+                  iconColor={
+                    isDisabled
+                      ? supersetTheme.colors.grayscale.base
+                      : supersetTheme.colors.grayscale.light5
+                  }
                   name="caret-down"
                 />
               ),

@@ -94,7 +94,8 @@ const ROW_LIMIT_OPTIONS = [10, 50, 100, 250, 500, 1000, 5000, 10000, 50000];
 
 const SERIES_LIMITS = [0, 5, 10, 25, 50, 100, 500];
 
-export const D3_FORMAT_DOCS = 'D3 format syntax: https://github.com/d3/d3-format';
+export const D3_FORMAT_DOCS =
+  'D3 format syntax: https://github.com/d3/d3-format';
 
 export const D3_TIME_FORMAT_OPTIONS = [
   ['smart_date', 'Adaptative formating'],
@@ -109,7 +110,10 @@ export const D3_TIME_FORMAT_OPTIONS = [
 const timeColumnOption = {
   verbose_name: 'Time',
   column_name: '__timestamp',
-  description: t('A reference to the [Time] configuration, taking granularity into ' + 'account'),
+  description: t(
+    'A reference to the [Time] configuration, taking granularity into ' +
+      'account',
+  ),
 };
 
 const groupByControl = {
@@ -123,8 +127,10 @@ const groupByControl = {
   optionRenderer: c => <StyledColumnOption column={c} showType />,
   valueKey: 'column_name',
   filterOption: ({ data: opt }, text) =>
-    (opt.column_name && opt.column_name.toLowerCase().indexOf(text.toLowerCase()) >= 0) ||
-    (opt.verbose_name && opt.verbose_name.toLowerCase().indexOf(text.toLowerCase()) >= 0),
+    (opt.column_name &&
+      opt.column_name.toLowerCase().indexOf(text.toLowerCase()) >= 0) ||
+    (opt.verbose_name &&
+      opt.verbose_name.toLowerCase().indexOf(text.toLowerCase()) >= 0),
   mapStateToProps: (state, control) => {
     const newState = {};
     if (state.datasource) {
@@ -163,7 +169,9 @@ export function columnChoices(datasource) {
   if (datasource && datasource.columns) {
     return datasource.columns
       .map(col => [col.column_name, col.verbose_name || col.column_name])
-      .sort((opt1, opt2) => (opt1[1].toLowerCase() > opt2[1].toLowerCase() ? 1 : -1));
+      .sort((opt1, opt2) =>
+        opt1[1].toLowerCase() > opt2[1].toLowerCase() ? 1 : -1,
+      );
   }
   return [];
 }
@@ -209,7 +217,8 @@ export const controls = {
   linear_color_scheme: {
     type: 'ColorSchemeControl',
     label: t('Linear color scheme'),
-    choices: () => sequentialSchemeRegistry.values().map(value => [value.id, value.label]),
+    choices: () =>
+      sequentialSchemeRegistry.values().map(value => [value.id, value.label]),
     default: sequentialSchemeRegistry.getDefaultKey(),
     clearable: false,
     description: '',
@@ -244,7 +253,8 @@ export const controls = {
     ],
     default: null,
     description: t(
-      'Defines the origin where time buckets start, ' + 'accepts natural dates as in `now`, `sunday` or `1970-01-01`',
+      'Defines the origin where time buckets start, ' +
+        'accepts natural dates as in `now`, `sunday` or `1970-01-01`',
     ),
   },
 
@@ -428,10 +438,15 @@ export const controls = {
     description: D3_FORMAT_DOCS,
     mapStateToProps: state => {
       const showWarning =
-        state.controls && state.controls.comparison_type && state.controls.comparison_type.value === 'percentage';
+        state.controls &&
+        state.controls.comparison_type &&
+        state.controls.comparison_type.value === 'percentage';
       return {
         warning: showWarning
-          ? t('When `Calculation type` is set to "Percentage change", the Y ' + 'Axis Format is forced to `.1%`')
+          ? t(
+              'When `Calculation type` is set to "Percentage change", the Y ' +
+                'Axis Format is forced to `.1%`',
+            )
           : null,
         disabled: showWarning,
       };
@@ -444,7 +459,9 @@ export const controls = {
     default: null,
     description: '',
     mapStateToProps: state => ({
-      columns: state.datasource ? state.datasource.columns.filter(c => c.filterable) : [],
+      columns: state.datasource
+        ? state.datasource.columns.filter(c => c.filterable)
+        : [],
       savedMetrics: state.datasource ? state.datasource.metrics : [],
       datasource: state.datasource,
     }),

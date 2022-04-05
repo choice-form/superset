@@ -77,7 +77,11 @@ class ChartRenderer extends React.Component {
       onFilterMenuOpen: this.props.onFilterMenuOpen,
       onFilterMenuClose: this.props.onFilterMenuClose,
       setDataMask: (dataMask, drilldown = false) => {
-        this.props.actions?.updateDataMask(this.props.chartId, dataMask, drilldown);
+        this.props.actions?.updateDataMask(
+          this.props.chartId,
+          dataMask,
+          drilldown,
+        );
       },
     };
   }
@@ -90,7 +94,8 @@ class ChartRenderer extends React.Component {
       !nextProps.refreshOverlayVisible;
 
     if (resultsReady) {
-      this.hasQueryResponseChange = nextProps.queriesResponse !== this.props.queriesResponse;
+      this.hasQueryResponseChange =
+        nextProps.queriesResponse !== this.props.queriesResponse;
       return (
         this.hasQueryResponseChange ||
         !isEqual(nextProps.datasource, this.props.datasource) ||
@@ -134,7 +139,11 @@ class ChartRenderer extends React.Component {
   handleRenderFailure(error, info) {
     const { actions, chartId } = this.props;
     logging.warn(error);
-    actions.chartRenderingFailed(error.toString(), chartId, info ? info.componentStack : null);
+    actions.chartRenderingFailed(
+      error.toString(),
+      chartId,
+      info ? info.componentStack : null,
+    );
 
     // only trigger render log when query is changed
     if (this.hasQueryResponseChange) {
@@ -157,10 +166,21 @@ class ChartRenderer extends React.Component {
   }
 
   render() {
-    const { chartAlert, chartStatus, vizType, chartId, refreshOverlayVisible } = this.props;
+    const {
+      chartAlert,
+      chartStatus,
+      vizType,
+      chartId,
+      refreshOverlayVisible,
+    } = this.props;
 
     // Skip chart rendering
-    if (refreshOverlayVisible || chartStatus === 'loading' || !!chartAlert || chartStatus === null) {
+    if (
+      refreshOverlayVisible ||
+      chartStatus === 'loading' ||
+      !!chartAlert ||
+      chartStatus === null
+    ) {
       return null;
     }
 
@@ -184,7 +204,10 @@ class ChartRenderer extends React.Component {
     // When migrating charts, we should gradually add a `superset-chart-` prefix
     // to each one of them.
     const snakeCaseVizType = snakeCase(vizType);
-    const chartClassName = vizType === 'table' ? `superset-chart-${snakeCaseVizType}` : snakeCaseVizType;
+    const chartClassName =
+      vizType === 'table'
+        ? `superset-chart-${snakeCaseVizType}`
+        : snakeCaseVizType;
 
     const webpackHash =
       process.env.WEBPACK_MODE === 'development'

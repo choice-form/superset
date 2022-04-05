@@ -21,7 +21,10 @@ import { render, screen, waitFor } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
-import AdhocFilter, { EXPRESSION_TYPES, CLAUSES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, {
+  EXPRESSION_TYPES,
+  CLAUSES,
+} from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import AdhocFilterOption from '.';
 
 const simpleAdhocFilter = new AdhocFilter({
@@ -76,7 +79,9 @@ test('should render the remove button', async () => {
 
 test('should render the right caret', async () => {
   render(setup(mockedProps));
-  expect(await screen.findByRole('img', { name: 'caret-right' })).toBeInTheDocument();
+  expect(
+    await screen.findByRole('img', { name: 'caret-right' }),
+  ).toBeInTheDocument();
 });
 
 test('should render the Popover on clicking the right caret', async () => {

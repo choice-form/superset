@@ -74,7 +74,10 @@ describe('Visualization > World Map', () => {
       show_bubbles: false,
     });
     cy.get('.slice_container').then(containers => {
-      expect(containers[0].querySelectorAll('.bubbles circle.datamaps-bubble').length).to.equal(0);
+      expect(
+        containers[0].querySelectorAll('.bubbles circle.datamaps-bubble')
+          .length,
+      ).to.equal(0);
     });
   });
 });

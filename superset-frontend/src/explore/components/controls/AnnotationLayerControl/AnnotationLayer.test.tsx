@@ -32,13 +32,17 @@ const defaultProps = {
 };
 
 beforeAll(() => {
-  const supportedAnnotationTypes = Object.values(ANNOTATION_TYPES_METADATA).map(value => value.value);
+  const supportedAnnotationTypes = Object.values(ANNOTATION_TYPES_METADATA).map(
+    value => value.value,
+  );
 
   fetchMock.get('glob:*/annotationlayermodelview/api/read?*', {
     result: [{ label: 'Chart A', value: 'a' }],
   });
 
-  fetchMock.get('glob:*/user_slices*', [{ id: 'a', title: 'Chart A', viz_type: 'table', data: {} }]);
+  fetchMock.get('glob:*/user_slices*', [
+    { id: 'a', title: 'Chart A', viz_type: 'table', data: {} },
+  ]);
 
   setupColors();
 
@@ -53,7 +57,8 @@ beforeAll(() => {
   );
 });
 
-const waitForRender = (props?: any) => waitFor(() => render(<AnnotationLayer {...defaultProps} {...props} />));
+const waitForRender = (props?: any) =>
+  waitFor(() => render(<AnnotationLayer {...defaultProps} {...props} />));
 
 test('renders with default props', async () => {
   await waitForRender();
@@ -64,11 +69,17 @@ test('renders with default props', async () => {
 
 test('renders extra checkboxes when type is time series', async () => {
   await waitForRender();
-  expect(screen.queryByRole('button', { name: 'Show Markers' })).not.toBeInTheDocument();
-  expect(screen.queryByRole('button', { name: 'Hide Line' })).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole('button', { name: 'Show Markers' }),
+  ).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole('button', { name: 'Hide Line' }),
+  ).not.toBeInTheDocument();
   userEvent.click(screen.getAllByText('Formula')[0]);
   userEvent.click(screen.getByText('Time series'));
-  expect(screen.getByRole('button', { name: 'Show Markers' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'Show Markers' }),
+  ).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'Hide Line' })).toBeInTheDocument();
 });
 
@@ -135,11 +146,15 @@ test('renders chart options', async () => {
   await waitForRender({
     annotationType: ANNOTATION_TYPES_METADATA.EVENT.value,
   });
-  userEvent.click(screen.getByRole('combobox', { name: 'Annotation source type' }));
+  userEvent.click(
+    screen.getByRole('combobox', { name: 'Annotation source type' }),
+  );
   userEvent.click(screen.getByText('Superset annotation'));
   expect(screen.getByText('Annotation layer')).toBeInTheDocument();
 
-  userEvent.click(screen.getByRole('combobox', { name: 'Annotation source type' }));
+  userEvent.click(
+    screen.getByRole('combobox', { name: 'Annotation source type' }),
+  );
   userEvent.click(screen.getByText('Table'));
   expect(screen.getByText('Chart')).toBeInTheDocument();
 });
@@ -149,18 +164,28 @@ test('keeps apply disabled when missing required fields', async () => {
     annotationType: ANNOTATION_TYPES_METADATA.EVENT.value,
     sourceType: 'Table',
   });
-  userEvent.click(screen.getByRole('combobox', { name: 'Annotation layer value' }));
+  userEvent.click(
+    screen.getByRole('combobox', { name: 'Annotation layer value' }),
+  );
   userEvent.click(await screen.findByText('Chart A'));
-  expect(screen.getByText('Annotation Slice Configuration')).toBeInTheDocument();
+  expect(
+    screen.getByText('Annotation Slice Configuration'),
+  ).toBeInTheDocument();
 
   userEvent.click(screen.getByRole('button', { name: 'Automatic Color' }));
-  userEvent.click(screen.getByRole('combobox', { name: 'Annotation layer title column' }));
+  userEvent.click(
+    screen.getByRole('combobox', { name: 'Annotation layer title column' }),
+  );
   userEvent.click(screen.getByText('None'));
   userEvent.click(screen.getByText('Style'));
-  userEvent.click(screen.getByRole('combobox', { name: 'Annotation layer stroke' }));
+  userEvent.click(
+    screen.getByRole('combobox', { name: 'Annotation layer stroke' }),
+  );
   userEvent.click(screen.getByText('Dashed'));
   userEvent.click(screen.getByText('Opacity'));
-  userEvent.click(screen.getByRole('combobox', { name: 'Annotation layer opacity' }));
+  userEvent.click(
+    screen.getByRole('combobox', { name: 'Annotation layer opacity' }),
+  );
   userEvent.click(screen.getByText('0.5'));
 
   const checkboxes = screen.getAllByRole('checkbox');

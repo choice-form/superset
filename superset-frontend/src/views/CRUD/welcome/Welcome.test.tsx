@@ -36,7 +36,8 @@ const chartInfoEndpoint = 'glob:*/api/v1/chart/_info?*';
 const chartFavoriteStatusEndpoint = 'glob:*/api/v1/chart/favorite_status?*';
 const dashboardsEndpoint = 'glob:*/api/v1/dashboard/?*';
 const dashboardInfoEndpoint = 'glob:*/api/v1/dashboard/_info?*';
-const dashboardFavoriteStatusEndpoint = 'glob:*/api/v1/dashboard/favorite_status?*';
+const dashboardFavoriteStatusEndpoint =
+  'glob:*/api/v1/dashboard/favorite_status?*';
 const savedQueryEndpoint = 'glob:*/api/v1/saved_query/?*';
 const savedQueryInfoEndpoint = 'glob:*/api/v1/saved_query/_info?*';
 const recentActivityEndpoint = 'glob:*/recent_activity/*';
@@ -153,7 +154,9 @@ describe('Welcome page with toggle switch', () => {
   let isFeatureEnabledMock: any;
 
   beforeAll(async () => {
-    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockReturnValue(true);
+    isFeatureEnabledMock = jest
+      .spyOn(featureFlags, 'isFeatureEnabled')
+      .mockReturnValue(true);
     await act(async () => {
       wrapper = await mountAndWait();
     });

@@ -191,11 +191,7 @@ const v1ChartDataRequest = async (
   const { dashboard_id: dashboardId } = requestParams;
 
   const qs = {};
-  if (sliceId !== undefined) {
-    qs.form_data = `{"slice_id":${sliceId}}`;
-    // 添加图标类型到后台，用于返回数据格式的判断
-    qs.viz_type = formData.viz_type;
-  }
+  if (sliceId !== undefined) qs.form_data = `{"slice_id":${sliceId}}`;
   if (dashboardId !== undefined) qs.dashboard_id = dashboardId;
   if (force !== false) qs.force = force;
 

@@ -88,7 +88,8 @@ const defaultProps = {
 // resizing across all slices on a dashboard on every update
 const RESIZE_TIMEOUT = 350;
 const SHOULD_UPDATE_ON_PROP_CHANGES = Object.keys(propTypes).filter(
-  prop => prop !== 'width' && prop !== 'height' && prop !== 'isComponentVisible',
+  prop =>
+    prop !== 'width' && prop !== 'height' && prop !== 'isComponentVisible',
 );
 const OVERFLOWABLE_VIZ_TYPES = new Set(['filter_box']);
 const DEFAULT_HEADER_HEIGHT = 22;
@@ -146,7 +147,10 @@ export default class Chart extends React.Component {
         return false;
       }
 
-      if (nextProps.width !== this.props.width || nextProps.height !== this.props.height) {
+      if (
+        nextProps.width !== this.props.width ||
+        nextProps.height !== this.props.height
+      ) {
         clearTimeout(this.resizeTimeout);
         this.resizeTimeout = setTimeout(this.resize, RESIZE_TIMEOUT);
       }
@@ -171,7 +175,10 @@ export default class Chart extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.isExpanded !== prevProps.isExpanded) {
-      const descriptionHeight = this.props.isExpanded && this.descriptionRef ? this.descriptionRef.offsetHeight : 0;
+      const descriptionHeight =
+        this.props.isExpanded && this.descriptionRef
+          ? this.descriptionRef.offsetHeight
+          : 0;
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ descriptionHeight });
     }
@@ -183,7 +190,9 @@ export default class Chart extends React.Component {
   }
 
   getHeaderHeight() {
-    return (this.headerRef && this.headerRef.offsetHeight) || DEFAULT_HEADER_HEIGHT;
+    return (
+      (this.headerRef && this.headerRef.offsetHeight) || DEFAULT_HEADER_HEIGHT
+    );
   }
 
   setDescriptionRef(ref) {
@@ -230,7 +239,9 @@ export default class Chart extends React.Component {
       is_cached: this.props.isCached,
     });
     exportChart({
-      formData: isFullCSV ? { ...this.props.formData, row_limit: this.props.maxRows } : this.props.formData,
+      formData: isFullCSV
+        ? { ...this.props.formData, row_limit: this.props.maxRows }
+        : this.props.formData,
       resultType: 'full',
       resultFormat: 'csv',
     });
@@ -245,7 +256,11 @@ export default class Chart extends React.Component {
       slice_id: this.props.slice.slice_id,
       is_cached: this.props.isCached,
     });
-    return this.props.refreshChart(this.props.chart.id, true, this.props.dashboardId);
+    return this.props.refreshChart(
+      this.props.chart.id,
+      true,
+      this.props.dashboardId,
+    );
   }
 
   render() {
@@ -354,7 +369,12 @@ export default class Chart extends React.Component {
           />
         )}
 
-        <div className={cx('dashboard-chart', isOverflowable && 'dashboard-chart--overflowable')}>
+        <div
+          className={cx(
+            'dashboard-chart',
+            isOverflowable && 'dashboard-chart--overflowable',
+          )}
+        >
           {isLoading && (
             <ChartOverlay
               style={{

@@ -26,7 +26,9 @@ import FormLabel from './FormLabel';
 
 export interface LabeledErrorBoundInputProps {
   label?: string;
-  validationMethods: { onBlur: (value: any) => void } | { onChange: (value: any) => void };
+  validationMethods:
+    | { onBlur: (value: any) => void }
+    | { onChange: (value: any) => void };
   errorMessage: string | null;
   helpText?: string;
   required?: boolean;
@@ -101,7 +103,9 @@ const LabeledErrorBoundInput = ({
       <StyledFormLabel htmlFor={id} required={required}>
         {label}
       </StyledFormLabel>
-      {hasTooltip && <InfoTooltip tooltip={`${tooltipText}`} viewBox="0 -1 24 24" />}
+      {hasTooltip && (
+        <InfoTooltip tooltip={`${tooltipText}`} viewBox="0 -1 24 24" />
+      )}
     </StyledAlignment>
     <FormItem
       css={(theme: SupersetTheme) => alertIconStyles(theme, !!errorMessage)}

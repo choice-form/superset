@@ -44,10 +44,18 @@ interface AnnotationListProps {
   addSuccessToast: (msg: string) => void;
 }
 
-function AnnotationList({ addDangerToast, addSuccessToast }: AnnotationListProps) {
+function AnnotationList({
+  addDangerToast,
+  addSuccessToast,
+}: AnnotationListProps) {
   const { annotationLayerId }: any = useParams();
   const {
-    state: { loading, resourceCount: annotationsCount, resourceCollection: annotations, bulkSelectEnabled },
+    state: {
+      loading,
+      resourceCount: annotationsCount,
+      resourceCollection: annotations,
+      bulkSelectEnabled,
+    },
     fetchData,
     refreshData,
     toggleBulkSelect,
@@ -57,10 +65,18 @@ function AnnotationList({ addDangerToast, addSuccessToast }: AnnotationListProps
     addDangerToast,
     false,
   );
-  const [annotationModalOpen, setAnnotationModalOpen] = useState<boolean>(false);
+  const [annotationModalOpen, setAnnotationModalOpen] = useState<boolean>(
+    false,
+  );
   const [annotationLayerName, setAnnotationLayerName] = useState<string>('');
-  const [currentAnnotation, setCurrentAnnotation] = useState<AnnotationObject | null>(null);
-  const [annotationCurrentlyDeleting, setAnnotationCurrentlyDeleting] = useState<AnnotationObject | null>(null);
+  const [
+    currentAnnotation,
+    setCurrentAnnotation,
+  ] = useState<AnnotationObject | null>(null);
+  const [
+    annotationCurrentlyDeleting,
+    setAnnotationCurrentlyDeleting,
+  ] = useState<AnnotationObject | null>(null);
   const handleAnnotationEdit = (annotation: AnnotationObject | null) => {
     setCurrentAnnotation(annotation);
     setAnnotationModalOpen(true);
@@ -91,11 +107,17 @@ function AnnotationList({ addDangerToast, addSuccessToast }: AnnotationListProps
         setAnnotationCurrentlyDeleting(null);
         addSuccessToast(t('Deleted: %s', short_descr));
       },
-      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting %s: %s', short_descr, errMsg))),
+      createErrorHandler(errMsg =>
+        addDangerToast(
+          t('There was an issue deleting %s: %s', short_descr, errMsg),
+        ),
+      ),
     );
   };
 
-  const handleBulkAnnotationsDelete = (annotationsToDelete: AnnotationObject[]) => {
+  const handleBulkAnnotationsDelete = (
+    annotationsToDelete: AnnotationObject[],
+  ) => {
     SupersetClient.delete({
       endpoint: `/api/v1/annotation_layer/${annotationLayerId}/annotation/?q=${rison.encode(
         annotationsToDelete.map(({ id }) => id),
@@ -106,7 +128,9 @@ function AnnotationList({ addDangerToast, addSuccessToast }: AnnotationListProps
         addSuccessToast(json.message);
       },
       createErrorHandler(errMsg =>
-        addDangerToast(t('There was an issue deleting the selected annotations: %s', errMsg)),
+        addDangerToast(
+          t('There was an issue deleting the selected annotations: %s', errMsg),
+        ),
       ),
     );
   };
@@ -264,7 +288,9 @@ function AnnotationList({ addDangerToast, addSuccessToast }: AnnotationListProps
       />
       {annotationCurrentlyDeleting && (
         <DeleteModal
-          description={t(`Are you sure you want to delete ${annotationCurrentlyDeleting?.short_descr}?`)}
+          description={t(
+            `Are you sure you want to delete ${annotationCurrentlyDeleting?.short_descr}?`,
+          )}
           onConfirm={() => {
             if (annotationCurrentlyDeleting) {
               handleAnnotationDelete(annotationCurrentlyDeleting);
@@ -277,7 +303,9 @@ function AnnotationList({ addDangerToast, addSuccessToast }: AnnotationListProps
       )}
       <ConfirmStatusChange
         title={t('Please confirm')}
-        description={t('Are you sure you want to delete the selected annotations?')}
+        description={t(
+          'Are you sure you want to delete the selected annotations?',
+        )}
         onConfirm={handleBulkAnnotationsDelete}
       >
         {confirmDelete => {

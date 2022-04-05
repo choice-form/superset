@@ -16,7 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { useState, useEffect, useCallback, useReducer, Reducer, FunctionComponent } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useReducer,
+  Reducer,
+  FunctionComponent,
+} from 'react';
 import { t, SupersetTheme } from 'src/core';
 import { bindActionCreators } from 'redux';
 import { connect, useDispatch, useSelector } from 'react-redux';
@@ -118,7 +125,7 @@ type ReportActionType =
       type: ActionType.reset;
     };
 
-const TEXT_BASED_VISUALIZATION_TYPES = ['pivot_table', 'pivot_table_v2', 'table', 'paired_ttest'];
+const TEXT_BASED_VISUALIZATION_TYPES = ['pivot_table', 'table', 'paired_ttest'];
 
 const NOTIFICATION_FORMATS = {
   TEXT: 'TEXT',
@@ -126,7 +133,10 @@ const NOTIFICATION_FORMATS = {
   CSV: 'CSV',
 };
 
-const reportReducer = (state: Partial<ReportObject> | null, action: ReportActionType): Partial<ReportObject> | null => {
+const reportReducer = (
+  state: Partial<ReportObject> | null,
+  action: ReportActionType,
+): Partial<ReportObject> | null => {
   const initialState = {
     name: 'Weekly Report',
   };
@@ -150,15 +160,21 @@ const reportReducer = (state: Partial<ReportObject> | null, action: ReportAction
   }
 };
 
-const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show = false, ...props }) => {
+const ReportModal: FunctionComponent<ReportProps> = ({
+  onReportAdd,
+  onHide,
+  show = false,
+  ...props
+}) => {
   const vizType = props.props.chart?.sliceFormData?.viz_type;
   const isChart = !!props.props.chart;
   const defaultNotificationFormat =
-    isChart && TEXT_BASED_VISUALIZATION_TYPES.includes(vizType) ? NOTIFICATION_FORMATS.TEXT : NOTIFICATION_FORMATS.PNG;
-  const [currentReport, setCurrentReport] = useReducer<Reducer<Partial<ReportObject> | null, ReportActionType>>(
-    reportReducer,
-    null,
-  );
+    isChart && TEXT_BASED_VISUALIZATION_TYPES.includes(vizType)
+      ? NOTIFICATION_FORMATS.TEXT
+      : NOTIFICATION_FORMATS.PNG;
+  const [currentReport, setCurrentReport] = useReducer<
+    Reducer<Partial<ReportObject> | null, ReportActionType>
+  >(reportReducer, null);
   const onChange = useCallback((type: any, payload: any) => {
     setCurrentReport({ type, payload });
   }, []);
@@ -209,7 +225,9 @@ const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show
     };
 
     if (isEditMode) {
-      await dispatch(editReport(currentReport?.id, newReportValues as ReportObject));
+      await dispatch(
+        editReport(currentReport?.id, newReportValues as ReportObject),
+      );
     } else {
       await dispatch(addReport(newReportValues as ReportObject));
     }
@@ -224,7 +242,9 @@ const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show
   const wrappedTitle = (
     <StyledIconWrapper>
       <Icons.Calendar />
-      <span className="text">{isEditMode ? t('Edit Email Report') : t('New Email Report')}</span>
+      <span className="text">
+        {isEditMode ? t('Edit Email Report') : t('New Email Report')}
+      </span>
     </StyledIconWrapper>
   );
 
@@ -233,7 +253,12 @@ const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show
       <StyledFooterButton key="back" onClick={onClose}>
         {t('Cancel')}
       </StyledFooterButton>
-      <StyledFooterButton key="submit" buttonStyle="primary" onClick={onSave} disabled={!currentReport?.name}>
+      <StyledFooterButton
+        key="submit"
+        buttonStyle="primary"
+        onClick={onSave}
+        disabled={!currentReport?.name}
+      >
         {isEditMode ? t('Save') : t('Add')}
       </StyledFooterButton>
     </>
@@ -255,17 +280,30 @@ const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show
           value={currentReport?.report_format || defaultNotificationFormat}
         >
           {TEXT_BASED_VISUALIZATION_TYPES.includes(vizType) && (
-            <StyledRadio value={NOTIFICATION_FORMATS.TEXT}>{t('Text embedded in email')}</StyledRadio>
+            <StyledRadio value={NOTIFICATION_FORMATS.TEXT}>
+              {t('Text embedded in email')}
+            </StyledRadio>
           )}
-          <StyledRadio value={NOTIFICATION_FORMATS.PNG}>{t('Image (PNG) embedded in email')}</StyledRadio>
-          <StyledRadio value={NOTIFICATION_FORMATS.CSV}>{t('Formatted CSV attached in email')}</StyledRadio>
+          <StyledRadio value={NOTIFICATION_FORMATS.PNG}>
+            {t('Image (PNG) embedded in email')}
+          </StyledRadio>
+          <StyledRadio value={NOTIFICATION_FORMATS.CSV}>
+            {t('Formatted CSV attached in email')}
+          </StyledRadio>
         </StyledRadioGroup>
       </div>
     </>
   );
 
   return (
-    <StyledModal show={show} onHide={onClose} title={wrappedTitle} footer={renderModalFooter} width="432" centered>
+    <StyledModal
+      show={show}
+      onHide={onClose}
+      title={wrappedTitle}
+      footer={renderModalFooter}
+      width="432"
+      centered
+    >
       <StyledTopSection>
         <LabeledErrorBoundInput
           id="name"
@@ -280,7 +318,9 @@ const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show
                 value: target.value,
               }),
           }}
-          errorMessage={currentReport?.name === 'error' ? t('REPORT NAME ERROR') : ''}
+          errorMessage={
+            currentReport?.name === 'error' ? t('REPORT NAME ERROR') : ''
+          }
           label="Report Name"
           data-test="report-name-test"
         />
@@ -296,7 +336,9 @@ const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show
                 value: target.value,
               }),
           }}
-          errorMessage={currentReport?.description === 'error' ? t('DESCRIPTION ERROR') : ''}
+          errorMessage={
+            currentReport?.description === 'error' ? t('DESCRIPTION ERROR') : ''
+          }
           label="Description"
           placeholder="Include a description that will be sent with your report"
           css={noBottomMargin}
@@ -306,7 +348,9 @@ const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show
 
       <StyledBottomSection>
         <StyledScheduleTitle>
-          <h4 css={(theme: SupersetTheme) => SectionHeaderStyle(theme)}>{t('Schedule')}</h4>
+          <h4 css={(theme: SupersetTheme) => SectionHeaderStyle(theme)}>
+            {t('Schedule')}
+          </h4>
           <p>{t('Scheduled reports will be sent to your email as a PNG')}</p>
         </StyledScheduleTitle>
 
@@ -322,7 +366,10 @@ const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show
           onError={setError}
         />
         <StyledCronError>{error}</StyledCronError>
-        <div className="control-label" css={(theme: SupersetTheme) => TimezoneHeaderStyle(theme)}>
+        <div
+          className="control-label"
+          css={(theme: SupersetTheme) => TimezoneHeaderStyle(theme)}
+        >
           {t('Timezone')}
         </div>
         <TimezoneSelector
@@ -340,6 +387,7 @@ const ReportModal: FunctionComponent<ReportProps> = ({ onReportAdd, onHide, show
   );
 };
 
-const mapDispatchToProps = (dispatch: any) => bindActionCreators({ addReport, editReport }, dispatch);
+const mapDispatchToProps = (dispatch: any) =>
+  bindActionCreators({ addReport, editReport }, dispatch);
 
 export default connect(null, mapDispatchToProps)(withToasts(ReportModal));

@@ -69,7 +69,11 @@ describe('EmptyState', () => {
       expect(textContainer.text()).toEqual(
         variant.tab === 'Favorite'
           ? "You don't have any favorites yet!"
-          : `No ${variant.tableName === 'SAVED_QUERIES' ? 'saved queries' : variant.tableName.toLowerCase()} yet`,
+          : `No ${
+              variant.tableName === 'SAVED_QUERIES'
+                ? 'saved queries'
+                : variant.tableName.toLowerCase()
+            } yet`,
       );
       expect(wrapper.find('button')).toHaveLength(1);
     });

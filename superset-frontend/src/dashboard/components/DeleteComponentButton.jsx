@@ -30,7 +30,9 @@ const defaultProps = {};
 export default class DeleteComponentButton extends React.PureComponent {
   render() {
     const { onDelete } = this.props;
-    return <IconButton onClick={onDelete} icon={<Icons.Trash iconSize="xl" />} />;
+    return (
+      <IconButton onClick={onDelete} icon={<Icons.Trash iconSize="xl" />} />
+    );
   }
 }
 

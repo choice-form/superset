@@ -21,7 +21,11 @@ import React from 'react';
 import { styled } from 'src/core';
 import cls from 'classnames';
 
-export type PositionOption = 'floating' | 'inline' | 'inline-centered' | 'normal';
+export type PositionOption =
+  | 'floating'
+  | 'inline'
+  | 'inline-centered'
+  | 'normal';
 export interface Props {
   position?: PositionOption;
   className?: string;

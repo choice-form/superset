@@ -30,7 +30,10 @@ const FilterScopeModalBody = styled.div(({ theme: { gridUnit } }) => ({
   paddingBottom: gridUnit * 3,
 }));
 
-export default class FilterScopeModal extends React.PureComponent<FilterScopeModalProps, {}> {
+export default class FilterScopeModal extends React.PureComponent<
+  FilterScopeModalProps,
+  {}
+> {
   modal: RefObject<ModalTrigger>;
 
   constructor(props: FilterScopeModalProps) {

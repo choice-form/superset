@@ -33,7 +33,9 @@ import ToastContainer from 'src/components/MessageToasts/ToastContainer';
 setupApp();
 
 const profileViewContainer = document.getElementById('app');
-const bootstrap = JSON.parse(profileViewContainer?.getAttribute('data-bootstrap') ?? '{}');
+const bootstrap = JSON.parse(
+  profileViewContainer?.getAttribute('data-bootstrap') ?? '{}',
+);
 
 const store = createStore(
   combineReducers({

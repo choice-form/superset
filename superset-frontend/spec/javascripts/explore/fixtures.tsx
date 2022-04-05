@@ -34,7 +34,8 @@ export const controlPanelSectionsChartOptions: ControlPanelSectionConfig[] = [
             type: 'CheckboxControl',
             label: t('Use Area Proportions'),
             description: t(
-              'Check if the Rose Chart should use segment area instead of ' + 'segment radius for proportioning',
+              'Check if the Rose Chart should use segment area instead of ' +
+                'segment radius for proportioning',
             ),
             default: false,
             renderTrigger: true,

@@ -18,7 +18,10 @@
  */
 import { getChartIdAndColumnFromFilterKey } from './getDashboardFilterKey';
 
-export default function getSelectedChartIdForFilterScopeTree({ activeFilterField, checkedFilterFields }) {
+export default function getSelectedChartIdForFilterScopeTree({
+  activeFilterField,
+  checkedFilterFields,
+}) {
   // we don't apply filter on filter_box itself, so we will disable
   // checkbox in filter scope selector.
   // this function returns chart id based on current filter scope selector local state:
@@ -31,9 +34,16 @@ export default function getSelectedChartIdForFilterScopeTree({ activeFilterField
   }
 
   if (checkedFilterFields.length) {
-    const { chartId } = getChartIdAndColumnFromFilterKey(checkedFilterFields[0]);
+    const { chartId } = getChartIdAndColumnFromFilterKey(
+      checkedFilterFields[0],
+    );
 
-    if (checkedFilterFields.some(filterKey => getChartIdAndColumnFromFilterKey(filterKey).chartId !== chartId)) {
+    if (
+      checkedFilterFields.some(
+        filterKey =>
+          getChartIdAndColumnFromFilterKey(filterKey).chartId !== chartId,
+      )
+    ) {
       return null;
     }
     return chartId;

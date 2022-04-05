@@ -115,7 +115,15 @@ const leafType = PropTypes.shape({
 const parentShape = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   label: PropTypes.string.isRequired,
-  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.shape(lazyFunction(() => parentShape)), leafType])),
+  children: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.shape(lazyFunction(() => parentShape)),
+      leafType,
+    ]),
+  ),
 };
 
-export const filterScopeSelectorTreeNodePropShape = PropTypes.oneOfType([PropTypes.shape(parentShape), leafType]);
+export const filterScopeSelectorTreeNodePropShape = PropTypes.oneOfType([
+  PropTypes.shape(parentShape),
+  leafType,
+]);

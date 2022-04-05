@@ -63,7 +63,9 @@ const FilterValue: React.FC<FilterProps> = ({
   const { id, targets, filterType, adhoc_filters, time_range } = filter;
   const metadata = getChartMetadataRegistry().get(filterType);
   const cascadingFilters = useCascadingFilters(id, dataMaskSelected);
-  const isDashboardRefreshing = useSelector<RootState, boolean>(state => state.dashboardState.isRefreshing);
+  const isDashboardRefreshing = useSelector<RootState, boolean>(
+    state => state.dashboardState.isRefreshing,
+  );
   const [state, setState] = useState<ChartDataResponseResult[]>([]);
   const [error, setError] = useState<string>('');
   const [formData, setFormData] = useState<Partial<QueryFormData>>({
@@ -73,7 +75,10 @@ const FilterValue: React.FC<FilterProps> = ({
   const [inViewFirstTime, setInViewFirstTime] = useState(inView);
   const inputRef = useRef<HTMLInputElement>(null);
   const [target] = targets;
-  const { datasetId, column = {} }: Partial<{ datasetId: number; column: { name?: string } }> = target;
+  const {
+    datasetId,
+    column = {},
+  }: Partial<{ datasetId: number; column: { name?: string } }> = target;
   const { name: groupby } = column;
   const hasDataSource = !!datasetId;
   const [isLoading, setIsLoading] = useState<boolean>(hasDataSource);
@@ -102,11 +107,16 @@ const FilterValue: React.FC<FilterProps> = ({
     const filterOwnState = filter.dataMask?.ownState || {};
     // TODO: We should try to improve our useEffect hooks to depend more on
     // granular information instead of big objects that require deep comparison.
-    const customizer = (objValue: Partial<QueryFormData>, othValue: Partial<QueryFormData>, key: string) =>
-      key === 'url_params' ? true : undefined;
+    const customizer = (
+      objValue: Partial<QueryFormData>,
+      othValue: Partial<QueryFormData>,
+      key: string,
+    ) => (key === 'url_params' ? true : undefined);
     if (
       !isRefreshing &&
-      (!isEqualWith(formData, newFormData, customizer) || !isEqual(ownState, filterOwnState) || isDashboardRefreshing)
+      (!isEqualWith(formData, newFormData, customizer) ||
+        !isEqual(ownState, filterOwnState) ||
+        isDashboardRefreshing)
     ) {
       setFormData(newFormData);
       setOwnState(filterOwnState);
@@ -137,12 +147,16 @@ const FilterValue: React.FC<FilterProps> = ({
                   setState(asyncResult);
                 })
                 .catch((error: ClientErrorObject) => {
-                  setError(error.message || error.error || t('Check configuration'));
+                  setError(
+                    error.message || error.error || t('Check configuration'),
+                  );
                   setIsRefreshing(false);
                   setIsLoading(false);
                 });
             } else {
-              throw new Error(`Received unexpected response status (${response.status}) while fetching chart data`);
+              throw new Error(
+                `Received unexpected response status (${response.status}) while fetching chart data`,
+              );
             }
           } else {
             setState(json.result);
@@ -179,15 +193,25 @@ const FilterValue: React.FC<FilterProps> = ({
     return undefined;
   }, [inputRef, directPathToChild, filter.id]);
 
-  const setDataMask = (dataMask: DataMask) => onFilterSelectionChange(filter, dataMask);
+  const setDataMask = (dataMask: DataMask) =>
+    onFilterSelectionChange(filter, dataMask);
 
   const setFocusedFilter = () => dispatchFocusAction(dispatch, id);
   const unsetFocusedFilter = () => dispatchFocusAction(dispatch);
 
   if (error) {
-    return <BasicErrorAlert title={t('Cannot load filter')} body={error} level="error" />;
+    return (
+      <BasicErrorAlert
+        title={t('Cannot load filter')}
+        body={error}
+        level="error"
+      />
+    );
   }
-  const isMissingRequiredValue = checkIsMissingRequiredValue(filter, filter.dataMask?.filterState);
+  const isMissingRequiredValue = checkIsMissingRequiredValue(
+    filter,
+    filter.dataMask?.filterState,
+  );
   const filterState = {
     ...filter.dataMask?.filterState,
     validateStatus: isMissingRequiredValue && 'error',

@@ -20,12 +20,23 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { SupersetClient, t } from 'src/core';
 import { filter } from 'lodash';
 import { useListViewResource, useFavoriteStatus } from 'src/views/CRUD/hooks';
-import { Dashboard, DashboardTableProps, TableTabTypes } from 'src/views/CRUD/types';
+import {
+  Dashboard,
+  DashboardTableProps,
+  TableTabTypes,
+} from 'src/views/CRUD/types';
 import handleResourceExport from 'src/utils/export';
 import { useHistory } from 'react-router-dom';
-import { setInLocalStorage, getFromLocalStorage } from 'src/utils/localStorageHelpers';
+import {
+  setInLocalStorage,
+  getFromLocalStorage,
+} from 'src/utils/localStorageHelpers';
 import { LoadingCards } from 'src/views/CRUD/welcome/Welcome';
-import { createErrorHandler, CardContainer, PAGE_SIZE } from 'src/views/CRUD/utils';
+import {
+  createErrorHandler,
+  CardContainer,
+  PAGE_SIZE,
+} from 'src/views/CRUD/utils';
 import { HOMEPAGE_DASHBOARD_FILTER } from 'src/views/CRUD/storageKeys';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import Loading from 'src/components/Loading';
@@ -70,7 +81,11 @@ function DashboardTable({
     false,
   );
   const dashboardIds = useMemo(() => dashboards.map(c => c.id), [dashboards]);
-  const [saveFavoriteStatus, favoriteStatus] = useFavoriteStatus('dashboard', dashboardIds, addDangerToast);
+  const [saveFavoriteStatus, favoriteStatus] = useFavoriteStatus(
+    'dashboard',
+    dashboardIds,
+    addDangerToast,
+  );
 
   const [editModal, setEditModal] = useState<Dashboard>();
   const [dashboardFilter, setDashboardFilter] = useState(defaultFilter);
@@ -106,7 +121,11 @@ function DashboardTable({
           }),
         );
       },
-      createErrorHandler(errMsg => addDangerToast(t('An error occurred while fetching dashboards: %s', errMsg))),
+      createErrorHandler(errMsg =>
+        addDangerToast(
+          t('An error occurred while fetching dashboards: %s', errMsg),
+        ),
+      ),
     );
 
   const getFilters = (filterName: string) => {
@@ -187,7 +206,7 @@ function DashboardTable({
             name: (
               <>
                 <i className="fa fa-plus" />
-                {t('Dashboard')}
+                Dashboard
               </>
             ),
             buttonStyle: 'tertiary',
@@ -196,12 +215,14 @@ function DashboardTable({
             },
           },
           {
-            name: t('View ALL »'),
+            name: 'View All »',
             buttonStyle: 'link',
             onClick: () => {
               const target =
                 dashboardFilter === 'Favorite'
-                  ? `/dashboard/list/?filters=(favorite:(label:${t('Yes')},value:!t))`
+                  ? `/dashboard/list/?filters=(favorite:(label:${t(
+                      'Yes',
+                    )},value:!t))`
                   : '/dashboard/list/';
               history.push(target);
             },
@@ -231,7 +252,9 @@ function DashboardTable({
               addSuccessToast={addSuccessToast}
               userId={user?.userId}
               loading={loading}
-              openDashboardEditModal={(dashboard: Dashboard) => setEditModal(dashboard)}
+              openDashboardEditModal={(dashboard: Dashboard) =>
+                setEditModal(dashboard)
+              }
               saveFavoriteStatus={saveFavoriteStatus}
               favoriteStatus={favoriteStatus[e.id]}
               handleBulkDashboardExport={handleBulkDashboardExport}
@@ -239,7 +262,9 @@ function DashboardTable({
           ))}
         </CardContainer>
       )}
-      {dashboards.length === 0 && <EmptyState tableName="DASHBOARDS" tab={dashboardFilter} />}
+      {dashboards.length === 0 && (
+        <EmptyState tableName="DASHBOARDS" tab={dashboardFilter} />
+      )}
       {preparingExport && <Loading />}
     </>
   );

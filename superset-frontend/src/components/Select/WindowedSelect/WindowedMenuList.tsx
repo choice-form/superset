@@ -16,9 +16,23 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { useRef, useEffect, Component, FunctionComponent, ReactElement, RefObject } from 'react';
-import { ListChildComponentProps, FixedSizeList as WindowedList } from 'react-window';
-import { OptionTypeBase, OptionProps, MenuListComponentProps } from 'react-select';
+import React, {
+  useRef,
+  useEffect,
+  Component,
+  FunctionComponent,
+  ReactElement,
+  RefObject,
+} from 'react';
+import {
+  ListChildComponentProps,
+  FixedSizeList as WindowedList,
+} from 'react-window';
+import {
+  OptionTypeBase,
+  OptionProps,
+  MenuListComponentProps,
+} from 'react-select';
 import { ThemeConfig } from '../styles';
 
 export type WindowedMenuListProps = {
@@ -41,9 +55,13 @@ export type WindowedMenuListProps = {
  * grouped options just yet.
  */
 
-type MenuListPropsChildren<OptionType> = Component<OptionProps<OptionType>>[] | ReactElement[];
+type MenuListPropsChildren<OptionType> =
+  | Component<OptionProps<OptionType>>[]
+  | ReactElement[];
 
-export type MenuListProps<OptionType extends OptionTypeBase> = MenuListComponentProps<OptionType> & {
+export type MenuListProps<
+  OptionType extends OptionTypeBase
+> = MenuListComponentProps<OptionType> & {
   children: MenuListPropsChildren<OptionType>;
   // theme is not present with built-in @types/react-select, but is actually
   // available via CommonProps.
@@ -57,7 +75,11 @@ const DEFAULT_OPTION_HEIGHT = 30;
  * Get the index of the last selected option.
  */
 function getLastSelected(children: MenuListPropsChildren<any>) {
-  return Array.isArray(children) ? children.findIndex(({ props: { isFocused = false } = {} }) => isFocused) || 0 : -1;
+  return Array.isArray(children)
+    ? children.findIndex(
+        ({ props: { isFocused = false } = {} }) => isFocused,
+      ) || 0
+    : -1;
 }
 
 /**
@@ -72,7 +94,16 @@ export default function WindowedMenuList<OptionType extends OptionTypeBase>({
   children,
   ...props
 }: MenuListProps<OptionType>) {
-  const { maxHeight, selectProps, theme, getStyles, cx, innerRef, isMulti, className } = props;
+  const {
+    maxHeight,
+    selectProps,
+    theme,
+    getStyles,
+    cx,
+    innerRef,
+    isMulti,
+    className,
+  } = props;
   const {
     // Expose react-window VariableSizeList instance and HTML elements
     windowListRef: windowListRef_,
@@ -90,9 +121,11 @@ export default function WindowedMenuList<OptionType extends OptionTypeBase>({
   const itemCount = children.length;
   const totalHeight = optionHeight * itemCount;
 
-  const Row: FunctionComponent<ListChildComponentProps> = ({ data, index, style }) => (
-    <div style={style}>{data[index]}</div>
-  );
+  const Row: FunctionComponent<ListChildComponentProps> = ({
+    data,
+    index,
+    style,
+  }) => <div style={style}>{data[index]}</div>;
 
   useEffect(() => {
     const lastSelected = getLastSelected(children);

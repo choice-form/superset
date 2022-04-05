@@ -16,13 +16,23 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { QueryData, QueryFormData, AnnotationData, AdhocMetric } from 'src/core';
+import {
+  QueryData,
+  QueryFormData,
+  AnnotationData,
+  AdhocMetric,
+} from 'src/core';
 import { ColumnMeta, DatasourceMeta } from 'src/chartConntrols';
 import { DatabaseObject } from 'src/views/CRUD/types';
 
 export { Slice, Chart } from 'src/types/Chart';
 
-export type ChartStatus = 'loading' | 'rendered' | 'failed' | 'stopped' | 'success';
+export type ChartStatus =
+  | 'loading'
+  | 'rendered'
+  | 'failed'
+  | 'stopped'
+  | 'success';
 
 export interface ChartState {
   id: number;
@@ -42,7 +52,9 @@ export interface ChartState {
   triggerQuery: boolean;
 }
 
-export type OptionSortType = Partial<ColumnMeta & AdhocMetric & { saved_metric_name: string }>;
+export type OptionSortType = Partial<
+  ColumnMeta & AdhocMetric & { saved_metric_name: string }
+>;
 
 export type Datasource = DatasourceMeta & {
   database?: DatabaseObject;

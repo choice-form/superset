@@ -19,7 +19,9 @@
 import { QueryFormData } from 'src/core';
 import { ControlStateMapping } from 'src/chartConntrols';
 
-export function getFormDataFromControls(controlsState: ControlStateMapping): QueryFormData {
+export function getFormDataFromControls(
+  controlsState: ControlStateMapping,
+): QueryFormData {
   const formData: QueryFormData = {
     viz_type: 'table',
     datasource: '',

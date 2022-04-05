@@ -25,8 +25,12 @@ import treeIcons from './treeIcons';
 
 const propTypes = {
   nodes: PropTypes.arrayOf(filterScopeSelectorTreeNodePropShape).isRequired,
-  checked: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])).isRequired,
-  expanded: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])).isRequired,
+  checked: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  ).isRequired,
+  expanded: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  ).isRequired,
   onCheck: PropTypes.func.isRequired,
   onExpand: PropTypes.func.isRequired,
   selectedChartId: PropTypes.number,

@@ -33,7 +33,10 @@ jest.mock('src/components/Select/Select', () => ({
       data-placeholder={props.placeholder}
       data-multi={props.mode}
     >
-      <button type="button" onClick={() => props.onChange(props.multi ? [] : {})}>
+      <button
+        type="button"
+        onClick={() => props.onChange(props.multi ? [] : {})}
+      >
         onChange
       </button>
       <button type="button" onClick={() => props.mutator()}>
@@ -71,9 +74,18 @@ test('Should send correct props to Select component - value props', () => {
   const props = createProps();
   render(<SelectAsyncControl {...props} />, { useRedux: true });
 
-  expect(screen.getByTestId('select-test')).toHaveAttribute('data-value', JSON.stringify(props.value));
-  expect(screen.getByTestId('select-test')).toHaveAttribute('data-placeholder', props.placeholder);
-  expect(screen.getByTestId('select-test')).toHaveAttribute('data-multi', 'multiple');
+  expect(screen.getByTestId('select-test')).toHaveAttribute(
+    'data-value',
+    JSON.stringify(props.value),
+  );
+  expect(screen.getByTestId('select-test')).toHaveAttribute(
+    'data-placeholder',
+    props.placeholder,
+  );
+  expect(screen.getByTestId('select-test')).toHaveAttribute(
+    'data-multi',
+    'multiple',
+  );
 });
 
 test('Should send correct props to Select component - function onChange multi:true', () => {

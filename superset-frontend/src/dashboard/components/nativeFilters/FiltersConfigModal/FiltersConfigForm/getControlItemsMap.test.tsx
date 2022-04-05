@@ -20,7 +20,10 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { render, screen } from 'spec/helpers/testing-library';
 import { FormInstance } from 'src/common/components';
-import { Filter, NativeFilterType } from 'src/dashboard/components/nativeFilters/types';
+import {
+  Filter,
+  NativeFilterType,
+} from 'src/dashboard/components/nativeFilters/types';
 import getControlItemsMap, { ControlItemsProps } from './getControlItemsMap';
 import { getControlItems, setNativeFilterFieldValues } from './utils';
 
@@ -85,10 +88,14 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-function renderControlItems(controlItemsMap: ReturnType<typeof getControlItemsMap>) {
+function renderControlItems(
+  controlItemsMap: ReturnType<typeof getControlItemsMap>,
+) {
   return render(
     // @ts-ignore
-    <>{Object.values(controlItemsMap.controlItems).map(value => value.element)}</>,
+    <>
+      {Object.values(controlItemsMap.controlItems).map(value => value.element)}
+    </>,
   );
 }
 
@@ -129,7 +136,10 @@ test('Should render null empty when "controlItems" are falsy', () => {
 test('Should render render ControlItems', () => {
   const props = createProps();
 
-  const controlItems = [...createControlItems(), { name: 'name_2', config: { renderTrigger: true } }];
+  const controlItems = [
+    ...createControlItems(),
+    { name: 'name_2', config: { renderTrigger: true } },
+  ];
   (getControlItems as jest.Mock).mockReturnValue(controlItems);
   const controlItemsMap = getControlItemsMap(props);
   renderControlItems(controlItemsMap);

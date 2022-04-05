@@ -98,7 +98,7 @@ from superset.exceptions import (
     SupersetTimeoutException,
 )
 from superset.sql_parse import sanitize_clause
-from superset.typing_local import (
+from superset.typing import (
     AdhocMetric,
     AdhocMetricColumn,
     FilterValues,

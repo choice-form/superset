@@ -53,8 +53,13 @@ class App extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    if (this.props.localStorageUsageInKilobytes >= LOCALSTORAGE_WARNING_THRESHOLD * LOCALSTORAGE_MAX_USAGE_KB) {
-      this.showLocalStorageUsageWarning(this.props.localStorageUsageInKilobytes);
+    if (
+      this.props.localStorageUsageInKilobytes >=
+      LOCALSTORAGE_WARNING_THRESHOLD * LOCALSTORAGE_MAX_USAGE_KB
+    ) {
+      this.showLocalStorageUsageWarning(
+        this.props.localStorageUsageInKilobytes,
+      );
     }
   }
 
@@ -84,9 +89,14 @@ class App extends React.PureComponent {
     let content;
     if (this.state.hash && this.state.hash === '#search') {
       if (isFeatureEnabled(FeatureFlag.ENABLE_REACT_CRUD_VIEWS)) {
-        return window.location.replace('/sqllab/history/');
+        return window.location.replace('/superset/sqllab/history/');
       }
-      content = <QuerySearch actions={this.props.actions} displayLimit={this.props.common.conf.DISPLAY_MAX_ROW} />;
+      content = (
+        <QuerySearch
+          actions={this.props.actions}
+          displayLimit={this.props.common.conf.DISPLAY_MAX_ROW}
+        />
+      );
     } else {
       content = (
         <>

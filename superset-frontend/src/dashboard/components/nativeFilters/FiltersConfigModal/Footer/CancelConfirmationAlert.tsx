@@ -28,7 +28,12 @@ export interface ConfirmationAlertProps {
   onDismiss: OnClickHandler;
 }
 
-export function CancelConfirmationAlert({ title, onConfirm, onDismiss, children }: ConfirmationAlertProps) {
+export function CancelConfirmationAlert({
+  title,
+  onConfirm,
+  onDismiss,
+  children,
+}: ConfirmationAlertProps) {
   return (
     <Alert
       closable={false}
@@ -42,10 +47,20 @@ export function CancelConfirmationAlert({ title, onConfirm, onDismiss, children 
       description={children}
       action={
         <div css={{ display: 'flex' }}>
-          <Button key="cancel" buttonSize="small" buttonStyle="secondary" onClick={onDismiss}>
+          <Button
+            key="cancel"
+            buttonSize="small"
+            buttonStyle="secondary"
+            onClick={onDismiss}
+          >
             {t('Keep editing')}
           </Button>
-          <Button key="submit" buttonSize="small" buttonStyle="primary" onClick={onConfirm}>
+          <Button
+            key="submit"
+            buttonSize="small"
+            buttonStyle="primary"
+            onClick={onConfirm}
+          >
             {t('Yes, cancel')}
           </Button>
         </div>

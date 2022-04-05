@@ -156,7 +156,9 @@ test('should render empty results', () => {
   );
   expect(wrapper.find(FilterableTable)).not.toExist();
   expect(wrapper.find(Alert)).toExist();
-  expect(wrapper.find(Alert).render().text()).toBe('The query returned no data');
+  expect(wrapper.find(Alert).render().text()).toBe(
+    'The query returned no data',
+  );
 });
 
 test('should render cached query', () => {

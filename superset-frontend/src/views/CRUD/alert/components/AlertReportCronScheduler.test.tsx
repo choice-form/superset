@@ -30,7 +30,9 @@ describe('AlertReportCronScheduler', () => {
 
   it('calls onChnage when value chnages', () => {
     const onChangeMock = jest.fn();
-    wrapper = mount(<AlertReportCronScheduler value="* * * * *" onChange={onChangeMock} />);
+    wrapper = mount(
+      <AlertReportCronScheduler value="* * * * *" onChange={onChangeMock} />,
+    );
 
     const changeValue = '1,7 * * * *';
 
@@ -40,7 +42,9 @@ describe('AlertReportCronScheduler', () => {
 
   it.skip('sets input value when cron picker changes', () => {
     const onChangeMock = jest.fn();
-    wrapper = mount(<AlertReportCronScheduler value="* * * * *" onChange={onChangeMock} />);
+    wrapper = mount(
+      <AlertReportCronScheduler value="* * * * *" onChange={onChangeMock} />,
+    );
 
     const changeValue = '1,7 * * * *';
 
@@ -52,7 +56,9 @@ describe('AlertReportCronScheduler', () => {
 
   it('calls onChange when input value changes', () => {
     const onChangeMock = jest.fn();
-    wrapper = mount(<AlertReportCronScheduler value="* * * * *" onChange={onChangeMock} />);
+    wrapper = mount(
+      <AlertReportCronScheduler value="* * * * *" onChange={onChangeMock} />,
+    );
 
     const changeValue = '1,7 * * * *';
     const event = {

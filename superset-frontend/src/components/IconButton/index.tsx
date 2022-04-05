@@ -86,7 +86,8 @@ const StyledInner = styled.div`
 
 const StyledBottom = styled.div`
   padding: ${({ theme }) => theme.gridUnit * 4}px 0;
-  border-radius: 0 0 ${({ theme }) => theme.borderRadius}px ${({ theme }) => theme.borderRadius}px;
+  border-radius: 0 0 ${({ theme }) => theme.borderRadius}px
+    ${({ theme }) => theme.borderRadius}px;
   background-color: ${({ theme }) => theme.colors.grayscale.light4};
   width: 100%;
   line-height: 1.5em;
@@ -99,20 +100,32 @@ const StyledBottom = styled.div`
   }
 `;
 
-const IconButton = styled(({ icon, altText, buttonText, ...props }: IconButtonProps) => (
-  <StyledButton {...props}>
-    <StyledImage>
-      {icon && <img src={icon} alt={altText} />}
-      {!icon && <Icons.DatabaseOutlined className="default-db-icon" aria-label="default-icon" />}
-    </StyledImage>
+const IconButton = styled(
+  ({ icon, altText, buttonText, ...props }: IconButtonProps) => (
+    <StyledButton {...props}>
+      <StyledImage>
+        {icon && <img src={icon} alt={altText} />}
+        {!icon && (
+          <Icons.DatabaseOutlined
+            className="default-db-icon"
+            aria-label="default-icon"
+          />
+        )}
+      </StyledImage>
 
-    <StyledBottom>
-      <StyledInner>
-        <LinesEllipsis text={buttonText} maxLine="2" basedOn="words" trimRight />
-      </StyledInner>
-    </StyledBottom>
-  </StyledButton>
-))`
+      <StyledBottom>
+        <StyledInner>
+          <LinesEllipsis
+            text={buttonText}
+            maxLine="2"
+            basedOn="words"
+            trimRight
+          />
+        </StyledInner>
+      </StyledBottom>
+    </StyledButton>
+  ),
+)`
   text-transform: none;
   background-color: ${({ theme }) => theme.colors.grayscale.light5};
   font-weight: ${({ theme }) => theme.typography.weights.normal};

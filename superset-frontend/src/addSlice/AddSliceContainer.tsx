@@ -147,8 +147,14 @@ const StyledContainer = styled.div`
 const TooltipContent = styled.div<{ hasDescription: boolean }>`
   ${({ theme, hasDescription }) => `
     .tooltip-header {
-      font-size: ${hasDescription ? theme.typography.sizes.l : theme.typography.sizes.s}px;
-      font-weight: ${hasDescription ? theme.typography.weights.bold : theme.typography.weights.normal};
+      font-size: ${
+        hasDescription ? theme.typography.sizes.l : theme.typography.sizes.s
+      }px;
+      font-weight: ${
+        hasDescription
+          ? theme.typography.weights.bold
+          : theme.typography.weights.normal
+      };
     }
 
     .tooltip-description {
@@ -172,7 +178,10 @@ const StyledLabel = styled.span`
   `}
 `;
 
-export default class AddSliceContainer extends React.PureComponent<AddSliceContainerProps, AddSliceContainerState> {
+export default class AddSliceContainer extends React.PureComponent<
+  AddSliceContainerProps,
+  AddSliceContainerState
+> {
   constructor(props: AddSliceContainerProps) {
     super(props);
     this.state = {
@@ -220,7 +229,9 @@ export default class AddSliceContainer extends React.PureComponent<AddSliceConta
         title={
           <TooltipContent hasDescription={!!item.description}>
             <div className="tooltip-header">{item.table_name}</div>
-            {item.description && <div className="tooltip-description">{item.description}</div>}
+            {item.description && (
+              <div className="tooltip-description">{item.description}</div>
+            )}
           </TooltipContent>
         }
       >
@@ -251,7 +262,9 @@ export default class AddSliceContainer extends React.PureComponent<AddSliceConta
           customLabel: this.newLabel(item),
           label: item.table_name,
         }))
-        .sort((a: { label: string }, b: { label: string }) => a.label.localeCompare(b.label));
+        .sort((a: { label: string }, b: { label: string }) =>
+          a.label.localeCompare(b.label),
+        );
       return {
         data: list,
         totalCount: response.json.count,
@@ -281,7 +294,9 @@ export default class AddSliceContainer extends React.PureComponent<AddSliceConta
                   value={this.state.datasource}
                 />
                 <span>
-                  {t('Instructions to add a dataset are available in the Superset tutorial.')}{' '}
+                  {t(
+                    'Instructions to add a dataset are available in the Superset tutorial.',
+                  )}{' '}
                   <a
                     href="https://superset.apache.org/docs/creating-charts-dashboards/first-dashboard#adding-a-new-table"
                     rel="noopener noreferrer"
@@ -297,13 +312,25 @@ export default class AddSliceContainer extends React.PureComponent<AddSliceConta
             title={<FormLabel>{t('Choose chart type')}</FormLabel>}
             status={this.state.visType ? 'finish' : 'process'}
             description={
-              <VizTypeGallery className="viz-gallery" onChange={this.changeVisType} selectedViz={this.state.visType} />
+              <VizTypeGallery
+                className="viz-gallery"
+                onChange={this.changeVisType}
+                selectedViz={this.state.visType}
+              />
             }
           />
         </Steps>
         <div className="footer">
-          {isButtonDisabled && <span>{t('Please select both a Dataset and a Chart type to proceed')}</span>}
-          <Button buttonStyle="primary" disabled={isButtonDisabled} onClick={this.gotoSlice}>
+          {isButtonDisabled && (
+            <span>
+              {t('Please select both a Dataset and a Chart type to proceed')}
+            </span>
+          )}
+          <Button
+            buttonStyle="primary"
+            disabled={isButtonDisabled}
+            onClick={this.gotoSlice}
+          >
             {t('Create new chart')}
           </Button>
         </div>

@@ -27,7 +27,11 @@ export interface CertifiedIconProps {
   size?: IconType['iconSize'];
 }
 
-function CertifiedIcon({ certifiedBy, details, size = 'l' }: CertifiedIconProps) {
+function CertifiedIcon({
+  certifiedBy,
+  details,
+  size = 'l',
+}: CertifiedIconProps) {
   return (
     <Tooltip
       id="certified-details-tooltip"
@@ -42,7 +46,10 @@ function CertifiedIcon({ certifiedBy, details, size = 'l' }: CertifiedIconProps)
         </>
       }
     >
-      <Icons.Certified iconColor={supersetTheme.colors.primary.base} iconSize={size} />
+      <Icons.Certified
+        iconColor={supersetTheme.colors.primary.base}
+        iconSize={size}
+      />
     </Tooltip>
   );
 }

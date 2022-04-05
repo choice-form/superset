@@ -21,7 +21,6 @@ import { styled } from 'src/core';
 import Select, { SelectProps } from 'antd/lib/select';
 
 export {
-  // @ts-ignore
   OptionType as NativeSelectOptionType,
   SelectProps as NativeSelectProps,
 } from 'antd/lib/select';

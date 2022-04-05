@@ -36,7 +36,8 @@ interface AnnotationLayerModalProps {
 }
 
 const StyledAnnotationLayerTitle = styled.div`
-  margin: ${({ theme }) => theme.gridUnit * 2}px auto ${({ theme }) => theme.gridUnit * 4}px auto;
+  margin: ${({ theme }) => theme.gridUnit * 2}px auto
+    ${({ theme }) => theme.gridUnit * 4}px auto;
 `;
 
 const LayerContainer = styled.div`
@@ -53,7 +54,8 @@ const LayerContainer = styled.div`
 
   textarea,
   input[type='text'] {
-    padding: ${({ theme }) => theme.gridUnit * 1.5}px ${({ theme }) => theme.gridUnit * 2}px;
+    padding: ${({ theme }) => theme.gridUnit * 1.5}px
+      ${({ theme }) => theme.gridUnit * 2}px;
     border: 1px solid ${({ theme }) => theme.colors.grayscale.light2};
     border-radius: ${({ theme }) => theme.gridUnit}px;
     width: 50%;
@@ -84,7 +86,10 @@ const AnnotationLayerModal: FunctionComponent<AnnotationLayerModalProps> = ({
   layer = null,
 }) => {
   const [disableSave, setDisableSave] = useState<boolean>(true);
-  const [currentLayer, setCurrentLayer] = useState<AnnotationLayerObject | null>();
+  const [
+    currentLayer,
+    setCurrentLayer,
+  ] = useState<AnnotationLayerObject | null>();
   const [isHidden, setIsHidden] = useState<boolean>(true);
   const isEditMode = layer !== null;
 
@@ -94,7 +99,11 @@ const AnnotationLayerModal: FunctionComponent<AnnotationLayerModalProps> = ({
     fetchResource,
     createResource,
     updateResource,
-  } = useSingleViewResource<AnnotationLayerObject>('annotation_layer', t('annotation_layer'), addDangerToast);
+  } = useSingleViewResource<AnnotationLayerObject>(
+    'annotation_layer',
+    t('annotation_layer'),
+    addDangerToast,
+  );
 
   const resetLayer = () => {
     // Reset layer
@@ -145,7 +154,11 @@ const AnnotationLayerModal: FunctionComponent<AnnotationLayerModalProps> = ({
     }
   };
 
-  const onTextChange = (event: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>) => {
+  const onTextChange = (
+    event:
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const { target } = event;
     const data = {
       ...currentLayer,
@@ -169,14 +182,20 @@ const AnnotationLayerModal: FunctionComponent<AnnotationLayerModalProps> = ({
   useEffect(() => {
     if (
       isEditMode &&
-      (!currentLayer || !currentLayer.id || (layer && layer.id !== currentLayer.id) || (isHidden && show))
+      (!currentLayer ||
+        !currentLayer.id ||
+        (layer && layer.id !== currentLayer.id) ||
+        (isHidden && show))
     ) {
       if (show && layer && layer.id !== null && !loading) {
         const id = layer.id || 0;
 
         fetchResource(id);
       }
-    } else if (!isEditMode && (!currentLayer || currentLayer.id || (isHidden && show))) {
+    } else if (
+      !isEditMode &&
+      (!currentLayer || currentLayer.id || (isHidden && show))
+    ) {
       // Reset layer
       resetLayer();
     }
@@ -191,7 +210,10 @@ const AnnotationLayerModal: FunctionComponent<AnnotationLayerModalProps> = ({
   // Validation
   useEffect(() => {
     validate();
-  }, [currentLayer ? currentLayer.name : '', currentLayer ? currentLayer.descr : '']);
+  }, [
+    currentLayer ? currentLayer.name : '',
+    currentLayer ? currentLayer.descr : '',
+  ]);
 
   // Show/hide
   if (isHidden && show) {
@@ -208,8 +230,14 @@ const AnnotationLayerModal: FunctionComponent<AnnotationLayerModalProps> = ({
       width="55%"
       title={
         <h4 data-test="annotation-layer-modal-title">
-          {isEditMode ? <Icons.EditAlt css={StyledIcon} /> : <Icons.PlusLarge css={StyledIcon} />}
-          {isEditMode ? t('Edit annotation layer properties') : t('Add annotation layer')}
+          {isEditMode ? (
+            <Icons.EditAlt css={StyledIcon} />
+          ) : (
+            <Icons.PlusLarge css={StyledIcon} />
+          )}
+          {isEditMode
+            ? t('Edit annotation layer properties')
+            : t('Add annotation layer')}
         </h4>
       }
     >
@@ -221,7 +249,12 @@ const AnnotationLayerModal: FunctionComponent<AnnotationLayerModalProps> = ({
           {t('Annotation layer name')}
           <span className="required">*</span>
         </div>
-        <input name="name" onChange={onTextChange} type="text" value={currentLayer?.name} />
+        <input
+          name="name"
+          onChange={onTextChange}
+          type="text"
+          value={currentLayer?.name}
+        />
       </LayerContainer>
       <LayerContainer>
         <div className="control-label">{t('description')}</div>

@@ -25,8 +25,17 @@ import Loading from 'src/components/Loading';
 import getChartIdsFromLayout from '../util/getChartIdsFromLayout';
 import getLayoutComponentFromChartId from '../util/getLayoutComponentFromChartId';
 import DashboardBuilder from './DashboardBuilder/DashboardBuilder';
-import { chartPropShape, slicePropShape, dashboardInfoPropShape, dashboardStatePropShape } from '../util/propShapes';
-import { LOG_ACTIONS_HIDE_BROWSER_TAB, LOG_ACTIONS_MOUNT_DASHBOARD, Logger } from '../../logger/LogUtils';
+import {
+  chartPropShape,
+  slicePropShape,
+  dashboardInfoPropShape,
+  dashboardStatePropShape,
+} from '../util/propShapes';
+import {
+  LOG_ACTIONS_HIDE_BROWSER_TAB,
+  LOG_ACTIONS_MOUNT_DASHBOARD,
+  Logger,
+} from '../../logger/LogUtils';
 import OmniContainer from '../../components/OmniContainer';
 import { areObjectsEqual } from '../../reduxUtils';
 
@@ -131,14 +140,23 @@ class Dashboard extends React.PureComponent {
     }
 
     if (currentChartIds.length < nextChartIds.length) {
-      const newChartIds = nextChartIds.filter(key => currentChartIds.indexOf(key) === -1);
+      const newChartIds = nextChartIds.filter(
+        key => currentChartIds.indexOf(key) === -1,
+      );
       newChartIds.forEach(newChartId =>
-        this.props.actions.addSliceToDashboard(newChartId, getLayoutComponentFromChartId(nextProps.layout, newChartId)),
+        this.props.actions.addSliceToDashboard(
+          newChartId,
+          getLayoutComponentFromChartId(nextProps.layout, newChartId),
+        ),
       );
     } else if (currentChartIds.length > nextChartIds.length) {
       // remove chart
-      const removedChartIds = currentChartIds.filter(key => nextChartIds.indexOf(key) === -1);
-      removedChartIds.forEach(removedChartId => this.props.actions.removeSliceFromDashboard(removedChartId));
+      const removedChartIds = currentChartIds.filter(
+        key => nextChartIds.indexOf(key) === -1,
+      );
+      removedChartIds.forEach(removedChartId =>
+        this.props.actions.removeSliceFromDashboard(removedChartId),
+      );
     }
   }
 
@@ -147,7 +165,10 @@ class Dashboard extends React.PureComponent {
 
     const { appliedFilters, appliedOwnDataCharts } = this;
     const { activeFilters, ownDataCharts, chartConfiguration } = this.props;
-    if (isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS) && !chartConfiguration) {
+    if (
+      isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS) &&
+      !chartConfiguration
+    ) {
       // For a first loading we need to wait for cross filters charts data loaded to get all active filters
       // for correct comparing  of filters to avoid unnecessary requests
       return;
@@ -208,9 +229,15 @@ class Dashboard extends React.PureComponent {
     const appliedFilterKeys = Object.keys(appliedFilters);
 
     const allKeys = new Set(currFilterKeys.concat(appliedFilterKeys));
-    const affectedChartIds = getAffectedOwnDataCharts(ownDataCharts, this.appliedOwnDataCharts);
+    const affectedChartIds = getAffectedOwnDataCharts(
+      ownDataCharts,
+      this.appliedOwnDataCharts,
+    );
     [...allKeys].forEach(filterKey => {
-      if (!currFilterKeys.includes(filterKey) && appliedFilterKeys.includes(filterKey)) {
+      if (
+        !currFilterKeys.includes(filterKey) &&
+        appliedFilterKeys.includes(filterKey)
+      ) {
         // filterKey is removed?
         affectedChartIds.push(...appliedFilters[filterKey].scope);
       } else if (!appliedFilterKeys.includes(filterKey)) {
@@ -220,17 +247,28 @@ class Dashboard extends React.PureComponent {
         // if filterKey changes value,
         // update charts in its scope
         if (
-          !areObjectsEqual(appliedFilters[filterKey].values, activeFilters[filterKey].values, {
-            ignoreUndefined: true,
-          })
+          !areObjectsEqual(
+            appliedFilters[filterKey].values,
+            activeFilters[filterKey].values,
+            {
+              ignoreUndefined: true,
+            },
+          )
         ) {
           affectedChartIds.push(...activeFilters[filterKey].scope);
         }
 
         // if filterKey changes scope,
         // update all charts in its scope
-        if (!areObjectsEqual(appliedFilters[filterKey].scope, activeFilters[filterKey].scope)) {
-          const chartsInScope = (activeFilters[filterKey].scope || []).concat(appliedFilters[filterKey].scope || []);
+        if (
+          !areObjectsEqual(
+            appliedFilters[filterKey].scope,
+            activeFilters[filterKey].scope,
+          )
+        ) {
+          const chartsInScope = (activeFilters[filterKey].scope || []).concat(
+            appliedFilters[filterKey].scope || [],
+          );
           affectedChartIds.push(...chartsInScope);
         }
       }

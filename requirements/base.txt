@@ -169,7 +169,7 @@ multidict==5.1.0
     # via
     #   aiohttp
     #   yarl
-numpy==1.22.2
+numpy==1.21.1
     # via
     #   pandas
     #   pyarrow
@@ -188,7 +188,7 @@ polyline==1.4.0
     # via apache-superset
 prison==0.2.1
     # via flask-appbuilder
-pyarrow==7.0.0
+pyarrow==4.0.1
     # via apache-superset
 pycparser==2.20
     # via cffi

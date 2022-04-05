@@ -34,7 +34,9 @@ test('render right content', () => {
 
   const { rerender } = render(<FaveStar {...props} isStarred />);
   expect(screen.getByRole('button')).toBeInTheDocument();
-  expect(screen.getByRole('img', { name: 'favorite-selected' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('img', { name: 'favorite-selected' }),
+  ).toBeInTheDocument();
 
   expect(props.saveFaveStar).toBeCalledTimes(0);
   userEvent.click(screen.getByRole('button'));
@@ -42,7 +44,9 @@ test('render right content', () => {
   expect(props.saveFaveStar).toBeCalledWith(props.itemId, true);
 
   rerender(<FaveStar {...props} />);
-  expect(screen.getByRole('img', { name: 'favorite-unselected' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('img', { name: 'favorite-unselected' }),
+  ).toBeInTheDocument();
 
   expect(props.saveFaveStar).toBeCalledTimes(1);
   userEvent.click(screen.getByRole('button'));
@@ -60,8 +64,14 @@ test('render content on tooltip', () => {
   render(<FaveStar {...props} />);
 
   expect(screen.getByTestId('tooltip')).toBeInTheDocument();
-  expect(screen.getByTestId('tooltip')).toHaveAttribute('id', 'fave-unfave-tooltip');
-  expect(screen.getByTestId('tooltip')).toHaveAttribute('title', 'Click to favorite/unfavorite');
+  expect(screen.getByTestId('tooltip')).toHaveAttribute(
+    'id',
+    'fave-unfave-tooltip',
+  );
+  expect(screen.getByTestId('tooltip')).toHaveAttribute(
+    'title',
+    'Click to favorite/unfavorite',
+  );
   expect(screen.getByRole('button')).toBeInTheDocument();
 });
 

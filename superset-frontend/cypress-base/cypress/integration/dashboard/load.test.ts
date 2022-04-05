@@ -16,7 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { waitForChartLoad, WORLD_HEALTH_CHARTS, WORLD_HEALTH_DASHBOARD } from './dashboard.helper';
+import {
+  waitForChartLoad,
+  WORLD_HEALTH_CHARTS,
+  WORLD_HEALTH_DASHBOARD,
+} from './dashboard.helper';
 
 describe('Dashboard load', () => {
   beforeEach(() => {

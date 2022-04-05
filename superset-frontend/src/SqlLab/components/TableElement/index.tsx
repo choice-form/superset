@@ -173,14 +173,24 @@ const TableElement = ({ table, actions, ...props }: TableElementProps) => {
       <ButtonGroup className="ws-el-controls">
         {keyLink}
         <IconTooltip
-          className={`fa fa-sort-${sortColumns ? 'numeric' : 'alpha'}-asc ` + 'pull-left sort-cols m-l-2 pointer'}
+          className={
+            `fa fa-sort-${sortColumns ? 'numeric' : 'alpha'}-asc ` +
+            'pull-left sort-cols m-l-2 pointer'
+          }
           onClick={toggleSortColumns}
-          tooltip={sortColumns ? t('Original table column order') : t('Sort columns alphabetically')}
+          tooltip={
+            sortColumns
+              ? t('Original table column order')
+              : t('Sort columns alphabetically')
+          }
         />
         {table.selectStar && (
           <CopyToClipboard
             copyNode={
-              <IconTooltip aria-label="Copy" tooltip={t('Copy SELECT statement to the clipboard')}>
+              <IconTooltip
+                aria-label="Copy"
+                tooltip={t('Copy SELECT statement to the clipboard')}
+              >
                 <i aria-hidden className="fa fa-clipboard pull-left m-l-2" />
               </IconTooltip>
             }
@@ -189,7 +199,11 @@ const TableElement = ({ table, actions, ...props }: TableElementProps) => {
           />
         )}
         {table.view && (
-          <ShowSQL sql={table.view} tooltipText={t('Show CREATE VIEW statement')} title={t('CREATE VIEW statement')} />
+          <ShowSQL
+            sql={table.view}
+            tooltipText={t('Show CREATE VIEW statement')}
+            title={t('CREATE VIEW statement')}
+          />
         )}
         <IconTooltip
           className="fa fa-times table-remove pull-left m-l-2 pointer"
@@ -213,8 +227,17 @@ const TableElement = ({ table, actions, ...props }: TableElementProps) => {
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <Tooltip id="copy-to-clipboard-tooltip" style={{ cursor: 'pointer' }} title={table.name} trigger={trigger}>
-          <StyledSpan data-test="collapse" ref={tableNameRef} className="table-name">
+        <Tooltip
+          id="copy-to-clipboard-tooltip"
+          style={{ cursor: 'pointer' }}
+          title={table.name}
+          trigger={trigger}
+        >
+          <StyledSpan
+            data-test="collapse"
+            ref={tableNameRef}
+            className="table-name"
+          >
             <strong>{table.name}</strong>
           </StyledSpan>
         </Tooltip>
@@ -223,7 +246,11 @@ const TableElement = ({ table, actions, ...props }: TableElementProps) => {
           {table.isMetadataLoading || table.isExtraMetadataLoading ? (
             <Loading position="inline" />
           ) : (
-            <Fade data-test="fade" hovered={hovered} onClick={e => e.stopPropagation()}>
+            <Fade
+              data-test="fade"
+              hovered={hovered}
+              onClick={e => e.stopPropagation()}
+            >
               {renderControls()}
             </Fade>
           )}
@@ -246,7 +273,11 @@ const TableElement = ({ table, actions, ...props }: TableElementProps) => {
     }
 
     const metadata = (
-      <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} css={{ paddingTop: 6 }}>
+      <div
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        css={{ paddingTop: 6 }}
+      >
         {renderWell()}
         <div>
           {cols?.map(col => (
@@ -259,7 +290,13 @@ const TableElement = ({ table, actions, ...props }: TableElementProps) => {
   };
 
   return (
-    <Collapse.Panel {...props} key={table.id} header={renderHeader()} className="TableElement" forceRender>
+    <Collapse.Panel
+      {...props}
+      key={table.id}
+      header={renderHeader()}
+      className="TableElement"
+      forceRender
+    >
       {renderBody()}
     </Collapse.Panel>
   );

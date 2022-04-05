@@ -23,7 +23,10 @@ import { styled, SupersetClient, useTheme } from 'src/core';
 import { useResizeDetector } from 'react-resize-detector';
 import { chartPropShape } from 'src/dashboard/util/propShapes';
 import ChartContainer from 'src/chart/ChartContainer';
-import { getFromLocalStorage, setInLocalStorage } from 'src/utils/localStorageHelpers';
+import {
+  getFromLocalStorage,
+  setInLocalStorage,
+} from 'src/utils/localStorageHelpers';
 import ConnectedExploreChartHeader from './ExploreChartHeader';
 import { DataTablesPane } from './DataTablesPane';
 import { buildV1ChartDataPayload } from '../exploreUtils';
@@ -122,7 +125,9 @@ const ExploreChartPanel = props => {
     refreshMode: 'debounce',
     refreshRate: 300,
   });
-  const [splitSizes, setSplitSizes] = useState(getFromLocalStorage(STORAGE_KEYS.sizes, INITIAL_SIZES));
+  const [splitSizes, setSplitSizes] = useState(
+    getFromLocalStorage(STORAGE_KEYS.sizes, INITIAL_SIZES),
+  );
   const { slice } = props;
   const updateQueryContext = useCallback(
     async function fetchChartData() {
@@ -164,12 +169,16 @@ const ExploreChartPanel = props => {
         headerHeight = 50;
       }
       const containerHeight = parseInt(props.height, 10) - headerHeight;
-      return (containerHeight * percent) / 100 - (gutterHeight / 2 + gutterMargin);
+      return (
+        (containerHeight * percent) / 100 - (gutterHeight / 2 + gutterMargin)
+      );
     },
     [gutterHeight, gutterMargin, props.height, props.standalone, hHeight],
   );
 
-  const [tableSectionHeight, setTableSectionHeight] = useState(calcSectionHeight(INITIAL_SIZES[1]));
+  const [tableSectionHeight, setTableSectionHeight] = useState(
+    calcSectionHeight(INITIAL_SIZES[1]),
+  );
 
   const recalcPanelSizes = useCallback(
     ([, southPercent]) => {
@@ -195,7 +204,10 @@ const ExploreChartPanel = props => {
     if (!openPanelName) {
       splitSizes = INITIAL_SIZES;
     } else {
-      splitSizes = [100 - DEFAULT_SOUTH_PANE_HEIGHT_PERCENT, DEFAULT_SOUTH_PANE_HEIGHT_PERCENT];
+      splitSizes = [
+        100 - DEFAULT_SOUTH_PANE_HEIGHT_PERCENT,
+        DEFAULT_SOUTH_PANE_HEIGHT_PERCENT,
+      ];
     }
     setSplitSizes(splitSizes);
   };
@@ -242,12 +254,14 @@ const ExploreChartPanel = props => {
     [chartPanelRef, renderChart],
   );
 
-  const standaloneChartBody = useMemo(() => <div ref={chartPanelRef}>{renderChart()}</div>, [
-    chartPanelRef,
-    renderChart,
-  ]);
+  const standaloneChartBody = useMemo(
+    () => <div ref={chartPanelRef}>{renderChart()}</div>,
+    [chartPanelRef, renderChart],
+  );
 
-  const [queryFormData, setQueryFormData] = useState(props.chart.latestQueryFormData);
+  const [queryFormData, setQueryFormData] = useState(
+    props.chart.latestQueryFormData,
+  );
 
   useEffect(() => {
     // only update when `latestQueryFormData` changes AND `triggerRender`

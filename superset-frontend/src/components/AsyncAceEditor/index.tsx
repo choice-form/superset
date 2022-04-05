@@ -17,9 +17,16 @@
  * under the License.
  */
 import React from 'react';
-import { Editor as OrigEditor, IEditSession, Position, TextMode as OrigTextMode } from 'brace';
+import {
+  Editor as OrigEditor,
+  IEditSession,
+  Position,
+  TextMode as OrigTextMode,
+} from 'brace';
 import AceEditor, { IAceEditorProps } from 'react-ace';
-import AsyncEsmComponent, { PlaceholderProps } from 'src/components/AsyncEsmComponent';
+import AsyncEsmComponent, {
+  PlaceholderProps,
+} from 'src/components/AsyncEsmComponent';
 
 export interface AceCompleterKeywordData {
   name: string;
@@ -31,7 +38,10 @@ export interface AceCompleterKeywordData {
 export type TextMode = OrigTextMode & { $id: string };
 
 export interface AceCompleter {
-  insertMatch: (data?: Editor | { value: string } | string, options?: AceCompleterKeywordData) => void;
+  insertMatch: (
+    data?: Editor | { value: string } | string,
+    options?: AceCompleterKeywordData,
+  ) => void;
 }
 
 export type Editor = OrigEditor & {
@@ -72,7 +82,9 @@ export type AsyncAceEditorOptions = {
   defaultMode?: AceEditorMode;
   defaultTheme?: AceEditorTheme;
   defaultTabSize?: number;
-  placeholder?: React.ComponentType<PlaceholderProps & Partial<IAceEditorProps>> | null;
+  placeholder?: React.ComponentType<
+    PlaceholderProps & Partial<IAceEditorProps>
+  > | null;
 };
 
 /**
@@ -80,7 +92,12 @@ export type AsyncAceEditorOptions = {
  */
 export default function AsyncAceEditor(
   aceModules: AceModule[],
-  { defaultMode, defaultTheme, defaultTabSize = 2, placeholder }: AsyncAceEditorOptions = {},
+  {
+    defaultMode,
+    defaultTheme,
+    defaultTabSize = 2,
+    placeholder,
+  }: AsyncAceEditorOptions = {},
 ) {
   return AsyncEsmComponent(async () => {
     const { default: ace } = await import('brace');
@@ -88,62 +105,94 @@ export default function AsyncAceEditor(
 
     await Promise.all(aceModules.map(x => aceModuleLoaders[x]()));
 
-    const inferredMode = defaultMode || aceModules.find(x => x.startsWith('mode/'))?.replace('mode/', '');
-    const inferredTheme = defaultTheme || aceModules.find(x => x.startsWith('theme/'))?.replace('theme/', '');
+    const inferredMode =
+      defaultMode ||
+      aceModules.find(x => x.startsWith('mode/'))?.replace('mode/', '');
+    const inferredTheme =
+      defaultTheme ||
+      aceModules.find(x => x.startsWith('theme/'))?.replace('theme/', '');
 
-    return React.forwardRef<AceEditor, AsyncAceEditorProps>(function ExtendedAceEditor(
-      { keywords, mode = inferredMode, theme = inferredTheme, tabSize = defaultTabSize, defaultValue = '', ...props },
-      ref,
-    ) {
-      if (keywords) {
-        const langTools = ace.acequire('ace/ext/language_tools');
-        const completer = {
-          getCompletions: (
-            editor: AceEditor,
-            session: IEditSession,
-            pos: Position,
-            prefix: string,
-            callback: (error: null, wordList: object[]) => void,
-          ) => {
-            // If the prefix starts with a number, don't try to autocomplete
-            if (!Number.isNaN(parseInt(prefix, 10))) {
-              return;
-            }
-            if ((session.getMode() as TextMode).$id === `ace/mode/${mode}`) {
-              callback(null, keywords);
-            }
-          },
-        };
-        langTools.setCompleters([completer]);
-      }
-      return (
-        <ReactAceEditor ref={ref} mode={mode} theme={theme} tabSize={tabSize} defaultValue={defaultValue} {...props} />
-      );
-    });
+    return React.forwardRef<AceEditor, AsyncAceEditorProps>(
+      function ExtendedAceEditor(
+        {
+          keywords,
+          mode = inferredMode,
+          theme = inferredTheme,
+          tabSize = defaultTabSize,
+          defaultValue = '',
+          ...props
+        },
+        ref,
+      ) {
+        if (keywords) {
+          const langTools = ace.acequire('ace/ext/language_tools');
+          const completer = {
+            getCompletions: (
+              editor: AceEditor,
+              session: IEditSession,
+              pos: Position,
+              prefix: string,
+              callback: (error: null, wordList: object[]) => void,
+            ) => {
+              // If the prefix starts with a number, don't try to autocomplete
+              if (!Number.isNaN(parseInt(prefix, 10))) {
+                return;
+              }
+              if ((session.getMode() as TextMode).$id === `ace/mode/${mode}`) {
+                callback(null, keywords);
+              }
+            },
+          };
+          langTools.setCompleters([completer]);
+        }
+        return (
+          <ReactAceEditor
+            ref={ref}
+            mode={mode}
+            theme={theme}
+            tabSize={tabSize}
+            defaultValue={defaultValue}
+            {...props}
+          />
+        );
+      },
+    );
   }, placeholder);
 }
 
-export const SQLEditor = AsyncAceEditor(['mode/sql', 'theme/github', 'ext/language_tools']);
+export const SQLEditor = AsyncAceEditor([
+  'mode/sql',
+  'theme/github',
+  'ext/language_tools',
+]);
 
-export const FullSQLEditor = AsyncAceEditor(['mode/sql', 'theme/github', 'ext/language_tools'], {
-  // a custom placeholder in SQL lab for less jumpy re-renders
-  placeholder: () => {
-    const gutterBackground = '#e8e8e8'; // from ace-github theme
-    return (
-      <div
-        style={{
-          height: '100%',
-        }}
-      >
-        <div style={{ width: 41, height: '100%', background: gutterBackground }} />
-        {/* make it possible to resize the placeholder */}
-        <div className="ace_content" />
-      </div>
-    );
+export const FullSQLEditor = AsyncAceEditor(
+  ['mode/sql', 'theme/github', 'ext/language_tools'],
+  {
+    // a custom placeholder in SQL lab for less jumpy re-renders
+    placeholder: () => {
+      const gutterBackground = '#e8e8e8'; // from ace-github theme
+      return (
+        <div
+          style={{
+            height: '100%',
+          }}
+        >
+          <div
+            style={{ width: 41, height: '100%', background: gutterBackground }}
+          />
+          {/* make it possible to resize the placeholder */}
+          <div className="ace_content" />
+        </div>
+      );
+    },
   },
-});
+);
 
-export const MarkdownEditor = AsyncAceEditor(['mode/markdown', 'theme/textmate']);
+export const MarkdownEditor = AsyncAceEditor([
+  'mode/markdown',
+  'theme/textmate',
+]);
 
 export const TextAreaEditor = AsyncAceEditor([
   'mode/markdown',
@@ -161,4 +210,8 @@ export const JsonEditor = AsyncAceEditor(['mode/json', 'theme/github']);
 /**
  * JSON or Yaml config editor.
  */
-export const ConfigEditor = AsyncAceEditor(['mode/json', 'mode/yaml', 'theme/github']);
+export const ConfigEditor = AsyncAceEditor([
+  'mode/json',
+  'mode/yaml',
+  'theme/github',
+]);

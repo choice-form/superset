@@ -48,11 +48,15 @@ interface ResizableContainerProps {
 describe('ResizableContainer', () => {
   const props = { editMode: false, id: 'id' };
 
-  const setup = (overrides?: ResizableContainerProps) => <ResizableContainer {...props} {...overrides} />;
+  const setup = (overrides?: ResizableContainerProps) => (
+    <ResizableContainer {...props} {...overrides} />
+  );
 
   it('should render a Resizable container', () => {
     const rendered = render(setup());
-    const resizableContainer = rendered.container.querySelector('.resizable-container');
+    const resizableContainer = rendered.container.querySelector(
+      '.resizable-container',
+    );
     expect(resizableContainer).toBeVisible();
   });
 });

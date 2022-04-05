@@ -49,7 +49,15 @@ const StyledContainer = styled.div<{ checked: boolean }>`
 `;
 
 const CollapsibleControl = (props: CollapsibleControlProps) => {
-  const { checked, disabled, title, tooltip, children, onChange = () => {}, initialValue = false } = props;
+  const {
+    checked,
+    disabled,
+    title,
+    tooltip,
+    children,
+    onChange = () => {},
+    initialValue = false,
+  } = props;
   const [isChecked, setIsChecked] = useState(initialValue);
 
   useEffect(() => {
@@ -78,7 +86,9 @@ const CollapsibleControl = (props: CollapsibleControlProps) => {
       >
         <>
           {title}&nbsp;
-          {tooltip && <InfoTooltipWithTrigger placement="top" tooltip={tooltip} />}
+          {tooltip && (
+            <InfoTooltipWithTrigger placement="top" tooltip={tooltip} />
+          )}
         </>
       </Checkbox>
       {isChecked && children}

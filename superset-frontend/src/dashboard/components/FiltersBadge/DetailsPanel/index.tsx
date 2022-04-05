@@ -20,11 +20,20 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Global, css } from '@emotion/react';
 import { t, useTheme } from 'src/core';
-import { MinusCircleFilled, CheckCircleFilled, ExclamationCircleFilled } from '@ant-design/icons';
+import {
+  MinusCircleFilled,
+  CheckCircleFilled,
+  ExclamationCircleFilled,
+} from '@ant-design/icons';
 import Popover from 'src/components/Popover';
 import Collapse from 'src/components/Collapse';
 import Icons from 'src/components/Icons';
-import { Indent, Panel, Reset, Title } from 'src/dashboard/components/FiltersBadge/Styles';
+import {
+  Indent,
+  Panel,
+  Reset,
+  Title,
+} from 'src/dashboard/components/FiltersBadge/Styles';
 import { Indicator } from 'src/dashboard/components/FiltersBadge/selectors';
 import FilterIndicator from 'src/dashboard/components/FiltersBadge/FilterIndicator';
 import { RootState } from 'src/dashboard/types';
@@ -48,7 +57,9 @@ const DetailsPanelPopover = ({
 }: DetailsPanelProps) => {
   const [visible, setVisible] = useState(false);
   const theme = useTheme();
-  const activeTabs = useSelector<RootState>(state => state.dashboardState?.activeTabs);
+  const activeTabs = useSelector<RootState>(
+    state => state.dashboardState?.activeTabs,
+  );
 
   // we don't need to clean up useEffect, setting { once: true } removes the event listener after handle function is called
   useEffect(() => {
@@ -81,7 +92,9 @@ const DetailsPanelPopover = ({
     return ['unset'];
   };
 
-  const [activePanels, setActivePanels] = useState<string[]>(() => [...getDefaultActivePanel()]);
+  const [activePanels, setActivePanels] = useState<string[]>(() => [
+    ...getDefaultActivePanel(),
+  ]);
 
   function handlePopoverStatus(isOpen: boolean) {
     setVisible(isOpen);
@@ -100,7 +113,8 @@ const DetailsPanelPopover = ({
     }
   }
 
-  const indicatorKey = (indicator: Indicator): string => `${indicator.column} - ${indicator.name}`;
+  const indicatorKey = (indicator: Indicator): string =>
+    `${indicator.column} - ${indicator.name}`;
 
   const content = (
     <Panel>
@@ -154,14 +168,25 @@ const DetailsPanelPopover = ({
         `}
       />
       <Reset>
-        <Collapse ghost light activeKey={activePanels} onChange={handleActivePanelChange}>
+        <Collapse
+          ghost
+          light
+          activeKey={activePanels}
+          onChange={handleActivePanelChange}
+        >
           {appliedCrossFilterIndicators.length ? (
             <Collapse.Panel
               key="appliedCrossFilters"
               header={
                 <Title bold color={theme.colors.primary.light1}>
-                  <Icons.CursorTarget css={{ fill: theme.colors.primary.light1 }} iconSize="xl" />
-                  {t('Applied Cross Filters (%d)', appliedCrossFilterIndicators.length)}
+                  <Icons.CursorTarget
+                    css={{ fill: theme.colors.primary.light1 }}
+                    iconSize="xl"
+                  />
+                  {t(
+                    'Applied Cross Filters (%d)',
+                    appliedCrossFilterIndicators.length,
+                  )}
                 </Title>
               }
             >
@@ -181,7 +206,8 @@ const DetailsPanelPopover = ({
               key="applied"
               header={
                 <Title bold color={theme.colors.success.base}>
-                  <CheckCircleFilled /> {t('Applied Filters (%d)', appliedIndicators.length)}
+                  <CheckCircleFilled />{' '}
+                  {t('Applied Filters (%d)', appliedIndicators.length)}
                 </Title>
               }
             >
@@ -201,7 +227,11 @@ const DetailsPanelPopover = ({
               key="incompatible"
               header={
                 <Title bold color={theme.colors.alert.base}>
-                  <ExclamationCircleFilled /> {t('Incompatible Filters (%d)', incompatibleIndicators.length)}
+                  <ExclamationCircleFilled />{' '}
+                  {t(
+                    'Incompatible Filters (%d)',
+                    incompatibleIndicators.length,
+                  )}
                 </Title>
               }
             >
@@ -221,7 +251,8 @@ const DetailsPanelPopover = ({
               key="unset"
               header={
                 <Title bold color={theme.colors.grayscale.light1}>
-                  <MinusCircleFilled /> {t('Unset Filters (%d)', unsetIndicators.length)}
+                  <MinusCircleFilled />{' '}
+                  {t('Unset Filters (%d)', unsetIndicators.length)}
                 </Title>
               }
               disabled={!unsetIndicators.length}

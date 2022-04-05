@@ -25,8 +25,14 @@ import { t, styled } from 'src/core';
 import { Input } from 'src/common/components';
 import { Select } from 'src/components';
 import Loading from 'src/components/Loading';
-import { CHART_TYPE, NEW_COMPONENT_SOURCE_TYPE } from 'src/dashboard/util/componentTypes';
-import { NEW_CHART_ID, NEW_COMPONENTS_SOURCE_ID } from 'src/dashboard/util/constants';
+import {
+  CHART_TYPE,
+  NEW_COMPONENT_SOURCE_TYPE,
+} from 'src/dashboard/util/componentTypes';
+import {
+  NEW_CHART_ID,
+  NEW_COMPONENTS_SOURCE_ID,
+} from 'src/dashboard/util/constants';
 import { slicePropShape } from 'src/dashboard/util/propShapes';
 import AddSliceCard from './AddSliceCard';
 import AddSliceDragPreview from './dnd/AddSliceDragPreview';
@@ -155,14 +161,20 @@ class SliceAdder extends React.Component {
   searchUpdated(searchTerm) {
     this.setState(prevState => ({
       searchTerm,
-      filteredSlices: this.getFilteredSortedSlices(searchTerm, prevState.sortBy),
+      filteredSlices: this.getFilteredSortedSlices(
+        searchTerm,
+        prevState.sortBy,
+      ),
     }));
   }
 
   handleSelect(sortBy) {
     this.setState(prevState => ({
       sortBy,
-      filteredSlices: this.getFilteredSortedSlices(prevState.searchTerm, sortBy),
+      filteredSlices: this.getFilteredSortedSlices(
+        prevState.searchTerm,
+        sortBy,
+      ),
     }));
   }
 
@@ -213,7 +225,11 @@ class SliceAdder extends React.Component {
   }
 
   render() {
-    const slicesListHeight = this.props.height - SIDEPANE_HEADER_HEIGHT - SLICE_ADDER_CONTROL_HEIGHT - MARGIN_BOTTOM;
+    const slicesListHeight =
+      this.props.height -
+      SIDEPANE_HEADER_HEIGHT -
+      SLICE_ADDER_CONTROL_HEIGHT -
+      MARGIN_BOTTOM;
     return (
       <div className="slice-adder-container">
         <Controls>
@@ -248,7 +264,9 @@ class SliceAdder extends React.Component {
             selectedSliceIds={this.props.selectedSliceIds}
           />
         )}
-        {this.props.errorMessage && <div className="error-message">{this.props.errorMessage}</div>}
+        {this.props.errorMessage && (
+          <div className="error-message">{this.props.errorMessage}</div>
+        )}
         {/* Drag preview is just a single fixed-position element */}
         <AddSliceDragPreview slices={this.state.filteredSlices} />
       </div>

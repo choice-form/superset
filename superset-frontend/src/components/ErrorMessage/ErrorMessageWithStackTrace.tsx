@@ -46,9 +46,17 @@ export default function ErrorMessageWithStackTrace({
 }: Props) {
   // Check if a custom error message component was registered for this message
   if (error) {
-    const ErrorMessageComponent = getErrorMessageComponentRegistry().get(error.error_type);
+    const ErrorMessageComponent = getErrorMessageComponentRegistry().get(
+      error.error_type,
+    );
     if (ErrorMessageComponent) {
-      return <ErrorMessageComponent error={error} source={source} subtitle={subtitle} />;
+      return (
+        <ErrorMessageComponent
+          error={error}
+          source={source}
+          subtitle={subtitle}
+        />
+      );
     }
   }
 

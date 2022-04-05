@@ -57,22 +57,32 @@ export default function EmptyState({ tableName, tab }: EmptyStateProps) {
     SAVED_QUERIES: 'empty-queries.svg',
   };
   const mine = (
-    <span>{`No ${tableName === 'SAVED_QUERIES' ? t('saved queries') : t(`${tableName.toLowerCase()}`)} yet`}</span>
+    <span>{`No ${
+      tableName === 'SAVED_QUERIES'
+        ? t('saved queries')
+        : t(`${tableName.toLowerCase()}`)
+    } yet`}</span>
   );
   const recent = (
     <span className="no-recents">
       {(() => {
         if (tab === 'Viewed') {
-          return t(`Recently viewed charts, dashboards, and saved queries will appear here`);
+          return t(
+            `Recently viewed charts, dashboards, and saved queries will appear here`,
+          );
         }
         if (tab === 'Created') {
-          return t('Recently created charts, dashboards, and saved queries will appear here');
+          return t(
+            'Recently created charts, dashboards, and saved queries will appear here',
+          );
         }
         if (tab === 'Examples') {
           return t(`Example ${tableName.toLowerCase()} will appear here`);
         }
         if (tab === 'Edited') {
-          return t(`Recently edited charts, dashboards, and saved queries will appear here`);
+          return t(
+            `Recently edited charts, dashboards, and saved queries will appear here`,
+          );
         }
         return null;
       })()}
@@ -84,7 +94,9 @@ export default function EmptyState({ tableName, tab }: EmptyStateProps) {
       <EmptyContainer>
         <Empty
           image={`/static/assets/images/${tableIcon[tableName]}`}
-          description={tableName === 'RECENTS' || tab === 'Examples' ? recent : mine}
+          description={
+            tableName === 'RECENTS' || tab === 'Examples' ? recent : mine
+          }
         >
           {tableName !== 'RECENTS' && (
             <ButtonContainer>
@@ -114,7 +126,11 @@ export default function EmptyState({ tableName, tab }: EmptyStateProps) {
     <EmptyContainer>
       <Empty
         image="/static/assets/images/star-circle.svg"
-        description={<span className="no-favorites">{t("You don't have any favorites yet!")}</span>}
+        description={
+          <span className="no-favorites">
+            {t("You don't have any favorites yet!")}
+          </span>
+        }
       >
         <Button
           buttonStyle="primary"
@@ -122,7 +138,10 @@ export default function EmptyState({ tableName, tab }: EmptyStateProps) {
             window.location = favRedirects[tableName];
           }}
         >
-          See all {tableName === 'SAVED_QUERIES' ? t('SQL Lab queries') : t(`${tableName}`)}
+          See all{' '}
+          {tableName === 'SAVED_QUERIES'
+            ? t('SQL Lab queries')
+            : t(`${tableName}`)}
         </Button>
       </Empty>
     </EmptyContainer>

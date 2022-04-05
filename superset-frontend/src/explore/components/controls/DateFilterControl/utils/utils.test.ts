@@ -57,7 +57,9 @@ describe('Custom TimeRange', () => {
           anchorMode: 'now',
           anchorValue: 'now',
         }),
-      ).toEqual('2021-01-20T00:00:00 : DATEADD(DATETIME("2021-01-20T00:00:00"), 7, day)');
+      ).toEqual(
+        '2021-01-20T00:00:00 : DATEADD(DATETIME("2021-01-20T00:00:00"), 7, day)',
+      );
     });
 
     it('3) now : relative', () => {
@@ -108,7 +110,9 @@ describe('Custom TimeRange', () => {
           anchorMode: 'now',
           anchorValue: 'now',
         }),
-      ).toEqual('DATEADD(DATETIME("2021-01-27T00:00:00"), -7, day) : 2021-01-27T00:00:00');
+      ).toEqual(
+        'DATEADD(DATETIME("2021-01-27T00:00:00"), -7, day) : 2021-01-27T00:00:00',
+      );
     });
 
     it('6) relative : now', () => {
@@ -159,7 +163,9 @@ describe('Custom TimeRange', () => {
           anchorMode: 'now',
           anchorValue: 'now',
         }),
-      ).toEqual('DATEADD(DATETIME("now"), -7, day) : DATEADD(DATETIME("now"), 7, day)');
+      ).toEqual(
+        'DATEADD(DATETIME("now"), -7, day) : DATEADD(DATETIME("now"), 7, day)',
+      );
     });
 
     it('9) relative : relative (date/time)', () => {
@@ -176,13 +182,17 @@ describe('Custom TimeRange', () => {
           anchorMode: 'specific',
           anchorValue: '2021-01-27T00:00:00',
         }),
-      ).toEqual('DATEADD(DATETIME("2021-01-27T00:00:00"), -7, day) : DATEADD(DATETIME("2021-01-27T00:00:00"), 7, day)');
+      ).toEqual(
+        'DATEADD(DATETIME("2021-01-27T00:00:00"), -7, day) : DATEADD(DATETIME("2021-01-27T00:00:00"), 7, day)',
+      );
     });
   });
 
   describe('customTimeRangeDecode', () => {
     it('1) specific : specific', () => {
-      expect(customTimeRangeDecode('2021-01-20T00:00:00 : 2021-01-27T00:00:00')).toEqual({
+      expect(
+        customTimeRangeDecode('2021-01-20T00:00:00 : 2021-01-27T00:00:00'),
+      ).toEqual({
         customRange: {
           sinceDatetime: '2021-01-20T00:00:00',
           sinceMode: 'specific',
@@ -200,7 +210,11 @@ describe('Custom TimeRange', () => {
     });
 
     it('2) specific : relative', () => {
-      expect(customTimeRangeDecode('2021-01-20T00:00:00 : DATEADD(DATETIME("2021-01-20T00:00:00"), 7, day)')).toEqual({
+      expect(
+        customTimeRangeDecode(
+          '2021-01-20T00:00:00 : DATEADD(DATETIME("2021-01-20T00:00:00"), 7, day)',
+        ),
+      ).toEqual({
         customRange: {
           sinceDatetime: '2021-01-20T00:00:00',
           sinceMode: 'specific',
@@ -218,7 +232,11 @@ describe('Custom TimeRange', () => {
     });
 
     it('3) relative : specific', () => {
-      expect(customTimeRangeDecode('DATEADD(DATETIME("2021-01-27T00:00:00"), -7, day) : 2021-01-27T00:00:00')).toEqual({
+      expect(
+        customTimeRangeDecode(
+          'DATEADD(DATETIME("2021-01-27T00:00:00"), -7, day) : 2021-01-27T00:00:00',
+        ),
+      ).toEqual({
         customRange: {
           sinceDatetime: '2021-01-27T00:00:00',
           sinceMode: 'relative',
@@ -236,7 +254,11 @@ describe('Custom TimeRange', () => {
     });
 
     it('4) relative : relative (now)', () => {
-      expect(customTimeRangeDecode('DATEADD(DATETIME("now"), -7, day) : DATEADD(DATETIME("now"), 7, day)')).toEqual({
+      expect(
+        customTimeRangeDecode(
+          'DATEADD(DATETIME("now"), -7, day) : DATEADD(DATETIME("now"), 7, day)',
+        ),
+      ).toEqual({
         customRange: {
           sinceDatetime: 'now',
           sinceMode: 'relative',
@@ -279,10 +301,12 @@ describe('Custom TimeRange', () => {
 
 describe('buildTimeRangeString', () => {
   it('generates proper time range string', () => {
-    expect(buildTimeRangeString('2010-07-30T00:00:00', '2020-07-30T00:00:00')).toBe(
-      '2010-07-30T00:00:00 : 2020-07-30T00:00:00',
+    expect(
+      buildTimeRangeString('2010-07-30T00:00:00', '2020-07-30T00:00:00'),
+    ).toBe('2010-07-30T00:00:00 : 2020-07-30T00:00:00');
+    expect(buildTimeRangeString('', '2020-07-30T00:00:00')).toBe(
+      ' : 2020-07-30T00:00:00',
     );
-    expect(buildTimeRangeString('', '2020-07-30T00:00:00')).toBe(' : 2020-07-30T00:00:00');
     expect(buildTimeRangeString('', '')).toBe(' : ');
   });
 });
@@ -291,11 +315,20 @@ describe('formatTimeRange', () => {
   it('generates a readable time range', () => {
     expect(formatTimeRange('Last 7 days')).toBe('Last 7 days');
     expect(formatTimeRange('No filter')).toBe('No filter');
-    expect(formatTimeRange('Yesterday : Tomorrow')).toBe('Yesterday < col < Tomorrow');
-    expect(formatTimeRange('2010-07-30T00:00:00 : 2020-07-30T00:00:00', ['inclusive', 'exclusive'])).toBe(
-      '2010-07-30 ≤ col < 2020-07-30',
+    expect(formatTimeRange('Yesterday : Tomorrow')).toBe(
+      'Yesterday < col < Tomorrow',
     );
-    expect(formatTimeRange('2010-07-30T01:00:00 : ', ['exclusive', 'inclusive'])).toBe('2010-07-30T01:00:00 < col ≤ ∞');
-    expect(formatTimeRange(' : 2020-07-30T00:00:00')).toBe('-∞ < col < 2020-07-30');
+    expect(
+      formatTimeRange('2010-07-30T00:00:00 : 2020-07-30T00:00:00', [
+        'inclusive',
+        'exclusive',
+      ]),
+    ).toBe('2010-07-30 ≤ col < 2020-07-30');
+    expect(
+      formatTimeRange('2010-07-30T01:00:00 : ', ['exclusive', 'inclusive']),
+    ).toBe('2010-07-30T01:00:00 < col ≤ ∞');
+    expect(formatTimeRange(' : 2020-07-30T00:00:00')).toBe(
+      '-∞ < col < 2020-07-30',
+    );
   });
 });

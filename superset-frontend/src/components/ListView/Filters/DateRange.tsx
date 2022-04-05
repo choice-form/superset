@@ -38,7 +38,11 @@ const RangeFilterContainer = styled.div`
   width: 360px;
 `;
 
-export default function DateRangeFilter({ Header, initialValue, onSubmit }: DateRangeFilterProps) {
+export default function DateRangeFilter({
+  Header,
+  initialValue,
+  onSubmit,
+}: DateRangeFilterProps) {
   const [value, setValue] = useState<ValueState | null>(initialValue ?? null);
   const momentValue = useMemo((): [Moment, Moment] | null => {
     if (!value || (Array.isArray(value) && !value.length)) return null;
@@ -57,7 +61,10 @@ export default function DateRangeFilter({ Header, initialValue, onSubmit }: Date
             onSubmit([]);
             return;
           }
-          const changeValue = [momentRange[0]?.valueOf() ?? 0, momentRange[1]?.valueOf() ?? 0] as ValueState;
+          const changeValue = [
+            momentRange[0]?.valueOf() ?? 0,
+            momentRange[1]?.valueOf() ?? 0,
+          ] as ValueState;
           setValue(changeValue);
           onSubmit(changeValue);
         }}

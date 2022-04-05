@@ -28,7 +28,9 @@ describe('RecentActivity', () => {
     user,
   };
   it('is valid', () => {
-    expect(React.isValidElement(<RecentActivity {...mockedProps} />)).toBe(true);
+    expect(React.isValidElement(<RecentActivity {...mockedProps} />)).toBe(
+      true,
+    );
   });
 
   it('renders a TableLoader', () => {

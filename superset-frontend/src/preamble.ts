@@ -34,7 +34,9 @@ let bootstrapData: any;
 if (typeof window !== 'undefined') {
   const root = document.getElementById('app');
 
-  bootstrapData = root ? JSON.parse(root.getAttribute('data-bootstrap') || '{}') : {};
+  bootstrapData = root
+    ? JSON.parse(root.getAttribute('data-bootstrap') || '{}')
+    : {};
   if (bootstrapData.common && bootstrapData.common.language_pack) {
     const languagePack = bootstrapData.common.language_pack;
     configure({ languagePack });
@@ -57,4 +59,7 @@ setupColors(
 // Setup number formatters
 setupFormatters();
 
-export const theme = merge(supersetTheme, bootstrapData?.common?.theme_overrides ?? {});
+export const theme = merge(
+  supersetTheme,
+  bootstrapData?.common?.theme_overrides ?? {},
+);

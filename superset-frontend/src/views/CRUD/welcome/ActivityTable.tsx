@@ -24,7 +24,11 @@ import { setInLocalStorage } from 'src/utils/localStorageHelpers';
 import ListViewCard from 'src/components/ListViewCard';
 import SubMenu from 'src/components/Menu/SubMenu';
 import { LoadingCards, ActivityData } from 'src/views/CRUD/welcome/Welcome';
-import { CardStyles, getEditedObjects, CardContainer } from 'src/views/CRUD/utils';
+import {
+  CardStyles,
+  getEditedObjects,
+  CardContainer,
+} from 'src/views/CRUD/utils';
 import { HOMEPAGE_ACTIVITY_FILTER } from 'src/views/CRUD/storageKeys';
 import { Chart } from 'src/types/Chart';
 import { Dashboard, SavedQueryObject } from 'src/views/CRUD/types';
@@ -62,7 +66,12 @@ enum SetTabType {
 /**
  * Recent activity objects fetched by `getRecentAcitivtyObjs`.
  */
-type ActivityObject = RecentSlice | RecentDashboard | Chart | Dashboard | SavedQueryObject;
+type ActivityObject =
+  | RecentSlice
+  | RecentDashboard
+  | Chart
+  | Dashboard
+  | SavedQueryObject;
 
 interface ActivityProps {
   user: {
@@ -133,10 +142,19 @@ const getEntityLastActionOn = (entity: ActivityObject) => {
   if ('changed_on' in entity) time = entity.changed_on;
   if ('changed_on_utc' in entity) time = entity.changed_on_utc;
 
-  return t(translationKey, time == null ? UNKNOWN_TIME : moment(time).fromNow());
+  return t(
+    translationKey,
+    time == null ? UNKNOWN_TIME : moment(time).fromNow(),
+  );
 };
 
-export default function ActivityTable({ activeChild, setActiveChild, activityData, user, loadedCount }: ActivityProps) {
+export default function ActivityTable({
+  activeChild,
+  setActiveChild,
+  activityData,
+  user,
+  loadedCount,
+}: ActivityProps) {
   const [editedObjs, setEditedObjs] = useState<Array<ActivityData>>();
   const [loadingState, setLoadingState] = useState(false);
 
@@ -185,27 +203,29 @@ export default function ActivityTable({ activeChild, setActiveChild, activityDat
     });
   }
   const renderActivity = () =>
-    (activeChild !== 'Edited' ? activityData[activeChild] : editedObjs).map((entity: ActivityObject) => {
-      const url = getEntityUrl(entity);
-      const lastActionOn = getEntityLastActionOn(entity);
-      return (
-        <CardStyles
-          onClick={() => {
-            window.location.href = url;
-          }}
-          key={url}
-        >
-          <ListViewCard
-            cover={<></>}
-            url={url}
-            title={getEntityTitle(entity)}
-            description={lastActionOn}
-            avatar={getEntityIcon(entity)}
-            actions={null}
-          />
-        </CardStyles>
-      );
-    });
+    (activeChild !== 'Edited' ? activityData[activeChild] : editedObjs).map(
+      (entity: ActivityObject) => {
+        const url = getEntityUrl(entity);
+        const lastActionOn = getEntityLastActionOn(entity);
+        return (
+          <CardStyles
+            onClick={() => {
+              window.location.href = url;
+            }}
+            key={url}
+          >
+            <ListViewCard
+              cover={<></>}
+              url={url}
+              title={getEntityTitle(entity)}
+              description={lastActionOn}
+              avatar={getEntityIcon(entity)}
+              actions={null}
+            />
+          </CardStyles>
+        );
+      },
+    );
 
   const doneFetching = loadedCount < 3;
 
@@ -215,8 +235,11 @@ export default function ActivityTable({ activeChild, setActiveChild, activityDat
   return (
     <Styles>
       <SubMenu activeChild={activeChild} tabs={tabs} />
-      {activityData[activeChild]?.length > 0 || (activeChild === 'Edited' && editedObjs && editedObjs.length > 0) ? (
-        <CardContainer className="recentCards">{renderActivity()}</CardContainer>
+      {activityData[activeChild]?.length > 0 ||
+      (activeChild === 'Edited' && editedObjs && editedObjs.length > 0) ? (
+        <CardContainer className="recentCards">
+          {renderActivity()}
+        </CardContainer>
       ) : (
         <EmptyState tableName="RECENTS" tab={activeChild} />
       )}

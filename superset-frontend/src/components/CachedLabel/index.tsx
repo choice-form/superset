@@ -28,12 +28,19 @@ export interface CacheLabelProps {
   className?: string;
 }
 
-const CacheLabel: React.FC<CacheLabelProps> = ({ className, onClick, cachedTimestamp }) => {
+const CacheLabel: React.FC<CacheLabelProps> = ({
+  className,
+  onClick,
+  cachedTimestamp,
+}) => {
   const [hovered, setHovered] = useState(false);
 
   const labelType = hovered ? 'primary' : 'default';
   return (
-    <Tooltip title={<TooltipContent cachedTimestamp={cachedTimestamp} />} id="cache-desc-tooltip">
+    <Tooltip
+      title={<TooltipContent cachedTimestamp={cachedTimestamp} />}
+      id="cache-desc-tooltip"
+    >
       <Label
         className={`${className}`}
         type={labelType}

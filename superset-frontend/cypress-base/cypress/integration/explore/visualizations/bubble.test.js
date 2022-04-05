@@ -69,7 +69,10 @@ describe('Visualization > Bubble', () => {
         cy.get('[data-test="chart-container"]')
           .should('be.visible', { timeout: 15000 })
           .within(() => {
-            cy.get('svg').should('exist').find('.nv-point-clips circle').should('have.length', expectedBubblesNumber);
+            cy.get('svg')
+              .should('exist')
+              .find('.nv-point-clips circle')
+              .should('have.length', expectedBubblesNumber);
           });
       });
     });
@@ -99,7 +102,9 @@ describe('Visualization > Bubble', () => {
         // Check that all circles have same color.
         const color = nodeList[0].getAttribute('fill');
         const circles = Array.prototype.slice.call(nodeList);
-        expect(circles.every(c => c.getAttribute('fill') === color)).to.equal(true);
+        expect(circles.every(c => c.getAttribute('fill') === color)).to.equal(
+          true,
+        );
       });
   });
 });

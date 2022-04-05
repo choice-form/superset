@@ -41,7 +41,10 @@ interface WithPopoverMenuState {
   isFocused: Boolean;
 }
 
-export default class WithPopoverMenu extends React.PureComponent<WithPopoverMenuProps, WithPopoverMenuState> {
+export default class WithPopoverMenu extends React.PureComponent<
+  WithPopoverMenuProps,
+  WithPopoverMenuState
+> {
   container: ShouldFocusContainer;
 
   static defaultProps = {
@@ -91,7 +94,11 @@ export default class WithPopoverMenu extends React.PureComponent<WithPopoverMenu
     if (!this.props.editMode) {
       return;
     }
-    const { onChangeFocus, shouldFocus: shouldFocusFunc, disableClick } = this.props;
+    const {
+      onChangeFocus,
+      shouldFocus: shouldFocusFunc,
+      disableClick,
+    } = this.props;
 
     const shouldFocus = shouldFocusFunc(event, this.container);
 
@@ -123,7 +130,10 @@ export default class WithPopoverMenu extends React.PureComponent<WithPopoverMenu
         ref={this.setRef}
         onClick={this.handleClick}
         role="none"
-        className={cx('with-popover-menu', editMode && isFocused && 'with-popover-menu--focused')}
+        className={cx(
+          'with-popover-menu',
+          editMode && isFocused && 'with-popover-menu--focused',
+        )}
         style={style}
       >
         {children}

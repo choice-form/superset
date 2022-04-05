@@ -33,7 +33,11 @@ const STATUSES = {
 export const CheckboxGallery = () =>
   Object.keys(STATUSES).map(status => (
     <div style={{ marginBottom: '16px' }} key={status}>
-      <Checkbox onChange={() => {}} checked={STATUSES[status]} style={{ marginRight: '8px' }} />
+      <Checkbox
+        onChange={() => {}}
+        checked={STATUSES[status]}
+        style={{ marginRight: '8px' }}
+      />
       {`I'm a${STATUSES[status] ? '' : 'n'} ${status} checkbox`}
     </div>
   ));

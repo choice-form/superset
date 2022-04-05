@@ -34,7 +34,12 @@ interface CRUDCollectionProps {
   expandFieldset?: ReactNode;
   extraButtons?: ReactNode;
   itemGenerator?: () => any;
-  itemRenderers?: ((val: unknown, onChange: () => void, label: string, record: any) => ReactNode)[];
+  itemRenderers?: ((
+    val: unknown,
+    onChange: () => void,
+    label: string,
+    record: any,
+  ) => ReactNode)[];
   onChange?: (arg0: any) => void;
   tableColumns: Array<any>;
   sortColumns: Array<string>;
@@ -107,11 +112,16 @@ const CrudButtonWrapper = styled.div`
   ${({ theme }) => `margin-bottom: ${theme.gridUnit * 2}px`}
 `;
 
-export default class CRUDCollection extends React.PureComponent<CRUDCollectionProps, CRUDCollectionState> {
+export default class CRUDCollection extends React.PureComponent<
+  CRUDCollectionProps,
+  CRUDCollectionState
+> {
   constructor(props: CRUDCollectionProps) {
     super(props);
 
-    const { collection, collectionArray } = createKeyedCollection(props.collection);
+    const { collection, collectionArray } = createKeyedCollection(
+      props.collection,
+    );
     this.state = {
       expandedColumns: {},
       collection,
@@ -132,7 +142,9 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
 
   UNSAFE_componentWillReceiveProps(nextProps: CRUDCollectionProps) {
     if (nextProps.collection !== this.props.collection) {
-      const { collection, collectionArray } = createKeyedCollection(nextProps.collection);
+      const { collection, collectionArray } = createKeyedCollection(
+        nextProps.collection,
+      );
       this.setState({
         collection,
         collectionArray,
@@ -200,7 +212,9 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
 
   effectiveTableColumns() {
     const { tableColumns, allowDeletes, expandFieldset } = this.props;
-    const cols = allowDeletes ? tableColumns.concat(['__actions']) : tableColumns;
+    const cols = allowDeletes
+      ? tableColumns.concat(['__actions'])
+      : tableColumns;
     return expandFieldset ? ['__expand'].concat(cols) : cols;
   }
 
@@ -238,8 +252,11 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
         }
 
         // newly ordered collection
-        const sorted = [...this.state.collectionArray].sort((a: object, b: object) => compareSort(a[col], b[col]));
-        const newCollection = sort === SortOrder.asc ? sorted : sorted.reverse();
+        const sorted = [
+          ...this.state.collectionArray,
+        ].sort((a: object, b: object) => compareSort(a[col], b[col]));
+        const newCollection =
+          sort === SortOrder.asc ? sorted : sorted.reverse();
 
         this.setState(prevState => ({
           ...prevState,
@@ -263,7 +280,12 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
 
   renderHeaderRow() {
     const cols = this.effectiveTableColumns();
-    const { allowDeletes, expandFieldset, extraButtons, sortColumns } = this.props;
+    const {
+      allowDeletes,
+      expandFieldset,
+      extraButtons,
+      sortColumns,
+    } = this.props;
     return (
       <thead>
         <tr>
@@ -275,7 +297,9 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
             </th>
           ))}
           {extraButtons}
-          {allowDeletes && <th key="delete-item" aria-label="Delete" className="tiny-cell" />}
+          {allowDeletes && (
+            <th key="delete-item" aria-label="Delete" className="tiny-cell" />
+          )}
         </tr>
       </thead>
     );
@@ -283,7 +307,11 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
 
   renderExpandableSection(item: any) {
     const propsGenerator = () => ({ item, onChange: this.onFieldsetChange });
-    return recurseReactClone(this.props.expandFieldset, Fieldset, propsGenerator);
+    return recurseReactClone(
+      this.props.expandFieldset,
+      Fieldset,
+      propsGenerator,
+    );
   }
 
   renderCell(record: any, col: any) {
@@ -294,9 +322,15 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
   }
 
   renderItem(record: any) {
-    const { allowAddItem, allowDeletes, expandFieldset, tableColumns } = this.props;
+    const {
+      allowAddItem,
+      allowDeletes,
+      expandFieldset,
+      tableColumns,
+    } = this.props;
     /* eslint-disable no-underscore-dangle */
-    const isExpanded = !!this.state.expandedColumns[record.id] || record.__expanded;
+    const isExpanded =
+      !!this.state.expandedColumns[record.id] || record.__expanded;
     let tds = [];
     if (expandFieldset) {
       tds.push(
@@ -305,19 +339,29 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
             role="button"
             aria-label="Toggle expand"
             tabIndex={0}
-            className={`fa fa-caret-${isExpanded ? 'down' : 'right'} text-primary pointer`}
+            className={`fa fa-caret-${
+              isExpanded ? 'down' : 'right'
+            } text-primary pointer`}
             onClick={this.toggleExpand.bind(this, record.id)}
           />
         </td>,
       );
     }
-    tds = tds.concat(tableColumns.map(col => <td key={col}>{this.renderCell(record, col)}</td>));
+    tds = tds.concat(
+      tableColumns.map(col => (
+        <td key={col}>{this.renderCell(record, col)}</td>
+      )),
+    );
     if (allowAddItem) {
       tds.push(<td key="add" />);
     }
     if (allowDeletes) {
       tds.push(
-        <td key="__actions" data-test="crud-delete-option" className="text-primary">
+        <td
+          key="__actions"
+          data-test="crud-delete-option"
+          className="text-primary"
+        >
           <Icons.Trash
             aria-label="Delete item"
             className="pointer"
@@ -337,7 +381,10 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
     if (isExpanded) {
       trs.push(
         <tr className="exp" key={`exp__${record.id}`}>
-          <td colSpan={this.effectiveTableColumns().length} className="expanded">
+          <td
+            colSpan={this.effectiveTableColumns().length}
+            className="expanded"
+          >
             <div>{this.renderExpandableSection(record)}</div>
           </td>
         </tr>,
@@ -356,7 +403,9 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
 
   renderTableBody() {
     const data = this.state.collectionArray;
-    const content = data.length ? data.map(d => this.renderItem(d)) : this.renderEmptyCell();
+    const content = data.length
+      ? data.map(d => this.renderItem(d))
+      : this.renderEmptyCell();
     return <tbody data-test="table-content-rows">{content}</tbody>;
   }
 
@@ -366,13 +415,22 @@ export default class CRUDCollection extends React.PureComponent<CRUDCollectionPr
         <CrudButtonWrapper>
           {this.props.allowAddItem && (
             <span className="m-t-10 m-r-10">
-              <Button buttonSize="small" buttonStyle="tertiary" onClick={this.onAddItem} data-test="add-item-button">
-                <i data-test="crud-add-table-item" className="fa fa-plus" /> {t('Add item')}
+              <Button
+                buttonSize="small"
+                buttonStyle="tertiary"
+                onClick={this.onAddItem}
+                data-test="add-item-button"
+              >
+                <i data-test="crud-add-table-item" className="fa fa-plus" />{' '}
+                {t('Add item')}
               </Button>
             </span>
           )}
         </CrudButtonWrapper>
-        <CrudTableWrapper className="CRUD" stickyHeader={this.props.stickyHeader}>
+        <CrudTableWrapper
+          className="CRUD"
+          stickyHeader={this.props.stickyHeader}
+        >
           <table data-test="crud-table" className="table">
             {this.renderHeaderRow()}
             {this.renderTableBody()}

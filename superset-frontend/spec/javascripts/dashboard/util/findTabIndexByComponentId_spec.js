@@ -27,7 +27,12 @@ describe('findTabIndexByComponentId', () => {
     type: 'TABS',
   };
   const rowLevelTabsComponent = {
-    children: ['TAB-TwyUUGp2Bg', 'TAB-Zl1BQAUvN', 'TAB-P0DllxzTU', 'TAB---e53RNei'],
+    children: [
+      'TAB-TwyUUGp2Bg',
+      'TAB-Zl1BQAUvN',
+      'TAB-P0DllxzTU',
+      'TAB---e53RNei',
+    ],
     id: 'TABS-Oduxop1L7I',
     meta: {},
     parents: ['ROOT_ID', 'TABS-MNQQSW-kyd', 'TAB-qrwN_9VB5'],

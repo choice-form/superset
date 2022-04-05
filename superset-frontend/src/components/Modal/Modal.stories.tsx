@@ -24,7 +24,9 @@ export default {
   component: Modal,
 };
 
-export const InteractiveModal = (props: ModalProps) => <Modal {...props}>Hi</Modal>;
+export const InteractiveModal = (props: ModalProps) => (
+  <Modal {...props}>Hi</Modal>
+);
 
 InteractiveModal.args = {
   disablePrimaryButton: false,

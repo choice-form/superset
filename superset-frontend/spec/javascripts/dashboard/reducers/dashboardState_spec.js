@@ -38,37 +38,56 @@ describe('dashboardState reducer', () => {
   });
 
   it('should add a slice', () => {
-    expect(dashboardStateReducer({ sliceIds: [1] }, { type: ADD_SLICE, slice: { slice_id: 2 } })).toEqual({
-      sliceIds: [1, 2],
-    });
+    expect(
+      dashboardStateReducer(
+        { sliceIds: [1] },
+        { type: ADD_SLICE, slice: { slice_id: 2 } },
+      ),
+    ).toEqual({ sliceIds: [1, 2] });
   });
 
   it('should remove a slice', () => {
-    expect(dashboardStateReducer({ sliceIds: [1, 2], filters: {} }, { type: REMOVE_SLICE, sliceId: 2 })).toEqual({
-      sliceIds: [1],
-      filters: {},
-    });
+    expect(
+      dashboardStateReducer(
+        { sliceIds: [1, 2], filters: {} },
+        { type: REMOVE_SLICE, sliceId: 2 },
+      ),
+    ).toEqual({ sliceIds: [1], filters: {} });
   });
 
   it('should toggle fav star', () => {
-    expect(dashboardStateReducer({ isStarred: false }, { type: TOGGLE_FAVE_STAR, isStarred: true })).toEqual({
-      isStarred: true,
-    });
+    expect(
+      dashboardStateReducer(
+        { isStarred: false },
+        { type: TOGGLE_FAVE_STAR, isStarred: true },
+      ),
+    ).toEqual({ isStarred: true });
   });
 
   it('should toggle edit mode', () => {
-    expect(dashboardStateReducer({ editMode: false }, { type: SET_EDIT_MODE, editMode: true })).toEqual({
+    expect(
+      dashboardStateReducer(
+        { editMode: false },
+        { type: SET_EDIT_MODE, editMode: true },
+      ),
+    ).toEqual({
       editMode: true,
     });
   });
 
   it('should toggle expanded slices', () => {
     expect(
-      dashboardStateReducer({ expandedSlices: { 1: true, 2: false } }, { type: TOGGLE_EXPAND_SLICE, sliceId: 1 }),
+      dashboardStateReducer(
+        { expandedSlices: { 1: true, 2: false } },
+        { type: TOGGLE_EXPAND_SLICE, sliceId: 1 },
+      ),
     ).toEqual({ expandedSlices: { 2: false } });
 
     expect(
-      dashboardStateReducer({ expandedSlices: { 1: true, 2: false } }, { type: TOGGLE_EXPAND_SLICE, sliceId: 2 }),
+      dashboardStateReducer(
+        { expandedSlices: { 1: true, 2: false } },
+        { type: TOGGLE_EXPAND_SLICE, sliceId: 2 },
+      ),
     ).toEqual({ expandedSlices: { 1: true, 2: true } });
   });
 
@@ -77,7 +96,12 @@ describe('dashboardState reducer', () => {
       hasUnsavedChanges: true,
     });
 
-    expect(dashboardStateReducer({}, { type: SET_UNSAVED_CHANGES, payload: { hasUnsavedChanges: false } })).toEqual({
+    expect(
+      dashboardStateReducer(
+        {},
+        { type: SET_UNSAVED_CHANGES, payload: { hasUnsavedChanges: false } },
+      ),
+    ).toEqual({
       hasUnsavedChanges: false,
     });
   });
@@ -97,7 +121,10 @@ describe('dashboardState reducer', () => {
   });
 
   it('should set unsaved changes, max undo history, and editMode to false on save', () => {
-    const result = dashboardStateReducer({ hasUnsavedChanges: true }, { type: ON_SAVE });
+    const result = dashboardStateReducer(
+      { hasUnsavedChanges: true },
+      { type: ON_SAVE },
+    );
     expect(result.hasUnsavedChanges).toBe(false);
     expect(result.maxUndoHistoryExceeded).toBe(false);
     expect(result.editMode).toBe(false);
@@ -115,7 +142,10 @@ describe('dashboardState reducer', () => {
 
     const lastModifiedTime = new Date().getTime() / 1000;
     expect(
-      dashboardStateReducer({ hasUnsavedChanges: true }, { type: ON_SAVE, lastModifiedTime }).lastModifiedTime,
+      dashboardStateReducer(
+        { hasUnsavedChanges: true },
+        { type: ON_SAVE, lastModifiedTime },
+      ).lastModifiedTime,
     ).toBeGreaterThanOrEqual(initTime);
   });
 

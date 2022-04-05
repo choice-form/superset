@@ -46,7 +46,10 @@ const EstimateQueryCostButton = props => {
   const { cost } = props.queryCostEstimate;
   const tableData = useMemo(() => (Array.isArray(cost) ? cost : []), [cost]);
   const columns = useMemo(
-    () => (Array.isArray(cost) && cost.length ? Object.keys(cost[0]).map(key => ({ accessor: key, Header: key })) : []),
+    () =>
+      Array.isArray(cost) && cost.length
+        ? Object.keys(cost[0]).map(key => ({ accessor: key, Header: key }))
+        : [],
     [cost],
   );
 
@@ -56,7 +59,13 @@ const EstimateQueryCostButton = props => {
 
   const renderModalBody = () => {
     if (props.queryCostEstimate.error !== null) {
-      return <Alert key="query-estimate-error" type="error" message={props.queryCostEstimate.error} />;
+      return (
+        <Alert
+          key="query-estimate-error"
+          type="error"
+          message={props.queryCostEstimate.error}
+        />
+      );
     }
     if (props.queryCostEstimate.completed) {
       return (
@@ -73,7 +82,9 @@ const EstimateQueryCostButton = props => {
   };
 
   const { disabled, selectedText, tooltip } = props;
-  const btnText = selectedText ? t('Estimate selected query cost') : t('Estimate cost');
+  const btnText = selectedText
+    ? t('Estimate selected query cost')
+    : t('Estimate cost');
   return (
     <span className="EstimateQueryCostButton">
       <ModalTrigger

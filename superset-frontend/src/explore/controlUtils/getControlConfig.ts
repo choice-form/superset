@@ -18,12 +18,18 @@
  */
 import memoizeOne from 'memoize-one';
 import { getChartControlPanelRegistry } from 'src/core';
-import { ControlPanelSectionConfig, expandControlConfig } from 'src/chartConntrols';
+import {
+  ControlPanelSectionConfig,
+  expandControlConfig,
+} from 'src/chartConntrols';
 
 /**
  * Find control item from control panel config.
  */
-export function findControlItem(controlPanelSections: ControlPanelSectionConfig[], controlKey: string) {
+export function findControlItem(
+  controlPanelSections: ControlPanelSectionConfig[],
+  controlKey: string,
+) {
   return (
     controlPanelSections
       .map(section => section.controlSetRows)
@@ -31,18 +37,32 @@ export function findControlItem(controlPanelSections: ControlPanelSectionConfig[
       .find(
         control =>
           controlKey === control ||
-          (control !== null && typeof control === 'object' && 'name' in control && control.name === controlKey),
+          (control !== null &&
+            typeof control === 'object' &&
+            'name' in control &&
+            control.name === controlKey),
       ) ?? null
   );
 }
 
-const getMemoizedControlConfig = memoizeOne((controlKey, controlPanelConfig) => {
-  const { controlOverrides = {}, controlPanelSections = [] } = controlPanelConfig;
-  const control = expandControlConfig(findControlItem(controlPanelSections, controlKey), controlOverrides);
-  return control && 'config' in control ? control.config : control;
-});
+const getMemoizedControlConfig = memoizeOne(
+  (controlKey, controlPanelConfig) => {
+    const {
+      controlOverrides = {},
+      controlPanelSections = [],
+    } = controlPanelConfig;
+    const control = expandControlConfig(
+      findControlItem(controlPanelSections, controlKey),
+      controlOverrides,
+    );
+    return control && 'config' in control ? control.config : control;
+  },
+);
 
-export const getControlConfig = function getControlConfig(controlKey: string, vizType: string) {
+export const getControlConfig = function getControlConfig(
+  controlKey: string,
+  vizType: string,
+) {
   const controlPanelConfig = getChartControlPanelRegistry().get(vizType) || {};
   return getMemoizedControlConfig(controlKey, controlPanelConfig);
 };

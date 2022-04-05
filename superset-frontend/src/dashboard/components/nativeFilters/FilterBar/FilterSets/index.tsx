@@ -36,7 +36,8 @@ const FilterSetsWrapper = styled.div`
   align-items: center;
   justify-content: center;
   grid-template-columns: 1fr;
-  padding: ${({ theme }) => theme.gridUnit * 2}px ${({ theme }) => theme.gridUnit * 4}px;
+  padding: ${({ theme }) => theme.gridUnit * 2}px
+    ${({ theme }) => theme.gridUnit * 4}px;
 
   & button.superset-button {
     margin-left: 0;
@@ -68,7 +69,10 @@ export type FilterSetsProps = {
   isFilterSetChanged: boolean;
   dataMaskSelected: DataMaskState;
   onEditFilterSet: (id: string) => void;
-  onFilterSelectionChange: (filter: Pick<Filter, 'id'> & Partial<Filter>, dataMask: Partial<DataMask>) => void;
+  onFilterSelectionChange: (
+    filter: Pick<Filter, 'id'> & Partial<Filter>,
+    dataMask: Partial<DataMask>,
+  ) => void;
 };
 
 const DEFAULT_FILTER_SET_NAME = t('New filter set');
@@ -88,7 +92,9 @@ const FilterSets: React.FC<FilterSetsProps> = ({
   const filterSetFilterValues = Object.values(filterSets);
   const filters = useFilters();
   const filterValues = Object.values(filters) as Filter[];
-  const [selectedFiltersSetId, setSelectedFiltersSetId] = useState<string | null>(null);
+  const [selectedFiltersSetId, setSelectedFiltersSetId] = useState<
+    string | null
+  >(null);
 
   useEffect(() => {
     if (isFilterSetChanged) {
@@ -102,7 +108,10 @@ const FilterSets: React.FC<FilterSetsProps> = ({
     setSelectedFiltersSetId(foundFilterSet?.id ?? null);
   }, [isFilterSetChanged, dataMaskSelected, filterSetFilterValues]);
 
-  const isFilterMissingOrContainsInvalidMetadata = (id: string, filterSet?: FilterSet) =>
+  const isFilterMissingOrContainsInvalidMetadata = (
+    id: string,
+    filterSet?: FilterSet,
+  ) =>
     !filterValues.find(filter => filter?.id === id) ||
     !areObjectsEqual(filters[id], filterSet?.nativeFilters?.[id], {
       ignoreUndefined: true,
@@ -115,8 +124,12 @@ const FilterSets: React.FC<FilterSetsProps> = ({
       target?.classList.contains(ignoreSelectorHeader) ||
       target?.classList.contains(ignoreSelectorDropdown) ||
       target?.parentElement?.classList.contains(ignoreSelectorHeader) ||
-      target?.parentElement?.parentElement?.classList.contains(ignoreSelectorHeader) ||
-      target?.parentElement?.parentElement?.parentElement?.classList.contains(ignoreSelectorHeader)
+      target?.parentElement?.parentElement?.classList.contains(
+        ignoreSelectorHeader,
+      ) ||
+      target?.parentElement?.parentElement?.parentElement?.classList.contains(
+        ignoreSelectorHeader,
+      )
     ) {
       // We don't want select filter set when user expand filters
       return;
@@ -128,13 +141,15 @@ const FilterSets: React.FC<FilterSetsProps> = ({
 
     const filterSet = filterSets[id];
 
-    (Object.values(filterSet?.dataMask) ?? []).forEach((dataMask: DataMaskWithId) => {
-      const { extraFormData, filterState, id } = dataMask;
-      if (isFilterMissingOrContainsInvalidMetadata(id, filterSet)) {
-        return;
-      }
-      onFilterSelectionChange({ id }, { extraFormData, filterState });
-    });
+    (Object.values(filterSet?.dataMask) ?? []).forEach(
+      (dataMask: DataMaskWithId) => {
+        const { extraFormData, filterState, id } = dataMask;
+        if (isFilterMissingOrContainsInvalidMetadata(id, filterSet)) {
+          return;
+        }
+        onFilterSelectionChange({ id }, { extraFormData, filterState });
+      },
+    );
   };
 
   const handleRebuild = (id: string) => {
@@ -180,7 +195,13 @@ const FilterSets: React.FC<FilterSetsProps> = ({
   };
 
   const handleDeleteFilterSet = (filterSetId: string) => {
-    dispatch(setFilterSetsConfiguration(filterSetFilterValues.filter(filtersSet => filtersSet.id !== filterSetId)));
+    dispatch(
+      setFilterSetsConfiguration(
+        filterSetFilterValues.filter(
+          filtersSet => filtersSet.id !== filterSetId,
+        ),
+      ),
+    );
     if (filterSetId === selectedFiltersSetId) {
       setSelectedFiltersSetId(null);
     }
@@ -204,7 +225,9 @@ const FilterSets: React.FC<FilterSetsProps> = ({
         {},
       ),
     };
-    dispatch(setFilterSetsConfiguration([newFilterSet].concat(filterSetFilterValues)));
+    dispatch(
+      setFilterSetsConfiguration([newFilterSet].concat(filterSetFilterValues)),
+    );
     setEditMode(false);
     setFilterSetName(DEFAULT_FILTER_SET_NAME);
   };
@@ -233,7 +256,9 @@ const FilterSets: React.FC<FilterSetsProps> = ({
         <FilterSetUnitWrapper
           {...getFilterBarTestId('filter-set-wrapper')}
           data-selected={filterSet.id === selectedFiltersSetId}
-          onClick={(e: MouseEvent<HTMLElement>) => takeFilterSet(filterSet.id, e.target as HTMLElement)}
+          onClick={(e: MouseEvent<HTMLElement>) =>
+            takeFilterSet(filterSet.id, e.target as HTMLElement)
+          }
           key={filterSet.id}
         >
           <FilterSetUnit

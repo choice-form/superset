@@ -19,7 +19,10 @@
 import React from 'react';
 import { render, screen } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import PopoverDropdown, { PopoverDropdownProps, OptionProps } from 'src/components/PopoverDropdown';
+import PopoverDropdown, {
+  PopoverDropdownProps,
+  OptionProps,
+} from 'src/components/PopoverDropdown';
 
 const defaultProps: PopoverDropdownProps = {
   id: 'popover-dropdown',

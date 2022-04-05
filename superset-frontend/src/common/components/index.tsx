@@ -18,7 +18,13 @@
  */
 import React, { RefObject } from 'react';
 import { styled } from 'src/core';
-import { Dropdown, Menu as AntdMenu, Input as AntdInput, InputNumber as AntdInputNumber, Skeleton } from 'antd';
+import {
+  Dropdown,
+  Menu as AntdMenu,
+  Input as AntdInput,
+  InputNumber as AntdInputNumber,
+  Skeleton,
+} from 'antd';
 import { DropDownProps } from 'antd/lib/dropdown';
 /*
   Antd is re-exported from here so we can override components with Emotion as needed.
@@ -174,7 +180,8 @@ export const StyledSubMenu = styled(AntdMenu.SubMenu)`
     top: 67%;
   }
   & > .ant-menu-submenu-title {
-    padding: 0 ${({ theme }) => theme.gridUnit * 6}px 0 ${({ theme }) => theme.gridUnit * 3}px !important;
+    padding: 0 ${({ theme }) => theme.gridUnit * 6}px 0
+      ${({ theme }) => theme.gridUnit * 3}px !important;
     span[role='img'] {
       position: absolute;
       right: ${({ theme }) => -theme.gridUnit + -2}px;
@@ -194,7 +201,12 @@ export const StyledSubMenu = styled(AntdMenu.SubMenu)`
   }
 `;
 
-export declare type MenuMode = 'vertical' | 'vertical-left' | 'vertical-right' | 'horizontal' | 'inline';
+export declare type MenuMode =
+  | 'vertical'
+  | 'vertical-left'
+  | 'vertical-right'
+  | 'horizontal'
+  | 'inline';
 export const Menu = Object.assign(AntdMenu, {
   Item: MenuItem,
 });
@@ -226,7 +238,9 @@ export const TextArea = styled(AntdInput.TextArea)`
 `;
 
 // @z-index-below-dashboard-header (100) - 1 = 99
-export const NoAnimationDropdown = (props: ExtendedDropDownProps & { children?: React.ReactNode }) => (
+export const NoAnimationDropdown = (
+  props: ExtendedDropDownProps & { children?: React.ReactNode },
+) => (
   <Dropdown overlayStyle={{ zIndex: 99, animationDuration: '0s' }} {...props} />
 );
 

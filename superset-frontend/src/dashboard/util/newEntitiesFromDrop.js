@@ -33,7 +33,8 @@ export default function newEntitiesFromDrop({ dropResult, layout }) {
   newDropChild.parents = (dropEntity.parents || []).concat(dropEntity.id);
 
   if (componentIsResizable(dragging)) {
-    newDropChild.meta.width = getComponentWidthFromDrop({ dropResult, layout }) || undefined; // don't set a 0 width
+    newDropChild.meta.width = // don't set a 0 width
+      getComponentWidthFromDrop({ dropResult, layout }) || undefined;
   }
 
   const wrapChildInRow = shouldWrapChildInRow({

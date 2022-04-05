@@ -16,7 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { DASHBOARD_GRID_TYPE, CHART_TYPE, COLUMN_TYPE, MARKDOWN_TYPE, TAB_TYPE } from './componentTypes';
+import {
+  DASHBOARD_GRID_TYPE,
+  CHART_TYPE,
+  COLUMN_TYPE,
+  MARKDOWN_TYPE,
+  TAB_TYPE,
+} from './componentTypes';
 
 const typeToWrapChildLookup = {
   [DASHBOARD_GRID_TYPE]: {

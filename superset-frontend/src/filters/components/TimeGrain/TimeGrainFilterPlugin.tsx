@@ -23,8 +23,19 @@ import { FormItemProps } from 'antd/lib/form';
 import { FilterPluginStyle, StyledFormItem, StatusMessage } from '../common';
 import { PluginFilterTimeGrainProps } from './types';
 
-export default function PluginFilterTimegrain(props: PluginFilterTimeGrainProps) {
-  const { data, formData, height, width, setDataMask, setFocusedFilter, unsetFocusedFilter, filterState } = props;
+export default function PluginFilterTimegrain(
+  props: PluginFilterTimeGrainProps,
+) {
+  const {
+    data,
+    formData,
+    height,
+    width,
+    setDataMask,
+    setFocusedFilter,
+    unsetFocusedFilter,
+    filterState,
+  } = props;
   const { defaultValue, inputRef } = formData;
 
   const [value, setValue] = useState<string[]>(defaultValue ?? []);
@@ -70,26 +81,35 @@ export default function PluginFilterTimegrain(props: PluginFilterTimeGrainProps)
   }, [JSON.stringify(filterState.value)]);
 
   const placeholderText =
-    (data || []).length === 0 ? t('No data') : tn('%s option', '%s options', data.length, data.length);
+    (data || []).length === 0
+      ? t('No data')
+      : tn('%s option', '%s options', data.length, data.length);
 
   const formItemData: FormItemProps = {};
   if (filterState.validateMessage) {
     formItemData.extra = (
-      <StatusMessage status={filterState.validateStatus}>{filterState.validateMessage}</StatusMessage>
+      <StatusMessage status={filterState.validateStatus}>
+        {filterState.validateMessage}
+      </StatusMessage>
     );
   }
 
-  const options = (data || []).map((row: { name: string; duration: string }) => {
-    const { name, duration } = row;
-    return {
-      label: name,
-      value: duration,
-    };
-  });
+  const options = (data || []).map(
+    (row: { name: string; duration: string }) => {
+      const { name, duration } = row;
+      return {
+        label: name,
+        value: duration,
+      };
+    },
+  );
 
   return (
     <FilterPluginStyle height={height} width={width}>
-      <StyledFormItem validateStatus={filterState.validateStatus} {...formItemData}>
+      <StyledFormItem
+        validateStatus={filterState.validateStatus}
+        {...formItemData}
+      >
         <Select
           allowClear
           value={value}

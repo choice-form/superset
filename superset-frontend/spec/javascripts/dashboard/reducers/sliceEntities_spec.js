@@ -16,7 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { FETCH_ALL_SLICES_FAILED, FETCH_ALL_SLICES_STARTED, SET_ALL_SLICES } from 'src/dashboard/actions/sliceEntities';
+import {
+  FETCH_ALL_SLICES_FAILED,
+  FETCH_ALL_SLICES_STARTED,
+  SET_ALL_SLICES,
+} from 'src/dashboard/actions/sliceEntities';
 
 import sliceEntitiesReducer from 'src/dashboard/reducers/sliceEntities';
 
@@ -26,7 +30,12 @@ describe('sliceEntities reducer', () => {
   });
 
   it('should set loading when fetching slices', () => {
-    expect(sliceEntitiesReducer({ isLoading: false }, { type: FETCH_ALL_SLICES_STARTED }).isLoading).toBe(true);
+    expect(
+      sliceEntitiesReducer(
+        { isLoading: false },
+        { type: FETCH_ALL_SLICES_STARTED },
+      ).isLoading,
+    ).toBe(true);
   });
 
   it('should set slices', () => {

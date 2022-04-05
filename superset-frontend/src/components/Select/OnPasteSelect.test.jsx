@@ -64,7 +64,9 @@ describe('OnPasteSelect', () => {
   it('renders custom selectWrap components', () => {
     props.selectWrap = CreatableSelect;
     wrapper = shallow(<OnPasteSelect {...props} />);
-    expect(wrapper.findWhere(x => x.type() === CreatableSelect)).toHaveLength(1);
+    expect(wrapper.findWhere(x => x.type() === CreatableSelect)).toHaveLength(
+      1,
+    );
   });
 
   describe('onPaste', () => {
@@ -77,26 +79,46 @@ describe('OnPasteSelect', () => {
     });
 
     it('calls onChange with pasted new line separated values', () => {
-      evt.clipboardData.getData = sinon.spy(() => 'United States\nChina\nRussian Federation\nIndia');
+      evt.clipboardData.getData = sinon.spy(
+        () => 'United States\nChina\nRussian Federation\nIndia',
+      );
       wrapper.instance().onPaste(evt);
-      expected = [props.options[0], props.options[1], props.options[4], props.options[2]];
+      expected = [
+        props.options[0],
+        props.options[1],
+        props.options[4],
+        props.options[2],
+      ];
       expect(props.onChange.calledWith(expected)).toBe(true);
       expect(evt.preventDefault.called).toBe(true);
       expect(props.isValidNewOption.callCount).toBe(9);
     });
 
     it('calls onChange with pasted tab separated values', () => {
-      evt.clipboardData.getData = sinon.spy(() => 'Russian Federation\tMexico\tIndia\tCanada');
+      evt.clipboardData.getData = sinon.spy(
+        () => 'Russian Federation\tMexico\tIndia\tCanada',
+      );
       wrapper.instance().onPaste(evt);
-      expected = [props.options[4], props.options[6], props.options[2], props.options[3]];
+      expected = [
+        props.options[4],
+        props.options[6],
+        props.options[2],
+        props.options[3],
+      ];
       expect(props.onChange.calledWith(expected)).toBe(true);
       expect(evt.preventDefault.called).toBe(true);
       expect(props.isValidNewOption.callCount).toBe(13);
     });
 
     it('calls onChange without duplicate values and adds new comma separated values', () => {
-      evt.clipboardData.getData = sinon.spy(() => 'China, China, China, China, Mexico, Mexico, Chi na, Mexico, ');
-      expected = [props.options[1], props.options[6], { label: 'Chi na', value: 'Chi na' }];
+      evt.clipboardData.getData = sinon.spy(
+        () => 'China, China, China, China, Mexico, Mexico, Chi na, Mexico, ',
+      );
+      expected = [
+        props.options[1],
+        props.options[6],
+        { label: 'Chi na', value: 'Chi na' },
+      ];
       wrapper.instance().onPaste(evt);
       expect(props.onChange.calledWith(expected)).toBe(true);
       expect(evt.preventDefault.called).toBe(true);
@@ -106,7 +128,9 @@ describe('OnPasteSelect', () => {
     });
 
     it('calls onChange without duplicate values and parses new line separated values', () => {
-      evt.clipboardData.getData = sinon.spy(() => 'United States\nCanada\nMexico\nUnited States\nCanada');
+      evt.clipboardData.getData = sinon.spy(
+        () => 'United States\nCanada\nMexico\nUnited States\nCanada',
+      );
       expected = [props.options[0], props.options[3], props.options[6]];
       wrapper.instance().onPaste(evt);
       expect(props.onChange.calledWith(expected)).toBe(true);
@@ -115,8 +139,15 @@ describe('OnPasteSelect', () => {
     });
 
     it('calls onChange without duplicate values and parses tab separated values', () => {
-      evt.clipboardData.getData = sinon.spy(() => 'China\tIndia\tChina\tRussian Federation\tJapan\tJapan');
-      expected = [props.options[1], props.options[2], props.options[4], props.options[5]];
+      evt.clipboardData.getData = sinon.spy(
+        () => 'China\tIndia\tChina\tRussian Federation\tJapan\tJapan',
+      );
+      expected = [
+        props.options[1],
+        props.options[2],
+        props.options[4],
+        props.options[5],
+      ];
       wrapper.instance().onPaste(evt);
       expect(props.onChange.calledWith(expected)).toBe(true);
       expect(evt.preventDefault.called).toBe(true);
@@ -125,9 +156,17 @@ describe('OnPasteSelect', () => {
 
     it('calls onChange with currently selected values and new comma separated values', () => {
       props.value = ['United States', 'Canada', 'Mexico'];
-      evt.clipboardData.getData = sinon.spy(() => 'United States, Canada, Japan, India');
+      evt.clipboardData.getData = sinon.spy(
+        () => 'United States, Canada, Japan, India',
+      );
       wrapper = shallow(<OnPasteSelect {...props} />);
-      expected = [props.options[0], props.options[3], props.options[6], props.options[5], props.options[2]];
+      expected = [
+        props.options[0],
+        props.options[3],
+        props.options[6],
+        props.options[5],
+        props.options[2],
+      ];
       wrapper.instance().onPaste(evt);
       expect(props.onChange.calledWith(expected)).toBe(true);
       expect(evt.preventDefault.called).toBe(true);
@@ -138,7 +177,12 @@ describe('OnPasteSelect', () => {
       props.value = ['China', 'India', 'Japan'];
       evt.clipboardData.getData = sinon.spy(() => 'Mexico\nJapan\nIndia');
       wrapper = shallow(<OnPasteSelect {...props} />);
-      expected = [props.options[1], props.options[2], props.options[5], props.options[6]];
+      expected = [
+        props.options[1],
+        props.options[2],
+        props.options[5],
+        props.options[6],
+      ];
       wrapper.instance().onPaste(evt);
       expect(props.onChange.calledWith(expected)).toBe(true);
       expect(evt.preventDefault.called).toBe(true);
@@ -147,7 +191,9 @@ describe('OnPasteSelect', () => {
 
     it('calls onChange with currently selected values and new tab separated values', () => {
       props.value = ['United States', 'Canada', 'Mexico', 'Russian Federation'];
-      evt.clipboardData.getData = sinon.spy(() => 'United States\tCanada\tJapan\tIndia');
+      evt.clipboardData.getData = sinon.spy(
+        () => 'United States\tCanada\tJapan\tIndia',
+      );
       wrapper = shallow(<OnPasteSelect {...props} />);
       expected = [
         props.options[0],

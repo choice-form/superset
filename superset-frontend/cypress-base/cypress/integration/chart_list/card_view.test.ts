@@ -32,15 +32,39 @@ describe('chart card view', () => {
   });
 
   it('should allow to favorite/unfavorite chart card', () => {
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-selected']").should('not.exist');
-    cy.get("[data-test='card-actions']").find("[aria-label='favorite-unselected']").first().click();
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-selected']").should('be.visible');
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-unselected']").should('not.exist');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-selected']")
+      .should('not.exist');
+    cy.get("[data-test='card-actions']")
+      .find("[aria-label='favorite-unselected']")
+      .first()
+      .click();
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-selected']")
+      .should('be.visible');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-unselected']")
+      .should('not.exist');
 
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-unselected']").should('not.exist');
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-selected']").click();
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-unselected']").should('be.visible');
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-selected']").should('not.exist');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-unselected']")
+      .should('not.exist');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-selected']")
+      .click();
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-unselected']")
+      .should('be.visible');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-selected']")
+      .should('not.exist');
   });
 
   xit('should sort correctly', () => {
@@ -58,20 +82,33 @@ describe('chart card view', () => {
     cy.get('[data-test="chart-list-view"]').should('be.visible');
     // TODO - next line is/was flaky
     cy.get('[data-test="styled-card"]').first().contains('Unicode Cloud');
-    cy.get('[data-test="styled-card"]').last().contains('Life Expectancy VS Rural %');
+    cy.get('[data-test="styled-card"]')
+      .last()
+      .contains('Life Expectancy VS Rural %');
   });
 
   // flaky
   xit('should delete correctly', () => {
     // show delete modal
     cy.get('[data-test="more-horiz"]').last().trigger('mouseover');
-    cy.get('[data-test="chart-list-delete-option"]').last().should('be.visible');
-    cy.get('[data-test="chart-list-delete-option"]').last().contains('Delete').click();
+    cy.get('[data-test="chart-list-delete-option"]')
+      .last()
+      .should('be.visible');
+    cy.get('[data-test="chart-list-delete-option"]')
+      .last()
+      .contains('Delete')
+      .click();
     cy.get('[data-test="Please Confirm-modal"]').should('be.visible');
-    cy.get('[data-test="modal-confirm-button"]').should('have.attr', 'disabled');
+    cy.get('[data-test="modal-confirm-button"]').should(
+      'have.attr',
+      'disabled',
+    );
     cy.get('[data-test="Please Confirm-modal"]').should('be.visible');
     cy.get("[data-test='delete-modal-input']").type('DELETE');
-    cy.get('[data-test="modal-confirm-button"]').should('not.have.attr', 'disabled');
+    cy.get('[data-test="modal-confirm-button"]').should(
+      'not.have.attr',
+      'disabled',
+    );
     cy.get('[data-test="modal-cancel-button"]').click();
   });
 
@@ -82,7 +119,11 @@ describe('chart card view', () => {
     cy.get('[data-test="chart-list-edit-option"]').last().should('be.visible');
     cy.get('[data-test="chart-list-edit-option"]').last().click();
     cy.get('[data-test="properties-edit-modal"]').should('be.visible');
-    cy.get('[data-test="properties-modal-name-input"]').should('not.have.value');
-    cy.get('[data-test="properties-modal-cancel-button"]').contains('Cancel').click();
+    cy.get('[data-test="properties-modal-name-input"]').should(
+      'not.have.value',
+    );
+    cy.get('[data-test="properties-modal-cancel-button"]')
+      .contains('Cancel')
+      .click();
   });
 });

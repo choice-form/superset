@@ -17,7 +17,11 @@
  * under the License.
  */
 import { parsePostForm, JsonObject } from 'cypress/utils';
-import { WORLD_HEALTH_DASHBOARD, WORLD_HEALTH_CHARTS, waitForChartLoad } from './dashboard.helper';
+import {
+  WORLD_HEALTH_DASHBOARD,
+  WORLD_HEALTH_CHARTS,
+  waitForChartLoad,
+} from './dashboard.helper';
 
 describe('Dashboard form data', () => {
   const urlParams = { param1: '123', param2: 'abc' };

@@ -60,7 +60,8 @@ const HeaderButton = styled(Button)`
 `;
 
 const Wrapper = styled.div`
-  padding: ${({ theme }) => theme.gridUnit}px ${({ theme }) => theme.gridUnit * 2}px;
+  padding: ${({ theme }) => theme.gridUnit}px
+    ${({ theme }) => theme.gridUnit * 2}px;
 `;
 
 type HeaderProps = {
@@ -83,7 +84,9 @@ const Header: FC<HeaderProps> = ({
   const theme = useTheme();
   const filters = useFilters();
   const filterValues = Object.values<Filter>(filters);
-  const canEdit = useSelector<RootState, boolean>(({ dashboardInfo }) => dashboardInfo.dash_edit_perm);
+  const canEdit = useSelector<RootState, boolean>(
+    ({ dashboardInfo }) => dashboardInfo.dash_edit_perm,
+  );
 
   const isClearAllDisabled = Object.values(dataMaskApplied).every(
     filter =>
@@ -97,7 +100,10 @@ const Header: FC<HeaderProps> = ({
         <span>{t('Filters')}</span>
         {canEdit && (
           <FilterConfigurationLink createNewOnOpen={filterValues.length === 0}>
-            <Icons.Edit data-test="create-filter" iconColor={theme.colors.grayscale.base} />
+            <Icons.Edit
+              data-test="create-filter"
+              iconColor={theme.colors.grayscale.base}
+            />
           </FilterConfigurationLink>
         )}
         <HeaderButton

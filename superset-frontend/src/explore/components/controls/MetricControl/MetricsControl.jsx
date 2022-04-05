@@ -60,11 +60,16 @@ const defaultProps = {
   columns: [],
 };
 
-function getOptionsForSavedMetrics(savedMetrics, currentMetricValues, currentMetric) {
+function getOptionsForSavedMetrics(
+  savedMetrics,
+  currentMetricValues,
+  currentMetric,
+) {
   return (
     savedMetrics?.filter(savedMetric =>
       Array.isArray(currentMetricValues)
-        ? !currentMetricValues.includes(savedMetric.metric_name) || savedMetric.metric_name === currentMetric
+        ? !currentMetricValues.includes(savedMetric.metric_name) ||
+          savedMetric.metric_name === currentMetric
         : savedMetric,
     ) ?? []
   );
@@ -101,10 +106,15 @@ const getMetricsMatchingCurrentDataset = (value, columns, savedMetrics) =>
   ensureIsArray(value).filter(metric => {
     if (typeof metric === 'string' || metric.metric_name) {
       return savedMetrics?.some(
-        savedMetric => savedMetric.metric_name === metric || savedMetric.metric_name === metric.metric_name,
+        savedMetric =>
+          savedMetric.metric_name === metric ||
+          savedMetric.metric_name === metric.metric_name,
       );
     }
-    return columns?.some(column => !metric.column || metric.column.column_name === column.column_name);
+    return columns?.some(
+      column =>
+        !metric.column || metric.column.column_name === column.column_name,
+    );
   });
 
 const MetricsControl = ({
@@ -192,24 +202,28 @@ const MetricsControl = ({
   const moveLabel = useCallback(
     (dragIndex, hoverIndex) => {
       const newValues = [...value];
-      [newValues[hoverIndex], newValues[dragIndex]] = [newValues[dragIndex], newValues[hoverIndex]];
+      [newValues[hoverIndex], newValues[dragIndex]] = [
+        newValues[dragIndex],
+        newValues[hoverIndex],
+      ];
       setValue(newValues);
     },
     [value],
   );
 
-  const isAddNewMetricDisabled = useCallback(() => (!multi && value.length > 0) || (max > 0 && value.length === max), [
-    multi,
-    max,
-    value.length,
-  ]);
+  const isAddNewMetricDisabled = useCallback(
+    () => (!multi && value.length > 0) || (max > 0 && value.length === max),
+    [multi, max, value.length],
+  );
 
-  const savedMetricOptions = useMemo(() => getOptionsForSavedMetrics(savedMetrics, propsValue, null), [
-    propsValue,
-    savedMetrics,
-  ]);
+  const savedMetricOptions = useMemo(
+    () => getOptionsForSavedMetrics(savedMetrics, propsValue, null),
+    [propsValue, savedMetrics],
+  );
 
-  const newAdhocMetric = useMemo(() => new AdhocMetric({ isNew: true }), [value]);
+  const newAdhocMetric = useMemo(() => new AdhocMetric({ isNew: true }), [
+    value,
+  ]);
   const addNewMetricPopoverTrigger = useCallback(
     trigger => {
       if (isAddNewMetricDisabled()) {
@@ -229,14 +243,30 @@ const MetricsControl = ({
         </AdhocMetricPopoverTrigger>
       );
     },
-    [columns, datasource, datasourceType, isAddNewMetricDisabled, newAdhocMetric, onNewMetric, savedMetricOptions],
+    [
+      columns,
+      datasource,
+      datasourceType,
+      isAddNewMetricDisabled,
+      newAdhocMetric,
+      onNewMetric,
+      savedMetricOptions,
+    ],
   );
 
   useEffect(() => {
     // Remove selected custom metrics that do not exist in the dataset anymore
     // Remove selected adhoc metrics that use columns which do not exist in the dataset anymore
-    if (propsValue && (!isEqual(prevColumns, columns) || !isEqual(prevSavedMetrics, savedMetrics))) {
-      const matchingMetrics = getMetricsMatchingCurrentDataset(propsValue, columns, savedMetrics);
+    if (
+      propsValue &&
+      (!isEqual(prevColumns, columns) ||
+        !isEqual(prevSavedMetrics, savedMetrics))
+    ) {
+      const matchingMetrics = getMetricsMatchingCurrentDataset(
+        propsValue,
+        columns,
+        savedMetrics,
+      );
       if (!isEqual(matchingMetrics, propsValue)) {
         handleChange(matchingMetrics);
       }
@@ -247,7 +277,10 @@ const MetricsControl = ({
     setValue(coerceAdhocMetrics(propsValue));
   }, [propsValue]);
 
-  const onDropLabel = useCallback(() => handleChange(value), [handleChange, value]);
+  const onDropLabel = useCallback(() => handleChange(value), [
+    handleChange,
+    value,
+  ]);
 
   const valueRenderer = useCallback(
     (option, index) => (
@@ -260,7 +293,11 @@ const MetricsControl = ({
         columns={columns}
         datasource={datasource}
         savedMetrics={savedMetrics}
-        savedMetricsOptions={getOptionsForSavedMetrics(savedMetrics, value, value?.[index])}
+        savedMetricsOptions={getOptionsForSavedMetrics(
+          savedMetrics,
+          value,
+          value?.[index],
+        )}
         datasourceType={datasourceType}
         onMoveLabel={moveLabel}
         onDropLabel={onDropLabel}
@@ -286,8 +323,14 @@ const MetricsControl = ({
       <HeaderContainer>
         <ControlHeader {...props} />
         {addNewMetricPopoverTrigger(
-          <AddIconButton disabled={isAddNewMetricDisabled()} data-test="add-metric-button">
-            <Icons.PlusLarge iconSize="s" iconColor={theme.colors.grayscale.light5} />
+          <AddIconButton
+            disabled={isAddNewMetricDisabled()}
+            data-test="add-metric-button"
+          >
+            <Icons.PlusLarge
+              iconSize="s"
+              iconColor={theme.colors.grayscale.light5}
+            />
           </AddIconButton>,
         )}
       </HeaderContainer>

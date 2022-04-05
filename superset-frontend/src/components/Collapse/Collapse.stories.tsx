@@ -30,7 +30,9 @@ export const InteractiveCollapse = (args: CollapseProps) => {
   return (
     <Collapse
       defaultActiveKey={['1']}
-      style={args.light ? { background: theme.colors.grayscale.light2 } : undefined}
+      style={
+        args.light ? { background: theme.colors.grayscale.light2 } : undefined
+      }
       {...args}
     >
       <Collapse.Panel header="Header 1" key="1">

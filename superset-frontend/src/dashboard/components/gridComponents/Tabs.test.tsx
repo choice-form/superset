@@ -32,7 +32,9 @@ jest.mock('src/dashboard/containers/DashboardComponent', () =>
   jest.fn(props => (
     <button
       type="button"
-      onClick={() => props.onDropOnTab({ destination: { id: 'TAB-YT6eNksV-' } })}
+      onClick={() =>
+        props.onDropOnTab({ destination: { id: 'TAB-YT6eNksV-' } })
+      }
       data-test="DashboardComponent"
     >
       DashboardComponent
@@ -42,7 +44,11 @@ jest.mock('src/dashboard/containers/DashboardComponent', () =>
 
 jest.mock('src/dashboard/components/DeleteComponentButton', () =>
   jest.fn(props => (
-    <button type="button" data-test="DeleteComponentButton" onClick={props.onDelete}>
+    <button
+      type="button"
+      data-test="DeleteComponentButton"
+      onClick={props.onDelete}
+    >
       DeleteComponentButton
     </button>
   )),
@@ -132,8 +138,12 @@ test('Should render editMode:false', () => {
   expect(DragDroppable).toBeCalledTimes(1);
   expect(DashboardComponent).toBeCalledTimes(4);
   expect(DeleteComponentButton).not.toBeCalled();
-  expect(screen.queryByRole('button', { name: 'remove' })).not.toBeInTheDocument();
-  expect(screen.queryByRole('button', { name: 'Add tab' })).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole('button', { name: 'remove' }),
+  ).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole('button', { name: 'Add tab' }),
+  ).not.toBeInTheDocument();
 });
 
 test('Update component props', () => {

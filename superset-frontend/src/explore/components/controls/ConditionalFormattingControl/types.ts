@@ -51,7 +51,9 @@ export type ConditionalFormattingConfig = {
   colorScheme?: string;
 };
 
-export type ConditionalFormattingControlProps = ControlComponentProps<ConditionalFormattingConfig[]> & {
+export type ConditionalFormattingControlProps = ControlComponentProps<
+  ConditionalFormattingConfig[]
+> & {
   columnOptions: { label: string; value: string }[];
   verboseMap: Record<string, string>;
   label: string;

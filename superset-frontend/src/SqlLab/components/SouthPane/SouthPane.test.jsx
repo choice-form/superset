@@ -76,7 +76,8 @@ const mockStore = configureStore(middlewares);
 const store = mockStore(initialState);
 
 describe('SouthPane', () => {
-  const getWrapper = () => shallow(<SouthPaneContainer store={store} {...mockedProps} />).dive();
+  const getWrapper = () =>
+    shallow(<SouthPaneContainer store={store} {...mockedProps} />).dive();
 
   let wrapper;
 
@@ -89,6 +90,8 @@ describe('SouthPane', () => {
   it('should pass latest query down to ResultSet component', () => {
     wrapper = getWrapper().dive();
     expect(wrapper.find(ResultSet)).toExist();
-    expect(wrapper.find(ResultSet).props().query.id).toEqual(mockedProps.latestQueryId);
+    expect(wrapper.find(ResultSet).props().query.id).toEqual(
+      mockedProps.latestQueryId,
+    );
   });
 });

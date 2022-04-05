@@ -26,7 +26,9 @@ export type UrlParamType = 'reserved' | 'regular' | 'all';
 /**
  * Returns the url params that are used to customize queries
  */
-export default function extractUrlParams(urlParamType: UrlParamType): JsonObject {
+export default function extractUrlParams(
+  urlParamType: UrlParamType,
+): JsonObject {
   const queryParams = querystring.parse(window.location.search);
   return Object.entries(queryParams).reduce((acc, [key, value]) => {
     if (

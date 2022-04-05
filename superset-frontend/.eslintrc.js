@@ -17,7 +17,12 @@
  * under the License.
  */
 module.exports = {
-  extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:react-hooks/recommended'],
+  extends: [
+    'airbnb',
+    'prettier',
+    'prettier/react',
+    'plugin:react-hooks/recommended',
+  ],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
@@ -101,7 +106,8 @@ module.exports = {
             paths: [
               {
                 name: 'antd',
-                message: 'Please import Ant components from the index of common/components',
+                message:
+                  'Please import Ant components from the index of common/components',
               },
             ],
           },
@@ -144,11 +150,20 @@ module.exports = {
       rules: {
         // this is to keep eslint from complaining about storybook addons,
         // since they are included as dev dependencies rather than direct dependencies.
-        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+        'import/no-extraneous-dependencies': [
+          'error',
+          { devDependencies: true },
+        ],
       },
     },
     {
-      files: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'src/**/*.test.js', 'src/**/*.test.jsx', 'src/**/fixtures.*'],
+      files: [
+        'src/**/*.test.ts',
+        'src/**/*.test.tsx',
+        'src/**/*.test.js',
+        'src/**/*.test.jsx',
+        'src/**/fixtures.*',
+      ],
       plugins: ['jest', 'jest-dom', 'no-only-tests', 'testing-library'],
       env: {
         'jest/globals': true,
@@ -158,9 +173,16 @@ module.exports = {
           version: 'detect',
         },
       },
-      extends: ['plugin:jest/recommended', 'plugin:jest-dom/recommended', 'plugin:testing-library/react'],
+      extends: [
+        'plugin:jest/recommended',
+        'plugin:jest-dom/recommended',
+        'plugin:testing-library/react',
+      ],
       rules: {
-        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+        'import/no-extraneous-dependencies': [
+          'error',
+          { devDependencies: true },
+        ],
         'jest/consistent-test-it': 'error',
         'no-only-tests/no-only-tests': 'error',
         '@typescript-eslint/no-non-null-assertion': 0,
@@ -194,7 +216,8 @@ module.exports = {
         paths: [
           {
             name: 'antd',
-            message: 'Please import Ant components from the index of common/components',
+            message:
+              'Please import Ant components from the index of common/components',
           },
         ],
       },

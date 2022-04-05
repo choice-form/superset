@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 from superset import app, talisman
-from superset.typing_local import FlaskResponse
+from superset.typing import FlaskResponse
 
 
 @talisman(force_https=False)

@@ -114,7 +114,12 @@ const mountHeader = (type: String) => {
   if (type === 'text') {
     header = 'Text header';
   } else if (type === 'control') {
-    header = <ControlHeader label="Control header" warning="Example of warning messsage" />;
+    header = (
+      <ControlHeader
+        label="Control header"
+        warning="Example of warning messsage"
+      />
+    );
   }
   return header;
 };
@@ -178,12 +183,17 @@ export const AtEveryCorner = () => (
           position: 'absolute',
         }}
       >
-        <Select ariaLabel={`gallery-${position.id}`} options={options} labelInValue />
+        <Select
+          ariaLabel={`gallery-${position.id}`}
+          options={options}
+          labelInValue
+        />
       </div>
     ))}
     <p style={{ position: 'absolute', top: '40%', left: '33%', width: 500 }}>
-      The objective of this panel is to show how the Select behaves when in touch with the viewport extremities. In
-      particular, how the drop-down is displayed and if the tooltips of truncated items are correctly positioned.
+      The objective of this panel is to show how the Select behaves when in
+      touch with the viewport extremities. In particular, how the drop-down is
+      displayed and if the tooltips of truncated items are correctly positioned.
     </p>
   </>
 );
@@ -232,8 +242,8 @@ export const PageScroll = () => (
         width: 500,
       }}
     >
-      The objective of this panel is to show how the Select behaves when there's a scroll on the page. In particular,
-      how the drop-down is displayed.
+      The objective of this panel is to show how the Select behaves when there's
+      a scroll on the page. In particular, how the drop-down is displayed.
     </p>
   </div>
 );
@@ -352,13 +362,18 @@ export const AsyncSelect = ({
   };
 
   const fetchUserListPage = useCallback(
-    (search: string, page: number, pageSize: number): Promise<OptionsTypePage> => {
+    (
+      search: string,
+      page: number,
+      pageSize: number,
+    ): Promise<OptionsTypePage> => {
       const username = search.trim().toLowerCase();
       return new Promise(resolve => {
         let results = getResults(username);
         const totalCount = results.length;
         const start = page * pageSize;
-        const deleteCount = start + pageSize < totalCount ? pageSize : totalCount - start;
+        const deleteCount =
+          start + pageSize < totalCount ? pageSize : totalCount - start;
         results = results.splice(start, deleteCount);
         setRequestLog(start + results.length, totalCount, username);
         setTimeout(() => {
@@ -386,7 +401,11 @@ export const AsyncSelect = ({
           fetchOnlyOnSearch={fetchOnlyOnSearch}
           options={withError ? fetchUserListError : fetchUserListPage}
           placeholder={fetchOnlyOnSearch ? 'Type anything' : 'Select...'}
-          value={withInitialValue ? { label: 'Valentina', value: 'Valentina' } : undefined}
+          value={
+            withInitialValue
+              ? { label: 'Valentina', value: 'Valentina' }
+              : undefined
+          }
         />
       </div>
       <div

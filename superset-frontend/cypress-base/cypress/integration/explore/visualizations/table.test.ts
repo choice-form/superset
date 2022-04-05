@@ -17,7 +17,13 @@
  * under the License.
  */
 import { interceptChart } from 'cypress/utils';
-import { FORM_DATA_DEFAULTS, NUM_METRIC, MAX_DS, MAX_STATE, SIMPLE_FILTER } from './shared.helper';
+import {
+  FORM_DATA_DEFAULTS,
+  NUM_METRIC,
+  MAX_DS,
+  MAX_STATE,
+  SIMPLE_FILTER,
+} from './shared.helper';
 
 // Table
 describe('Visualization > Table', () => {
@@ -78,7 +84,9 @@ describe('Visualization > Table', () => {
     // time column and MAX(ds) metric column both use UTC time
     cy.get('.chart-container td:nth-child(1)').contains('2008-01-01 00:00');
     cy.get('.chart-container td:nth-child(3)').contains('2008-01-01 00:00');
-    cy.get('.chart-container td').contains('2008-01-01 08:00').should('not.exist');
+    cy.get('.chart-container td')
+      .contains('2008-01-01 08:00')
+      .should('not.exist');
     // time column should not use time granularity when timestamp format is set
     cy.get('.chart-container td').contains('2008 Q1').should('not.exist');
     // other num numeric metric column should stay as string
@@ -111,7 +119,9 @@ describe('Visualization > Table', () => {
       cy.verifySliceContainer('table');
       const records = response?.body.result[0].data;
       // should sort by first metric when no sort by metric is set
-      expect(records[0][NUM_METRIC.label]).greaterThan(records[1][NUM_METRIC.label]);
+      expect(records[0][NUM_METRIC.label]).greaterThan(
+        records[1][NUM_METRIC.label],
+      );
     });
 
     // should handle frontend sorting correctly

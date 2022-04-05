@@ -25,7 +25,9 @@ let isFeatureEnabledMock: jest.MockInstance<boolean, [feature: FeatureFlag]>;
 describe('nativeFilterGate', () => {
   describe('with all feature flags disabled', () => {
     beforeAll(() => {
-      isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => false);
+      isFeatureEnabledMock = jest
+        .spyOn(featureFlags, 'isFeatureEnabled')
+        .mockImplementation(() => false);
     });
 
     afterAll(() => {
@@ -42,7 +44,9 @@ describe('nativeFilterGate', () => {
     });
 
     it('should return false for native filter chart with cross filter support', () => {
-      expect(nativeFilterGate([Behavior.NATIVE_FILTER, Behavior.INTERACTIVE_CHART])).toEqual(false);
+      expect(
+        nativeFilterGate([Behavior.NATIVE_FILTER, Behavior.INTERACTIVE_CHART]),
+      ).toEqual(false);
     });
 
     it('should return false for native filter behavior', () => {
@@ -54,7 +58,10 @@ describe('nativeFilterGate', () => {
     beforeAll(() => {
       isFeatureEnabledMock = jest
         .spyOn(featureFlags, 'isFeatureEnabled')
-        .mockImplementation((featureFlag: FeatureFlag) => featureFlag === FeatureFlag.DASHBOARD_NATIVE_FILTERS);
+        .mockImplementation(
+          (featureFlag: FeatureFlag) =>
+            featureFlag === FeatureFlag.DASHBOARD_NATIVE_FILTERS,
+        );
     });
 
     afterAll(() => {
@@ -71,7 +78,9 @@ describe('nativeFilterGate', () => {
     });
 
     it('should return false for native filter chart with cross filter support', () => {
-      expect(nativeFilterGate([Behavior.NATIVE_FILTER, Behavior.INTERACTIVE_CHART])).toEqual(false);
+      expect(
+        nativeFilterGate([Behavior.NATIVE_FILTER, Behavior.INTERACTIVE_CHART]),
+      ).toEqual(false);
     });
 
     it('should return false for native filter behavior', () => {
@@ -84,7 +93,10 @@ describe('nativeFilterGate', () => {
       isFeatureEnabledMock = jest
         .spyOn(featureFlags, 'isFeatureEnabled')
         .mockImplementation((featureFlag: FeatureFlag) =>
-          [FeatureFlag.DASHBOARD_CROSS_FILTERS, FeatureFlag.DASHBOARD_FILTERS_EXPERIMENTAL].includes(featureFlag),
+          [
+            FeatureFlag.DASHBOARD_CROSS_FILTERS,
+            FeatureFlag.DASHBOARD_FILTERS_EXPERIMENTAL,
+          ].includes(featureFlag),
         );
     });
 
@@ -102,7 +114,9 @@ describe('nativeFilterGate', () => {
     });
 
     it('should return true for native filter chart with cross filter support', () => {
-      expect(nativeFilterGate([Behavior.NATIVE_FILTER, Behavior.INTERACTIVE_CHART])).toEqual(true);
+      expect(
+        nativeFilterGate([Behavior.NATIVE_FILTER, Behavior.INTERACTIVE_CHART]),
+      ).toEqual(true);
     });
 
     it('should return false for native filter behavior', () => {

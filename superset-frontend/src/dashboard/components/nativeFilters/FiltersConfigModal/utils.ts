@@ -33,7 +33,11 @@ export const validateForm = async (
   removedFilters: Record<string, FilterRemoval>,
   setCurrentFilterId: Function,
 ) => {
-  const addValidationError = (filterId: string, field: string, error: string) => {
+  const addValidationError = (
+    filterId: string,
+    field: string,
+    error: string,
+  ) => {
     const fieldError = {
       name: ['filters', filterId, field],
       errors: [error],
@@ -55,9 +59,16 @@ export const validateForm = async (
       }
     }
 
-    const validateCycles = (filterId: string, trace: string[] = []): boolean => {
+    const validateCycles = (
+      filterId: string,
+      trace: string[] = [],
+    ): boolean => {
       if (trace.includes(filterId)) {
-        addValidationError(filterId, 'parentFilter', t('Cannot create cyclic hierarchy'));
+        addValidationError(
+          filterId,
+          'parentFilter',
+          t('Cannot create cyclic hierarchy'),
+        );
         return false;
       }
       const parentId = formValues.filters?.[filterId]
@@ -69,7 +80,9 @@ export const validateForm = async (
       return true;
     };
 
-    const invalid = filterIds.filter(id => !removedFilters[id]).some(filterId => !validateCycles(filterId));
+    const invalid = filterIds
+      .filter(id => !removedFilters[id])
+      .some(filterId => !validateCycles(filterId));
 
     if (invalid) {
       return null;
@@ -87,7 +100,9 @@ export const validateForm = async (
     // filter id is the second item in the field name
     if (!errorFields.some(field => field.name[1] === currentFilterId)) {
       // switch to the first tab that had a validation error
-      const filterError = errorFields.find(field => field.name[0] === 'filters');
+      const filterError = errorFields.find(
+        field => field.name[0] === 'filters',
+      );
       if (filterError) {
         const filterId = filterError.name[1];
         setCurrentFilterId(filterId);
@@ -124,13 +139,17 @@ export const createHandleSave = (
         time_range: formInputs.time_range,
         controlValues: formInputs.controlValues ?? {},
         granularity_sqla: formInputs.granularity_sqla,
-        requiredFirst: Object.values(formInputs.requiredFirst ?? {}).find(rf => rf),
+        requiredFirst: Object.values(formInputs.requiredFirst ?? {}).find(
+          rf => rf,
+        ),
         name: formInputs.name,
         filterType: formInputs.filterType,
         // for now there will only ever be one target
         targets: [target],
         defaultDataMask: formInputs.defaultDataMask ?? getInitialDataMask(),
-        cascadeParentIds: formInputs.parentFilter ? [formInputs.parentFilter.value] : [],
+        cascadeParentIds: formInputs.parentFilter
+          ? [formInputs.parentFilter.value]
+          : [],
         scope: formInputs.scope,
         sortMetric: formInputs.sortMetric,
         type: formInputs.type,
@@ -143,7 +162,9 @@ export const createHandleSave = (
 export const createHandleTabEdit = (
   setRemovedFilters: (
     value:
-      | ((prevState: Record<string, FilterRemoval>) => Record<string, FilterRemoval>)
+      | ((
+          prevState: Record<string, FilterRemoval>,
+        ) => Record<string, FilterRemoval>)
       | Record<string, FilterRemoval>,
   ) => void,
   setSaveAlertVisible: Function,
@@ -161,7 +182,10 @@ export const createHandleTabEdit = (
 
   if (action === 'remove') {
     // first set up the timer to completely remove it
-    const timerId = window.setTimeout(() => completeFilterRemoval(filterId), REMOVAL_DELAY_SECS * 1000);
+    const timerId = window.setTimeout(
+      () => completeFilterRemoval(filterId),
+      REMOVAL_DELAY_SECS * 1000,
+    );
     // mark the filter state as "removal in progress"
     setRemovedFilters(removedFilters => ({
       ...removedFilters,
@@ -174,6 +198,8 @@ export const createHandleTabEdit = (
 };
 
 export const NATIVE_FILTER_PREFIX = 'NATIVE_FILTER-';
-export const generateFilterId = () => `${NATIVE_FILTER_PREFIX}${shortid.generate()}`;
+export const generateFilterId = () =>
+  `${NATIVE_FILTER_PREFIX}${shortid.generate()}`;
 
-export const getFilterIds = (config: FilterConfiguration) => config.map(filter => filter.id);
+export const getFilterIds = (config: FilterConfiguration) =>
+  config.map(filter => filter.id);

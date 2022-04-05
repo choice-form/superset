@@ -20,7 +20,12 @@ import rison from 'rison';
 import { useState, useEffect, useCallback } from 'react';
 import { makeApi, SupersetClient, t, JsonObject } from 'src/core';
 
-import { createErrorHandler, getAlreadyExists, getPasswordsNeeded, hasTerminalValidation } from 'src/views/CRUD/utils';
+import {
+  createErrorHandler,
+  getAlreadyExists,
+  getPasswordsNeeded,
+  hasTerminalValidation,
+} from 'src/views/CRUD/utils';
 import { FetchDataConfig } from 'src/components/ListView';
 import { FilterValue } from 'src/components/ListView/types';
 import Chart, { Slice } from 'src/types/Chart';
@@ -39,7 +44,9 @@ interface ListViewResourceState<D extends object = any> {
   lastFetched?: string;
 }
 
-const parsedErrorMessage = (errorMessage: Record<string, string[] | string> | string) => {
+const parsedErrorMessage = (
+  errorMessage: Record<string, string[] | string> | string,
+) => {
   if (typeof errorMessage === 'string') {
     return errorMessage;
   }
@@ -92,7 +99,13 @@ export function useListViewResource<D extends object = any>(
         });
       },
       createErrorHandler(errMsg =>
-        handleErrorMsg(t('An error occurred while fetching %s info: %s', resourceLabel, errMsg)),
+        handleErrorMsg(
+          t(
+            'An error occurred while fetching %s info: %s',
+            resourceLabel,
+            errMsg,
+          ),
+        ),
       ),
     );
   }, []);
@@ -106,7 +119,12 @@ export function useListViewResource<D extends object = any>(
   }
 
   const fetchData = useCallback(
-    ({ pageIndex, pageSize, sortBy, filters: filterValues }: FetchDataConfig) => {
+    ({
+      pageIndex,
+      pageSize,
+      sortBy,
+      filters: filterValues,
+    }: FetchDataConfig) => {
       // set loading state, cache the last config for refreshing data.
       updateState({
         lastFetchDataConfig: {
@@ -118,11 +136,16 @@ export function useListViewResource<D extends object = any>(
         loading: true,
       });
 
-      const filterExps = (baseFilters || []).concat(filterValues).map(({ id, operator: opr, value }) => ({
-        col: id,
-        opr,
-        value: value && typeof value === 'object' && 'value' in value ? value.value : value,
-      }));
+      const filterExps = (baseFilters || [])
+        .concat(filterValues)
+        .map(({ id, operator: opr, value }) => ({
+          col: id,
+          opr,
+          value:
+            value && typeof value === 'object' && 'value' in value
+              ? value.value
+              : value,
+        }));
 
       const queryParams = rison.encode({
         order_column: sortBy[0].id,
@@ -144,7 +167,13 @@ export function useListViewResource<D extends object = any>(
             });
           },
           createErrorHandler(errMsg =>
-            handleErrorMsg(t('An error occurred while fetching %ss: %s', resourceLabel, errMsg)),
+            handleErrorMsg(
+              t(
+                'An error occurred while fetching %ss: %s',
+                resourceLabel,
+                errMsg,
+              ),
+            ),
           ),
         )
         .finally(() => {
@@ -222,7 +251,13 @@ export function useSingleViewResource<D extends object = any>(
             return json.result;
           },
           createErrorHandler((errMsg: Record<string, string[] | string>) => {
-            handleErrorMsg(t('An error occurred while fetching %ss: %s', resourceLabel, parsedErrorMessage(errMsg)));
+            handleErrorMsg(
+              t(
+                'An error occurred while fetching %ss: %s',
+                resourceLabel,
+                parsedErrorMessage(errMsg),
+              ),
+            );
 
             updateState({
               error: errMsg,
@@ -259,7 +294,13 @@ export function useSingleViewResource<D extends object = any>(
           createErrorHandler((errMsg: Record<string, string[] | string>) => {
             // we did not want toasts for db-connection-ui but did not want to disable it everywhere
             if (!hideToast) {
-              handleErrorMsg(t('An error occurred while creating %ss: %s', resourceLabel, parsedErrorMessage(errMsg)));
+              handleErrorMsg(
+                t(
+                  'An error occurred while creating %ss: %s',
+                  resourceLabel,
+                  parsedErrorMessage(errMsg),
+                ),
+              );
             }
 
             updateState({
@@ -296,7 +337,13 @@ export function useSingleViewResource<D extends object = any>(
           },
           createErrorHandler(errMsg => {
             if (!hideToast) {
-              handleErrorMsg(t('An error occurred while fetching %ss: %s', resourceLabel, JSON.stringify(errMsg)));
+              handleErrorMsg(
+                t(
+                  'An error occurred while fetching %ss: %s',
+                  resourceLabel,
+                  JSON.stringify(errMsg),
+                ),
+              );
             }
 
             updateState({
@@ -352,7 +399,11 @@ export function useImportResource(
   }
 
   const importResource = useCallback(
-    (bundle: File, databasePasswords: Record<string, string> = {}, overwrite = false) => {
+    (
+      bundle: File,
+      databasePasswords: Record<string, string> = {},
+      overwrite = false,
+    ) => {
       // Set loading state
       updateState({
         loading: true,
@@ -384,7 +435,11 @@ export function useImportResource(
           getClientErrorObject(response).then(error => {
             if (!error.errors) {
               handleErrorMsg(
-                t('An error occurred while importing %s: %s', resourceLabel, error.message || error.error),
+                t(
+                  'An error occurred while importing %s: %s',
+                  resourceLabel,
+                  error.message || error.error,
+                ),
               );
               return false;
             }
@@ -462,7 +517,11 @@ export function useFavoriteStatus(
         }, {});
         updateFavoriteStatus(update);
       },
-      createErrorHandler(errMsg => handleErrorMsg(t('There was an error fetching the favorite status: %s', errMsg))),
+      createErrorHandler(errMsg =>
+        handleErrorMsg(
+          t('There was an error fetching the favorite status: %s', errMsg),
+        ),
+      ),
     );
   }, [ids, type, handleErrorMsg]);
 
@@ -479,7 +538,11 @@ export function useFavoriteStatus(
             [id]: (json as { count: number })?.count > 0,
           });
         },
-        createErrorHandler(errMsg => handleErrorMsg(t('There was an error saving the favorite status: %s', errMsg))),
+        createErrorHandler(errMsg =>
+          handleErrorMsg(
+            t('There was an error saving the favorite status: %s', errMsg),
+          ),
+        ),
       );
     },
     [type],
@@ -488,8 +551,14 @@ export function useFavoriteStatus(
   return [saveFaveStar, favoriteStatus] as const;
 }
 
-export const useChartEditModal = (setCharts: (charts: Array<Chart>) => void, charts: Array<Chart>) => {
-  const [sliceCurrentlyEditing, setSliceCurrentlyEditing] = useState<Slice | null>(null);
+export const useChartEditModal = (
+  setCharts: (charts: Array<Chart>) => void,
+  charts: Array<Chart>,
+) => {
+  const [
+    sliceCurrentlyEditing,
+    setSliceCurrentlyEditing,
+  ] = useState<Slice | null>(null);
 
   function openChartEditModal(chart: Chart) {
     setSliceCurrentlyEditing({
@@ -508,7 +577,9 @@ export const useChartEditModal = (setCharts: (charts: Array<Chart>) => void, cha
 
   function handleChartUpdated(edits: Chart) {
     // update the chart in our state with the edited info
-    const newCharts = charts.map((chart: Chart) => (chart.id === edits.id ? { ...chart, ...edits } : chart));
+    const newCharts = charts.map((chart: Chart) =>
+      chart.id === edits.id ? { ...chart, ...edits } : chart,
+    );
     setCharts(newCharts);
   }
 
@@ -537,7 +608,8 @@ export const copyQueryLink = (
 export const getDatabaseImages = () => SupersetText.DB_IMAGES;
 
 export const getConnectionAlert = () => SupersetText.DB_CONNECTION_ALERTS;
-export const getDatabaseDocumentationLinks = () => SupersetText.DB_CONNECTION_DOC_LINKS;
+export const getDatabaseDocumentationLinks = () =>
+  SupersetText.DB_CONNECTION_DOC_LINKS;
 
 export const testDatabaseConnection = (
   connection: DatabaseObject,
@@ -573,7 +645,9 @@ export function useAvailableDatabases() {
 }
 
 export function useDatabaseValidation() {
-  const [validationErrors, setValidationErrors] = useState<JsonObject | null>(null);
+  const [validationErrors, setValidationErrors] = useState<JsonObject | null>(
+    null,
+  );
   const getValidation = useCallback(
     (database: Partial<DatabaseObject> | null, onCreate = false) => {
       SupersetClient.post({

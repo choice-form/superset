@@ -20,7 +20,10 @@ import React from 'react';
 import { useDrag } from 'react-dnd';
 import { Metric, styled } from 'src/core';
 import { DndItemType } from 'src/explore/components/DndItemType';
-import { StyledColumnOption, StyledMetricOption } from 'src/explore/components/optionRenderers';
+import {
+  StyledColumnOption,
+  StyledMetricOption,
+} from 'src/explore/components/optionRenderers';
 import { ColumnMeta } from 'src/chartConntrols';
 import { DatasourcePanelDndItem } from '../types';
 
@@ -49,7 +52,9 @@ type MetricOption = Omit<Metric, 'id'> & {
   label?: string;
 };
 
-export default function DatasourcePanelDragOption(props: DatasourcePanelDragOptionProps) {
+export default function DatasourcePanelDragOption(
+  props: DatasourcePanelDragOptionProps,
+) {
   const { labelRef, showTooltip, type, value } = props;
   const [{ isDragging }, drag] = useDrag({
     item: {

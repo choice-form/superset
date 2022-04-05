@@ -28,7 +28,7 @@ from superset import is_feature_enabled, security_manager
 from superset.constants import NULL_STRING
 from superset.models.helpers import AuditMixinNullable, ImportExportMixin, QueryResult
 from superset.models.slice import Slice
-from superset.typing_local import FilterValue, FilterValues, QueryObjectDict
+from superset.typing import FilterValue, FilterValues, QueryObjectDict
 from superset.utils import core as utils
 from superset.utils.core import GenericDataType
 

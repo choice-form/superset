@@ -42,7 +42,13 @@ import { setUnsavedChanges } from 'src/dashboard/actions/dashboardState';
 import * as dashboardFilters from 'src/dashboard/actions/dashboardFilters';
 import { ADD_TOAST } from 'src/components/MessageToasts/actions';
 
-import { DASHBOARD_GRID_TYPE, ROW_TYPE, CHART_TYPE, TABS_TYPE, TAB_TYPE } from 'src/dashboard/util/componentTypes';
+import {
+  DASHBOARD_GRID_TYPE,
+  ROW_TYPE,
+  CHART_TYPE,
+  TABS_TYPE,
+  TAB_TYPE,
+} from 'src/dashboard/util/componentTypes';
 
 import {
   DASHBOARD_HEADER_ID,
@@ -444,7 +450,12 @@ describe('dashboardLayout actions', () => {
               type: TABS_TYPE,
             },
             'TABS-ROW_TABS': {
-              children: ['TAB-dKIDBT03bQ', 'TAB-PtxY5bbTe', 'TAB-Wc2P-yGMz', 'TAB-U-xe_si7i'],
+              children: [
+                'TAB-dKIDBT03bQ',
+                'TAB-PtxY5bbTe',
+                'TAB-Wc2P-yGMz',
+                'TAB-U-xe_si7i',
+              ],
               id: 'TABS-ROW_TABS',
               meta: {},
               parents: ['ROOT_ID', 'TABS-ROOT_TABS', 'TAB-X_pnCIwPN'],

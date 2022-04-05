@@ -36,7 +36,10 @@ import { DashboardLayout, RootState } from 'src/dashboard/types';
 import { setDirectPathToChild } from 'src/dashboard/actions/dashboardState';
 import { useElementOnScreen } from 'src/common/hooks/useElementOnScreen';
 import { FeatureFlag, isFeatureEnabled } from 'src/featureFlags';
-import { deleteTopLevelTabs, handleComponentDrop } from 'src/dashboard/actions/dashboardLayout';
+import {
+  deleteTopLevelTabs,
+  handleComponentDrop,
+} from 'src/dashboard/actions/dashboardLayout';
 import {
   DASHBOARD_GRID_ID,
   DASHBOARD_ROOT_ID,
@@ -133,17 +136,26 @@ const StyledDashboardContent = styled.div<{
   .dashboard-component-chart-holder {
     // transitionable traits to show filter relevance
     transition: opacity ${({ theme }) => theme.transitionTiming}s,
-      border-color ${({ theme }) => theme.transitionTiming}s, box-shadow ${({ theme }) => theme.transitionTiming}s;
+      border-color ${({ theme }) => theme.transitionTiming}s,
+      box-shadow ${({ theme }) => theme.transitionTiming}s;
     border: 0 solid transparent;
   }
 `;
 
 const DashboardBuilder: FC<DashboardBuilderProps> = () => {
   const dispatch = useDispatch();
-  const dashboardLayout = useSelector<RootState, DashboardLayout>(state => state.dashboardLayout.present);
-  const editMode = useSelector<RootState, boolean>(state => state.dashboardState.editMode);
-  const directPathToChild = useSelector<RootState, string[]>(state => state.dashboardState.directPathToChild);
-  const fullSizeChartId = useSelector<RootState, number | null>(state => state.dashboardState.fullSizeChartId);
+  const dashboardLayout = useSelector<RootState, DashboardLayout>(
+    state => state.dashboardLayout.present,
+  );
+  const editMode = useSelector<RootState, boolean>(
+    state => state.dashboardState.editMode,
+  );
+  const directPathToChild = useSelector<RootState, string[]>(
+    state => state.dashboardState.directPathToChild,
+  );
+  const fullSizeChartId = useSelector<RootState, number | null>(
+    state => state.dashboardState.fullSizeChartId,
+  );
 
   const handleChangeTab = useCallback(
     ({ pathToTabIndex }: { pathToTabIndex: string[] }) => {
@@ -155,30 +167,51 @@ const DashboardBuilder: FC<DashboardBuilderProps> = () => {
   const handleDeleteTopLevelTabs = useCallback(() => {
     dispatch(deleteTopLevelTabs());
 
-    const firstTab = getDirectPathToTabIndex(getRootLevelTabsComponent(dashboardLayout), 0);
+    const firstTab = getDirectPathToTabIndex(
+      getRootLevelTabsComponent(dashboardLayout),
+      0,
+    );
     dispatch(setDirectPathToChild(firstTab));
   }, [dashboardLayout, dispatch]);
 
-  const handleDrop = useCallback(dropResult => dispatch(handleComponentDrop(dropResult)), [dispatch]);
+  const handleDrop = useCallback(
+    dropResult => dispatch(handleComponentDrop(dropResult)),
+    [dispatch],
+  );
 
   const dashboardRoot = dashboardLayout[DASHBOARD_ROOT_ID];
   const rootChildId = dashboardRoot.children[0];
-  const topLevelTabs = rootChildId !== DASHBOARD_GRID_ID ? dashboardLayout[rootChildId] : undefined;
+  const topLevelTabs =
+    rootChildId !== DASHBOARD_GRID_ID
+      ? dashboardLayout[rootChildId]
+      : undefined;
   const StandaloneMode = getUrlParam(URL_PARAMS.standalone);
   const isReport = StandaloneMode === DashboardStandaloneMode.REPORT;
-  const hideDashboardHeader = StandaloneMode === DashboardStandaloneMode.HIDE_NAV_AND_TITLE || isReport;
+  const hideDashboardHeader =
+    StandaloneMode === DashboardStandaloneMode.HIDE_NAV_AND_TITLE || isReport;
 
-  const barTopOffset = (hideDashboardHeader ? 0 : HEADER_HEIGHT) + (topLevelTabs ? TABS_HEIGHT : 0);
+  const barTopOffset =
+    (hideDashboardHeader ? 0 : HEADER_HEIGHT) +
+    (topLevelTabs ? TABS_HEIGHT : 0);
 
-  const { showDashboard, dashboardFiltersOpen, toggleDashboardFiltersOpen, nativeFiltersEnabled } = useNativeFilters();
+  const {
+    showDashboard,
+    dashboardFiltersOpen,
+    toggleDashboardFiltersOpen,
+    nativeFiltersEnabled,
+  } = useNativeFilters();
 
-  const filterBarWidth = dashboardFiltersOpen ? OPEN_FILTER_BAR_WIDTH : CLOSED_FILTER_BAR_WIDTH;
+  const filterBarWidth = dashboardFiltersOpen
+    ? OPEN_FILTER_BAR_WIDTH
+    : CLOSED_FILTER_BAR_WIDTH;
 
   const [containerRef, isSticky] = useElementOnScreen<HTMLDivElement>({
     threshold: [1],
   });
 
-  const filterSetEnabled = isFeatureEnabled(FeatureFlag.DASHBOARD_NATIVE_FILTERS_SET);
+  const filterSetEnabled = isFeatureEnabled(
+    FeatureFlag.DASHBOARD_NATIVE_FILTERS_SET,
+  );
 
   const offset =
     FILTER_BAR_HEADER_HEIGHT +
@@ -226,7 +259,14 @@ const DashboardBuilder: FC<DashboardBuilderProps> = () => {
         )}
       </div>
     ),
-    [editMode, handleChangeTab, handleDeleteTopLevelTabs, hideDashboardHeader, isReport, topLevelTabs],
+    [
+      editMode,
+      handleChangeTab,
+      handleDeleteTopLevelTabs,
+      hideDashboardHeader,
+      isReport,
+      topLevelTabs,
+    ],
   );
 
   return (
@@ -269,16 +309,24 @@ const DashboardBuilder: FC<DashboardBuilderProps> = () => {
         <Global
           styles={css`
             // @z-index-above-dashboard-header (100) + 1 = 101
-            ${fullSizeChartId && `div > .filterStatusPopover.ant-popover{z-index: 101}`}
+            ${fullSizeChartId &&
+            `div > .filterStatusPopover.ant-popover{z-index: 101}`}
           `}
         />
-        <div data-test="dashboard-content" className={cx('dashboard', editMode && 'dashboard--editing')}>
+        <div
+          data-test="dashboard-content"
+          className={cx('dashboard', editMode && 'dashboard--editing')}
+        >
           <StyledDashboardContent
             className="dashboard-content"
             dashboardFiltersOpen={dashboardFiltersOpen}
             editMode={editMode}
           >
-            {showDashboard ? <DashboardContainer topLevelTabs={topLevelTabs} /> : <Loading />}
+            {showDashboard ? (
+              <DashboardContainer topLevelTabs={topLevelTabs} />
+            ) : (
+              <Loading />
+            )}
             {editMode && <BuilderComponentPane topOffset={barTopOffset} />}
           </StyledDashboardContent>
         </div>

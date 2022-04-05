@@ -52,7 +52,10 @@ const Refresh = styled(Icons.Refresh)`
   cursor: pointer;
 `;
 
-export const LastUpdated: FunctionComponent<LastUpdatedProps> = ({ updatedAt, update }) => {
+export const LastUpdated: FunctionComponent<LastUpdatedProps> = ({
+  updatedAt,
+  update,
+}) => {
   const [timeSince, setTimeSince] = useState<Moment>(moment(updatedAt));
 
   useEffect(() => {

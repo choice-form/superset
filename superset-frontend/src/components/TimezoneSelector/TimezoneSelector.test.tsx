@@ -32,25 +32,42 @@ describe('TimezoneSelector', () => {
   });
   it('renders a TimezoneSelector with a default if undefined', () => {
     jest.spyOn(moment.tz, 'guess').mockReturnValue('America/New_York');
-    render(<TimezoneSelector onTimezoneChange={onTimezoneChange} timezone={timezone} />);
+    render(
+      <TimezoneSelector
+        onTimezoneChange={onTimezoneChange}
+        timezone={timezone}
+      />,
+    );
     expect(onTimezoneChange).toHaveBeenCalledWith('America/Nassau');
   });
   it('should properly select values from the offsetsToName map', async () => {
     jest.spyOn(moment.tz, 'guess').mockReturnValue('America/New_York');
-    render(<TimezoneSelector onTimezoneChange={onTimezoneChange} timezone={timezone} />);
+    render(
+      <TimezoneSelector
+        onTimezoneChange={onTimezoneChange}
+        timezone={timezone}
+      />,
+    );
 
     const select = screen.getByRole('combobox', {
       name: 'Timezone selector',
     });
     expect(select).toBeInTheDocument();
     userEvent.click(select);
-    const selection = await screen.findByTitle('GMT -10:00 (Hawaii Standard Time)');
+    const selection = await screen.findByTitle(
+      'GMT -10:00 (Hawaii Standard Time)',
+    );
     expect(selection).toBeInTheDocument();
     userEvent.click(selection);
     expect(selection).toBeVisible();
   });
   it('renders a TimezoneSelector with the closest value if passed in', async () => {
-    render(<TimezoneSelector onTimezoneChange={onTimezoneChange} timezone="America/Los_Angeles" />);
+    render(
+      <TimezoneSelector
+        onTimezoneChange={onTimezoneChange}
+        timezone="America/Los_Angeles"
+      />,
+    );
     expect(onTimezoneChange).toHaveBeenLastCalledWith('America/Vancouver');
   });
 });

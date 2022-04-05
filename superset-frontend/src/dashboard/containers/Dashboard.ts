@@ -20,13 +20,19 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { RootState } from 'src/dashboard/types';
 import Dashboard from 'src/dashboard/components/Dashboard';
-import { addSliceToDashboard, removeSliceFromDashboard } from 'src/dashboard/actions/dashboardState';
+import {
+  addSliceToDashboard,
+  removeSliceFromDashboard,
+} from 'src/dashboard/actions/dashboardState';
 import { setDatasources } from 'src/dashboard/actions/datasources';
 
 import { triggerQuery } from 'src/chart/chartAction';
 import { logEvent } from 'src/logger/actions';
 import { getActiveFilters } from 'src/dashboard/util/activeDashboardFilters';
-import { getAllActiveFilters, getRelevantDataMask } from 'src/dashboard/util/activeAllDashboardFilters';
+import {
+  getAllActiveFilters,
+  getRelevantDataMask,
+} from 'src/dashboard/util/activeAllDashboardFilters';
 import { clearDataMaskState } from '../../dataMask/actions';
 
 function mapStateToProps(state: RootState) {

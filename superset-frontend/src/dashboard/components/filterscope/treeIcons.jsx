@@ -20,7 +20,11 @@ import React from 'react';
 import { t } from 'src/core';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
-import { CheckboxChecked, CheckboxUnchecked, CheckboxHalfChecked } from 'src/components/Checkbox/CheckboxIcons';
+import {
+  CheckboxChecked,
+  CheckboxUnchecked,
+  CheckboxHalfChecked,
+} from 'src/components/Checkbox/CheckboxIcons';
 
 const treeIcons = {
   check: <CheckboxChecked />,
@@ -28,8 +32,12 @@ const treeIcons = {
   halfCheck: <CheckboxHalfChecked />,
   expandClose: <span className="rct-icon rct-icon-expand-close" />,
   expandOpen: <span className="rct-icon rct-icon-expand-open" />,
-  expandAll: <span className="rct-icon rct-icon-expand-all">{t('Expand all')}</span>,
-  collapseAll: <span className="rct-icon rct-icon-collapse-all">{t('Collapse all')}</span>,
+  expandAll: (
+    <span className="rct-icon rct-icon-expand-all">{t('Expand all')}</span>
+  ),
+  collapseAll: (
+    <span className="rct-icon rct-icon-collapse-all">{t('Collapse all')}</span>
+  ),
   parentClose: <span className="rct-icon rct-icon-parent-close" />,
   parentOpen: <span className="rct-icon rct-icon-parent-open" />,
   leaf: <span className="rct-icon rct-icon-leaf" />,

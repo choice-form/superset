@@ -47,10 +47,13 @@ Cypress.Commands.add('visitChartByName', name => {
   });
 });
 
-Cypress.Commands.add('visitChartById', chartId => cy.visit(`${BASE_EXPLORE_URL}{"slice_id": ${chartId}}`));
+Cypress.Commands.add('visitChartById', chartId =>
+  cy.visit(`${BASE_EXPLORE_URL}{"slice_id": ${chartId}}`),
+);
 
 Cypress.Commands.add('visitChartByParams', params => {
-  const queryString = typeof params === 'string' ? params : JSON.stringify(params);
+  const queryString =
+    typeof params === 'string' ? params : JSON.stringify(params);
   const url = `${BASE_EXPLORE_URL}${queryString}`;
   return cy.visit(url);
 });
@@ -87,7 +90,8 @@ Cypress.Commands.add(
       cy.verifySliceContainer(chartSelector);
       const responseBody = response?.body;
       if (querySubstring) {
-        const query: string = responseBody.query || responseBody.result[0].query || '';
+        const query: string =
+          responseBody.query || responseBody.result[0].query || '';
         if (querySubstring instanceof RegExp) {
           expect(query).to.match(querySubstring);
         } else {

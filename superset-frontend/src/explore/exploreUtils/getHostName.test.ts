@@ -19,7 +19,15 @@
 import { getHostName } from '.';
 
 jest.mock('src/utils/hostNamesConfig', () => ({
-  availableDomains: ['domain-a', 'domain-b', 'domain-c', 'domain-d', 'domain-e', 'domain-f', 'domain-g'],
+  availableDomains: [
+    'domain-a',
+    'domain-b',
+    'domain-c',
+    'domain-d',
+    'domain-e',
+    'domain-f',
+    'domain-g',
+  ],
 }));
 
 test('Should get next diferent domain on a loop, never the first on the list', () => {

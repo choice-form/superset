@@ -49,7 +49,7 @@ const createProps = () => ({
     left_margin: 'auto',
     bottom_margin: 'auto',
     y_axis_bounds: [null, null],
-    yAxisFormat: 'SMART_NUMBER',
+    y_axis_format: 'SMART_NUMBER',
     show_perc: true,
     sort_x_axis: 'alpha_asc',
     sort_y_axis: 'alpha_asc',

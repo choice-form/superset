@@ -72,7 +72,7 @@ from superset.exceptions import (
 from superset.models.helpers import ImportExportMixin
 from superset.models.reports import ReportRecipientType
 from superset.translations.utils import get_language_pack
-from superset.typing_local import FlaskResponse
+from superset.typing import FlaskResponse
 from superset.utils import core as utils
 
 from .utils import bootstrap_user_data

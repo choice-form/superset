@@ -28,7 +28,12 @@ function findNonTabChildChartIds({ id, layout }) {
       if (node.meta && node.meta.chartId) {
         chartIds.push(node.meta.chartId);
       }
-    } else if (node && node.type !== TABS_TYPE && node.children && node.children.length) {
+    } else if (
+      node &&
+      node.type !== TABS_TYPE &&
+      node.children &&
+      node.children.length
+    ) {
       node.children.forEach(childId => {
         const child = layout[childId];
         if (child) {

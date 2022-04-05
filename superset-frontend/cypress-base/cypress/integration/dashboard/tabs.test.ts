@@ -17,7 +17,11 @@
  * under the License.
  */
 import { parsePostForm } from 'cypress/utils';
-import { TABBED_DASHBOARD, waitForChartLoad, getChartAliasBySpec } from './dashboard.helper';
+import {
+  TABBED_DASHBOARD,
+  waitForChartLoad,
+  getChartAliasBySpec,
+} from './dashboard.helper';
 
 const TREEMAP = { name: 'Treemap', viz: 'treemap' };
 const FILTER_BOX = { name: 'Region Filter', viz: 'filter_box' };
@@ -49,18 +53,30 @@ describe('Dashboard tabs', () => {
       .find('[data-test="nav-list"] .ant-tabs-nav-list > .ant-tabs-tab')
       .as('top-level-tabs');
 
-    cy.get('@top-level-tabs').first().click().should('have.class', 'ant-tabs-tab-active');
-    cy.get('@top-level-tabs').last().should('not.have.class', 'ant-tabs-tab-active');
+    cy.get('@top-level-tabs')
+      .first()
+      .click()
+      .should('have.class', 'ant-tabs-tab-active');
+    cy.get('@top-level-tabs')
+      .last()
+      .should('not.have.class', 'ant-tabs-tab-active');
 
-    cy.get('@top-level-tabs').last().click().should('have.class', 'ant-tabs-tab-active');
-    cy.get('@top-level-tabs').first().should('not.have.class', 'ant-tabs-tab-active');
+    cy.get('@top-level-tabs')
+      .last()
+      .click()
+      .should('have.class', 'ant-tabs-tab-active');
+    cy.get('@top-level-tabs')
+      .first()
+      .should('not.have.class', 'ant-tabs-tab-active');
   });
 
   it('should load charts when tab is visible', () => {
     // landing in first tab, should see 2 charts
     waitForChartLoad(FILTER_BOX);
     waitForChartLoad(TREEMAP);
-    cy.get('[data-test="grid-container"]').find('.box_plot').should('not.exist');
+    cy.get('[data-test="grid-container"]')
+      .find('.box_plot')
+      .should('not.exist');
     cy.get('[data-test="grid-container"]').find('.line').should('not.exist');
 
     // click row level tab, see 1 more chart

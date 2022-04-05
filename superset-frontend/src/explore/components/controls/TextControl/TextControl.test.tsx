@@ -80,7 +80,9 @@ test('should return errors when not a float', async () => {
   const input = screen.getByPlaceholderText('Placeholder');
   await userEvent.type(input, '!num', { delay: 500 });
   expect(changeProps.onChange).toHaveBeenCalled();
-  expect(changeProps.onChange).toHaveBeenCalledWith('!', ['is expected to be a number']);
+  expect(changeProps.onChange).toHaveBeenCalledWith('!', [
+    'is expected to be a number',
+  ]);
 });
 
 test('should return errors when not an int', async () => {
@@ -94,5 +96,7 @@ test('should return errors when not an int', async () => {
   const input = screen.getByPlaceholderText('Placeholder');
   await userEvent.type(input, '!int', { delay: 500 });
   expect(changeProps.onChange).toHaveBeenCalled();
-  expect(changeProps.onChange).toHaveBeenCalledWith('!', ['is expected to be an integer']);
+  expect(changeProps.onChange).toHaveBeenCalledWith('!', [
+    'is expected to be an integer',
+  ]);
 });

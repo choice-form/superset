@@ -21,13 +21,22 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import rison from 'rison';
 import { isFeatureEnabled, FeatureFlag } from 'src/featureFlags';
-import { createFetchRelated, createErrorHandler, handleDashboardDelete } from 'src/views/CRUD/utils';
+import {
+  createFetchRelated,
+  createErrorHandler,
+  handleDashboardDelete,
+} from 'src/views/CRUD/utils';
 import { useListViewResource, useFavoriteStatus } from 'src/views/CRUD/hooks';
 import ConfirmStatusChange from 'src/components/ConfirmStatusChange';
 import handleResourceExport from 'src/utils/export';
 import Loading from 'src/components/Loading';
 import SubMenu, { SubMenuProps } from 'src/components/Menu/SubMenu';
-import ListView, { ListViewProps, Filter, Filters, FilterOperator } from 'src/components/ListView';
+import ListView, {
+  ListViewProps,
+  Filter,
+  Filters,
+  FilterOperator,
+} from 'src/components/ListView';
 import { getFromLocalStorage } from 'src/utils/localStorageHelpers';
 import Owner from 'src/types/Owner';
 import withToasts from 'src/components/MessageToasts/withToasts';
@@ -90,17 +99,32 @@ function DashboardList(props: DashboardListProps) {
   const { addDangerToast, addSuccessToast } = props;
 
   const {
-    state: { loading, resourceCount: dashboardCount, resourceCollection: dashboards, bulkSelectEnabled },
+    state: {
+      loading,
+      resourceCount: dashboardCount,
+      resourceCollection: dashboards,
+      bulkSelectEnabled,
+    },
     setResourceCollection: setDashboards,
     hasPerm,
     fetchData,
     toggleBulkSelect,
     refreshData,
-  } = useListViewResource<Dashboard>('dashboard', t('dashboard'), addDangerToast);
+  } = useListViewResource<Dashboard>(
+    'dashboard',
+    t('dashboard'),
+    addDangerToast,
+  );
   const dashboardIds = useMemo(() => dashboards.map(d => d.id), [dashboards]);
-  const [saveFavoriteStatus, favoriteStatus] = useFavoriteStatus('dashboard', dashboardIds, addDangerToast);
+  const [saveFavoriteStatus, favoriteStatus] = useFavoriteStatus(
+    'dashboard',
+    dashboardIds,
+    addDangerToast,
+  );
 
-  const [dashboardToEdit, setDashboardToEdit] = useState<Dashboard | null>(null);
+  const [dashboardToEdit, setDashboardToEdit] = useState<Dashboard | null>(
+    null,
+  );
 
   const [importingDashboard, showImportModal] = useState<boolean>(false);
   const [passwordFields, setPasswordFields] = useState<string[]>([]);
@@ -171,7 +195,11 @@ function DashboardList(props: DashboardListProps) {
           }),
         );
       },
-      createErrorHandler(errMsg => addDangerToast(t('An error occurred while fetching dashboards: %s', errMsg))),
+      createErrorHandler(errMsg =>
+        addDangerToast(
+          t('An error occurred while fetching dashboards: %s', errMsg),
+        ),
+      ),
     );
   }
 
@@ -185,13 +213,19 @@ function DashboardList(props: DashboardListProps) {
 
   function handleBulkDashboardDelete(dashboardsToDelete: Dashboard[]) {
     return SupersetClient.delete({
-      endpoint: `/api/v1/dashboard/?q=${rison.encode(dashboardsToDelete.map(({ id }) => id))}`,
+      endpoint: `/api/v1/dashboard/?q=${rison.encode(
+        dashboardsToDelete.map(({ id }) => id),
+      )}`,
     }).then(
       ({ json = {} }) => {
         refreshData();
         addSuccessToast(json.message);
       },
-      createErrorHandler(errMsg => addDangerToast(t('There was an issue deleting the selected dashboards: ', errMsg))),
+      createErrorHandler(errMsg =>
+        addDangerToast(
+          t('There was an issue deleting the selected dashboards: ', errMsg),
+        ),
+      ),
     );
   }
 
@@ -204,7 +238,13 @@ function DashboardList(props: DashboardListProps) {
                 row: {
                   original: { id },
                 },
-              }: any) => <FaveStar itemId={id} saveFaveStar={saveFavoriteStatus} isStarred={favoriteStatus[id]} />,
+              }: any) => (
+                <FaveStar
+                  itemId={id}
+                  saveFaveStar={saveFavoriteStatus}
+                  isStarred={favoriteStatus[id]}
+                />
+              ),
               Header: '',
               id: 'id',
               disableSortBy: true,
@@ -226,7 +266,10 @@ function DashboardList(props: DashboardListProps) {
           <Link to={url}>
             {certifiedBy && (
               <>
-                <CertifiedIcon certifiedBy={certifiedBy} details={certificationDetails} />{' '}
+                <CertifiedIcon
+                  certifiedBy={certifiedBy}
+                  details={certificationDetails}
+                />{' '}
               </>
             )}
             {dashboardTitle}
@@ -239,7 +282,10 @@ function DashboardList(props: DashboardListProps) {
       {
         Cell: ({
           row: {
-            original: { changed_by_name: changedByName, changed_by_url: changedByUrl },
+            original: {
+              changed_by_name: changedByName,
+              changed_by_url: changedByUrl,
+            },
           },
         }: any) => <a href={changedByUrl}>{changedByName}</a>,
         Header: t('Modified by'),
@@ -251,7 +297,8 @@ function DashboardList(props: DashboardListProps) {
           row: {
             original: { status },
           },
-        }: any) => (status === DashboardStatus.PUBLISHED ? t('Published') : t('Draft')),
+        }: any) =>
+          status === DashboardStatus.PUBLISHED ? t('Published') : t('Draft'),
         Header: t('Status'),
         accessor: 'published',
         size: 'xl',
@@ -271,7 +318,8 @@ function DashboardList(props: DashboardListProps) {
           row: {
             original: { created_by: createdBy },
           },
-        }: any) => (createdBy ? `${createdBy.first_name} ${createdBy.last_name}` : ''),
+        }: any) =>
+          createdBy ? `${createdBy.first_name} ${createdBy.last_name}` : '',
         Header: t('Created by'),
         accessor: 'created_by',
         disableSortBy: true,
@@ -290,7 +338,13 @@ function DashboardList(props: DashboardListProps) {
       },
       {
         Cell: ({ row: { original } }: any) => {
-          const handleDelete = () => handleDashboardDelete(original, refreshData, addSuccessToast, addDangerToast);
+          const handleDelete = () =>
+            handleDashboardDelete(
+              original,
+              refreshData,
+              addSuccessToast,
+              addDangerToast,
+            );
           const handleEdit = () => openDashboardEditModal(original);
           const handleExport = () => handleBulkDashboardExport([original]);
 
@@ -301,14 +355,24 @@ function DashboardList(props: DashboardListProps) {
                   title={t('Please confirm')}
                   description={
                     <>
-                      {t('Are you sure you want to delete')} <b>{original.dashboard_title}</b>?
+                      {t('Are you sure you want to delete')}{' '}
+                      <b>{original.dashboard_title}</b>?
                     </>
                   }
                   onConfirm={handleDelete}
                 >
                   {confirmDelete => (
-                    <Tooltip id="delete-action-tooltip" title={t('Delete')} placement="bottom">
-                      <span role="button" tabIndex={0} className="action-button" onClick={confirmDelete}>
+                    <Tooltip
+                      id="delete-action-tooltip"
+                      title={t('Delete')}
+                      placement="bottom"
+                    >
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        className="action-button"
+                        onClick={confirmDelete}
+                      >
                         <Icons.Trash data-test="dashboard-list-trash-icon" />
                       </span>
                     </Tooltip>
@@ -316,15 +380,33 @@ function DashboardList(props: DashboardListProps) {
                 </ConfirmStatusChange>
               )}
               {canExport && (
-                <Tooltip id="export-action-tooltip" title={t('Export')} placement="bottom">
-                  <span role="button" tabIndex={0} className="action-button" onClick={handleExport}>
+                <Tooltip
+                  id="export-action-tooltip"
+                  title={t('Export')}
+                  placement="bottom"
+                >
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    className="action-button"
+                    onClick={handleExport}
+                  >
                     <Icons.Share />
                   </span>
                 </Tooltip>
               )}
               {canEdit && (
-                <Tooltip id="edit-action-tooltip" title={t('Edit')} placement="bottom">
-                  <span role="button" tabIndex={0} className="action-button" onClick={handleEdit}>
+                <Tooltip
+                  id="edit-action-tooltip"
+                  title={t('Edit')}
+                  placement="bottom"
+                >
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    className="action-button"
+                    onClick={handleEdit}
+                  >
                     <Icons.EditAlt data-test="edit-alt" />
                   </span>
                 </Tooltip>
@@ -338,7 +420,12 @@ function DashboardList(props: DashboardListProps) {
         disableSortBy: true,
       },
     ],
-    [canEdit, canDelete, canExport, ...(props.user.userId ? [favoriteStatus] : [])],
+    [
+      canEdit,
+      canDelete,
+      canExport,
+      ...(props.user.userId ? [favoriteStatus] : []),
+    ],
   );
 
   const favoritesFilter: Filter = useMemo(
@@ -369,7 +456,12 @@ function DashboardList(props: DashboardListProps) {
           'dashboard',
           'owners',
           createErrorHandler(errMsg =>
-            addDangerToast(t('An error occurred while fetching dashboard owner values: %s', errMsg)),
+            addDangerToast(
+              t(
+                'An error occurred while fetching dashboard owner values: %s',
+                errMsg,
+              ),
+            ),
           ),
           props.user,
         ),
@@ -385,7 +477,12 @@ function DashboardList(props: DashboardListProps) {
           'dashboard',
           'created_by',
           createErrorHandler(errMsg =>
-            addDangerToast(t('An error occurred while fetching dashboard created by values: %s', errMsg)),
+            addDangerToast(
+              t(
+                'An error occurred while fetching dashboard created by values: %s',
+                errMsg,
+              ),
+            ),
           ),
           props.user,
         ),
@@ -453,7 +550,11 @@ function DashboardList(props: DashboardListProps) {
         hasPerm={hasPerm}
         bulkSelectEnabled={bulkSelectEnabled}
         refreshData={refreshData}
-        showThumbnails={userKey ? userKey.thumbnails : isFeatureEnabled(FeatureFlag.THUMBNAILS)}
+        showThumbnails={
+          userKey
+            ? userKey.thumbnails
+            : isFeatureEnabled(FeatureFlag.THUMBNAILS)
+        }
         loading={loading}
         addDangerToast={addDangerToast}
         addSuccessToast={addSuccessToast}
@@ -490,7 +591,11 @@ function DashboardList(props: DashboardListProps) {
     if (isFeatureEnabled(FeatureFlag.VERSIONED_EXPORT)) {
       subMenuButtons.push({
         name: (
-          <Tooltip id="import-tooltip" title={t('Import dashboards')} placement="bottomRight">
+          <Tooltip
+            id="import-tooltip"
+            title={t('Import dashboards')}
+            placement="bottomRight"
+          >
             <Icons.Import data-test="import-button" />
           </Tooltip>
         ),
@@ -504,7 +609,9 @@ function DashboardList(props: DashboardListProps) {
       <SubMenu name={t('Dashboards')} buttons={subMenuButtons} />
       <ConfirmStatusChange
         title={t('Please confirm')}
-        description={t('Are you sure you want to delete the selected dashboards?')}
+        description={t(
+          'Are you sure you want to delete the selected dashboards?',
+        )}
         onConfirm={handleBulkDashboardDelete}
       >
         {confirmDelete => {
@@ -549,9 +656,17 @@ function DashboardList(props: DashboardListProps) {
                 initialSort={initialSort}
                 loading={loading}
                 pageSize={PAGE_SIZE}
-                showThumbnails={userKey ? userKey.thumbnails : isFeatureEnabled(FeatureFlag.THUMBNAILS)}
+                showThumbnails={
+                  userKey
+                    ? userKey.thumbnails
+                    : isFeatureEnabled(FeatureFlag.THUMBNAILS)
+                }
                 renderCard={renderCard}
-                defaultViewMode={isFeatureEnabled(FeatureFlag.LISTVIEWS_DEFAULT_CARD_VIEW) ? 'card' : 'table'}
+                defaultViewMode={
+                  isFeatureEnabled(FeatureFlag.LISTVIEWS_DEFAULT_CARD_VIEW)
+                    ? 'card'
+                    : 'table'
+                }
               />
             </>
           );

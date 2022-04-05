@@ -41,7 +41,9 @@ export interface OptionItemInterface {
 /**
  * Shared control props for all DnD control.
  */
-export type DndControlProps<ValueType extends JsonValue> = ControlComponentProps<ValueType | ValueType[] | null> & {
+export type DndControlProps<
+  ValueType extends JsonValue
+> = ControlComponentProps<ValueType | ValueType[] | null> & {
   multi?: boolean;
   canDelete?: boolean;
   ghostButtonText?: string;

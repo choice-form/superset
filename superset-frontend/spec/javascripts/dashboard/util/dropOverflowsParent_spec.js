@@ -18,7 +18,13 @@
  */
 import dropOverflowsParent from 'src/dashboard/util/dropOverflowsParent';
 import { NEW_COMPONENTS_SOURCE_ID } from 'src/dashboard/util/constants';
-import { CHART_TYPE, COLUMN_TYPE, ROW_TYPE, HEADER_TYPE, TAB_TYPE } from 'src/dashboard/util/componentTypes';
+import {
+  CHART_TYPE,
+  COLUMN_TYPE,
+  ROW_TYPE,
+  HEADER_TYPE,
+  TAB_TYPE,
+} from 'src/dashboard/util/componentTypes';
 
 describe('dropOverflowsParent', () => {
   it('returns true if a parent does NOT have adequate width for child', () => {

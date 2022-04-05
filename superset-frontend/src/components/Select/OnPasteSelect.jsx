@@ -54,7 +54,10 @@ export default class OnPasteSelect extends React.Component {
         .filter(v => {
           const notExists = !existing[v];
           existing[v] = 1;
-          return notExists && (validator ? validator({ [this.props.labelKey]: v }) : !!v);
+          return (
+            notExists &&
+            (validator ? validator({ [this.props.labelKey]: v }) : !!v)
+          );
         })
         .map(v => {
           const opt = { [this.props.labelKey]: v, [this.props.valueKey]: v };

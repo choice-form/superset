@@ -21,7 +21,9 @@ import { Metric } from 'src/core';
 import Popover from 'src/components/Popover';
 import AdhocMetricEditPopoverTitle from 'src/explore/components/controls/MetricControl/AdhocMetricEditPopoverTitle';
 import { ExplorePopoverContent } from 'src/explore/components/ExploreContentPopover';
-import AdhocMetricEditPopover, { SAVED_TAB_KEY } from './AdhocMetricEditPopover';
+import AdhocMetricEditPopover, {
+  SAVED_TAB_KEY,
+} from './AdhocMetricEditPopover';
 import AdhocMetric from './AdhocMetric';
 import { savedMetricType } from './types';
 
@@ -101,7 +103,12 @@ class AdhocMetricPopoverTrigger extends React.PureComponent<
     const label = e.target.value;
     this.setState(state => ({
       title: {
-        label: label || state.currentLabel || verbose_name || metric_name || defaultMetricLabel,
+        label:
+          label ||
+          state.currentLabel ||
+          verbose_name ||
+          metric_name ||
+          defaultMetricLabel,
         hasCustomLabel: !!label,
       },
       labelModified: true,
@@ -131,7 +138,13 @@ class AdhocMetricPopoverTrigger extends React.PureComponent<
     });
   }
 
-  getCurrentLabel({ savedMetricLabel, adhocMetricLabel }: { savedMetricLabel: string; adhocMetricLabel: string }) {
+  getCurrentLabel({
+    savedMetricLabel,
+    adhocMetricLabel,
+  }: {
+    savedMetricLabel: string;
+    adhocMetricLabel: string;
+  }) {
     const currentLabel = savedMetricLabel || adhocMetricLabel;
     this.setState({
       currentLabel,
@@ -162,7 +175,9 @@ class AdhocMetricPopoverTrigger extends React.PureComponent<
     } = this.props;
     const { verbose_name, metric_name } = savedMetric;
     const { hasCustomLabel, label } = adhocMetric;
-    const adhocMetricLabel = hasCustomLabel ? label : adhocMetric.getDefaultLabel();
+    const adhocMetricLabel = hasCustomLabel
+      ? label
+      : adhocMetric.getDefaultLabel();
     const title = this.state.labelModified
       ? this.state.title
       : {

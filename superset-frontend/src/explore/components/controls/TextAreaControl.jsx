@@ -35,7 +35,14 @@ const propTypes = {
   minLines: PropTypes.number,
   maxLines: PropTypes.number,
   offerEditInModal: PropTypes.bool,
-  language: PropTypes.oneOf([null, 'json', 'html', 'sql', 'markdown', 'javascript']),
+  language: PropTypes.oneOf([
+    null,
+    'json',
+    'html',
+    'sql',
+    'markdown',
+    'javascript',
+  ]),
   aboveEditorSection: PropTypes.node,
   readOnly: PropTypes.bool,
 };
@@ -111,7 +118,8 @@ export default class TextAreaControl extends React.Component {
             modalTitle={controlHeader}
             triggerNode={
               <Button buttonSize="small" className="m-t-5">
-                {t('Edit')} <strong>{this.props.language}</strong> {t('in modal')}
+                {t('Edit')} <strong>{this.props.language}</strong>{' '}
+                {t('in modal')}
               </Button>
             }
             modalBody={this.renderModalBody(true)}

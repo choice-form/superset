@@ -34,7 +34,8 @@ export interface UpdateDataMask {
   dataMask: DataMask;
 }
 
-export const SET_DATA_MASK_FOR_FILTER_CONFIG_COMPLETE = 'SET_DATA_MASK_FOR_FILTER_CONFIG_COMPLETE';
+export const SET_DATA_MASK_FOR_FILTER_CONFIG_COMPLETE =
+  'SET_DATA_MASK_FOR_FILTER_CONFIG_COMPLETE';
 
 export interface SetDataMaskForFilterConfigComplete {
   type: typeof SET_DATA_MASK_FOR_FILTER_CONFIG_COMPLETE;
@@ -42,7 +43,8 @@ export interface SetDataMaskForFilterConfigComplete {
   filters?: Filters;
 }
 
-export const SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL = 'SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL';
+export const SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL =
+  'SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL';
 
 export interface SetDataMaskForFilterConfigFail {
   type: typeof SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL;
@@ -58,7 +60,11 @@ export function setDataMaskForFilterConfigComplete(
     filters,
   };
 }
-export function updateDataMask(filterId: string | number, dataMask: DataMask, drilldown?: boolean): UpdateDataMask {
+export function updateDataMask(
+  filterId: string | number,
+  dataMask: DataMask,
+  drilldown?: boolean,
+): UpdateDataMask {
   // Only apply data mask if one of the relevant features is enabled
   const isFeatureFlagActive =
     isFeatureEnabled(FeatureFlag.DASHBOARD_NATIVE_FILTERS) ||

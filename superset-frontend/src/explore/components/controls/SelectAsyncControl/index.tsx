@@ -72,7 +72,8 @@ const SelectAsyncControl = ({
   };
 
   const getValue = () => {
-    const currentValue = value || (props.default !== undefined ? props.default : undefined);
+    const currentValue =
+      value || (props.default !== undefined ? props.default : undefined);
 
     // safety check - the value is intended to be undefined but null was used
     if (currentValue === null && !options.find(o => o.value === null)) {

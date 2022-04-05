@@ -93,7 +93,12 @@ function TemplateParamsEditor({
     <ModalTrigger
       modalTitle={t('Template parameters')}
       triggerNode={
-        <Tooltip id="parameters-tooltip" placement="top" title={t('Edit template parameters')} trigger={['hover']}>
+        <Tooltip
+          id="parameters-tooltip"
+          placement="top"
+          title={t('Edit template parameters')}
+          trigger={['hover']}
+        >
           <div role="button">
             {`${t('Parameters')} `}
             <Badge count={paramCount} />

@@ -16,7 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-export const selectResultsTab = () => cy.get('.SouthPane .ReactVirtualized__Table', { timeout: 10000 });
+export const selectResultsTab = () =>
+  cy.get('.SouthPane .ReactVirtualized__Table', { timeout: 10000 });
 
 // this function asserts that the result set for two SQL lab table results are equal
 export const assertSQLLabResultsAreEqual = (resultsA, resultsB) => {

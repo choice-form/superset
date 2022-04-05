@@ -31,7 +31,9 @@ export const InteractiveTimezoneSelector = (args: TimezoneProps) => {
   const onTimezoneChange = (value: string) => {
     updateArgs({ timezone: value });
   };
-  return <TimezoneSelector timezone={timezone} onTimezoneChange={onTimezoneChange} />;
+  return (
+    <TimezoneSelector timezone={timezone} onTimezoneChange={onTimezoneChange} />
+  );
 };
 
 InteractiveTimezoneSelector.args = {

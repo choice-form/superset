@@ -43,7 +43,9 @@ describe('Visualization > Graph', () => {
     color_scheme: 'bnbColors',
   };
 
-  function verify(formData: { [name: string]: string | boolean | number | Array<adhocFilter> }): void {
+  function verify(formData: {
+    [name: string]: string | boolean | number | Array<adhocFilter>;
+  }): void {
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson' });
   }

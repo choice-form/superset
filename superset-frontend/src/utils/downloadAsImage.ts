@@ -54,17 +54,24 @@ export default function downloadAsImage(
   isExactSelector = false,
 ) {
   return (event: SyntheticEvent) => {
-    const elementToPrint = isExactSelector ? document.querySelector(selector) : event.currentTarget.closest(selector);
+    const elementToPrint = isExactSelector
+      ? document.querySelector(selector)
+      : event.currentTarget.closest(selector);
 
     if (!elementToPrint) {
-      return addWarningToast(t('Image download failed, please refresh and try again.'));
+      return addWarningToast(
+        t('Image download failed, please refresh and try again.'),
+      );
     }
 
     // Mapbox controls are loaded from different origin, causing CORS error
     // See https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL#exceptions
     const filter = (node: Element) => {
       if (typeof node.className === 'string') {
-        return node.className !== 'mapboxgl-control-container' && !node.className.includes('ant-dropdown');
+        return (
+          node.className !== 'mapboxgl-control-container' &&
+          !node.className.includes('ant-dropdown')
+        );
       }
       return true;
     };

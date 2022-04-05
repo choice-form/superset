@@ -94,7 +94,9 @@ const DatasourceModal: FunctionComponent<DatasourceModalProps> = ({
   const onConfirmSave = () => {
     // Pull out extra fields into the extra object
     const schema =
-      currentDatasource.tableSelector?.schema || currentDatasource.databaseSelector?.schema || currentDatasource.schema;
+      currentDatasource.tableSelector?.schema ||
+      currentDatasource.databaseSelector?.schema ||
+      currentDatasource.schema;
 
     setIsSaving(true);
     SupersetClient.post({
@@ -103,16 +105,22 @@ const DatasourceModal: FunctionComponent<DatasourceModalProps> = ({
         data: {
           ...currentDatasource,
           schema,
-          metrics: currentDatasource?.metrics?.map((metric: Record<string, unknown>) => ({
-            ...metric,
-            extra: buildExtraJsonObject(metric),
-          })),
-          columns: currentDatasource?.columns?.map((column: Record<string, unknown>) => ({
-            ...column,
-            extra: buildExtraJsonObject(column),
-          })),
+          metrics: currentDatasource?.metrics?.map(
+            (metric: Record<string, unknown>) => ({
+              ...metric,
+              extra: buildExtraJsonObject(metric),
+            }),
+          ),
+          columns: currentDatasource?.columns?.map(
+            (column: Record<string, unknown>) => ({
+              ...column,
+              extra: buildExtraJsonObject(column),
+            }),
+          ),
           type: currentDatasource.type || currentDatasource.datasource_type,
-          owners: currentDatasource.owners.map((o: Record<string, number>) => o.value || o.id),
+          owners: currentDatasource.owners.map(
+            (o: Record<string, number>) => o.value || o.id,
+          ),
         },
       },
     })
@@ -194,13 +202,19 @@ const DatasourceModal: FunctionComponent<DatasourceModalProps> = ({
               data-test="datasource-modal-legacy-edit"
               className="m-r-5"
               onClick={() => {
-                window.location.href = currentDatasource.edit_url || currentDatasource.url;
+                window.location.href =
+                  currentDatasource.edit_url || currentDatasource.url;
               }}
             >
               {t('Use legacy datasource editor')}
             </Button>
           )}
-          <Button data-test="datasource-modal-cancel" buttonSize="small" className="m-r-5" onClick={onHide}>
+          <Button
+            data-test="datasource-modal-cancel"
+            buttonSize="small"
+            className="m-r-5"
+            onClick={onHide}
+          >
             {t('Cancel')}
           </Button>
           <Button

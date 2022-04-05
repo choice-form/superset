@@ -117,9 +117,16 @@ describe('exploreUtils', () => {
 
   describe('domain sharding', () => {
     let stub;
-    const availableDomains = ['http://localhost/', 'domain1.com', 'domain2.com', 'domain3.com'];
+    const availableDomains = [
+      'http://localhost/',
+      'domain1.com',
+      'domain2.com',
+      'domain3.com',
+    ];
     beforeEach(() => {
-      stub = sinon.stub(hostNamesConfig, 'availableDomains').value(availableDomains);
+      stub = sinon
+        .stub(hostNamesConfig, 'availableDomains')
+        .value(availableDomains);
     });
     afterEach(() => {
       stub.restore();
@@ -254,14 +261,24 @@ describe('exploreUtils', () => {
     });
     it('returns full expression when subject, operator and comparator are provided', () => {
       expect(getSimpleSQLExpression('col', '=', 'comp')).toBe("col = 'comp'");
-      expect(getSimpleSQLExpression('col', '=', "it's an apostrophe")).toBe("col = 'it''s an apostrophe'");
+      expect(getSimpleSQLExpression('col', '=', "it's an apostrophe")).toBe(
+        "col = 'it''s an apostrophe'",
+      );
       expect(getSimpleSQLExpression('col', '=', 0)).toBe('col = 0');
       expect(getSimpleSQLExpression('col', '=', '0')).toBe('col = 0');
       expect(getSimpleSQLExpression('col', 'IN', 'foo')).toBe("col IN ('foo')");
-      expect(getSimpleSQLExpression('col', 'NOT IN', ['foo'])).toBe("col NOT IN ('foo')");
-      expect(getSimpleSQLExpression('col', 'IN', ['foo', 'bar'])).toBe("col IN ('foo', 'bar')");
-      expect(getSimpleSQLExpression('col', 'IN', ['0', '1', '2'])).toBe('col IN (0, 1, 2)');
-      expect(getSimpleSQLExpression('col', 'NOT IN', [0, 1, 2])).toBe('col NOT IN (0, 1, 2)');
+      expect(getSimpleSQLExpression('col', 'NOT IN', ['foo'])).toBe(
+        "col NOT IN ('foo')",
+      );
+      expect(getSimpleSQLExpression('col', 'IN', ['foo', 'bar'])).toBe(
+        "col IN ('foo', 'bar')",
+      );
+      expect(getSimpleSQLExpression('col', 'IN', ['0', '1', '2'])).toBe(
+        'col IN (0, 1, 2)',
+      );
+      expect(getSimpleSQLExpression('col', 'NOT IN', [0, 1, 2])).toBe(
+        'col NOT IN (0, 1, 2)',
+      );
     });
   });
 });

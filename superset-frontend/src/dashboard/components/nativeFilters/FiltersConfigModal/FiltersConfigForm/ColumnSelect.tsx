@@ -41,7 +41,11 @@ interface ColumnSelectProps {
 
 const localCache = new Map<string, any>();
 
-const cachedSupersetGet = cacheWrapper(SupersetClient.get, localCache, ({ endpoint }) => endpoint || '');
+const cachedSupersetGet = cacheWrapper(
+  SupersetClient.get,
+  localCache,
+  ({ endpoint }) => endpoint || '',
+);
 
 /** Special purpose AsyncSelect that selects a column from a dataset */
 // eslint-disable-next-line import/prefer-default-export
@@ -59,7 +63,9 @@ export function ColumnSelect({
   const [columns, setColumns] = useState<Column[]>();
   const { addDangerToast } = useToasts();
   const resetColumnField = useCallback(() => {
-    form.setFields([{ name: ['filters', filterId, formField], touched: false, value: null }]);
+    form.setFields([
+      { name: ['filters', filterId, formField], touched: false, value: null },
+    ]);
   }, [form, filterId, formField]);
 
   const options = useMemo(
@@ -72,11 +78,18 @@ export function ColumnSelect({
     [columns, filterValues],
   );
 
-  const currentFilterType = form.getFieldValue('filters')?.[filterId].filterType;
-  const currentColumn = useMemo(() => columns?.find(column => column.column_name === value), [columns, value]);
+  const currentFilterType = form.getFieldValue('filters')?.[filterId]
+    .filterType;
+  const currentColumn = useMemo(
+    () => columns?.find(column => column.column_name === value),
+    [columns, value],
+  );
 
   useEffect(() => {
-    if (currentColumn && !doesColumnMatchFilterType(currentFilterType, currentColumn)) {
+    if (
+      currentColumn &&
+      !doesColumnMatchFilterType(currentFilterType, currentColumn)
+    ) {
       resetColumnField();
     }
   }, [currentColumn, currentFilterType, resetColumnField]);
@@ -91,7 +104,9 @@ export function ColumnSelect({
       }).then(
         ({ json: { result } }) => {
           const lookupValue = Array.isArray(value) ? value : [value];
-          const valueExists = result.columns.some((column: Column) => lookupValue?.includes(column.column_name));
+          const valueExists = result.columns.some((column: Column) =>
+            lookupValue?.includes(column.column_name),
+          );
           if (!valueExists) {
             resetColumnField();
           }

@@ -178,7 +178,9 @@ describe('RTL', () => {
 
   let isFeatureEnabledMock;
   beforeEach(async () => {
-    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => true);
+    isFeatureEnabledMock = jest
+      .spyOn(featureFlags, 'isFeatureEnabled')
+      .mockImplementation(() => true);
     await renderAndWait();
   });
 

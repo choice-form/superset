@@ -49,7 +49,7 @@ from superset.extensions import (
     talisman,
 )
 from superset.security import SupersetSecurityManager
-from superset.typing_local import FlaskResponse
+from superset.typing import FlaskResponse
 from superset.utils.core import pessimistic_connection_handling
 from superset.utils.log import DBEventLogger, get_event_logger_from_cfg_value
 
@@ -67,8 +67,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         self.config = app.config
         self.manifest: Dict[Any, Any] = {}
 
-    # type: ignore   # pylint: disable=line-too-long,useless-suppression
-    @deprecated(details="use self.superset_app instead of self.flask_app")
+    @deprecated(details="use self.superset_app instead of self.flask_app")  # type: ignore   # pylint: disable=line-too-long,useless-suppression
     @property
     def flask_app(self) -> SupersetApp:
         return self.superset_app
@@ -217,20 +216,19 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         #
         appbuilder.add_link(
             "Home",
-            label=__("Home"),
+            label="Home",
             href="/welcome/",
             cond=lambda: bool(appbuilder.app.config["LOGO_TARGET_PATH"]),
         )
-        # 注释层
-        # appbuilder.add_view(
-        #     AnnotationLayerModelView,
-        #     "Annotation Layers",
-        #     label=__("Annotation Layers"),
-        #     icon="fa-comment",
-        #     category="Manage",
-        #     category_label=__("Manage"),
-        #     category_icon="",
-        # )
+        appbuilder.add_view(
+            AnnotationLayerModelView,
+            "Annotation Layers",
+            label="Annotation Layers",
+            icon="fa-comment",
+            category="Manage",
+            category_label="Manage",
+            category_icon="",
+        )
         appbuilder.add_view(
             DashboardModelView,
             "Dashboards",
@@ -313,7 +311,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         # 导入看板
         appbuilder.add_link(
             "Import Dashboards",
-            label=__("Import Dashboards"),
+            label="Import Dashboards",
             href="/import_dashboards/",
             icon="fa-cloud-upload",
             category="Manage",
@@ -325,27 +323,28 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         )
         appbuilder.add_link(
             "SQL Editor",
-            label=__("SQL Editor"),
+            label="SQL Editor",
             href="/sqllab/",
             category_icon="fa-flask",
             icon="fa-flask",
             category="SQL Lab",
-            category_label=__("SQL Lab"),
+            category_label="SQL Lab",
         )
         appbuilder.add_link(
             "Saved Queries",
-            label=__("Saved Queries"),
+            label="Saved Queries",
             href="/savedqueryview/list/",
             icon="fa-save",
             category="SQL Lab",
         )
         appbuilder.add_link(
             "Query Search",
-            label=__("Query History"),
+            label="Query History",
             href="/sqllab/history/",
             icon="fa-search",
             category_icon="fa-flask",
             category="SQL Lab",
+            category_label="SQL Lab",
         )
         appbuilder.add_view(
             DatabaseView,
@@ -368,7 +367,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_separator("Data")
         appbuilder.add_link(
             "Upload a CSV",
-            label=__("Upload a CSV"),
+            label="Upload a CSV",
             href="/csvtodatabaseview/form",
             icon="fa-upload",
             category="Data",
@@ -383,11 +382,11 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         # 上传列式数据库文件
         # appbuilder.add_link(
         #     "Upload a Columnar file",
-        #     label=__("Upload a Columnar file"),
+        #     label="Upload a Columnar file",
         #     href="/columnartodatabaseview/form",
         #     icon="fa-upload",
         #     category="Data",
-        #     category_label=__("Data"),
+        #     category_label="Data",
         #     category_icon="fa-wrench",
         #     cond=lambda: bool(
         #         self.config["COLUMNAR_EXTENSIONS"].intersection(
@@ -400,11 +399,11 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 
             appbuilder.add_link(
                 "Upload Excel",
-                label=__("Upload Excel"),
+                label="Upload Excel",
                 href="/exceltodatabaseview/form",
                 icon="fa-upload",
                 category="Data",
-                category_label=__("Data"),
+                category_label="Data",
                 category_icon="fa-wrench",
                 cond=lambda: bool(
                     self.config["EXCEL_EXTENSIONS"].intersection(
@@ -419,9 +418,9 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             LogModelView,
             "Action Log",
-            label=__("Action Log"),
+            label="Action Log",
             category="Security",
-            category_label=__("Security"),
+            category_label="Security",
             icon="fa-list-ol",
             menu_cond=lambda: (
                 self.config["FAB_ADD_SECURITY_VIEWS"]
@@ -444,18 +443,18 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             DashboardEmailScheduleView,
             "Dashboard Email Schedules",
-            label=__("Dashboard Emails"),
+            label="Dashboard Emails",
             category="Manage",
-            category_label=__("Manage"),
+            category_label="Manage",
             icon="fa-search",
             menu_cond=lambda: self.config["ENABLE_SCHEDULED_EMAIL_REPORTS"],
         )
         appbuilder.add_view(
             SliceEmailScheduleView,
             "Chart Emails",
-            label=__("Chart Email Schedules"),
+            label="Chart Email Schedules",
             category="Manage",
-            category_label=__("Manage"),
+            category_label="Manage",
             icon="fa-search",
             menu_cond=lambda: self.config["ENABLE_SCHEDULED_EMAIL_REPORTS"],
         )
@@ -468,9 +467,9 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             AlertModelView,
             "Alerts",
-            label=__("Alerts"),
+            label="Alerts",
             category="Manage",
-            category_label=__("Manage"),
+            category_label="Manage",
             icon="fa-exclamation-triangle",
             menu_cond=lambda: bool(self.config["ENABLE_ALERTS"]),
         )
@@ -480,21 +479,20 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             AlertView,
             "Alerts & Report",
-            label=__("Alerts & Reports"),
+            label="Alerts & Reports",
             category="Manage",
-            category_label=__("Manage"),
+            category_label="Manage",
             icon="fa-exclamation-triangle",
-            menu_cond=lambda: feature_flag_manager.is_feature_enabled(
-                "ALERT_REPORTS"),
+            menu_cond=lambda: feature_flag_manager.is_feature_enabled("ALERT_REPORTS"),
         )
         appbuilder.add_view_no_menu(ReportView)
 
         appbuilder.add_view(
             AccessRequestsModelView,
             "Access requests",
-            label=__("Access requests"),
+            label="Access requests",
             category="Security",
-            category_label=__("Security"),
+            category_label="Security",
             icon="fa-table",
             menu_cond=lambda: bool(self.config["ENABLE_ACCESS_REQUEST"]),
         )
@@ -508,19 +506,19 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_view(
             DruidDatasourceModelView,
             "Druid Datasources",
-            label=__("Druid Datasources"),
+            label="Druid Datasources",
             category="Data",
-            category_label=__("Data"),
+            category_label="Data",
             icon="fa-cube",
             menu_cond=lambda: bool(self.config["DRUID_IS_ACTIVE"]),
         )
         appbuilder.add_view(
             DruidClusterModelView,
             name="Druid Clusters",
-            label=__("Druid Clusters"),
+            label="Druid Clusters",
             icon="fa-cubes",
             category="Data",
-            category_label=__("Data"),
+            category_label="Data",
             category_icon="fa-database",
             menu_cond=lambda: bool(self.config["DRUID_IS_ACTIVE"]),
         )
@@ -530,10 +528,10 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
 
         appbuilder.add_link(
             "Scan New Datasources",
-            label=__("Scan New Datasources"),
+            label="Scan New Datasources",
             href="/druid/scan_new_datasources/",
             category="Data",
-            category_label=__("Data"),
+            category_label="Data",
             category_icon="fa-database",
             icon="fa-refresh",
             cond=lambda: bool(
@@ -543,10 +541,10 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         )
         appbuilder.add_link(
             "Refresh Druid Metadata",
-            label=__("Refresh Druid Metadata"),
+            label="Refresh Druid Metadata",
             href="/druid/refresh_datasources/",
             category="Data",
-            category_label=__("Data"),
+            category_label="Data",
             category_icon="fa-database",
             icon="fa-cog",
             cond=lambda: bool(
@@ -716,8 +714,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         Compress(self.superset_app)
 
         if self.config["TALISMAN_ENABLED"]:
-            talisman.init_app(self.superset_app, **
-                              self.config["TALISMAN_CONFIG"])
+            talisman.init_app(self.superset_app, **self.config["TALISMAN_CONFIG"])
 
     def configure_logging(self) -> None:
         self.config["LOGGING_CONFIGURATOR"].configure_logging(
@@ -733,8 +730,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         with self.superset_app.app_context():
             pessimistic_connection_handling(db.engine)
 
-        migrate.init_app(self.superset_app, db=db,
-                         directory=APP_DIR + "/migrations")
+        migrate.init_app(self.superset_app, db=db, directory=APP_DIR + "/migrations")
 
     def configure_wtf(self) -> None:
         if self.config["WTF_CSRF_ENABLED"]:

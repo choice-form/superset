@@ -31,7 +31,9 @@ describe('QueryAndSaveButtons', () => {
 
   // It must render
   it('renders', () => {
-    expect(React.isValidElement(<QueryAndSaveButtons {...defaultProps} />)).toBe(true);
+    expect(
+      React.isValidElement(<QueryAndSaveButtons {...defaultProps} />),
+    ).toBe(true);
   });
 
   // Test the output
@@ -48,7 +50,9 @@ describe('QueryAndSaveButtons', () => {
     });
 
     it('calls onQuery when query button is clicked', () => {
-      const queryButton = wrapper.find('[data-test="run-query-button"]').hostNodes();
+      const queryButton = wrapper
+        .find('[data-test="run-query-button"]')
+        .hostNodes();
       queryButton.simulate('click');
       expect(defaultProps.onQuery.called).toBe(true);
     });

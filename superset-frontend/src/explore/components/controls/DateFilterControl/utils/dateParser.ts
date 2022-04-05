@@ -42,7 +42,10 @@ const CUSTOM_RANGE_EXPRESSION = RegExp(
   String.raw`^DATEADD\(DATETIME\("(${iso8601}|${datetimeConstant})"\),\s(${grainValue}),\s(${grain})\)$`,
   'i',
 );
-export const ISO8601_AND_CONSTANT = RegExp(String.raw`^${iso8601}$|^${datetimeConstant}$`, 'i');
+export const ISO8601_AND_CONSTANT = RegExp(
+  String.raw`^${iso8601}$|^${datetimeConstant}$`,
+  'i',
+);
 const DATETIME_CONSTANT = ['now', 'today'];
 const defaultCustomRange: CustomRangeType = {
   sinceDatetime: SEVEN_DAYS_AGO,
@@ -68,9 +71,12 @@ export const dttmToMoment = (dttm: string): Moment => {
   return moment(dttm);
 };
 
-export const dttmToString = (dttm: string): string => dttmToMoment(dttm).format(MOMENT_FORMAT);
+export const dttmToString = (dttm: string): string =>
+  dttmToMoment(dttm).format(MOMENT_FORMAT);
 
-export const customTimeRangeDecode = (timeRange: string): CustomRangeDecodeType => {
+export const customTimeRangeDecode = (
+  timeRange: string,
+): CustomRangeDecodeType => {
   const splitDateRange = timeRange.split(SEPARATOR);
 
   if (splitDateRange.length === 2) {
@@ -78,8 +84,12 @@ export const customTimeRangeDecode = (timeRange: string): CustomRangeDecodeType 
 
     // specific : specific
     if (ISO8601_AND_CONSTANT.test(since) && ISO8601_AND_CONSTANT.test(until)) {
-      const sinceMode = (DATETIME_CONSTANT.includes(since) ? since : 'specific') as DateTimeModeType;
-      const untilMode = (DATETIME_CONSTANT.includes(until) ? until : 'specific') as DateTimeModeType;
+      const sinceMode = (DATETIME_CONSTANT.includes(since)
+        ? since
+        : 'specific') as DateTimeModeType;
+      const untilMode = (DATETIME_CONSTANT.includes(until)
+        ? until
+        : 'specific') as DateTimeModeType;
       return {
         customRange: {
           ...defaultCustomRange,
@@ -94,9 +104,15 @@ export const customTimeRangeDecode = (timeRange: string): CustomRangeDecodeType 
 
     // relative : specific
     const sinceCapturedGroup = since.match(CUSTOM_RANGE_EXPRESSION);
-    if (sinceCapturedGroup && ISO8601_AND_CONSTANT.test(until) && since.includes(until)) {
+    if (
+      sinceCapturedGroup &&
+      ISO8601_AND_CONSTANT.test(until) &&
+      since.includes(until)
+    ) {
       const [dttm, grainValue, grain] = sinceCapturedGroup.slice(1);
-      const untilMode = (DATETIME_CONSTANT.includes(until) ? until : 'specific') as DateTimeModeType;
+      const untilMode = (DATETIME_CONSTANT.includes(until)
+        ? until
+        : 'specific') as DateTimeModeType;
       return {
         customRange: {
           ...defaultCustomRange,
@@ -113,9 +129,15 @@ export const customTimeRangeDecode = (timeRange: string): CustomRangeDecodeType 
 
     // specific : relative
     const untilCapturedGroup = until.match(CUSTOM_RANGE_EXPRESSION);
-    if (ISO8601_AND_CONSTANT.test(since) && untilCapturedGroup && until.includes(since)) {
+    if (
+      ISO8601_AND_CONSTANT.test(since) &&
+      untilCapturedGroup &&
+      until.includes(since)
+    ) {
       const [dttm, grainValue, grain] = [...untilCapturedGroup.slice(1)];
-      const sinceMode = (DATETIME_CONSTANT.includes(since) ? since : 'specific') as DateTimeModeType;
+      const sinceMode = (DATETIME_CONSTANT.includes(since)
+        ? since
+        : 'specific') as DateTimeModeType;
       return {
         customRange: {
           ...defaultCustomRange,
@@ -132,8 +154,12 @@ export const customTimeRangeDecode = (timeRange: string): CustomRangeDecodeType 
 
     // relative : relative
     if (sinceCapturedGroup && untilCapturedGroup) {
-      const [sinceDttm, sinceGrainValue, sinceGrain] = [...sinceCapturedGroup.slice(1)];
-      const [untileDttm, untilGrainValue, untilGrain] = [...untilCapturedGroup.slice(1)];
+      const [sinceDttm, sinceGrainValue, sinceGrain] = [
+        ...sinceCapturedGroup.slice(1),
+      ];
+      const [untileDttm, untilGrainValue, untilGrain] = [
+        ...untilCapturedGroup.slice(1),
+      ];
       if (sinceDttm === untileDttm) {
         return {
           customRange: {
@@ -175,27 +201,35 @@ export const customTimeRangeEncode = (customRange: CustomRangeType): string => {
   } = { ...customRange };
   // specific : specific
   if (SPECIFIC_MODE.includes(sinceMode) && SPECIFIC_MODE.includes(untilMode)) {
-    const since = sinceMode === 'specific' ? dttmToString(sinceDatetime) : sinceMode;
-    const until = untilMode === 'specific' ? dttmToString(untilDatetime) : untilMode;
+    const since =
+      sinceMode === 'specific' ? dttmToString(sinceDatetime) : sinceMode;
+    const until =
+      untilMode === 'specific' ? dttmToString(untilDatetime) : untilMode;
     return `${since} : ${until}`;
   }
 
   // specific : relative
   if (SPECIFIC_MODE.includes(sinceMode) && untilMode === 'relative') {
-    const since = sinceMode === 'specific' ? dttmToString(sinceDatetime) : sinceMode;
+    const since =
+      sinceMode === 'specific' ? dttmToString(sinceDatetime) : sinceMode;
     const until = `DATEADD(DATETIME("${since}"), ${untilGrainValue}, ${untilGrain})`;
     return `${since} : ${until}`;
   }
 
   // relative : specific
   if (sinceMode === 'relative' && SPECIFIC_MODE.includes(untilMode)) {
-    const until = untilMode === 'specific' ? dttmToString(untilDatetime) : untilMode;
-    const since = `DATEADD(DATETIME("${until}"), ${-Math.abs(sinceGrainValue)}, ${sinceGrain})`;
+    const until =
+      untilMode === 'specific' ? dttmToString(untilDatetime) : untilMode;
+    const since = `DATEADD(DATETIME("${until}"), ${-Math.abs(
+      sinceGrainValue,
+    )}, ${sinceGrain})`;
     return `${since} : ${until}`;
   }
 
   // relative : relative
-  const since = `DATEADD(DATETIME("${anchorValue}"), ${-Math.abs(sinceGrainValue)}, ${sinceGrain})`;
+  const since = `DATEADD(DATETIME("${anchorValue}"), ${-Math.abs(
+    sinceGrainValue,
+  )}, ${sinceGrain})`;
   const until = `DATEADD(DATETIME("${anchorValue}"), ${untilGrainValue}, ${untilGrain})`;
   return `${since} : ${until}`;
 };

@@ -26,7 +26,9 @@ import DragDroppable from 'src/dashboard/components/dnd/DragDroppable';
 
 import Tab from './Tab';
 
-jest.mock('src/dashboard/containers/DashboardComponent', () => jest.fn(() => <div data-test="DashboardComponent" />));
+jest.mock('src/dashboard/containers/DashboardComponent', () =>
+  jest.fn(() => <div data-test="DashboardComponent" />),
+);
 jest.mock('src/components/EditableTitle', () =>
   jest.fn(props => (
     <button type="button" data-test="EditableTitle" onClick={props.onSaveTitle}>

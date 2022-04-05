@@ -17,7 +17,11 @@
  * under the License.
  */
 /* eslint-disable camelcase */
-import { FILTER_CONFIG_ATTRIBUTES, TIME_FILTER_LABELS, TIME_FILTER_MAP } from 'src/explore/constants';
+import {
+  FILTER_CONFIG_ATTRIBUTES,
+  TIME_FILTER_LABELS,
+  TIME_FILTER_MAP,
+} from 'src/explore/constants';
 
 export default function getFilterConfigsFromFormdata(form_data = {}) {
   const {

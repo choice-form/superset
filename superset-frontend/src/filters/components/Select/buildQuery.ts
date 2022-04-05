@@ -16,7 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { buildQueryContext, GenericDataType, QueryObject, QueryObjectFilterClause } from 'src/core';
+import {
+  buildQueryContext,
+  GenericDataType,
+  QueryObject,
+  QueryObjectFilterClause,
+} from 'src/core';
 import { BuildQuery } from 'src/core/chart/registries/ChartBuildQueryRegistrySingleton';
 import { DEFAULT_FORM_DATA, PluginFilterSelectQueryFormData } from './types';
 
@@ -37,7 +42,10 @@ const buildQuery: BuildQuery<PluginFilterSelectQueryFormData> = (
             op: 'ILIKE',
             val: `%${search}%`,
           });
-        } else if (coltypeMap[column] === GenericDataType.NUMERIC && !Number.isNaN(Number(search))) {
+        } else if (
+          coltypeMap[column] === GenericDataType.NUMERIC &&
+          !Number.isNaN(Number(search))
+        ) {
           // for numeric columns we apply a >= where clause
           extraFilters.push({
             col: column,
@@ -55,7 +63,10 @@ const buildQuery: BuildQuery<PluginFilterSelectQueryFormData> = (
         groupby: columns,
         metrics: sortMetric ? [sortMetric] : [],
         filters: filters.concat(extraFilters),
-        orderby: sortMetric || sortAscending !== undefined ? sortColumns.map(column => [column, !!sortAscending]) : [],
+        orderby:
+          sortMetric || sortAscending !== undefined
+            ? sortColumns.map(column => [column, !!sortAscending])
+            : [],
       },
     ];
     return query;

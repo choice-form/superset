@@ -93,7 +93,9 @@ export default function ColumnElement({ column }: ColumnElementProps) {
             <>
               <strong>{tooltipTitleMap[key.type]}</strong>
               <Hr />
-              <pre className="text-small">{JSON.stringify(key, null, '  ')}</pre>
+              <pre className="text-small">
+                {JSON.stringify(key, null, '  ')}
+              </pre>
             </>
           }
         >

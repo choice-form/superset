@@ -29,7 +29,13 @@ const createProps = () => ({
       name: 'Clinical Stage',
       value: [],
       status: 'UNSET',
-      path: ['ROOT_ID', 'TABS-wUKya7eQ0Z', 'TAB-BCIJF4NvgQ', 'ROW-xSeNAspgw', 'CHART-eirDduqb1A'],
+      path: [
+        'ROOT_ID',
+        'TABS-wUKya7eQ0Z',
+        'TAB-BCIJF4NvgQ',
+        'ROW-xSeNAspgw',
+        'CHART-eirDduqb1A',
+      ],
     },
   ] as Indicator[],
   appliedIndicators: [
@@ -38,7 +44,13 @@ const createProps = () => ({
       name: 'Country',
       value: [],
       status: 'UNSET',
-      path: ['ROOT_ID', 'TABS-wUKya7eQ0Z', 'TAB-BCIJF4NvgQ', 'ROW-xSeNAspgw', 'CHART-eirDduqb1A'],
+      path: [
+        'ROOT_ID',
+        'TABS-wUKya7eQ0Z',
+        'TAB-BCIJF4NvgQ',
+        'ROW-xSeNAspgw',
+        'CHART-eirDduqb1A',
+      ],
     },
   ] as Indicator[],
   incompatibleIndicators: [
@@ -47,7 +59,13 @@ const createProps = () => ({
       name: 'Vaccine Approach Copy',
       value: [],
       status: 'UNSET',
-      path: ['ROOT_ID', 'TABS-wUKya7eQ0Zz', 'TAB-BCIJF4NvgQq', 'ROW-xSeNAspgww', 'CHART-eirDduqb1Aa'],
+      path: [
+        'ROOT_ID',
+        'TABS-wUKya7eQ0Zz',
+        'TAB-BCIJF4NvgQq',
+        'ROW-xSeNAspgww',
+        'CHART-eirDduqb1Aa',
+      ],
     },
   ] as Indicator[],
   unsetIndicators: [
@@ -56,7 +74,13 @@ const createProps = () => ({
       name: 'Vaccine Approach',
       value: [],
       status: 'UNSET',
-      path: ['ROOT_ID', 'TABS-wUKya7eQ0Z', 'TAB-BCIJF4NvgQ', 'ROW-xSeNAspgw', 'CHART-eirDduqb1A'],
+      path: [
+        'ROOT_ID',
+        'TABS-wUKya7eQ0Z',
+        'TAB-BCIJF4NvgQ',
+        'ROW-xSeNAspgw',
+        'CHART-eirDduqb1A',
+      ],
     },
   ] as Indicator[],
   onHighlightFilterSource: jest.fn(),
@@ -77,10 +101,14 @@ test('Should render "appliedCrossFilterIndicators"', () => {
 
   userEvent.click(screen.getByTestId('details-panel-content'));
   expect(screen.getByText('Applied Cross Filters (1)')).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'search Clinical Stage' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'search Clinical Stage' }),
+  ).toBeInTheDocument();
 
   expect(props.onHighlightFilterSource).toBeCalledTimes(0);
-  userEvent.click(screen.getByRole('button', { name: 'search Clinical Stage' }));
+  userEvent.click(
+    screen.getByRole('button', { name: 'search Clinical Stage' }),
+  );
   expect(props.onHighlightFilterSource).toBeCalledTimes(1);
   expect(props.onHighlightFilterSource).toBeCalledWith([
     'ROOT_ID',
@@ -107,7 +135,9 @@ test('Should render "appliedIndicators"', () => {
 
   userEvent.click(screen.getByTestId('details-panel-content'));
   expect(screen.getByText('Applied Filters (1)')).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'search Country' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'search Country' }),
+  ).toBeInTheDocument();
 
   expect(props.onHighlightFilterSource).toBeCalledTimes(0);
   userEvent.click(screen.getByRole('button', { name: 'search Country' }));
@@ -137,10 +167,14 @@ test('Should render "incompatibleIndicators"', () => {
 
   userEvent.click(screen.getByTestId('details-panel-content'));
   expect(screen.getByText('Incompatible Filters (1)')).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'search Vaccine Approach Copy' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'search Vaccine Approach Copy' }),
+  ).toBeInTheDocument();
 
   expect(props.onHighlightFilterSource).toBeCalledTimes(0);
-  userEvent.click(screen.getByRole('button', { name: 'search Vaccine Approach Copy' }));
+  userEvent.click(
+    screen.getByRole('button', { name: 'search Vaccine Approach Copy' }),
+  );
   expect(props.onHighlightFilterSource).toBeCalledTimes(1);
   expect(props.onHighlightFilterSource).toBeCalledWith([
     'ROOT_ID',
@@ -167,10 +201,14 @@ test('Should render "unsetIndicators"', () => {
 
   userEvent.click(screen.getByTestId('details-panel-content'));
   expect(screen.getByText('Unset Filters (1)')).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'search Vaccine Approach' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'search Vaccine Approach' }),
+  ).toBeInTheDocument();
 
   expect(props.onHighlightFilterSource).toBeCalledTimes(0);
-  userEvent.click(screen.getByRole('button', { name: 'search Vaccine Approach' }));
+  userEvent.click(
+    screen.getByRole('button', { name: 'search Vaccine Approach' }),
+  );
   expect(props.onHighlightFilterSource).toBeCalledTimes(1);
   expect(props.onHighlightFilterSource).toBeCalledWith([
     'ROOT_ID',

@@ -169,25 +169,42 @@ const QueryTable = props => {
           </div>
         );
         q.user = (
-          <Button buttonSize="small" buttonStyle="link" onClick={() => props.onUserClicked(q.userId)}>
+          <Button
+            buttonSize="small"
+            buttonStyle="link"
+            onClick={() => props.onUserClicked(q.userId)}
+          >
             {q.user}
           </Button>
         );
         q.db = (
-          <Button buttonSize="small" buttonStyle="link" onClick={() => props.onDbClicked(q.dbId)}>
+          <Button
+            buttonSize="small"
+            buttonStyle="link"
+            onClick={() => props.onDbClicked(q.dbId)}
+          >
             {q.db}
           </Button>
         );
         q.started = moment(q.startDttm).format('HH:mm:ss');
         q.querylink = (
-          <Button buttonSize="small" buttonStyle="link" onClick={() => openQuery(q.queryId)}>
+          <Button
+            buttonSize="small"
+            buttonStyle="link"
+            onClick={() => openQuery(q.queryId)}
+          >
             <i className="fa fa-external-link m-r-3" />
             {t('Edit')}
           </Button>
         );
         q.sql = (
           <Card css={[StaticPosition]}>
-            <HighlightedSql sql={q.sql} rawSql={q.executedSql} shrink maxWidth={60} />
+            <HighlightedSql
+              sql={q.sql}
+              rawSql={q.executedSql}
+              shrink
+              maxWidth={60}
+            />
           </Card>
         );
         if (q.resultsKey) {
@@ -218,14 +235,22 @@ const QueryTable = props => {
         } else {
           // if query was run using ctas and force_ctas_schema was set
           // tempTable will have the schema
-          const schemaUsed = q.ctas && q.tempTable && q.tempTable.includes('.') ? '' : q.schema;
+          const schemaUsed =
+            q.ctas && q.tempTable && q.tempTable.includes('.') ? '' : q.schema;
           q.output = [schemaUsed, q.tempTable].filter(v => v).join('.');
         }
         q.progress =
           q.state === 'success' ? (
-            <ProgressBar percent={parseInt(q.progress.toFixed(0), 10)} striped showInfo={false} />
+            <ProgressBar
+              percent={parseInt(q.progress.toFixed(0), 10)}
+              striped
+              showInfo={false}
+            />
           ) : (
-            <ProgressBar percent={parseInt(q.progress.toFixed(0), 10)} striped />
+            <ProgressBar
+              percent={parseInt(q.progress.toFixed(0), 10)}
+              striped
+            />
           );
         q.state = (
           <Tooltip title={status.config.label} placement="bottom">
@@ -236,7 +261,9 @@ const QueryTable = props => {
           <div>
             <StyledTooltip
               onClick={() => restoreSql(query)}
-              tooltip={t('Overwrite text in the editor with a query on this table')}
+              tooltip={t(
+                'Overwrite text in the editor with a query on this table',
+              )}
               placement="top"
             >
               <Icons.Edit iconSize="small" />
@@ -246,9 +273,15 @@ const QueryTable = props => {
               tooltip={t('Run query in a new tab')}
               placement="top"
             >
-              <Icons.PlusCircleOutlined iconSize="x-small" css={verticalAlign} />
+              <Icons.PlusCircleOutlined
+                iconSize="x-small"
+                css={verticalAlign}
+              />
             </StyledTooltip>
-            <StyledTooltip tooltip={t('Remove query from log')} onClick={() => removeQuery(query)}>
+            <StyledTooltip
+              tooltip={t('Remove query from log')}
+              onClick={() => removeQuery(query)}
+            >
               <Icons.Trash iconSize="x-small" />
             </StyledTooltip>
           </div>
@@ -260,7 +293,12 @@ const QueryTable = props => {
 
   return (
     <div className="QueryTable">
-      <TableView columns={columns} data={data} className="table-condensed" pageSize={50} />
+      <TableView
+        columns={columns}
+        data={data}
+        className="table-condensed"
+        pageSize={50}
+      />
     </div>
   );
 };

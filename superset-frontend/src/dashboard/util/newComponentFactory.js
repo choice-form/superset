@@ -30,7 +30,11 @@ import {
   TAB_TYPE,
 } from './componentTypes';
 
-import { MEDIUM_HEADER, BACKGROUND_TRANSPARENT, GRID_DEFAULT_CHART_WIDTH } from './constants';
+import {
+  MEDIUM_HEADER,
+  BACKGROUND_TRANSPARENT,
+  GRID_DEFAULT_CHART_WIDTH,
+} from './constants';
 
 const typeToDefaultMetaData = {
   [CHART_TYPE]: { width: GRID_DEFAULT_CHART_WIDTH, height: 50 },

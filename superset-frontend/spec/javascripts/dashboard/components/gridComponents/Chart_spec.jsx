@@ -26,7 +26,9 @@ import ChartContainer from 'src/chart/ChartContainer';
 import * as exploreUtils from 'src/explore/exploreUtils';
 import { sliceEntitiesForChart as sliceEntities } from 'spec/fixtures/mockSliceEntities';
 import mockDatasource from 'spec/fixtures/mockDatasource';
-import chartQueries, { sliceId as queryId } from 'spec/fixtures/mockChartQueries';
+import chartQueries, {
+  sliceId as queryId,
+} from 'spec/fixtures/mockChartQueries';
 
 describe('Chart', () => {
   const props = {
@@ -105,7 +107,9 @@ describe('Chart', () => {
     expect(changeFilter.callCount).toBe(1);
   });
   it('should call exportChart when exportCSV is clicked', () => {
-    const stubbedExportCSV = sinon.stub(exploreUtils, 'exportChart').returns(() => {});
+    const stubbedExportCSV = sinon
+      .stub(exploreUtils, 'exportChart')
+      .returns(() => {});
     const wrapper = setup();
     wrapper.instance().exportCSV(props.slice.sliceId);
     expect(stubbedExportCSV.calledOnce).toBe(true);
@@ -119,7 +123,9 @@ describe('Chart', () => {
     exploreUtils.exportChart.restore();
   });
   it('should call exportChart with row_limit props.maxRows when exportFullCSV is clicked', () => {
-    const stubbedExportCSV = sinon.stub(exploreUtils, 'exportChart').returns(() => {});
+    const stubbedExportCSV = sinon
+      .stub(exploreUtils, 'exportChart')
+      .returns(() => {});
     const wrapper = setup();
     wrapper.instance().exportFullCSV(props.slice.sliceId);
     expect(stubbedExportCSV.calledOnce).toBe(true);

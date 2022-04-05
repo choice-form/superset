@@ -93,7 +93,11 @@ export default function getFormDataWithExtraFilters({
     .map(([filterId]) => filterId);
   if (filterIdsAppliedOnChart.length) {
     extraData = {
-      extra_form_data: getExtraFormData(dataMask, charts, filterIdsAppliedOnChart),
+      extra_form_data: getExtraFormData(
+        dataMask,
+        charts,
+        filterIdsAppliedOnChart,
+      ),
     };
   }
 

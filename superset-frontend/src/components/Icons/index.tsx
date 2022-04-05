@@ -160,7 +160,9 @@ const IconFileNames = [
 const iconOverrides: Record<string, React.FC> = {};
 IconFileNames.forEach(fileName => {
   const keyName = _.startCase(fileName).replace(/ /g, '');
-  iconOverrides[keyName] = (props: IconType) => <Icon fileName={fileName} {...props} />;
+  iconOverrides[keyName] = (props: IconType) => (
+    <Icon fileName={fileName} {...props} />
+  );
 });
 
 export { IconType };

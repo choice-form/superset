@@ -21,9 +21,10 @@ import { JsonObject } from 'src/core';
 type TestWithIdType<T> = T extends string ? string : { 'data-test': string };
 
 // Using bem standard
-export const testWithId = <T extends string | JsonObject = JsonObject>(prefix?: string, idOnly = false) => (
-  id?: string,
-): TestWithIdType<T> => {
+export const testWithId = <T extends string | JsonObject = JsonObject>(
+  prefix?: string,
+  idOnly = false,
+) => (id?: string): TestWithIdType<T> => {
   if (!id && prefix) {
     return (idOnly ? prefix : { 'data-test': prefix }) as TestWithIdType<T>;
   }

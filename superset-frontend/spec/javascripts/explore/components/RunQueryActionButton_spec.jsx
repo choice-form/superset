@@ -39,7 +39,9 @@ describe('RunQueryActionButton', () => {
   });
 
   it('is a valid react element', () => {
-    expect(React.isValidElement(<RunQueryActionButton {...defaultProps} />)).toBe(true);
+    expect(
+      React.isValidElement(<RunQueryActionButton {...defaultProps} />),
+    ).toBe(true);
   });
 
   it('renders a single Button', () => {

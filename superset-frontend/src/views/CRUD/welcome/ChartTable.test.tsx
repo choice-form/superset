@@ -91,7 +91,14 @@ describe('ChartTable', () => {
 
   it('display EmptyState if there is no data', async () => {
     await act(async () => {
-      wrapper = mount(<ChartTable chartFilter="Mine" user={{ userId: '2' }} mine={[]} store={store} />);
+      wrapper = mount(
+        <ChartTable
+          chartFilter="Mine"
+          user={{ userId: '2' }}
+          mine={[]}
+          store={store}
+        />,
+      );
     });
     expect(wrapper.find('EmptyState')).toExist();
   });

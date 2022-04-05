@@ -33,7 +33,13 @@ export default {
   decorators: [withKnobs],
 };
 
-export const Select = ({ width, height }: { width: number; height: number }) => (
+export const Select = ({
+  width,
+  height,
+}: {
+  width: number;
+  height: number;
+}) => (
   <SuperChart
     chartType="filter_select"
     width={width}

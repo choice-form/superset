@@ -72,18 +72,28 @@ export default class ViewportControl extends React.Component {
     return (
       <div key={ctrl}>
         <FormLabel>{ctrl}</FormLabel>
-        <TextControl value={this.props.value[ctrl]} onChange={this.onChange.bind(this, ctrl)} isFloat />
+        <TextControl
+          value={this.props.value[ctrl]}
+          onChange={this.onChange.bind(this, ctrl)}
+          isFloat
+        />
       </div>
     );
   }
 
   renderPopover() {
-    return <div id={`filter-popover-${this.props.name}`}>{PARAMS.map(ctrl => this.renderTextControl(ctrl))}</div>;
+    return (
+      <div id={`filter-popover-${this.props.name}`}>
+        {PARAMS.map(ctrl => this.renderTextControl(ctrl))}
+      </div>
+    );
   }
 
   renderLabel() {
     if (this.props.value.longitude && this.props.value.latitude) {
-      return `${decimal2sexagesimal(this.props.value.longitude)} | ${decimal2sexagesimal(this.props.value.latitude)}`;
+      return `${decimal2sexagesimal(
+        this.props.value.longitude,
+      )} | ${decimal2sexagesimal(this.props.value.latitude)}`;
     }
     return 'N/A';
   }

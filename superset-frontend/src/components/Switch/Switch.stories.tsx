@@ -26,7 +26,13 @@ export default {
 
 export const InteractiveSwitch = ({ checked, ...rest }: SwitchProps) => {
   const [, updateArgs] = useArgs();
-  return <Switch {...rest} checked={checked} onChange={value => updateArgs({ checked: value })} />;
+  return (
+    <Switch
+      {...rest}
+      checked={checked}
+      onChange={value => updateArgs({ checked: value })}
+    />
+  );
 };
 
 InteractiveSwitch.args = {

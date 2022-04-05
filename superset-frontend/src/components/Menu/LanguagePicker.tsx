@@ -70,7 +70,10 @@ export default function LanguagePicker(props: LanguagePickerProps) {
       {...rest}
     >
       {Object.keys(languages).map(langKey => (
-        <Menu.Item key={langKey} style={{ whiteSpace: 'normal', height: 'auto' }}>
+        <Menu.Item
+          key={langKey}
+          style={{ whiteSpace: 'normal', height: 'auto' }}
+        >
           <StyledLabel className="f16">
             <i className={`flag ${languages[langKey].flag}`} />
             <a href={languages[langKey].url}>{languages[langKey].name}</a>

@@ -26,7 +26,11 @@ export class OptionSelector {
 
   multi: boolean;
 
-  constructor(options: Record<string, ColumnMeta>, multi: boolean, initialValues?: string[] | string | null) {
+  constructor(
+    options: Record<string, ColumnMeta>,
+    multi: boolean,
+    initialValues?: string[] | string | null,
+  ) {
     this.options = options;
     this.multi = multi;
     this.values = ensureIsArray(initialValues)

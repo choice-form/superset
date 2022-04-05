@@ -32,7 +32,10 @@ import {
   OPERATOR_ENUM_TO_OPERATOR_TYPE,
 } from 'src/explore/constants';
 import FilterDefinitionOption from 'src/explore/components/controls/MetricControl/FilterDefinitionOption';
-import AdhocFilter, { EXPRESSION_TYPES, CLAUSES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, {
+  EXPRESSION_TYPES,
+  CLAUSES,
+} from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import { Input } from 'src/common/components';
 
 const StyledInput = styled(Input)`
@@ -75,7 +78,11 @@ export interface MetricColumnType {
   saved_metric_name: string;
 }
 
-export type ColumnType = SimpleColumnType | SimpleExpressionType | SQLExpressionType | MetricColumnType;
+export type ColumnType =
+  | SimpleColumnType
+  | SimpleExpressionType
+  | SQLExpressionType
+  | MetricColumnType;
 
 export interface Props {
   adhocFilter: AdhocFilter;
@@ -92,9 +99,13 @@ export interface Props {
 }
 export const useSimpleTabFilterProps = (props: Props) => {
   const isOperatorRelevant = (operator: Operators, subject: string) => {
-    const column = props.datasource.columns?.find(col => col.column_name === subject);
-    const isColumnBoolean = !!column && (column.type === 'BOOL' || column.type === 'BOOLEAN');
-    const isColumnNumber = !!column && (column.type === 'INT' || column.type === 'INTEGER');
+    const column = props.datasource.columns?.find(
+      col => col.column_name === subject,
+    );
+    const isColumnBoolean =
+      !!column && (column.type === 'BOOL' || column.type === 'BOOLEAN');
+    const isColumnNumber =
+      !!column && (column.type === 'INT' || column.type === 'INTEGER');
     const isColumnFunction = !!column && !!column.expression;
 
     if (operator && CUSTOM_OPERATORS.has(operator)) {
@@ -105,18 +116,24 @@ export const useSimpleTabFilterProps = (props: Props) => {
       return isColumnBoolean || isColumnNumber || isColumnFunction;
     }
     if (isColumnBoolean) {
-      return operator === Operators.IS_NULL || operator === Operators.IS_NOT_NULL;
+      return (
+        operator === Operators.IS_NULL || operator === Operators.IS_NOT_NULL
+      );
     }
     return !(
-      (props.datasource.type === 'druid' && TABLE_ONLY_OPERATORS.indexOf(operator) >= 0) ||
-      (props.datasource.type === 'table' && DRUID_ONLY_OPERATORS.indexOf(operator) >= 0) ||
-      (props.adhocFilter.clause === CLAUSES.HAVING && HAVING_OPERATORS.indexOf(operator) === -1)
+      (props.datasource.type === 'druid' &&
+        TABLE_ONLY_OPERATORS.indexOf(operator) >= 0) ||
+      (props.datasource.type === 'table' &&
+        DRUID_ONLY_OPERATORS.indexOf(operator) >= 0) ||
+      (props.adhocFilter.clause === CLAUSES.HAVING &&
+        HAVING_OPERATORS.indexOf(operator) === -1)
     );
   };
   const onSubjectChange = (id: string) => {
     const option = props.options.find(
       option =>
-        ('column_name' in option && option.column_name === id) || ('optionName' in option && option.optionName === id),
+        ('column_name' in option && option.column_name === id) ||
+        ('optionName' in option && option.optionName === id),
     );
 
     let subject = '';
@@ -156,7 +173,9 @@ export const useSimpleTabFilterProps = (props: Props) => {
         ? currentComparator
         : [currentComparator].filter(element => element);
     } else {
-      newComparator = Array.isArray(currentComparator) ? currentComparator[0] : currentComparator;
+      newComparator = Array.isArray(currentComparator)
+        ? currentComparator[0]
+        : currentComparator;
     }
     if (operatorId === Operators.IS_TRUE || operatorId === Operators.IS_FALSE) {
       newComparator = Operators.IS_TRUE === operatorId;
@@ -200,16 +219,28 @@ export const useSimpleTabFilterProps = (props: Props) => {
 };
 
 const AdhocFilterEditPopoverSimpleTabContent: React.FC<Props> = props => {
-  const { onSubjectChange, onOperatorChange, isOperatorRelevant, onComparatorChange } = useSimpleTabFilterProps(props);
+  const {
+    onSubjectChange,
+    onOperatorChange,
+    isOperatorRelevant,
+    onComparatorChange,
+  } = useSimpleTabFilterProps(props);
   const [suggestions, setSuggestions] = useState<Record<string, any>>([]);
   const [comparator, setComparator] = useState(props.adhocFilter.comparator);
-  const [loadingComparatorSuggestions, setLoadingComparatorSuggestions] = useState(false);
+  const [
+    loadingComparatorSuggestions,
+    setLoadingComparatorSuggestions,
+  ] = useState(false);
 
-  const onInputComparatorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onInputComparatorChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     onComparatorChange(event.target.value);
   };
 
-  const renderSubjectOptionLabel = (option: ColumnType) => <FilterDefinitionOption option={option} />;
+  const renderSubjectOptionLabel = (option: ColumnType) => (
+    <FilterDefinitionOption option={option} />
+  );
 
   const getOptionsRemaining = () => {
     // if select is multi/value is array, we show the options not selected
@@ -236,13 +267,18 @@ const AdhocFilterEditPopoverSimpleTabContent: React.FC<Props> = props => {
     ariaLabel: t('Select subject'),
     value: subject ?? undefined,
     onChange: handleSubjectChange,
-    notFoundContent: t('No such column found. To filter on a metric, try the Custom SQL tab.'),
+    notFoundContent: t(
+      'No such column found. To filter on a metric, try the Custom SQL tab.',
+    ),
     autoFocus: !subject,
     placeholder: '',
   };
 
   if (props.datasource.type === 'druid') {
-    subjectSelectProps.placeholder = t('%s column(s) and metric(s)', columns.length);
+    subjectSelectProps.placeholder = t(
+      '%s column(s) and metric(s)',
+      columns.length,
+    );
   } else {
     // we cannot support simple ad-hoc filters for metrics because we don't know what type
     // the value should be cast to (without knowing the output type of the aggregate, which
@@ -251,13 +287,17 @@ const AdhocFilterEditPopoverSimpleTabContent: React.FC<Props> = props => {
       props.adhocFilter.clause === CLAUSES.WHERE
         ? t('%s column(s)', columns.length)
         : t('To filter on a metric, use Custom SQL tab.');
-    columns = props.options.filter(option => 'column_name' in option && option.column_name);
+    columns = props.options.filter(
+      option => 'column_name' in option && option.column_name,
+    );
   }
 
   const operatorSelectProps = {
     placeholder: t(
       '%s operator(s)',
-      (props.operators ?? OPERATORS_OPTIONS).filter(op => isOperatorRelevant(op, subject)).length,
+      (props.operators ?? OPERATORS_OPTIONS).filter(op =>
+        isOperatorRelevant(op, subject),
+      ).length,
     ),
     value: operatorId,
     onChange: onOperatorChange,
@@ -265,13 +305,16 @@ const AdhocFilterEditPopoverSimpleTabContent: React.FC<Props> = props => {
     ariaLabel: t('Select operator'),
   };
 
-  const shouldFocusComparator = !!subjectSelectProps.value && !!operatorSelectProps.value;
+  const shouldFocusComparator =
+    !!subjectSelectProps.value && !!operatorSelectProps.value;
 
   const comparatorSelectProps = {
     allowClear: true,
     allowNewOptions: true,
     ariaLabel: t('Comparator option'),
-    mode: MULTI_OPERATORS.has(operatorId) ? ('multiple' as const) : ('single' as const),
+    mode: MULTI_OPERATORS.has(operatorId)
+      ? ('multiple' as const)
+      : ('single' as const),
     loading: loadingComparatorSuggestions,
     value: comparator,
     onChange: onComparatorChange,
@@ -281,7 +324,8 @@ const AdhocFilterEditPopoverSimpleTabContent: React.FC<Props> = props => {
     autoFocus: shouldFocusComparator,
   };
 
-  const labelText = comparator && comparator.length > 0 && createSuggestionsPlaceholder();
+  const labelText =
+    comparator && comparator.length > 0 && createSuggestionsPlaceholder();
 
   useEffect(() => {
     const refreshComparatorSuggestions = () => {
@@ -325,12 +369,18 @@ const AdhocFilterEditPopoverSimpleTabContent: React.FC<Props> = props => {
           marginBottom: theme.gridUnit * 4,
         })}
         options={columns.map(column => ({
-          value: ('column_name' in column && column.column_name) || ('optionName' in column && column.optionName) || '',
+          value:
+            ('column_name' in column && column.column_name) ||
+            ('optionName' in column && column.optionName) ||
+            '',
           label:
             ('saved_metric_name' in column && column.saved_metric_name) ||
             ('column_name' in column && column.column_name) ||
             ('label' in column && column.label),
-          key: ('id' in column && column.id) || ('optionName' in column && column.optionName) || undefined,
+          key:
+            ('id' in column && column.id) ||
+            ('optionName' in column && column.optionName) ||
+            undefined,
           customLabel: renderSubjectOptionLabel(column),
         }))}
         {...subjectSelectProps}

@@ -34,7 +34,13 @@ export interface Dashboard {
   slices: Slice[];
 }
 
-const V1_PLUGINS = ['box_plot', 'echarts_timeseries', 'word_cloud', 'pie', 'table'];
+const V1_PLUGINS = [
+  'box_plot',
+  'echarts_timeseries',
+  'word_cloud',
+  'pie',
+  'table',
+];
 export const DASHBOARD_CHART_ALIAS_PREFIX = 'getChartData_';
 
 export function isLegacyChart(vizType: string): boolean {
@@ -84,7 +90,9 @@ export function interceptChart({
   const urlBase = legacy ? '**/explore_json/' : '**/api/v1/chart/data';
   let url;
   if (sliceId) {
-    const encodedFormData = encodeURIComponent(JSON.stringify({ slice_id: sliceId }));
+    const encodedFormData = encodeURIComponent(
+      JSON.stringify({ slice_id: sliceId }),
+    );
     url = `${urlBase}?form_data=${encodedFormData}*`;
   } else {
     url = `${urlBase}**`;

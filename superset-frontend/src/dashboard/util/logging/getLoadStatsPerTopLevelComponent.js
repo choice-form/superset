@@ -19,7 +19,10 @@
 import findTopLevelComponentIds from './findTopLevelComponentIds';
 import childChartsDidLoad from './childChartsDidLoad';
 
-export default function getLoadStatsPerTopLevelComponent({ layout, chartQueries }) {
+export default function getLoadStatsPerTopLevelComponent({
+  layout,
+  chartQueries,
+}) {
   const topLevelComponents = findTopLevelComponentIds(layout);
   const stats = {};
   topLevelComponents.forEach(({ id, ...restStats }) => {

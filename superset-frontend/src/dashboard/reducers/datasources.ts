@@ -18,7 +18,10 @@
  */
 import { keyBy } from 'lodash';
 import { DatasourcesState } from 'src/dashboard/types';
-import { DatasourcesActionPayload, DatasourcesAction } from '../actions/datasources';
+import {
+  DatasourcesActionPayload,
+  DatasourcesAction,
+} from '../actions/datasources';
 
 export default function datasourcesReducer(
   datasources: DatasourcesState | undefined,

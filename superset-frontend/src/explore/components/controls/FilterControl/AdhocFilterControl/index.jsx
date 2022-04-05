@@ -24,7 +24,10 @@ import ControlHeader from 'src/explore/components/ControlHeader';
 import adhocMetricType from 'src/explore/components/controls/MetricControl/adhocMetricType';
 import savedMetricType from 'src/explore/components/controls/MetricControl/savedMetricType';
 import AdhocMetric from 'src/explore/components/controls/MetricControl/AdhocMetric';
-import { Operators, OPERATOR_ENUM_TO_OPERATOR_TYPE } from 'src/explore/constants';
+import {
+  Operators,
+  OPERATOR_ENUM_TO_OPERATOR_TYPE,
+} from 'src/explore/constants';
 import FilterDefinitionOption from 'src/explore/components/controls/MetricControl/FilterDefinitionOption';
 import {
   AddControlLabel,
@@ -35,11 +38,17 @@ import {
 import Icons from 'src/components/Icons';
 import AdhocFilterPopoverTrigger from 'src/explore/components/controls/FilterControl/AdhocFilterPopoverTrigger';
 import AdhocFilterOption from 'src/explore/components/controls/FilterControl/AdhocFilterOption';
-import AdhocFilter, { CLAUSES, EXPRESSION_TYPES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, {
+  CLAUSES,
+  EXPRESSION_TYPES,
+} from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import adhocFilterType from 'src/explore/components/controls/FilterControl/adhocFilterType';
 import columnType from 'src/explore/components/controls/FilterControl/columnType';
 
-const selectedMetricType = PropTypes.oneOfType([PropTypes.string, adhocMetricType]);
+const selectedMetricType = PropTypes.oneOfType([
+  PropTypes.string,
+  adhocMetricType,
+]);
 
 const propTypes = {
   label: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -51,7 +60,10 @@ const propTypes = {
   datasource: PropTypes.object,
   columns: PropTypes.arrayOf(columnType),
   savedMetrics: PropTypes.arrayOf(savedMetricType),
-  selectedMetrics: PropTypes.oneOfType([selectedMetricType, PropTypes.arrayOf(selectedMetricType)]),
+  selectedMetrics: PropTypes.oneOfType([
+    selectedMetricType,
+    PropTypes.arrayOf(selectedMetricType),
+  ]),
   isLoading: PropTypes.bool,
 };
 
@@ -111,7 +123,11 @@ class AdhocFilterControl extends React.Component {
     const { datasource } = this.props;
     if (datasource && datasource.type === 'table') {
       const dbId = datasource.database?.id;
-      const { datasource_name: name, schema, is_sqllab_view: isSqllabView } = datasource;
+      const {
+        datasource_name: name,
+        schema,
+        is_sqllab_view: isSqllabView,
+      } = datasource;
 
       if (!isSqllabView && dbId && name && schema) {
         SupersetClient.get({
@@ -122,7 +138,11 @@ class AdhocFilterControl extends React.Component {
               const { partitions } = json;
               // for now only show latest_partition option
               // when table datasource has only 1 partition key.
-              if (partitions && partitions.cols && Object.keys(partitions.cols).length === 1) {
+              if (
+                partitions &&
+                partitions.cols &&
+                Object.keys(partitions.cols).length === 1
+              ) {
                 this.setState({ partitionColumn: partitions.cols[0] });
               }
             }
@@ -184,19 +204,26 @@ class AdhocFilterControl extends React.Component {
   }
 
   onChange(opts) {
-    const options = (opts || []).map(option => this.mapOption(option)).filter(option => option);
+    const options = (opts || [])
+      .map(option => this.mapOption(option))
+      .filter(option => option);
     this.props.onChange(options);
   }
 
   getMetricExpression(savedMetricName) {
-    return this.props.savedMetrics.find(savedMetric => savedMetric.metric_name === savedMetricName).expression;
+    return this.props.savedMetrics.find(
+      savedMetric => savedMetric.metric_name === savedMetricName,
+    ).expression;
   }
 
   moveLabel(dragIndex, hoverIndex) {
     const { values } = this.state;
 
     const newValues = [...values];
-    [newValues[hoverIndex], newValues[dragIndex]] = [newValues[dragIndex], newValues[hoverIndex]];
+    [newValues[hoverIndex], newValues[dragIndex]] = [
+      newValues[dragIndex],
+      newValues[hoverIndex],
+    ];
     this.setState({ values: newValues });
   }
 
@@ -208,12 +235,16 @@ class AdhocFilterControl extends React.Component {
     // via datasource saved metric
     if (option.saved_metric_name) {
       return new AdhocFilter({
-        expressionType: this.props.datasource.type === 'druid' ? EXPRESSION_TYPES.SIMPLE : EXPRESSION_TYPES.SQL,
+        expressionType:
+          this.props.datasource.type === 'druid'
+            ? EXPRESSION_TYPES.SIMPLE
+            : EXPRESSION_TYPES.SQL,
         subject:
           this.props.datasource.type === 'druid'
             ? option.saved_metric_name
             : this.getMetricExpression(option.saved_metric_name),
-        operator: OPERATOR_ENUM_TO_OPERATOR_TYPE[Operators.GREATER_THAN].operation,
+        operator:
+          OPERATOR_ENUM_TO_OPERATOR_TYPE[Operators.GREATER_THAN].operation,
         comparator: 0,
         clause: CLAUSES.HAVING,
       });
@@ -221,9 +252,16 @@ class AdhocFilterControl extends React.Component {
     // has a custom label, meaning it's custom column
     if (option.label) {
       return new AdhocFilter({
-        expressionType: this.props.datasource.type === 'druid' ? EXPRESSION_TYPES.SIMPLE : EXPRESSION_TYPES.SQL,
-        subject: this.props.datasource.type === 'druid' ? option.label : new AdhocMetric(option).translateToSql(),
-        operator: OPERATOR_ENUM_TO_OPERATOR_TYPE[Operators.GREATER_THAN].operation,
+        expressionType:
+          this.props.datasource.type === 'druid'
+            ? EXPRESSION_TYPES.SIMPLE
+            : EXPRESSION_TYPES.SQL,
+        subject:
+          this.props.datasource.type === 'druid'
+            ? option.label
+            : new AdhocMetric(option).translateToSql(),
+        operator:
+          OPERATOR_ENUM_TO_OPERATOR_TYPE[Operators.GREATER_THAN].operation,
         comparator: 0,
         clause: CLAUSES.HAVING,
       });
@@ -246,7 +284,11 @@ class AdhocFilterControl extends React.Component {
     const options = [
       ...props.columns,
       ...ensureIsArray(props.selectedMetrics).map(
-        metric => metric && (typeof metric === 'string' ? { saved_metric_name: metric } : new AdhocMetric(metric)),
+        metric =>
+          metric &&
+          (typeof metric === 'string'
+            ? { saved_metric_name: metric }
+            : new AdhocMetric(metric)),
       ),
     ].filter(option => option);
 
@@ -301,13 +343,18 @@ class AdhocFilterControl extends React.Component {
           <ControlHeader {...this.props} />
           {this.addNewFilterPopoverTrigger(
             <AddIconButton data-test="add-filter-button">
-              <Icons.PlusLarge iconSize="s" iconColor={theme.colors.grayscale.light5} />
+              <Icons.PlusLarge
+                iconSize="s"
+                iconColor={theme.colors.grayscale.light5}
+              />
             </AddIconButton>,
           )}
         </HeaderContainer>
         <LabelsContainer>
           {this.state.values.length > 0
-            ? this.state.values.map((value, index) => this.valueRenderer(value, index))
+            ? this.state.values.map((value, index) =>
+                this.valueRenderer(value, index),
+              )
             : this.addNewFilterPopoverTrigger(
                 <AddControlLabel>
                   <Icons.PlusSmall iconColor={theme.colors.grayscale.light1} />

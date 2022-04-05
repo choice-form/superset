@@ -28,7 +28,11 @@ import {
   MARKDOWN_TYPE,
 } from 'src/dashboard/util/componentTypes';
 
-import { DASHBOARD_ROOT_ID, DASHBOARD_HEADER_ID, DASHBOARD_GRID_ID } from 'src/dashboard/util/constants';
+import {
+  DASHBOARD_ROOT_ID,
+  DASHBOARD_HEADER_ID,
+  DASHBOARD_GRID_ID,
+} from 'src/dashboard/util/constants';
 
 import newComponentFactory from 'src/dashboard/util/newComponentFactory';
 
@@ -233,7 +237,14 @@ export const dashboardLayoutWithChartsInTabsAndRoot = {
 export const filterComponent = {
   ...newComponentFactory(CHART_TYPE),
   id: 'CHART-rwDfbGqeEn',
-  parents: ['ROOT_ID', 'TABS-VPEX_c476g', 'TAB-PMJyKM1yB', 'TABS-YdylzDMTMQ', 'TAB-O9AaU9FT0', 'ROW-l6PrlhwSjh'],
+  parents: [
+    'ROOT_ID',
+    'TABS-VPEX_c476g',
+    'TAB-PMJyKM1yB',
+    'TABS-YdylzDMTMQ',
+    'TAB-O9AaU9FT0',
+    'ROW-l6PrlhwSjh',
+  ],
   meta: {
     chartId: filterId,
     width: 3,

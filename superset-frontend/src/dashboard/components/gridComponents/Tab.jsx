@@ -68,15 +68,21 @@ const TabTitleContainer = styled.div`
     padding: ${gridUnit}px ${gridUnit * 2}px;
     margin: ${-gridUnit}px ${gridUnit * -2}px;
     transition: box-shadow 0.2s ease-in-out;
-    ${isHighlighted && `box-shadow: 0 0 ${gridUnit}px ${colors.primary.light1};`}
+    ${
+      isHighlighted && `box-shadow: 0 0 ${gridUnit}px ${colors.primary.light1};`
+    }
   `}
 `;
 
 const renderDraggableContentBottom = dropProps =>
-  dropProps.dropIndicatorProps && <div className="drop-indicator drop-indicator--bottom" />;
+  dropProps.dropIndicatorProps && (
+    <div className="drop-indicator drop-indicator--bottom" />
+  );
 
 const renderDraggableContentTop = dropProps =>
-  dropProps.dropIndicatorProps && <div className="drop-indicator drop-indicator--top" />;
+  dropProps.dropIndicatorProps && (
+    <div className="drop-indicator drop-indicator--top" />
+  );
 
 export default class Tab extends React.PureComponent {
   constructor(props) {
@@ -192,7 +198,16 @@ export default class Tab extends React.PureComponent {
   }
 
   renderTab() {
-    const { component, parentComponent, index, depth, editMode, filters, isFocused, isHighlighted } = this.props;
+    const {
+      component,
+      parentComponent,
+      index,
+      depth,
+      editMode,
+      filters,
+      isFocused,
+      isHighlighted,
+    } = this.props;
 
     return (
       <DragDroppable
@@ -205,7 +220,11 @@ export default class Tab extends React.PureComponent {
         editMode={editMode}
       >
         {({ dropIndicatorProps, dragSourceRef }) => (
-          <TabTitleContainer isHighlighted={isHighlighted} className="dragdroppable-tab" ref={dragSourceRef}>
+          <TabTitleContainer
+            isHighlighted={isHighlighted}
+            className="dragdroppable-tab"
+            ref={dragSourceRef}
+          >
             <EditableTitle
               title={component.meta.text}
               defaultTitle={component.meta.defaultText}
@@ -233,7 +252,9 @@ export default class Tab extends React.PureComponent {
 
   render() {
     const { renderType } = this.props;
-    return renderType === RENDER_TAB ? this.renderTab() : this.renderTabContent();
+    return renderType === RENDER_TAB
+      ? this.renderTab()
+      : this.renderTabContent();
   }
 }
 

@@ -42,7 +42,9 @@ describe('EmbedCodeButton', () => {
   };
 
   it('renders', () => {
-    expect(React.isValidElement(<EmbedCodeButton {...defaultProps} />)).toBe(true);
+    expect(React.isValidElement(<EmbedCodeButton {...defaultProps} />)).toBe(
+      true,
+    );
   });
 
   it('renders overlay trigger', () => {
@@ -81,7 +83,9 @@ describe('EmbedCodeButton', () => {
   });
 
   it('returns correct embed code', () => {
-    const stub = sinon.stub(exploreUtils, 'getURIDirectory').callsFake(() => 'endpoint_url');
+    const stub = sinon
+      .stub(exploreUtils, 'getURIDirectory')
+      .callsFake(() => 'endpoint_url');
     const wrapper = mount(
       <ThemeProvider theme={supersetTheme}>
         <EmbedCodeButton {...defaultProps} />
@@ -104,7 +108,9 @@ describe('EmbedCodeButton', () => {
       }${DashboardStandaloneMode.HIDE_NAV}&height=1000"\n` +
       `>\n` +
       `</iframe>`;
-    expect(wrapper.find(EmbedCodeButton).instance().generateEmbedHTML()).toBe(embedHTML);
+    expect(wrapper.find(EmbedCodeButton).instance().generateEmbedHTML()).toBe(
+      embedHTML,
+    );
     stub.restore();
   });
 });

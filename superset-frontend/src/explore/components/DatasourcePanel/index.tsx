@@ -114,11 +114,18 @@ const LabelWrapper = styled.div`
   }
 `;
 
-const LabelContainer = (props: { children: React.ReactElement; className: string }) => {
+const LabelContainer = (props: {
+  children: React.ReactElement;
+  className: string;
+}) => {
   const labelRef = useRef<HTMLDivElement>(null);
   const [showTooltip, setShowTooltip] = useState(true);
   const isLabelTruncated = () =>
-    !!(labelRef && labelRef.current && labelRef.current.scrollWidth > labelRef.current.clientWidth);
+    !!(
+      labelRef &&
+      labelRef.current &&
+      labelRef.current.scrollWidth > labelRef.current.clientWidth
+    );
   const handleShowTooltip = () => {
     const shouldShowTooltip = isLabelTruncated();
     if (shouldShowTooltip !== showTooltip) {
@@ -133,15 +140,25 @@ const LabelContainer = (props: { children: React.ReactElement; className: string
     showTooltip,
   };
   return (
-    <LabelWrapper onMouseEnter={handleShowTooltip} onMouseLeave={handleResetTooltip} className={props.className}>
+    <LabelWrapper
+      onMouseEnter={handleShowTooltip}
+      onMouseLeave={handleResetTooltip}
+      className={props.className}
+    >
       {React.cloneElement(props.children, extendedProps)}
     </LabelWrapper>
   );
 };
 
-const enableExploreDnd = isFeatureEnabled(FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP);
+const enableExploreDnd = isFeatureEnabled(
+  FeatureFlag.ENABLE_EXPLORE_DRAG_AND_DROP,
+);
 
-export default function DataSourcePanel({ datasource, controls: { datasource: datasourceControl }, actions }: Props) {
+export default function DataSourcePanel({
+  datasource,
+  controls: { datasource: datasourceControl },
+  actions,
+}: Props) {
   const { columns: _columns, metrics } = datasource;
 
   // display temporal column first
@@ -189,7 +206,10 @@ export default function DataSourcePanel({ datasource, controls: { datasource: da
                 threshold: rankings.CONTAINS,
               },
               {
-                key: item => [item.description, item.expression].map(x => x?.replace(/[_\n\s]+/g, ' ') || ''),
+                key: item =>
+                  [item.description, item.expression].map(
+                    x => x?.replace(/[_\n\s]+/g, ' ') || '',
+                  ),
                 threshold: rankings.CONTAINS,
                 maxRanking: rankings.CONTAINS,
               },
@@ -207,7 +227,10 @@ export default function DataSourcePanel({ datasource, controls: { datasource: da
                 threshold: rankings.CONTAINS,
               },
               {
-                key: item => [item.description, item.expression].map(x => x?.replace(/[_\n\s]+/g, ' ') || ''),
+                key: item =>
+                  [item.description, item.expression].map(
+                    x => x?.replace(/[_\n\s]+/g, ' ') || '',
+                  ),
                 threshold: rankings.CONTAINS,
                 maxRanking: rankings.CONTAINS,
               },
@@ -230,17 +253,23 @@ export default function DataSourcePanel({ datasource, controls: { datasource: da
     setInputValue('');
   }, [columns, datasource, metrics]);
 
-  const sortCertifiedFirst = (slice: ColumnMeta[]) => slice.sort((a, b) => b.is_certified - a.is_certified);
+  const sortCertifiedFirst = (slice: ColumnMeta[]) =>
+    slice.sort((a, b) => b.is_certified - a.is_certified);
 
   const metricSlice = useMemo(
-    () => (showAllMetrics ? lists.metrics : lists.metrics.slice(0, DEFAULT_MAX_METRICS_LENGTH)),
+    () =>
+      showAllMetrics
+        ? lists.metrics
+        : lists.metrics.slice(0, DEFAULT_MAX_METRICS_LENGTH),
     [lists.metrics, showAllMetrics],
   );
   const columnSlice = useMemo(
     () =>
       showAllColumns
         ? sortCertifiedFirst(lists.columns)
-        : sortCertifiedFirst(lists.columns.slice(0, DEFAULT_MAX_COLUMNS_LENGTH)),
+        : sortCertifiedFirst(
+            lists.columns.slice(0, DEFAULT_MAX_COLUMNS_LENGTH),
+          ),
     [lists.columns, showAllColumns],
   );
 
@@ -258,13 +287,30 @@ export default function DataSourcePanel({ datasource, controls: { datasource: da
           placeholder={t('Search Metrics & Columns')}
         />
         <div className="field-selections">
-          <Collapse bordered defaultActiveKey={['metrics', 'column']} expandIconPosition="right" ghost>
-            <Collapse.Panel header={<span className="header">{t('Metrics')}</span>} key="metrics">
-              <div className="field-length">{t(`Showing %s of %s`, metricSlice.length, lists.metrics.length)}</div>
+          <Collapse
+            bordered
+            defaultActiveKey={['metrics', 'column']}
+            expandIconPosition="right"
+            ghost
+          >
+            <Collapse.Panel
+              header={<span className="header">{t('Metrics')}</span>}
+              key="metrics"
+            >
+              <div className="field-length">
+                {t(
+                  `Showing %s of %s`,
+                  metricSlice.length,
+                  lists.metrics.length,
+                )}
+              </div>
               {metricSlice.map(m => (
                 <LabelContainer key={m.metric_name} className="column">
                   {enableExploreDnd ? (
-                    <DatasourcePanelDragOption value={m} type={DndItemType.Metric} />
+                    <DatasourcePanelDragOption
+                      value={m}
+                      type={DndItemType.Metric}
+                    />
                   ) : (
                     <StyledMetricOption metric={m} showType />
                   )}
@@ -280,12 +326,24 @@ export default function DataSourcePanel({ datasource, controls: { datasource: da
                 <></>
               )}
             </Collapse.Panel>
-            <Collapse.Panel header={<span className="header">{t('Columns')}</span>} key="column">
-              <div className="field-length">{t(`Showing %s of %s`, columnSlice.length, lists.columns.length)}</div>
+            <Collapse.Panel
+              header={<span className="header">{t('Columns')}</span>}
+              key="column"
+            >
+              <div className="field-length">
+                {t(
+                  `Showing %s of %s`,
+                  columnSlice.length,
+                  lists.columns.length,
+                )}
+              </div>
               {columnSlice.map(col => (
                 <LabelContainer key={col.column_name} className="column">
                   {enableExploreDnd ? (
-                    <DatasourcePanelDragOption value={col} type={DndItemType.Column} />
+                    <DatasourcePanelDragOption
+                      value={col}
+                      type={DndItemType.Column}
+                    />
                   ) : (
                     <StyledColumnOption column={col} showType />
                   )}

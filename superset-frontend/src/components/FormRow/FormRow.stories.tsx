@@ -26,7 +26,11 @@ export default {
 };
 
 export const InteractiveFormRow = ({ isCheckbox, ...rest }: any) => {
-  const control = isCheckbox ? <CheckboxControl label="Checkbox" /> : <TextControl />;
+  const control = isCheckbox ? (
+    <CheckboxControl label="Checkbox" />
+  ) : (
+    <TextControl />
+  );
   return (
     <div style={{ width: 300 }}>
       <FormRow {...rest} control={control} isCheckbox={isCheckbox} />

@@ -46,14 +46,20 @@ describe('SqlLab query tabs', () => {
         const initialTabCount = tabListA.length;
 
         // open the tab dropdown to remove
-        cy.get('[data-test="dropdown-toggle-button"]').children().first().click({
-          force: true,
-        });
+        cy.get('[data-test="dropdown-toggle-button"]')
+          .children()
+          .first()
+          .click({
+            force: true,
+          });
 
         // first item is close
         cy.get('[data-test="close-tab-menu-option"]').click();
 
-        cy.get('[data-test="sql-editor-tabs"]').should('have.length', initialTabCount - 1);
+        cy.get('[data-test="sql-editor-tabs"]').should(
+          'have.length',
+          initialTabCount - 1,
+        );
       });
   });
 });

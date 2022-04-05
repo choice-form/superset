@@ -23,7 +23,11 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
-import { SQL_EDITOR_GUTTER_HEIGHT, SQL_EDITOR_GUTTER_MARGIN, SQL_TOOLBAR_HEIGHT } from 'src/SqlLab/constants';
+import {
+  SQL_EDITOR_GUTTER_HEIGHT,
+  SQL_EDITOR_GUTTER_MARGIN,
+  SQL_TOOLBAR_HEIGHT,
+} from 'src/SqlLab/constants';
 import AceEditorWrapper from 'src/SqlLab/components/AceEditorWrapper';
 import ConnectedSouthPane from 'src/SqlLab/components/SouthPane/state';
 import SqlEditor from 'src/SqlLab/components/SqlEditor';

@@ -85,9 +85,17 @@ test('remove selected custom metric when metric gets removed from dataset', () =
     metricValues = val;
   };
 
-  const { rerender } = render(<DndMetricSelect {...defaultProps} value={metricValues} onChange={onChange} multi />, {
-    useDnd: true,
-  });
+  const { rerender } = render(
+    <DndMetricSelect
+      {...defaultProps}
+      value={metricValues}
+      onChange={onChange}
+      multi
+    />,
+    {
+      useDnd: true,
+    },
+  );
 
   const newPropsWithRemovedMetric = {
     ...defaultProps,
@@ -98,7 +106,14 @@ test('remove selected custom metric when metric gets removed from dataset', () =
       },
     ],
   };
-  rerender(<DndMetricSelect {...newPropsWithRemovedMetric} value={metricValues} onChange={onChange} multi />);
+  rerender(
+    <DndMetricSelect
+      {...newPropsWithRemovedMetric}
+      value={metricValues}
+      onChange={onChange}
+      multi
+    />,
+  );
   expect(screen.getByText('metric_a')).toBeVisible();
   expect(screen.queryByText('Metric B')).not.toBeInTheDocument();
   expect(screen.getByText('SUM(column_a)')).toBeVisible();
@@ -111,9 +126,17 @@ test('remove selected adhoc metric when column gets removed from dataset', async
     metricValues = val;
   };
 
-  const { rerender } = render(<DndMetricSelect {...defaultProps} value={metricValues} onChange={onChange} multi />, {
-    useDnd: true,
-  });
+  const { rerender } = render(
+    <DndMetricSelect
+      {...defaultProps}
+      value={metricValues}
+      onChange={onChange}
+      multi
+    />,
+    {
+      useDnd: true,
+    },
+  );
 
   const newPropsWithRemovedColumn = {
     ...defaultProps,
@@ -125,8 +148,22 @@ test('remove selected adhoc metric when column gets removed from dataset', async
   };
 
   // rerender twice - first to update columns, second to update value
-  rerender(<DndMetricSelect {...newPropsWithRemovedColumn} value={metricValues} onChange={onChange} multi />);
-  rerender(<DndMetricSelect {...newPropsWithRemovedColumn} value={metricValues} onChange={onChange} multi />);
+  rerender(
+    <DndMetricSelect
+      {...newPropsWithRemovedColumn}
+      value={metricValues}
+      onChange={onChange}
+      multi
+    />,
+  );
+  rerender(
+    <DndMetricSelect
+      {...newPropsWithRemovedColumn}
+      value={metricValues}
+      onChange={onChange}
+      multi
+    />,
+  );
 
   expect(screen.getByText('metric_a')).toBeVisible();
   expect(screen.getByText('Metric B')).toBeVisible();
@@ -140,9 +177,17 @@ test('update adhoc metric name when column label in dataset changes', () => {
     metricValues = val;
   };
 
-  const { rerender } = render(<DndMetricSelect {...defaultProps} value={metricValues} onChange={onChange} multi />, {
-    useDnd: true,
-  });
+  const { rerender } = render(
+    <DndMetricSelect
+      {...defaultProps}
+      value={metricValues}
+      onChange={onChange}
+      multi
+    />,
+    {
+      useDnd: true,
+    },
+  );
 
   const newPropsWithUpdatedColNames = {
     ...defaultProps,
@@ -159,8 +204,22 @@ test('update adhoc metric name when column label in dataset changes', () => {
   };
 
   // rerender twice - first to update columns, second to update value
-  rerender(<DndMetricSelect {...newPropsWithUpdatedColNames} value={metricValues} onChange={onChange} multi />);
-  rerender(<DndMetricSelect {...newPropsWithUpdatedColNames} value={metricValues} onChange={onChange} multi />);
+  rerender(
+    <DndMetricSelect
+      {...newPropsWithUpdatedColNames}
+      value={metricValues}
+      onChange={onChange}
+      multi
+    />,
+  );
+  rerender(
+    <DndMetricSelect
+      {...newPropsWithUpdatedColNames}
+      value={metricValues}
+      onChange={onChange}
+      multi
+    />,
+  );
 
   expect(screen.getByText('metric_a')).toBeVisible();
   expect(screen.getByText('Metric B')).toBeVisible();

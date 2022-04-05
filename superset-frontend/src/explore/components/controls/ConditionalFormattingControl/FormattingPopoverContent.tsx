@@ -22,7 +22,11 @@ import { Form, FormItem, FormProps } from 'src/components/Form';
 import { Select } from 'src/components';
 import { Col, InputNumber, Row } from 'src/common/components';
 import Button from 'src/components/Button';
-import { COMPARATOR, ConditionalFormattingConfig, MULTIPLE_VALUE_COMPARATORS } from './types';
+import {
+  COMPARATOR,
+  ConditionalFormattingConfig,
+  MULTIPLE_VALUE_COMPARATORS,
+} from './types';
 
 const FullWidthInputNumber = styled(InputNumber)`
   width: 100%;
@@ -56,8 +60,15 @@ const operatorOptions = [
 const targetValueValidator = (
   compare: (targetValue: number, compareValue: number) => boolean,
   rejectMessage: string,
-) => (targetValue: number | string) => (_: any, compareValue: number | string) => {
-  if (!targetValue || !compareValue || compare(Number(targetValue), Number(compareValue))) {
+) => (targetValue: number | string) => (
+  _: any,
+  compareValue: number | string,
+) => {
+  if (
+    !targetValue ||
+    !compareValue ||
+    compare(Number(targetValue), Number(compareValue))
+  ) {
     return Promise.resolve();
   }
   return Promise.reject(new Error(rejectMessage));
@@ -73,9 +84,11 @@ const targetValueRightValidator = targetValueValidator(
   t('This value should be greater than the left target value'),
 );
 
-const isOperatorMultiValue = (operator?: COMPARATOR) => operator && MULTIPLE_VALUE_COMPARATORS.includes(operator);
+const isOperatorMultiValue = (operator?: COMPARATOR) =>
+  operator && MULTIPLE_VALUE_COMPARATORS.includes(operator);
 
-const isOperatorNone = (operator?: COMPARATOR) => !operator || operator === COMPARATOR.NONE;
+const isOperatorNone = (operator?: COMPARATOR) =>
+  !operator || operator === COMPARATOR.NONE;
 
 const rulesRequired = [{ required: true, message: t('Required') }];
 
@@ -97,12 +110,22 @@ const rulesTargetValueRight = [
 const targetValueLeftDeps = ['targetValueRight'];
 const targetValueRightDeps = ['targetValueLeft'];
 
-const shouldFormItemUpdate = (prevValues: ConditionalFormattingConfig, currentValues: ConditionalFormattingConfig) =>
-  isOperatorNone(prevValues.operator) !== isOperatorNone(currentValues.operator) ||
-  isOperatorMultiValue(prevValues.operator) !== isOperatorMultiValue(currentValues.operator);
+const shouldFormItemUpdate = (
+  prevValues: ConditionalFormattingConfig,
+  currentValues: ConditionalFormattingConfig,
+) =>
+  isOperatorNone(prevValues.operator) !==
+    isOperatorNone(currentValues.operator) ||
+  isOperatorMultiValue(prevValues.operator) !==
+    isOperatorMultiValue(currentValues.operator);
 
 const operatorField = (
-  <FormItem name="operator" label={t('Operator')} rules={rulesRequired} initialValue={operatorOptions[0].value}>
+  <FormItem
+    name="operator"
+    label={t('Operator')}
+    rules={rulesRequired}
+    initialValue={operatorOptions[0].value}
+  >
     <Select ariaLabel={t('Operator')} options={operatorOptions} />
   </FormItem>
 );
@@ -144,7 +167,11 @@ const renderOperatorFields = ({ getFieldValue }: GetFieldValue) =>
     <Row gutter={12}>
       <Col span={6}>{operatorField}</Col>
       <Col span={18}>
-        <FormItem name="targetValue" label={t('Target value')} rules={rulesRequired}>
+        <FormItem
+          name="targetValue"
+          label={t('Target value')}
+          rules={rulesRequired}
+        >
           <FullWidthInputNumber />
         </FormItem>
       </Col>
@@ -160,10 +187,20 @@ export const FormattingPopoverContent = ({
   onChange: (config: ConditionalFormattingConfig) => void;
   columns: { label: string; value: string }[];
 }) => (
-  <Form onFinish={onChange} initialValues={config} requiredMark="optional" layout="vertical">
+  <Form
+    onFinish={onChange}
+    initialValues={config}
+    requiredMark="optional"
+    layout="vertical"
+  >
     <Row gutter={12}>
       <Col span={12}>
-        <FormItem name="column" label={t('Column')} rules={rulesRequired} initialValue={columns[0]?.value}>
+        <FormItem
+          name="column"
+          label={t('Column')}
+          rules={rulesRequired}
+          initialValue={columns[0]?.value}
+        >
           <Select ariaLabel={t('Select column')} options={columns} />
         </FormItem>
       </Col>

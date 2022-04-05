@@ -133,7 +133,11 @@ describe('AlertList', () => {
     });
     await waitForComponentToPaint(wrapper);
     act(() => {
-      wrapper.find('[data-test="modal-confirm-button"]').last().props().onClick();
+      wrapper
+        .find('[data-test="modal-confirm-button"]')
+        .last()
+        .props()
+        .onClick();
     });
 
     await waitForComponentToPaint(wrapper);
@@ -153,9 +157,15 @@ describe('AlertList', () => {
   });
 
   it('hides bulk actions when switch between alert and report list', async () => {
-    expect(wrapper.find(IndeterminateCheckbox)).toHaveLength(mockalerts.length + 1);
-    expect(wrapper.find('[data-test="alert-list"]').hasClass('active')).toBe(true);
-    expect(wrapper.find('[data-test="report-list"]').hasClass('active')).toBe(false);
+    expect(wrapper.find(IndeterminateCheckbox)).toHaveLength(
+      mockalerts.length + 1,
+    );
+    expect(wrapper.find('[data-test="alert-list"]').hasClass('active')).toBe(
+      true,
+    );
+    expect(wrapper.find('[data-test="report-list"]').hasClass('active')).toBe(
+      false,
+    );
 
     const reportWrapper = await mountAndWait({ isReportEnabled: true });
 
@@ -163,8 +173,12 @@ describe('AlertList', () => {
       `"http://localhost/api/v1/report/?q=(filters:!((col:type,opr:eq,value:Report)),order_column:name,order_direction:desc,page:0,page_size:25)"`,
     );
 
-    expect(reportWrapper.find('[data-test="report-list"]').hasClass('active')).toBe(true);
-    expect(reportWrapper.find('[data-test="alert-list"]').hasClass('active')).toBe(false);
+    expect(
+      reportWrapper.find('[data-test="report-list"]').hasClass('active'),
+    ).toBe(true);
+    expect(
+      reportWrapper.find('[data-test="alert-list"]').hasClass('active'),
+    ).toBe(false);
     expect(reportWrapper.find(IndeterminateCheckbox)).toHaveLength(0);
   });
 });

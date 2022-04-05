@@ -114,7 +114,9 @@ test('Should switch to tab:Simple', () => {
   render(<AdhocMetricEditPopover {...props} />);
 
   expect(screen.getByRole('tabpanel', { name: 'Saved' })).toBeVisible();
-  expect(screen.queryByRole('tabpanel', { name: 'Simple' })).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole('tabpanel', { name: 'Simple' }),
+  ).not.toBeInTheDocument();
 
   expect(props.getCurrentTab).toBeCalledTimes(1);
   const tab = screen.getByRole('tab', { name: 'Simple' }).parentElement!;
@@ -122,7 +124,9 @@ test('Should switch to tab:Simple', () => {
 
   expect(props.getCurrentTab).toBeCalledTimes(2);
 
-  expect(screen.queryByRole('tabpanel', { name: 'Saved' })).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole('tabpanel', { name: 'Saved' }),
+  ).not.toBeInTheDocument();
   expect(screen.getByRole('tabpanel', { name: 'Simple' })).toBeInTheDocument();
 });
 
@@ -148,7 +152,9 @@ test('Should switch to tab:Custom SQL', () => {
   render(<AdhocMetricEditPopover {...props} />);
 
   expect(screen.getByRole('tabpanel', { name: 'Saved' })).toBeVisible();
-  expect(screen.queryByRole('tabpanel', { name: 'Custom SQL' })).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole('tabpanel', { name: 'Custom SQL' }),
+  ).not.toBeInTheDocument();
 
   expect(props.getCurrentTab).toBeCalledTimes(1);
   const tab = screen.getByRole('tab', { name: 'Custom SQL' }).parentElement!;
@@ -156,8 +162,12 @@ test('Should switch to tab:Custom SQL', () => {
 
   expect(props.getCurrentTab).toBeCalledTimes(2);
 
-  expect(screen.queryByRole('tabpanel', { name: 'Saved' })).not.toBeInTheDocument();
-  expect(screen.getByRole('tabpanel', { name: 'Custom SQL' })).toBeInTheDocument();
+  expect(
+    screen.queryByRole('tabpanel', { name: 'Saved' }),
+  ).not.toBeInTheDocument();
+  expect(
+    screen.getByRole('tabpanel', { name: 'Custom SQL' }),
+  ).toBeInTheDocument();
 });
 
 test('Should render "Custom SQL" tab correctly', async () => {

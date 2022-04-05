@@ -79,40 +79,73 @@ describe('SelectControl', () => {
     describe('empty placeholder', () => {
       describe('withMulti', () => {
         it('does not show a placeholder if there are no choices', () => {
-          const withMulti = mount(<SelectControl {...defaultProps} choices={[]} multi placeholder="add something" />);
+          const withMulti = mount(
+            <SelectControl
+              {...defaultProps}
+              choices={[]}
+              multi
+              placeholder="add something"
+            />,
+          );
           expect(withMulti.html()).not.toContain('option(s');
         });
       });
       describe('withSingleChoice', () => {
         it('does not show a placeholder if there are no choices', () => {
           const singleChoice = mount(
-            <SelectControl {...defaultProps} choices={[]} multi placeholder="add something" />,
+            <SelectControl
+              {...defaultProps}
+              choices={[]}
+              multi
+              placeholder="add something"
+            />,
           );
           expect(singleChoice.html()).not.toContain('option(s');
         });
       });
       describe('default placeholder', () => {
         it('does not show a placeholder if there are no options', () => {
-          const defaultPlaceholder = mount(<SelectControl {...defaultProps} choices={[]} multi />);
+          const defaultPlaceholder = mount(
+            <SelectControl {...defaultProps} choices={[]} multi />,
+          );
           expect(defaultPlaceholder.html()).not.toContain('option(s');
         });
       });
       describe('all choices selected', () => {
         it('does not show a placeholder', () => {
-          const allChoicesSelected = mount(<SelectControl {...defaultProps} multi value={['today', '1 year ago']} />);
+          const allChoicesSelected = mount(
+            <SelectControl
+              {...defaultProps}
+              multi
+              value={['today', '1 year ago']}
+            />,
+          );
           expect(allChoicesSelected.html()).not.toContain('option(s');
         });
       });
     });
     describe('when select is multi', () => {
       it('does not render the placeholder when a selection has been made', () => {
-        wrapper = mount(<SelectControl {...defaultProps} multi value={['today']} placeholder="add something" />);
+        wrapper = mount(
+          <SelectControl
+            {...defaultProps}
+            multi
+            value={['today']}
+            placeholder="add something"
+          />,
+        );
         expect(wrapper.html()).not.toContain('add something');
       });
     });
     describe('when select is single', () => {
       it('does not render the placeholder when a selection has been made', () => {
-        wrapper = mount(<SelectControl {...defaultProps} value={50} placeholder="add something" />);
+        wrapper = mount(
+          <SelectControl
+            {...defaultProps}
+            value={50}
+            placeholder="add something"
+          />,
+        );
         expect(wrapper.html()).not.toContain('add something');
       });
     });

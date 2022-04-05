@@ -68,13 +68,17 @@ class ExploreCtasResultsButton extends React.PureComponent {
           all_columns: [],
           row_limit: 1000,
         };
-        this.props.actions.addInfoToast(t('Creating a data source and creating a new tab'));
+        this.props.actions.addInfoToast(
+          t('Creating a data source and creating a new tab'),
+        );
 
         // open new window for data visualization
         exploreChart(formData);
       })
       .catch(() => {
-        this.props.actions.addDangerToast(this.props.errorMessage || t('An error occurred'));
+        this.props.actions.addDangerToast(
+          this.props.errorMessage || t('An error occurred'),
+        );
       });
   }
 
@@ -86,7 +90,12 @@ class ExploreCtasResultsButton extends React.PureComponent {
           onClick={this.onClick}
           tooltip={t('Explore the result set in the data exploration view')}
         >
-          <InfoTooltipWithTrigger icon="line-chart" placement="top" label="explore" /> {t('Explore')}
+          <InfoTooltipWithTrigger
+            icon="line-chart"
+            placement="top"
+            label="explore"
+          />{' '}
+          {t('Explore')}
         </Button>
       </>
     );
@@ -107,4 +116,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExploreCtasResultsButton);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ExploreCtasResultsButton);

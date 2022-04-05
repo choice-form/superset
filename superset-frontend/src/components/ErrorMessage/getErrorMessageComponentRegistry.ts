@@ -19,7 +19,10 @@
 import { Registry, makeSingleton, OverwritePolicy } from 'src/core';
 import { ErrorMessageComponent } from './types';
 
-class ErrorMessageComponentRegistry extends Registry<ErrorMessageComponent, ErrorMessageComponent> {
+class ErrorMessageComponentRegistry extends Registry<
+  ErrorMessageComponent,
+  ErrorMessageComponent
+> {
   constructor() {
     super({
       name: 'ErrorMessageComponent',
@@ -28,6 +31,8 @@ class ErrorMessageComponentRegistry extends Registry<ErrorMessageComponent, Erro
   }
 }
 
-const getErrorMessageComponentRegistry = makeSingleton(ErrorMessageComponentRegistry);
+const getErrorMessageComponentRegistry = makeSingleton(
+  ErrorMessageComponentRegistry,
+);
 
 export default getErrorMessageComponentRegistry;

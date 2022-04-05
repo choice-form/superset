@@ -17,7 +17,10 @@
  * under the License.
  */
 import { JsonObject, SupersetClientResponse, t } from 'src/core';
-import { SupersetError, ErrorTypeEnum } from 'src/components/ErrorMessage/types';
+import {
+  SupersetError,
+  ErrorTypeEnum,
+} from 'src/components/ErrorMessage/types';
 import COMMON_ERR_MESSAGES from './errorMessages';
 
 // The response always contains an error attribute, can contain anything from the
@@ -49,7 +52,9 @@ export function parseErrorJson(responseObject: JsonObject): ClientErrorObject {
   if (error.stack) {
     error = {
       ...error,
-      error: t('Unexpected error: ') + (error.description || t('(no description, click to see stack trace)')),
+      error:
+        t('Unexpected error: ') +
+        (error.description || t('(no description, click to see stack trace)')),
       stacktrace: error.stack,
     };
   } else if (error.responseText && error.responseText.indexOf('CSRF') >= 0) {
@@ -71,7 +76,8 @@ export function getClientErrorObject(
     if (typeof response === 'string') {
       resolve({ error: response });
     } else {
-      const responseObject = response instanceof Response ? response : response.response;
+      const responseObject =
+        response instanceof Response ? response : response.response;
       if (responseObject && !responseObject.bodyUsed) {
         // attempt to read the body as json, and fallback to text. we must clone the
         // response in order to fallback to .text() because Response is single-read
@@ -88,7 +94,11 @@ export function getClientErrorObject(
               resolve({ ...responseObject, error: errorText });
             });
           });
-      } else if ('statusText' in response && response.statusText === 'timeout' && 'timeout' in response) {
+      } else if (
+        'statusText' in response &&
+        response.statusText === 'timeout' &&
+        'timeout' in response
+      ) {
         resolve({
           ...responseObject,
           error: 'Request timed out',
@@ -100,11 +110,15 @@ export function getClientErrorObject(
                 issue_codes: [
                   {
                     code: 1000,
-                    message: t('Issue 1000 - The dataset is too large to query.'),
+                    message: t(
+                      'Issue 1000 - The dataset is too large to query.',
+                    ),
                   },
                   {
                     code: 1001,
-                    message: t('Issue 1001 - The database is under an unusual load.'),
+                    message: t(
+                      'Issue 1001 - The database is under an unusual load.',
+                    ),
                   },
                 ],
               },

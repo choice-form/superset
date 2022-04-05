@@ -17,7 +17,9 @@
  * under the License.
  */
 import React, { useState } from 'react';
-import LabeledErrorBoundInput, { LabeledErrorBoundInputProps } from './LabeledErrorBoundInput';
+import LabeledErrorBoundInput, {
+  LabeledErrorBoundInputProps,
+} from './LabeledErrorBoundInput';
 
 export default {
   title: 'LabeledErrorBoundInput',
@@ -47,7 +49,9 @@ export const InteractiveLabeledErrorBoundInput = ({
       id={id}
       name={name}
       validationMethods={{ onChange: validateFunctionality }}
-      errorMessage={currentValue === 'success' ? '' : 'Type success in the text bar'}
+      errorMessage={
+        currentValue === 'success' ? '' : 'Type success in the text bar'
+      }
       helpText="This is a line of example help text"
       value={currentValue}
       // This must stay the same as name or form breaks

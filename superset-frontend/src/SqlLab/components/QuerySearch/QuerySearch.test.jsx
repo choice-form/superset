@@ -100,7 +100,9 @@ describe('QuerySearch', () => {
   });
 
   it('should have one input for searchText', () => {
-    expect(screen.getByPlaceholderText(/Query search string/i)).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText(/Query search string/i),
+    ).toBeInTheDocument();
   });
 
   it('updates search text on user inputs search text', () => {

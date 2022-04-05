@@ -46,12 +46,24 @@ interface ColumnSelectPopoverProps {
   onClose: () => void;
 }
 
-const ColumnSelectPopover = ({ columns, editedColumn, onChange, onClose }: ColumnSelectPopoverProps) => {
-  const [initialCalculatedColumn, initialSimpleColumn] = editedColumn?.expression
+const ColumnSelectPopover = ({
+  columns,
+  editedColumn,
+  onChange,
+  onClose,
+}: ColumnSelectPopoverProps) => {
+  const [
+    initialCalculatedColumn,
+    initialSimpleColumn,
+  ] = editedColumn?.expression
     ? [editedColumn, undefined]
     : [undefined, editedColumn];
-  const [selectedCalculatedColumn, setSelectedCalculatedColumn] = useState(initialCalculatedColumn);
-  const [selectedSimpleColumn, setSelectedSimpleColumn] = useState(initialSimpleColumn);
+  const [selectedCalculatedColumn, setSelectedCalculatedColumn] = useState(
+    initialCalculatedColumn,
+  );
+  const [selectedSimpleColumn, setSelectedSimpleColumn] = useState(
+    initialSimpleColumn,
+  );
 
   const [calculatedColumns, simpleColumns] = useMemo(
     () =>
@@ -71,7 +83,9 @@ const ColumnSelectPopover = ({ columns, editedColumn, onChange, onClose }: Colum
 
   const onCalculatedColumnChange = useCallback(
     selectedColumnName => {
-      const selectedColumn = calculatedColumns.find(col => col.column_name === selectedColumnName);
+      const selectedColumn = calculatedColumns.find(
+        col => col.column_name === selectedColumnName,
+      );
       setSelectedCalculatedColumn(selectedColumn);
       setSelectedSimpleColumn(undefined);
     },
@@ -80,14 +94,17 @@ const ColumnSelectPopover = ({ columns, editedColumn, onChange, onClose }: Colum
 
   const onSimpleColumnChange = useCallback(
     selectedColumnName => {
-      const selectedColumn = simpleColumns.find(col => col.column_name === selectedColumnName);
+      const selectedColumn = simpleColumns.find(
+        col => col.column_name === selectedColumnName,
+      );
       setSelectedCalculatedColumn(undefined);
       setSelectedSimpleColumn(selectedColumn);
     },
     [simpleColumns],
   );
 
-  const defaultActiveTabKey = initialSimpleColumn || calculatedColumns.length === 0 ? 'simple' : 'saved';
+  const defaultActiveTabKey =
+    initialSimpleColumn || calculatedColumns.length === 0 ? 'simple' : 'saved';
 
   const onSave = useCallback(() => {
     const selectedColumn = selectedCalculatedColumn || selectedSimpleColumn;
@@ -106,7 +123,8 @@ const ColumnSelectPopover = ({ columns, editedColumn, onChange, onClose }: Colum
 
   const stateIsValid = selectedCalculatedColumn || selectedSimpleColumn;
   const hasUnsavedChanges =
-    selectedCalculatedColumn?.column_name !== initialCalculatedColumn?.column_name ||
+    selectedCalculatedColumn?.column_name !==
+      initialCalculatedColumn?.column_name ||
     selectedSimpleColumn?.column_name !== initialSimpleColumn?.column_name;
   const savedExpressionsLabel = t('Saved expressions');
   const simpleColumnsLabel = t('Column');
@@ -130,8 +148,11 @@ const ColumnSelectPopover = ({ columns, editedColumn, onChange, onClose }: Colum
               placeholder={t('%s column(s)', calculatedColumns.length)}
               options={calculatedColumns.map(calculatedColumn => ({
                 value: calculatedColumn.column_name,
-                label: calculatedColumn.verbose_name || calculatedColumn.column_name,
-                customLabel: <StyledColumnOption column={calculatedColumn} showType />,
+                label:
+                  calculatedColumn.verbose_name || calculatedColumn.column_name,
+                customLabel: (
+                  <StyledColumnOption column={calculatedColumn} showType />
+                ),
                 key: calculatedColumn.column_name,
               }))}
             />
@@ -149,7 +170,9 @@ const ColumnSelectPopover = ({ columns, editedColumn, onChange, onClose }: Colum
               options={simpleColumns.map(simpleColumn => ({
                 value: simpleColumn.column_name,
                 label: simpleColumn.verbose_name || simpleColumn.column_name,
-                customLabel: <StyledColumnOption column={simpleColumn} showType />,
+                customLabel: (
+                  <StyledColumnOption column={simpleColumn} showType />
+                ),
                 key: simpleColumn.column_name,
               }))}
             />
@@ -162,7 +185,9 @@ const ColumnSelectPopover = ({ columns, editedColumn, onChange, onClose }: Colum
         </Button>
         <Button
           disabled={!stateIsValid}
-          buttonStyle={hasUnsavedChanges && stateIsValid ? 'primary' : 'default'}
+          buttonStyle={
+            hasUnsavedChanges && stateIsValid ? 'primary' : 'default'
+          }
           buttonSize="small"
           onClick={onSave}
           cta

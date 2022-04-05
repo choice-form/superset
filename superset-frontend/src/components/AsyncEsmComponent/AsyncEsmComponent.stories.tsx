@@ -34,7 +34,9 @@ const Component = AsyncEsmComponent(
   Placeholder,
 );
 
-export const InteractiveEsmComponent = (args: PlaceholderProps) => <Component {...args} showLoadingForImport />;
+export const InteractiveEsmComponent = (args: PlaceholderProps) => (
+  <Component {...args} showLoadingForImport />
+);
 
 InteractiveEsmComponent.args = {
   bold: true,

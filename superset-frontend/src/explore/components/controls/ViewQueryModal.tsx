@@ -79,7 +79,12 @@ const ViewQueryModal: React.FC<Props> = props => {
       })
       .catch(response => {
         getClientErrorObject(response).then(({ error, message }) => {
-          setError(error || message || response.statusText || t('Sorry, An error occurred'));
+          setError(
+            error ||
+              message ||
+              response.statusText ||
+              t('Sorry, An error occurred'),
+          );
           setIsLoading(false);
         });
       });
@@ -108,7 +113,10 @@ const ViewQueryModal: React.FC<Props> = props => {
                 </CopyButtonViewQuery>
               }
             />
-            <StyledSyntaxHighlighter language={item.language || undefined} style={github}>
+            <StyledSyntaxHighlighter
+              language={item.language || undefined}
+              style={github}
+            >
               {item.query}
             </StyledSyntaxHighlighter>
           </StyledSyntaxContainer>

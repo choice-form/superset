@@ -117,7 +117,9 @@ describe('AlertReportModal', () => {
   it('renders add header for report when no alert is included, and isReport is true', async () => {
     const addWrapper = await mountAndWait();
 
-    expect(addWrapper.find('[data-test="alert-report-modal-title"]').text()).toEqual('Add Report');
+    expect(
+      addWrapper.find('[data-test="alert-report-modal-title"]').text(),
+    ).toEqual('Add Report');
   });
 
   it('renders add header for alert when no alert is included, and isReport is false', async () => {
@@ -128,7 +130,9 @@ describe('AlertReportModal', () => {
 
     const addWrapper = await mountAndWait(props);
 
-    expect(addWrapper.find('[data-test="alert-report-modal-title"]').text()).toEqual('Add Alert');
+    expect(
+      addWrapper.find('[data-test="alert-report-modal-title"]').text(),
+    ).toEqual('Add Alert');
   });
 
   it('renders edit modal', async () => {
@@ -138,9 +142,15 @@ describe('AlertReportModal', () => {
     };
 
     const editWrapper = await mountAndWait(props);
-    expect(editWrapper.find('[data-test="alert-report-modal-title"]').text()).toEqual('Edit Report');
-    expect(editWrapper.find('input[name="name"]').props().value).toEqual('test report');
-    expect(editWrapper.find('input[name="description"]').props().value).toEqual('test report description');
+    expect(
+      editWrapper.find('[data-test="alert-report-modal-title"]').text(),
+    ).toEqual('Edit Report');
+    expect(editWrapper.find('input[name="name"]').props().value).toEqual(
+      'test report',
+    );
+    expect(editWrapper.find('input[name="description"]').props().value).toEqual(
+      'test report description',
+    );
   });
 
   it('renders async select with value in alert edit modal', async () => {
@@ -151,11 +161,15 @@ describe('AlertReportModal', () => {
     };
 
     const editWrapper = await mountAndWait(props);
-    expect(editWrapper.find('[aria-label="Database"]').at(0).props().value).toEqual({
+    expect(
+      editWrapper.find('[aria-label="Database"]').at(0).props().value,
+    ).toEqual({
       value: 1,
       label: 'test database',
     });
-    expect(editWrapper.find('[aria-label="Chart"]').at(0).props().value).toEqual({
+    expect(
+      editWrapper.find('[aria-label="Chart"]').at(0).props().value,
+    ).toEqual({
       value: 1,
       label: 'test chart',
     });
@@ -313,9 +327,15 @@ describe('AlertReportModal', () => {
     await waitForComponentToPaint(wrapper);
 
     // use default config: only show Email as notification option.
-    expect(wrapper.find('[data-test="notification-add"]').props().status).toEqual('hidden');
+    expect(
+      wrapper.find('[data-test="notification-add"]').props().status,
+    ).toEqual('hidden');
     act(() => {
-      wrapper.find('[data-test="select-delivery-method"]').last().props().onChange('Email');
+      wrapper
+        .find('[data-test="select-delivery-method"]')
+        .last()
+        .props()
+        .onChange('Email');
     });
     await waitForComponentToPaint(wrapper);
     expect(wrapper.find('textarea[name="recipients"]')).toHaveLength(1);

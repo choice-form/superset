@@ -64,7 +64,10 @@ class Row extends React.PureComponent {
     };
     this.handleDeleteComponent = this.handleDeleteComponent.bind(this);
     this.handleUpdateMeta = this.handleUpdateMeta.bind(this);
-    this.handleChangeBackground = this.handleUpdateMeta.bind(this, 'background');
+    this.handleChangeBackground = this.handleUpdateMeta.bind(
+      this,
+      'background',
+    );
     this.handleChangeFocus = this.handleChangeFocus.bind(this);
   }
 
@@ -113,7 +116,8 @@ class Row extends React.PureComponent {
     const rowItems = rowComponent.children || [];
 
     const backgroundStyle = backgroundStyleOptions.find(
-      opt => opt.value === (rowComponent.meta.background || BACKGROUND_TRANSPARENT),
+      opt =>
+        opt.value === (rowComponent.meta.background || BACKGROUND_TRANSPARENT),
     );
 
     return (
@@ -144,11 +148,18 @@ class Row extends React.PureComponent {
               <HoverMenu innerRef={dragSourceRef} position="left">
                 <DragHandle position="left" />
                 <DeleteComponentButton onDelete={this.handleDeleteComponent} />
-                <IconButton onClick={this.handleChangeFocus} icon={<Icons.Cog iconSize="xl" />} />
+                <IconButton
+                  onClick={this.handleChangeFocus}
+                  icon={<Icons.Cog iconSize="xl" />}
+                />
               </HoverMenu>
             )}
             <div
-              className={cx('grid-row', rowItems.length === 0 && 'grid-row--empty', backgroundStyle.className)}
+              className={cx(
+                'grid-row',
+                rowItems.length === 0 && 'grid-row--empty',
+                backgroundStyle.className,
+              )}
               data-test={`grid-row-${backgroundStyle.className}`}
             >
               {rowItems.map((componentId, itemIndex) => (
@@ -158,7 +169,9 @@ class Row extends React.PureComponent {
                   parentId={rowComponent.id}
                   depth={depth + 1}
                   index={itemIndex}
-                  availableColumnCount={availableColumnCount - occupiedColumnCount}
+                  availableColumnCount={
+                    availableColumnCount - occupiedColumnCount
+                  }
                   columnWidth={columnWidth}
                   onResizeStart={onResizeStart}
                   onResize={onResize}

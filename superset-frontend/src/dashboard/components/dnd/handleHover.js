@@ -29,7 +29,8 @@ function handleHover(props, monitor, Component) {
 
   const dropPosition = getDropPosition(monitor, Component);
 
-  const isDashboardRoot = Component?.props?.component?.type === DASHBOARD_ROOT_TYPE;
+  const isDashboardRoot =
+    Component?.props?.component?.type === DASHBOARD_ROOT_TYPE;
   const scroll = isDashboardRoot ? 'SCROLL_TOP' : null;
 
   handleScroll(scroll);

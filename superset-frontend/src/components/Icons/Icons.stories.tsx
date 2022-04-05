@@ -47,7 +47,10 @@ const IconBlock = styled.div`
   padding: ${({ theme }) => theme.gridUnit * 2}px;
 `;
 
-export const InteractiveIcons = ({ showNames, ...rest }: IconType & { showNames: boolean }) => (
+export const InteractiveIcons = ({
+  showNames,
+  ...rest
+}: IconType & { showNames: boolean }) => (
   <IconSet>
     {Object.keys(Icons).map(k => {
       const IconComponent = Icons[k];

@@ -50,11 +50,15 @@ describe('chart card view filters', () => {
     cy.get('[data-test="filters-select"]').eq(2).click();
     cy.get('.rc-virtual-list').contains('area').click({ timeout: 5000 });
     cy.get('[data-test="styled-card"]').its('length').should('be.gt', 0);
-    cy.get('[data-test="styled-card"]').contains("World's Pop Growth").should('be.visible');
+    cy.get('[data-test="styled-card"]')
+      .contains("World's Pop Growth")
+      .should('be.visible');
     cy.get('[data-test="filters-select"]').eq(2).click();
     cy.get('[data-test="filters-select"]').eq(2).type('world_map{enter}');
     cy.get('[data-test="styled-card"]').should('have.length', 1);
-    cy.get('[data-test="styled-card"]').contains('% Rural').should('be.visible');
+    cy.get('[data-test="styled-card"]')
+      .contains('% Rural')
+      .should('be.visible');
   });
 
   it('should filter by datasource correctly', () => {
@@ -62,9 +66,13 @@ describe('chart card view filters', () => {
     cy.get('[data-test="filters-select"]').eq(3).click();
     cy.get('.rc-virtual-list').contains('unicode_test').click();
     cy.get('[data-test="styled-card"]').should('have.length', 1);
-    cy.get('[data-test="styled-card"]').contains('Unicode Cloud').should('be.visible');
+    cy.get('[data-test="styled-card"]')
+      .contains('Unicode Cloud')
+      .should('be.visible');
     cy.get('[data-test="filters-select"]').eq(2).click();
-    cy.get('[data-test="filters-select"]').eq(2).type('energy_usage{enter}{enter}');
+    cy.get('[data-test="filters-select"]')
+      .eq(2)
+      .type('energy_usage{enter}{enter}');
     cy.get('[data-test="styled-card"]').its('length').should('be.gt', 0);
   });
 });
@@ -102,7 +110,9 @@ describe('chart list view filters', () => {
     cy.get('[data-test="filters-select"]').eq(2).click();
     cy.get('.rc-virtual-list').contains('area').click({ timeout: 5000 });
     cy.get('[data-test="table-row"]').its('length').should('be.gt', 0);
-    cy.get('[data-test="table-row"]').contains("World's Pop Growth").should('exist');
+    cy.get('[data-test="table-row"]')
+      .contains("World's Pop Growth")
+      .should('exist');
     cy.get('[data-test="filters-select"]').eq(2).click();
     cy.get('[data-test="filters-select"]').eq(2).type('world_map{enter}');
     cy.get('[data-test="table-row"]').should('have.length', 1);
@@ -116,7 +126,9 @@ describe('chart list view filters', () => {
     cy.get('[data-test="table-row"]').should('have.length', 1);
     cy.get('[data-test="table-row"]').contains('Unicode Cloud').should('exist');
     cy.get('[data-test="filters-select"]').eq(3).click();
-    cy.get('[data-test="filters-select"]').eq(3).type('energy_usage{enter}{enter}');
+    cy.get('[data-test="filters-select"]')
+      .eq(3)
+      .type('energy_usage{enter}{enter}');
     cy.get('[data-test="table-row"]').its('length').should('be.gt', 0);
   });
 });

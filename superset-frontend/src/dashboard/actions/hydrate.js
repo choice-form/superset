@@ -18,22 +18,35 @@
  */
 /* eslint-disable camelcase */
 import { isString } from 'lodash';
-import { Behavior, CategoricalColorNamespace, getChartMetadataRegistry } from 'src/core';
+import {
+  Behavior,
+  CategoricalColorNamespace,
+  getChartMetadataRegistry,
+} from 'src/core';
 
 import { chart } from 'src/chart/chartReducer';
 import { initSliceEntities } from 'src/dashboard/reducers/sliceEntities';
 import { getInitialState as getInitialNativeFilterState } from 'src/dashboard/reducers/nativeFilters';
 import { applyDefaultFormData } from 'src/explore/store';
 import { buildActiveFilters } from 'src/dashboard/util/activeDashboardFilters';
-import findPermission, { canUserEditDashboard } from 'src/dashboard/util/findPermission';
-import { DASHBOARD_FILTER_SCOPE_GLOBAL, dashboardFilter } from 'src/dashboard/reducers/dashboardFilters';
+import findPermission, {
+  canUserEditDashboard,
+} from 'src/dashboard/util/findPermission';
+import {
+  DASHBOARD_FILTER_SCOPE_GLOBAL,
+  dashboardFilter,
+} from 'src/dashboard/reducers/dashboardFilters';
 import {
   DASHBOARD_HEADER_ID,
   GRID_DEFAULT_CHART_WIDTH,
   GRID_COLUMN_COUNT,
   DASHBOARD_ROOT_ID,
 } from 'src/dashboard/util/constants';
-import { DASHBOARD_HEADER_TYPE, CHART_TYPE, ROW_TYPE } from 'src/dashboard/util/componentTypes';
+import {
+  DASHBOARD_HEADER_TYPE,
+  CHART_TYPE,
+  ROW_TYPE,
+} from 'src/dashboard/util/componentTypes';
 import findFirstParentContainerId from 'src/dashboard/util/findFirstParentContainer';
 import getEmptyLayout from 'src/dashboard/util/getEmptyLayout';
 import getFilterConfigsFromFormdata from 'src/dashboard/util/getFilterConfigsFromFormdata';
@@ -47,7 +60,10 @@ import extractUrlParams from '../util/extractUrlParams';
 
 export const HYDRATE_DASHBOARD = 'HYDRATE_DASHBOARD';
 
-export const hydrateDashboard = (dashboardData, chartData) => (dispatch, getState) => {
+export const hydrateDashboard = (dashboardData, chartData) => (
+  dispatch,
+  getState,
+) => {
   const { user, common, dashboardState } = getState();
   let { metadata } = dashboardData;
   const regularUrlParams = extractUrlParams('regular');
@@ -62,7 +78,9 @@ export const hydrateDashboard = (dashboardData, chartData) => (dispatch, getStat
   });
   try {
     // allow request parameter overwrite dashboard metadata
-    preselectFilters = getUrlParam(URL_PARAMS.preselectFilters) || JSON.parse(metadata.default_filters);
+    preselectFilters =
+      getUrlParam(URL_PARAMS.preselectFilters) ||
+      JSON.parse(metadata.default_filters);
   } catch (e) {
     //
   }
@@ -71,8 +89,12 @@ export const hydrateDashboard = (dashboardData, chartData) => (dispatch, getStat
   // the dashboard's JSON metadata
   if (metadata?.label_colors) {
     const namespace = metadata.color_namespace;
-    const colorMap = isString(metadata.label_colors) ? JSON.parse(metadata.label_colors) : metadata.label_colors;
-    const categoricalNamespace = CategoricalColorNamespace.getNamespace(namespace);
+    const colorMap = isString(metadata.label_colors)
+      ? JSON.parse(metadata.label_colors)
+      : metadata.label_colors;
+    const categoricalNamespace = CategoricalColorNamespace.getNamespace(
+      namespace,
+    );
 
     Object.keys(colorMap).forEach(label => {
       categoricalNamespace.setColor(label, colorMap[label]);
@@ -82,7 +104,10 @@ export const hydrateDashboard = (dashboardData, chartData) => (dispatch, getStat
   // dashboard layout
   const { position_data } = dashboardData;
   // new dash: position_json could be {} or null
-  const layout = position_data && Object.keys(position_data).length > 0 ? position_data : getEmptyLayout();
+  const layout =
+    position_data && Object.keys(position_data).length > 0
+      ? position_data
+      : getEmptyLayout();
 
   // create a lookup to sync layout names with slice names
   const chartIdToLayoutId = {};
@@ -138,8 +163,14 @@ export const hydrateDashboard = (dashboardData, chartData) => (dispatch, getStat
 
     // if there are newly added slices from explore view, fill slices into 1 or more rows
     if (!chartIdToLayoutId[key] && layout[parentId]) {
-      if (newSlicesContainerWidth === 0 || newSlicesContainerWidth + GRID_DEFAULT_CHART_WIDTH > GRID_COLUMN_COUNT) {
-        newSlicesContainer = newComponentFactory(ROW_TYPE, (parent.parents || []).slice());
+      if (
+        newSlicesContainerWidth === 0 ||
+        newSlicesContainerWidth + GRID_DEFAULT_CHART_WIDTH > GRID_COLUMN_COUNT
+      ) {
+        newSlicesContainer = newComponentFactory(
+          ROW_TYPE,
+          (parent.parents || []).slice(),
+        );
         layout[newSlicesContainer.id] = newSlicesContainer;
         parent.children.push(newSlicesContainer.id);
         newSlicesContainerWidth = 0;
@@ -257,7 +288,8 @@ export const hydrateDashboard = (dashboardData, chartData) => (dispatch, getStat
   }
 
   metadata.show_native_filters =
-    dashboardData?.metadata?.show_native_filters ?? isFeatureEnabled(FeatureFlag.DASHBOARD_NATIVE_FILTERS);
+    dashboardData?.metadata?.show_native_filters ??
+    isFeatureEnabled(FeatureFlag.DASHBOARD_NATIVE_FILTERS);
 
   if (isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS)) {
     // If user just added cross filter to dashboard it's not saving it scope on server,
@@ -265,12 +297,19 @@ export const hydrateDashboard = (dashboardData, chartData) => (dispatch, getStat
     Object.values(dashboardLayout.present).forEach(layoutItem => {
       const chartId = layoutItem.meta?.chartId;
       const behaviors =
-        (getChartMetadataRegistry().get(chartQueries[chartId]?.formData?.viz_type) ?? {})?.behaviors ?? [];
+        (
+          getChartMetadataRegistry().get(
+            chartQueries[chartId]?.formData?.viz_type,
+          ) ?? {}
+        )?.behaviors ?? [];
 
       if (!metadata.chart_configuration) {
         metadata.chart_configuration = {};
       }
-      if (behaviors.includes(Behavior.INTERACTIVE_CHART) && !metadata.chart_configuration[chartId]) {
+      if (
+        behaviors.includes(Behavior.INTERACTIVE_CHART) &&
+        !metadata.chart_configuration[chartId]
+      ) {
         metadata.chart_configuration[chartId] = {
           id: chartId,
           crossFilters: {
@@ -299,9 +338,17 @@ export const hydrateDashboard = (dashboardData, chartData) => (dispatch, getStat
         userId: user.userId ? String(user.userId) : null, // legacy, please use state.user instead
         dash_edit_perm: canEdit,
         dash_save_perm: findPermission('can_save_dash', 'Superset', roles),
-        dash_share_perm: findPermission('can_share_dashboard', 'Superset', roles),
+        dash_share_perm: findPermission(
+          'can_share_dashboard',
+          'Superset',
+          roles,
+        ),
         superset_can_explore: findPermission('can_explore', 'Superset', roles),
-        superset_can_share: findPermission('can_share_chart', 'Superset', roles),
+        superset_can_share: findPermission(
+          'can_share_chart',
+          'Superset',
+          roles,
+        ),
         superset_can_csv: findPermission('can_csv', 'Superset', roles),
         slice_can_edit: findPermission('can_slice', 'Superset', roles),
         common: {

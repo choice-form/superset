@@ -18,7 +18,9 @@
  */
 import { useEffect, useRef, useState, RefObject } from 'react';
 
-export function useElementOnScreen<T extends Element>(options: IntersectionObserverInit): [RefObject<T>, boolean] {
+export function useElementOnScreen<T extends Element>(
+  options: IntersectionObserverInit,
+): [RefObject<T>, boolean] {
   const containerRef = useRef<T>(null);
   const [isSticky, setIsSticky] = useState(false);
 

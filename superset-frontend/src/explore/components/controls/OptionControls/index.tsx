@@ -136,11 +136,13 @@ export const AddControlLabel = styled.div<{
   cursor: ${({ cancelHover }) => (cancelHover ? 'inherit' : 'pointer')};
 
   :hover {
-    background-color: ${({ cancelHover, theme }) => (cancelHover ? 'inherit' : theme.colors.grayscale.light4)};
+    background-color: ${({ cancelHover, theme }) =>
+      cancelHover ? 'inherit' : theme.colors.grayscale.light4};
   }
 
   :active {
-    background-color: ${({ cancelHover, theme }) => (cancelHover ? 'inherit' : theme.colors.grayscale.light3)};
+    background-color: ${({ cancelHover, theme }) =>
+      cancelHover ? 'inherit' : theme.colors.grayscale.light3};
   }
 `;
 
@@ -225,11 +227,14 @@ export const OptionControlLabel = ({
       // Determine rectangle on screen
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
       // Get vertical middle
-      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+      const hoverMiddleY =
+        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
       // Determine mouse position
       const clientOffset = monitor.getClientOffset();
       // Get pixels to the top
-      const hoverClientY = clientOffset?.y ? clientOffset?.y - hoverBoundingRect.top : 0;
+      const hoverClientY = clientOffset?.y
+        ? clientOffset?.y - hoverBoundingRect.top
+        : 0;
       // Only perform the move when the mouse has crossed half of the items height
       // When dragging downwards, only move when the cursor is below 50%
       // When dragging upwards, only move when the cursor is above 50%
@@ -264,11 +269,24 @@ export const OptionControlLabel = ({
 
   const getLabelContent = () => {
     const shouldShowTooltip =
-      (!isDragging && typeof label === 'string' && tooltipTitle && label && tooltipTitle !== label) ||
-      (!isDragging && labelRef && labelRef.current && labelRef.current.scrollWidth > labelRef.current.clientWidth);
+      (!isDragging &&
+        typeof label === 'string' &&
+        tooltipTitle &&
+        label &&
+        tooltipTitle !== label) ||
+      (!isDragging &&
+        labelRef &&
+        labelRef.current &&
+        labelRef.current.scrollWidth > labelRef.current.clientWidth);
 
     if (savedMetric && hasMetricName) {
-      return <StyledMetricOption metric={savedMetric} labelRef={labelRef} showTooltip={!!shouldShowTooltip} />;
+      return (
+        <StyledMetricOption
+          metric={savedMetric}
+          labelRef={labelRef}
+          showTooltip={!!shouldShowTooltip}
+        />
+      );
     }
     if (!shouldShowTooltip) {
       return <LabelText ref={labelRef}>{label}</LabelText>;
@@ -281,8 +299,16 @@ export const OptionControlLabel = ({
   };
 
   const getOptionControlContent = () => (
-    <OptionControlContainer withCaret={withCaret} data-test="option-label" {...props}>
-      <CloseContainer role="button" data-test="remove-control-button" onClick={onRemove}>
+    <OptionControlContainer
+      withCaret={withCaret}
+      data-test="option-label"
+      {...props}
+    >
+      <CloseContainer
+        role="button"
+        data-test="remove-control-button"
+        onClick={onRemove}
+      >
         <Icons.XSmall iconColor={theme.colors.grayscale.light1} />
       </CloseContainer>
       <Label data-test="control-label">

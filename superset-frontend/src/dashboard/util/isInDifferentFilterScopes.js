@@ -16,7 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-export default function isInDifferentFilterScopes({ dashboardFilters = {}, source = [], destination = [] }) {
+export default function isInDifferentFilterScopes({
+  dashboardFilters = {},
+  source = [],
+  destination = [],
+}) {
   const sourceSet = new Set(source);
   const destinationSet = new Set(destination);
 

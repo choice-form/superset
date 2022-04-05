@@ -23,7 +23,9 @@ import { interpolate } from 'src/showSavedQuery/utils';
 import './index.less';
 
 const scheduleInfoContainer = document.getElementById('schedule-info');
-const bootstrapData = JSON.parse(scheduleInfoContainer.getAttribute('data-bootstrap'));
+const bootstrapData = JSON.parse(
+  scheduleInfoContainer.getAttribute('data-bootstrap'),
+);
 const config = bootstrapData.common.feature_flags.SCHEDULED_QUERIES;
 const { query } = bootstrapData.common;
 const scheduleInfo = query.extra_json.schedule_info;
@@ -35,7 +37,12 @@ if (scheduleInfo && config) {
 
   ReactDom.render(
     <div>
-      <Form schema={config.JSONSCHEMA} uiSchema={config.UISCHEMA} formData={scheduleInfo} disabled>
+      <Form
+        schema={config.JSONSCHEMA}
+        uiSchema={config.UISCHEMA}
+        formData={scheduleInfo}
+        disabled
+      >
         <br />
       </Form>
       {linkback && (

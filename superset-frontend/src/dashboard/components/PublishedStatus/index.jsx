@@ -40,7 +40,9 @@ const draftDivTooltip = t(
     ' Favorite it to see it there or access it by using the URL directly.',
 );
 
-const publishedTooltip = t('This dashboard is published. Click to make it a draft.');
+const publishedTooltip = t(
+  'This dashboard is published. Click to make it a draft.',
+);
 
 export default class PublishedStatus extends React.Component {
   componentDidMount() {
@@ -57,7 +59,11 @@ export default class PublishedStatus extends React.Component {
       // if they can edit the dash, make the badge a button
       if (this.props.canEdit && this.props.canSave) {
         return (
-          <Tooltip id="unpublished-dashboard-tooltip" placement="bottom" title={draftButtonTooltip}>
+          <Tooltip
+            id="unpublished-dashboard-tooltip"
+            placement="bottom"
+            title={draftButtonTooltip}
+          >
             <Label
               onClick={() => {
                 this.togglePublished();
@@ -69,7 +75,11 @@ export default class PublishedStatus extends React.Component {
         );
       }
       return (
-        <Tooltip id="unpublished-dashboard-tooltip" placement="bottom" title={draftDivTooltip}>
+        <Tooltip
+          id="unpublished-dashboard-tooltip"
+          placement="bottom"
+          title={draftDivTooltip}
+        >
           <Label>{t('Draft')}</Label>
         </Tooltip>
       );
@@ -78,7 +88,11 @@ export default class PublishedStatus extends React.Component {
     // Show the published badge for the owner of the dashboard to toggle
     if (this.props.canEdit && this.props.canSave) {
       return (
-        <Tooltip id="published-dashboard-tooltip" placement="bottom" title={publishedTooltip}>
+        <Tooltip
+          id="published-dashboard-tooltip"
+          placement="bottom"
+          title={publishedTooltip}
+        >
           <Label
             onClick={() => {
               this.togglePublished();

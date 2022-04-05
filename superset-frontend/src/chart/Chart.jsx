@@ -88,6 +88,7 @@ const defaultProps = {
 const Styles = styled.div`
   min-height: ${p => p.height}px;
   position: relative;
+
   .chart-tooltip {
     opacity: 0.75;
     font-size: ${({ theme }) => theme.typography.sizes.s}px;

@@ -110,7 +110,9 @@ export function applyFormattingToTabularData(data) {
     ...row,
     /* eslint-disable no-underscore-dangle */
     __timestamp:
-      row.__timestamp === 0 || row.__timestamp ? DATETIME_FORMATTER(new Date(row.__timestamp)) : row.__timestamp,
+      row.__timestamp === 0 || row.__timestamp
+        ? DATETIME_FORMATTER(new Date(row.__timestamp))
+        : row.__timestamp,
     /* eslint-enable no-underscore-dangle */
   }));
 }

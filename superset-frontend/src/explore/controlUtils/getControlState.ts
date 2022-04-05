@@ -17,7 +17,12 @@
  * under the License.
  */
 import { ReactNode } from 'react';
-import { DatasourceType, ensureIsArray, JsonValue, QueryFormData } from 'src/core';
+import {
+  DatasourceType,
+  ensureIsArray,
+  JsonValue,
+  QueryFormData,
+} from 'src/core';
 import {
   ControlConfig,
   ControlPanelState,
@@ -31,7 +36,10 @@ import { getControlConfig } from './getControlConfig';
 
 type ValidationError = JsonValue;
 
-function execControlValidator<T = ControlType>(control: ControlState<T>, processedState: ControlState<T>) {
+function execControlValidator<T = ControlType>(
+  control: ControlState<T>,
+  processedState: ControlState<T>,
+) {
   const validators = control.validators as ControlValueValidator[] | undefined;
   const { externalValidationErrors = [] } = control;
   const errors: ValidationError[] = [];
@@ -53,7 +61,12 @@ function execControlValidator<T = ControlType>(control: ControlState<T>, process
  */
 function handleMissingChoice<T = ControlType>(control: ControlState<T>) {
   // If the value is not valid anymore based on choices, clear it
-  if (control.type === 'SelectControl' && !control.freeForm && control.choices && control.value) {
+  if (
+    control.type === 'SelectControl' &&
+    !control.freeForm &&
+    control.choices &&
+    control.value
+  ) {
     const alteredControl = { ...control };
     const choices = control.choices as [JsonValue, ReactNode][];
     const value = ensureIsArray(control.value);
@@ -117,7 +130,10 @@ export function getControlStateFromControlConfig<T = ControlType>(
   const controlState = { ...controlConfig, value } as ControlState<T>;
   // only apply mapStateToProps when control states have been initialized
   // or when explicitly didn't provide control panel state (mostly for testing)
-  if ((controlPanelState && controlPanelState.controls) || controlPanelState === null) {
+  if (
+    (controlPanelState && controlPanelState.controls) ||
+    controlPanelState === null
+  ) {
     return applyMapStateToPropsToControl(controlState, controlPanelState);
   }
   return controlState;
@@ -129,7 +145,11 @@ export function getControlState(
   state: Partial<ControlPanelState>,
   value?: JsonValue,
 ) {
-  return getControlStateFromControlConfig(getControlConfig(controlKey, vizType), state, value);
+  return getControlStateFromControlConfig(
+    getControlConfig(controlKey, vizType),
+    state,
+    value,
+  );
 }
 
 export function getAllControlsState(
@@ -144,7 +164,11 @@ export function getAllControlsState(
       fieldsetRow.forEach((field: CustomControlItem) => {
         if (field && field.config && field.name) {
           const { config, name } = field;
-          controlsState[name] = getControlStateFromControlConfig(config, state, formData[name]);
+          controlsState[name] = getControlStateFromControlConfig(
+            config,
+            state,
+            formData[name],
+          );
         }
       }),
     ),

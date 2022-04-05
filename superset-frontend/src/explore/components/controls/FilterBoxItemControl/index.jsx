@@ -28,8 +28,22 @@ import CheckboxControl from 'src/explore/components/controls/CheckboxControl';
 import TextControl from 'src/explore/components/controls/TextControl';
 import { FILTER_CONFIG_ATTRIBUTES } from 'src/explore/constants';
 
-const INTEGRAL_TYPES = new Set(['TINYINT', 'SMALLINT', 'INT', 'INTEGER', 'BIGINT', 'LONG']);
-const DECIMAL_TYPES = new Set(['FLOAT', 'DOUBLE', 'REAL', 'NUMERIC', 'DECIMAL', 'MONEY']);
+const INTEGRAL_TYPES = new Set([
+  'TINYINT',
+  'SMALLINT',
+  'INT',
+  'INTEGER',
+  'BIGINT',
+  'LONG',
+]);
+const DECIMAL_TYPES = new Set([
+  'FLOAT',
+  'DOUBLE',
+  'REAL',
+  'NUMERIC',
+  'DECIMAL',
+  'MONEY',
+]);
 
 const propTypes = {
   datasource: PropTypes.object.isRequired,
@@ -57,7 +71,16 @@ const STYLE_WIDTH = { width: 350 };
 export default class FilterBoxItemControl extends React.Component {
   constructor(props) {
     super(props);
-    const { column, metric, asc, clearable, multiple, searchAllOptions, label, defaultValue } = props;
+    const {
+      column,
+      metric,
+      asc,
+      clearable,
+      multiple,
+      searchAllOptions,
+      label,
+      defaultValue,
+    } = props;
     this.state = {
       column,
       metric,
@@ -83,7 +106,9 @@ export default class FilterBoxItemControl extends React.Component {
       // if single value filter_box,
       // convert input value string to the column's data type
       const { datasource } = this.props;
-      const selectedColumn = datasource.columns.find(col => col.column_name === selectedColumnName);
+      const selectedColumn = datasource.columns.find(
+        col => col.column_name === selectedColumnName,
+      );
 
       if (selectedColumn && selectedColumn.type) {
         const type = selectedColumn.type.toUpperCase();
@@ -121,7 +146,9 @@ export default class FilterBoxItemControl extends React.Component {
                   value: col.column_name,
                   label: col.column_name,
                 }))
-                .concat([{ value: this.state.column, label: this.state.column }])}
+                .concat([
+                  { value: this.state.column, label: this.state.column },
+                ])}
               onChange={v => this.onControlChange('column', v)}
             />
           }
@@ -129,7 +156,11 @@ export default class FilterBoxItemControl extends React.Component {
         <FormRow
           label={t('Label')}
           control={
-            <TextControl value={this.state.label} name="label" onChange={v => this.onControlChange('label', v)} />
+            <TextControl
+              value={this.state.label}
+              name="label"
+              onChange={v => this.onControlChange('label', v)}
+            />
           }
         />
         <FormRow
@@ -143,7 +174,9 @@ export default class FilterBoxItemControl extends React.Component {
             <TextControl
               value={this.state.defaultValue}
               name="defaultValue"
-              onChange={v => this.onControlChange(FILTER_CONFIG_ATTRIBUTES.DEFAULT_VALUE, v)}
+              onChange={v =>
+                this.onControlChange(FILTER_CONFIG_ATTRIBUTES.DEFAULT_VALUE, v)
+              }
             />
           }
         />
@@ -161,7 +194,9 @@ export default class FilterBoxItemControl extends React.Component {
                   value: m.metric_name,
                   label: m.metric_name,
                 }))
-                .concat([{ value: this.state.metric, label: this.state.metric }])}
+                .concat([
+                  { value: this.state.metric, label: this.state.metric },
+                ])}
               onChange={v => this.onControlChange('metric', v)}
             />
           }
@@ -170,16 +205,26 @@ export default class FilterBoxItemControl extends React.Component {
           label={t('Sort ascending')}
           tooltip={t('Check for sorting ascending')}
           isCheckbox
-          control={<CheckboxControl value={this.state.asc} onChange={v => this.onControlChange('asc', v)} />}
+          control={
+            <CheckboxControl
+              value={this.state.asc}
+              onChange={v => this.onControlChange('asc', v)}
+            />
+          }
         />
         <FormRow
           label={t('Allow multiple selections')}
           isCheckbox
-          tooltip={t('Multiple selections allowed, otherwise filter ' + 'is limited to a single value')}
+          tooltip={t(
+            'Multiple selections allowed, otherwise filter ' +
+              'is limited to a single value',
+          )}
           control={
             <CheckboxControl
               value={this.state.multiple}
-              onChange={v => this.onControlChange(FILTER_CONFIG_ATTRIBUTES.MULTIPLE, v)}
+              onChange={v =>
+                this.onControlChange(FILTER_CONFIG_ATTRIBUTES.MULTIPLE, v)
+              }
             />
           }
         />
@@ -194,7 +239,12 @@ export default class FilterBoxItemControl extends React.Component {
           control={
             <CheckboxControl
               value={this.state.searchAllOptions}
-              onChange={v => this.onControlChange(FILTER_CONFIG_ATTRIBUTES.SEARCH_ALL_OPTIONS, v)}
+              onChange={v =>
+                this.onControlChange(
+                  FILTER_CONFIG_ATTRIBUTES.SEARCH_ALL_OPTIONS,
+                  v,
+                )
+              }
             />
           }
         />
@@ -203,7 +253,10 @@ export default class FilterBoxItemControl extends React.Component {
           tooltip={t('User must select a value for this filter')}
           isCheckbox
           control={
-            <CheckboxControl value={!this.state.clearable} onChange={v => this.onControlChange('clearable', !v)} />
+            <CheckboxControl
+              value={!this.state.clearable}
+              onChange={v => this.onControlChange('clearable', !v)}
+            />
           }
         />
       </div>
@@ -222,8 +275,17 @@ export default class FilterBoxItemControl extends React.Component {
     return (
       <span data-test="FilterBoxItemControl">
         {this.textSummary()}{' '}
-        <Popover trigger="click" placement="right" content={this.renderPopover()} title={t('Filter configuration')}>
-          <InfoTooltipWithTrigger icon="edit" className="text-primary" label="edit-ts-column" />
+        <Popover
+          trigger="click"
+          placement="right"
+          content={this.renderPopover()}
+          title={t('Filter configuration')}
+        >
+          <InfoTooltipWithTrigger
+            icon="edit"
+            className="text-primary"
+            label="edit-ts-column"
+          />
         </Popover>
       </span>
     );

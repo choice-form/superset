@@ -96,7 +96,9 @@ const createProps = (viz_type = 'sunburst') => ({
 test('Should render', () => {
   const props = createProps();
   render(<SliceHeaderControls {...props} />, { useRedux: true });
-  expect(screen.getByRole('button', { name: 'More Options' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'More Options' }),
+  ).toBeInTheDocument();
   expect(screen.getByTestId('NoAnimationDropdown')).toBeInTheDocument();
 });
 
@@ -125,12 +127,18 @@ test('Should render default props', () => {
   render(<SliceHeaderControls {...props} />, { useRedux: true });
   userEvent.click(screen.getByRole('menuitem', { name: 'Maximize chart' }));
   userEvent.click(screen.getByRole('menuitem', { name: /Force refresh/ }));
-  userEvent.click(screen.getByRole('menuitem', { name: 'Toggle chart description' }));
-  userEvent.click(screen.getByRole('menuitem', { name: 'View chart in Explore' }));
+  userEvent.click(
+    screen.getByRole('menuitem', { name: 'Toggle chart description' }),
+  );
+  userEvent.click(
+    screen.getByRole('menuitem', { name: 'View chart in Explore' }),
+  );
   userEvent.click(screen.getByRole('menuitem', { name: 'Export CSV' }));
   userEvent.click(screen.getByRole('menuitem', { name: /Force refresh/ }));
 
-  expect(screen.getByRole('button', { name: 'More Options' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'More Options' }),
+  ).toBeInTheDocument();
   expect(screen.getByTestId('NoAnimationDropdown')).toBeInTheDocument();
 });
 
@@ -157,7 +165,9 @@ test('Export full CSV is under featureflag', () => {
   };
   const props = createProps('table');
   render(<SliceHeaderControls {...props} />, { useRedux: true });
-  expect(screen.queryByRole('menuitem', { name: 'Export full CSV' })).toBe(null);
+  expect(screen.queryByRole('menuitem', { name: 'Export full CSV' })).toBe(
+    null,
+  );
 });
 
 test('Should "export full CSV"', () => {
@@ -167,7 +177,9 @@ test('Should "export full CSV"', () => {
   };
   const props = createProps('table');
   render(<SliceHeaderControls {...props} />, { useRedux: true });
-  expect(screen.queryByRole('menuitem', { name: 'Export full CSV' })).not.toBe(null);
+  expect(screen.queryByRole('menuitem', { name: 'Export full CSV' })).not.toBe(
+    null,
+  );
   expect(props.exportFullCSV).toBeCalledTimes(0);
   userEvent.click(screen.getByRole('menuitem', { name: 'Export full CSV' }));
   expect(props.exportFullCSV).toBeCalledTimes(1);
@@ -181,7 +193,9 @@ test('Should not show export full CSV if report is not table', () => {
   };
   const props = createProps();
   render(<SliceHeaderControls {...props} />, { useRedux: true });
-  expect(screen.queryByRole('menuitem', { name: 'Export full CSV' })).toBe(null);
+  expect(screen.queryByRole('menuitem', { name: 'Export full CSV' })).toBe(
+    null,
+  );
 });
 
 test('Should not show export full CSV if slice is filter box', () => {
@@ -191,7 +205,9 @@ test('Should not show export full CSV if slice is filter box', () => {
   };
   const props = createProps('filter_box');
   render(<SliceHeaderControls {...props} />, { useRedux: true });
-  expect(screen.queryByRole('menuitem', { name: 'Export full CSV' })).toBe(null);
+  expect(screen.queryByRole('menuitem', { name: 'Export full CSV' })).toBe(
+    null,
+  );
 });
 
 test('Should "Toggle chart description"', () => {
@@ -199,7 +215,9 @@ test('Should "Toggle chart description"', () => {
   render(<SliceHeaderControls {...props} />, { useRedux: true });
 
   expect(props.toggleExpandSlice).toBeCalledTimes(0);
-  userEvent.click(screen.getByRole('menuitem', { name: 'Toggle chart description' }));
+  userEvent.click(
+    screen.getByRole('menuitem', { name: 'Toggle chart description' }),
+  );
   expect(props.toggleExpandSlice).toBeCalledTimes(1);
   expect(props.toggleExpandSlice).toBeCalledWith(371);
 });

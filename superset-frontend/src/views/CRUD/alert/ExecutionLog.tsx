@@ -26,7 +26,10 @@ import SubMenu from 'src/components/Menu/SubMenu';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { fDuration } from 'src/modules/dates';
 import AlertStatusIcon from 'src/views/CRUD/alert/components/AlertStatusIcon';
-import { useListViewResource, useSingleViewResource } from 'src/views/CRUD/hooks';
+import {
+  useListViewResource,
+  useSingleViewResource,
+} from 'src/views/CRUD/hooks';
 import { AlertObject, LogObject } from './types';
 
 const PAGE_SIZE = 25;
@@ -55,11 +58,20 @@ function ExecutionLog({ addDangerToast, isReportEnabled }: ExecutionLogProps) {
   const {
     state: { loading, resourceCount: logCount, resourceCollection: logs },
     fetchData,
-  } = useListViewResource<LogObject>(`report/${alertId}/log`, t('log'), addDangerToast, false);
+  } = useListViewResource<LogObject>(
+    `report/${alertId}/log`,
+    t('log'),
+    addDangerToast,
+    false,
+  );
   const {
     state: { loading: alertLoading, resource: alertResource },
     fetchResource,
-  } = useSingleViewResource<AlertObject>('report', t('reports'), addDangerToast);
+  } = useSingleViewResource<AlertObject>(
+    'report',
+    t('reports'),
+    addDangerToast,
+  );
 
   useEffect(() => {
     if (alertId !== null && !alertLoading) {
@@ -75,7 +87,9 @@ function ExecutionLog({ addDangerToast, isReportEnabled }: ExecutionLogProps) {
           row: {
             original: { state },
           },
-        }: any) => <AlertStatusIcon state={state} isReportEnabled={isReportEnabled} />,
+        }: any) => (
+          <AlertStatusIcon state={state} isReportEnabled={isReportEnabled} />
+        ),
         accessor: 'state',
         Header: t('State'),
         size: 'xs',
@@ -97,7 +111,8 @@ function ExecutionLog({ addDangerToast, isReportEnabled }: ExecutionLogProps) {
           row: {
             original: { scheduled_dttm: scheduledDttm },
           },
-        }: any) => moment(new Date(scheduledDttm)).format('YYYY-MM-DD hh:mm:ss a'),
+        }: any) =>
+          moment(new Date(scheduledDttm)).format('YYYY-MM-DD hh:mm:ss a'),
         accessor: 'scheduled_dttm',
         Header: t('Scheduled at (UTC)'),
       },
@@ -115,7 +130,8 @@ function ExecutionLog({ addDangerToast, isReportEnabled }: ExecutionLogProps) {
           row: {
             original: { start_dttm: startDttm, end_dttm: endDttm },
           },
-        }: any) => fDuration(new Date(startDttm).getTime(), new Date(endDttm).getTime()),
+        }: any) =>
+          fDuration(new Date(startDttm).getTime(), new Date(endDttm).getTime()),
         Header: t('Duration'),
         disableSortBy: true,
       },

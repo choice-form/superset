@@ -124,7 +124,10 @@ describe('QueryList', () => {
 
   it('opens a query preview', () => {
     act(() => {
-      const props = wrapper.find('[data-test="open-sql-preview-0"]').first().props();
+      const props = wrapper
+        .find('[data-test="open-sql-preview-0"]')
+        .first()
+        .props();
       if (props.onClick) props.onClick({} as React.MouseEvent);
     });
     wrapper.update();

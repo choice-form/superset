@@ -19,7 +19,12 @@
 import React, { Suspense, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Provider as ReduxProvider } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+} from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { QueryParamProvider } from 'use-query-params';
@@ -44,7 +49,6 @@ const bootstrap = JSON.parse(container?.getAttribute('data-bootstrap') ?? '{}');
 const user = { ...bootstrap.user };
 const menu = { ...bootstrap.common.menu_data };
 const common = { ...bootstrap.common };
-
 let lastLocationPathname: string;
 initFeatureFlags(bootstrap.common.feature_flags);
 
@@ -65,7 +69,10 @@ const RootContextProviders: React.FC = ({ children }) => {
         <DndProvider backend={HTML5Backend}>
           <FlashProvider messages={common.flash_messages}>
             <DynamicPluginProvider>
-              <QueryParamProvider ReactRouterRoute={Route} stringifyOptions={{ encode: false }}>
+              <QueryParamProvider
+                ReactRouterRoute={Route}
+                stringifyOptions={{ encode: false }}
+              >
                 {children}
               </QueryParamProvider>
             </DynamicPluginProvider>

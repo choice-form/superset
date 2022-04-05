@@ -42,7 +42,10 @@ const StyledIcon = styled(Icons.Link)`
   }
 `;
 
-function ShareSqlLabQuery({ queryEditor, addDangerToast }: ShareSqlLabQueryPropTypes) {
+function ShareSqlLabQuery({
+  queryEditor,
+  addDangerToast,
+}: ShareSqlLabQueryPropTypes) {
   const theme = useTheme();
 
   const getCopyUrlForKvStore = (callback: Function) => {
@@ -64,9 +67,9 @@ function ShareSqlLabQuery({ queryEditor, addDangerToast }: ShareSqlLabQueryPropT
     let savedQueryToastContent;
 
     if (queryEditor.remoteId) {
-      savedQueryToastContent = `${window.location.origin + window.location.pathname}?savedQueryId=${
-        queryEditor.remoteId
-      }`;
+      savedQueryToastContent = `${
+        window.location.origin + window.location.pathname
+      }?savedQueryId=${queryEditor.remoteId}`;
       callback(savedQueryToastContent);
     } else {
       savedQueryToastContent = t('Please save the query to enable sharing');
@@ -81,21 +84,34 @@ function ShareSqlLabQuery({ queryEditor, addDangerToast }: ShareSqlLabQueryPropT
   };
 
   const buildButton = (canShare: boolean) => {
-    const tooltip = canShare ? t('Copy query link to your clipboard') : t('Save the query to enable this feature');
+    const tooltip = canShare
+      ? t('Copy query link to your clipboard')
+      : t('Save the query to enable this feature');
     return (
       <Button buttonSize="small" tooltip={tooltip} disabled={!canShare}>
-        <StyledIcon iconColor={canShare ? theme.colors.primary.base : theme.colors.grayscale.base} iconSize="xl" />
+        <StyledIcon
+          iconColor={
+            canShare ? theme.colors.primary.base : theme.colors.grayscale.base
+          }
+          iconSize="xl"
+        />
         {t('Copy link')}
       </Button>
     );
   };
 
-  const canShare = !!queryEditor.remoteId || isFeatureEnabled(FeatureFlag.SHARE_QUERIES_VIA_KV_STORE);
+  const canShare =
+    !!queryEditor.remoteId ||
+    isFeatureEnabled(FeatureFlag.SHARE_QUERIES_VIA_KV_STORE);
 
   return (
     <>
       {canShare ? (
-        <CopyToClipboard getText={getCopyUrl} wrapped={false} copyNode={buildButton(canShare)} />
+        <CopyToClipboard
+          getText={getCopyUrl}
+          wrapped={false}
+          copyNode={buildButton(canShare)}
+        />
       ) : (
         buildButton(canShare)
       )}

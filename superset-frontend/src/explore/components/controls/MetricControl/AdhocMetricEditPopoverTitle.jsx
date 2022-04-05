@@ -73,7 +73,9 @@ export default class AdhocMetricEditPopoverTitle extends React.Component {
     const defaultLabel = t('My metric');
 
     if (isEditDisabled) {
-      return <span data-test="AdhocMetricTitle">{title.label || defaultLabel}</span>;
+      return (
+        <span data-test="AdhocMetricTitle">{title.label || defaultLabel}</span>
+      );
     }
 
     return this.state.isEditMode ? (
@@ -101,7 +103,10 @@ export default class AdhocMetricEditPopoverTitle extends React.Component {
         >
           {title.label || defaultLabel}
           &nbsp;
-          <i className="fa fa-pencil" style={{ color: this.state.isHovered ? 'black' : 'grey' }} />
+          <i
+            className="fa fa-pencil"
+            style={{ color: this.state.isHovered ? 'black' : 'grey' }}
+          />
         </span>
       </Tooltip>
     );

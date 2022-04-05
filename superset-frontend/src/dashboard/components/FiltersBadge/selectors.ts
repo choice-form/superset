@@ -16,7 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ensureIsArray, FeatureFlag, FilterState, isFeatureEnabled } from 'src/core';
+import {
+  ensureIsArray,
+  FeatureFlag,
+  FilterState,
+  isFeatureEnabled,
+} from 'src/core';
 import { NO_TIME_RANGE, TIME_FILTER_MAP } from 'src/explore/constants';
 import { getChartIdsInFilterScope } from 'src/dashboard/util/activeDashboardFilters';
 import { ChartConfiguration, Filters } from 'src/dashboard/reducers/types';
@@ -61,17 +66,27 @@ const extractLabel = (filter?: FilterState): string | null => {
   return null;
 };
 
-const selectIndicatorValue = (columnKey: string, filter: Filter, datasource: Datasource): any => {
+const selectIndicatorValue = (
+  columnKey: string,
+  filter: Filter,
+  datasource: Datasource,
+): any => {
   const values = filter.columns[columnKey];
   const arrValues = Array.isArray(values) ? values : [values];
 
-  if (values == null || (filter.isDateFilter && values === NO_TIME_RANGE) || arrValues.length === 0) {
+  if (
+    values == null ||
+    (filter.isDateFilter && values === NO_TIME_RANGE) ||
+    arrValues.length === 0
+  ) {
     return [];
   }
 
   if (filter.isDateFilter && TIME_GRANULARITY_FIELDS.has(columnKey)) {
     const timeGranularityMap = (
-      (columnKey === TIME_FILTER_MAP.time_grain_sqla ? datasource.time_grain_sqla : datasource.granularity) || []
+      (columnKey === TIME_FILTER_MAP.time_grain_sqla
+        ? datasource.time_grain_sqla
+        : datasource.granularity) || []
     ).reduce(
       (map, [key, value]) => ({
         ...map,
@@ -97,7 +112,8 @@ const selectIndicatorsForChartFromFilter = (
   // or rejected (if the filter is incompatible)
   // or the status can be unknown (if the filter has calculated parameters that we can't analyze)
   const getStatus = (column: string, filter: Filter) => {
-    if (appliedColumns.has(column) && filter.columns[column]) return IndicatorStatus.Applied;
+    if (appliedColumns.has(column) && filter.columns[column])
+      return IndicatorStatus.Applied;
     if (rejectedColumns.has(column)) return IndicatorStatus.Incompatible;
     return IndicatorStatus.Unset;
   };
@@ -118,10 +134,18 @@ const selectIndicatorsForChartFromFilter = (
 };
 
 const getAppliedColumns = (chart: any): Set<string> =>
-  new Set((chart?.queriesResponse?.[0]?.applied_filters || []).map((filter: any) => filter.column));
+  new Set(
+    (chart?.queriesResponse?.[0]?.applied_filters || []).map(
+      (filter: any) => filter.column,
+    ),
+  );
 
 const getRejectedColumns = (chart: any): Set<string> =>
-  new Set((chart?.queriesResponse?.[0]?.rejected_filters || []).map((filter: any) => filter.column));
+  new Set(
+    (chart?.queriesResponse?.[0]?.rejected_filters || []).map(
+      (filter: any) => filter.column,
+    ),
+  );
 
 export type Indicator = {
   column?: string;
@@ -144,9 +168,13 @@ export const selectIndicatorsForChart = (
   // so grab the columns from the applied/rejected filters
   const appliedColumns = getAppliedColumns(chart);
   const rejectedColumns = getRejectedColumns(chart);
-  const matchingFilters = Object.values(filters).filter(filter => filter.chartId !== chartId);
+  const matchingFilters = Object.values(filters).filter(
+    filter => filter.chartId !== chartId,
+  );
   const matchingDatasources = Object.entries(datasources)
-    .filter(([key]) => matchingFilters.find(filter => filter.datasourceId === key))
+    .filter(([key]) =>
+      matchingFilters.find(filter => filter.datasourceId === key),
+    )
     .map(([, datasource]) => datasource);
 
   const cachedFilterData = cachedDashboardFilterDataForChart[chartId];
@@ -227,7 +255,8 @@ export const selectNativeIndicatorsForChart = (
       // Filter without datasource
       return IndicatorStatus.Applied;
     }
-    if (column && rejectedColumns.has(column)) return IndicatorStatus.Incompatible;
+    if (column && rejectedColumns.has(column))
+      return IndicatorStatus.Incompatible;
     if (column && appliedColumns.has(column) && hasValue) {
       return IndicatorStatus.Applied;
     }
@@ -241,7 +270,8 @@ export const selectNativeIndicatorsForChart = (
       Object.values(nativeFilters)
         .filter(nativeFilter =>
           getTreeCheckedItems(nativeFilter.scope, dashboardLayout).some(
-            layoutItem => dashboardLayout[layoutItem]?.meta?.chartId === chartId,
+            layoutItem =>
+              dashboardLayout[layoutItem]?.meta?.chartId === chartId,
           ),
         )
         .map(nativeFilter => {
@@ -262,7 +292,10 @@ export const selectNativeIndicatorsForChart = (
   if (isFeatureEnabled(FeatureFlag.DASHBOARD_CROSS_FILTERS)) {
     crossFilterIndicators = Object.values(chartConfiguration)
       .filter(chartConfig =>
-        getTreeCheckedItems(chartConfig?.crossFilters?.scope, dashboardLayout).some(
+        getTreeCheckedItems(
+          chartConfig?.crossFilters?.scope,
+          dashboardLayout,
+        ).some(
           layoutItem => dashboardLayout[layoutItem]?.meta?.chartId === chartId,
         ),
       )
@@ -278,7 +311,10 @@ export const selectNativeIndicatorsForChart = (
         return {
           column,
           name: dashboardLayoutItem?.meta?.sliceName as string,
-          path: [...(dashboardLayoutItem?.parents ?? []), dashboardLayoutItem?.id],
+          path: [
+            ...(dashboardLayoutItem?.parents ?? []),
+            dashboardLayoutItem?.id,
+          ],
           status: getStatus({
             label,
             type: DataMaskType.CrossFilters,

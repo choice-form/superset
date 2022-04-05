@@ -40,7 +40,11 @@ import MetricsControl from './MetricControl/MetricsControl';
 import AdhocFilterControl from './FilterControl/AdhocFilterControl';
 import FilterBoxItemControl from './FilterBoxItemControl';
 import ConditionalFormattingControl from './ConditionalFormattingControl';
-import DndColumnSelectControl, { DndColumnSelect, DndFilterSelect, DndMetricSelect } from './DndColumnSelectControl';
+import DndColumnSelectControl, {
+  DndColumnSelect,
+  DndFilterSelect,
+  DndMetricSelect,
+} from './DndColumnSelectControl';
 import DrillDownControl from './DrillDownControl';
 
 const controlMap = {

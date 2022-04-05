@@ -20,14 +20,22 @@
 import { t, SupersetClient } from 'src/core';
 import rison from 'rison';
 import { getClientErrorObject } from 'src/utils/getClientErrorObject';
-import { addDangerToast, addSuccessToast } from 'src/components/MessageToasts/actions';
+import {
+  addDangerToast,
+  addSuccessToast,
+} from 'src/components/MessageToasts/actions';
 
 export const SET_REPORT = 'SET_REPORT';
 export function setReport(report) {
   return { type: SET_REPORT, report };
 }
 
-export function fetchUISpecificReport(userId, filter_field, creation_method, dashboardId) {
+export function fetchUISpecificReport(
+  userId,
+  filter_field,
+  creation_method,
+  dashboardId,
+) {
   const queryParams = rison.encode({
     filters: [
       {
@@ -54,7 +62,15 @@ export function fetchUISpecificReport(userId, filter_field, creation_method, das
       .then(({ json }) => {
         dispatch(setReport(json));
       })
-      .catch(() => dispatch(addDangerToast(t('There was an issue fetching reports attached to this dashboard.'))));
+      .catch(() =>
+        dispatch(
+          addDangerToast(
+            t(
+              'There was an issue fetching reports attached to this dashboard.',
+            ),
+          ),
+        ),
+      );
   };
 }
 
@@ -62,10 +78,24 @@ const structureFetchAction = (dispatch, getState) => {
   const state = getState();
   const { user, dashboardInfo, charts, explore } = state;
   if (dashboardInfo) {
-    dispatch(fetchUISpecificReport(user.userId, 'dashboard_id', 'dashboards', dashboardInfo.id));
+    dispatch(
+      fetchUISpecificReport(
+        user.userId,
+        'dashboard_id',
+        'dashboards',
+        dashboardInfo.id,
+      ),
+    );
   } else {
     const [chartArr] = Object.keys(charts);
-    dispatch(fetchUISpecificReport(explore.user.userId, 'chart_id', 'charts', charts[chartArr].id));
+    dispatch(
+      fetchUISpecificReport(
+        explore.user.userId,
+        'chart_id',
+        'charts',
+        charts[chartArr].id,
+      ),
+    );
   }
 };
 
@@ -85,7 +115,11 @@ export const addReport = report => dispatch =>
       const errorMessage = parsedError.message;
       const errorArr = Object.keys(errorMessage);
       const error = errorMessage[errorArr[0]];
-      dispatch(addDangerToast(t('An error occurred while editing this report: %s', error)));
+      dispatch(
+        addDangerToast(
+          t('An error occurred while editing this report: %s', error),
+        ),
+      );
     });
 
 export const EDIT_REPORT = 'EDIT_REPORT';
@@ -99,7 +133,11 @@ export function editReport(id, report) {
       .then(({ json }) => {
         dispatch({ type: EDIT_REPORT, json });
       })
-      .catch(() => dispatch(addDangerToast(t('An error occurred while editing this report.'))));
+      .catch(() =>
+        dispatch(
+          addDangerToast(t('An error occurred while editing this report.')),
+        ),
+      );
   };
 }
 
@@ -113,7 +151,11 @@ export function toggleActive(report, isActive) {
       }),
     })
       .catch(() => {
-        dispatch(addDangerToast(t('We were unable to active or deactivate this report.')));
+        dispatch(
+          addDangerToast(
+            t('We were unable to active or deactivate this report.'),
+          ),
+        );
       })
       .finally(() => {
         dispatch(structureFetchAction);

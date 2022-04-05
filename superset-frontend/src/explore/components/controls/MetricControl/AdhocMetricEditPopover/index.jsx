@@ -32,8 +32,13 @@ import { noOp } from 'src/utils/common';
 import { AGGREGATES_OPTIONS } from 'src/explore/constants';
 import columnType from 'src/explore/components/controls/MetricControl/columnType';
 import savedMetricType from 'src/explore/components/controls/MetricControl/savedMetricType';
-import AdhocMetric, { EXPRESSION_TYPES } from 'src/explore/components/controls/MetricControl/AdhocMetric';
-import { StyledMetricOption, StyledColumnOption } from 'src/explore/components/optionRenderers';
+import AdhocMetric, {
+  EXPRESSION_TYPES,
+} from 'src/explore/components/controls/MetricControl/AdhocMetric';
+import {
+  StyledMetricOption,
+  StyledColumnOption,
+} from 'src/explore/components/optionRenderers';
 
 const propTypes = {
   onChange: PropTypes.func.isRequired,
@@ -110,13 +115,17 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      prevState.adhocMetric?.sqlExpression !== this.state.adhocMetric?.sqlExpression ||
+      prevState.adhocMetric?.sqlExpression !==
+        this.state.adhocMetric?.sqlExpression ||
       prevState.adhocMetric?.aggregate !== this.state.adhocMetric?.aggregate ||
-      prevState.adhocMetric?.column?.column_name !== this.state.adhocMetric?.column?.column_name ||
+      prevState.adhocMetric?.column?.column_name !==
+        this.state.adhocMetric?.column?.column_name ||
       prevState.savedMetric?.metric_name !== this.state.savedMetric?.metric_name
     ) {
       this.props.getCurrentLabel({
-        savedMetricLabel: this.state.savedMetric?.verbose_name || this.state.savedMetric?.metric_name,
+        savedMetricLabel:
+          this.state.savedMetric?.verbose_name ||
+          this.state.savedMetric?.metric_name,
         adhocMetricLabel: this.state.adhocMetric?.getDefaultLabel(),
       });
     }
@@ -131,7 +140,9 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
     const { adhocMetric, savedMetric } = this.state;
 
     const metric = savedMetric?.metric_name ? savedMetric : adhocMetric;
-    const oldMetric = this.props.savedMetric?.metric_name ? this.props.savedMetric : this.props.adhocMetric;
+    const oldMetric = this.props.savedMetric?.metric_name
+      ? this.props.savedMetric
+      : this.props.adhocMetric;
     this.props.onChange(
       {
         ...metric,
@@ -152,7 +163,9 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
   }
 
   onColumnChange(columnName) {
-    const column = this.props.columns.find(column => column.column_name === columnName);
+    const column = this.props.columns.find(
+      column => column.column_name === columnName,
+    );
     this.setState(prevState => ({
       adhocMetric: prevState.adhocMetric.duplicateWith({
         column,
@@ -174,7 +187,9 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
   }
 
   onSavedMetricChange(savedMetricName) {
-    const savedMetric = this.props.savedMetricsOptions.find(metric => metric.metric_name === savedMetricName);
+    const savedMetric = this.props.savedMetricsOptions.find(
+      metric => metric.metric_name === savedMetricName,
+    );
     this.setState(prevState => ({
       savedMetric,
       adhocMetric: prevState.adhocMetric.duplicateWith({
@@ -207,8 +222,14 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
   onMouseMove(e) {
     this.props.onResize();
     this.setState({
-      width: Math.max(this.dragStartWidth + (e.clientX - this.dragStartX), startingWidth),
-      height: Math.max(this.dragStartHeight + (e.clientY - this.dragStartY) * 2, startingHeight),
+      width: Math.max(
+        this.dragStartWidth + (e.clientX - this.dragStartX),
+        startingWidth,
+      ),
+      height: Math.max(
+        this.dragStartHeight + (e.clientY - this.dragStartY) * 2,
+        startingHeight,
+      ),
     });
   }
 
@@ -270,7 +291,8 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
     );
 
     const columnValue =
-      (adhocMetric.column && adhocMetric.column.column_name) || adhocMetric.inferSqlExpressionColumn();
+      (adhocMetric.column && adhocMetric.column.column_name) ||
+      adhocMetric.inferSqlExpressionColumn();
 
     // autofocus on column if there's no value in column; otherwise autofocus on aggregate
     const columnSelectProps = {
@@ -301,17 +323,27 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
     };
 
     if (this.props.datasourceType === 'druid' && aggregateSelectProps.options) {
-      aggregateSelectProps.options = aggregateSelectProps.options.filter(aggregate => aggregate !== 'AVG');
+      aggregateSelectProps.options = aggregateSelectProps.options.filter(
+        aggregate => aggregate !== 'AVG',
+      );
     }
 
     const stateIsValid = adhocMetric.isValid() || savedMetric?.metric_name;
     const hasUnsavedChanges =
       !adhocMetric.equals(propsAdhocMetric) ||
-      (!(typeof savedMetric?.metric_name === 'undefined' && typeof propsSavedMetric?.metric_name === 'undefined') &&
+      (!(
+        typeof savedMetric?.metric_name === 'undefined' &&
+        typeof propsSavedMetric?.metric_name === 'undefined'
+      ) &&
         savedMetric?.metric_name !== propsSavedMetric?.metric_name);
 
     return (
-      <Form layout="vertical" id="metrics-edit-popover" data-test="metrics-edit-popover" {...popoverProps}>
+      <Form
+        layout="vertical"
+        id="metrics-edit-popover"
+        data-test="metrics-edit-popover"
+        {...popoverProps}
+      >
         <Tabs
           id="adhoc-metric-edit-tabs"
           data-test="adhoc-metric-edit-tabs"
@@ -361,7 +393,11 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
               />
             </FormItem>
           </Tabs.TabPane>
-          <Tabs.TabPane key={EXPRESSION_TYPES.SQL} tab={t('Custom SQL')} data-test="adhoc-metric-edit-tab#custom">
+          <Tabs.TabPane
+            key={EXPRESSION_TYPES.SQL}
+            tab={t('Custom SQL')}
+            data-test="adhoc-metric-edit-tab#custom"
+          >
             {this.props.datasourceType !== 'druid' ? (
               <SQLEditor
                 data-test="sql-editor"
@@ -372,7 +408,9 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
                 onChange={this.onSqlExpressionChange}
                 width="100%"
                 showGutter={false}
-                value={adhocMetric.sqlExpression || adhocMetric.translateToSql()}
+                value={
+                  adhocMetric.sqlExpression || adhocMetric.translateToSql()
+                }
                 editorProps={{ $blockScrolling: true }}
                 enableLiveAutocompletion
                 className="filter-sql-editor"
@@ -386,12 +424,19 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
           </Tabs.TabPane>
         </Tabs>
         <div>
-          <Button buttonSize="small" onClick={this.onResetStateAndClose} data-test="AdhocMetricEdit#cancel" cta>
+          <Button
+            buttonSize="small"
+            onClick={this.onResetStateAndClose}
+            data-test="AdhocMetricEdit#cancel"
+            cta
+          >
             {t('Close')}
           </Button>
           <Button
             disabled={!stateIsValid}
-            buttonStyle={hasUnsavedChanges && stateIsValid ? 'primary' : 'default'}
+            buttonStyle={
+              hasUnsavedChanges && stateIsValid ? 'primary' : 'default'
+            }
             buttonSize="small"
             data-test="AdhocMetricEdit#save"
             onClick={this.onSave}

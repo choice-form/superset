@@ -25,9 +25,19 @@ import { usePrevious } from 'src/common/hooks/usePrevious';
 import { DataMaskStateWithId } from 'src/dataMask/types';
 import DetailsPanelPopover from './DetailsPanel';
 import { Pill } from './Styles';
-import { Indicator, IndicatorStatus, selectIndicatorsForChart, selectNativeIndicatorsForChart } from './selectors';
+import {
+  Indicator,
+  IndicatorStatus,
+  selectIndicatorsForChart,
+  selectNativeIndicatorsForChart,
+} from './selectors';
 import { setDirectPathToChild } from '../../actions/dashboardState';
-import { ChartsState, DashboardInfo, DashboardLayout, RootState } from '../../types';
+import {
+  ChartsState,
+  DashboardInfo,
+  DashboardLayout,
+  RootState,
+} from '../../types';
 import { Filters } from '../../reducers/types';
 
 export interface FiltersBadgeProps {
@@ -35,9 +45,15 @@ export interface FiltersBadgeProps {
 }
 
 const sortByStatus = (indicators: Indicator[]): Indicator[] => {
-  const statuses = [IndicatorStatus.Applied, IndicatorStatus.Unset, IndicatorStatus.Incompatible];
+  const statuses = [
+    IndicatorStatus.Applied,
+    IndicatorStatus.Unset,
+    IndicatorStatus.Incompatible,
+  ];
   return indicators.sort(
-    (a, b) => statuses.indexOf(a.status as IndicatorStatus) - statuses.indexOf(b.status as IndicatorStatus),
+    (a, b) =>
+      statuses.indexOf(a.status as IndicatorStatus) -
+      statuses.indexOf(b.status as IndicatorStatus),
   );
 };
 
@@ -46,15 +62,29 @@ const indicatorsInitialState: Indicator[] = [];
 export const FiltersBadge = ({ chartId }: FiltersBadgeProps) => {
   const dispatch = useDispatch();
   const datasources = useSelector<RootState, any>(state => state.datasources);
-  const dashboardFilters = useSelector<RootState, any>(state => state.dashboardFilters);
-  const nativeFilters = useSelector<RootState, Filters>(state => state.nativeFilters?.filters);
-  const dashboardInfo = useSelector<RootState, DashboardInfo>(state => state.dashboardInfo);
+  const dashboardFilters = useSelector<RootState, any>(
+    state => state.dashboardFilters,
+  );
+  const nativeFilters = useSelector<RootState, Filters>(
+    state => state.nativeFilters?.filters,
+  );
+  const dashboardInfo = useSelector<RootState, DashboardInfo>(
+    state => state.dashboardInfo,
+  );
   const charts = useSelector<RootState, ChartsState>(state => state.charts);
-  const present = useSelector<RootState, DashboardLayout>(state => state.dashboardLayout.present);
-  const dataMask = useSelector<RootState, DataMaskStateWithId>(state => state.dataMask);
+  const present = useSelector<RootState, DashboardLayout>(
+    state => state.dashboardLayout.present,
+  );
+  const dataMask = useSelector<RootState, DataMaskStateWithId>(
+    state => state.dataMask,
+  );
 
-  const [nativeIndicators, setNativeIndicators] = useState<Indicator[]>(indicatorsInitialState);
-  const [dashboardIndicators, setDashboardIndicators] = useState<Indicator[]>(indicatorsInitialState);
+  const [nativeIndicators, setNativeIndicators] = useState<Indicator[]>(
+    indicatorsInitialState,
+  );
+  const [dashboardIndicators, setDashboardIndicators] = useState<Indicator[]>(
+    indicatorsInitialState,
+  );
 
   const onHighlightFilterSource = useCallback(
     (path: string[]) => {
@@ -68,19 +98,29 @@ export const FiltersBadge = ({ chartId }: FiltersBadgeProps) => {
   const prevChartStatus = prevChart?.chartStatus;
   const prevDashboardFilters = usePrevious(dashboardFilters);
   const prevDatasources = usePrevious(datasources);
-  const showIndicators = chart?.chartStatus && ['rendered', 'success'].includes(chart.chartStatus);
+  const showIndicators =
+    chart?.chartStatus && ['rendered', 'success'].includes(chart.chartStatus);
 
   useEffect(() => {
     if (!showIndicators && dashboardIndicators.length > 0) {
       setDashboardIndicators(indicatorsInitialState);
     } else if (prevChartStatus !== 'success') {
       if (
-        chart?.queriesResponse?.[0]?.rejected_filters !== prevChart?.queriesResponse?.[0]?.rejected_filters ||
-        chart?.queriesResponse?.[0]?.applied_filters !== prevChart?.queriesResponse?.[0]?.applied_filters ||
+        chart?.queriesResponse?.[0]?.rejected_filters !==
+          prevChart?.queriesResponse?.[0]?.rejected_filters ||
+        chart?.queriesResponse?.[0]?.applied_filters !==
+          prevChart?.queriesResponse?.[0]?.applied_filters ||
         dashboardFilters !== prevDashboardFilters ||
         datasources !== prevDatasources
       ) {
-        setDashboardIndicators(selectIndicatorsForChart(chartId, dashboardFilters, datasources, chart));
+        setDashboardIndicators(
+          selectIndicatorsForChart(
+            chartId,
+            dashboardFilters,
+            datasources,
+            chart,
+          ),
+        );
       }
     }
   }, [
@@ -99,14 +139,18 @@ export const FiltersBadge = ({ chartId }: FiltersBadgeProps) => {
   const prevNativeFilters = usePrevious(nativeFilters);
   const prevDashboardLayout = usePrevious(present);
   const prevDataMask = usePrevious(dataMask);
-  const prevChartConfig = usePrevious(dashboardInfo.metadata?.chart_configuration);
+  const prevChartConfig = usePrevious(
+    dashboardInfo.metadata?.chart_configuration,
+  );
   useEffect(() => {
     if (!showIndicators && nativeIndicators.length > 0) {
       setNativeIndicators(indicatorsInitialState);
     } else if (prevChartStatus !== 'success') {
       if (
-        chart?.queriesResponse?.[0]?.rejected_filters !== prevChart?.queriesResponse?.[0]?.rejected_filters ||
-        chart?.queriesResponse?.[0]?.applied_filters !== prevChart?.queriesResponse?.[0]?.applied_filters ||
+        chart?.queriesResponse?.[0]?.rejected_filters !==
+          prevChart?.queriesResponse?.[0]?.rejected_filters ||
+        chart?.queriesResponse?.[0]?.applied_filters !==
+          prevChart?.queriesResponse?.[0]?.applied_filters ||
         nativeFilters !== prevNativeFilters ||
         present !== prevDashboardLayout ||
         dataMask !== prevDataMask ||
@@ -148,24 +192,38 @@ export const FiltersBadge = ({ chartId }: FiltersBadgeProps) => {
         (ind1, ind2) =>
           ind1.column === ind2.column &&
           ind1.name === ind2.name &&
-          (ind1.status !== IndicatorStatus.Applied || ind2.status !== IndicatorStatus.Applied),
+          (ind1.status !== IndicatorStatus.Applied ||
+            ind2.status !== IndicatorStatus.Applied),
       ),
     [dashboardIndicators, nativeIndicators],
   );
 
   const appliedCrossFilterIndicators = useMemo(
-    () => indicators.filter(indicator => indicator.status === IndicatorStatus.CrossFilterApplied),
+    () =>
+      indicators.filter(
+        indicator => indicator.status === IndicatorStatus.CrossFilterApplied,
+      ),
     [indicators],
   );
   const appliedIndicators = useMemo(
-    () => indicators.filter(indicator => indicator.status === IndicatorStatus.Applied),
+    () =>
+      indicators.filter(
+        indicator => indicator.status === IndicatorStatus.Applied,
+      ),
     [indicators],
   );
-  const unsetIndicators = useMemo(() => indicators.filter(indicator => indicator.status === IndicatorStatus.Unset), [
-    indicators,
-  ]);
+  const unsetIndicators = useMemo(
+    () =>
+      indicators.filter(
+        indicator => indicator.status === IndicatorStatus.Unset,
+      ),
+    [indicators],
+  );
   const incompatibleIndicators = useMemo(
-    () => indicators.filter(indicator => indicator.status === IndicatorStatus.Incompatible),
+    () =>
+      indicators.filter(
+        indicator => indicator.status === IndicatorStatus.Incompatible,
+      ),
     [indicators],
   );
 
@@ -179,7 +237,9 @@ export const FiltersBadge = ({ chartId }: FiltersBadgeProps) => {
   }
 
   const isInactive =
-    !appliedCrossFilterIndicators.length && !appliedIndicators.length && !incompatibleIndicators.length;
+    !appliedCrossFilterIndicators.length &&
+    !appliedIndicators.length &&
+    !incompatibleIndicators.length;
 
   return (
     <DetailsPanelPopover
@@ -199,13 +259,17 @@ export const FiltersBadge = ({ chartId }: FiltersBadgeProps) => {
       >
         <Icons.Filter iconSize="m" />
         {!isInactive && (
-          <span data-test="applied-filter-count">{appliedIndicators.length + appliedCrossFilterIndicators.length}</span>
+          <span data-test="applied-filter-count">
+            {appliedIndicators.length + appliedCrossFilterIndicators.length}
+          </span>
         )}
         {incompatibleIndicators.length ? (
           <>
             {' '}
             <Icons.AlertSolid />
-            <span data-test="incompatible-filter-count">{incompatibleIndicators.length}</span>
+            <span data-test="incompatible-filter-count">
+              {incompatibleIndicators.length}
+            </span>
           </>
         ) : null}
       </Pill>

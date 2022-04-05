@@ -40,7 +40,13 @@ import { URL_PARAMS } from 'src/constants';
 import replaceUndefinedByNull from 'src/dashboard/util/replaceUndefinedByNull';
 import { checkIsApplyDisabled, TabIds } from './utils';
 import FilterSets from './FilterSets';
-import { useNativeFiltersDataMask, useFilters, useFilterSets, useFilterUpdates, useInitialization } from './state';
+import {
+  useNativeFiltersDataMask,
+  useFilters,
+  useFilterSets,
+  useFilterUpdates,
+  useInitialization,
+} from './state';
 import EditSection from './FilterSets/EditSection';
 import Header from './Header';
 import FilterControls from './FilterControls/FilterControls';
@@ -145,7 +151,9 @@ const FilterBar: React.FC<FiltersBarProps> = ({
   const history = useHistory();
   const dataMaskApplied: DataMaskStateWithId = useNativeFiltersDataMask();
   const [editFilterSetId, setEditFilterSetId] = useState<string | null>(null);
-  const [dataMaskSelected, setDataMaskSelected] = useImmer<DataMaskStateWithId>(dataMaskApplied);
+  const [dataMaskSelected, setDataMaskSelected] = useImmer<DataMaskStateWithId>(
+    dataMaskApplied,
+  );
   const dispatch = useDispatch();
   const filterSets = useFilterSets();
   const filterSetFilterValues = Object.values(filterSets);
@@ -155,7 +163,10 @@ const FilterBar: React.FC<FiltersBarProps> = ({
   const filterValues = Object.values<Filter>(filters);
   const [isFilterSetChanged, setIsFilterSetChanged] = useState(false);
 
-  const handleFilterSelectionChange = (filter: Pick<Filter, 'id'> & Partial<Filter>, dataMask: Partial<DataMask>) => {
+  const handleFilterSelectionChange = (
+    filter: Pick<Filter, 'id'> & Partial<Filter>,
+    dataMask: Partial<DataMask>,
+  ) => {
     setIsFilterSetChanged(tab !== TabIds.AllFilters);
     setDataMaskSelected(draft => {
       // force instant updating on initialization for filters with `requiredFirst` is true or instant filters
@@ -188,7 +199,10 @@ const FilterBar: React.FC<FiltersBarProps> = ({
         }
       });
 
-      newParams.set(URL_PARAMS.nativeFilters.name, rison.encode(replaceUndefinedByNull(dataMaskSelected)));
+      newParams.set(
+        URL_PARAMS.nativeFilters.name,
+        rison.encode(replaceUndefinedByNull(dataMaskSelected)),
+      );
 
       // pathname could be updated somewhere else through window.history
       // keep react router history in sync with window history
@@ -256,18 +270,29 @@ const FilterBar: React.FC<FiltersBarProps> = ({
   };
 
   useFilterUpdates(dataMaskSelected, setDataMaskSelected);
-  const isApplyDisabled = checkIsApplyDisabled(dataMaskSelected, dataMaskApplied, filterValues);
+  const isApplyDisabled = checkIsApplyDisabled(
+    dataMaskSelected,
+    dataMaskApplied,
+    filterValues,
+  );
   const isInitialized = useInitialization();
 
   return (
-    <BarWrapper {...getFilterBarTestId()} className={cx({ open: filtersOpen })} width={width}>
+    <BarWrapper
+      {...getFilterBarTestId()}
+      className={cx({ open: filtersOpen })}
+      width={width}
+    >
       <CollapsedBar
         {...getFilterBarTestId('collapsable')}
         className={cx({ open: !filtersOpen })}
         onClick={() => toggleFiltersBar(true)}
         offset={offset}
       >
-        <StyledCollapseIcon {...getFilterBarTestId('expand-button')} iconSize="l" />
+        <StyledCollapseIcon
+          {...getFilterBarTestId('expand-button')}
+          iconSize="l"
+        />
         <StyledFilterIcon {...getFilterBarTestId('filter-icon')} iconSize="l" />
       </CollapsedBar>
       <Bar className={cx({ open: filtersOpen })} width={width}>

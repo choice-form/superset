@@ -133,7 +133,7 @@ const createProps = () => ({
       url_params: {},
       viz_type: 'dist_bar',
       x_ticks_layout: 'auto',
-      yAxisFormat: 'SMART_NUMBER',
+      y_axis_format: 'SMART_NUMBER',
       slice_id: 312,
     },
     viz_type: 'dist_bar',

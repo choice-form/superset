@@ -17,7 +17,13 @@
  * under the License.
  */
 import newEntitiesFromDrop from 'src/dashboard/util/newEntitiesFromDrop';
-import { CHART_TYPE, DASHBOARD_GRID_TYPE, ROW_TYPE, TABS_TYPE, TAB_TYPE } from 'src/dashboard/util/componentTypes';
+import {
+  CHART_TYPE,
+  DASHBOARD_GRID_TYPE,
+  ROW_TYPE,
+  TABS_TYPE,
+  TAB_TYPE,
+} from 'src/dashboard/util/componentTypes';
 
 describe('newEntitiesFromDrop', () => {
   it('should return a new Entity of appropriate type, and add it to the drop target children', () => {

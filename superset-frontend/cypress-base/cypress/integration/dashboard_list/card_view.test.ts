@@ -32,15 +32,39 @@ describe('Dashboard card view', () => {
   });
 
   it('should allow to favorite/unfavorite dashboard card', () => {
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-selected']").should('not.exist');
-    cy.get("[data-test='card-actions']").find("[aria-label='favorite-unselected']").first().click();
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-selected']").should('be.visible');
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-unselected']").should('not.exist');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-selected']")
+      .should('not.exist');
+    cy.get("[data-test='card-actions']")
+      .find("[aria-label='favorite-unselected']")
+      .first()
+      .click();
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-selected']")
+      .should('be.visible');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-unselected']")
+      .should('not.exist');
 
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-unselected']").should('not.exist');
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-selected']").click();
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-unselected']").should('be.visible');
-    cy.get("[data-test='card-actions']").first().find("[aria-label='favorite-selected']").should('not.exist');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-unselected']")
+      .should('not.exist');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-selected']")
+      .click();
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-unselected']")
+      .should('be.visible');
+    cy.get("[data-test='card-actions']")
+      .first()
+      .find("[aria-label='favorite-selected']")
+      .should('not.exist');
   });
 
   xit('should sort correctly', () => {
@@ -66,11 +90,20 @@ describe('Dashboard card view', () => {
   xit('should delete correctly', () => {
     // show delete modal
     cy.get('[data-test="more-horiz"]').last().trigger('mouseover');
-    cy.get('[data-test="dashboard-card-option-delete-button"]').last().should('be.visible').click();
-    cy.get('[data-test="modal-confirm-button"]').should('have.attr', 'disabled');
+    cy.get('[data-test="dashboard-card-option-delete-button"]')
+      .last()
+      .should('be.visible')
+      .click();
+    cy.get('[data-test="modal-confirm-button"]').should(
+      'have.attr',
+      'disabled',
+    );
     cy.get('[data-test="Please Confirm-modal"]').should('be.visible');
     cy.get("[data-test='delete-modal-input']").type('DELETE');
-    cy.get('[data-test="modal-confirm-button"]').should('not.have.attr', 'disabled');
+    cy.get('[data-test="modal-confirm-button"]').should(
+      'not.have.attr',
+      'disabled',
+    );
     cy.get('[data-test="modal-cancel-button"]').click();
   });
 
@@ -78,9 +111,14 @@ describe('Dashboard card view', () => {
   xit('should edit correctly', () => {
     // show edit modal
     cy.get('[data-test="more-horiz"]').last().trigger('mouseover');
-    cy.get('[data-test="dashboard-card-option-edit-button"]').last().should('be.visible').click();
+    cy.get('[data-test="dashboard-card-option-edit-button"]')
+      .last()
+      .should('be.visible')
+      .click();
     cy.get('[data-test="dashboard-edit-properties-form"]').should('be.visible');
     cy.get('[data-test="dashboard-title-input"]').should('not.have.value');
-    cy.get('[data-test="properties-modal-cancel-button"]').contains('Cancel').click();
+    cy.get('[data-test="properties-modal-cancel-button"]')
+      .contains('Cancel')
+      .click();
   });
 });

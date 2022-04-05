@@ -44,7 +44,10 @@ type ChartActionHandler = (state: ChartState) => ChartState;
 
 type AnyChartAction = Record<string, any>;
 
-export default function chartReducer(charts: Record<string, ChartState> = {}, action: AnyChartAction) {
+export default function chartReducer(
+  charts: Record<string, ChartState> = {},
+  action: AnyChartAction,
+) {
   const actionHandlers: Record<string, ChartActionHandler> = {
     [actions.ADD_CHART]() {
       return {
@@ -88,17 +91,24 @@ export default function chartReducer(charts: Record<string, ChartState> = {}, ac
         ...state,
         chartStatus: 'failed',
         chartStackTrace: action.stackTrace,
-        chartAlert: t('An error occurred while rendering the visualization: %s', action.error),
+        chartAlert: t(
+          'An error occurred while rendering the visualization: %s',
+          action.error,
+        ),
       };
     },
     [actions.CHART_UPDATE_FAILED](state) {
       return {
         ...state,
         chartStatus: 'failed',
-        chartAlert: action.queriesResponse ? action.queriesResponse?.[0]?.error : t('Network error.'),
+        chartAlert: action.queriesResponse
+          ? action.queriesResponse?.[0]?.error
+          : t('Network error.'),
         chartUpdateEndTime: now(),
         queriesResponse: action.queriesResponse,
-        chartStackTrace: action.queriesResponse ? action.queriesResponse?.[0]?.stacktrace : null,
+        chartStackTrace: action.queriesResponse
+          ? action.queriesResponse?.[0]?.stacktrace
+          : null,
       };
     },
     [actions.DYNAMIC_PLUGIN_CONTROLS_READY](state) {
@@ -119,7 +129,10 @@ export default function chartReducer(charts: Record<string, ChartState> = {}, ac
       return { ...state, latestQueryFormData: action.value };
     },
     [actions.ANNOTATION_QUERY_STARTED](state) {
-      if (state.annotationQuery && state.annotationQuery[action.annotation.name]) {
+      if (
+        state.annotationQuery &&
+        state.annotationQuery[action.annotation.name]
+      ) {
         state.annotationQuery[action.annotation.name].abort();
       }
       const annotationQuery = {
@@ -152,7 +165,9 @@ export default function chartReducer(charts: Record<string, ChartState> = {}, ac
       delete annotationData[action.annotation.name];
       const annotationError = {
         ...state.annotationError,
-        [action.annotation.name]: action.queryResponse ? action.queryResponse.error : t('Network error.'),
+        [action.annotation.name]: action.queryResponse
+          ? action.queryResponse.error
+          : t('Network error.'),
       };
       const annotationQuery = { ...state.annotationQuery };
       delete annotationQuery[action.annotation.name];

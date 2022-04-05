@@ -23,7 +23,7 @@ from werkzeug.exceptions import NotFound
 
 from superset import db, event_logger, is_feature_enabled
 from superset.models import core as models
-from superset.typing_local import FlaskResponse
+from superset.typing import FlaskResponse
 from superset.utils import core as utils
 from superset.views.base import BaseSupersetView, json_error_response
 

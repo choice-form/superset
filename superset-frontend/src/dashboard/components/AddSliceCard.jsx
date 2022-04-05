@@ -116,7 +116,10 @@ function AddSliceCard({
 }) {
   return (
     <Styled ref={innerRef} style={style}>
-      <div className={cx('chart-card', isSelected && 'is-selected')} data-test="chart-card">
+      <div
+        className={cx('chart-card', isSelected && 'is-selected')}
+        data-test="chart-card"
+      >
         <div className="card-title" data-test="card-title">
           {sliceName}
         </div>

@@ -23,10 +23,16 @@ import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import * as SupersetUI from 'src/core';
 import { styledMount as mount } from 'spec/helpers/theming';
-import { CHART_RENDERING_SUCCEEDED, CHART_UPDATE_SUCCEEDED } from 'src/chart/chartAction';
+import {
+  CHART_RENDERING_SUCCEEDED,
+  CHART_UPDATE_SUCCEEDED,
+} from 'src/chart/chartAction';
 import { buildActiveFilters } from 'src/dashboard/util/activeDashboardFilters';
 import { FiltersBadge } from 'src/dashboard/components/FiltersBadge';
-import { getMockStoreWithFilters, getMockStoreWithNativeFilters } from 'spec/fixtures/mockStore';
+import {
+  getMockStoreWithFilters,
+  getMockStoreWithNativeFilters,
+} from 'spec/fixtures/mockStore';
 import { sliceId } from 'spec/fixtures/mockChartQueries';
 import { dashboardFilters } from 'spec/fixtures/mockDashboardFilters';
 import { dashboardWithFilter } from 'spec/fixtures/mockDashboardLayout';
@@ -100,7 +106,9 @@ describe('FiltersBadge', () => {
       store.dispatch({ type: CHART_RENDERING_SUCCEEDED, key: sliceId });
       const wrapper = setup(store);
       expect(wrapper.find('DetailsPanelPopover')).toExist();
-      expect(wrapper.find('[data-test="applied-filter-count"]')).toHaveText('1');
+      expect(wrapper.find('[data-test="applied-filter-count"]')).toHaveText(
+        '1',
+      );
       expect(wrapper.find('WarningFilled')).not.toExist();
     });
 
@@ -114,7 +122,9 @@ describe('FiltersBadge', () => {
           {
             status: 'success',
             applied_filters: [],
-            rejected_filters: [{ column: 'region', reason: 'not_in_datasource' }],
+            rejected_filters: [
+              { column: 'region', reason: 'not_in_datasource' },
+            ],
           },
         ],
         dashboardFilters,
@@ -122,8 +132,12 @@ describe('FiltersBadge', () => {
       store.dispatch({ type: CHART_RENDERING_SUCCEEDED, key: sliceId });
       const wrapper = setup(store);
       expect(wrapper.find('DetailsPanelPopover')).toExist();
-      expect(wrapper.find('[data-test="applied-filter-count"]')).toHaveText('0');
-      expect(wrapper.find('[data-test="incompatible-filter-count"]')).toHaveText('1');
+      expect(wrapper.find('[data-test="applied-filter-count"]')).toHaveText(
+        '0',
+      );
+      expect(
+        wrapper.find('[data-test="incompatible-filter-count"]'),
+      ).toHaveText('1');
       // to look at the shape of the wrapper use:
       expect(wrapper.find(Icons.AlertSolid)).toExist();
     });
@@ -170,7 +184,9 @@ describe('FiltersBadge', () => {
       store.dispatch({ type: CHART_RENDERING_SUCCEEDED, key: sliceId });
       const wrapper = setup(store);
       expect(wrapper.find('DetailsPanelPopover')).toExist();
-      expect(wrapper.find('[data-test="applied-filter-count"]')).toHaveText('1');
+      expect(wrapper.find('[data-test="applied-filter-count"]')).toHaveText(
+        '1',
+      );
       expect(wrapper.find('WarningFilled')).not.toExist();
     });
 
@@ -188,15 +204,21 @@ describe('FiltersBadge', () => {
           {
             status: 'success',
             applied_filters: [],
-            rejected_filters: [{ column: 'region', reason: 'not_in_datasource' }],
+            rejected_filters: [
+              { column: 'region', reason: 'not_in_datasource' },
+            ],
           },
         ],
       });
       store.dispatch({ type: CHART_RENDERING_SUCCEEDED, key: sliceId });
       const wrapper = setup(store);
       expect(wrapper.find('DetailsPanelPopover')).toExist();
-      expect(wrapper.find('[data-test="applied-filter-count"]')).toHaveText('0');
-      expect(wrapper.find('[data-test="incompatible-filter-count"]')).toHaveText('1');
+      expect(wrapper.find('[data-test="applied-filter-count"]')).toHaveText(
+        '0',
+      );
+      expect(
+        wrapper.find('[data-test="incompatible-filter-count"]'),
+      ).toHaveText('1');
       expect(wrapper.find(Icons.AlertSolid)).toExist();
     });
   });

@@ -28,15 +28,25 @@ import {
   t,
 } from 'src/core';
 import { ColumnMeta } from 'src/chartConntrols';
-import { OPERATOR_ENUM_TO_OPERATOR_TYPE, Operators } from 'src/explore/constants';
+import {
+  OPERATOR_ENUM_TO_OPERATOR_TYPE,
+  Operators,
+} from 'src/explore/constants';
 import { Datasource, OptionSortType } from 'src/explore/types';
 import { OptionValueType } from 'src/explore/components/controls/DndColumnSelectControl/types';
 import AdhocFilterPopoverTrigger from 'src/explore/components/controls/FilterControl/AdhocFilterPopoverTrigger';
 import OptionWrapper from 'src/explore/components/controls/DndColumnSelectControl/OptionWrapper';
 import DndSelectLabel from 'src/explore/components/controls/DndColumnSelectControl/DndSelectLabel';
-import AdhocFilter, { CLAUSES, EXPRESSION_TYPES } from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import AdhocFilter, {
+  CLAUSES,
+  EXPRESSION_TYPES,
+} from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import AdhocMetric from 'src/explore/components/controls/MetricControl/AdhocMetric';
-import { DatasourcePanelDndItem, DndItemValue, isSavedMetric } from 'src/explore/components/DatasourcePanel/types';
+import {
+  DatasourcePanelDndItem,
+  DndItemValue,
+  isSavedMetric,
+} from 'src/explore/components/DatasourcePanel/types';
 import { DndItemType } from 'src/explore/components/DndItemType';
 import { ControlComponentProps } from 'src/explore/components/Control';
 
@@ -48,9 +58,11 @@ const DND_ACCEPTED_TYPES = [
   DndItemType.AdhocMetricOption,
 ];
 
-const isDictionaryForAdhocFilter = (value: OptionValueType) => !(value instanceof AdhocFilter) && value?.expressionType;
+const isDictionaryForAdhocFilter = (value: OptionValueType) =>
+  !(value instanceof AdhocFilter) && value?.expressionType;
 
-export interface DndFilterSelectProps extends ControlComponentProps<OptionValueType[]> {
+export interface DndFilterSelectProps
+  extends ControlComponentProps<OptionValueType[]> {
   columns: ColumnMeta[];
   savedMetrics: Metric[];
   selectedMetrics: QueryFormMetric[];
@@ -68,36 +80,51 @@ export const DndFilterSelect = (props: DndFilterSelectProps) => {
   );
   const [partitionColumn, setPartitionColumn] = useState(undefined);
   const [newFilterPopoverVisible, setNewFilterPopoverVisible] = useState(false);
-  const [droppedItem, setDroppedItem] = useState<DndItemValue | typeof EMPTY_OBJECT>({});
+  const [droppedItem, setDroppedItem] = useState<
+    DndItemValue | typeof EMPTY_OBJECT
+  >({});
 
-  const optionsForSelect = (columns: ColumnMeta[], formData: QueryFormData | null | undefined) => {
+  const optionsForSelect = (
+    columns: ColumnMeta[],
+    formData: QueryFormData | null | undefined,
+  ) => {
     const options: OptionSortType[] = [
       ...columns,
       ...[...(formData?.metrics || []), formData?.metric].map(
-        metric => metric && (typeof metric === 'string' ? { saved_metric_name: metric } : new AdhocMetric(metric)),
+        metric =>
+          metric &&
+          (typeof metric === 'string'
+            ? { saved_metric_name: metric }
+            : new AdhocMetric(metric)),
       ),
     ].filter(option => option);
 
     return options
-      .reduce((results: (OptionSortType & { filterOptionName: string })[], option) => {
-        if ('saved_metric_name' in option && option.saved_metric_name) {
-          results.push({
-            ...option,
-            filterOptionName: option.saved_metric_name,
-          });
-        } else if ('column_name' in option && option.column_name) {
-          results.push({
-            ...option,
-            filterOptionName: `_col_${option.column_name}`,
-          });
-        } else if (option instanceof AdhocMetric) {
-          results.push({
-            ...option,
-            filterOptionName: `_adhocmetric_${option.label}`,
-          });
-        }
-        return results;
-      }, [])
+      .reduce(
+        (
+          results: (OptionSortType & { filterOptionName: string })[],
+          option,
+        ) => {
+          if ('saved_metric_name' in option && option.saved_metric_name) {
+            results.push({
+              ...option,
+              filterOptionName: option.saved_metric_name,
+            });
+          } else if ('column_name' in option && option.column_name) {
+            results.push({
+              ...option,
+              filterOptionName: `_col_${option.column_name}`,
+            });
+          } else if (option instanceof AdhocMetric) {
+            results.push({
+              ...option,
+              filterOptionName: `_adhocmetric_${option.label}`,
+            });
+          }
+          return results;
+        },
+        [],
+      )
       .sort(
         (a: OptionSortType, b: OptionSortType) =>
           (a.saved_metric_name || a.column_name || a.label)?.localeCompare(
@@ -105,12 +132,18 @@ export const DndFilterSelect = (props: DndFilterSelectProps) => {
           ) ?? 0,
       );
   };
-  const [options, setOptions] = useState(optionsForSelect(props.columns, props.formData));
+  const [options, setOptions] = useState(
+    optionsForSelect(props.columns, props.formData),
+  );
 
   useEffect(() => {
     if (datasource && datasource.type === 'table') {
       const dbId = datasource.database?.id;
-      const { datasource_name: name, schema, is_sqllab_view: isSqllabView } = datasource;
+      const {
+        datasource_name: name,
+        schema,
+        is_sqllab_view: isSqllabView,
+      } = datasource;
 
       if (!isSqllabView && dbId && name && schema) {
         SupersetClient.get({
@@ -121,7 +154,11 @@ export const DndFilterSelect = (props: DndFilterSelectProps) => {
               const { partitions } = json;
               // for now only show latest_partition option
               // when table datasource has only 1 partition key.
-              if (partitions && partitions.cols && Object.keys(partitions.cols).length === 1) {
+              if (
+                partitions &&
+                partitions.cols &&
+                Object.keys(partitions.cols).length === 1
+              ) {
                 setPartitionColumn(partitions.cols[0]);
               }
             }
@@ -158,7 +195,10 @@ export const DndFilterSelect = (props: DndFilterSelectProps) => {
   const onShiftOptions = useCallback(
     (dragIndex: number, hoverIndex: number) => {
       const newValues = [...values];
-      [newValues[hoverIndex], newValues[dragIndex]] = [newValues[dragIndex], newValues[hoverIndex]];
+      [newValues[hoverIndex], newValues[dragIndex]] = [
+        newValues[dragIndex],
+        newValues[hoverIndex],
+      ];
       setValues(newValues);
     },
     [values],
@@ -166,7 +206,9 @@ export const DndFilterSelect = (props: DndFilterSelectProps) => {
 
   const getMetricExpression = useCallback(
     (savedMetricName: string) =>
-      props.savedMetrics.find((savedMetric: Metric) => savedMetric.metric_name === savedMetricName)?.expression,
+      props.savedMetrics.find(
+        (savedMetric: Metric) => savedMetric.metric_name === savedMetricName,
+      )?.expression,
     [props.savedMetrics],
   );
 
@@ -180,12 +222,16 @@ export const DndFilterSelect = (props: DndFilterSelectProps) => {
       // via datasource saved metric
       if (filterOptions.saved_metric_name) {
         return new AdhocFilter({
-          expressionType: datasource.type === 'druid' ? EXPRESSION_TYPES.SIMPLE : EXPRESSION_TYPES.SQL,
+          expressionType:
+            datasource.type === 'druid'
+              ? EXPRESSION_TYPES.SIMPLE
+              : EXPRESSION_TYPES.SQL,
           subject:
             datasource.type === 'druid'
               ? filterOptions.saved_metric_name
               : getMetricExpression(filterOptions.saved_metric_name),
-          operator: OPERATOR_ENUM_TO_OPERATOR_TYPE[Operators.GREATER_THAN].operation,
+          operator:
+            OPERATOR_ENUM_TO_OPERATOR_TYPE[Operators.GREATER_THAN].operation,
           operatorId: Operators.GREATER_THAN,
           comparator: 0,
           clause: CLAUSES.HAVING,
@@ -194,9 +240,16 @@ export const DndFilterSelect = (props: DndFilterSelectProps) => {
       // has a custom label, meaning it's custom column
       if (filterOptions.label) {
         return new AdhocFilter({
-          expressionType: datasource.type === 'druid' ? EXPRESSION_TYPES.SIMPLE : EXPRESSION_TYPES.SQL,
-          subject: datasource.type === 'druid' ? filterOptions.label : new AdhocMetric(option).translateToSql(),
-          operator: OPERATOR_ENUM_TO_OPERATOR_TYPE[Operators.GREATER_THAN].operation,
+          expressionType:
+            datasource.type === 'druid'
+              ? EXPRESSION_TYPES.SIMPLE
+              : EXPRESSION_TYPES.SQL,
+          subject:
+            datasource.type === 'druid'
+              ? filterOptions.label
+              : new AdhocMetric(option).translateToSql(),
+          operator:
+            OPERATOR_ENUM_TO_OPERATOR_TYPE[Operators.GREATER_THAN].operation,
           operatorId: Operators.GREATER_THAN,
           comparator: 0,
           clause: CLAUSES.HAVING,
@@ -281,7 +334,15 @@ export const DndFilterSelect = (props: DndFilterSelectProps) => {
           </AdhocFilterPopoverTrigger>
         );
       }),
-    [onClickClose, onFilterEdit, onShiftOptions, options, partitionColumn, datasource, values],
+    [
+      onClickClose,
+      onFilterEdit,
+      onShiftOptions,
+      options,
+      partitionColumn,
+      datasource,
+      values,
+    ],
   );
 
   const handleClickGhostButton = useCallback(() => {
@@ -335,7 +396,11 @@ export const DndFilterSelect = (props: DndFilterSelectProps) => {
         valuesRenderer={valuesRenderer}
         accept={DND_ACCEPTED_TYPES}
         ghostButtonText={ghostButtonText}
-        onClickGhostButton={isFeatureEnabled(FeatureFlag.ENABLE_DND_WITH_CLICK_UX) ? handleClickGhostButton : undefined}
+        onClickGhostButton={
+          isFeatureEnabled(FeatureFlag.ENABLE_DND_WITH_CLICK_UX)
+            ? handleClickGhostButton
+            : undefined
+        }
         {...props}
       />
       <AdhocFilterPopoverTrigger

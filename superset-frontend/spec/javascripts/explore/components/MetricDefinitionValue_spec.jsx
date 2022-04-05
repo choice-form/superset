@@ -43,7 +43,13 @@ describe('MetricDefinitionValue', () => {
   });
 
   it('renders an AdhocMetricOption given an adhoc metric', () => {
-    const wrapper = shallow(<MetricDefinitionValue onMetricEdit={() => {}} option={sumValueAdhocMetric} index={1} />);
+    const wrapper = shallow(
+      <MetricDefinitionValue
+        onMetricEdit={() => {}}
+        option={sumValueAdhocMetric}
+        index={1}
+      />,
+    );
     expect(wrapper.find(AdhocMetricOption)).toExist();
   });
 });

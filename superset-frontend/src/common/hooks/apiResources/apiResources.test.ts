@@ -18,7 +18,12 @@
  */
 import { makeApi } from 'src/core';
 import { act, renderHook } from '@testing-library/react-hooks';
-import { ResourceStatus, useApiResourceFullBody, useApiV1Resource, useTransformedResource } from './apiResources';
+import {
+  ResourceStatus,
+  useApiResourceFullBody,
+  useApiV1Resource,
+  useTransformedResource,
+} from './apiResources';
 
 const fakeApiResult = {
   id: 1,
@@ -32,7 +37,9 @@ const nameToAllCaps = (thing: any) => ({
 
 jest.mock('src/core', () => ({
   ...jest.requireActual<any>('src/core'),
-  makeApi: jest.fn().mockReturnValue(jest.fn().mockResolvedValue(fakeApiResult)),
+  makeApi: jest
+    .fn()
+    .mockReturnValue(jest.fn().mockResolvedValue(fakeApiResult)),
 }));
 
 describe('apiResource hooks', () => {
@@ -46,7 +53,9 @@ describe('apiResource hooks', () => {
 
   describe('useApiResourceFullBody', () => {
     it('returns a loading state at the start', async () => {
-      const { result } = renderHook(() => useApiResourceFullBody('/test/endpoint'));
+      const { result } = renderHook(() =>
+        useApiResourceFullBody('/test/endpoint'),
+      );
       expect(result.current).toEqual({
         status: ResourceStatus.LOADING,
         result: null,
@@ -58,7 +67,9 @@ describe('apiResource hooks', () => {
     });
 
     it('resolves to the value from the api', async () => {
-      const { result } = renderHook(() => useApiResourceFullBody('/test/endpoint'));
+      const { result } = renderHook(() =>
+        useApiResourceFullBody('/test/endpoint'),
+      );
       await act(async () => {
         jest.runAllTimers();
       });
@@ -72,7 +83,9 @@ describe('apiResource hooks', () => {
     it('handles api errors', async () => {
       const fakeError = new Error('fake api error');
       (makeApi as any).mockReturnValue(jest.fn().mockRejectedValue(fakeError));
-      const { result } = renderHook(() => useApiResourceFullBody('/test/endpoint'));
+      const { result } = renderHook(() =>
+        useApiResourceFullBody('/test/endpoint'),
+      );
       await act(async () => {
         jest.runAllTimers();
       });

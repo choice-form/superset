@@ -144,7 +144,9 @@ export const NVD3TimeSeries: ControlPanelSectionConfig[] = [
     label: t('Advanced analytics'),
     tabOverride: 'data',
     description: t(
-      'This section contains options ' + 'that allow for advanced analytical post processing ' + 'of query results',
+      'This section contains options ' +
+        'that allow for advanced analytical post processing ' +
+        'of query results',
     ),
     controlSetRows: [
       [<h1 className="section-header">{t('Rolling window')}</h1>],
@@ -155,8 +157,17 @@ export const NVD3TimeSeries: ControlPanelSectionConfig[] = [
             type: 'SelectControl',
             label: t('Rolling function'),
             default: 'None',
-            choices: formatSelectOptions(['None', 'mean', 'sum', 'std', 'cumsum']),
-            description: t('Defines a rolling window function to apply, works along ' + 'with the [Periods] text box'),
+            choices: formatSelectOptions([
+              'None',
+              'mean',
+              'sum',
+              'std',
+              'cumsum',
+            ]),
+            description: t(
+              'Defines a rolling window function to apply, works along ' +
+                'with the [Periods] text box',
+            ),
           },
         },
         {
@@ -166,7 +177,8 @@ export const NVD3TimeSeries: ControlPanelSectionConfig[] = [
             label: t('Periods'),
             isInt: true,
             description: t(
-              'Defines the size of the rolling window function, ' + 'relative to the time granularity selected',
+              'Defines the size of the rolling window function, ' +
+                'relative to the time granularity selected',
             ),
           },
         },
@@ -255,7 +267,14 @@ export const NVD3TimeSeries: ControlPanelSectionConfig[] = [
             freeForm: true,
             label: t('Method'),
             default: null,
-            choices: formatSelectOptions(['asfreq', 'bfill', 'ffill', 'median', 'mean', 'sum']),
+            choices: formatSelectOptions([
+              'asfreq',
+              'bfill',
+              'ffill',
+              'median',
+              'mean',
+              'sum',
+            ]),
             description: t('Pandas resample method'),
           },
         },

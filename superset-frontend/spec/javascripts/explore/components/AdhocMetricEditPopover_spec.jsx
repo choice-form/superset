@@ -25,7 +25,9 @@ import Button from 'src/components/Button';
 
 import { AGGREGATES } from 'src/explore/constants';
 import AdhocMetricEditPopover from 'src/explore/components/controls/MetricControl/AdhocMetricEditPopover';
-import AdhocMetric, { EXPRESSION_TYPES } from 'src/explore/components/controls/MetricControl/AdhocMetric';
+import AdhocMetric, {
+  EXPRESSION_TYPES,
+} from 'src/explore/components/controls/MetricControl/AdhocMetric';
 
 const columns = [
   { type: 'VARCHAR(255)', column_name: 'source', id: 1 },
@@ -72,19 +74,25 @@ describe('AdhocMetricEditPopover', () => {
   it('overwrites the adhocMetric in state with onColumnChange', () => {
     const { wrapper } = setup();
     wrapper.instance().onColumnChange(columns[0].column_name);
-    expect(wrapper.state('adhocMetric')).toEqual(sumValueAdhocMetric.duplicateWith({ column: columns[0] }));
+    expect(wrapper.state('adhocMetric')).toEqual(
+      sumValueAdhocMetric.duplicateWith({ column: columns[0] }),
+    );
   });
 
   it('overwrites the adhocMetric in state with onAggregateChange', () => {
     const { wrapper } = setup();
     wrapper.instance().onAggregateChange(AGGREGATES.AVG);
-    expect(wrapper.state('adhocMetric')).toEqual(sumValueAdhocMetric.duplicateWith({ aggregate: AGGREGATES.AVG }));
+    expect(wrapper.state('adhocMetric')).toEqual(
+      sumValueAdhocMetric.duplicateWith({ aggregate: AGGREGATES.AVG }),
+    );
   });
 
   it('overwrites the adhocMetric in state with onSqlExpressionChange', () => {
     const { wrapper } = setup({ adhocMetric: sqlExpressionAdhocMetric });
     wrapper.instance().onSqlExpressionChange('COUNT(1)');
-    expect(wrapper.state('adhocMetric')).toEqual(sqlExpressionAdhocMetric.duplicateWith({ sqlExpression: 'COUNT(1)' }));
+    expect(wrapper.state('adhocMetric')).toEqual(
+      sqlExpressionAdhocMetric.duplicateWith({ sqlExpression: 'COUNT(1)' }),
+    );
   });
 
   it('prevents saving if no column or aggregate is chosen', () => {

@@ -36,8 +36,16 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
-  default: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array,
+  ]),
+  default: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array,
+  ]),
   showHeader: PropTypes.bool,
   optionRenderer: PropTypes.func,
   valueKey: PropTypes.string,
@@ -85,7 +93,10 @@ export default class SelectControl extends React.PureComponent {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.choices !== this.props.choices || nextProps.options !== this.props.options) {
+    if (
+      nextProps.choices !== this.props.choices ||
+      nextProps.options !== this.props.options
+    ) {
       const options = this.getOptions(nextProps);
       this.setState({ options });
     }
@@ -193,10 +204,15 @@ export default class SelectControl extends React.PureComponent {
     };
 
     const getValue = () => {
-      const currentValue = value || (this.props.default !== undefined ? this.props.default : undefined);
+      const currentValue =
+        value ||
+        (this.props.default !== undefined ? this.props.default : undefined);
 
       // safety check - the value is intended to be undefined but null was used
-      if (currentValue === null && !this.state.options.find(o => o.value === null)) {
+      if (
+        currentValue === null &&
+        !this.state.options.find(o => o.value === null)
+      ) {
         return undefined;
       }
       return currentValue;
@@ -205,10 +221,14 @@ export default class SelectControl extends React.PureComponent {
     const selectProps = {
       allowNewOptions: freeForm,
       autoFocus,
-      ariaLabel: ariaLabel || (typeof label === 'string' ? label : t('Select ...')),
+      ariaLabel:
+        ariaLabel || (typeof label === 'string' ? label : t('Select ...')),
       allowClear: clearable,
       disabled,
-      filterOption: filterOption && typeof filterOption === 'function' ? this.handleFilterOptions : true,
+      filterOption:
+        filterOption && typeof filterOption === 'function'
+          ? this.handleFilterOptions
+          : true,
       header: showHeader && <ControlHeader {...headerProps} />,
       loading: isLoading,
       mode: isMulti || multi ? 'multiple' : 'single',

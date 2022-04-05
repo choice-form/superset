@@ -16,7 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { ComponentType, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  ComponentType,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { ExtraControlProps, sharedControlComponents } from 'src/chartConntrols';
 import { JsonArray, JsonValue, t } from 'src/core';
 import { ControlProps } from 'src/explore/components/Control';
@@ -36,7 +42,8 @@ export type SharedControlComponent = keyof typeof controlComponentMap;
  * The actual props passed to the control component itself
  * (not src/explore/components/Control.tsx).
  */
-export type ControlPropsWithExtras = Omit<ControlProps, 'type'> & ExtraControlProps;
+export type ControlPropsWithExtras = Omit<ControlProps, 'type'> &
+  ExtraControlProps;
 
 /**
  * The full props passed to control component. Including withAsyncVerification
@@ -60,18 +67,26 @@ export type FullControlProps = ControlPropsWithExtras & {
  * The async verification function that accepts control props and returns a
  * promise resolving to extra props if overrides are needed.
  */
-export type AsyncVerify = (props: ControlPropsWithExtras) => Promise<ExtraControlProps | undefined | null>;
+export type AsyncVerify = (
+  props: ControlPropsWithExtras,
+) => Promise<ExtraControlProps | undefined | null>;
 
 /**
  * Whether the extra props will update the original props.
  */
-function hasUpdates(props: ControlPropsWithExtras, newProps: ExtraControlProps) {
+function hasUpdates(
+  props: ControlPropsWithExtras,
+  newProps: ExtraControlProps,
+) {
   return (
     props !== newProps &&
     Object.entries(newProps).some(([key, value]) => {
       if (Array.isArray(props[key]) && Array.isArray(value)) {
         const sourceValue: JsonArray = props[key];
-        return sourceValue.length !== value.length || sourceValue.some((x, i) => x !== value[i]);
+        return (
+          sourceValue.length !== value.length ||
+          sourceValue.some((x, i) => x !== value[i])
+        );
       }
       if (key === 'formData') {
         return JSON.stringify(props[key]) !== JSON.stringify(value);
@@ -114,7 +129,9 @@ export default function withAsyncVerification({
   showLoadingState: defaultShowLoadingState = true,
 }: WithAsyncVerificationOptions) {
   const ControlComponent: ComponentType<FullControlProps> =
-    typeof baseControl === 'string' ? controlComponentMap[baseControl] : baseControl;
+    typeof baseControl === 'string'
+      ? controlComponentMap[baseControl]
+      : baseControl;
 
   return function ControlWithVerification(props: FullControlProps) {
     const {
@@ -177,14 +194,21 @@ export default function withAsyncVerification({
               addWarningToast(
                 t(
                   'Failed to verify select options: %s',
-                  (typeof err === 'string' ? err : err.message) || t('[unknown error]'),
+                  (typeof err === 'string' ? err : err.message) ||
+                    t('[unknown error]'),
                 ),
                 { noDuplicate: true },
               );
             }
           });
       }
-    }, [needAsyncVerification, showLoadingState, verify, otherProps, addWarningToast]);
+    }, [
+      needAsyncVerification,
+      showLoadingState,
+      verify,
+      otherProps,
+      addWarningToast,
+    ]);
 
     return (
       <ControlComponent

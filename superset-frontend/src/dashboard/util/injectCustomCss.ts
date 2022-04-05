@@ -36,7 +36,8 @@ type MysteryStyleElement = {
 export default function injectCustomCss(css: string) {
   const className = 'CssEditor-css';
   const head = document.head || document.getElementsByTagName('head')[0];
-  const style: HTMLStyleElement = document.querySelector(`.${className}`) || createStyleElement(className);
+  const style: HTMLStyleElement =
+    document.querySelector(`.${className}`) || createStyleElement(className);
 
   if ('styleSheet' in style) {
     ((style as unknown) as MysteryStyleElement).styleSheet.cssText = css;

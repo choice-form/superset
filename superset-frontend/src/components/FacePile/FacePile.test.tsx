@@ -51,16 +51,22 @@ describe('utils', () => {
 
     it('produces the same color for the same input values', () => {
       const name = 'foo';
-      expect(getRandomColor(name, colors)).toEqual(getRandomColor(name, colors));
+      expect(getRandomColor(name, colors)).toEqual(
+        getRandomColor(name, colors),
+      );
     });
 
     it('produces a different color for different input values', () => {
-      expect(getRandomColor('foo', colors)).not.toEqual(getRandomColor('bar', colors));
+      expect(getRandomColor('foo', colors)).not.toEqual(
+        getRandomColor('bar', colors),
+      );
     });
 
     it('handles non-ascii input values', () => {
       expect(getRandomColor('泰', colors)).toMatchInlineSnapshot(`"color1"`);
-      expect(getRandomColor('مُحَمَّد‎', colors)).toMatchInlineSnapshot(`"color2"`);
+      expect(getRandomColor('مُحَمَّد‎', colors)).toMatchInlineSnapshot(
+        `"color2"`,
+      );
     });
   });
 });

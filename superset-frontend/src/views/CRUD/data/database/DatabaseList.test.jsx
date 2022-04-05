@@ -148,18 +148,32 @@ describe('DatabaseList', () => {
 
     await waitForComponentToPaint(wrapper);
 
-    expect(fetchMock.calls(/database\/0\/related_objects/, 'GET')).toHaveLength(1);
+    expect(fetchMock.calls(/database\/0\/related_objects/, 'GET')).toHaveLength(
+      1,
+    );
     expect(fetchMock.calls(/database\/0/, 'DELETE')).toHaveLength(1);
   });
 
   it('filters', async () => {
     const filtersWrapper = wrapper.find(Filters);
     act(() => {
-      filtersWrapper.find('[name="expose_in_sqllab"]').first().props().onSelect({ label: 'Yes', value: true });
+      filtersWrapper
+        .find('[name="expose_in_sqllab"]')
+        .first()
+        .props()
+        .onSelect({ label: 'Yes', value: true });
 
-      filtersWrapper.find('[name="allow_run_async"]').first().props().onSelect({ label: 'Yes', value: false });
+      filtersWrapper
+        .find('[name="allow_run_async"]')
+        .first()
+        .props()
+        .onSelect({ label: 'Yes', value: false });
 
-      filtersWrapper.find('[name="database_name"]').first().props().onSubmit('fooo');
+      filtersWrapper
+        .find('[name="database_name"]')
+        .first()
+        .props()
+        .onSubmit('fooo');
     });
     await waitForComponentToPaint(wrapper);
 
@@ -185,7 +199,9 @@ describe('RTL', () => {
 
   let isFeatureEnabledMock;
   beforeEach(async () => {
-    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockImplementation(() => true);
+    isFeatureEnabledMock = jest
+      .spyOn(featureFlags, 'isFeatureEnabled')
+      .mockImplementation(() => true);
     await renderAndWait();
   });
 

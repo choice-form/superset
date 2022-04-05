@@ -38,7 +38,9 @@ describe('ExploreAdditionalActionsMenu', () => {
   };
 
   it('is valid', () => {
-    expect(React.isValidElement(<ExploreAdditionalActionsMenu {...defaultProps} />)).toBe(true);
+    expect(
+      React.isValidElement(<ExploreAdditionalActionsMenu {...defaultProps} />),
+    ).toBe(true);
   });
   it('renders a dropdown with 3 items', () => {
     const wrapper = mount(<ExploreAdditionalActionsMenu {...defaultProps} />, {

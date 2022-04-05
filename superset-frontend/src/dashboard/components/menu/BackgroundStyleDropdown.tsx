@@ -20,7 +20,10 @@ import React from 'react';
 import cx from 'classnames';
 
 import backgroundStyleOptions from 'src/dashboard/util/backgroundStyleOptions';
-import PopoverDropdown, { OptionProps, OnChangeHandler } from 'src/components/PopoverDropdown';
+import PopoverDropdown, {
+  OptionProps,
+  OnChangeHandler,
+} from 'src/components/PopoverDropdown';
 
 interface BackgroundStyleDropdownProps {
   id: string;
@@ -29,11 +32,19 @@ interface BackgroundStyleDropdownProps {
 }
 
 function renderButton(option: OptionProps) {
-  return <div className={cx('background-style-option', option.className)}>{`${option.label} background`}</div>;
+  return (
+    <div className={cx('background-style-option', option.className)}>
+      {`${option.label} background`}
+    </div>
+  );
 }
 
 function renderOption(option: OptionProps) {
-  return <div className={cx('background-style-option', option.className)}>{option.label}</div>;
+  return (
+    <div className={cx('background-style-option', option.className)}>
+      {option.label}
+    </div>
+  );
 }
 
 export default class BackgroundStyleDropdown extends React.PureComponent<BackgroundStyleDropdownProps> {

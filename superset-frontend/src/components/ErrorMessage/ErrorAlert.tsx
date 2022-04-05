@@ -117,7 +117,12 @@ export default function ErrorAlert({
           <strong>{title}</strong>
         </LeftSideContent>
         {!isExpandable && (
-          <span role="button" tabIndex={0} className="link" onClick={() => setIsModalOpen(true)}>
+          <span
+            role="button"
+            tabIndex={0}
+            className="link"
+            onClick={() => setIsModalOpen(true)}
+          >
             {t('See more')}
           </span>
         )}
@@ -128,7 +133,12 @@ export default function ErrorAlert({
           {body && (
             <>
               {!isBodyExpanded && (
-                <span role="button" tabIndex={0} className="link" onClick={() => setIsBodyExpanded(true)}>
+                <span
+                  role="button"
+                  tabIndex={0}
+                  className="link"
+                  onClick={() => setIsBodyExpanded(true)}
+                >
                   {t('See more')}
                 </span>
               )}
@@ -136,7 +146,12 @@ export default function ErrorAlert({
                 <>
                   <br />
                   {body}
-                  <span role="button" tabIndex={0} className="link" onClick={() => setIsBodyExpanded(false)}>
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    className="link"
+                    onClick={() => setIsBodyExpanded(false)}
+                  >
                     {t('See less')}
                   </span>
                 </>
@@ -169,7 +184,11 @@ export default function ErrorAlert({
                   copyNode={<Button onClick={noOp}>{t('Copy message')}</Button>}
                 />
               )}
-              <Button cta buttonStyle="primary" onClick={() => setIsModalOpen(false)}>
+              <Button
+                cta
+                buttonStyle="primary"
+                onClick={() => setIsModalOpen(false)}
+              >
                 {t('Close')}
               </Button>
             </>

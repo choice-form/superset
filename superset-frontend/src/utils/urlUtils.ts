@@ -79,6 +79,8 @@ export function getShortUrl(longUrl: string) {
     .then(({ text }) => text)
     .catch(response =>
       // @ts-ignore
-      getClientErrorObject(response).then(({ error, statusText }) => Promise.reject(error || statusText)),
+      getClientErrorObject(response).then(({ error, statusText }) =>
+        Promise.reject(error || statusText),
+      ),
     );
 }

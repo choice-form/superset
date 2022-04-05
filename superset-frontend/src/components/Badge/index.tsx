@@ -32,7 +32,8 @@ const Badge = styled((
   & > sup {
     padding: 0 ${({ theme }) => theme.gridUnit * 2}px;
     background: ${({ theme, color }) => color || theme.colors.primary.base};
-    color: ${({ theme, textColor }) => textColor || theme.colors.grayscale.light5};
+    color: ${({ theme, textColor }) =>
+      textColor || theme.colors.grayscale.light5};
   }
 `;
 

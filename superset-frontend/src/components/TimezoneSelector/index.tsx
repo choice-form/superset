@@ -33,7 +33,10 @@ const offsetsToName = {
   '-300-240': ['Eastern Standard Time', 'Eastern Daylight Time'],
   '-360-300': ['Central Standard Time', 'Central Daylight Time'],
   '-420-360': ['Mountain Standard Time', 'Mountain Daylight Time'],
-  '-420-420': ['Mountain Standard Time - Phoenix', 'Mountain Standard Time - Phoenix'],
+  '-420-420': [
+    'Mountain Standard Time - Phoenix',
+    'Mountain Standard Time - Phoenix',
+  ],
   '-480-420': ['Pacific Standard Time', 'Pacific Daylight Time'],
   '-540-480': ['Alaska Standard Time', 'Alaska Daylight Time'],
   '-600-600': ['Hawaii Standard Time', 'Hawaii Daylight Time'],
@@ -46,11 +49,17 @@ const currentDate = moment();
 const JANUARY = moment([2021, 1]);
 const JULY = moment([2021, 7]);
 
-const getOffsetKey = (name: string) => JANUARY.tz(name).utcOffset().toString() + JULY.tz(name).utcOffset().toString();
+const getOffsetKey = (name: string) =>
+  JANUARY.tz(name).utcOffset().toString() +
+  JULY.tz(name).utcOffset().toString();
 
 const getTimezoneName = (name: string) => {
   const offsets = getOffsetKey(name);
-  return (currentDate.tz(name).isDST() ? offsetsToName[offsets]?.[1] : offsetsToName[offsets]?.[0]) || name;
+  return (
+    (currentDate.tz(name).isDST()
+      ? offsetsToName[offsets]?.[1]
+      : offsetsToName[offsets]?.[0]) || name
+  );
 };
 
 export interface TimezoneProps {
@@ -65,16 +74,24 @@ const ALL_ZONES = moment.tz
 
 const TIMEZONES: moment.MomentZoneOffset[] = [];
 ALL_ZONES.forEach(zone => {
-  if (!TIMEZONES.find(option => getOffsetKey(option.name) === getOffsetKey(zone.name))) {
+  if (
+    !TIMEZONES.find(
+      option => getOffsetKey(option.name) === getOffsetKey(zone.name),
+    )
+  ) {
     TIMEZONES.push(zone); // dedupe zones by offsets
   }
 });
 
 const TIMEZONE_OPTIONS = TIMEZONES.sort(
   // sort by offset
-  (a, b) => moment.tz(currentDate, a.name).utcOffset() - moment.tz(currentDate, b.name).utcOffset(),
+  (a, b) =>
+    moment.tz(currentDate, a.name).utcOffset() -
+    moment.tz(currentDate, b.name).utcOffset(),
 ).map(zone => ({
-  label: `GMT ${moment.tz(currentDate, zone.name).format('Z')} (${getTimezoneName(zone.name)})`,
+  label: `GMT ${moment
+    .tz(currentDate, zone.name)
+    .format('Z')} (${getTimezoneName(zone.name)})`,
   value: zone.name,
   offsets: getOffsetKey(zone.name),
 }));
@@ -82,7 +99,8 @@ const TIMEZONE_OPTIONS = TIMEZONES.sort(
 const TimezoneSelector = ({ onTimezoneChange, timezone }: TimezoneProps) => {
   const prevTimezone = useRef(timezone);
   const matchTimezoneToOptions = (timezone: string) =>
-    TIMEZONE_OPTIONS.find(option => option.offsets === getOffsetKey(timezone))?.value || DEFAULT_TIMEZONE.value;
+    TIMEZONE_OPTIONS.find(option => option.offsets === getOffsetKey(timezone))
+      ?.value || DEFAULT_TIMEZONE.value;
 
   const updateTimezone = useCallback(
     (tz: string) => {

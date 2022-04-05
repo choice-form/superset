@@ -23,6 +23,12 @@ import { Tooltip } from 'src/components/Tooltip';
 import ImageLoader, { BackgroundPosition } from './ImageLoader';
 import CertifiedIcon from '../CertifiedIcon';
 
+const ActionsWrapper = styled.div`
+  width: 64px;
+  display: flex;
+  justify-content: space-between;
+`;
+
 const StyledCard = styled(AntdCard)`
   border: 1px solid #d9dbe4;
   border-radius: ${({ theme }) => theme.gridUnit}px;
@@ -274,5 +280,7 @@ function ListViewCard({
     </StyledCard>
   );
 }
+
+ListViewCard.Actions = ActionsWrapper;
 
 export default ListViewCard;

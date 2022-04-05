@@ -21,8 +21,9 @@ import { render } from 'spec/helpers/testing-library';
 import FilterScope from 'src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FilterScope/FilterScope';
 import CrossFilterScopingForm from '.';
 
-jest.mock('src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FilterScope/FilterScope', () =>
-  jest.fn(() => null),
+jest.mock(
+  'src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FilterScope/FilterScope',
+  () => jest.fn(() => null),
 );
 
 const createProps = () => {

@@ -52,7 +52,9 @@ const SqlAlchemyTab = ({
           onChange={onInputChange}
         />
       </div>
-      <div className="helper">{t('Pick a name to help you identify this database.')}</div>
+      <div className="helper">
+        {t('Pick a name to help you identify this database.')}
+      </div>
     </StyledInputContainer>
     <StyledInputContainer>
       <div className="control-label">
@@ -66,19 +68,30 @@ const SqlAlchemyTab = ({
           data-test="sqlalchemy-uri-input"
           value={db?.sqlalchemy_uri || ''}
           autoComplete="off"
-          placeholder={t('dialect+driver://username:password@host:port/database')}
+          placeholder={t(
+            'dialect+driver://username:password@host:port/database',
+          )}
           onChange={onInputChange}
         />
       </div>
       <div className="helper">
         {t('Refer to the')}{' '}
-        <a href={conf?.SQLALCHEMY_DOCS_URL ?? ''} target="_blank" rel="noopener noreferrer">
+        <a
+          href={conf?.SQLALCHEMY_DOCS_URL ?? ''}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {conf?.SQLALCHEMY_DISPLAY_TEXT ?? ''}
         </a>{' '}
         {t('for more information on how to structure your URI.')}
       </div>
     </StyledInputContainer>
-    <Button onClick={testConnection} cta buttonStyle="link" css={(theme: SupersetTheme) => wideButton(theme)}>
+    <Button
+      onClick={testConnection}
+      cta
+      buttonStyle="link"
+      css={(theme: SupersetTheme) => wideButton(theme)}
+    >
       {t('Test connection')}
     </Button>
   </>

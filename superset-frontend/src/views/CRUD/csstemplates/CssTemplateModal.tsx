@@ -37,7 +37,8 @@ interface CssTemplateModalProps {
 }
 
 const StyledCssTemplateTitle = styled.div`
-  margin: ${({ theme }) => theme.gridUnit * 2}px auto ${({ theme }) => theme.gridUnit * 4}px auto;
+  margin: ${({ theme }) => theme.gridUnit * 2}px auto
+    ${({ theme }) => theme.gridUnit * 4}px auto;
 `;
 
 const StyledCssEditor = styled(CssEditor)`
@@ -58,7 +59,8 @@ const TemplateContainer = styled.div`
   }
 
   input[type='text'] {
-    padding: ${({ theme }) => theme.gridUnit * 1.5}px ${({ theme }) => theme.gridUnit * 2}px;
+    padding: ${({ theme }) => theme.gridUnit * 1.5}px
+      ${({ theme }) => theme.gridUnit * 2}px;
     border: 1px solid ${({ theme }) => theme.colors.grayscale.light2};
     border-radius: ${({ theme }) => theme.gridUnit}px;
     width: 50%;
@@ -73,7 +75,10 @@ const CssTemplateModal: FunctionComponent<CssTemplateModalProps> = ({
   cssTemplate = null,
 }) => {
   const [disableSave, setDisableSave] = useState<boolean>(true);
-  const [currentCssTemplate, setCurrentCssTemplate] = useState<TemplateObject | null>(null);
+  const [
+    currentCssTemplate,
+    setCurrentCssTemplate,
+  ] = useState<TemplateObject | null>(null);
   const [isHidden, setIsHidden] = useState<boolean>(true);
   const isEditMode = cssTemplate !== null;
 
@@ -83,7 +88,11 @@ const CssTemplateModal: FunctionComponent<CssTemplateModalProps> = ({
     fetchResource,
     createResource,
     updateResource,
-  } = useSingleViewResource<TemplateObject>('css_template', t('css_template'), addDangerToast);
+  } = useSingleViewResource<TemplateObject>(
+    'css_template',
+    t('css_template'),
+    addDangerToast,
+  );
 
   // Functions
   const hide = () => {
@@ -175,7 +184,10 @@ const CssTemplateModal: FunctionComponent<CssTemplateModalProps> = ({
 
         fetchResource(id);
       }
-    } else if (!isEditMode && (!currentCssTemplate || currentCssTemplate.id || (isHidden && show))) {
+    } else if (
+      !isEditMode &&
+      (!currentCssTemplate || currentCssTemplate.id || (isHidden && show))
+    ) {
       setCurrentCssTemplate({
         template_name: '',
         css: '',
@@ -192,7 +204,10 @@ const CssTemplateModal: FunctionComponent<CssTemplateModalProps> = ({
   // Validation
   useEffect(() => {
     validate();
-  }, [currentCssTemplate ? currentCssTemplate.template_name : '', currentCssTemplate ? currentCssTemplate.css : '']);
+  }, [
+    currentCssTemplate ? currentCssTemplate.template_name : '',
+    currentCssTemplate ? currentCssTemplate.css : '',
+  ]);
 
   // Show/hide
   if (isHidden && show) {
@@ -209,8 +224,14 @@ const CssTemplateModal: FunctionComponent<CssTemplateModalProps> = ({
       width="55%"
       title={
         <h4 data-test="css-template-modal-title">
-          {isEditMode ? <Icons.EditAlt css={StyledIcon} /> : <Icons.PlusLarge css={StyledIcon} />}
-          {isEditMode ? t('Edit CSS template properties') : t('Add CSS template')}
+          {isEditMode ? (
+            <Icons.EditAlt css={StyledIcon} />
+          ) : (
+            <Icons.PlusLarge css={StyledIcon} />
+          )}
+          {isEditMode
+            ? t('Edit CSS template properties')
+            : t('Add CSS template')}
         </h4>
       }
     >
@@ -234,7 +255,11 @@ const CssTemplateModal: FunctionComponent<CssTemplateModalProps> = ({
           {t('css')}
           <span className="required">*</span>
         </div>
-        <StyledCssEditor onChange={onCssChange} value={currentCssTemplate?.css} width="100%" />
+        <StyledCssEditor
+          onChange={onCssChange}
+          value={currentCssTemplate?.css}
+          width="100%"
+        />
       </TemplateContainer>
     </Modal>
   );

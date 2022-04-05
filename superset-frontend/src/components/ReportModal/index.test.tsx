@@ -51,7 +51,9 @@ describe('Email Report Modal', () => {
   beforeAll(() => {
     isFeatureEnabledMock = jest
       .spyOn(featureFlags, 'isFeatureEnabled')
-      .mockImplementation((featureFlag: FeatureFlag) => featureFlag === FeatureFlag.ALERT_REPORTS);
+      .mockImplementation(
+        (featureFlag: FeatureFlag) => featureFlag === FeatureFlag.ALERT_REPORTS,
+      );
   });
 
   beforeEach(() => {
@@ -74,11 +76,15 @@ describe('Email Report Modal', () => {
 
     // ----- Report description textbox
     // Initial value
-    const reportDescriptionTextbox = screen.getByTestId('report-description-test');
+    const reportDescriptionTextbox = screen.getByTestId(
+      'report-description-test',
+    );
     expect(reportDescriptionTextbox).toHaveDisplayValue('');
     // Type in the textbox and assert that it worked
     userEvent.type(reportDescriptionTextbox, 'Report description text test');
-    expect(reportDescriptionTextbox).toHaveDisplayValue('Report description text test');
+    expect(reportDescriptionTextbox).toHaveDisplayValue(
+      'Report description text test',
+    );
 
     // ----- Crontab
     const crontabInputs = screen.getAllByRole('combobox');

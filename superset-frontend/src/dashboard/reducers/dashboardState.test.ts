@@ -22,10 +22,17 @@ import { setActiveTabs } from '../actions/dashboardState';
 
 describe('DashboardState reducer', () => {
   it('SET_ACTIVE_TABS', () => {
-    expect(dashboardStateReducer({ activeTabs: [] }, setActiveTabs('tab1'))).toEqual({ activeTabs: ['tab1'] });
-    expect(dashboardStateReducer({ activeTabs: ['tab1'] }, setActiveTabs('tab1'))).toEqual({ activeTabs: ['tab1'] });
-    expect(dashboardStateReducer({ activeTabs: ['tab1'] }, setActiveTabs('tab2', 'tab1'))).toEqual({
-      activeTabs: ['tab2'],
-    });
+    expect(
+      dashboardStateReducer({ activeTabs: [] }, setActiveTabs('tab1')),
+    ).toEqual({ activeTabs: ['tab1'] });
+    expect(
+      dashboardStateReducer({ activeTabs: ['tab1'] }, setActiveTabs('tab1')),
+    ).toEqual({ activeTabs: ['tab1'] });
+    expect(
+      dashboardStateReducer(
+        { activeTabs: ['tab1'] },
+        setActiveTabs('tab2', 'tab1'),
+      ),
+    ).toEqual({ activeTabs: ['tab2'] });
   });
 });

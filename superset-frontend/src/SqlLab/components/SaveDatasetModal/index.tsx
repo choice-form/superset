@@ -32,11 +32,17 @@ interface SaveDatasetModalProps {
   onHide: () => void;
   handleDatasetNameChange: (e: React.FormEvent<HTMLInputElement>) => void;
   handleSaveDatasetModalSearch: (searchText: string) => Promise<void>;
-  filterAutocompleteOption: (inputValue: string, option: { value: string; datasetId: number }) => boolean;
+  filterAutocompleteOption: (
+    inputValue: string,
+    option: { value: string; datasetId: number },
+  ) => boolean;
   handleSaveDatasetRadioBtnState: (e: RadioChangeEvent) => void;
   handleOverwriteCancel: () => void;
   handleOverwriteDataset: () => void;
-  handleOverwriteDatasetOption: (data: string, option: Record<string, any>) => void;
+  handleOverwriteDatasetOption: (
+    data: string,
+    option: Record<string, any>,
+  ) => void;
   onChangeAutoComplete: () => void;
   defaultCreateDatasetValue: string;
   disableSaveAndExploreBtn: boolean;
@@ -94,7 +100,11 @@ export const SaveDatasetModal: FunctionComponent<SaveDatasetModalProps> = ({
     footer={
       <>
         {!shouldOverwriteDataset && (
-          <Button disabled={disableSaveAndExploreBtn} buttonStyle="primary" onClick={onOk}>
+          <Button
+            disabled={disableSaveAndExploreBtn}
+            buttonStyle="primary"
+            onClick={onOk}
+          >
             {t('Save & Explore')}
           </Button>
         )}
@@ -117,8 +127,13 @@ export const SaveDatasetModal: FunctionComponent<SaveDatasetModalProps> = ({
     <Styles>
       {!shouldOverwriteDataset && (
         <div className="smd-body">
-          <div className="smd-prompt">Save this query as a virtual dataset to continue exploring</div>
-          <Radio.Group onChange={handleSaveDatasetRadioBtnState} value={saveDatasetRadioBtnState}>
+          <div className="smd-prompt">
+            Save this query as a virtual dataset to continue exploring
+          </div>
+          <Radio.Group
+            onChange={handleSaveDatasetRadioBtnState}
+            value={saveDatasetRadioBtnState}
+          >
             <Radio className="smd-radio" value={1}>
               Save as new
               <Input
@@ -145,7 +160,9 @@ export const SaveDatasetModal: FunctionComponent<SaveDatasetModalProps> = ({
         </div>
       )}
       {shouldOverwriteDataset && (
-        <div className="smd-overwrite-msg">Are you sure you want to overwrite this dataset?</div>
+        <div className="smd-overwrite-msg">
+          Are you sure you want to overwrite this dataset?
+        </div>
       )}
     </Styles>
   </StyledModal>

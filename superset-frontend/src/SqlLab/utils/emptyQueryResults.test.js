@@ -16,7 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { emptyQueryResults, clearQueryEditors } from 'src/SqlLab/utils/reduxStateToLocalStorageHelper';
+import {
+  emptyQueryResults,
+  clearQueryEditors,
+} from 'src/SqlLab/utils/reduxStateToLocalStorageHelper';
 import { LOCALSTORAGE_MAX_QUERY_AGE_MS } from 'src/SqlLab/constants';
 import { queries, defaultQueryEditor } from '../fixtures';
 
@@ -32,7 +35,9 @@ describe('reduxStateToLocalStorageHelper', () => {
     // make sure sample data contains old query
     const oldQuery = queries[0];
     const { id, startDttm } = oldQuery;
-    expect(Date.now() - startDttm).toBeGreaterThan(LOCALSTORAGE_MAX_QUERY_AGE_MS);
+    expect(Date.now() - startDttm).toBeGreaterThan(
+      LOCALSTORAGE_MAX_QUERY_AGE_MS,
+    );
     expect(Object.keys(oldQuery.results)).toContain('data');
 
     const emptiedQuery = emptyQueryResults(queriesObj);

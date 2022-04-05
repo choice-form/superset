@@ -39,21 +39,32 @@ interface CardViewSelectSortProps {
   pageSize: number;
 }
 
-export const CardSortSelect = ({ initialSort, onChange, options, pageIndex, pageSize }: CardViewSelectSortProps) => {
-  const defaultSort = (initialSort && options.find(({ id }) => id === initialSort[0].id)) || options[0];
+export const CardSortSelect = ({
+  initialSort,
+  onChange,
+  options,
+  pageIndex,
+  pageSize,
+}: CardViewSelectSortProps) => {
+  const defaultSort =
+    (initialSort && options.find(({ id }) => id === initialSort[0].id)) ||
+    options[0];
 
   const [value, setValue] = useState({
     label: defaultSort.label,
     value: defaultSort.value,
   });
 
-  const formattedOptions = useMemo(() => options.map(option => ({ label: option.label, value: option.value })), [
-    options,
-  ]);
+  const formattedOptions = useMemo(
+    () => options.map(option => ({ label: option.label, value: option.value })),
+    [options],
+  );
 
   const handleOnChange = (selected: { label: string; value: string }) => {
     setValue(selected);
-    const originalOption = options.find(({ value }) => value === selected.value);
+    const originalOption = options.find(
+      ({ value }) => value === selected.value,
+    );
     if (originalOption) {
       const sortBy = [
         {

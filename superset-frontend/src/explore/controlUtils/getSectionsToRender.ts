@@ -24,7 +24,11 @@ import * as SECTIONS from 'src/explore/controlPanels/sections';
 
 const getMemoizedSectionsToRender = memoizeOne(
   (datasourceType: DatasourceType, controlPanelConfig: ControlPanelConfig) => {
-    const { sectionOverrides = {}, controlOverrides, controlPanelSections = [] } = controlPanelConfig;
+    const {
+      sectionOverrides = {},
+      controlOverrides,
+      controlPanelSections = [],
+    } = controlPanelConfig;
 
     // default control panel sections
     const sections = { ...SECTIONS };
@@ -45,7 +49,9 @@ const getMemoizedSectionsToRender = memoizeOne(
 
     // list of datasource-specific controls that should be removed
     const invalidControls =
-      datasourceType === 'table' ? ['granularity', 'druid_time_origin'] : ['granularity_sqla', 'time_grain_sqla'];
+      datasourceType === 'table'
+        ? ['granularity', 'druid_time_origin']
+        : ['granularity_sqla', 'time_grain_sqla'];
 
     return [datasourceAndVizType]
       .concat(controlPanelSections)
@@ -57,7 +63,11 @@ const getMemoizedSectionsToRender = memoizeOne(
           controlSetRows:
             controlSetRows?.map(row =>
               row
-                .filter(control => typeof control !== 'string' || !invalidControls.includes(control))
+                .filter(
+                  control =>
+                    typeof control !== 'string' ||
+                    !invalidControls.includes(control),
+                )
                 .map(item => expandControlConfig(item, controlOverrides)),
             ) || [],
         };
@@ -68,7 +78,10 @@ const getMemoizedSectionsToRender = memoizeOne(
 /**
  * Get the clean and processed control panel sections
  */
-export function getSectionsToRender(vizType: string, datasourceType: DatasourceType) {
+export function getSectionsToRender(
+  vizType: string,
+  datasourceType: DatasourceType,
+) {
   const controlPanelConfig =
     // TODO: update `chartControlPanelRegistry` type to use ControlPanelConfig
     (getChartControlPanelRegistry().get(vizType) as ControlPanelConfig) || {};

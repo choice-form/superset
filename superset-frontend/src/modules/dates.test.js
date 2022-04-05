@@ -16,7 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { fDuration, now, epochTimeXHoursAgo, epochTimeXDaysAgo, epochTimeXYearsAgo } from 'src/modules/dates';
+import {
+  fDuration,
+  now,
+  epochTimeXHoursAgo,
+  epochTimeXDaysAgo,
+  epochTimeXYearsAgo,
+} from 'src/modules/dates';
 
 describe('fDuration', () => {
   it('is a function', () => {

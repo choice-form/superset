@@ -107,7 +107,9 @@ describe('AnnotationList', () => {
   it('fetches annotation layer', () => {
     const callsQ = fetchMock.calls(/annotation_layer\/1/);
     expect(callsQ).toHaveLength(2);
-    expect(callsQ[1][0]).toMatchInlineSnapshot(`"http://localhost/api/v1/annotation_layer/1"`);
+    expect(callsQ[1][0]).toMatchInlineSnapshot(
+      `"http://localhost/api/v1/annotation_layer/1"`,
+    );
   });
 
   it('fetches annotations', () => {
@@ -128,7 +130,9 @@ describe('AnnotationList', () => {
     });
     await waitForComponentToPaint(wrapper);
 
-    expect(wrapper.find(DeleteModal).first().props().description).toMatchInlineSnapshot(
+    expect(
+      wrapper.find(DeleteModal).first().props().description,
+    ).toMatchInlineSnapshot(
       `"Are you sure you want to delete annotation 0 label?"`,
     );
 

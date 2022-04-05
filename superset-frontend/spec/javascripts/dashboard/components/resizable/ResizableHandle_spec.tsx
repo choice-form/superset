@@ -25,17 +25,25 @@ import ResizableHandle from 'src/dashboard/components/resizable/ResizableHandle'
 describe('ResizableHandle', () => {
   it('should render a right resize handle', () => {
     const rendered = render(<ResizableHandle.right />);
-    expect(rendered.container.querySelector('.resize-handle.resize-handle--right')).toBeVisible();
+    expect(
+      rendered.container.querySelector('.resize-handle.resize-handle--right'),
+    ).toBeVisible();
   });
 
   it('should render a bottom resize handle', () => {
     const rendered = render(<ResizableHandle.bottom />);
-    expect(rendered.container.querySelector('.resize-handle.resize-handle--bottom')).toBeVisible();
+    expect(
+      rendered.container.querySelector('.resize-handle.resize-handle--bottom'),
+    ).toBeVisible();
   });
 
   it('should render a bottomRight resize handle', () => {
     const rendered = render(<ResizableHandle.bottomRight />);
-    expect(rendered.container.querySelector('.resize-handle.resize-handle--bottom-right')).toBeVisible();
+    expect(
+      rendered.container.querySelector(
+        '.resize-handle.resize-handle--bottom-right',
+      ),
+    ).toBeVisible();
   });
 });
 /* eslint-enable react/jsx-pascal-case */

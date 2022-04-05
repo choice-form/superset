@@ -22,7 +22,12 @@ import Select from 'src/components/Select';
 import { styled, t, SupersetClient } from 'src/core';
 import { debounce } from 'lodash';
 import Loading from 'src/components/Loading';
-import { now, epochTimeXHoursAgo, epochTimeXDaysAgo, epochTimeXYearsAgo } from 'src/modules/dates';
+import {
+  now,
+  epochTimeXHoursAgo,
+  epochTimeXDaysAgo,
+  epochTimeXYearsAgo,
+} from 'src/modules/dates';
 import AsyncSelect from 'src/components/AsyncSelect';
 import { Query } from 'src/SqlLab/types';
 import { STATUS_OPTIONS, TIME_OPTIONS } from 'src/SqlLab/constants';
@@ -59,7 +64,8 @@ const TableStyles = styled.div`
   }
 
   .table > thead > tr > th {
-    border-bottom: ${({ theme }) => theme.gridUnit / 2}px solid ${({ theme }) => theme.colors.grayscale.light2};
+    border-bottom: ${({ theme }) => theme.gridUnit / 2}px solid
+      ${({ theme }) => theme.colors.grayscale.light2};
     background: ${({ theme }) => theme.colors.grayscale.light4};
   }
 `;
@@ -170,7 +176,9 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
     }));
     actions.setDatabases(result);
     if (result.length === 0) {
-      actions.addDangerToast(t("It seems you don't have access to any database"));
+      actions.addDangerToast(
+        t("It seems you don't have access to any database"),
+      );
     }
     return options;
   };
@@ -240,7 +248,11 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
             onChange={(selected: any) => setStatus(selected?.value)}
           />
 
-          <Button buttonSize="small" buttonStyle="success" onClick={refreshQueries}>
+          <Button
+            buttonSize="small"
+            buttonStyle="success"
+            onClick={refreshQueries}
+          >
             {t('Search')}
           </Button>
         </div>
@@ -251,7 +263,16 @@ function QuerySearch({ actions, displayLimit }: QuerySearchProps) {
         ) : (
           <TableStyles>
             <QueryTable
-              columns={['state', 'db', 'user', 'time', 'progress', 'rows', 'sql', 'querylink']}
+              columns={[
+                'state',
+                'db',
+                'user',
+                'time',
+                'progress',
+                'rows',
+                'sql',
+                'querylink',
+              ]}
               onUserClicked={onUserClicked}
               onDbClicked={onDbClicked}
               queries={queriesArray}

@@ -51,7 +51,11 @@ const ColumnSelectPopoverTrigger = ({
     setPopoverVisible(false);
   }, []);
 
-  const { visible, handleTogglePopover, handleClosePopover } = isControlledComponent
+  const {
+    visible,
+    handleTogglePopover,
+    handleClosePopover,
+  } = isControlledComponent
     ? {
         visible: props.visible,
         handleTogglePopover: props.togglePopover!,

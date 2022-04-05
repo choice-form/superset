@@ -62,14 +62,28 @@ export function AdvancedFrame(props: FrameComponentProps) {
       </div>
       <div className="control-label">
         {t('START (INCLUSIVE)')}{' '}
-        <InfoTooltipWithTrigger tooltip={t('Start date included in time range')} placement="right" />
+        <InfoTooltipWithTrigger
+          tooltip={t('Start date included in time range')}
+          placement="right"
+        />
       </div>
-      <Input key="since" value={since} onChange={e => onChange('since', e.target.value)} />
+      <Input
+        key="since"
+        value={since}
+        onChange={e => onChange('since', e.target.value)}
+      />
       <div className="control-label">
         {t('END (EXCLUSIVE)')}{' '}
-        <InfoTooltipWithTrigger tooltip={t('End date excluded from time range')} placement="right" />
+        <InfoTooltipWithTrigger
+          tooltip={t('End date excluded from time range')}
+          placement="right"
+        />
       </div>
-      <Input key="until" value={until} onChange={e => onChange('until', e.target.value)} />
+      <Input
+        key="until"
+        value={until}
+        onChange={e => onChange('until', e.target.value)}
+      />
     </>
   );
 }

@@ -41,7 +41,8 @@ export function emptyQueryResults(queries) {
     const { startDttm, results } = queries[key];
     const query = {
       ...queries[key],
-      results: Date.now() - startDttm > LOCALSTORAGE_MAX_QUERY_AGE_MS ? {} : results,
+      results:
+        Date.now() - startDttm > LOCALSTORAGE_MAX_QUERY_AGE_MS ? {} : results,
     };
 
     const updatedQueries = {

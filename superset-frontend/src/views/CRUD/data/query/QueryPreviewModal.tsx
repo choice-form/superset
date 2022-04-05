@@ -21,7 +21,9 @@ import { styled, t } from 'src/core';
 import Modal from 'src/components/Modal';
 import cx from 'classnames';
 import Button from 'src/components/Button';
-import withToasts, { ToastProps } from 'src/components/MessageToasts/withToasts';
+import withToasts, {
+  ToastProps,
+} from 'src/components/MessageToasts/withToasts';
 import SyntaxHighlighterCopy from 'src/views/CRUD/data/components/SyntaxHighlighterCopy';
 import { useQueryPreviewState } from 'src/views/CRUD/data/hooks';
 import { QueryObject } from 'src/views/CRUD/types';
@@ -46,7 +48,8 @@ const QueryViewToggle = styled.div`
 const TabButton = styled.div`
   display: inline;
   font-size: ${({ theme }) => theme.typography.sizes.s}px;
-  padding: ${({ theme }) => theme.gridUnit * 2}px ${({ theme }) => theme.gridUnit * 4}px;
+  padding: ${({ theme }) => theme.gridUnit * 2}px
+    ${({ theme }) => theme.gridUnit * 4}px;
   margin-right: ${({ theme }) => theme.gridUnit * 4}px;
   color: ${({ theme }) => theme.colors.secondary.dark1};
 
@@ -96,7 +99,12 @@ function QueryPreviewModal({
   addDangerToast,
   addSuccessToast,
 }: QueryPreviewModalProps) {
-  const { handleKeyPress, handleDataChange, disablePrevious, disableNext } = useQueryPreviewState<QueryObject>({
+  const {
+    handleKeyPress,
+    handleDataChange,
+    disablePrevious,
+    disableNext,
+  } = useQueryPreviewState<QueryObject>({
     queries,
     currentQueryId: query.id,
     fetchData,
@@ -158,7 +166,11 @@ function QueryPreviewModal({
             {t('Executed query')}
           </TabButton>
         </QueryViewToggle>
-        <SyntaxHighlighterCopy addDangerToast={addDangerToast} addSuccessToast={addSuccessToast} language="sql">
+        <SyntaxHighlighterCopy
+          addDangerToast={addDangerToast}
+          addSuccessToast={addSuccessToast}
+          language="sql"
+        >
           {(currentTab === 'user' ? sql : executed_sql) || ''}
         </SyntaxHighlighterCopy>
       </StyledModal>

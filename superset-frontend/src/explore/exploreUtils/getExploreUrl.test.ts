@@ -38,10 +38,14 @@ test('Get ExploreUrl with default params', () => {
 
 test('Get ExploreUrl with endpointType:full', () => {
   const params = createParams();
-  expect(getExploreUrl({ ...params, endpointType: 'full' })).toBe('http://localhost/explore_json/');
+  expect(getExploreUrl({ ...params, endpointType: 'full' })).toBe(
+    'http://localhost/explore_json/',
+  );
 });
 
 test('Get ExploreUrl with endpointType:full and method:GET', () => {
   const params = createParams();
-  expect(getExploreUrl({ ...params, endpointType: 'full', method: 'GET' })).toBe('http://localhost/explore_json/');
+  expect(
+    getExploreUrl({ ...params, endpointType: 'full', method: 'GET' }),
+  ).toBe('http://localhost/explore_json/');
 });

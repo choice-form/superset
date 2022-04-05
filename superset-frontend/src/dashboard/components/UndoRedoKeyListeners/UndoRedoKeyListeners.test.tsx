@@ -57,5 +57,8 @@ test('removes the event listener when unmounts', () => {
   document.removeEventListener = jest.fn();
   const { unmount } = render(<UndoRedoKeyListeners {...defaultProps} />);
   unmount();
-  expect(document.removeEventListener).toHaveBeenCalledWith('keydown', expect.anything());
+  expect(document.removeEventListener).toHaveBeenCalledWith(
+    'keydown',
+    expect.anything(),
+  );
 });

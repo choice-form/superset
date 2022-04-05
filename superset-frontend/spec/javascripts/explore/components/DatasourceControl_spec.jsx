@@ -76,14 +76,22 @@ describe('DatasourceControl', () => {
   it('show or hide Edit Datasource option', () => {
     let wrapper = setup();
     expect(wrapper.find('[data-test="datasource-menu"]')).toExist();
-    let menuWrapper = shallow(<div>{wrapper.find('[data-test="datasource-menu"]').prop('overlay')}</div>);
+    let menuWrapper = shallow(
+      <div>
+        {wrapper.find('[data-test="datasource-menu"]').prop('overlay')}
+      </div>,
+    );
     expect(menuWrapper.find(Menu.Item)).toHaveLength(3);
 
     wrapper = setup({
       isEditable: false,
     });
     expect(wrapper.find('[data-test="datasource-menu"]')).toExist();
-    menuWrapper = shallow(<div>{wrapper.find('[data-test="datasource-menu"]').prop('overlay')}</div>);
+    menuWrapper = shallow(
+      <div>
+        {wrapper.find('[data-test="datasource-menu"]').prop('overlay')}
+      </div>,
+    );
     expect(menuWrapper.find(Menu.Item)).toHaveLength(2);
 
     wrapper = setup({
@@ -101,7 +109,11 @@ describe('DatasourceControl', () => {
       },
     });
     expect(wrapper.find('[data-test="datasource-menu"]')).toExist();
-    menuWrapper = shallow(<div>{wrapper.find('[data-test="datasource-menu"]').prop('overlay')}</div>);
+    menuWrapper = shallow(
+      <div>
+        {wrapper.find('[data-test="datasource-menu"]').prop('overlay')}
+      </div>,
+    );
     expect(menuWrapper.find(Menu.Item)).toHaveLength(2);
   });
 
@@ -109,6 +121,8 @@ describe('DatasourceControl', () => {
     const wrapper = setup();
     expect(wrapper.find(Icons.AlertSolid)).toExist();
     const tooltip = wrapper.find(Tooltip).at(0);
-    expect(tooltip.prop('title')).toBe(defaultProps.datasource.health_check_message);
+    expect(tooltip.prop('title')).toBe(
+      defaultProps.datasource.health_check_message,
+    );
   });
 });

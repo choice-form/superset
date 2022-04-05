@@ -89,7 +89,14 @@ describe('DashboardTable', () => {
 
   it('display EmptyState if there is no data', async () => {
     await act(async () => {
-      wrapper = mount(<DashboardTable dashboardFilter="Mine" user={{ userId: '2' }} mine={[]} store={store} />);
+      wrapper = mount(
+        <DashboardTable
+          dashboardFilter="Mine"
+          user={{ userId: '2' }}
+          mine={[]}
+          store={store}
+        />,
+      );
     });
 
     expect(wrapper.find('EmptyState')).toExist();

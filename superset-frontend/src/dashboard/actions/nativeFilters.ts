@@ -21,10 +21,18 @@ import { makeApi } from 'src/core';
 import { Dispatch } from 'redux';
 import { FilterConfiguration } from 'src/dashboard/components/nativeFilters/types';
 import { DataMaskType, DataMaskStateWithId } from 'src/dataMask/types';
-import { SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL, setDataMaskForFilterConfigComplete } from 'src/dataMask/actions';
+import {
+  SET_DATA_MASK_FOR_FILTER_CONFIG_FAIL,
+  setDataMaskForFilterConfigComplete,
+} from 'src/dataMask/actions';
 import { HYDRATE_DASHBOARD } from './hydrate';
 import { dashboardInfoChanged } from './dashboardInfo';
-import { DashboardInfo, Filters, FilterSet, FilterSets } from '../reducers/types';
+import {
+  DashboardInfo,
+  Filters,
+  FilterSet,
+  FilterSets,
+} from '../reducers/types';
 
 export const SET_FILTER_CONFIG_BEGIN = 'SET_FILTER_CONFIG_BEGIN';
 export interface SetFilterConfigBegin {
@@ -51,7 +59,8 @@ export interface SetFilterSetsConfigBegin {
   type: typeof SET_FILTER_SETS_CONFIG_BEGIN;
   filterSetsConfig: FilterSet[];
 }
-export const SET_FILTER_SETS_CONFIG_COMPLETE = 'SET_FILTER_SETS_CONFIG_COMPLETE';
+export const SET_FILTER_SETS_CONFIG_COMPLETE =
+  'SET_FILTER_SETS_CONFIG_COMPLETE';
 export interface SetFilterSetsConfigComplete {
   type: typeof SET_FILTER_SETS_CONFIG_COMPLETE;
   filterSetsConfig: FilterSet[];
@@ -62,10 +71,9 @@ export interface SetFilterSetsConfigFail {
   filterSetsConfig: FilterSet[];
 }
 
-export const setFilterConfiguration = (filterConfig: FilterConfiguration) => async (
-  dispatch: Dispatch,
-  getState: () => any,
-) => {
+export const setFilterConfiguration = (
+  filterConfig: FilterConfiguration,
+) => async (dispatch: Dispatch, getState: () => any) => {
   dispatch({
     type: SET_FILTER_CONFIG_BEGIN,
     filterConfig,
@@ -74,7 +82,10 @@ export const setFilterConfiguration = (filterConfig: FilterConfiguration) => asy
   const oldFilters = getState().nativeFilters?.filters;
 
   // TODO extract this out when makeApi supports url parameters
-  const updateDashboard = makeApi<Partial<DashboardInfo>, { result: DashboardInfo }>({
+  const updateDashboard = makeApi<
+    Partial<DashboardInfo>,
+    { result: DashboardInfo }
+  >({
     method: 'PUT',
     endpoint: `/api/v1/dashboard/${id}`,
   });
@@ -103,7 +114,9 @@ export const setFilterConfiguration = (filterConfig: FilterConfiguration) => asy
       type: SET_FILTER_CONFIG_COMPLETE,
       filterConfig: mergedFilterConfig,
     });
-    dispatch(setDataMaskForFilterConfigComplete(mergedFilterConfig, oldFilters));
+    dispatch(
+      setDataMaskForFilterConfigComplete(mergedFilterConfig, oldFilters),
+    );
   } catch (err) {
     dispatch({
       type: SET_FILTER_CONFIG_FAIL,
@@ -135,9 +148,12 @@ export const setInScopeStatusOfFilters = (
   });
   // need to update native_filter_configuration in the dashboard metadata
   const { metadata } = getState().dashboardInfo;
-  const filterConfig: FilterConfiguration = metadata.native_filter_configuration;
+  const filterConfig: FilterConfiguration =
+    metadata.native_filter_configuration;
   const mergedFilterConfig = filterConfig.map(filter => {
-    const filterWithScope = filtersWithScopes.find(scope => scope.id === filter.id);
+    const filterWithScope = filtersWithScopes.find(
+      scope => scope.id === filter.id,
+    );
     if (!filterWithScope) {
       return filter;
     }
@@ -164,10 +180,9 @@ export interface SetBootstrapData {
   data: BootstrapData;
 }
 
-export const setFilterSetsConfiguration = (filterSetsConfig: FilterSet[]) => async (
-  dispatch: Dispatch,
-  getState: () => any,
-) => {
+export const setFilterSetsConfiguration = (
+  filterSetsConfig: FilterSet[],
+) => async (dispatch: Dispatch, getState: () => any) => {
   dispatch({
     type: SET_FILTER_SETS_CONFIG_BEGIN,
     filterSetsConfig,
@@ -175,7 +190,10 @@ export const setFilterSetsConfiguration = (filterSetsConfig: FilterSet[]) => asy
   const { id, metadata } = getState().dashboardInfo;
 
   // TODO extract this out when makeApi supports url parameters
-  const updateDashboard = makeApi<Partial<DashboardInfo>, { result: DashboardInfo }>({
+  const updateDashboard = makeApi<
+    Partial<DashboardInfo>,
+    { result: DashboardInfo }
+  >({
     method: 'PUT',
     endpoint: `/api/v1/dashboard/${id}`,
   });

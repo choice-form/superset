@@ -48,7 +48,10 @@ const defaultProps = {
     { type: 'VARCHAR(255)', column_name: 'target' },
     { type: 'DOUBLE', column_name: 'value' },
   ],
-  savedMetrics: [VALID_METRIC, { metric_name: 'avg__value', expression: 'AVG(energy_usage.value)' }],
+  savedMetrics: [
+    VALID_METRIC,
+    { metric_name: 'avg__value', expression: 'AVG(energy_usage.value)' },
+  ],
   datasourceType: 'sqla',
 };
 
@@ -93,7 +96,9 @@ describe('VerifiedMetricsControl', () => {
     expect(wrapper.find(MetricsControl).length).toBe(1);
 
     expect(verifier).toBeCalledTimes(1);
-    expect(verifier).toBeCalledWith(expect.objectContaining({ savedMetrics: props.savedMetrics }));
+    expect(verifier).toBeCalledWith(
+      expect.objectContaining({ savedMetrics: props.savedMetrics }),
+    );
 
     // should call verifier with new props when props are updated.
     await act(async () => {
@@ -101,7 +106,9 @@ describe('VerifiedMetricsControl', () => {
     });
 
     expect(verifier).toBeCalledTimes(2);
-    expect(verifier).toBeCalledWith(expect.objectContaining({ validMetric: ['abc'] }));
+    expect(verifier).toBeCalledWith(
+      expect.objectContaining({ validMetric: ['abc'] }),
+    );
   });
 
   it('should trigger onChange event', async () => {

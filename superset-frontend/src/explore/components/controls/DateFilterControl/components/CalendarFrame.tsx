@@ -19,8 +19,15 @@
 import React, { useEffect } from 'react';
 import { t } from 'src/core';
 import { Radio } from 'src/components/Radio';
-import { CALENDAR_RANGE_OPTIONS, CALENDAR_RANGE_SET } from 'src/explore/components/controls/DateFilterControl/utils';
-import { CalendarRangeType, PreviousCalendarWeek, FrameComponentProps } from '../types';
+import {
+  CALENDAR_RANGE_OPTIONS,
+  CALENDAR_RANGE_SET,
+} from 'src/explore/components/controls/DateFilterControl/utils';
+import {
+  CalendarRangeType,
+  PreviousCalendarWeek,
+  FrameComponentProps,
+} from '../types';
 
 export function CalendarFrame({ onChange, value }: FrameComponentProps) {
   useEffect(() => {
@@ -35,8 +42,13 @@ export function CalendarFrame({ onChange, value }: FrameComponentProps) {
 
   return (
     <>
-      <div className="section-title">{t('Configure Time Range: Previous...')}</div>
-      <Radio.Group value={value} onChange={(e: any) => onChange(e.target.value)}>
+      <div className="section-title">
+        {t('Configure Time Range: Previous...')}
+      </div>
+      <Radio.Group
+        value={value}
+        onChange={(e: any) => onChange(e.target.value)}
+      >
         {CALENDAR_RANGE_OPTIONS.map(({ value, label }) => (
           <Radio key={value} value={value} className="vertical-radio">
             {label}

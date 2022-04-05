@@ -163,7 +163,10 @@ const updateDataset = async (
   return data.json.result;
 };
 
-export default class ResultSet extends React.PureComponent<ResultSetProps, ResultSetState> {
+export default class ResultSet extends React.PureComponent<
+  ResultSetProps,
+  ResultSetState
+> {
   static defaultProps = {
     cache: false,
     csv: true,
@@ -192,17 +195,30 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
     this.fetchResults = this.fetchResults.bind(this);
     this.popSelectStar = this.popSelectStar.bind(this);
     this.reFetchQueryResults = this.reFetchQueryResults.bind(this);
-    this.toggleExploreResultsButton = this.toggleExploreResultsButton.bind(this);
+    this.toggleExploreResultsButton = this.toggleExploreResultsButton.bind(
+      this,
+    );
     this.handleSaveInDataset = this.handleSaveInDataset.bind(this);
     this.handleHideSaveModal = this.handleHideSaveModal.bind(this);
     this.handleDatasetNameChange = this.handleDatasetNameChange.bind(this);
-    this.handleSaveDatasetRadioBtnState = this.handleSaveDatasetRadioBtnState.bind(this);
+    this.handleSaveDatasetRadioBtnState = this.handleSaveDatasetRadioBtnState.bind(
+      this,
+    );
     this.handleOverwriteCancel = this.handleOverwriteCancel.bind(this);
     this.handleOverwriteDataset = this.handleOverwriteDataset.bind(this);
-    this.handleOverwriteDatasetOption = this.handleOverwriteDatasetOption.bind(this);
-    this.handleSaveDatasetModalSearch = debounce(this.handleSaveDatasetModalSearch.bind(this), 1000);
-    this.handleFilterAutocompleteOption = this.handleFilterAutocompleteOption.bind(this);
-    this.handleOnChangeAutoComplete = this.handleOnChangeAutoComplete.bind(this);
+    this.handleOverwriteDatasetOption = this.handleOverwriteDatasetOption.bind(
+      this,
+    );
+    this.handleSaveDatasetModalSearch = debounce(
+      this.handleSaveDatasetModalSearch.bind(this),
+      1000,
+    );
+    this.handleFilterAutocompleteOption = this.handleFilterAutocompleteOption.bind(
+      this,
+    );
+    this.handleOnChangeAutoComplete = this.handleOnChangeAutoComplete.bind(
+      this,
+    );
     this.handleExploreBtnClick = this.handleExploreBtnClick.bind(this);
   }
 
@@ -222,9 +238,14 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
       nextProps.query.results.data &&
       nextProps.query.results.data.length > 0
     ) {
-      this.setState({ data: nextProps.query.results.data }, () => this.clearQueryResults(nextProps.query));
+      this.setState({ data: nextProps.query.results.data }, () =>
+        this.clearQueryResults(nextProps.query),
+      );
     }
-    if (nextProps.query.resultsKey && nextProps.query.resultsKey !== this.props.query.resultsKey) {
+    if (
+      nextProps.query.resultsKey &&
+      nextProps.query.resultsKey !== this.props.query.resultsKey
+    ) {
       this.fetchResults(nextProps.query);
     }
   }
@@ -237,7 +258,8 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
     }
   };
 
-  getDefaultDatasetName = () => `${this.props.query.tab} ${moment().format('MM/DD/YYYY HH:mm:ss')}`;
+  getDefaultDatasetName = () =>
+    `${this.props.query.tab} ${moment().format('MM/DD/YYYY HH:mm:ss')}`;
 
   handleOnChangeAutoComplete = () => {
     this.setState({ datasetToOverwrite: {} });
@@ -271,7 +293,10 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
 
   handleSaveInDataset = () => {
     // if user wants to overwrite a dataset we need to prompt them
-    if (this.state.saveDatasetRadioBtnState === DatasetRadioState.OVERWRITE_DATASET) {
+    if (
+      this.state.saveDatasetRadioBtnState ===
+      DatasetRadioState.OVERWRITE_DATASET
+    ) {
       this.setState({ shouldOverwriteDataSet: true });
       return;
     }
@@ -314,7 +339,9 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
         });
       })
       .catch(() => {
-        this.props.actions.addDangerToast(t('An error occurred saving dataset'));
+        this.props.actions.addDangerToast(
+          t('An error occurred saving dataset'),
+        );
       });
 
     this.setState({
@@ -323,7 +350,10 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
     });
   };
 
-  handleOverwriteDatasetOption = (_data: string, option: Record<string, any>) => {
+  handleOverwriteDatasetOption = (
+    _data: string,
+    option: Record<string, any>,
+  ) => {
     this.setState({ datasetToOverwrite: option });
   };
 
@@ -380,11 +410,13 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
         endpoint: '/api/v1/dataset',
       })(`q=${queryParams}`);
 
-      return response.result.map((r: { table_name: string; id: number; owners: [DatasetOwner] }) => ({
-        value: r.table_name,
-        datasetId: r.id,
-        owners: r.owners,
-      }));
+      return response.result.map(
+        (r: { table_name: string; id: number; owners: [DatasetOwner] }) => ({
+          value: r.table_name,
+          datasetId: r.id,
+          owners: r.owners,
+        }),
+      );
     }
 
     return null;
@@ -395,8 +427,10 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
     this.setState({ userDatasetOptions: userDatasetsOwned });
   };
 
-  handleFilterAutocompleteOption = (inputValue: string, option: { value: string; datasetId: number }) =>
-    option.value.toLowerCase().includes(inputValue.toLowerCase());
+  handleFilterAutocompleteOption = (
+    inputValue: string,
+    option: { value: string; datasetId: number },
+  ) => option.value.toLowerCase().includes(inputValue.toLowerCase());
 
   clearQueryResults(query: Query) {
     this.props.actions.clearQueryResults(query);
@@ -433,7 +467,10 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
 
   reRunQueryIfSessionTimeoutErrorOnMount() {
     const { query } = this.props;
-    if (query.errorMessage && query.errorMessage.indexOf('session timed out') > 0) {
+    if (
+      query.errorMessage &&
+      query.errorMessage.indexOf('session timed out') > 0
+    ) {
       this.props.actions.reRunQuery(query);
     }
   }
@@ -456,7 +493,8 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
         showSaveDatasetModal,
       } = this.state;
       const disableSaveAndExploreBtn =
-        (saveDatasetRadioBtnState === DatasetRadioState.SAVE_NEW && newSaveDatasetName.length === 0) ||
+        (saveDatasetRadioBtnState === DatasetRadioState.SAVE_NEW &&
+          newSaveDatasetName.length === 0) ||
         (saveDatasetRadioBtnState === DatasetRadioState.OVERWRITE_DATASET &&
           Object.keys(datasetToOverwrite).length === 0 &&
           saveModalAutocompleteValue.length === 0);
@@ -482,15 +520,17 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
             onChangeAutoComplete={this.handleOnChangeAutoComplete}
           />
           <ResultSetButtons>
-            {this.props.visualize && this.props.database && this.props.database.allows_virtual_table_explore && (
-              <ExploreResultsButton
-                // @ts-ignore Redux types are difficult to work with, ignoring for now
-                query={this.props.query}
-                database={this.props.database}
-                actions={this.props.actions}
-                onClick={this.handleExploreBtnClick}
-              />
-            )}
+            {this.props.visualize &&
+              this.props.database &&
+              this.props.database.allows_virtual_table_explore && (
+                <ExploreResultsButton
+                  // @ts-ignore Redux types are difficult to work with, ignoring for now
+                  query={this.props.query}
+                  database={this.props.database}
+                  actions={this.props.actions}
+                  onClick={this.handleExploreBtnClick}
+                />
+              )}
             {this.props.csv && (
               <Button buttonSize="small" href={`/csv/${this.props.query.id}`}>
                 <i className="fa fa-file-text-o" /> {t('Download to CSV')}
@@ -533,38 +573,59 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
     const limit = queryLimit || results.query.limit;
     const isAdmin = !!this.props.user?.roles?.Admin;
     const displayMaxRowsReachedMessage = {
-      withAdmin: t(`The number of results displayed is limited to %(rows)d by the configuration DISPLAY_MAX_ROWS. `, {
-        rows,
-      }).concat(
-        t(`Please add additional limits/filters or download to csv to see more rows up to `),
+      withAdmin: t(
+        `The number of results displayed is limited to %(rows)d by the configuration DISPLAY_MAX_ROWS. `,
+        { rows },
+      ).concat(
+        t(
+          `Please add additional limits/filters or download to csv to see more rows up to `,
+        ),
         t(`the %(limit)d limit.`, { limit }),
       ),
-      withoutAdmin: t(`The number of results displayed is limited to %(rows)d. `, { rows }).concat(
-        t(`Please add additional limits/filters, download to csv, or contact an admin `),
+      withoutAdmin: t(
+        `The number of results displayed is limited to %(rows)d. `,
+        { rows },
+      ).concat(
+        t(
+          `Please add additional limits/filters, download to csv, or contact an admin `,
+        ),
         t(`to see more rows up to the %(limit)d limit.`, {
           limit,
         }),
       ),
     };
     const shouldUseDefaultDropdownAlert =
-      limit === this.props.defaultQueryLimit && limitingFactor === LIMITING_FACTOR.DROPDOWN;
+      limit === this.props.defaultQueryLimit &&
+      limitingFactor === LIMITING_FACTOR.DROPDOWN;
 
     if (limitingFactor === LIMITING_FACTOR.QUERY && this.props.csv) {
       limitMessage = (
         <span className="limitMessage">
-          {t(`The number of rows displayed is limited to %(rows)d by the query`, { rows })}
+          {t(
+            `The number of rows displayed is limited to %(rows)d by the query`,
+            { rows },
+          )}
         </span>
       );
-    } else if (limitingFactor === LIMITING_FACTOR.DROPDOWN && !shouldUseDefaultDropdownAlert) {
+    } else if (
+      limitingFactor === LIMITING_FACTOR.DROPDOWN &&
+      !shouldUseDefaultDropdownAlert
+    ) {
       limitMessage = (
         <span className="limitMessage">
-          {t(`The number of rows displayed is limited to %(rows)d by the limit dropdown.`, { rows })}
+          {t(
+            `The number of rows displayed is limited to %(rows)d by the limit dropdown.`,
+            { rows },
+          )}
         </span>
       );
     } else if (limitingFactor === LIMITING_FACTOR.QUERY_AND_DROPDOWN) {
       limitMessage = (
         <span className="limitMessage">
-          {t(`The number of rows displayed is limited to %(rows)d by the query and limit dropdown.`, { rows })}
+          {t(
+            `The number of rows displayed is limited to %(rows)d by the query and limit dropdown.`,
+            { rows },
+          )}
         </span>
       );
     }
@@ -581,7 +642,10 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
               type="warning"
               message={t(`%(rows)d rows returned`, { rows })}
               onClose={this.onAlertClose}
-              description={t(`The number of rows displayed is limited to %s by the dropdown.`, rows)}
+              description={t(
+                `The number of rows displayed is limited to %s by the dropdown.`,
+                rows,
+              )}
             />
           </div>
         )}
@@ -591,7 +655,11 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
               type="warning"
               onClose={this.onAlertClose}
               message={t(`%(rows)d rows returned`, { rows })}
-              description={isAdmin ? displayMaxRowsReachedMessage.withAdmin : displayMaxRowsReachedMessage.withoutAdmin}
+              description={
+                isAdmin
+                  ? displayMaxRowsReachedMessage.withAdmin
+                  : displayMaxRowsReachedMessage.withoutAdmin
+              }
             />
           </div>
         )}
@@ -671,7 +739,9 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
     }
     if (query.state === 'success' && query.results) {
       const { results } = query;
-      const height = this.state.alertIsOpen ? this.props.height - 70 : this.props.height;
+      const height = this.state.alertIsOpen
+        ? this.props.height - 70
+        : this.props.height;
       let data;
       if (this.props.cache && query.cached) {
         ({ data } = this.state);
@@ -679,7 +749,9 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
         ({ data } = results);
       }
       if (data && data.length > 0) {
-        const expandedColumns = results.expanded_columns ? results.expanded_columns.map(col => col.name) : [];
+        const expandedColumns = results.expanded_columns
+          ? results.expanded_columns.map(col => col.name)
+          : [];
         return (
           <>
             {this.renderControls()}
@@ -696,7 +768,9 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
         );
       }
       if (data && data.length === 0) {
-        return <Alert type="warning" message={t('The query returned no data')} />;
+        return (
+          <Alert type="warning" message={t('The query returned no data')} />
+        );
       }
     }
     if (query.cached || (query.state === 'success' && !query.results)) {
@@ -718,7 +792,11 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
       }
       if (query.resultsKey) {
         return (
-          <Button buttonSize="small" buttonStyle="primary" onClick={() => this.fetchResults(query)}>
+          <Button
+            buttonSize="small"
+            buttonStyle="primary"
+            onClick={() => this.fetchResults(query)}
+          >
             {t('Refetch results')}
           </Button>
         );
@@ -727,21 +805,34 @@ export default class ResultSet extends React.PureComponent<ResultSetProps, Resul
     let progressBar;
     let trackingUrl;
     if (query.progress > 0) {
-      progressBar = <ProgressBar percent={parseInt(query.progress.toFixed(0), 10)} striped />;
+      progressBar = (
+        <ProgressBar
+          percent={parseInt(query.progress.toFixed(0), 10)}
+          striped
+        />
+      );
     }
     if (query.trackingUrl) {
       trackingUrl = (
-        <Button buttonSize="small" onClick={() => query.trackingUrl && window.open(query.trackingUrl)}>
+        <Button
+          buttonSize="small"
+          onClick={() => query.trackingUrl && window.open(query.trackingUrl)}
+        >
           {t('Track job')}
         </Button>
       );
     }
-    const progressMsg = query && query.extra && query.extra.progress ? query.extra.progress : null;
+    const progressMsg =
+      query && query.extra && query.extra.progress
+        ? query.extra.progress
+        : null;
     return (
       <div style={LOADING_STYLES}>
         <div>{!progressBar && <Loading position="normal" />}</div>
         <QueryStateLabel query={query} />
-        <div>{progressMsg && <Alert type="success" message={progressMsg} />}</div>
+        <div>
+          {progressMsg && <Alert type="success" message={progressMsg} />}
+        </div>
         <div>{progressBar}</div>
         <div>{trackingUrl}</div>
       </div>

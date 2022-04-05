@@ -219,7 +219,11 @@ export default React.memo(
     loading,
     highlightRowId,
   }: TableCollectionProps) => (
-    <Table {...getTableProps()} className="table table-hover" data-test="listview-table">
+    <Table
+      {...getTableProps()}
+      className="table table-hover"
+      data-test="listview-table"
+    >
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -232,7 +236,9 @@ export default React.memo(
               }
               return column.hidden ? null : (
                 <th
-                  {...column.getHeaderProps(column.canSort ? column.getSortByToggleProps() : {})}
+                  {...column.getHeaderProps(
+                    column.canSort ? column.getSortByToggleProps() : {},
+                  )}
                   data-test="sort-header"
                   className={cx({
                     [column.size || '']: column.size,
@@ -281,7 +287,9 @@ export default React.memo(
                 data-test="table-row"
                 {...row.getRowProps()}
                 className={cx('table-row', {
-                  'table-row-selected': row.isSelected || (typeof rowId !== 'undefined' && rowId === highlightRowId),
+                  'table-row-selected':
+                    row.isSelected ||
+                    (typeof rowId !== 'undefined' && rowId === highlightRowId),
                 })}
               >
                 {row.cells.map(cell => {
@@ -298,7 +306,10 @@ export default React.memo(
                       {...cell.getCellProps()}
                       {...columnCellProps}
                     >
-                      <span className={cx({ 'loading-bar': loading })} role={loading ? 'progressbar' : undefined}>
+                      <span
+                        className={cx({ 'loading-bar': loading })}
+                        role={loading ? 'progressbar' : undefined}
+                      >
                         <span data-test="cell-text">{cell.render('Cell')}</span>
                       </span>
                     </td>

@@ -47,15 +47,18 @@ export const EXPAND_TABLE = 'EXPAND_TABLE';
 export const COLLAPSE_TABLE = 'COLLAPSE_TABLE';
 export const QUERY_EDITOR_SETDB = 'QUERY_EDITOR_SETDB';
 export const QUERY_EDITOR_SET_SCHEMA = 'QUERY_EDITOR_SET_SCHEMA';
-export const QUERY_EDITOR_SET_SCHEMA_OPTIONS = 'QUERY_EDITOR_SET_SCHEMA_OPTIONS';
+export const QUERY_EDITOR_SET_SCHEMA_OPTIONS =
+  'QUERY_EDITOR_SET_SCHEMA_OPTIONS';
 export const QUERY_EDITOR_SET_TABLE_OPTIONS = 'QUERY_EDITOR_SET_TABLE_OPTIONS';
 export const QUERY_EDITOR_SET_TITLE = 'QUERY_EDITOR_SET_TITLE';
 export const QUERY_EDITOR_SET_AUTORUN = 'QUERY_EDITOR_SET_AUTORUN';
 export const QUERY_EDITOR_SET_SQL = 'QUERY_EDITOR_SET_SQL';
 export const QUERY_EDITOR_SET_QUERY_LIMIT = 'QUERY_EDITOR_SET_QUERY_LIMIT';
-export const QUERY_EDITOR_SET_TEMPLATE_PARAMS = 'QUERY_EDITOR_SET_TEMPLATE_PARAMS';
+export const QUERY_EDITOR_SET_TEMPLATE_PARAMS =
+  'QUERY_EDITOR_SET_TEMPLATE_PARAMS';
 export const QUERY_EDITOR_SET_SELECTED_TEXT = 'QUERY_EDITOR_SET_SELECTED_TEXT';
-export const QUERY_EDITOR_SET_FUNCTION_NAMES = 'QUERY_EDITOR_SET_FUNCTION_NAMES';
+export const QUERY_EDITOR_SET_FUNCTION_NAMES =
+  'QUERY_EDITOR_SET_FUNCTION_NAMES';
 export const QUERY_EDITOR_PERSIST_HEIGHT = 'QUERY_EDITOR_PERSIST_HEIGHT';
 export const QUERY_EDITOR_TOGGLE_LEFT_BAR = 'QUERY_EDITOR_TOGGLE_LEFT_BAR';
 export const MIGRATE_QUERY_EDITOR = 'MIGRATE_QUERY_EDITOR';
@@ -114,7 +117,8 @@ const queryClientMapping = {
 const queryServerMapping = invert(queryClientMapping);
 
 // uses a mapping like those above to convert object key names to another style
-const fieldConverter = mapping => obj => mapKeys(obj, (value, key) => (key in mapping ? mapping[key] : key));
+const fieldConverter = mapping => obj =>
+  mapKeys(obj, (value, key) => (key in mapping ? mapping[key] : key));
 
 const convertQueryToServer = fieldConverter(queryServerMapping);
 const convertQueryToClient = fieldConverter(queryClientMapping);
@@ -151,15 +155,24 @@ export function scheduleQuery(query) {
     })
       .then(() =>
         dispatch(
-          addSuccessToast(t('Your query has been scheduled. To see details of your query, navigate to Saved queries')),
+          addSuccessToast(
+            t(
+              'Your query has been scheduled. To see details of your query, navigate to Saved queries',
+            ),
+          ),
         ),
       )
-      .catch(() => dispatch(addDangerToast(t('Your query could not be scheduled'))));
+      .catch(() =>
+        dispatch(addDangerToast(t('Your query could not be scheduled'))),
+      );
 }
 
 export function estimateQueryCost(query) {
   const { dbId, schema, sql, templateParams } = query;
-  const endpoint = schema === null ? `/estimate_query_cost/${dbId}/` : `/estimate_query_cost/${dbId}/${schema}/`;
+  const endpoint =
+    schema === null
+      ? `/estimate_query_cost/${dbId}/`
+      : `/estimate_query_cost/${dbId}/${schema}/`;
   return dispatch =>
     Promise.all([
       dispatch({ type: COST_ESTIMATE_STARTED, query }),
@@ -170,10 +183,15 @@ export function estimateQueryCost(query) {
           templateParams: JSON.parse(templateParams || '{}'),
         },
       })
-        .then(({ json }) => dispatch({ type: COST_ESTIMATE_RETURNED, query, json }))
+        .then(({ json }) =>
+          dispatch({ type: COST_ESTIMATE_RETURNED, query, json }),
+        )
         .catch(response =>
           getClientErrorObject(response).then(error => {
-            const message = error.error || error.statusText || t('Failed at retrieving results');
+            const message =
+              error.error ||
+              error.statusText ||
+              t('Failed at retrieving results');
             return dispatch({
               type: COST_ESTIMATE_FAILED,
               query,
@@ -198,7 +216,8 @@ export function startQuery(query) {
 export function querySuccess(query, results) {
   return function (dispatch) {
     const sync =
-      !query.isDataPreview && isFeatureEnabled(FeatureFlag.SQLLAB_BACKEND_PERSISTENCE)
+      !query.isDataPreview &&
+      isFeatureEnabled(FeatureFlag.SQLLAB_BACKEND_PERSISTENCE)
         ? SupersetClient.put({
             endpoint: encodeURI(`/tabstateview/${results.query.sqlEditorId}`),
             postPayload: { latest_query_id: query.id },
@@ -223,7 +242,8 @@ export function querySuccess(query, results) {
 export function queryFailed(query, msg, link, errors) {
   return function (dispatch) {
     const sync =
-      !query.isDataPreview && isFeatureEnabled(FeatureFlag.SQLLAB_BACKEND_PERSISTENCE)
+      !query.isDataPreview &&
+      isFeatureEnabled(FeatureFlag.SQLLAB_BACKEND_PERSISTENCE)
         ? SupersetClient.put({
             endpoint: encodeURI(`/tabstateview/${query.sqlEditorId}`),
             postPayload: { latest_query_id: query.id },
@@ -279,9 +299,14 @@ export function fetchQueryResults(query, displayLimit) {
       })
       .catch(response =>
         getClientErrorObject(response).then(error => {
-          const message = error.error || error.statusText || t('Failed at retrieving results');
+          const message =
+            error.error ||
+            error.statusText ||
+            t('Failed at retrieving results');
 
-          return dispatch(queryFailed(query, message, error.link, error.errors));
+          return dispatch(
+            queryFailed(query, message, error.link, error.errors),
+          );
         }),
       );
   };
@@ -380,7 +405,11 @@ export function postStopQuery(query) {
     })
       .then(() => dispatch(stopQuery(query)))
       .then(() => dispatch(addSuccessToast(t('Query was stopped.'))))
-      .catch(() => dispatch(addDangerToast(`${t('Failed at stopping query. ')}'${query.id}'`)));
+      .catch(() =>
+        dispatch(
+          addDangerToast(`${t('Failed at stopping query. ')}'${query.id}'`),
+        ),
+      );
   };
 }
 
@@ -431,7 +460,11 @@ function migrateQuery(queryId, queryEditorId, dispatch) {
     );
 }
 
-export function migrateQueryEditorFromLocalStorage(queryEditor, tables, queries) {
+export function migrateQueryEditorFromLocalStorage(
+  queryEditor,
+  tables,
+  queries,
+) {
   return function (dispatch) {
     return SupersetClient.post({
       endpoint: '/tabstateview/',
@@ -453,8 +486,12 @@ export function migrateQueryEditorFromLocalStorage(queryEditor, tables, queries)
           newId: newQueryEditor.id,
         });
         return Promise.all([
-          ...tables.map(table => migrateTable(table, newQueryEditor.id, dispatch)),
-          ...queries.map(query => migrateQuery(query.id, newQueryEditor.id, dispatch)),
+          ...tables.map(table =>
+            migrateTable(table, newQueryEditor.id, dispatch),
+          ),
+          ...queries.map(query =>
+            migrateQuery(query.id, newQueryEditor.id, dispatch),
+          ),
         ]);
       })
       .catch(() =>
@@ -491,7 +528,13 @@ export function addQueryEditor(queryEditor) {
         });
       })
       .catch(() =>
-        dispatch(addDangerToast(t('Unable to add a new tab to the backend. Please contact your administrator.'))),
+        dispatch(
+          addDangerToast(
+            t(
+              'Unable to add a new tab to the backend. Please contact your administrator.',
+            ),
+          ),
+        ),
       );
   };
 }
@@ -500,7 +543,9 @@ export function cloneQueryToNewTab(query, autorun) {
   return function (dispatch, getState) {
     const state = getState();
     const { queryEditors, tabHistory } = state.sqlLab;
-    const sourceQueryEditor = queryEditors.find(qe => qe.id === tabHistory[tabHistory.length - 1]);
+    const sourceQueryEditor = queryEditors.find(
+      qe => qe.id === tabHistory[tabHistory.length - 1],
+    );
     const queryEditor = {
       title: t('Copy of %s', sourceQueryEditor.title),
       dbId: query.dbId ? query.dbId : null,
@@ -529,7 +574,10 @@ export function setActiveQueryEditor(queryEditor) {
         if (response.status !== 404) {
           return dispatch(
             addDangerToast(
-              t('An error occurred while setting the active tab. Please contact ' + 'your administrator.'),
+              t(
+                'An error occurred while setting the active tab. Please contact ' +
+                  'your administrator.',
+              ),
             ),
           );
         }
@@ -546,7 +594,14 @@ export function setTables(tableSchemas) {
   const tables = tableSchemas
     .filter(tableSchema => tableSchema.description !== null)
     .map(tableSchema => {
-      const { columns, selectStar, primaryKey, foreignKeys, indexes, dataPreviewQueryId } = tableSchema.description;
+      const {
+        columns,
+        selectStar,
+        primaryKey,
+        foreignKeys,
+        indexes,
+        dataPreviewQueryId,
+      } = tableSchema.description;
       return {
         dbId: tableSchema.database_id,
         queryEditorId: tableSchema.tab_state_id.toString(),
@@ -569,7 +624,10 @@ export function setTables(tableSchemas) {
 
 export function switchQueryEditor(queryEditor, displayLimit) {
   return function (dispatch) {
-    if (isFeatureEnabled(FeatureFlag.SQLLAB_BACKEND_PERSISTENCE) && !queryEditor.loaded) {
+    if (
+      isFeatureEnabled(FeatureFlag.SQLLAB_BACKEND_PERSISTENCE) &&
+      !queryEditor.loaded
+    ) {
       SupersetClient.get({
         endpoint: encodeURI(`/tabstateview/${queryEditor.id}`),
       })
@@ -602,7 +660,9 @@ export function switchQueryEditor(queryEditor, displayLimit) {
         })
         .catch(response => {
           if (response.status !== 404) {
-            return dispatch(addDangerToast(t('An error occurred while fetching tab state')));
+            return dispatch(
+              addDangerToast(t('An error occurred while fetching tab state')),
+            );
           }
           return dispatch({ type: REMOVE_QUERY_EDITOR, queryEditor });
         });
@@ -635,7 +695,13 @@ export function toggleLeftBar(queryEditor) {
         }),
       )
       .catch(() =>
-        dispatch(addDangerToast(t('An error occurred while hiding the left bar. Please contact your administrator.'))),
+        dispatch(
+          addDangerToast(
+            t(
+              'An error occurred while hiding the left bar. Please contact your administrator.',
+            ),
+          ),
+        ),
       );
   };
 }
@@ -651,7 +717,13 @@ export function removeQueryEditor(queryEditor) {
     return sync
       .then(() => dispatch({ type: REMOVE_QUERY_EDITOR, queryEditor }))
       .catch(() =>
-        dispatch(addDangerToast(t('An error occurred while removing tab. Please contact your administrator.'))),
+        dispatch(
+          addDangerToast(
+            t(
+              'An error occurred while removing tab. Please contact your administrator.',
+            ),
+          ),
+        ),
       );
   };
 }
@@ -660,14 +732,22 @@ export function removeQuery(query) {
   return function (dispatch) {
     const sync = isFeatureEnabled(FeatureFlag.SQLLAB_BACKEND_PERSISTENCE)
       ? SupersetClient.delete({
-          endpoint: encodeURI(`/tabstateview/${query.sqlEditorId}/query/${query.id}`),
+          endpoint: encodeURI(
+            `/tabstateview/${query.sqlEditorId}/query/${query.id}`,
+          ),
         })
       : Promise.resolve();
 
     return sync
       .then(() => dispatch({ type: REMOVE_QUERY, query }))
       .catch(() =>
-        dispatch(addDangerToast(t('An error occurred while removing query. Please contact your administrator.'))),
+        dispatch(
+          addDangerToast(
+            t(
+              'An error occurred while removing query. Please contact your administrator.',
+            ),
+          ),
+        ),
       );
   };
 }
@@ -685,7 +765,11 @@ export function queryEditorSetDb(queryEditor, dbId) {
       .then(() => dispatch({ type: QUERY_EDITOR_SETDB, queryEditor, dbId }))
       .catch(() =>
         dispatch(
-          addDangerToast(t('An error occurred while setting the tab database ID. Please contact your administrator.')),
+          addDangerToast(
+            t(
+              'An error occurred while setting the tab database ID. Please contact your administrator.',
+            ),
+          ),
         ),
       );
   };
@@ -701,10 +785,16 @@ export function queryEditorSetSchema(queryEditor, schema) {
       : Promise.resolve();
 
     return sync
-      .then(() => dispatch({ type: QUERY_EDITOR_SET_SCHEMA, queryEditor, schema }))
+      .then(() =>
+        dispatch({ type: QUERY_EDITOR_SET_SCHEMA, queryEditor, schema }),
+      )
       .catch(() =>
         dispatch(
-          addDangerToast(t('An error occurred while setting the tab schema. Please contact your administrator.')),
+          addDangerToast(
+            t(
+              'An error occurred while setting the tab schema. Please contact your administrator.',
+            ),
+          ),
         ),
       );
   };
@@ -728,10 +818,16 @@ export function queryEditorSetAutorun(queryEditor, autorun) {
       : Promise.resolve();
 
     return sync
-      .then(() => dispatch({ type: QUERY_EDITOR_SET_AUTORUN, queryEditor, autorun }))
+      .then(() =>
+        dispatch({ type: QUERY_EDITOR_SET_AUTORUN, queryEditor, autorun }),
+      )
       .catch(() =>
         dispatch(
-          addDangerToast(t('An error occurred while setting the tab autorun. Please contact your administrator.')),
+          addDangerToast(
+            t(
+              'An error occurred while setting the tab autorun. Please contact your administrator.',
+            ),
+          ),
         ),
       );
   };
@@ -747,10 +843,16 @@ export function queryEditorSetTitle(queryEditor, title) {
       : Promise.resolve();
 
     return sync
-      .then(() => dispatch({ type: QUERY_EDITOR_SET_TITLE, queryEditor, title }))
+      .then(() =>
+        dispatch({ type: QUERY_EDITOR_SET_TITLE, queryEditor, title }),
+      )
       .catch(() =>
         dispatch(
-          addDangerToast(t('An error occurred while setting the tab title. Please contact your administrator.')),
+          addDangerToast(
+            t(
+              'An error occurred while setting the tab title. Please contact your administrator.',
+            ),
+          ),
         ),
       );
   };
@@ -772,7 +874,9 @@ export function saveQuery(query) {
         dispatch(addSuccessToast(t('Your query was saved')));
         dispatch(queryEditorSetTitle(query, query.title));
       })
-      .catch(() => dispatch(addDangerToast(t('Your query could not be saved'))));
+      .catch(() =>
+        dispatch(addDangerToast(t('Your query could not be saved'))),
+      );
 }
 
 export function updateSavedQuery(query) {
@@ -786,7 +890,9 @@ export function updateSavedQuery(query) {
         dispatch(addSuccessToast(t('Your query was updated')));
         dispatch(queryEditorSetTitle(query, query.title));
       })
-      .catch(() => dispatch(addDangerToast(t('Your query could not be updated'))))
+      .catch(() =>
+        dispatch(addDangerToast(t('Your query could not be updated'))),
+      )
       .then(() => dispatch(updateQueryEditor(query)));
 }
 
@@ -833,7 +939,11 @@ export function queryEditorSetQueryLimit(queryEditor, queryLimit) {
       )
       .catch(() =>
         dispatch(
-          addDangerToast(t('An error occurred while setting the tab title. Please contact your administrator.')),
+          addDangerToast(
+            t(
+              'An error occurred while setting the tab title. Please contact your administrator.',
+            ),
+          ),
         ),
       );
   };
@@ -856,7 +966,10 @@ export function queryEditorSetTemplateParams(queryEditor, templateParams) {
     return sync.catch(() =>
       dispatch(
         addDangerToast(
-          t('An error occurred while setting the tab template parameters. ' + 'Please contact your administrator.'),
+          t(
+            'An error occurred while setting the tab template parameters. ' +
+              'Please contact your administrator.',
+          ),
         ),
       ),
     );
@@ -874,7 +987,9 @@ export function mergeTable(table, query) {
 function getTableMetadata(table, query, dispatch) {
   return SupersetClient.get({
     endpoint: encodeURI(
-      `/api/v1/database/${query.dbId}/table/${encodeURIComponent(table.name)}/${encodeURIComponent(table.schema)}/`,
+      `/api/v1/database/${query.dbId}/table/${encodeURIComponent(
+        table.name,
+      )}/${encodeURIComponent(table.schema)}/`,
     ),
   })
     .then(({ json }) => {
@@ -910,7 +1025,9 @@ function getTableMetadata(table, query, dispatch) {
             isMetadataLoading: false,
           }),
         ),
-        dispatch(addDangerToast(t('An error occurred while fetching table metadata'))),
+        dispatch(
+          addDangerToast(t('An error occurred while fetching table metadata')),
+        ),
       ]),
     );
 }
@@ -918,17 +1035,24 @@ function getTableMetadata(table, query, dispatch) {
 function getTableExtendedMetadata(table, query, dispatch) {
   return SupersetClient.get({
     endpoint: encodeURI(
-      `/extra_table_metadata/${query.dbId}/` + `${encodeURIComponent(table.name)}/${encodeURIComponent(table.schema)}/`,
+      `/extra_table_metadata/${query.dbId}/` +
+        `${encodeURIComponent(table.name)}/${encodeURIComponent(
+          table.schema,
+        )}/`,
     ),
   })
     .then(({ json }) => {
-      dispatch(mergeTable({ ...table, ...json, isExtraMetadataLoading: false }));
+      dispatch(
+        mergeTable({ ...table, ...json, isExtraMetadataLoading: false }),
+      );
       return json;
     })
     .catch(() =>
       Promise.all([
         dispatch(mergeTable({ ...table, isExtraMetadataLoading: false })),
-        dispatch(addDangerToast(t('An error occurred while fetching table metadata'))),
+        dispatch(
+          addDangerToast(t('An error occurred while fetching table metadata')),
+        ),
       ]),
     );
 }
@@ -962,11 +1086,16 @@ export function addTable(query, tableName, schemaName) {
         : Promise.resolve({ json: { id: shortid.generate() } });
 
       return sync
-        .then(({ json: resultJson }) => dispatch(mergeTable({ ...table, id: resultJson.id })))
+        .then(({ json: resultJson }) =>
+          dispatch(mergeTable({ ...table, id: resultJson.id })),
+        )
         .catch(() =>
           dispatch(
             addDangerToast(
-              t('An error occurred while fetching table metadata. ' + 'Please contact your administrator.'),
+              t(
+                'An error occurred while fetching table metadata. ' +
+                  'Please contact your administrator.',
+              ),
             ),
           ),
         );
@@ -1011,7 +1140,10 @@ export function expandTable(table) {
       .catch(() =>
         dispatch(
           addDangerToast(
-            t('An error occurred while expanding the table schema. ' + 'Please contact your administrator.'),
+            t(
+              'An error occurred while expanding the table schema. ' +
+                'Please contact your administrator.',
+            ),
           ),
         ),
       );
@@ -1032,7 +1164,10 @@ export function collapseTable(table) {
       .catch(() =>
         dispatch(
           addDangerToast(
-            t('An error occurred while collapsing the table schema. ' + 'Please contact your administrator.'),
+            t(
+              'An error occurred while collapsing the table schema. ' +
+                'Please contact your administrator.',
+            ),
           ),
         ),
       );
@@ -1052,7 +1187,10 @@ export function removeTable(table) {
       .catch(() =>
         dispatch(
           addDangerToast(
-            t('An error occurred while removing the table schema. ' + 'Please contact your administrator.'),
+            t(
+              'An error occurred while removing the table schema. ' +
+                'Please contact your administrator.',
+            ),
           ),
         ),
       );
@@ -1143,7 +1281,9 @@ export function popDatasourceQuery(datasourceKey, sql) {
           }),
         ),
       )
-      .catch(() => dispatch(addDangerToast(t("The datasource couldn't be loaded"))));
+      .catch(() =>
+        dispatch(addDangerToast(t("The datasource couldn't be loaded"))),
+      );
   };
 }
 export function createDatasourceStarted() {
@@ -1170,7 +1310,11 @@ export function createDatasource(vizOptions) {
         return Promise.resolve(json);
       })
       .catch(() => {
-        dispatch(createDatasourceFailed(t('An error occurred while creating the data source')));
+        dispatch(
+          createDatasourceFailed(
+            t('An error occurred while creating the data source'),
+          ),
+        );
 
         return Promise.reject();
       });
@@ -1209,6 +1353,10 @@ export function queryEditorSetFunctionNames(queryEditor, dbId) {
           functionNames: json.function_names,
         }),
       )
-      .catch(() => dispatch(addDangerToast(t('An error occurred while fetching function names.'))));
+      .catch(() =>
+        dispatch(
+          addDangerToast(t('An error occurred while fetching function names.')),
+        ),
+      );
   };
 }

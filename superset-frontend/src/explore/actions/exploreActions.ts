@@ -20,7 +20,10 @@
 import { DatasourceMeta } from 'src/chartConntrols';
 import { t, SupersetClient, DatasourceType, QueryFormData } from 'src/core';
 import { Dispatch } from 'redux';
-import { addDangerToast, toastActions } from 'src/components/MessageToasts/actions';
+import {
+  addDangerToast,
+  toastActions,
+} from 'src/components/MessageToasts/actions';
 import { updateDataMask } from 'src/dataMask/actions';
 import { Slice } from 'src/types/Chart';
 
@@ -84,13 +87,19 @@ export function saveFaveStar(sliceId: string, isStarred: boolean) {
     })
       .then(() => dispatch(toggleFaveStar(!isStarred)))
       .catch(() => {
-        dispatch(addDangerToast(t('An error occurred while starring this chart')));
+        dispatch(
+          addDangerToast(t('An error occurred while starring this chart')),
+        );
       });
   };
 }
 
 export const SET_FIELD_VALUE = 'SET_FIELD_VALUE';
-export function setControlValue(controlName: string, value: any, validationErrors?: any[]) {
+export function setControlValue(
+  controlName: string,
+  value: any,
+  validationErrors?: any[],
+) {
   return { type: SET_FIELD_VALUE, controlName, value, validationErrors };
 }
 

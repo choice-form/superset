@@ -24,7 +24,7 @@ import { Provider } from 'react-redux';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 import sinon from 'sinon';
-import { supersetTheme, ThemeProvider } from 'src/core';
+import { supersetTheme, ThemeProvider } from '@superset-ui/core';
 
 import waitForComponentToPaint from 'spec/helpers/waitForComponentToPaint';
 import Modal from 'src/components/Modal';
@@ -70,7 +70,9 @@ describe('DatasourceModal', () => {
   let wrapper;
   let isFeatureEnabledMock;
   beforeEach(async () => {
-    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockReturnValue(true);
+    isFeatureEnabledMock = jest
+      .spyOn(featureFlags, 'isFeatureEnabled')
+      .mockReturnValue(true);
     fetchMock.reset();
     wrapper = await mountAndWait();
   });
@@ -95,20 +97,29 @@ describe('DatasourceModal', () => {
     const callsP = fetchMock.post(SAVE_ENDPOINT, SAVE_PAYLOAD);
     fetchMock.post(SAVE_DATASOURCE_ENDPOINT, {});
     act(() => {
-      wrapper.find('button[data-test="datasource-modal-save"]').props().onClick();
+      wrapper
+        .find('button[data-test="datasource-modal-save"]')
+        .props()
+        .onClick();
     });
     await waitForComponentToPaint(wrapper);
     act(() => {
-      const okButton = wrapper.find('.ant-modal-confirm .ant-modal-confirm-btns .ant-btn-primary');
+      const okButton = wrapper.find(
+        '.ant-modal-confirm .ant-modal-confirm-btns .ant-btn-primary',
+      );
       okButton.simulate('click');
     });
     await waitForComponentToPaint(wrapper);
     const expected = ['http://localhost/datasource/save/'];
-    expect(callsP._calls.map(call => call[0])).toEqual(expected); /* eslint no-underscore-dangle: 0 */
+    expect(callsP._calls.map(call => call[0])).toEqual(
+      expected,
+    ); /* eslint no-underscore-dangle: 0 */
   });
 
   it('renders a legacy data source btn', () => {
-    expect(wrapper.find('button[data-test="datasource-modal-legacy-edit"]')).toExist();
+    expect(
+      wrapper.find('button[data-test="datasource-modal-legacy-edit"]'),
+    ).toExist();
   });
 });
 
@@ -116,7 +127,9 @@ describe('DatasourceModal without legacy data btn', () => {
   let wrapper;
   let isFeatureEnabledMock;
   beforeEach(async () => {
-    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockReturnValue(false);
+    isFeatureEnabledMock = jest
+      .spyOn(featureFlags, 'isFeatureEnabled')
+      .mockReturnValue(false);
     fetchMock.reset();
     wrapper = await mountAndWait();
   });
@@ -126,7 +139,11 @@ describe('DatasourceModal without legacy data btn', () => {
   });
 
   it('hides legacy data source btn', () => {
-    isFeatureEnabledMock = jest.spyOn(featureFlags, 'isFeatureEnabled').mockReturnValue(false);
-    expect(wrapper.find('button[data-test="datasource-modal-legacy-edit"]')).not.toExist();
+    isFeatureEnabledMock = jest
+      .spyOn(featureFlags, 'isFeatureEnabled')
+      .mockReturnValue(false);
+    expect(
+      wrapper.find('button[data-test="datasource-modal-legacy-edit"]'),
+    ).not.toExist();
   });
 });

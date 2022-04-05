@@ -57,10 +57,18 @@ export default function sqlLabReducer(state = {}, action) {
       const id = action.alterations.remoteId;
       const existing = state.queryEditors.find(qe => qe.remoteId === id);
       if (existing == null) return state;
-      return alterInArr(state, 'queryEditors', existing, action.alterations, 'remoteId');
+      return alterInArr(
+        state,
+        'queryEditors',
+        existing,
+        action.alterations,
+        'remoteId',
+      );
     },
     [actions.CLONE_QUERY_TO_NEW_TAB]() {
-      const progenitor = state.queryEditors.find(qe => qe.id === state.tabHistory[state.tabHistory.length - 1]);
+      const progenitor = state.queryEditors.find(
+        qe => qe.id === state.tabHistory[state.tabHistory.length - 1],
+      );
       const qe = {
         remoteId: progenitor.remoteId,
         title: t('Copy of %s', progenitor.title),
@@ -90,7 +98,9 @@ export default function sqlLabReducer(state = {}, action) {
       tabHistory = tabHistory.filter(id => qeIds.indexOf(id) > -1);
 
       // Remove associated table schemas
-      const tables = state.tables.filter(table => table.queryEditorId !== action.queryEditor.id);
+      const tables = state.tables.filter(
+        table => table.queryEditorId !== action.queryEditor.id,
+      );
 
       newState = { ...newState, tabHistory, tables, queries };
       return newState;
@@ -371,7 +381,9 @@ export default function sqlLabReducer(state = {}, action) {
     [actions.MIGRATE_QUERY_EDITOR]() {
       // remove migrated query editor from localStorage
       const { sqlLab } = JSON.parse(localStorage.getItem('redux'));
-      sqlLab.queryEditors = sqlLab.queryEditors.filter(qe => qe.id !== action.oldQueryEditor.id);
+      sqlLab.queryEditors = sqlLab.queryEditors.filter(
+        qe => qe.id !== action.oldQueryEditor.id,
+      );
       localStorage.setItem('redux', JSON.stringify({ sqlLab }));
 
       // replace localStorage query editor with the server backed one
@@ -384,18 +396,28 @@ export default function sqlLabReducer(state = {}, action) {
     [actions.MIGRATE_TABLE]() {
       // remove migrated table from localStorage
       const { sqlLab } = JSON.parse(localStorage.getItem('redux'));
-      sqlLab.tables = sqlLab.tables.filter(table => table.id !== action.oldTable.id);
+      sqlLab.tables = sqlLab.tables.filter(
+        table => table.id !== action.oldTable.id,
+      );
       localStorage.setItem('redux', JSON.stringify({ sqlLab }));
 
       // replace localStorage table with the server backed one
-      return addToArr(removeFromArr(state, 'tables', action.oldTable), 'tables', action.newTable);
+      return addToArr(
+        removeFromArr(state, 'tables', action.oldTable),
+        'tables',
+        action.newTable,
+      );
     },
     [actions.MIGRATE_TAB_HISTORY]() {
       // remove migrated tab from localStorage tabHistory
       const { sqlLab } = JSON.parse(localStorage.getItem('redux'));
-      sqlLab.tabHistory = sqlLab.tabHistory.filter(tabId => tabId !== action.oldId);
+      sqlLab.tabHistory = sqlLab.tabHistory.filter(
+        tabId => tabId !== action.oldId,
+      );
       localStorage.setItem('redux', JSON.stringify({ sqlLab }));
-      const tabHistory = state.tabHistory.filter(tabId => tabId !== action.oldId);
+      const tabHistory = state.tabHistory.filter(
+        tabId => tabId !== action.oldId,
+      );
       tabHistory.push(action.newId);
       return { ...state, tabHistory };
     },
@@ -492,7 +514,8 @@ export default function sqlLabReducer(state = {}, action) {
       Object.entries(action.alteredQueries).forEach(([id, changedQuery]) => {
         if (
           !state.queries.hasOwnProperty(id) ||
-          (state.queries[id].state !== 'stopped' && state.queries[id].state !== 'failed')
+          (state.queries[id].state !== 'stopped' &&
+            state.queries[id].state !== 'failed')
         ) {
           if (changedQuery.changedOn > queriesLastUpdate) {
             queriesLastUpdate = changedQuery.changedOn;
@@ -505,7 +528,11 @@ export default function sqlLabReducer(state = {}, action) {
             // race condition:
             // because of async behavior, sql lab may still poll a couple of seconds
             // when it started fetching or finished rendering results
-            state: currentState === 'success' && ['fetching', 'success'].includes(prevState) ? prevState : currentState,
+            state:
+              currentState === 'success' &&
+              ['fetching', 'success'].includes(prevState)
+                ? prevState
+                : currentState,
           };
           change = true;
         }

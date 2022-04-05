@@ -31,5 +31,8 @@ test('Must put id on input', () => {
   );
 
   expect(screen.getByPlaceholderText('Test Omnibar')).toBeInTheDocument();
-  expect(screen.getByPlaceholderText('Test Omnibar')).toHaveAttribute('id', 'test-id-attribute');
+  expect(screen.getByPlaceholderText('Test Omnibar')).toHaveAttribute(
+    'id',
+    'test-id-attribute',
+  );
 });

@@ -30,7 +30,10 @@ import {
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 import mockDatasource, { id, datasourceId } from 'spec/fixtures/mockDatasource';
 import chartQueries from 'spec/fixtures/mockChartQueries';
-import { FiltersConfigModal, FiltersConfigModalProps } from './FiltersConfigModal';
+import {
+  FiltersConfigModal,
+  FiltersConfigModalProps,
+} from './FiltersConfigModal';
 
 class MainPreset extends Preset {
   constructor() {
@@ -293,9 +296,13 @@ test.skip('validates the default value', async () => {
   userEvent.type(screen.getByRole('combobox'), `Column A${specialChars.enter}`);
   userEvent.click(getCheckbox(DEFAULT_VALUE_REGEX));
   await waitFor(() => {
-    expect(screen.queryByText(FILL_REQUIRED_FIELDS_REGEX)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(FILL_REQUIRED_FIELDS_REGEX),
+    ).not.toBeInTheDocument();
   });
-  expect(await screen.findByText(DEFAULT_VALUE_REQUIRED_REGEX)).toBeInTheDocument();
+  expect(
+    await screen.findByText(DEFAULT_VALUE_REQUIRED_REGEX),
+  ).toBeInTheDocument();
 });
 
 test('validates the hierarchical value', async () => {
@@ -309,7 +316,9 @@ test('validates the pre-filter value', async () => {
   defaultRender();
   userEvent.click(screen.getByText(ADVANCED_REGEX));
   userEvent.click(getCheckbox(PRE_FILTER_REGEX));
-  expect(await screen.findByText(PRE_FILTER_REQUIRED_REGEX)).toBeInTheDocument();
+  expect(
+    await screen.findByText(PRE_FILTER_REQUIRED_REGEX),
+  ).toBeInTheDocument();
 });
 
 // eslint-disable-next-line jest/no-disabled-tests
@@ -322,7 +331,11 @@ test.skip("doesn't render time range pre-filter if there are no temporal columns
   });
   userEvent.click(screen.getByText(ADVANCED_REGEX));
   userEvent.click(getCheckbox(PRE_FILTER_REGEX));
-  await waitFor(() => expect(screen.queryByText(TIME_RANGE_PREFILTER_REGEX)).not.toBeInTheDocument());
+  await waitFor(() =>
+    expect(
+      screen.queryByText(TIME_RANGE_PREFILTER_REGEX),
+    ).not.toBeInTheDocument(),
+  );
 });
 /*
   TODO

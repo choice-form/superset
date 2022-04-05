@@ -69,10 +69,18 @@ test('Should render menu items', () => {
       <ShareMenuItems {...props} />
     </Menu>,
   );
-  expect(screen.getByRole('menuitem', { name: 'Copy dashboard URL' })).toBeInTheDocument();
-  expect(screen.getByRole('menuitem', { name: 'Share dashboard by email' })).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Copy dashboard URL' })).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Share dashboard by email' })).toBeInTheDocument();
+  expect(
+    screen.getByRole('menuitem', { name: 'Copy dashboard URL' }),
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole('menuitem', { name: 'Share dashboard by email' }),
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'Copy dashboard URL' }),
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole('button', { name: 'Share dashboard by email' }),
+  ).toBeInTheDocument();
 });
 
 test('Click on "Copy dashboard URL" and succeed', async () => {
@@ -123,7 +131,9 @@ test('Click on "Copy dashboard URL" and fail', async () => {
     expect(spy).toBeCalledWith('http://localhost:8088/r/3');
     expect(props.addSuccessToast).toBeCalledTimes(0);
     expect(props.addDangerToast).toBeCalledTimes(1);
-    expect(props.addDangerToast).toBeCalledWith('Sorry, your browser does not support copying.');
+    expect(props.addDangerToast).toBeCalledWith(
+      'Sorry, your browser does not support copying.',
+    );
   });
 });
 
@@ -140,7 +150,9 @@ test('Click on "Share dashboard by email" and succeed', async () => {
     expect(window.location.href).toBe('');
   });
 
-  userEvent.click(screen.getByRole('button', { name: 'Share dashboard by email' }));
+  userEvent.click(
+    screen.getByRole('button', { name: 'Share dashboard by email' }),
+  );
 
   await waitFor(() => {
     expect(props.addDangerToast).toBeCalledTimes(0);
@@ -151,7 +163,11 @@ test('Click on "Share dashboard by email" and succeed', async () => {
 });
 
 test('Click on "Share dashboard by email" and fail', async () => {
-  fetchMock.post('http://localhost/r/shortner/', { status: 404 }, { overwriteRoutes: true });
+  fetchMock.post(
+    'http://localhost/r/shortner/',
+    { status: 404 },
+    { overwriteRoutes: true },
+  );
   const props = createProps();
   render(
     <Menu onClick={jest.fn()} selectable={false} data-test="main-menu">
@@ -164,11 +180,15 @@ test('Click on "Share dashboard by email" and fail', async () => {
     expect(window.location.href).toBe('');
   });
 
-  userEvent.click(screen.getByRole('button', { name: 'Share dashboard by email' }));
+  userEvent.click(
+    screen.getByRole('button', { name: 'Share dashboard by email' }),
+  );
 
   await waitFor(() => {
     expect(window.location.href).toBe('');
     expect(props.addDangerToast).toBeCalledTimes(1);
-    expect(props.addDangerToast).toBeCalledWith('Sorry, something went wrong. Try again later.');
+    expect(props.addDangerToast).toBeCalledWith(
+      'Sorry, something went wrong. Try again later.',
+    );
   });
 });

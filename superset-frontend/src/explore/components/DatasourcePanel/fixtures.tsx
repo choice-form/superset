@@ -36,7 +36,8 @@ export const columns: ColumnMeta[] = [
   {
     column_name: 'calc_first_time_dev',
     description: null,
-    expression: 'CASE WHEN is_first_dev_job = 0 THEN "No" WHEN is_first_dev_job = 1 THEN "Yes" END',
+    expression:
+      'CASE WHEN is_first_dev_job = 0 THEN "No" WHEN is_first_dev_job = 1 THEN "Yes" END',
     filterable: true,
     groupby: true,
     id: 477,
@@ -92,4 +93,7 @@ const metricsFiltered = {
   ],
 };
 
-export const metrics = [...metricsFiltered.certified, ...metricsFiltered.uncertified];
+export const metrics = [
+  ...metricsFiltered.certified,
+  ...metricsFiltered.uncertified,
+];

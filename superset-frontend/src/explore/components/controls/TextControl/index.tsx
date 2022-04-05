@@ -42,12 +42,12 @@ export interface TextControlState {
   value: string;
 }
 
-const safeStringify = (value?: InputValueType | null) => (value == null ? '' : String(value));
+const safeStringify = (value?: InputValueType | null) =>
+  value == null ? '' : String(value);
 
-export default class TextControl<T extends InputValueType = InputValueType> extends React.Component<
-  TextControlProps<T>,
-  TextControlState
-> {
+export default class TextControl<
+  T extends InputValueType = InputValueType
+> extends React.Component<TextControlProps<T>, TextControlState> {
   initialValue?: TextControlProps['value'];
 
   constructor(props: TextControlProps<T>) {
@@ -67,7 +67,9 @@ export default class TextControl<T extends InputValueType = InputValueType> exte
       if (error) {
         errors.push(error);
       } else {
-        parsedValue = inputValue.match(/.*([.0])$/g) ? inputValue : parseFloat(inputValue);
+        parsedValue = inputValue.match(/.*([.0])$/g)
+          ? inputValue
+          : parseFloat(inputValue);
       }
     }
     if (inputValue !== '' && this.props.isInt) {
