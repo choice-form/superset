@@ -135,6 +135,7 @@ export default function RangeFilterPlugin(props: PluginFilterRangeProps) {
     setMarks(getMarks(lower, upper));
 
     setDataMask({
+      // @ts-ignore
       extraFormData: getRangeExtraFormData(col, lower, upper),
       filterState: {
         value: lower !== null || upper !== null ? value : null,

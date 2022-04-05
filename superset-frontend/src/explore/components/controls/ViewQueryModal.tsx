@@ -43,7 +43,7 @@ SyntaxHighlighter.registerLanguage('json', jsonSyntax);
 
 interface Props {
   latestQueryFormData: object;
-  ownState: object;
+  ownState?: object;
 }
 
 type Result = {
@@ -70,7 +70,7 @@ const ViewQueryModal: React.FC<Props> = props => {
       formData: props.latestQueryFormData,
       resultFormat: 'json',
       resultType,
-      ownState: props.ownState,
+      ownState: props.ownState ?? {},
     })
       .then(({ json }) => {
         setResult(ensureIsArray(json.result));

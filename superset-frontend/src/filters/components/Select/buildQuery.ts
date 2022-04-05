@@ -36,6 +36,7 @@ const buildQuery: BuildQuery<PluginFilterSelectQueryFormData> = (
     const extraFilters: QueryObjectFilterClause[] = [];
     if (search) {
       columns.forEach(column => {
+        // @ts-ignore
         if (coltypeMap[column] === GenericDataType.STRING) {
           extraFilters.push({
             col: column,
@@ -43,6 +44,7 @@ const buildQuery: BuildQuery<PluginFilterSelectQueryFormData> = (
             val: `%${search}%`,
           });
         } else if (
+          // @ts-ignore
           coltypeMap[column] === GenericDataType.NUMERIC &&
           !Number.isNaN(Number(search))
         ) {

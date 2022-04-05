@@ -93,7 +93,7 @@ export default function PluginFilterSelect(props: PluginFilterSelectProps) {
     defaultToFirstItem,
     searchAllOptions,
   } = formData;
-  const groupby = ensureIsArray<string>(formData.groupby);
+  const groupby = ensureIsArray<string>(formData.groupby as string[]);
   const [col] = groupby;
   const [initialColtypeMap] = useState(coltypeMap);
   const [dataMask, dispatchDataMask] = useImmerReducer(reducer, {
