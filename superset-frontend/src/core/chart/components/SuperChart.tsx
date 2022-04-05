@@ -36,6 +36,7 @@ const defaultProps = {
   height: 400 as string | number,
   width: '100%' as string | number,
   enableNoResults: true,
+  locale: 'zh',
 };
 
 export type FallbackPropsWithDimension = FallbackProps & Partial<Dimension>;
@@ -69,7 +70,7 @@ export type Props = Omit<SuperChartCoreProps, 'chartProps'> &
     /** Chart height */
     width?: number | string;
     /** language */
-    locale: Locale;
+    locale?: Locale;
     /**
      * Component to wrap the actual chart
      * after the dynamic width and height are determined.

@@ -127,6 +127,29 @@ const RightMenu = ({
     return null;
   };
 
+  const renderLogin = () => {
+    // 未登录用户显示登陆按钮
+    if (navbarRight.user_is_anonymous) {
+      return (
+        <StyledAnchor href={navbarRight.user_login_url}>
+          <i className="fa fa-fw fa-sign-in" />
+          {t('Login')}
+        </StyledAnchor>
+      );
+    }
+    // 等于0的是低权限用户，没有下来菜单，所以要单独显示登出按钮。
+    if (settings.length === 0) {
+      return (
+        <StyledAnchor href={navbarRight.user_logout_url}>
+          <i className="fa fa-fw fa-sign-out" />
+          {t('Logout')}
+        </StyledAnchor>
+      );
+    }
+    // 其他情况不用显示
+    return null;
+  };
+
   return (
     <StyledDiv align={align}>
       <Menu mode="horizontal">
@@ -137,12 +160,7 @@ const RightMenu = ({
             languages={navbarRight.languages}
           />
         )}
-        {navbarRight.user_is_anonymous && (
-          <StyledAnchor href={navbarRight.user_login_url}>
-            <i className="fa fa-fw fa-sign-in" />
-            {t('Login')}
-          </StyledAnchor>
-        )}
+        {renderLogin()}
       </Menu>
     </StyledDiv>
   );
