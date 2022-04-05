@@ -570,8 +570,8 @@ DATA_CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "null"}
 # store cache keys by datasource UID (via CacheKey) for custom processing/invalidation
 STORE_CACHE_KEYS_IN_METADATA_DB = False
 
-# CORS Options
-ENABLE_CORS = False
+# CORS Options 启用跨域，不写option就是允许所有来源的跨域请求。
+ENABLE_CORS = True
 CORS_OPTIONS: Dict[Any, Any] = {}
 
 # Chrome allows up to 6 open connections per domain at a time. When there are more
