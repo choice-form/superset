@@ -18,6 +18,8 @@
  */
 import { FeatureFlagMap, FeatureFlag } from 'src/core';
 
+export { FeatureFlagMap, FeatureFlag } from 'src/core';
+
 export function initFeatureFlags(featureFlags: FeatureFlagMap) {
   if (!window.featureFlags) {
     window.featureFlags = featureFlags || {};
