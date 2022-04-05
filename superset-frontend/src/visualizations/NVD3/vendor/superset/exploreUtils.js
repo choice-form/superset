@@ -24,15 +24,20 @@ const MAX_URL_LENGTH = 8000;
 
 export function getURIDirectory(formData, endpointType = 'base') {
   // Building the directory part of the URI
-  let directory = '/superset/explore/';
+  let directory = '/explore/';
   if (['json', 'csv', 'query', 'results', 'samples'].includes(endpointType)) {
-    directory = '/superset/explore_json/';
+    directory = '/explore_json/';
   }
 
   return directory;
 }
 
-export function getExploreLongUrl(formData, endpointType, allowOverflow = true, extraSearch = {}) {
+export function getExploreLongUrl(
+  formData,
+  endpointType,
+  allowOverflow = true,
+  extraSearch = {},
+) {
   if (!formData.datasource) {
     return null;
   }
