@@ -18,7 +18,7 @@
 ######################################################################
 # PY stage that simply does a pip install on our requirements
 ######################################################################
-ARG PY_VER=3.8.12
+ARG PY_VER=3.9.10
 FROM python:${PY_VER} AS superset-py
 
 RUN mkdir /app \
@@ -73,7 +73,7 @@ RUN cd /app/superset-frontend \
 ######################################################################
 # Final lean image...
 ######################################################################
-ARG PY_VER=3.8.12
+ARG PY_VER=3.9.10
 FROM python:${PY_VER} AS lean
 
 ENV LANG=C.UTF-8 \
@@ -108,6 +108,7 @@ RUN cd /app \
         && pip install -e .
 
 COPY ./docker/docker-entrypoint.sh /usr/bin/
+RUN ["chmod", "+x", "/usr/bin/docker-entrypoint.sh"]
 
 WORKDIR /app
 
