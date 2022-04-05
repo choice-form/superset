@@ -4,7 +4,7 @@
     "superset": {
       "": {
         "domain": "superset",
-        "plural_forms": "nplurals=1; plural=0;",
+        "plural_forms": "nplurals=1; plural=0",
         "lang": "zh"
       },
       "The datasource is too large to query.": ["数据源太大，无法查询。"],
@@ -726,26 +726,7 @@
       "We can't seem to resolve the column \"%(column_name)s\"": [
         "我们似乎无法解析列 \"%(column_name)s\""
       ],
-      "Home": ["主页"],
       "Row level security": ["行级安全过滤"],
-      "Import Dashboards": ["导入看板"],
-      "SQL Editor": ["SQL编辑器"],
-      "SQL Lab": ["SQL实验室"],
-      "Saved Queries": ["已保存查询"],
-      "Query History": ["历史查询"],
-      "Upload a CSV": ["上传CSV文件"],
-      "Upload Excel": ["上传Excel文件"],
-      "Data": ["数据"],
-      "Action Log": ["操作日志"],
-      "Security": ["安全"],
-      "Dashboard Emails": ["看板"],
-      "Manage": ["管理"],
-      "Chart Email Schedules": ["图表电子邮件时间表"],
-      "Alerts": ["警报"],
-      "Alerts & Reports": ["警报和报告"],
-      "Access requests": ["访问请求"],
-      "Scan New Datasources": ["扫描新的数据源"],
-      "Refresh Druid Metadata": ["刷新 Druid 元数据"],
       "Temporal expression not supported for type: %(col_type)s": [
         "类型不支持时态表达式：%(col_type)s"
       ],
@@ -1588,7 +1569,6 @@
       "Estimate the cost before running a query": [
         "在运行查询之前计算执行计划"
       ],
-      "LIMIT:": ["行数："],
       "${isActive ? 'Collapse' : 'Expand'} table preview": [
         "${isActive ? 'Collapse' : 'Expand'} 表格预览"
       ],
@@ -2538,6 +2518,7 @@
       "Metric used to define the top series": ["用于定义顶级序列的指标"],
       "Bubble size": ["气泡尺寸"],
       "An error occurred while starring this chart": ["在该图表上加星号时出错"],
+      "Data": ["数据"],
       "Customize": ["定制化配置"],
       "Height": ["高度"],
       "Width": ["宽度"],
@@ -2928,6 +2909,7 @@
       "${AlertState.noop}": [""],
       "${AlertState.grace}": [""],
       "Alerts & reports": ["警报和报告"],
+      "Alerts": ["警报"],
       "Reports": ["报告"],
       "Delete %s?": ["需要删除 %s 吗？"],
       "Please confirm": ["请确认"],
@@ -3366,7 +3348,6 @@
       "Created": ["已创建"],
       "Viewed": ["已查看"],
       "Mine": ["我的编辑"],
-      "View ALL »": ["查看全部 »"],
       "Recently viewed charts, dashboards, and saved queries will appear here": [
         "最近查看的图表、看板和保存的查询将显示在此处"
       ],
@@ -3387,6 +3368,7 @@
       "${tableName}": ["${表名称}"],
       "query": ["查询"],
       "Share": ["分享"],
+      "View ALL »": ["查看全部 »"],
       "Ran %s": ["运行时间：%s"],
       "There was an issue fetching your recent activity: %s": [
         "获取您最近的活动时出错：%s"
@@ -3401,6 +3383,8 @@
       "Recents": ["最近"],
       "Layer Text": ["分层文本"],
       "Chart Options": ["图表选项"],
+      "Text Shadow": ["文字阴影"],
+      "Zoom": ["缩放"],
       "Custom Funnel": ["定制漏斗"],
       "Domain": ["领域"],
       "The time unit used for the grouping of blocks": ["用于块分组的时间单位"],
@@ -4402,7 +4386,6 @@
       "Longitude of default viewport": ["默认视口的经度"],
       "Default latitude": ["默认纬度"],
       "Latitude of default viewport": ["默认视口的纬度"],
-      "Zoom": ["缩放"],
       "Zoom level of the map": ["地图的缩放级别"],
       "One or many controls to group by. If grouping, latitude and longitude columns must be present.": [
         "要分组的一个或多个控件。如果分组，则必须存在纬度和经度列。"
