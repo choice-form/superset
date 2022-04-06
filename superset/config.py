@@ -343,7 +343,7 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     "ALLOW_DASHBOARD_DOMAIN_SHARDING": True,
     # Experimental feature introducing a client (browser) cache
     # 开启客户端缓存
-    "CLIENT_CACHE": True,
+    "CLIENT_CACHE": False,
     # 为数据集编辑器的源选项卡添加只读模式
     "DISABLE_DATASET_SOURCE_EDIT": False,
     # When using a recent version of Druid that supports JOINs turn this on
@@ -368,7 +368,7 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     # Exposes API endpoint to compute thumbnails
     "THUMBNAILS": False,
     # 看板缓存
-    "DASHBOARD_CACHE": True,
+    "DASHBOARD_CACHE": False,
     "REMOVE_SLICE_LEVEL_LABEL_COLORS": False,
     "SHARE_QUERIES_VIA_KV_STORE": False,
     # 启用该功能后，所有者可以标记图表(添加tag)
@@ -569,10 +569,10 @@ IMG_UPLOAD_URL = "/static/uploads/"
 CACHE_DEFAULT_TIMEOUT = int(timedelta(days=1).total_seconds())
 
 # Default cache for Superset objects
-CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "simple"}
+CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "null"}
 
 # Cache for datasource metadata and query results
-DATA_CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "simple"}
+DATA_CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "null"}
 
 # store cache keys by datasource UID (via CacheKey) for custom processing/invalidation
 STORE_CACHE_KEYS_IN_METADATA_DB = False
