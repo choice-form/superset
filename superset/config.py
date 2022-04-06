@@ -575,7 +575,7 @@ CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "simple"}
 DATA_CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "simple"}
 
 # store cache keys by datasource UID (via CacheKey) for custom processing/invalidation
-STORE_CACHE_KEYS_IN_METADATA_DB = True
+STORE_CACHE_KEYS_IN_METADATA_DB = False
 
 # CORS Options 启用跨域，不写option就是允许所有来源的跨域请求。
 ENABLE_CORS = True
