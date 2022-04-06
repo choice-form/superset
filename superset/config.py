@@ -339,10 +339,12 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     # allow dashboard to use sub-domains to send chart request
     # you also need ENABLE_CORS and
     # SUPERSET_WEBSERVER_DOMAINS for list of domains
+    # 允许仪表板的域分片
     "ALLOW_DASHBOARD_DOMAIN_SHARDING": True,
     # Experimental feature introducing a client (browser) cache
     # 开启客户端缓存
     "CLIENT_CACHE": True,
+    # 为数据集编辑器的源选项卡添加只读模式
     "DISABLE_DATASET_SOURCE_EDIT": False,
     # When using a recent version of Druid that supports JOINs turn this on
     "DRUID_JOINS": False,
@@ -355,6 +357,7 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     # make GET request to explore_json. explore_json accepts both GET and POST request.
     # See `PR 7935 <https://github.com/apache/superset/pull/7935>`_ for more details.
     "ENABLE_EXPLORE_JSON_CSRF_PROTECTION": False,
+    # 开启模板处理
     "ENABLE_TEMPLATE_PROCESSING": False,
     "ENABLE_TEMPLATE_REMOVE_FILTERS": False,
     "KV_STORE": False,
@@ -368,13 +371,15 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     "DASHBOARD_CACHE": True,
     "REMOVE_SLICE_LEVEL_LABEL_COLORS": False,
     "SHARE_QUERIES_VIA_KV_STORE": False,
-    "TAGGING_SYSTEM": False,
+    # 启用该功能后，所有者可以标记图表(添加tag)
+    "TAGGING_SYSTEM": True,
     "SQLLAB_BACKEND_PERSISTENCE": False,
     "LISTVIEWS_DEFAULT_CARD_VIEW": False,
     # Enables the replacement React views for all the FAB views (list, edit, show) with
     # designs introduced in https://github.com/apache/superset/issues/8976
     # (SIP-34). This is a work in progress so not all features available in FAB have
     # been implemented.
+    # 为所有FAB视图(列表、编辑、显示)启用替换React视图
     "ENABLE_REACT_CRUD_VIEWS": True,
     # When True, this flag allows display of HTML tags in Markdown components
     "DISPLAY_MARKDOWN_HTML": True,
@@ -399,6 +404,7 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     # Enable experimental feature to search for other dashboards
     "OMNIBAR": False,
     "DASHBOARD_RBAC": False,
+    # 拖放查询面板的 POC。范围 - 仅限 Groupby 控制
     "ENABLE_EXPLORE_DRAG_AND_DROP": False,
     "ENABLE_DND_WITH_CLICK_UX": False,
     # Enabling ALERTS_ATTACH_REPORTS, the system sends email and slack message
@@ -407,6 +413,7 @@ DEFAULT_FEATURE_FLAGS: Dict[str, bool] = {
     # for report with type 'alert' and sends email and slack message with only link;
     # for report with type 'report' still send with email and slack message with
     # screenshot and link
+    # 开启警报可以发送附件
     "ALERTS_ATTACH_REPORTS": True,
     # FORCE_DATABASE_CONNECTIONS_SSL is depreciated.
     "FORCE_DATABASE_CONNECTIONS_SSL": False,
@@ -562,10 +569,10 @@ IMG_UPLOAD_URL = "/static/uploads/"
 CACHE_DEFAULT_TIMEOUT = int(timedelta(days=1).total_seconds())
 
 # Default cache for Superset objects
-CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "null"}
+CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "simple"}
 
 # Cache for datasource metadata and query results
-DATA_CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "null"}
+DATA_CACHE_CONFIG: CacheConfig = {"CACHE_TYPE": "simple"}
 
 # store cache keys by datasource UID (via CacheKey) for custom processing/invalidation
 STORE_CACHE_KEYS_IN_METADATA_DB = False
