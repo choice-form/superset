@@ -277,6 +277,7 @@ AUTH_TYPE = AUTH_DB
 # AUTH_ROLE_ADMIN = 'Admin'
 
 # Uncomment to setup Public role name, no authentication needed
+# 匿名用户的角色
 AUTH_ROLE_PUBLIC = 'Public'
 
 # Will allow user self registration
@@ -299,7 +300,8 @@ AUTH_ROLE_PUBLIC = 'Public'
 # Grant public role the same set of permissions as for a selected builtin role.
 # This is useful if one wants to enable anonymous users to view
 # dashboards. Explicit grant on specific datasets is still required.
-PUBLIC_ROLE_LIKE: Optional[str] = 'Gamma'
+# 这里不需要配置权限，否则每次部署，都会添加没用的权限，配置好public之后就不用再修改了。
+PUBLIC_ROLE_LIKE: Optional[str] = None
 
 # ---------------------------------------------------
 # Babel config for translations
