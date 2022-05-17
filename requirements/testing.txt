@@ -9,88 +9,94 @@
 -r integration.txt
 -e file:.
     # via -r requirements/base.in
-appnope==0.1.2
+appnope==0.1.3
     # via ipython
 astroid==2.6.6
     # via pylint
+asttokens==2.0.5
+    # via stack-data
 backcall==0.2.0
     # via ipython
-coverage==5.5
+coverage[toml]==6.3.3
     # via pytest-cov
-decorator==5.0.9
+decorator==5.1.1
     # via
     #   ipdb
     #   ipython
-docker==5.0.0
+docker==5.0.3
     # via -r requirements/testing.in
+executing==0.8.3
+    # via stack-data
 flask-testing==0.8.1
     # via -r requirements/testing.in
-freezegun==1.1.0
+freezegun==1.2.1
     # via -r requirements/testing.in
 iniconfig==1.1.1
     # via pytest
 ipdb==0.13.9
     # via -r requirements/testing.in
-ipython==7.26.0
+ipython==8.3.0
     # via
     #   -r requirements/testing.in
     #   ipdb
-ipython-genutils==0.2.0
-    # via traitlets
-isort==5.9.3
+isort==5.10.1
     # via pylint
-jedi==0.18.0
+jedi==0.18.1
     # via ipython
-lazy-object-proxy==1.6.0
+lazy-object-proxy==1.7.1
     # via astroid
-matplotlib-inline==0.1.2
+matplotlib-inline==0.1.3
     # via ipython
 mccabe==0.6.1
     # via pylint
-openapi-schema-validator==0.1.5
+openapi-schema-validator==0.2.3
     # via openapi-spec-validator
-openapi-spec-validator==0.3.1
+openapi-spec-validator==0.4.0
     # via -r requirements/testing.in
 parameterized==0.8.1
     # via -r requirements/testing.in
-parso==0.8.2
+parso==0.8.3
     # via jedi
 pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
     # via ipython
-prompt-toolkit==3.0.19
+prompt-toolkit==3.0.29
     # via ipython
 ptyprocess==0.7.0
     # via pexpect
-pyfakefs==4.5.0
+pure-eval==0.2.2
+    # via stack-data
+pyfakefs==4.5.6
     # via -r requirements/testing.in
-pygments==2.9.0
+pygments==2.12.0
     # via ipython
-pyhive[hive,presto]==0.6.4
+pyhive[hive,presto]==0.6.5
     # via
     #   -r requirements/development.in
     #   -r requirements/testing.in
 pylint==2.9.6
     # via -r requirements/testing.in
-pytest==6.2.4
+pytest==7.1.2
     # via
     #   -r requirements/testing.in
     #   pytest-cov
     #   pytest-mock
-pytest-cov==2.12.1
+pytest-cov==3.0.0
     # via -r requirements/testing.in
-pytest-mock==3.6.1
+pytest-mock==3.7.0
     # via -r requirements/testing.in
+stack-data==0.2.0
+    # via ipython
 statsd==3.3.0
     # via -r requirements/testing.in
-traitlets==5.0.5
+traitlets==5.2.1.post0
     # via
     #   ipython
     #   matplotlib-inline
 wcwidth==0.2.5
     # via prompt-toolkit
-websocket-client==1.2.0
+websocket-client==1.3.2
     # via docker
 
 # The following packages are considered to be unsafe in a requirements file:
