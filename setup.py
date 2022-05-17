@@ -102,6 +102,7 @@ setup(
         "pyyaml>=5.4",
         "PyJWT>=1.7.1, <2",
         "redis",
+        "markupsafe==2.0.1",
         "requests==2.26.0",
         "selenium>=3.141.0",
         "simplejson>=3.15.0",
